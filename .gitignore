@@ -18,9 +18,15 @@
 !.config/fish/functions/timestamp.fish
 !.config/fish/functions/ytdlp.fish
 
+!.tmux.conf
+
 !.vim/
 !.vim/colors/
 !.vim/colors/monokai.vim
 !.vim/colors/nord.vim
 !.vimrc
+
+!.config/neofetch/
+!.config/neofetch/config.conf
+!.config/neofetch/king.ascii
 
