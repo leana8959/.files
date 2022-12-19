@@ -1,0 +1,35 @@
+format = """
+$hostname$directory $git_branch$git_commit$git_state$git_status
+$character
+"""
+right_format = "$time"
+
+[character]
+success_symbol = "[?](bold white)"
+error_symbol = "[!](bold red)"
+
+[hostname]
+ssh_only = true
+format = "[mbp](bold #fc813a):"
+disabled = false
+
+[directory]
+truncation_length = 0
+truncation_symbol = "…/"
+truncate_to_repo = false
+format = "[$path/](white)"
+
+[time]
+disabled = false
+format = "[\\[$time\\]](#606060)"
+
+[git_branch]
+symbol = ""
+format = "[$symbol$branch](#c061ff)"
+truncation_symbol = ""
+
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"

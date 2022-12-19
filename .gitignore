@@ -1,0 +1,9 @@
+*
+!.gitignore
+
+!.config/
+!.config/starship.toml
+
+!.config/fish/
+!.config/fish/config.fish
+
