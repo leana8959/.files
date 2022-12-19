@@ -1,6 +1,6 @@
 format = """
-$hostname$directory $git_branch$git_commit$git_state$git_status
-$character
+$directory $git_branch$git_commit$git_state$git_status
+$hostname$character
 """
 right_format = "$time"
 
@@ -10,7 +10,7 @@ error_symbol = "[!](bold red)"
 
 [hostname]
 ssh_only = true
-format = "[mbp](bold #fc813a):"
+format = "[$hostname](bold #fc813a):"
 disabled = false
 
 [directory]
