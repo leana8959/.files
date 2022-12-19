@@ -1,5 +1,5 @@
 format = """
-$directory $git_branch$git_commit$git_state$git_status
+$directory $git_branch$git_commit$git_state$git_status $python
 $hostname$character
 """
 right_format = "$time"
@@ -33,3 +33,7 @@ truncation_symbol = ""
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
+
+[python]
+symbol = ""
+format = "[$symbol $virtualenv](#fff972)"
