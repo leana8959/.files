@@ -17,7 +17,7 @@ disabled = false
 truncation_length = 0
 truncation_symbol = "…/"
 truncate_to_repo = false
-format = "[$path/](white)"
+format = "[$path](white)"
 
 [time]
 disabled = false
