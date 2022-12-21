@@ -1,4 +1,7 @@
-alias rs_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
-alias ls='tree -Cpha -L 1 | less -R'
-alias la='tree -Cph -L 1 | less -R'
 alias neofetch='neowofetch'
+
+if not string match -qi "*Darwin*" (uname -a)
+	# is linux
+	alias chmod='chmod --preserve-root'
+	alias chown='chown --preserve-root'
+end
