@@ -16,8 +16,6 @@
 !.config/fish/functions/brew_update.fish
 !.config/fish/functions/fish_greeting.fish
 !.config/fish/functions/ipp.fish
-!.config/fish/functions/la.fish
-!.config/fish/functions/ls.fish
 !.config/fish/functions/reset_launchpad.fish
 !.config/fish/functions/timestamp.fish
 !.config/fish/functions/ytdlp.fish
