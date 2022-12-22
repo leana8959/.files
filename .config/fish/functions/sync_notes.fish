@@ -1,4 +1,4 @@
-function sync_note
+function sync_notes
     echo ===== (date) =====
     /opt/homebrew/bin/rsync -r -v --chown=caddy:caddy --chmod=u=rX,g=rX,o=rX --exclude ".DS_Store" --update --times --compress --delay-updates \
         /Users/leana/Documents/Rennes\ 1/L2/Prise\ de\ notes/ \
