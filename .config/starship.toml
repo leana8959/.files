@@ -1,8 +1,13 @@
 format = """
 $directory $git_branch$git_commit$git_state$git_status $python
-$hostname$character
+$hostname$shell$character
 """
 right_format = "$time"
+
+[shell]
+disabled = false
+fish_indicator = ""
+format = "[$indicator](#606060)"
 
 [character]
 success_symbol = "[?](bold white)"
@@ -27,7 +32,6 @@ format = "[\\[$time\\]](#606060)"
 symbol = ""
 format = "[$symbol$branch](#c061ff)"
 truncation_symbol = ""
-
 
 [git_status]
 ahead = "⇡${count}"

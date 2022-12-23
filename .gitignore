@@ -34,3 +34,6 @@
 !.config/neofetch/config.conf
 !.config/neofetch/king.ascii
 
+!.zshrc
+!.bashrc
+
