@@ -19,6 +19,7 @@
 !.config/fish/functions/reset_launchpad.fish
 !.config/fish/functions/sync_notes.fish
 !.config/fish/functions/timestamp.fish
+!.config/fish/functions/upload.fish
 !.config/fish/functions/ytdlp.fish
 
 !.tmux.conf
