@@ -17,7 +17,6 @@
 !.config/fish/functions/brew.fish
 !.config/fish/functions/brew_update.fish
 !.config/fish/functions/fish_greeting.fish
-!.config/fish/functions/get_pacman.fish
 !.config/fish/functions/ipp.fish
 !.config/fish/functions/removepath.fish
 !.config/fish/functions/reset_launchpad.fish
