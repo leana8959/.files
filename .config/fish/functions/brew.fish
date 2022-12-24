@@ -1,9 +1,9 @@
 function brew --description "wrapper for brew with pacman syntax"
-    if command -v brew > /dev/null
+    if command -v brew >/dev/null
         set -f brew (which brew)
     else
-        get_pacman $argv
-        return
+        echo "`brew` is not on this system. Quitting."
+        return 1
     end
 
     if echo $argv | grep -q -- -S
@@ -28,6 +28,6 @@ function brew --description "wrapper for brew with pacman syntax"
             $brew list
         end
     else
-        $brew $argv    
+        $brew $argv
     end
 end
