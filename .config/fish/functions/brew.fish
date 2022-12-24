@@ -9,6 +9,8 @@ function brew --description "wrapper for brew with pacman syntax"
     if echo $argv | grep -q -- -S
         if echo $argv | grep -q -- -Ss
             $brew search (echo $argv | string replace -r -- "-Ss *" "")
+        else if echo $argv | grep -q -- -Scc
+            $brew cleanup
         else if echo $argv | grep -Eq -- "-Sy{1,2}u"
             $brew update
             $brew upgrade
