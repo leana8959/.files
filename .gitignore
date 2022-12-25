@@ -14,7 +14,6 @@
 !.config/fish/functions/
 !.config/fish/functions/add_spacer_tile.fish
 !.config/fish/functions/addpaths.fish
-!.config/fish/functions/brew.fish
 !.config/fish/functions/brew_update.fish
 !.config/fish/functions/fish_greeting.fish
 !.config/fish/functions/ipp.fish
