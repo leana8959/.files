@@ -1,43 +1,30 @@
 format = """
-$directory $git_branch$git_commit$git_state$git_status $python
-$hostname$shell$character
+$hostname$directory$python
+$character
 """
-right_format = "$time"
-
-[shell]
-disabled = false
-fish_indicator = ""
-format = "[$indicator](#606060)"
-
-[character]
-success_symbol = "[?](bold white)"
-error_symbol = "[!](bold red)"
+right_format = "$git_branch$git_commit$git_state$git_status"
 
 [hostname]
 ssh_only = true
 format = "[$hostname](bold #fc813a):"
 disabled = false
 
+[character]
+success_symbol = "[⮑ ](white)"
+error_symbol = "[⮑ ](bold red)"
+
 [directory]
 truncation_length = 0
 truncation_symbol = "…/"
 truncate_to_repo = false
-format = "[$path](white)"
-
-[time]
-disabled = false
-format = "[\\[$time\\]](#606060)"
+style = "bold #d7d7ff"
 
 [git_branch]
 symbol = ""
-format = "[$symbol$branch](#c061ff)"
-truncation_symbol = ""
+format = "$symbol$branch"
 
 [git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
+style = "white"
 
 [python]
-symbol = ""
-format = "[$symbol $virtualenv](#fff972)"
+format = "$virtualenv"
