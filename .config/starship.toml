@@ -5,9 +5,10 @@ $character
 right_format = "$git_branch$git_commit$git_state$git_status"
 
 [hostname]
-ssh_only = true
-format = "[$hostname](bold #fc813a):"
 disabled = false
+ssh_only = true
+style = "bold #fc813a"
+format = "[$hostname]($style):"
 
 [character]
 success_symbol = "[⮑ ](white)"
@@ -17,14 +18,24 @@ error_symbol = "[⮑ ](bold red)"
 truncation_length = 0
 truncation_symbol = "…/"
 truncate_to_repo = false
+read_only = " "
+read_only_style = "bold red"
 style = "bold #d7d7ff"
+format = "[$path]($style)[$read_only]($read_only_style) "
+
+[git_commit]
+style = "white"
+format = "[\\($hash$tag\\)]($style) "
 
 [git_branch]
 symbol = ""
-format = "$symbol$branch"
+style = "white"
+format = "[$symbol$branch]($style) "
 
 [git_status]
-style = "white"
+style = "#d7d7ff"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
 
 [python]
-format = "$virtualenv"
+style = "white"
+format = "[\\($virtualenv\\)]($style)"
