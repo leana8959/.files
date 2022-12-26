@@ -11,8 +11,8 @@ style = "bold #fc813a"
 format = "[$hostname]($style):"
 
 [character]
-success_symbol = "[⮑ ](white)"
-error_symbol = "[⮑ ](bold red)"
+success_symbol = "[⮑](white) "
+error_symbol = "[⮑](bold red) "
 
 [directory]
 truncation_length = 0
