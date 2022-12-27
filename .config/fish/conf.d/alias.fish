@@ -1,6 +1,6 @@
 alias ls='tree -Cph -L 1'
 alias la='tree -Cpha -L 1'
-alias history='history | nl | less +G'
+alias history='history | nl | tac | less -S +G'
 
 
 if not uname -a | grep -qi darwin
