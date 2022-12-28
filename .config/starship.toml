@@ -38,4 +38,4 @@ format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
 style = "white"
-format = "[\\($virtualenv\\)]($style)"
+format = "([\\($virtualenv\\)]($style))"
