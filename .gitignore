@@ -13,11 +13,11 @@
 
 !.config/fish/functions/
 !.config/fish/functions/add_spacer_tile.fish
-!.config/fish/functions/addpaths.fish
+!.config/fish/functions/add_paths.fish
 !.config/fish/functions/brew_update.fish
 !.config/fish/functions/fish_greeting.fish
 !.config/fish/functions/ipp.fish
-!.config/fish/functions/removepath.fish
+!.config/fish/functions/remove_path.fish
 !.config/fish/functions/sync_notes.fish
 !.config/fish/functions/timestamp.fish
 !.config/fish/functions/upload.fish
