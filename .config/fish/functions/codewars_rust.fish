@@ -1,19 +1,18 @@
 function codewars_rust
 
     if count $argv >/dev/null
-        mkdir ~/repos/codewars/Rust/"$argv"
-        mkdir ~/repos/codewars/Rust/"$argv"/src
+        set -f kata_name (echo "$argv" | sed 's/[^A-Za-z0-9]/_/g' | tr '[:upper:]' '[:lower:]')
+        set -f kata_date (date +%Y.%-m.%-d)
+        mkdir -p ~/repos/codewars/Rust/"$argv"
+        mkdir -p ~/repos/codewars/Rust/"$argv"/src
         touch ~/repos/codewars/Rust/"$argv"/src/main.rs
         echo >~/repos/codewars/Rust/"$argv"/Cargo.toml "\
 [package]
-name = \"$argv\"
-version = \"1.0.0\"
+name = \"$kata_name\"
+version = \"$kata_date\"
 authors = [ \"Léana 江 <leana.jiang@icloud.com>\" ]
 
 [dependencies]
-
-[[bin]]
-name = \"main\"\
 "
         codium ~/repos/codewars/Rust/"$argv"
     else
