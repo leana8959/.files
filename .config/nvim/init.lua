@@ -142,6 +142,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "Q", "<nop>")
+vim.o.scrolloff = 8
+
 
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
@@ -196,7 +198,7 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {'encoding'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
@@ -273,7 +275,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'scala', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'lua', 'python', 'scala', 'rust', 'help', 'vim', 'fish' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -341,7 +343,6 @@ vim.keymap.set("n", "<leader>cd", ":cd %:h<CR>")
 -- Harpoon keymaps
 vim.keymap.set("n", "<C-a>", require('harpoon.mark').add_file)
 vim.keymap.set("n", "<C-e>", require('harpoon.ui').toggle_quick_menu)
-
 vim.keymap.set("n", "<C-h>", function() require('harpoon.ui').nav_file(1) end)
 vim.keymap.set("n", "<C-t>", function() require('harpoon.ui').nav_file(2) end)
 vim.keymap.set("n", "<C-n>", function() require('harpoon.ui').nav_file(3) end)

@@ -5,3 +5,4 @@ syntax enable
 colorscheme monokai
 set incsearch
 set relativenumber
+
