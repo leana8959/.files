@@ -2,6 +2,8 @@
 *
 !.gitignore
 
+!packages.txt
+
 !.config/
 !.config/starship.toml
 
@@ -9,7 +11,8 @@
 !.config/fish/conf.d/
 !.config/fish/conf.d/alias.fish
 !.config/fish/conf.d/starship.fish
-!.config/fish/conf.d/colorscheme.fish
+!.config/fish/conf.d/locale.fish
+!.config/fish/conf.d/starship.fish
 
 !.config/fish/functions/
 !.config/fish/functions/add_spacer_tile.fish
@@ -26,6 +29,9 @@
 !.config/fish/functions/ytdlp.fish
 
 !.tmux.conf
+
+!.config/nvim/
+!.config/nvim/init.lua
 
 !.vim/
 !.vim/colors/
