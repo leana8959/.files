@@ -4,4 +4,3 @@ fzf
 gcc
 rust-analyzer
 lua-language-server
-unzip
