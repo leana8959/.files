@@ -1,7 +1,7 @@
 function codewars_rust
 
     if count $argv >/dev/null
-        set -f kata_name (echo "$argv" | sed 's/[^A-Za-z0-9]/_/g' | tr '[:upper:]' '[:lower:]')
+        set -f kata_name "codewars_"(snakecase $argv)
         set -f kata_date (date +%Y.%-m.%-d)
         mkdir -p ~/repos/codewars/Rust/"$argv"
         mkdir -p ~/repos/codewars/Rust/"$argv"/src

@@ -23,6 +23,7 @@
 !.config/fish/functions/fish_greeting.fish
 !.config/fish/functions/ipp.fish
 !.config/fish/functions/remove_path.fish
+!.config/fish/functions/snakecase.fish
 !.config/fish/functions/sync_notes.fish
 !.config/fish/functions/timestamp.fish
 !.config/fish/functions/upload.fish
