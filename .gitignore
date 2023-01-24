@@ -34,10 +34,6 @@
 !.config/nvim/
 !.config/nvim/init.lua
 
-!.vim/
-!.vim/colors/
-!.vim/colors/monokai.vim
-!.vim/colors/nord.vim
 !.vimrc
 
 !.config/neofetch/
