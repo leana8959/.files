@@ -59,6 +59,8 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   use 'theprimeagen/harpoon'
+  
+  use 'nvim-tree/nvim-tree.lua'
 
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
@@ -256,7 +258,7 @@ pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+-- vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -348,6 +350,10 @@ vim.keymap.set("n", "<C-t>", function() require('harpoon.ui').nav_file(2) end)
 vim.keymap.set("n", "<C-n>", function() require('harpoon.ui').nav_file(3) end)
 vim.keymap.set("n", "<C-s>", function() require('harpoon.ui').nav_file(4) end)
 
+
+-- nvim-tree settings
+require("nvim-tree").setup()
+vim.keymap.set("n", "<leader><space>", function() require('nvim-tree.api').tree.toggle() end)
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
