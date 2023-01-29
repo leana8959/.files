@@ -1,0 +1,8 @@
+bat
+fd
+fzf
+gcc
+lua-language-server
+neovim
+rust-analyzer
+tree
