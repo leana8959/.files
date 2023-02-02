@@ -45,3 +45,6 @@
 !.zshrc
 !.bashrc
 
+!.gitconfig
+!.gitignore_global
+
