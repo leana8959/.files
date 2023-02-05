@@ -21,6 +21,8 @@
 !.config/fish/functions/brew_update.fish
 !.config/fish/functions/codewars_rust.fish
 !.config/fish/functions/delete_old_tm_backups.fish
+!.config/fish/functions/file_extension.fish
+!.config/fish/functions/file_mantissa.fish
 !.config/fish/functions/fish_greeting.fish
 !.config/fish/functions/install_fisher.fish
 !.config/fish/functions/ipp.fish
