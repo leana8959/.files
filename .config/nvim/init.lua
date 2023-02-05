@@ -66,11 +66,7 @@ require('packer').startup(function(use)
     require("toggleterm").setup()
   end}
 
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
-  local has_plugins, plugins = pcall(require, 'custom.plugins')
-  if has_plugins then
-    plugins(use)
-  end
+  use 'ThePrimeagen/vim-be-good'
 
   if is_bootstrap then
     require('packer').sync()
@@ -286,16 +282,20 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'python',
     'scala',
+    'markdown',
+    'markdown_inline',
   },
-
-  highlight = { enable = true },
+  highlight = {
+    enable = true ,
+    additional_vim_regex_highlighting = {'markdown'}
+  },
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
     keymaps = {
       init_selection = '<A-Up>',
       node_incremental = '<A-Up>',
-      [[ scope_incremental = '<A-Up>', ]],
+      -- scope_incremental = '<A-Up>',
       node_decremental = '<A-Down>',
     },
   },
