@@ -7,36 +7,36 @@ right_format = "$git_branch$git_commit$git_state$git_status"
 [hostname]
 disabled = false
 ssh_only = true
-style = "bold #fc813a"
+style = "bold #ff5f00"
 format = "[$hostname]($style):"
 
 [character]
-success_symbol = "[⮑](white) "
-error_symbol = "[⮑](bold red) "
+success_symbol = "[⮑](#aaaaaa) "
+error_symbol = "[⮑](#c82829) "
 
 [directory]
 truncation_length = 0
 truncation_symbol = "…/"
 truncate_to_repo = false
 read_only = " "
-read_only_style = "bold red"
-style = "bold #d7d7ff"
+read_only_style = "#c82829"
+style = "black"
 format = "[$path]($style)[$read_only]($read_only_style) "
 
 [git_commit]
-style = "white"
+style = "#875fff"
 format = "[\\($hash$tag\\)]($style)"
 
 [git_branch]
 symbol = ""
-style = "white"
+style = "#aaaaaa"
 format = "[$symbol$branch]($style)"
 
 [git_status]
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-style = "#d7d7ff"
+style = "bold #875fff"
 format = "([\\[$all_status$ahead_behind\\]]($style))"
 
 [python]
