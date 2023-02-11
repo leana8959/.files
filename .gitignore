@@ -3,7 +3,7 @@
 !.gitignore_global
 !.gitconfig
 
-!dependencies.txt
+!packages.txt
 
 !.config/
 !.config/starship.toml
