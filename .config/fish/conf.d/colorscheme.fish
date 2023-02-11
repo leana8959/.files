@@ -28,7 +28,7 @@ set -gx fish_color_operator 00a6b2 #teal
 # Character escapes like \n
 set -gx fish_color_escape 00a6b2 #teal
 # Parameters that are filenames (if the file exists)
-set -gx fish_color_valid_path --underline
+set -gx fish_color_valid_path --underline --bold
 # Autosuggestion
 set -gx fish_color_autosuggestion d7afff #violet
 # The `^C` indicator on a canceled command
