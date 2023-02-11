@@ -228,3 +228,4 @@ hs_err_pid*
 .metals/
 project/
 target/
+.bsp/
