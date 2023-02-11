@@ -3,6 +3,7 @@ fd
 fzf
 gcc
 lua-language-server
+macchina
 neovim
 rust-analyzer
 sd
