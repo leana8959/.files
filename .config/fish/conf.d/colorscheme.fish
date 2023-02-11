@@ -5,8 +5,10 @@
 set -gx fish_color_normal normal
 # Commands (binary)
 set -gx fish_color_command 000000 #black
+# Options starting with “-”, up to the first “--” parameter
+set -gx fish_color_param 000000 #black
 # Regular command parameters
-set -gx fish_color_param 875fff #purple
+set -gx fish_color_option 875fff #purple
 # Quoted blocks of text
 set -gx fish_color_quote ff5f00 #orange
 # IO redirections
@@ -31,6 +33,9 @@ set -gx fish_color_valid_path --underline
 set -gx fish_color_autosuggestion d7afff #violet
 # The `^C` indicator on a canceled command
 set -gx fish_color_cancel ff5f00 --reverse #orange
+# History search matches and selected pager items (background only)
+# Default value is black (background)
+set -gx fish_color_search_match --reverse
 
 ## Prompt (useless with starship)
 # The current working directory in the default prompt
@@ -53,3 +58,4 @@ set -gx fish_pager_color_completion normal
 set -gx fish_pager_color_description d78700 --italics #caramel
 # Background of the selected completion
 set -gx fish_pager_color_selected_background --reverse
+
