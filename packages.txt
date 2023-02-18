@@ -1,5 +1,7 @@
 bat
 fd
+starship
+neovim
 fzf
 gcc
 lua-language-server
