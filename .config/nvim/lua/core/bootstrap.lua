@@ -7,11 +7,12 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use "wbthomason/packer.nvim"
 
   -- Theme
-  use 'Th3Whit3Wolf/one-nvim'
+  use "Th3Whit3Wolf/one-nvim"
 
+  use "neovim/nvim-lspconfig"
   use 'lewis6991/gitsigns.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
