@@ -72,3 +72,12 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+require('Comment').setup()
+
+
+
+require('mason').setup()
+require('fidget').setup()
+require('neodev').setup()
+

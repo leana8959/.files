@@ -9,17 +9,23 @@ end
 require('packer').startup(function(use)
   use "wbthomason/packer.nvim"
 
-  -- Theme
   use "Th3Whit3Wolf/one-nvim"
-
-  use { -- LSP Configuration & Plugins
+	use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'j-hui/fidget.nvim',
+      'folke/neodev.nvim',
     },
   }
+  use 'numToStr/Comment.nvim'
   use 'lewis6991/gitsigns.nvim'
+	use {
+	'hrsh7th/nvim-cmp',
+	requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  }
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -27,9 +33,9 @@ require('packer').startup(function(use)
       ts_update()
     end,
   }
-
+  
   use 'ThePrimeagen/vim-be-good'
-
+  
   if is_bootstrap then
     require('packer').sync()
   end
