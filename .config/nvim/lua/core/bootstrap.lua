@@ -12,7 +12,13 @@ require('packer').startup(function(use)
   -- Theme
   use "Th3Whit3Wolf/one-nvim"
 
-  use "neovim/nvim-lspconfig"
+  use { -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    requires = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+    },
+  }
   use 'lewis6991/gitsigns.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
