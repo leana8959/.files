@@ -37,6 +37,12 @@
 !.vimrc
 !.config/nvim/
 !.config/nvim/init.lua
+!.config/nvim/lua/
+!.config/nvim/lua/core/
+!.config/nvim/lua/core/init.lua
+!.config/nvim/lua/core/bootstrap.lua
+!.config/nvim/lua/core/plugins.lua
+!.config/nvim/lua/core/settings.lua
 
 !.tmux.conf
 
