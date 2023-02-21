@@ -33,9 +33,9 @@ require('packer').startup(function(use)
       ts_update()
     end,
   }
-  
+
   use 'ThePrimeagen/vim-be-good'
-  
+
   if is_bootstrap then
     require('packer').sync()
   end
