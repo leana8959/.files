@@ -7,6 +7,7 @@ require("treesitter-cfg")
 require("nvim-cmp-cfg")
 require("comment-cfg")
 require("gitsigns-cfg")
+require("indent-blankline-cfg")
 
 require("mason-cfg")
 require("lsp-cfg")

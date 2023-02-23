@@ -33,7 +33,7 @@ require('packer').startup(function(use)
       ts_update()
     end,
   }
-
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'ThePrimeagen/vim-be-good'
 
   if is_bootstrap then
