@@ -25,6 +25,12 @@ require "packer".startup(function(use)
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
 
 	use {
+		"akinsho/toggleterm.nvim",
+		tag = '*',
+		config = function() require("toggleterm").setup() end
+	}
+
+	use {
 		"startup-nvim/startup.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function() require "startup".setup() end
