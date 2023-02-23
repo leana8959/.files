@@ -26,9 +26,6 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-	-- 	vim.lsp.buf.format()
-	-- end, { desc = 'Format current buffer with LSP' })
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
