@@ -18,6 +18,8 @@ vim.opt.wrap = true
 vim.opt.backup = false
 
 vim.cmd "colorscheme one-nvim"
+vim.o.background = "light"
+vim.opt.guifont = { "Cascadia Code:h15" }
 
 vim.cmd("filetype plugin on")
 vim.g.sleuth_default_indent = "2"
