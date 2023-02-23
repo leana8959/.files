@@ -50,4 +50,10 @@ require "lspconfig".rust_analyzer.setup {
 
 require "lspconfig".jsonls.setup {
 	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
+require "lspconfig".metals.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
 }
