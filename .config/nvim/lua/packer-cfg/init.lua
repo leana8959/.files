@@ -36,6 +36,7 @@ require('packer').startup(function(use)
   }
   use 'lukas-reineke/indent-blankline.nvim'
   use 'ThePrimeagen/vim-be-good'
+  use 'tpope/vim-sleuth'
 
   if is_bootstrap then
     require('packer').sync()
