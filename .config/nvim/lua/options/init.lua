@@ -19,25 +19,27 @@ vim.opt.backup = false
 
 vim.cmd "colorscheme one-nvim"
 
--- Tabwidth and shit
--- vim.api.nvim_create_autocmd('FileType', {
--- 	pattern = {
--- 		'lua', 'scala'
--- 	},
--- 	callback = function()
--- 		vim.opt.shiftwidth = 2
--- 		vim.opt.softtabstop = 2
--- 		vim.opt.tabstop = 2
--- 	end,
--- })
--- vim.api.nvim_create_autocmd('FileType', {
--- 	pattern = {
--- 		'rust', 'fish', 'python'
--- 	},
--- 	callback = function()
--- 		vim.opt.shiftwidth = 4
--- 		vim.opt.softtabstop = 4
--- 		vim.opt.tabstop = 4
--- 	end,
--- })
+vim.cmd("filetype plugin on")
+vim.g.sleuth_default_indent = "2"
 
+-- Tabwidth and shit
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'lua', 'scala'
+	},
+	callback = function()
+		vim.opt.shiftwidth = 2
+		vim.opt.softtabstop = 2
+		vim.opt.tabstop = 2
+	end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = {
+		'rust', 'fish', 'python'
+	},
+	callback = function()
+		vim.opt.shiftwidth = 4
+		vim.opt.softtabstop = 4
+		vim.opt.tabstop = 4
+	end,
+})
