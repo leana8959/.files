@@ -6,7 +6,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd "packadd packer.nvim"
 end
 
-require("packer").startup(function(use)
+require "packer".startup(function(use)
 	use "wbthomason/packer.nvim"
 
 	use "Th3Whit3Wolf/one-nvim"
@@ -20,6 +20,12 @@ require("packer").startup(function(use)
 
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
+
+	use {
+		"startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		config = function() require "startup".setup() end
+	}
 
 	use {
 		"nvim-treesitter/nvim-treesitter",

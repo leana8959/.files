@@ -11,6 +11,7 @@ require "indent-blankline-cfg"
 require "lualine-cfg"
 require "telescope-cfg"
 require "nvim-tree-cfg"
+require "startup-cfg"
 
 require "mason-cfg"
 require "lsp-cfg"
