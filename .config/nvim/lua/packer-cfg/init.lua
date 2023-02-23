@@ -20,24 +20,23 @@ require "packer".startup(function(use)
 	use "windwp/nvim-autopairs"
 	use "norcalli/nvim-colorizer.lua"
 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
-
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
-
 	use "tpope/vim-fugitive"
-
+	use { "hrsh7th/nvim-cmp",
+		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
+	}
+	use "rafamadriz/friendly-snippets" 
 	use {
 		"akinsho/toggleterm.nvim",
 		tag = '*',
 		config = function() require("toggleterm").setup() end
 	}
-
 	use {
 		"startup-nvim/startup.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function() require "startup".setup() end
 	}
-
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -52,9 +51,6 @@ require "packer".startup(function(use)
 			"j-hui/fidget.nvim",
 			"folke/neodev.nvim",
 		},
-	}
-	use { "hrsh7th/nvim-cmp",
-		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
 
 	if is_bootstrap then
