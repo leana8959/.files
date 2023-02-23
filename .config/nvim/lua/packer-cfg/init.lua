@@ -24,6 +24,8 @@ require "packer".startup(function(use)
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
 
+	use "tpope/vim-fugitive"
+
 	use {
 		"akinsho/toggleterm.nvim",
 		tag = '*',
