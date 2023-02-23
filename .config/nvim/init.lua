@@ -15,6 +15,7 @@ require "startup-cfg"
 require "nvim-autopairs-cfg"
 require "nvim-colorizer-cfg"
 require "barbar-cfg"
+require "toggleterm-cfg"
 
 require "mason-cfg"
 require "lsp-cfg"
