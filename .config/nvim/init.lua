@@ -12,6 +12,7 @@ require "lualine-cfg"
 require "telescope-cfg"
 require "nvim-tree-cfg"
 require "startup-cfg"
+require "nvim-autopairs-cfg"
 
 require "mason-cfg"
 require "lsp-cfg"
