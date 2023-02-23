@@ -17,8 +17,8 @@ require "packer".startup(function(use)
 	use "lukas-reineke/indent-blankline.nvim"
 	use "nvim-lualine/lualine.nvim"
 	use "nvim-tree/nvim-tree.lua"
-
 	use "windwp/nvim-autopairs"
+	use "norcalli/nvim-colorizer.lua"
 
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
