@@ -10,7 +10,7 @@ require('packer').startup(function(use)
   use "wbthomason/packer.nvim"
 
   use "Th3Whit3Wolf/one-nvim"
-	use { -- LSP Configuration & Plugins
+  use { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     requires = {
       'williamboman/mason.nvim',
