@@ -9,6 +9,7 @@ macchina
 marksman
 neovim
 rust-analyzer
+ripgrep
 sd
 tree
 vivid
