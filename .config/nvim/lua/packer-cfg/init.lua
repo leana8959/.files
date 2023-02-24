@@ -20,6 +20,7 @@ require "packer".startup(function(use)
 	use "nvim-tree/nvim-tree.lua"
 	use "windwp/nvim-autopairs"
 	use "norcalli/nvim-colorizer.lua"
+	use "mg979/vim-visual-multi"
 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
