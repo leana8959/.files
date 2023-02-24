@@ -1,7 +1,7 @@
+require "packer-cfg"
+
 require "keymap"
 require "options"
-
-require "packer-cfg"
 
 require "treesitter-cfg"
 require "nvim-cmp-cfg"
