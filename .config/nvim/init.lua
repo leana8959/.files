@@ -17,6 +17,7 @@ require "nvim-colorizer-cfg"
 require "barbar-cfg"
 require "toggleterm-cfg"
 require "todo-comments"
+require "trailing-whitespace-cfg"
 
 require "lsp-cfg"
 require "fidget-cfg"

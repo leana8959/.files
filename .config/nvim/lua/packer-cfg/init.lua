@@ -15,6 +15,7 @@ require "packer".startup(function(use)
 	use "numToStr/Comment.nvim"
 	use "lewis6991/gitsigns.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
+	use "lukoshkin/trailing-whitespace"
 	use "nvim-lualine/lualine.nvim"
 	use "nvim-tree/nvim-tree.lua"
 	use "windwp/nvim-autopairs"
