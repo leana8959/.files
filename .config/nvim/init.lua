@@ -18,7 +18,6 @@ require "barbar-cfg"
 require "toggleterm-cfg"
 require "todo-comments"
 
-require "mason-cfg"
 require "lsp-cfg"
 require "fidget-cfg"
 require "neodev-cfg"

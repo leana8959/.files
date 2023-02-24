@@ -6,6 +6,7 @@ fzf
 gcc
 lua-language-server
 macchina
+marksman
 neovim
 rust-analyzer
 sd
