@@ -18,6 +18,7 @@ require "barbar-cfg"
 require "toggleterm-cfg"
 require "todo-comments"
 require "trailing-whitespace-cfg"
+require "true-zen-cfg"
 
 require "lsp-cfg"
 require "fidget-cfg"
