@@ -14,7 +14,7 @@ authors = [ \"Léana 江 <leana.jiang@icloud.com>\" ]
 
 [dependencies]
 "
-        codium ~/repos/codewars/Rust/"$argv"
+        cd ~/repos/codewars/Rust/"$argv" && nvim && cd
     else
         echo "You must provide a new project name"
         return 1
