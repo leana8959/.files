@@ -33,6 +33,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 
+
 require "lspconfig".lua_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -46,6 +47,22 @@ require "lspconfig".lua_ls.setup {
 	}
 }
 
+require "lspconfig".ltex.setup {
+	on_attach = on_attach,
+	cmd = { "ltex-ls" },
+	filetypes = { "markdown", "text", "gitcommit" },
+	settings = {
+		ltex = {
+			language = "auto",
+			additionalRules = {
+				motherTongue = "en-US"
+			},
+			trace = { server = "verbose" },
+		},
+	},
+	flags = { debounce_text_changes = 5000 },
+	capabilities = capabilities,
+}
 require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
