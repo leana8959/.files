@@ -13,6 +13,7 @@ require "packer".startup(function(use)
 	use "ThePrimeagen/vim-be-good"
 
 	use "lukas-reineke/lsp-format.nvim"
+	use "simrat39/symbols-outline.nvim"
 	use "numToStr/Comment.nvim"
 	use "lewis6991/gitsigns.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
