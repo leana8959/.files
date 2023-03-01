@@ -12,6 +12,7 @@ require "packer".startup(function(use)
 	use "Th3Whit3Wolf/one-nvim"
 	use "ThePrimeagen/vim-be-good"
 
+	use "lukas-reineke/lsp-format.nvim"
 	use "numToStr/Comment.nvim"
 	use "lewis6991/gitsigns.nvim"
 	use "lukas-reineke/indent-blankline.nvim"
@@ -30,7 +31,6 @@ require "packer".startup(function(use)
 		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
 	use "rafamadriz/friendly-snippets"
-	-- use "smithbm2316/centerpad.nvim"
 	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
 	use {
 		"akinsho/toggleterm.nvim",
