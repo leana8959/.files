@@ -1,5 +1,6 @@
 require "mason".setup()
 require "mason-lspconfig".setup()
+require "lsp-format".setup()
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -8,7 +9,9 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+	require "lsp-format".on_attach(client)
+
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
