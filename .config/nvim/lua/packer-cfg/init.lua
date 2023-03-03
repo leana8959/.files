@@ -9,47 +9,82 @@ end
 require "packer".startup(function(use)
 	use "wbthomason/packer.nvim"
 
+	-- Theme
 	use "Th3Whit3Wolf/one-nvim"
+	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
 
-	use "lukas-reineke/lsp-format.nvim"
+	-- Symbols view
 	use "simrat39/symbols-outline.nvim"
+
+	-- Comment shortcut
 	use "numToStr/Comment.nvim"
+
+	-- Git diff symbols on the side
 	use "lewis6991/gitsigns.nvim"
+
+	-- Auto-indent new line
 	use "lukas-reineke/indent-blankline.nvim"
+
+	-- Highlight trailing whitespace
 	use "lukoshkin/trailing-whitespace"
+
+	-- Status bar
 	use "nvim-lualine/lualine.nvim"
-	use "nvim-tree/nvim-tree.lua"
+
+	-- File manager panel
+	-- use "nvim-tree/nvim-tree.lua"
+
+	-- Auto-pair parentheses and more
 	use "windwp/nvim-autopairs"
+
+	-- Colorize hex color strings
 	use "norcalli/nvim-colorizer.lua"
+
+	-- Multicursor
 	use "mg979/vim-visual-multi"
-	use "Pocco81/true-zen.nvim"
+
+	-- Zen mode
+	-- use "Pocco81/true-zen.nvim"
+
+	-- Tab bar
 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
+
+	-- Grep / fuzzy finder
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
+
+	-- Git utilities, i.e. git blame
 	use "tpope/vim-fugitive"
+
+	-- Auto-complete
 	use { "hrsh7th/nvim-cmp",
 		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
+	-- Auto-complete snippets
 	use "rafamadriz/friendly-snippets"
+
+	-- Highlight todo comments
 	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
-	use {
-		"akinsho/toggleterm.nvim",
-		tag = '*',
-		config = function() require("toggleterm").setup() end
-	}
-	use {
-		"startup-nvim/startup.nvim",
+
+	-- Terminal
+	use { "akinsho/toggleterm.nvim", tag = '*' }
+
+	-- Start page
+	use { "startup-nvim/startup.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-		config = function() require "startup".setup() end
 	}
-	use {
-		"nvim-treesitter/nvim-treesitter",
+
+	-- AST
+	use { "nvim-treesitter/nvim-treesitter",
 		run = function()
 			local ts_update = require "nvim-treesitter.install".update({ with_sync = true })
 			ts_update()
 		end,
 	}
+
+	-- LSP
+	use "lukas-reineke/lsp-format.nvim"
 	use { "neovim/nvim-lspconfig",
 		requires = {
 			"williamboman/mason.nvim",
