@@ -38,6 +38,9 @@ require "packer".startup(function(use)
 	-- Auto-pair parentheses and more
 	use "windwp/nvim-autopairs"
 
+	-- Add/change/delete surrounding delimiter pairs
+	use { "kylechui/nvim-surround", tag = "*" }
+
 	-- Colorize hex color strings
 	use "norcalli/nvim-colorizer.lua"
 

@@ -20,6 +20,7 @@ require "todo-comments"
 require "trailing-whitespace-cfg"
 -- require "true-zen-cfg"
 require "symbols-outline-cfg"
+require "nvim-surround-cfg"
 
 require "lsp-cfg"
 require "fidget-cfg"
