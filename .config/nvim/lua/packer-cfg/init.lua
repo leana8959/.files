@@ -35,6 +35,12 @@ require "packer".startup(function(use)
 	-- File manager panel
 	-- use "nvim-tree/nvim-tree.lua"
 
+	-- Auto config tabsize
+	use "tpope/vim-sleuth"
+
+	-- Discord presence
+	use "andweeb/presence.nvim"
+
 	-- Auto-pair parentheses and more
 	use "windwp/nvim-autopairs"
 
