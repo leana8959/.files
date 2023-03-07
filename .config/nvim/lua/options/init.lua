@@ -28,5 +28,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.cmd "colorscheme one-nvim"
-vim.o.background = "light"
+-- vim.o.background = "light"
 vim.opt.guifont = { "Cascadia Code:h15" }

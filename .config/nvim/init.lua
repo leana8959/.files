@@ -22,6 +22,7 @@ require "trailing-whitespace-cfg"
 require "symbols-outline-cfg"
 require "surround-cfg"
 require "presence-cfg"
+require "auto-dark-mode-cfg"
 
 require "neodev-cfg"
 require "lsp-cfg"
