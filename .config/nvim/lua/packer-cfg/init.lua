@@ -45,7 +45,7 @@ require "packer".startup(function(use)
 	use "windwp/nvim-autopairs"
 
 	-- Add/change/delete surrounding delimiter pairs
-	use { "kylechui/nvim-surround", tag = "*" }
+	use { "ur4ltz/surround.nvim" }
 
 	-- Colorize hex color strings
 	use "norcalli/nvim-colorizer.lua"

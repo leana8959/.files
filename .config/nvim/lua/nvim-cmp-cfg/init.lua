@@ -1,8 +1,11 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-require "luasnip.loaders.from_vscode".lazy_load()
 require "luasnip.loaders.from_vscode".lazy_load({ paths = { "./snippets" } })
+
+-- local opts = { noremap = true, silent = true }
+-- vim.keymap.set('s', "<Tab>", function() require "luasnip".jump(1) end, opts)
+-- vim.keymap.set('s', "<S-Tab>", function() require "luasnip".jump( -1) end, opts)
 
 cmp.setup({
 	snippet = {
