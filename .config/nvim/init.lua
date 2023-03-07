@@ -20,7 +20,7 @@ require "todo-comments"
 require "trailing-whitespace-cfg"
 -- require "true-zen-cfg"
 require "symbols-outline-cfg"
-require "nvim-surround-cfg"
+require "surround-cfg"
 require "presence-cfg"
 
 require "neodev-cfg"
