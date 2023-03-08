@@ -34,8 +34,8 @@ local on_attach = function(client, bufnr)
 end
 
 -- Border setup
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=white]]
-vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=black guibg=white]]
+vim.cmd "autocmd! ColorScheme * highlight NormalFloat guibg=white"
+vim.cmd "autocmd! ColorScheme * highlight FloatBorder guifg=black guibg=white"
 local border = {
 	{ "╭", "FloatBorder" },
 	{ "─", "FloatBorder" },

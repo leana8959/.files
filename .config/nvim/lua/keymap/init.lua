@@ -9,3 +9,4 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page up with cursor cente
 vim.keymap.set("n", "n", "nzzzv", { desc = "Find next with cursor centered" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
 vim.keymap.set("n", "<leader>pv", ":Explore<CR>", { desc = "Display file explorer" })
+vim.keymap.set("x", "<leader>p", "\"_dP", { desc = "Paste without copying selected", noremap = true })
