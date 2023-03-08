@@ -11,6 +11,7 @@ require "packer".startup(function(use)
 
 	-- Theme
 	use "Th3Whit3Wolf/one-nvim"
+
 	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
 
@@ -95,6 +96,8 @@ require "packer".startup(function(use)
 			ts_update()
 		end,
 	}
+
+	use "nvim-treesitter/nvim-treesitter-context"
 
 	-- LSP
 	use "lukas-reineke/lsp-format.nvim"
