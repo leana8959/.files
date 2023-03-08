@@ -11,4 +11,5 @@ require "treesitter-context".setup({
 	separator = nil,
 	zindex = 20, -- The Z-index of the context window
 })
-vim.cmd "autocmd! BufWinEnter * highlight TreesitterContext guibg=#EEEEEE"
+vim.cmd "autocmd BufWinEnter * highlight TreesitterContext guibg=#EEEEEE"
+vim.cmd "autocmd BufWinEnter * highlight TreesitterContextBottom guibg=#EEEEEE gui=underline guisp=Grey"
