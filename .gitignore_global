@@ -25,9 +25,9 @@ develop-eggs/
 dist/
 downloads/
 eggs/
+# lib/
+# lib64/
 .eggs/
-lib/
-lib64/
 parts/
 sdist/
 var/
@@ -204,7 +204,7 @@ Cargo.lock
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# *.jar
 *.war
 *.nar
 *.ear
