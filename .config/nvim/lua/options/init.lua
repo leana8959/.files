@@ -10,9 +10,9 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.wrap = false
--- vim.opt.linebreak = true
--- vim.opt.breakindent = true
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd(
     "TextYankPost",
     {
         callback = function() vim.highlight.on_yank() end,
-        group = nil,
+        group = vim.api.nvim_create_augroup("YankHighlight", {}),
         pattern = '*',
     }
 )
