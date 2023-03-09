@@ -1,49 +1,40 @@
 local auto_dark_mode = require "auto-dark-mode"
 
-auto_dark_mode.setup({
-	update_interval = 1000,
-	set_dark_mode = function()
-		vim.o.background = "dark"
-		vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=white]]
-		vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=black guibg=white]]
-		local border = {
-			{ "╭", "FloatBorder" },
-			{ "─", "FloatBorder" },
-			{ "╮", "FloatBorder" },
-			{ "│", "FloatBorder" },
-			{ "╯", "FloatBorder" },
-			{ "─", "FloatBorder" },
-			{ "╰", "FloatBorder" },
-			{ "│", "FloatBorder" },
-		}
-		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-			opts = opts or {}
-			opts.border = opts.border or border
-			return orig_util_open_floating_preview(contents, syntax, opts, ...)
-		end
-	end,
-	set_light_mode = function()
-		vim.o.background = "light"
+Set_light_mode = function()
+	vim.o.background = "light"
 
-		vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=black]]
-		vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=black]]
-		local border = {
-			{ "╭", "FloatBorder" },
-			{ "─", "FloatBorder" },
-			{ "╮", "FloatBorder" },
-			{ "│", "FloatBorder" },
-			{ "╯", "FloatBorder" },
-			{ "─", "FloatBorder" },
-			{ "╰", "FloatBorder" },
-			{ "│", "FloatBorder" },
-		}
-		local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-		function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-			opts = opts or {}
-			opts.border = opts.border or border
-			return orig_util_open_floating_preview(contents, syntax, opts, ...)
-		end
-	end,
+	vim.cmd "highlight NormalFloat guibg=white"
+	vim.cmd "highlight FloatBorder guifg=black guibg=white"
+
+	vim.cmd "highlight DiagnosticError gui=bold"
+	vim.cmd "highlight DiagnosticWarn gui=italic"
+	vim.cmd "highlight DiagnosticInfo guibg=black guibg=italic"
+	-- vim.cmd "highlight DiagnosticHint guibg=black"
+
+	vim.cmd "highlight TreesitterContext guibg=#EEEEEE"
+	vim.cmd "highlight TreesitterContextBottom guibg=#EEEEEE gui=underline guisp=Grey"
+end
+
+Set_dark_mode = function()
+	vim.o.background = "dark"
+
+	vim.cmd "highlight NormalFloat guibg=black"
+	vim.cmd "highlight FloatBorder guifg=white guibg=black"
+
+	vim.cmd "highlight DiagnosticError gui=bold"
+	vim.cmd "highlight DiagnosticWarn gui=italic"
+	-- vim.cmd "highlight DiagnosticInfo guifg=white guibg=black"
+	-- vim.cmd "highlight DiagnosticHint guifg=white guibg=black"
+
+	vim.cmd "highlight TreesitterContext guibg=#555555"
+	vim.cmd "highlight TreesitterContextBottom  guibg=#555555 gui=underline guisp=LightGrey"
+end
+
+-- Use light by default
+Set_light_mode()
+
+auto_dark_mode.setup({
+	set_light_mode = Set_light_mode,
+	set_dark_mode = Set_dark_mode,
 })
 auto_dark_mode.init()
