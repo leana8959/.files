@@ -14,6 +14,8 @@ require "packer".startup(function(use)
 	use "Th3Whit3Wolf/one-nvim"
 	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
+	-- Make it rain :)
+	use "Eandrju/cellular-automaton.nvim"
 
 	----> Utilities <----
 	-- Symbols view
