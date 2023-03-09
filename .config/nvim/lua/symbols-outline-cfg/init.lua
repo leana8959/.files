@@ -15,7 +15,7 @@ require "symbols-outline".setup({
 	fold_markers = { '', '' },
 	wrap = false,
 	keymaps = { -- These keymaps can be a string or a table for multiple keys
-		close = { "<Esc>", "q", "<leader><leader>" },
+		close = { "<Esc>", "q" },
 		goto_location = "<Cr>",
 		focus_location = "o",
 		hover_symbol = "<C-space>",
@@ -62,4 +62,4 @@ require "symbols-outline".setup({
 	-- },
 })
 
-vim.keymap.set('n', '<leader><leader>', require "symbols-outline".open_outline, { desc = "Open symbols outline" })
+vim.keymap.set('n', '<leader><leader>', function() vim.cmd("SymbolsOutline") end, { desc = "Open symbols outline" })
