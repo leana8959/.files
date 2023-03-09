@@ -21,7 +21,7 @@ require "surround-cfg"
 require "presence-cfg"
 require "auto-dark-mode-cfg"
 require "fugitive-cfg"
-
+require "undotree-cfg"
 require "treesitter-cfg"
 require "treesitter-context-cfg"
 

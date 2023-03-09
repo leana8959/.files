@@ -10,7 +10,7 @@ vim.keymap.set('n', "<C-u>", "<C-u>zz", { desc = "Move page up with cursor cente
 vim.keymap.set('n', "n", "nzzzv", { desc = "Find next with cursor centered", noremap = true })
 vim.keymap.set('n', "N", "Nzzzv", { desc = "Find last with cursor centered", noremap = true })
 
-vim.keymap.set('n', "<leader>pv", ":Explore<CR>", { desc = "Show file explorer", noremap = true })
+vim.keymap.set('n', "<leader>pv", function() vim.cmd("Explore") end, { desc = "Show file explorer", noremap = true })
 
 vim.keymap.set('n', "J", "mzJ`z", { desc = "Join line below without moving cursor", noremap = true })
 
