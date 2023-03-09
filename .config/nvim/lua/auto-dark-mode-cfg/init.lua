@@ -25,6 +25,7 @@ auto_dark_mode.setup({
 	end,
 	set_light_mode = function()
 		vim.o.background = "light"
+
 		vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=black]]
 		vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=black]]
 		local border = {

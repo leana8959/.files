@@ -24,6 +24,7 @@ require "symbols-outline-cfg"
 require "surround-cfg"
 require "presence-cfg"
 require "auto-dark-mode-cfg"
+require "fugitive-cfg"
 
 require "neodev-cfg"
 require "lsp-cfg"
