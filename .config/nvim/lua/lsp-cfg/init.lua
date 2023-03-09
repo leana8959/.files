@@ -4,14 +4,14 @@ require "mason-lspconfig".setup({
 	automatic_installation = false
 })
 
-require "lsp-format".setup()
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { noremap = true, silent = true })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
 
+-- require "lsp-format".setup()
 local on_attach = function(client, bufnr)
-	require "lsp-format".on_attach(client)
+	-- require "lsp-format".on_attach(client)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -34,8 +34,6 @@ local on_attach = function(client, bufnr)
 end
 
 -- Border setup
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=white]]
-vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=black guibg=white]]
 local border = {
 	{ "╭", "FloatBorder" },
 	{ "─", "FloatBorder" },
@@ -102,6 +100,14 @@ require "lspconfig".metals.setup {
 	capabilities = capabilities,
 }
 require "lspconfig".gopls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+require "lspconfig".pylsp.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+require "lspconfig".clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
