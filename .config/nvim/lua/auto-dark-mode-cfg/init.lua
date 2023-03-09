@@ -15,7 +15,6 @@ Set_light_mode = function()
 
 				vim.cmd "highlight TreesitterContext guibg=#EEEEEE"
 				vim.cmd "highlight TreesitterContextBottom guibg=#EEEEEE gui=underline guisp=Grey"
-				print("light mode got called")
 			end,
 			group = vim.api.nvim_create_augroup("MyColorOverride", { clear = true }),
 			pattern = '*',
@@ -40,7 +39,6 @@ Set_dark_mode = function()
 
 				vim.cmd "highlight TreesitterContext guibg=#555555"
 				vim.cmd "highlight TreesitterContextBottom  guibg=#555555 gui=underline guisp=LightGrey"
-				print("dark mode got called")
 			end,
 			group = vim.api.nvim_create_augroup("MyColorOverride", { clear = true }),
 			pattern = '*',
