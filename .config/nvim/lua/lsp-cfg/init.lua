@@ -1,17 +1,17 @@
 require "mason".setup()
-require "mason-lspconfig".setup()
-require "lsp-format".setup()
+require "mason-lspconfig".setup({
+	ensure_installed = {},
+	automatic_installation = false
+})
 
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+require "lsp-format".setup()
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
 
 local on_attach = function(client, bufnr)
 	require "lsp-format".on_attach(client)
-
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -56,6 +56,7 @@ end
 -- Language servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
+
 require "lspconfig".lua_ls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -97,6 +98,10 @@ require "lspconfig".marksman.setup {
 	capabilities = capabilities,
 }
 require "lspconfig".metals.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+require "lspconfig".gopls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
