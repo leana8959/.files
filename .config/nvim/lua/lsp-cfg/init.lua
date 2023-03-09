@@ -33,6 +33,13 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+-- Gutter symbols setup
+vim.fn.sign_define("DiagnosticSignError", { text = '' , texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = '', texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { text = '·', texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = '·' , texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+
+
 -- Border setup
 local border = {
 	{ "╭", "FloatBorder" },
