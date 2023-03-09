@@ -6,6 +6,7 @@ vim.o.breakindent = true
 vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.smartindent = true
 vim.o.updatetime = 500
 vim.o.termguicolors = true
 vim.o.completeopt = "menu,preview"
@@ -27,6 +28,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	pattern = '*',
 })
 
-vim.cmd "colorscheme one-nvim"
+vim.cmd.colorscheme "one-nvim"
 -- vim.o.background = "light"
 vim.opt.guifont = { "Cascadia Code:h15" }

@@ -9,86 +9,65 @@ end
 require "packer".startup(function(use)
 	use "wbthomason/packer.nvim"
 
+	----> Misc <----
 	-- Theme
 	use "Th3Whit3Wolf/one-nvim"
-
 	-- Vim interactive tutorial
 	use "ThePrimeagen/vim-be-good"
 
+	----> Utilities <----
 	-- Symbols view
 	use "simrat39/symbols-outline.nvim"
-
 	-- Comment shortcut
 	use "numToStr/Comment.nvim"
-
 	-- Git diff symbols on the side
 	use "lewis6991/gitsigns.nvim"
-
 	-- Auto-indent new line
 	use "lukas-reineke/indent-blankline.nvim"
-
 	-- Highlight trailing whitespace
 	use "lukoshkin/trailing-whitespace"
-
 	-- Status bar
 	use "nvim-lualine/lualine.nvim"
-
-	-- File manager panel
-	-- use "nvim-tree/nvim-tree.lua"
-
 	-- Auto config tabsize
 	use "tpope/vim-sleuth"
-
 	-- Discord presence
 	use "andweeb/presence.nvim"
-
 	-- Auto-pair parentheses and more
 	use "windwp/nvim-autopairs"
-
 	-- Add/change/delete surrounding delimiter pairs
-	use { "ur4ltz/surround.nvim" }
-
+	use "ur4ltz/surround.nvim"
 	-- Colorize hex color strings
 	use "norcalli/nvim-colorizer.lua"
-
 	-- Multicursor
 	use "mg979/vim-visual-multi"
-
-	-- Zen mode
-	-- use "Pocco81/true-zen.nvim"
-
 	-- Tab bar
 	use { "romgrk/barbar.nvim", requires = { "kyazdani42/nvim-web-devicons" } }
-
 	-- Grep / fuzzy finder
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
 	use { "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable "make" == 1 }
-
 	-- Git utilities, i.e. git blame
 	use "tpope/vim-fugitive"
-
+	-- Auto enable darkmode
+	use "f-person/auto-dark-mode.nvim"
+	-- Auto-complete snippets
+	use "rafamadriz/friendly-snippets"
+	-- Highlight todo comments
+	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
+	-- Show history as tree
+	use "mbbill/undotree"
+	-- Terminal
+	use { "akinsho/toggleterm.nvim", tag = '*' }
+	-- Start page
+	use { "startup-nvim/startup.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	}
 	-- Auto-complete
 	use { "hrsh7th/nvim-cmp",
 		requires = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	}
 
-	-- Auto enable darkmode
-	use "f-person/auto-dark-mode.nvim"
 
-	-- Auto-complete snippets
-	use "rafamadriz/friendly-snippets"
-
-	-- Highlight todo comments
-	use { "folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim" }
-
-	-- Terminal
-	use { "akinsho/toggleterm.nvim", tag = '*' }
-
-	-- Start page
-	use { "startup-nvim/startup.nvim",
-		requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	}
-
+	----> LSP and AST <----
 	-- AST
 	use { "nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -96,9 +75,7 @@ require "packer".startup(function(use)
 			ts_update()
 		end,
 	}
-
 	use "nvim-treesitter/nvim-treesitter-context"
-
 	-- LSP
 	use "lukas-reineke/lsp-format.nvim"
 	use { "neovim/nvim-lspconfig",
