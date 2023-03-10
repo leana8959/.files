@@ -28,3 +28,13 @@ vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' 
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+-- Auto launch nvim at VimEnter
+-- vim.api.nvim_create_autocmd(
+-- 	"VimEnter",
+-- 	{
+-- 		callback = builtin.find_files,
+-- 		group = vim.api.nvim_create_augroup("ShowTelescope", { clear = true }),
+-- 		pattern = '*',
+-- 	}
+-- )
