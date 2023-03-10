@@ -8,9 +8,9 @@ Set_light_mode = function()
 				vim.cmd "highlight NormalFloat guibg=white"
 				vim.cmd "highlight FloatBorder guifg=black guibg=white"
 
-				vim.cmd "highlight DiagnosticError gui=bold"
-				vim.cmd "highlight DiagnosticWarn gui=italic"
-				vim.cmd "highlight DiagnosticInfo guibg=black guibg=italic"
+				-- vim.cmd "highlight DiagnosticError gui=bold"
+				-- vim.cmd "highlight DiagnosticWarn gui=italic"
+				-- vim.cmd "highlight DiagnosticInfo guibg=black guibg=italic"
 				-- vim.cmd "highlight DiagnosticHint guibg=black"
 
 				vim.cmd "highlight TreesitterContext guibg=#EEEEEE"
@@ -32,8 +32,8 @@ Set_dark_mode = function()
 				vim.cmd "highlight NormalFloat guibg=black"
 				vim.cmd "highlight FloatBorder guifg=white guibg=black"
 
-				vim.cmd "highlight DiagnosticError gui=bold"
-				vim.cmd "highlight DiagnosticWarn gui=italic"
+				-- vim.cmd "highlight DiagnosticError gui=bold"
+				-- vim.cmd "highlight DiagnosticWarn gui=italic"
 				-- vim.cmd "highlight DiagnosticInfo guifg=white guibg=black"
 				-- vim.cmd "highlight DiagnosticHint guifg=white guibg=black"
 
