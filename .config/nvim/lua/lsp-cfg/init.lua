@@ -34,10 +34,10 @@ local on_attach = function(client, bufnr)
 end
 
 -- Gutter symbols setup
-vim.fn.sign_define("DiagnosticSignError", { text = '' , texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignError", { text = '', texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = '', texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignHint", { text = '·', texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = '·' , texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
 
 -- Border setup
@@ -74,6 +74,11 @@ require "lspconfig".lua_ls.setup {
 		}
 	},
 }
+
+local common_dictionary = {
+	"Yu", "Hui", "Chiang",
+	"ISTIC",
+}
 require "lspconfig".ltex.setup {
 	on_attach = on_attach,
 	cmd = { "ltex-ls" },
@@ -85,6 +90,10 @@ require "lspconfig".ltex.setup {
 				motherTongue = "en-US"
 			},
 			trace = { server = "verbose" },
+			dictionary = {
+				["en-US"] = common_dictionary,
+				["fr"] = common_dictionary
+			},
 		},
 	},
 	flags = { debounce_text_changes = 5000 },
