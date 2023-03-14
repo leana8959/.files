@@ -1,6 +1,7 @@
 alias ls='tree -Cph -L 1'
 alias la='tree -Cpha -L 1'
 alias history='history | nl | tac | less -S +G'
+alias v='nvim'
 alias gvim='neovide'
 
 if not uname -a | grep -qi darwin

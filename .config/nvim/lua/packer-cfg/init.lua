@@ -30,6 +30,8 @@ require "packer".startup(function(use)
 	use "lukoshkin/trailing-whitespace"
 	-- Status bar
 	use "nvim-lualine/lualine.nvim"
+	-- Diff tool
+	use { "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" }
 	-- Auto config tabsize
 	use "tpope/vim-sleuth"
 	-- Discord presence

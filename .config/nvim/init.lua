@@ -22,6 +22,7 @@ require "presence-cfg"
 require "auto-dark-mode-cfg"
 require "fugitive-cfg"
 require "undotree-cfg"
+require "diffview-cfg"
 require "treesitter-cfg"
 require "treesitter-context-cfg"
 
