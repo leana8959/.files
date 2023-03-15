@@ -224,8 +224,9 @@ replay_pid*
 hs_err_pid*
 
 # Metals junk
-.bloop
+.bloop/
 .metals/
 project/
 target/
 .bsp/
+.scalafmt.conf
