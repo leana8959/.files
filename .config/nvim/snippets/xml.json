@@ -1,0 +1,16 @@
+{
+	"Tag": {
+		"prefix": "<",
+		"body": [
+			"<${1:element}${2:property}>",
+			"${0}",
+			"</${1:element}>"
+		]
+	},
+	"Auto-closing tag": {
+		"prefix": "</",
+		"body": [
+			"<${1:element}/>"
+		]
+	}
+}

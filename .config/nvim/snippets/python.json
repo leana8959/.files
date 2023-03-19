@@ -1,0 +1,45 @@
+{
+	"Map using dict comprehension": {
+		"prefix": "mdd",
+		"body": [
+			"{",
+			"\t${1:key}:${2:value}",
+			"\tfor ${3:var} in ${4:iterated}",
+			"}",
+			""
+		],
+		"description": "Map using dictionary comprehension"
+	},
+	"Map using list comprehension": {
+		"prefix": "mll",
+		"body": [
+			"[",
+			"\t${1:var}${2:transformation}",
+			"\tfor ${1:var} in ${3:iterated}",
+			"]",
+			""
+		],
+		"description": "Map using list comprehension"
+	},
+	"For": {
+		"prefix": "for",
+		"body": [
+			"for ${1:var} in ${2:iterated}:",
+			"\t"
+		],
+		"description": "Iterate over ..."
+	},
+	"Open, read and save file to variable": {
+		"prefix": "open",
+		"body": [
+			"${1:var} = []",
+			"with open(\"${2:file.txt}\") as f:",
+			"\t${1:var} = [",
+			"\t\tline.strip()",
+			"\t\tfor line in f.readlines() if line != '\\n'",
+			"\t]",
+			""
+		],
+		"description": "open, read, strip, and save file to variable"
+	}
+}

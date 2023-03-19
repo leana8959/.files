@@ -1,0 +1,19 @@
+{
+	"name": "leana-snippets",
+	"contributes": {
+		"snippets": [
+			{
+				"language": "python",
+				"path": "./python.json"
+			},
+			{
+				"language": "rust",
+				"path": "./rust.json"
+			},
+			{
+				"language": "xml",
+				"path": "./xml.json"
+			}
+		]
+	}
+}
