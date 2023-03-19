@@ -1,0 +1,21 @@
+{
+	"Create main function": {
+		"prefix": "main",
+		"body": [
+			"${0}",
+			"fn main() {",
+			"\t",
+			"}"
+		]
+	},
+	"Implement std::fmt::Display trait": {
+		"prefix": "implfmt",
+		"body": [
+			"impl fmt::Display for ${1:Struct} {",
+			"\tfn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {",
+			"\t\twrite!(f, \"${2:format}\", ${3:fields})",
+			"\t}",
+			"}"
+		]
+	}
+}
