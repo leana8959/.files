@@ -61,20 +61,7 @@ end
 -- Language servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
-
-require "lspconfig".lua_ls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		lua = {
-			formatting = {
-				enable = true,
-				indent = 2,
-			}
-		}
-	},
-}
-
+-- Spell check
 local common_dictionary = {
 	"Yu", "Hui", "Chiang",
 	"ISTIC",
@@ -99,35 +86,56 @@ require "lspconfig".ltex.setup {
 	flags = { debounce_text_changes = 5000 },
 	capabilities = capabilities,
 }
-require "lspconfig".rust_analyzer.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
+-- JSON
 require "lspconfig".jsonls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
-require "lspconfig".marksman.setup {
+-- XML
+require "lspconfig".lemminx.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- CSS
+require "lspconfig".cssls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+-- Lua
+require "lspconfig".lua_ls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+	settings = {
+		lua = {
+			formatting = {
+				enable = true,
+				indent = 2,
+			}
+		}
+	},
+}
+-- Rust
+require "lspconfig".rust_analyzer.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+-- Scala
 require "lspconfig".metals.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- Golang
 require "lspconfig".gopls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- Python
 require "lspconfig".pylsp.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- C
 require "lspconfig".clangd.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
-require "lspconfig".lemminx.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
