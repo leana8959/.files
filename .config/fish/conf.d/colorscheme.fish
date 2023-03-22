@@ -58,4 +58,3 @@ set -gx fish_pager_color_completion normal
 set -gx fish_pager_color_description d78700 --italics #caramel
 # Background of the selected completion
 set -gx fish_pager_color_selected_background --reverse
-

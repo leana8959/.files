@@ -13,3 +13,4 @@ ripgrep
 sd
 tree
 vivid
+zoxide
