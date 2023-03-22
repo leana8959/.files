@@ -1,3 +1,3 @@
 [submodule "TOH-Quotes"]
 	path = TOH-Quotes
-	url = ssh://gitea@gitea.earth2077.fr:2222/leana/TOH-Quotes.git
+	url = ssh://git@git.earth2077.fr:2222/leana/TOH-Quotes.git
