@@ -20,3 +20,8 @@ vim.keymap.set({ 'n', 'x', 'v' }, "<leader>y", "\"+y", { desc = "Copy to system 
 vim.keymap.set('n', "Q", "<nop>", { desc = "It's the worse place in the universe", noremap = true })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
 	{ desc = "Replace current word", noremap = true })
+
+-- vim.keymap.set("n", "k", "kzz", { desc = "Move up with cursor centered", noremap = true })
+-- vim.keymap.set("n", "j", "jzz", { desc = "Move down with cursor centered", noremap = true })
+-- vim.keymap.set("n", "<Up>", "<Up>zz", { desc = "Move up with cursor centered", noremap = true })
+-- vim.keymap.set("n", "<Down>", "<Down>zz", { desc = "Move down with cursor centered", noremap = true })
