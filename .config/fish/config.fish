@@ -16,7 +16,7 @@ if status is-interactive
     starship init fish | source
 
     # Source zoxide
-    zoxide init fish | source
+    zoxide init fish --hook="prompt" | source
 end
 
 # iTerm2 intergration
