@@ -25,7 +25,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 14
 
 vim.api.nvim_create_autocmd(
     "TextYankPost",
