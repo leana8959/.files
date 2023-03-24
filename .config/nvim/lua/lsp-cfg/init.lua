@@ -63,7 +63,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Spell check
 local common_dictionary = {
-	"Yu", "Hui", "Chiang",
+	"Yu", "Hui", "Léana", "Chiang",
 	"ISTIC",
 }
 require "lspconfig".ltex.setup {
@@ -119,11 +119,6 @@ require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
--- Scala
-require "lspconfig".metals.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
 -- Golang
 require "lspconfig".gopls.setup {
 	on_attach = on_attach,
@@ -131,6 +126,11 @@ require "lspconfig".gopls.setup {
 }
 -- Python
 require "lspconfig".pylsp.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+-- Scala
+require "lspconfig".metals.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
