@@ -1,3 +1,3 @@
 function snakecase
-echo $argv | sed 's/ /_/g' | sed 's/[^A-Za-z0-9_]//g' | tr '[:upper:]' '[:lower:]'
+    echo $argv | sd -p '[^A-Za-z0-9_\n]' '_' | sd -p '__+' '_' | tr '[:upper:]' '[:lower:]'
 end
