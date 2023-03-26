@@ -1,5 +1,4 @@
 function codewars_rust
-
     if count $argv >/dev/null
         set -f kata_name "codewars_"(snakecase $argv)
         set -f kata_date (date +%Y.%-m.%-d)
@@ -19,5 +18,4 @@ authors = [ \"Léana 江 <leana.jiang@icloud.com>\" ]
         echo "You must provide a new project name"
         return 1
     end
-
 end
