@@ -4,6 +4,7 @@ starship
 neovim
 fzf
 gcc
+ltex-ls
 lua-language-server
 macchina
 marksman

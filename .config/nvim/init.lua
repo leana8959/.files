@@ -25,6 +25,7 @@ require "undotree-cfg"
 require "diffview-cfg"
 require "treesitter-cfg"
 require "treesitter-context-cfg"
+require "iswap-cfg"
 
 require "neodev-cfg"
 require "lsp-cfg"
