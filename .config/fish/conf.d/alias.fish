@@ -3,6 +3,7 @@ alias t='tree -Cph -L 1'
 alias ta='tree -Cpha -L 1'
 
 alias v='nvim'
+abbr e '$EDITOR'
 
 # Abbreviations
 ## Git
@@ -28,14 +29,13 @@ abbr gm 'git fetch && git merge'
 
 ## FS
 abbr d 'cd ~/.dotfiles/.config/'
-abbr df 'cd ~/.dotfiles/.config/fish/'
-abbr dv 'cd ~/.dotfiles/.config/nvim/lua'
 abbr r 'cd ~/repos/'
 
 ## brew
 abbr bi 'brew install'
 abbr br 'brew rmtree'
 abbr bs 'brew search'
+abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
 abbr yt 'yt-dlp \
