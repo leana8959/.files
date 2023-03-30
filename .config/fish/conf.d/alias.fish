@@ -2,9 +2,7 @@
 alias t='tree -Cph -L 1'
 alias ta='tree -Cpha -L 1'
 
-alias hist='history | nl | tac | less -S +G'
 alias v='nvim'
-
 
 # Abbreviations
 ## Git
@@ -23,6 +21,10 @@ abbr gs 'git switch'
 abbr gsc 'git switch -c'
 
 abbr gf 'onefetch'
+
+abbr gp 'git push'
+abbr gr 'git fetch && git rebase'
+abbr gm 'git fetch && git merge'
 
 ## FS
 abbr d 'cd ~/.dotfiles/.config/'
