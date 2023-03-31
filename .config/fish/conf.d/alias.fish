@@ -45,7 +45,7 @@ alias tree='tree -Cph -L 1'
 abbr t 'tree'
 abbr ta 'tree -a'
 
-abbr v='nvim'
+abbr v nvim
 
 abbr d 'cd ~/.dotfiles/.config/'
 abbr r 'cd ~/repos/'
