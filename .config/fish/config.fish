@@ -21,9 +21,6 @@ if status is-interactive
 
     # Source zoxide
     zoxide init fish --hook="prompt" | source
-
-    # Replace fish's default tab pager with fuzzy_complete powered by fzf
-    bind \t fuzzy_complete
 end
 
 # iTerm2 intergration
