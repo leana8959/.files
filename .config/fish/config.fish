@@ -17,9 +17,6 @@ if status is-interactive
     # fd theme
     set -gx LS_COLORS (vivid -m 24-bit generate one-light)
 
-    # enable fish vi bindings explicitly
-    fish_vi_key_bindings
-
     # tools
     starship init fish | source
     zoxide init fish --hook="prompt" | source
