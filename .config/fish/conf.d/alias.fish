@@ -44,7 +44,8 @@ alias tree='tree -Cph -L 1'
 abbr t 'tree'
 abbr ta 'tree -a'
 
-abbr v tmux-vim
+abbr tv tmux-vim
+abbr v nvim
 
 abbr d 'cd ~/.dotfiles/.config/'
 abbr r 'cd ~/repos/'
