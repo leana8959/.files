@@ -9,9 +9,7 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { noremap = true, silent = true })
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, { noremap = true, silent = true })
 
--- require "lsp-format".setup()
 local on_attach = function(client, bufnr)
-	-- require "lsp-format".on_attach(client)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
