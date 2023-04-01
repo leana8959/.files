@@ -20,6 +20,8 @@ if status is-interactive
     # tools
     starship init fish | source
     zoxide init fish --hook="prompt" | source
+
+    bind \cv tmux-vim
 end
 
 # iTerm2 intergration
