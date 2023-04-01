@@ -11,11 +11,15 @@ style = "bold #ff5f00"
 format = "[$hostname]($style):"
 
 [character]
-success_symbol = "[⮑](#aaaaaa) "
-error_symbol = "[⮑](#c82829) "
+success_symbol = "[\\[\\$\\]](#333333)"
+error_symbol = "[\\[I\\]](#c82829)"
+vimcmd_symbol = "[\\[N\\]](#875fff)"
+vimcmd_replace_one_symbol = "[\\[R\\]](#ad7a28)"
+vimcmd_replace_symbol = "[\\[R\\]](#ad7a28)"
+vimcmd_visual_symbol = "[\\[V\\]](#4287f5)"
 
 [directory]
-truncation_length = 0
+truncation_length = 4
 truncation_symbol = "…/"
 truncate_to_repo = false
 read_only = " "

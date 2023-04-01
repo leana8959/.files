@@ -12,6 +12,7 @@ neovim
 rust-analyzer
 ripgrep
 sd
+tmux
 tree
 vivid
 zoxide
