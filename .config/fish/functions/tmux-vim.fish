@@ -10,6 +10,8 @@ function tmux-vim --description 'NeoVim, but in tmux (better)'
     if not tmux has-session -t "$PWD" > /dev/null 2>&1
         # create new session and attach to it
         tmux new-session -s "$PWD" -n "nvim" "nvim $argv"
+        commandline --function repaint
+        return $status
     else
         # attach to existing session(s)
         set -f choice (string join ';' "new" (tmux list-sessions -F "#{session_name}") | tr ';' '\n' | fzf)
@@ -20,10 +22,13 @@ function tmux-vim --description 'NeoVim, but in tmux (better)'
     else if test $choice = "new"
         read -l -P "How would you like to name this session? " custom_name
         tmux new-session -s "$custom_name"@"$PWD" -n 'nvim' "nvim $argv"
+        commandline --function repaint
+        return $status
     else
         tmux attach-session -t "$choice"
+        commandline --function repaint
+        return $status
     end
 
-    commandline --function repaint
 
 end
