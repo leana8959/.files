@@ -54,7 +54,7 @@ abbr bi 'brew install'
 abbr bii 'brew info'
 abbr br 'brew rmtree'
 abbr bs 'brew search'
-abbr B 'brew update && brew upgrade && brew autoremove && brew cleanup'
+abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
 abbr yt 'yt-dlp \

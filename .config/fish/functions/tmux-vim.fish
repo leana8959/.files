@@ -7,7 +7,7 @@ function tmux-vim
     tmux start-server
 
     if not tmux has-session -t $session > /dev/null 2>&1
-        tmux new-session -d -s $session -n 'nvim' 'nvim'
+        tmux new-session -d -s $session -n 'nvim' "nvim $argv"
     end
 
     tmux attach-session -t $session
