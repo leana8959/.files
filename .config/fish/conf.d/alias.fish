@@ -14,7 +14,6 @@ end
 
 ## Git
 abbr gaa 'git add (git rev-parse --show-toplevel)'
-abbr ga 'git add'
 abbr ga. 'git add .'
 abbr gc 'git commit'
 abbr gca 'git commit -a'
@@ -46,6 +45,7 @@ abbr t 'tree'
 abbr ta 'tree -a'
 
 abbr v nvim
+abbr tv tmux-sessionizer
 
 abbr d 'cd ~/.dotfiles/.config/'
 abbr r 'cd ~/repos/'
@@ -72,3 +72,4 @@ abbr o. 'open .'
 ## Preferences
 abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim'
 abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish'
+abbr tp 'nvim ~/.dotfiles/.tmux.conf'
