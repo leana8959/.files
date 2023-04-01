@@ -13,7 +13,7 @@ authors = [ \"Léana 江 <leana.jiang@icloud.com>\" ]
 
 [dependencies]
 "
-        cd ~/repos/codewars/Rust/"$kata_name"/ && nvim ./src/main.rs && cd
+        cd ~/repos/codewars/Rust/"$kata_name"/ && tmux-vim ./src/main.rs && cd
     else
         echo "You must provide a new project name"
         return 1
