@@ -18,6 +18,4 @@ function tmux_sessionizer --description 'manage tmux sessions'
         # attach to existing session(s)
         tmux_attach $argv
     end
-
-    commandline --function repaint
 end
