@@ -5,7 +5,7 @@ require "presence".setup({
 	-- Text displayed when hovered over the Neovim image
 	neovim_image_text   = "I use NeoVim btw",
 	-- Main image display (either "neovim" or "file")
-	main_image          = "neovim",
+	main_image          = "file",
 	-- Use your own Discord application client id (not recommended)
 	client_id           = "793271441293967371",
 	-- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
@@ -21,7 +21,7 @@ require "presence".setup({
 	-- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
 	file_assets         = {},
 	-- Show the timer
-	show_time           = true,
+	show_time           = false,
 	-- Rich Presence text options
 	-- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
 	editing_text        = "Editing %s",
