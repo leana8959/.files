@@ -6,12 +6,12 @@ function tmux_sessionizer --description 'manage tmux sessions'
     tmux start-server
 
     if test -z $argv
-        set -f cmd "fish"
+        set cmd "fish"
     else
-        set -f cmd "$argv"
+        set cmd "$argv"
     end
 
-    if not tmux has-session -t "$PWD" > /dev/null 2>&1
+    if not tmux list-sessions -F '#{session_name}' | rg "^$PWD\$" > /dev/null
         # create new session and attach to it
         tmux new-session -s "$PWD" "$cmd"
     else
