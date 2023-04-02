@@ -20,5 +20,4 @@ function tmux_attach
         case "*"
             tmux attach-session -t "$choice"
     end
-    commandline --function repaint
 end
