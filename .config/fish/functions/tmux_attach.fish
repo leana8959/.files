@@ -6,11 +6,10 @@ function tmux_attach
         set cmd "$argv"
     end
 
-    set -f choice (string join ';' "new" (tmux list-sessions -F "#{session_name}") | tr ';' '\n' | fzf)
+    set -f choice (tmux list-sessions -F "#{session_name}" | fzf)
     switch $choice
         case ""
-        case "new"
-            read -l -P "How would you like to name this session? " prefix
+            read -l -P "Name your session: " prefix
             if not test -z $prefix
                 set prefix $prefix"@"
             end
@@ -18,4 +17,5 @@ function tmux_attach
         case "*"
             tmux attach-session -t "$choice"
     end
+    commandline --function repaint
 end
