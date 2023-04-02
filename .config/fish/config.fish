@@ -21,7 +21,6 @@ if status is-interactive
     starship init fish | source
     zoxide init fish --hook="prompt" | source
 
-    bind \cv 'tmux_sessionizer nvim'
 end
 
 # iTerm2 intergration
