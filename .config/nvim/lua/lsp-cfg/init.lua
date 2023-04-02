@@ -15,6 +15,12 @@ local on_attach = function(_, bufnr)
 	-- See `:help vim.lsp.*`
 	local bufopts = { buffer = bufnr }
 
+	local rename = function()
+		vim.ui.input(
+			{ prompt = "Rename symbol: " },
+			function(new_name) if (new_name ~= nil) then vim.lsp.buf.rename(new_name) end end)
+	end
+
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -24,9 +30,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-	vim.keymap.set('n', '<leader>r', function()
-		vim.ui.input({ prompt = "Rename symbol: " }, vim.lsp.buf.rename)
-	end, bufopts)
+	vim.keymap.set('n', '<leader>r', rename, bufopts)
 end
 
 -- Gutter symbols setup
