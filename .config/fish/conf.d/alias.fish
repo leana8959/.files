@@ -1,15 +1,13 @@
 # OS-based aliases
-if test (uname) = "Linux"
-    alias chmod='chmod --preserve-root'
-    alias chown='chown --preserve-root'
-else if test (uname) = "Darwin"
-    alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
-    alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
-    alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
-    alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
-
-else
-    # Neither, do nothing
+switch $uname
+    case "Linux"
+        alias chmod='chmod --preserve-root'
+        alias chown='chown --preserve-root'
+    case "Darwin"
+        alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
+        alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
+        alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+        alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
 end
 
 ## Git
@@ -68,6 +66,8 @@ abbr ip 'curl ipinfo.io'
 abbr k 'killall'
 abbr o 'open'
 abbr o. 'open .'
+abbr :q exit
+abbr :Q exit
 
 ## Preferences
 abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim'
