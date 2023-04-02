@@ -1,9 +1,9 @@
 function tmux_attach
 
     if test -z $argv
-        set -f cmd "fish"
+        set cmd "fish"
     else
-        set -f cmd "$argv"
+        set cmd "$argv"
     end
 
     set -f choice (string join ';' "new" (tmux list-sessions -F "#{session_name}") | tr ';' '\n' | fzf)

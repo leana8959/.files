@@ -40,9 +40,10 @@ abbr grc 'git rebase --continue'
 ## FS
 alias tree='tree -Cph -L 1'
 abbr t 'tree'
-abbr ta 'tree -a'
 
+## Editor
 abbr ts tmux_sessionizer
+abbr ta tmux_attach
 abbr v tmux_sessionizer nvim
 
 abbr d 'cd ~/.dotfiles/.config/'
