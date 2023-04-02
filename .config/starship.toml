@@ -1,44 +1,55 @@
-format = """
+format = '''
 $hostname$directory$python
 $character
-"""
-right_format = "$git_branch$git_commit$git_state$git_status"
+'''
+right_format = '$git_state$git_branch$git_commit$git_status'
+
+palette = 'lilac'
+
+[palettes.lilac]
+lilac = '#875fff'
+orange = '#ff5f00'
+grey = '#aaaaaa'
+crimson = '#c82829'
 
 [hostname]
-disabled = false
 ssh_only = true
-style = "bold #ff5f00"
-format = "[$hostname]($style):"
+style = 'bold orange'
+format = '[$hostname]($style):'
 
 [character]
-success_symbol = "[⮑](#aaaaaa) "
-error_symbol = "[⮑](#c82829) "
+success_symbol = '[⮑ ](grey)'
+error_symbol = '[⮑ ](crimson)'
 
 [directory]
 truncation_length = 4
-truncation_symbol = "…/"
 truncate_to_repo = false
-read_only = " "
-read_only_style = "#c82829"
-style = "black"
-format = "[$path]($style)[$read_only]($read_only_style) "
-
-[git_commit]
-style = "#875fff"
-format = "[\\($hash$tag\\)]($style)"
-
-[git_branch]
-symbol = ""
-style = "#aaaaaa"
-format = "[$symbol$branch]($style)"
-
-[git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-style = "bold #875fff"
-format = "([\\[$all_status$ahead_behind\\]]($style))"
+style = 'black'
+format = '[$path]($style)( [$read_only]($read_only_style))'
+read_only = ''
+read_only_style = 'crimson'
+truncation_symbol = '…/'
 
 [python]
-style = "white"
-format = "([\\($virtualenv\\)]($style))"
+style = 'grey'
+format = '( [\($virtualenv\)]($style))'
+
+[git_state]
+style = 'bold red'
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[git_branch]
+symbol = ''
+style = 'grey'
+format = '[$symbol$branch(:$remote_branch)]($style)'
+
+[git_commit]
+style = 'lilac'
+format = '[\(](grey)[$hash$tag]($style)[\)](grey)'
+
+[git_status]
+ahead = '⇡$count'
+behind = '⇣$count'
+diverged = '⇕⇡$ahead_count⇣$behind_count'
+style = 'bold lilac'
+format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
