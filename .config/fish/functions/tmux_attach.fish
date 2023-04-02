@@ -6,14 +6,17 @@ function tmux_attach
         set cmd "$argv"
     end
 
-    set -f choice (tmux list-sessions -F "#{session_name}" | fzf)
+    set -f choice (tmux list-sessions -F "#{session_name}" | fzf --query "$PWD")
     switch $choice
         case ""
-            read -l -P "Name your session: " prefix
-            if not test -z $prefix
-                set prefix $prefix"@"
+            if not read -l -P "Name your session: " name > /dev/null
+                echo "[exited]"
+                return
             end
-            tmux new-session -s "$prefix""$PWD" "$cmd"
+            if not test -z $name
+                set name @"$name"
+            end
+            tmux new-session -s "$PWD""$name" "$cmd"
         case "*"
             tmux attach-session -t "$choice"
     end
