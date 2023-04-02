@@ -44,7 +44,8 @@ alias tree='tree -Cph -L 1'
 abbr t 'tree'
 abbr ta 'tree -a'
 
-abbr v tmux-vim
+abbr ts tmux_sessionizer
+abbr v tmux_sessionizer nvim
 
 abbr d 'cd ~/.dotfiles/.config/'
 abbr r 'cd ~/repos/'
@@ -64,7 +65,6 @@ abbr yt 'yt-dlp \
 '
 abbr clr 'clone_repo'
 abbr ip 'curl ipinfo.io'
-abbr ts 'date +%s'
 abbr k 'killall'
 abbr o 'open'
 abbr o. 'open .'
