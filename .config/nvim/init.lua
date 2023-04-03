@@ -25,6 +25,7 @@ require "iswap-cfg"
 require "toggleterm-cfg"
 require "harpoon-cfg"
 require "lualine-cfg"
+require "glow-cfg"
 
 require "neodev-cfg"
 require "lsp-cfg"
