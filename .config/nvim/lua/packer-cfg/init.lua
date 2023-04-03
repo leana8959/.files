@@ -25,6 +25,7 @@ require "packer".startup(function(use)
 	use "andweeb/presence.nvim"
 	use "windwp/nvim-autopairs"
 	use "ur4ltz/surround.nvim"
+	use "ellisonleao/glow.nvim"
 	use "norcalli/nvim-colorizer.lua"
 	use "mg979/vim-visual-multi"
 	use "nvim-tree/nvim-web-devicons"
