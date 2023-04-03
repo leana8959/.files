@@ -1,32 +1,18 @@
-require "packer-cfg"
+local is_bootstrap = false
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+    is_bootstrap = true
+    vim.fn.system { "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path }
+    vim.cmd "packadd packer.nvim"
+end
+if is_bootstrap then
+    print "=================================="
+    print "    Plugins are being installed"
+    print "    Wait until Packer completes,"
+    print "       then restart nvim"
+    print "=================================="
+    return
+end
 
 require "keymap"
 require "options"
-
-require "nvim-cmp-cfg"
-require "comment-cfg"
-require "gitsigns-cfg"
-require "indent-blankline-cfg"
-require "telescope-cfg"
-require "nvim-autopairs-cfg"
-require "nvim-colorizer-cfg"
-require "todo-comments-cfg"
-require "trailing-whitespace-cfg"
-require "symbols-outline-cfg"
-require "surround-cfg"
-require "presence-cfg"
-require "auto-dark-mode-cfg"
-require "fugitive-cfg"
-require "undotree-cfg"
-require "diffview-cfg"
-require "treesitter-cfg"
-require "treesitter-context-cfg"
-require "iswap-cfg"
-require "toggleterm-cfg"
-require "harpoon-cfg"
-require "lualine-cfg"
-require "glow-cfg"
-
-require "neodev-cfg"
-require "lsp-cfg"
-require "fidget-cfg"
