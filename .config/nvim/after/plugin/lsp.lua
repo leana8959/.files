@@ -3,6 +3,7 @@ require "mason-lspconfig".setup({
 	ensure_installed = {},
 	automatic_installation = false
 })
+require "neodev".setup()
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "open diagnostic in a float window" })
 vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = "goto [P]revious [E]rror" })
