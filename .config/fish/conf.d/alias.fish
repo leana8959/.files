@@ -13,45 +13,28 @@ end
 ## Git
 abbr gaa 'git add (git rev-parse --show-toplevel)'
 abbr ga. 'git add .'
-abbr gc 'git commit'
-abbr gca 'git commit -a'
-abbr gcaa 'git commit -a --amend'
-
+abbr gcm 'git commit'
 abbr gcl 'git clone'
-
 abbr gl 'git log'
-abbr glf 'git log --follow --'
-
-abbr grs 'git restore'
-abbr gch 'git checkout @^ --'
-
 abbr gs 'git switch'
-abbr gsc 'git switch -c'
-
-abbr gf 'onefetch'
-
 abbr gp 'git push'
 abbr gpr 'git fetch && git rebase'
 abbr gpm 'git fetch && git merge'
 
-abbr gr 'git rebase -i'
-abbr grc 'git rebase --continue'
-
 ## FS
 alias tree='tree -Cph -L 1'
 abbr t 'tree'
+abbr d 'cd ~/.dotfiles/.config/'
+abbr r 'cd ~/repos/'
 
 ## Editor
 abbr ts tmux_sessionizer
 abbr ta tmux_attach
 abbr v tmux_sessionizer nvim
 
-abbr d 'cd ~/.dotfiles/.config/'
-abbr r 'cd ~/repos/'
-
 ## brew
-abbr bi 'brew install'
-abbr bii 'brew info'
+abbr bis 'brew install'
+abbr bif 'brew info'
 abbr br 'brew rmtree'
 abbr bs 'brew search'
 abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
@@ -62,7 +45,6 @@ abbr yt 'yt-dlp \
 -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" \
 -o "/Users/leana/Downloads/%(title)s.%(ext)s" \
 '
-abbr clr 'clone_repo'
 abbr ip 'curl ipinfo.io'
 abbr k 'killall'
 abbr o 'open'
@@ -71,6 +53,7 @@ abbr :q exit
 abbr :Q exit
 
 ## Preferences
-abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim'
-abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish'
+abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim && cd'
+abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && cd'
 abbr tp 'nvim ~/.dotfiles/.tmux.conf'
+abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
