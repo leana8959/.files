@@ -15,7 +15,6 @@ require "packer".startup(function(use)
 	use "simrat39/symbols-outline.nvim"
 	use "ellisonleao/glow.nvim"
 	use "nvim-tree/nvim-web-devicons"
-	use "f-person/auto-dark-mode.nvim"
 	use { "akinsho/toggleterm.nvim", tag = '*' }
 
 	-- Can't live without
