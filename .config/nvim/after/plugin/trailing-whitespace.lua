@@ -1,5 +1,5 @@
-require 'trailing-whitespace'.setup {
+require "trailing-whitespace".setup {
 	patterns = { '\\s\\+$' },
-	palette = { markdown = 'Teal' },
+	palette = { markdown = '#CCCCCC' },
 	default_color = '#EEEEEE',
 }

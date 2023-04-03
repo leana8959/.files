@@ -1,4 +1,4 @@
-require("iswap").setup {
+require "iswap".setup {
   -- The keys that will be used as a selection, in order
   -- ('asdfghjklqwertyuiopzxcvbnm' by default)
   -- keys = "aoeuhtns",

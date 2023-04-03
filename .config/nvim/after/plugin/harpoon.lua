@@ -1,7 +1,7 @@
-require("harpoon").setup {}
+require "harpoon".setup()
 
-local ui = require("harpoon.ui")
-local mark = require("harpoon.mark")
+local ui = require "harpoon.ui"
+local mark = require "harpoon.mark"
 
 -- add and view
 vim.keymap.set({ 'n', 'i' }, '<A-a>', function() mark.add_file() end, { desc = "add file to harpoon" })
