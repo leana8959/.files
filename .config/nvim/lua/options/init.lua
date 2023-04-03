@@ -36,4 +36,3 @@ vim.api.nvim_create_autocmd(
     }
 )
 
-vim.cmd.colorscheme "one-nvim"
