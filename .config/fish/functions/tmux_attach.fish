@@ -1,6 +1,6 @@
 function tmux_attach
 
-    if test -z $argv
+    if test -z $argv[1]
         set cmd "fish"
     else
         set cmd "$argv"
