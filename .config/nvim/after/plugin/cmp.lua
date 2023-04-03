@@ -1,5 +1,5 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local cmp = require "cmp"
+local luasnip = require "luasnip"
 
 require "luasnip.loaders.from_vscode".lazy_load({ paths = { "./snippets" } })
 
@@ -16,7 +16,7 @@ cmp.setup({
 		end,
 	},
 	mapping = cmp.mapping.preset.insert {
-		['<C-d>'] = cmp.mapping.scroll_docs( -4),
+		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-u>'] = cmp.mapping.scroll_docs(4),
 		-- ['<C-Space>'] = cmp.mapping.complete(),
 		['<CR>'] = cmp.mapping.confirm {
@@ -39,8 +39,8 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.jumpable( -1) then
-				luasnip.jump( -1)
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
