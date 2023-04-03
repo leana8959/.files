@@ -53,7 +53,7 @@ abbr :q exit
 abbr :Q exit
 
 ## Preferences
-abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim && cd'
-abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && cd'
+abbr vp 'cd ~/.dotfiles/.config/nvim/lua/ && nvim ../init.lua'
+abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish'
 abbr tp 'nvim ~/.dotfiles/.tmux.conf'
 abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
