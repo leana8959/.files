@@ -1,5 +1,5 @@
 # OS-based aliases
-switch $uname
+switch (uname)
     case "Linux"
         alias chmod='chmod --preserve-root'
         alias chown='chown --preserve-root'
