@@ -4,7 +4,7 @@ This repo is managed with GNU stow
 This repo contains:
 - NeoVim config
 - starship config
-- fish configuration / functions
-... and probably some other stuff that I left out.
+- fish configuration
+- tmux_sessionizer: [a fish script inspired by ThePrimeagen](https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer), allows jumping between different tmux sessions using fzf
 
 Have fun :)

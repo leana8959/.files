@@ -31,6 +31,7 @@ require "packer".startup(function(use)
 	use "mbbill/undotree"
 	use "rafamadriz/friendly-snippets"
 	use "mizlan/iswap.nvim"
+	use { "wintermute-cell/gitignore.nvim", requires = { "nvim-telescope/telescope.nvim" } }
 
 	-- Power tools
 	use { "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } }
