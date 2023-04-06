@@ -6,7 +6,7 @@ function tmux_attach
         set cmd "$argv"
     end
 
-    set -f choice (tmux list-sessions -F "#{session_name}" | fzf --query "$PWD")
+    set -f choice (tmux list-sessions -F "#{session_name}" | fzf --query "$PWD ")
     switch $choice
         case ""
             if not read -l -P "Name your session: " name > /dev/null
