@@ -120,11 +120,6 @@ require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
--- Golang
-require "lspconfig".gopls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
 -- Python
 require "lspconfig".pylsp.setup {
 	on_attach = on_attach,

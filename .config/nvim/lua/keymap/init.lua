@@ -20,5 +20,3 @@ vim.keymap.set({ 'n', 'x', 'v' }, "<leader>d", '"_d', { desc = "Delete without c
 
 vim.keymap.set('n', "Q", "<nop>", { desc = "It's the worse place in the universe" })
 
-vim.keymap.set('c', "Q", "q", { desc = "Giga chad fault tolerance" })
-vim.keymap.set('c', "W", "w", { desc = "Giga chad fault tolerance" })
