@@ -14,9 +14,15 @@ vim.keymap.set('n', "<leader>pv", function() vim.cmd("Explore") end, { desc = "S
 
 vim.keymap.set('n', "J", "mzJ`z", { desc = "Join line below without moving cursor" })
 
+vim.keymap.set({ 'n', 'x', 'v' }, "<leader>d", '"_d', { desc = "Delete without cutting" })
+vim.keymap.set({ 'n', 'x', 'v' }, "<leader>c", '"_dc', { desc = "Change without cutting" })
 vim.keymap.set({ 'n', 'x', 'v' }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
 vim.keymap.set({ 'n', 'x', 'v' }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
-vim.keymap.set({ 'n', 'x', 'v' }, "<leader>d", '"_d', { desc = "Delete without cutting" })
 
 vim.keymap.set('n', "Q", "<nop>", { desc = "It's the worse place in the universe" })
 
+vim.keymap.set('n', "<leader>nf", function() vim.cmd("enew") end, { desc = "Open new buffer" })
+
+vim.keymap.set('c', "#lm", [[\{-}]], { desc = "[L]azy [M]atch" })
+vim.keymap.set('c', "#capl", [[\(.\{-}\)]], { desc = "[CAP]ture [L]ess" })
+vim.keymap.set('c', "#capm", [[\(.*\)]], { desc = "[CAP]ture [M]ore" })
