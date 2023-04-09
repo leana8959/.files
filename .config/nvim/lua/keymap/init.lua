@@ -23,6 +23,14 @@ vim.keymap.set('n', "Q", "<nop>", { desc = "It's the worse place in the universe
 
 vim.keymap.set('n', "<leader>nf", function() vim.cmd("enew") end, { desc = "Open new buffer" })
 
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+{ desc = "Replace current word", noremap = true })
+
 vim.keymap.set('c', "#lm", [[\{-}]], { desc = "[L]azy [M]atch" })
 vim.keymap.set('c', "#capl", [[\(.\{-}\)]], { desc = "[CAP]ture [L]ess" })
 vim.keymap.set('c', "#capm", [[\(.*\)]], { desc = "[CAP]ture [M]ore" })
+
+vim.keymap.set('n', "j", "gj", { desc = "J that works with line wrap" })
+vim.keymap.set('n', "k", "gk", { desc = "K that works with line wrap" })
+vim.keymap.set('n', "<Down>", "g<Down>", { desc = "<Down> that works with line wrap" })
+vim.keymap.set('n', "<Up>", "g<Up>", { desc = "<Up> that works with line wrap" })
