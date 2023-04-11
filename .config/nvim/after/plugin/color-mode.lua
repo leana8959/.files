@@ -1,5 +1,3 @@
--- vim.cmd.colorscheme("one-nvim")
---
 -- local use_light = function()
 -- 	vim.api.nvim_create_autocmd("ColorScheme", {
 -- 		callback = function()
