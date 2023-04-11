@@ -19,7 +19,7 @@ vim.opt.backup = false
 vim.opt.undofile = true
 
 vim.opt.termguicolors = true
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -27,12 +27,10 @@ vim.opt.smartindent = true
 
 vim.opt.scrolloff = 14
 
-vim.api.nvim_create_autocmd(
-    "TextYankPost",
-    {
-        callback = function() vim.highlight.on_yank() end,
-        group = vim.api.nvim_create_augroup("YankHighlight", {}),
-        pattern = '*',
-    }
-)
-
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = vim.api.nvim_create_augroup("YankHighlight", {}),
+	pattern = "*",
+})
