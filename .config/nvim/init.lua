@@ -70,4 +70,7 @@ require("lazy").setup({
 	install = { colorscheme = { "catppuccin", "one-nvim" } },
 })
 
-vim.cmd.colorscheme("catppuccin-mocha")
+vim.cmd.colorscheme "catppuccin"
+
+-- catppuccin is weird
+vim.schedule(function() vim.o.background = "dark" end)
