@@ -1,21 +1,21 @@
-require "fidget".setup({
+require("fidget").setup({
 	text = {
 		spinner = "dots",
 		-- done = "[Ok]",
-	}
+	},
 })
 
-require "nvim-treesitter.configs".setup({
+require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
 	ensure_installed = {
 		"c",
 		"cpp",
 		"lua",
 		"vim",
-		"help",
+		"vimdoc",
 		"rust",
 		"scala",
-		"python"
+		"python",
 	},
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -40,8 +40,8 @@ require "nvim-treesitter.configs".setup({
 		smart_rename = {
 			enable = true,
 			keymaps = {
-				smart_rename = "grr"
-			}
-		}
-	}
+				smart_rename = "grr",
+			},
+		},
+	},
 })
