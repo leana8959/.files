@@ -53,10 +53,7 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
-			ts_update()
-		end,
+		build = ":TSUpdate",
 	},
 	"nvim-treesitter/nvim-treesitter-context",
 	"lukas-reineke/lsp-format.nvim",
@@ -73,4 +70,4 @@ require("lazy").setup({
 	install = { colorscheme = { "catppuccin", "one-nvim" } },
 })
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin-mocha")
