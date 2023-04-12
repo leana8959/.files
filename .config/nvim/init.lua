@@ -17,7 +17,7 @@ require("options")
 require("lazy").setup({
 	-- Misc
 	"Th3Whit3Wolf/one-nvim",
-	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "catppuccin/nvim",         name = "catppuccin" },
 	"ThePrimeagen/vim-be-good",
 	"andweeb/presence.nvim",
 	"Eandrju/cellular-automaton.nvim",
@@ -39,17 +39,24 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 	"lukoshkin/trailing-whitespace",
 	"windwp/nvim-autopairs",
-	{ "ThePrimeagen/harpoon", dependencies = { "nvim-lua/plenary.nvim" } },
+	{ "ThePrimeagen/harpoon",     dependencies = { "nvim-lua/plenary.nvim" } },
 	"tpope/vim-fugitive",
 	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
-	{ "hrsh7th/nvim-cmp", dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" } },
+	{ "hrsh7th/nvim-cmp",         dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" } },
 	"mbbill/undotree",
 	"rafamadriz/friendly-snippets",
 	"mizlan/iswap.nvim",
+	"mfussenegger/nvim-dap",
 	{ "wintermute-cell/gitignore.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+	{ "scalameta/nvim-metals",          dependencies = "nvim-lua/plenary.nvim" },
 
 	-- Power tools
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim" }
+	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -67,10 +74,5 @@ require("lazy").setup({
 		},
 	},
 }, {
-	install = { colorscheme = { "catppuccin", "one-nvim" } },
+	install = { colorscheme = { "one-nvim" } },
 })
-
-vim.cmd.colorscheme "catppuccin"
-
--- catppuccin is weird
-vim.schedule(function() vim.o.background = "dark" end)
