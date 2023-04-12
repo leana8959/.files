@@ -12,3 +12,7 @@ vim.keymap.set({ 'n', 'i' }, '<A-h>', function() ui.nav_file(1) end, { desc = "h
 vim.keymap.set({ 'n', 'i' }, '<A-t>', function() ui.nav_file(2) end, { desc = "harpoon 2" })
 vim.keymap.set({ 'n', 'i' }, '<A-n>', function() ui.nav_file(3) end, { desc = "harpoon 3" })
 vim.keymap.set({ 'n', 'i' }, '<A-s>', function() ui.nav_file(4) end, { desc = "harpoon 4" })
+vim.keymap.set({ 'n', 'i' }, '<A-m>', function() ui.nav_file(5) end, { desc = "harpoon 5" })
+vim.keymap.set({ 'n', 'i' }, '<A-w>', function() ui.nav_file(6) end, { desc = "harpoon 6" })
+vim.keymap.set({ 'n', 'i' }, '<A-v>', function() ui.nav_file(7) end, { desc = "harpoon 7" })
+vim.keymap.set({ 'n', 'i' }, '<A-z>', function() ui.nav_file(8) end, { desc = "harpoon 8" })
