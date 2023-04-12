@@ -1,8 +1,8 @@
 require "mason".setup()
-require "mason-lspconfig".setup({
+require "mason-lspconfig".setup {
 	ensure_installed = {},
 	automatic_installation = false
-})
+}
 require "neodev".setup()
 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "open diagnostic in a float window" })
@@ -30,6 +30,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, bufopts)
 	vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 	vim.keymap.set('n', '<leader>r', rename, bufopts)
 end
@@ -125,13 +126,65 @@ require "lspconfig".pylsp.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
--- Scala
-require "lspconfig".metals.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-}
 -- C
 require "lspconfig".clangd.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+
+-- DAP
+local dap = require "dap"
+
+vim.keymap.set("n", "<leader>dc", function() dap.continue() end)
+vim.keymap.set("n", "<leader>dr", function() dap.repl.toggle() end)
+vim.keymap.set("n", "<leader>dK", function() require "dap.ui.widgets".hover() end)
+vim.keymap.set("n", "<leader>dt", function() dap.toggle_breakpoint() end)
+vim.keymap.set("n", "<leader>dso", function() dap.step_over() end)
+vim.keymap.set("n", "<leader>dsi", function() dap.step_into() end)
+vim.keymap.set("n", "<leader>dl", function() dap.run_last() end)
+
+-- Scala Metals
+local metals = require "metals"
+local metals_config = metals.bare_config()
+
+dap.configurations.scala = {
+	{
+		type = "scala",
+		request = "launch",
+		name = "Run",
+		metals = {
+			runType = "run",
+		},
+	},
+	{
+		type = "scala",
+		request = "launch",
+		name = "Test File",
+		metals = {
+			runType = "testFile",
+		},
+	},
+	{
+		type = "scala",
+		request = "launch",
+		name = "Test Target",
+		metals = {
+			runType = "testTarget",
+		},
+	},
+}
+
+metals_config.on_attach = function(client, bufnr)
+	on_attach(client, bufnr)
+	require("metals").setup_dap()
+end
+
+metals_config.capabilities = capabilities
+local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "scala", "sbt" },
+	callback = function()
+		metals.initialize_or_attach(metals_config)
+	end,
+	group = nvim_metals_group,
+})
