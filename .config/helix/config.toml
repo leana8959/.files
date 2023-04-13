@@ -1,0 +1,57 @@
+theme = "onelight"
+
+##### Editor #####
+[editor]
+line-number = "relative"
+
+[editor.statusline]
+left = ["spinner", "file-modification-indicator", "file-name", "file-encoding"]
+right = ["diagnostics", "position"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+newline = "none"
+
+[editor.indent-guides]
+render = true
+character = "┆"
+
+[editor.soft-wrap]
+enable = true
+
+##### Key remaps #####
+[keys.normal]
+C-r = ":config-reload"
+
+# Moving around
+0 = "goto_line_start"
+"$" = "goto_line_end"
+"^" = "goto_first_nonwhitespace"
+G = "goto_file_end"
+"%" = "match_brackets"
+
+# Vim habits
+D = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection"]
+C = ["extend_to_line_end", "yank_main_selection_to_clipboard", "delete_selection", "insert_mode"]
+V = ["select_mode", "extend_to_line_bounds"]
+Y = ["extend_to_line_end", "yank_main_selection_to_clipboard", "collapse_selection"]
+p = ["paste_clipboard_after", "collapse_selection"]
+P = ["paste_clipboard_before", "collapse_selection"]
+
+# Undo
+u = ["undo", "collapse_selection"]
+
+# Dont select!
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+w = ["move_next_word_start", "move_char_right", "collapse_selection"]
+W = ["move_next_long_word_start", "move_char_right", "collapse_selection"]
+b = ["move_prev_word_start", "collapse_selection"]
+B = ["move_prev_long_word_start", "collapse_selection"]
+
