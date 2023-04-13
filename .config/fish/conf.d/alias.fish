@@ -34,7 +34,7 @@ abbr r 'cd ~/repos/'
 ## Editor
 abbr ts tmux_sessionizer
 abbr ta tmux_attach
-abbr v tmux_sessionizer nvim
+abbr v nvim
 
 ## brew
 abbr bis 'brew install'

@@ -19,7 +19,6 @@ require("lazy").setup({
 	"Th3Whit3Wolf/one-nvim",
 	{ "catppuccin/nvim",         name = "catppuccin" },
 	"ThePrimeagen/vim-be-good",
-	"andweeb/presence.nvim",
 	"Eandrju/cellular-automaton.nvim",
 
 	-- Nice to have
