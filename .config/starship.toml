@@ -2,7 +2,7 @@ format = '''
 $hostname$directory$python
 $character
 '''
-right_format = '$git_state$git_branch$git_commit$git_status'
+right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 
 palette = 'lilac'
 
@@ -33,6 +33,11 @@ truncation_symbol = '…/'
 [python]
 style = 'grey'
 format = '( [\($virtualenv\)]($style))'
+
+[cmd_duration]
+min_time = 5_000
+show_milliseconds = true
+format = '([$duration]($style) )'
 
 [git_state]
 style = 'bold red'

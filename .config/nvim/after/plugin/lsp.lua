@@ -121,6 +121,16 @@ require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- Scala
+require "lspconfig".metals.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+-- Haskell
+require "lspconfig".hls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 -- Python
 require "lspconfig".pylsp.setup {
 	on_attach = on_attach,
@@ -148,49 +158,3 @@ vim.keymap.set("n", "<leader>dt", function() dap.toggle_breakpoint() end)
 vim.keymap.set("n", "<leader>dso", function() dap.step_over() end)
 vim.keymap.set("n", "<leader>dsi", function() dap.step_into() end)
 vim.keymap.set("n", "<leader>dl", function() dap.run_last() end)
-
--- Scala Metals
-local metals = require "metals"
-local metals_config = metals.bare_config()
-
-dap.configurations.scala = {
-	{
-		type = "scala",
-		request = "launch",
-		name = "Run",
-		metals = {
-			runType = "run",
-		},
-	},
-	{
-		type = "scala",
-		request = "launch",
-		name = "Test File",
-		metals = {
-			runType = "testFile",
-		},
-	},
-	{
-		type = "scala",
-		request = "launch",
-		name = "Test Target",
-		metals = {
-			runType = "testTarget",
-		},
-	},
-}
-
-metals_config.on_attach = function(client, bufnr)
-	on_attach(client, bufnr)
-	require("metals").setup_dap()
-end
-
-metals_config.capabilities = capabilities
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "scala", "sbt" },
-	callback = function()
-		metals.initialize_or_attach(metals_config)
-	end,
-	group = nvim_metals_group,
-})

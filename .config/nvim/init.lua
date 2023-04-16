@@ -47,7 +47,6 @@ require("lazy").setup({
 	"mizlan/iswap.nvim",
 	"mfussenegger/nvim-dap",
 	{ "wintermute-cell/gitignore.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
-	{ "scalameta/nvim-metals",          dependencies = "nvim-lua/plenary.nvim" },
 
 	-- Power tools
 	{
