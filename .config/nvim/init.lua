@@ -17,9 +17,11 @@ require("options")
 require("lazy").setup({
 	-- Misc
 	"Th3Whit3Wolf/one-nvim",
-	{ "catppuccin/nvim",         name = "catppuccin" },
 	"ThePrimeagen/vim-be-good",
 	"Eandrju/cellular-automaton.nvim",
+	{ "bluz71/vim-nightfly-colors", name = "nightfly",  lazy = false, priority = 1000 },
+	{ "catppuccin/nvim",            name = "catppuccin" },
+	{ "nordtheme/vim",              name = 'nord' },
 
 	-- Nice to have
 	"tpope/vim-sleuth",
@@ -29,7 +31,7 @@ require("lazy").setup({
 	"simrat39/symbols-outline.nvim",
 	"ellisonleao/glow.nvim",
 	"nvim-tree/nvim-web-devicons",
-	{ "akinsho/toggleterm.nvim", version = "*" },
+	{ "akinsho/toggleterm.nvim",        version = "*" },
 
 	-- Can't live without
 	"numToStr/Comment.nvim",
@@ -38,24 +40,31 @@ require("lazy").setup({
 	"lukas-reineke/indent-blankline.nvim",
 	"lukoshkin/trailing-whitespace",
 	"windwp/nvim-autopairs",
-	{ "ThePrimeagen/harpoon",     dependencies = { "nvim-lua/plenary.nvim" } },
 	"tpope/vim-fugitive",
-	{ "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
-	{ "hrsh7th/nvim-cmp",         dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" } },
 	"mbbill/undotree",
 	"rafamadriz/friendly-snippets",
 	"mizlan/iswap.nvim",
-	"mfussenegger/nvim-dap",
+	{ "ThePrimeagen/harpoon",           dependencies = "nvim-lua/plenary.nvim" },
+	{ "folke/todo-comments.nvim",       dependencies = "nvim-lua/plenary.nvim" },
 	{ "wintermute-cell/gitignore.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
-
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = { "hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip"
+		}
+	},
 	-- Power tools
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim" }
+		dependencies = { "nvim-lua/plenary.nvim" }
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+		cond = vim.fn.executable("make") == 1
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -72,5 +81,7 @@ require("lazy").setup({
 		},
 	},
 }, {
-	install = { colorscheme = { "one-nvim" } },
+	install = { colorscheme = { "nord" } },
 })
+
+vim.cmd.colorscheme "nord"
