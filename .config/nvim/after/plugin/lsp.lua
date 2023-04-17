@@ -121,6 +121,16 @@ require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- Markdown
+require "lspconfig".marksman.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+-- TOML
+require "lspconfig".taplo.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 -- Scala
 require "lspconfig".metals.setup {
 	on_attach = on_attach,
@@ -147,14 +157,3 @@ require "lspconfig".html.setup {
 	capabilities = capabilities,
 	filetypes = { "html", "xhtml" },
 }
-
--- DAP
-local dap = require "dap"
-
-vim.keymap.set("n", "<leader>dc", function() dap.continue() end)
-vim.keymap.set("n", "<leader>dr", function() dap.repl.toggle() end)
-vim.keymap.set("n", "<leader>dK", function() require "dap.ui.widgets".hover() end)
-vim.keymap.set("n", "<leader>dt", function() dap.toggle_breakpoint() end)
-vim.keymap.set("n", "<leader>dso", function() dap.step_over() end)
-vim.keymap.set("n", "<leader>dsi", function() dap.step_into() end)
-vim.keymap.set("n", "<leader>dl", function() dap.run_last() end)
