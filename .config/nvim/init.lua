@@ -81,7 +81,7 @@ require("lazy").setup({
 		},
 	},
 }, {
-	install = { colorscheme = { "nord" } },
+	install = { colorscheme = { "catppuccin" } },
 })
 
-vim.cmd.colorscheme "nord"
+vim.schedule(function() vim.cmd.colorscheme "catppuccin-frappe" end)
