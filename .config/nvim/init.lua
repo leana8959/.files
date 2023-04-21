@@ -15,13 +15,20 @@ require("keymap")
 require("options")
 
 require("lazy").setup({
-	-- Misc
-	"Th3Whit3Wolf/one-nvim",
+	-- Fun stuff
 	"ThePrimeagen/vim-be-good",
 	"Eandrju/cellular-automaton.nvim",
-	{ "bluz71/vim-nightfly-colors", name = "nightfly",  lazy = false, priority = 1000 },
+
+	-- Colorschemes
+	"Th3Whit3Wolf/one-nvim",
 	{ "catppuccin/nvim",            name = "catppuccin" },
-	{ "nordtheme/vim",              name = 'nord' },
+	{ "bluz71/vim-nightfly-colors", name = "nightfly",  lazy = false, priority = 1000 },
+	{ "nordtheme/vim",              name = "nord" },
+	{ "rose-pine/neovim",           name = "rose-pine" },
+	{ "savq/melange-nvim",          name = "melange" },
+	{ "fcpg/vim-fahrenheit",        name = "fahrenheit" },
+	{ "adigitoleo/vim-mellow",      name = "mellow" },
+	{ "neanias/everforest-nvim",    name = "everforest" },
 
 	-- Nice to have
 	"tpope/vim-sleuth",
@@ -54,6 +61,7 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip"
 		}
 	},
+
 	-- Power tools
 	{
 		"nvim-telescope/telescope.nvim",
@@ -84,4 +92,6 @@ require("lazy").setup({
 	install = { colorscheme = { "catppuccin" } },
 })
 
-vim.schedule(function() vim.cmd.colorscheme "catppuccin-frappe" end)
+vim.schedule(function()
+	vim.cmd.colorscheme "catppuccin-frappe"
+end)
