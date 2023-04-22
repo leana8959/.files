@@ -131,6 +131,11 @@ require "lspconfig".taplo.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+-- Java
+require "lspconfig".jdtls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 -- Scala
 require "lspconfig".metals.setup {
 	on_attach = on_attach,
