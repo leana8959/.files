@@ -14,5 +14,6 @@ ripgrep
 sd
 tmux
 tree
+tree-sitter
 vivid
 zoxide
