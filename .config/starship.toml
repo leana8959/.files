@@ -7,31 +7,32 @@ right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 palette = 'lilac'
 
 [palettes.lilac]
-lilac = '#875fff'
-orange = '#ff5f00'
-grey = '#aaaaaa'
-crimson = '#c82829'
+accent = '#875fff'
+accent_trans = '#efebfc'
+warning = '#ff5f00'
+hint = '#aaaaaa'
+error = '#c82829'
 
 [hostname]
 ssh_only = true
-style = 'bold orange'
+style = 'bold warning'
 format = '[$hostname]($style):'
 
 [character]
-success_symbol = '[⮑ ](grey)'
-error_symbol = '[⮑ ](crimson)'
+success_symbol = '[⮑ ](hint)'
+error_symbol = '[⮑ ](error)'
 
 [directory]
 truncation_length = 4
 truncate_to_repo = false
-style = 'black'
+style = 'fg:black bg:accent_trans'
 format = '[$path]($style)( [$read_only]($read_only_style))'
 read_only = ''
-read_only_style = 'crimson'
+read_only_style = 'error'
 truncation_symbol = '…/'
 
 [python]
-style = 'grey'
+style = 'hint'
 format = '( [\($virtualenv\)]($style))'
 
 [cmd_duration]
@@ -45,16 +46,16 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_branch]
 symbol = ''
-style = 'grey'
+style = 'hint'
 format = '[$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
-style = 'lilac'
-format = '[\(](grey)[$hash$tag]($style)[\)](grey)'
+style = 'accent'
+format = '[\(](hint)[$hash$tag]($style)[\)](hint)'
 
 [git_status]
 ahead = '⇡$count'
 behind = '⇣$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
-style = 'bold lilac'
-format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
+style = 'bold accent'
+format = '([\[](hint)[$all_status$ahead_behind]($style)[\]](hint))'

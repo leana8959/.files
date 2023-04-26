@@ -1,5 +1,6 @@
 bat
 fd
+dust
 starship
 neovim
 fzf
