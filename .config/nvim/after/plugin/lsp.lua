@@ -120,6 +120,7 @@ require "lspconfig".lua_ls.setup {
 require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
+	cmd = { "rustup", "run", "stable", "rust-analyzer" }
 }
 -- Markdown
 require "lspconfig".marksman.setup {
