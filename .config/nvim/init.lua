@@ -43,7 +43,7 @@ require("lazy").setup({
 
 	-- Can't live without
 	"numToStr/Comment.nvim",
-	"ur4ltz/surround.nvim",
+	"tpope/vim-surround",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
 	"lukoshkin/trailing-whitespace",
