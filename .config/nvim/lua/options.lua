@@ -4,13 +4,15 @@ vim.opt.incsearch = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
+vim.opt.filetype = "on"
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.wrap = true
+-- wrapping makes the editor slow, turn it off by default
+vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 
@@ -30,9 +32,13 @@ vim.opt.scrolloff = 14
 vim.opt.cmdheight = 0
 
 vim.api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank()
 	end,
-	group = vim.api.nvim_create_augroup("YankHighlight", {}),
-	pattern = "*",
+})
+
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.md", "*.tex" },
+	command = "setlocal wrap"
 })

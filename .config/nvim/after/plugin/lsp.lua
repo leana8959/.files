@@ -71,7 +71,7 @@ local common_dictionary = {
 require "lspconfig".ltex.setup {
 	on_attach = on_attach,
 	cmd = { "ltex-ls" },
-	filetypes = { "markdown", "text", "gitcommit" },
+	filetypes = { "markdown", "text", "gitcommit", "tex" },
 	settings = {
 		ltex = {
 			language = "auto",
@@ -121,6 +121,11 @@ require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 	cmd = { "rustup", "run", "stable", "rust-analyzer" }
+}
+-- tex
+require "lspconfig".digestif.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
 }
 -- Markdown
 require "lspconfig".marksman.setup {
