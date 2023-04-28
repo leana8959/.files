@@ -8,10 +8,6 @@ switch (uname)
         alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
         alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
         alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
-
-        # use python3.9 for compatibility
-        alias python3='/opt/homebrew/opt/python@3.9/bin/python3.9'
-        alias pip3='/opt/homebrew/opt/python@3.9/bin/pip3.9'
 end
 
 ## Git

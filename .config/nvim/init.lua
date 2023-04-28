@@ -38,7 +38,8 @@ require("lazy").setup({
 	"simrat39/symbols-outline.nvim",
 	"ellisonleao/glow.nvim",
 	"nvim-tree/nvim-web-devicons",
-	{ "akinsho/toggleterm.nvim",        version = "*" },
+	-- { "xuhdev/vim-latex-live-preview", lazy = false }, -- not working
+	{ "akinsho/toggleterm.nvim",       version = "*" },
 
 	-- Can't live without
 	"numToStr/Comment.nvim",

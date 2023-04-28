@@ -1,0 +1,25 @@
+{
+	"Verbatim mode": {
+		"prefix": "```",
+		"body": [
+			"\\begin{Verbatim}[commandchars=\\\\\\\\\\{\\\\}]",
+			"$0",
+			"\\end{Verbatim}"
+		],
+		"description": "Verbatim mode mapped to markdown's codeblock"
+	},
+	"Opening French quotes": {
+		"prefix": "<<",
+		"body": [
+			"«~"
+		],
+		"description": "Opening French quote with non breaking space"
+	},
+	"Closing French quote": {
+		"prefix": ">>",
+		"body": [
+			"~»"
+		],
+		"description": "Closing French quote with non breaking space"
+	}
+}
