@@ -57,3 +57,8 @@ require "todo-comments".setup {
 		-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 	},
 }
+
+vim.keymap.set('n', '<leader>td',
+	function() vim.cmd("TodoTelescope") end,
+	{ desc = '[S]earch [H]elp' }
+)

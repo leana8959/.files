@@ -14,7 +14,7 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	-- See `:help vim.lsp.*`
-	local bufopts = { buffer = bufnr }
+	local ts = require "telescope.builtin"
 
 	local rename = function()
 		vim.ui.input(
@@ -22,17 +22,18 @@ local on_attach = function(_, bufnr)
 			function(new_name) if (new_name ~= nil) then vim.lsp.buf.rename(new_name) end end)
 	end
 
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, bufopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-	vim.keymap.set('n', 'gu', vim.lsp.buf.references, bufopts)
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, bufopts)
-	vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
-	vim.keymap.set('n', '<leader>r', rename, bufopts)
+	vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufnr })
+	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufnr })
+	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
+	vim.keymap.set('n', 'gd', ts.lsp_definitions, { desc = "LSP Definitions", buffer = bufnr })
+	vim.keymap.set('n', 'gtd', ts.lsp_type_definitions, { desc = "LSP Type definitions", buffer = bufnr })
+	vim.keymap.set('n', 'gi', ts.lsp_implementations, { desc = "LSP Implementations", buffer = bufnr })
+	vim.keymap.set('n', 'gu', ts.lsp_references, { desc = "LSP Usages", buffer = bufnr })
+	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
+	vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, { desc = "Code lens", buffer = bufnr })
+	vim.keymap.set('n', '<leader>f',
+		function() vim.lsp.buf.format { async = true } end, { desc = "LSP format", buffer = bufnr })
+	vim.keymap.set('n', '<leader>r', rename, { desc "LSP Rename symbol", buffer = bufnr })
 end
 
 -- Gutter symbols setup
