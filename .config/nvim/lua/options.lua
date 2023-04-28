@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*.md", "*.tex" },
-	command = "setlocal wrap"
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "tex" },
+	callback = function() vim.opt_local.wrap = true end,
 })
