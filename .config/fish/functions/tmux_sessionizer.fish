@@ -1,10 +1,10 @@
 # Inspired by the one and only primeagen
 
 function tmux_sessionizer --description "create tmux sessions"
-    set selected (find ~/repos -mindepth 2 -maxdepth 2 -type d | fzf)
+    set selected (find ~/repos ~/univ-repos -mindepth 2 -maxdepth 2 -type d | fzf)
 
     if test -z $selected
-        set selected ~
+        return 0
     end
 
     set selected_name (echo $selected | tr . _)
@@ -13,6 +13,7 @@ function tmux_sessionizer --description "create tmux sessions"
 
     if test -z "$TMUX" && test -z "$tmux_running"
         tmux new-session -s "$selected_name" -c "$selected"
+        return 0
     end
 
     if not tmux has-session -t="$selected_name" 2> /dev/null
