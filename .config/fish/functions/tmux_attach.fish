@@ -1,23 +1,10 @@
-function tmux_attach
+function tmux_attach --description "attach to existing tmux sessions"
+    set -f selected (tmux list-sessions -F "#{session_name}" | fzf)
 
-    if test -z $argv[1]
-        set cmd "fish"
+    if test -z "$TMUX"
+        tmux attach-session -t "$selected_name"
     else
-        set cmd "$argv"
+        tmux switch-client -t "$selected_name"
     end
 
-    set -f choice (tmux list-sessions -F "#{session_name}" | fzf --query "$PWD ")
-    switch $choice
-        case ""
-            if not read -l -P "Name your session: " name > /dev/null
-                echo "[exited]"
-                return
-            end
-            if not test -z $name
-                set name @"$name"
-            end
-            tmux new-session -s "$PWD""$name" "$cmd"
-        case "*"
-            tmux attach-session -t "$choice"
-    end
 end

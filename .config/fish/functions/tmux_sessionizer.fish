@@ -1,21 +1,28 @@
 # Inspired by the one and only primeagen
 
-# Name each session with the name of the directory where tmux is invoked
-# If there's already a session present for that directory, fuzzy search your way through
-function tmux_sessionizer --description 'manage tmux sessions'
-    tmux start-server
+function tmux_sessionizer --description "create tmux sessions"
+    set selected (find ~/repos -mindepth 2 -maxdepth 2 -type d | fzf)
 
-    if test -z $argv[1]
-        set cmd "fish"
-    else
-        set cmd "$argv"
+    if test -z $selected
+        set selected ~
     end
 
-    if not tmux list-sessions -F '#{session_name}' | rg "^$PWD\$" > /dev/null
-        # create new session and attach to it
-        tmux new-session -s "$PWD" "$cmd"
-    else
-        # attach to existing session(s)
-        tmux_attach $argv
+    set selected_name (echo $selected | tr . _)
+
+    set tmux_running (pgrep tmux)
+
+    if test -z "$TMUX" && test -z "$tmux_running"
+        tmux new-session -s "$selected_name" -c "$selected"
     end
+
+    if not tmux has-session -t="$selected_name" 2> /dev/null
+        tmux new-session -ds "$selected_name" -c "$selected"
+    end
+
+    if test -z "$TMUX"
+        tmux attach-session -t "$selected_name"
+    else
+        tmux switch-client -t "$selected_name"
+    end
+
 end

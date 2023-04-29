@@ -1,5 +1,5 @@
 vim.keymap.set('n', "<leader>g",
-	":Git<CR><Down><Down><Down><Down><Down>",
+	":Git<CR>5<Down>",
 	{ desc = "open fugitive" }
 )
 
