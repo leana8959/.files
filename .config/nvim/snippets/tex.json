@@ -2,9 +2,9 @@
 	"Verbatim mode": {
 		"prefix": "```",
 		"body": [
-			"\\begin{Verbatim}[commandchars=\\\\\\\\\\{\\\\}]",
+			"\\begin{BVerbatim}[commandchars=\\\\\\\\\\{\\\\}]",
 			"$0",
-			"\\end{Verbatim}"
+			"\\end{BVerbatim}"
 		],
 		"description": "Verbatim mode mapped to markdown's codeblock"
 	},
