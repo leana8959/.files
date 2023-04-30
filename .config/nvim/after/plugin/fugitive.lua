@@ -1,8 +1,8 @@
-vim.keymap.set('n', "<leader>G", ":Git<CR>5<Down>", { desc = "open fugitive" })
+vim.keymap.set('n', "<leader><space>", ":Git<CR>5<Down>", { desc = "open fugitive" })
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "fugitive" },
 	callback = function()
-		vim.keymap.set("n", "<leader>G", ":q<CR>", { desc = "close fugitive", buffer = true })
+		vim.keymap.set("n", "<leader><space>", ":q<CR>", { desc = "close fugitive", buffer = true })
 	end,
 })
 
