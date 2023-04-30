@@ -42,9 +42,10 @@ abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
 abbr yt 'yt-dlp \
+--prefer-free-formats \
 --merge-output-format "mkv" \
--f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4" \
--o "/Users/leana/Downloads/%(title)s.%(ext)s" \
+-f "bv*+ba*" \
+-o "~/Downloads/%(title)s.%(ext)s" \
 '
 abbr ip 'curl ipinfo.io'
 abbr k 'killall'
