@@ -41,21 +41,16 @@ abbr bs 'brew search'
 abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
-abbr yt 'yt-dlp \
---prefer-free-formats \
---merge-output-format "mkv" \
--f "bv*+ba*" \
+alias restow='cd ~/.dotfiles/ && stow -D . && stow -S . && prevd'
+abbr yt 'yt-dlp --prefer-free-formats --merge-output-format "mkv" -f "bv*+ba*" \
 -o "~/Downloads/%(title)s.%(ext)s" \
 '
 abbr ip 'curl ipinfo.io'
-abbr k 'killall'
-abbr o 'open'
-abbr o. 'open .'
 abbr :q exit
 abbr :Q exit
 
 ## Preferences
-abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua'
-abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish'
+abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua && prevd'
+abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && prevd'
 abbr tp 'nvim ~/.dotfiles/.tmux.conf'
 abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
