@@ -1,0 +1,11 @@
+{
+	"Create main function": {
+		"prefix": "main",
+		"body": [
+			"int main() {",
+			"\t$0",
+			"\treturn 0;",
+			"}"
+		]
+	}
+}
