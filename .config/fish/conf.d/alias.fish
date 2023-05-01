@@ -20,7 +20,7 @@ abbr gs 'git switch'
 abbr gp 'git push'
 abbr gpr 'git fetch && git rebase'
 abbr gpm 'git fetch && git merge'
-abbr cc 'clone_repo'
+abbr clone 'clone_repo'
 
 ## FS
 alias tree='tree -Cph -L 1'
