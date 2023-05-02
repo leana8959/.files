@@ -15,4 +15,5 @@ AllowShortFunctionsOnASingleLine: false
 BinPackArguments: false
 BinPackParameters: false
 
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Linux
+BreakStringLiterals: false
