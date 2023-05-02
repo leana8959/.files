@@ -54,3 +54,6 @@ abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua && pre
 abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && prevd'
 abbr tp 'nvim ~/.dotfiles/.tmux.conf'
 abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
+
+## Dev stuff
+abbr crun 'gcc main.c -o main && ./main'
