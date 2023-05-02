@@ -18,13 +18,13 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 	incremental_selection = {
-		enable = true,
+		enable = false,
 		keymaps = {
 			-- set to `false` to disable one of the mappings
-			init_selection = "false",
-			scope_incremental = "false",
-			node_incremental = "<A-Up>",
-			node_decremental = "<A-Down>",
+			-- init_selection = "false",
+			-- scope_incremental = "false",
+			-- node_incremental = "<A-Up>",
+			-- node_decremental = "<A-Down>",
 		},
 	},
 	refactor = {
