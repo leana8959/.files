@@ -46,6 +46,7 @@ abbr yt 'yt-dlp --prefer-free-formats --merge-output-format "mkv" -f "bv*+ba*" \
 -o "~/Downloads/%(title)s.%(ext)s" \
 '
 abbr ip 'curl ipinfo.io'
+abbr news newsboat
 abbr :q exit
 abbr :Q exit
 
@@ -54,6 +55,3 @@ abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua && pre
 abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && prevd'
 abbr tp 'nvim ~/.dotfiles/.tmux.conf'
 abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
-
-## Dev stuff
-abbr crun 'gcc main.c -o main && ./main'
