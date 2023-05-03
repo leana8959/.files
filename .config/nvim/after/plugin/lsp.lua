@@ -8,7 +8,6 @@ require "neodev".setup()
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "open diagnostic in a float window" })
 vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = "goto [P]revious [E]rror" })
 vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = "goto [N]ext [E]rror" })
-vim.keymap.set('n', '<leader>el', vim.diagnostic.setloclist, { desc = "show [E]rror [L]ocations" })
 
 local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
