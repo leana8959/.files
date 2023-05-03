@@ -62,3 +62,5 @@ require "symbols-outline".setup({
 	-- 	Fragment = { icon = "", hl = "@constant" },
 	-- },
 })
+
+vim.keymap.set('n', '<leader>ol', function() vim.cmd("SymbolsOutline") end, { desc = "Open symbols outline" })
