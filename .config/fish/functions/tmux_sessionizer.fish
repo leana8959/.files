@@ -26,18 +26,18 @@ function tmux_sessionizer --description "create tmux sessions"
     set tmux_running (pgrep tmux)
 
     if [ -z "$TMUX" ] && [ -z "$tmux_running" ]
-        tmux new-session -s "$selected_name" -c "$selected"
-        tmux send-keys -t "$selected_name" "nvim" ENTER
-        tmux new-window -t "$selected_name" -c "$selected"
-        tmux select-window -t "$selected_name:1"
+        tmux \
+            new-session -s "$selected_name" -c "$selected" \; \
+            new-window -t "$selected_name" -c "$selected" \; \
+            select-window -t "$selected_name:1" \;
         return 0
     end
 
     if ! tmux has-session -t="$selected_name" 2> /dev/null
-        tmux new-session -ds "$selected_name" -c "$selected"
-        tmux send-keys -t "$selected_name" "nvim" ENTER
-        tmux new-window -t "$selected_name" -c "$selected"
-        tmux select-window -t "$selected_name:1"
+        tmux \
+            new-session -ds "$selected_name" -c "$selected" \; \
+            new-window -t "$selected_name" -c "$selected" \; \
+            select-window -t "$selected_name:1" \;
     end
 
     if [ -z "$TMUX" ]
