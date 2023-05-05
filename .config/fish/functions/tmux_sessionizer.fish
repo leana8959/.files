@@ -13,7 +13,7 @@ function tmux_sessionizer --description "create tmux sessions"
     end
 
     if [ "$selected" = "play" ]
-        read -P "Name a new playground" selected
+        read -P "Give it a name: " selected
         if test -z $selected
             return 0
         else
@@ -27,11 +27,17 @@ function tmux_sessionizer --description "create tmux sessions"
 
     if [ -z "$TMUX" ] && [ -z "$tmux_running" ]
         tmux new-session -s "$selected_name" -c "$selected"
+        tmux send-keys -t "$selected_name" "nvim" ENTER
+        tmux new-window -t "$selected_name" -c "$selected"
+        tmux select-window -t "$selected_name:1"
         return 0
     end
 
     if ! tmux has-session -t="$selected_name" 2> /dev/null
         tmux new-session -ds "$selected_name" -c "$selected"
+        tmux send-keys -t "$selected_name" "nvim" ENTER
+        tmux new-window -t "$selected_name" -c "$selected"
+        tmux select-window -t "$selected_name:1"
     end
 
     if [ -z "$TMUX" ]
