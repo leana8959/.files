@@ -42,8 +42,11 @@ abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
 alias restow='cd ~/.dotfiles/ && stow -D . && stow -S . && prevd'
-abbr yt 'yt-dlp --prefer-free-formats --merge-output-format "mkv" -f "bv*+ba*" \
+abbr yt 'yt-dlp -f "b" --no-playlist \
 -o "~/Downloads/%(title)s.%(ext)s" \
+'
+abbr ytpl 'yt-dlp -f "b" \
+-o "~/Downloads/%(playlist_index)s - %(title)s.%(ext)s" \
 '
 abbr ip 'curl ipinfo.io'
 abbr news newsboat
