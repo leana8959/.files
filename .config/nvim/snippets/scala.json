@@ -1,0 +1,12 @@
+{
+	"Debug a flow chain of consecutive methods": {
+		"prefix": ".dbg",
+		"body": [
+			".map(x => {",
+			"// DEBUG: this in an identity function that debugs to println",
+			"\tprintln(x)",
+			"\tx",
+			"})"
+		]
+	}
+}
