@@ -1,7 +1,7 @@
 # Inspired by the one and only primeagen
 
 function tmux_sessionizer --description "create tmux sessions"
-    set -f selected \
+    set selected \
         (begin
             find $REPOS_PATH $UNIV_REPOS_PATH -mindepth 2 -maxdepth 2 -type d;
             find $PLAYGROUND_PATH -mindepth 1 -maxdepth 1 -type d;
@@ -28,14 +28,14 @@ function tmux_sessionizer --description "create tmux sessions"
             if test -z $selected
                 return 0
             else
-                set -f kata_name (snakecase $selected)
-                set -f selected $CODEWARS_PATH/Rust/$kata_name
+                set kata_name (snakecase $selected)
+                set selected $CODEWARS_PATH/Rust/$kata_name
                 cargo new $selected --name codewars_$kata_name --vcs none
             end
     end
 
-    set -f selected_name (echo $selected | tr . _)
-    set -f tmux_running (pgrep tmux)
+    set selected_name (echo $selected | tr . _)
+    set tmux_running (pgrep tmux)
 
     if [ -z $TMUX ] && [ -z $tmux_running ]
         tmux \

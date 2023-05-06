@@ -1,6 +1,6 @@
 function upload
     if count $argv >/dev/null
-        set -f dest_name (file_mantissa $argv)"_"(timestamp)(file_extension $argv)
+        set dest_name (file_mantissa $argv)"_"(timestamp)(file_extension $argv)
 
         rsync -r -v --chown=caddy:caddy --chmod=u=rwX,g=rX,o=rX --exclude ".DS_Store" --update --times --compress --delay-updates \
             $argv \
