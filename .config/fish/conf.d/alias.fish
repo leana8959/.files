@@ -1,13 +1,13 @@
 # OS-based aliases
 switch (uname)
-    case "Linux"
-        alias chmod='chmod --preserve-root'
-        alias chown='chown --preserve-root'
-    case "Darwin"
-        alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
-        alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
-        alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
-        alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
+case "Linux"
+    alias chmod='chmod --preserve-root'
+    alias chown='chown --preserve-root'
+case "Darwin"
+    alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
+    alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
+    alias reset_launchpad='defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock'
+    alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
 end
 
 ## Git
