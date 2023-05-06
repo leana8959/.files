@@ -17,6 +17,14 @@ if status is-interactive
     # fd theme
     set -gx LS_COLORS (vivid -m 24-bit generate one-light)
 
+
+    # repo paths
+    set -gx REPOS_PATH ~/repos
+    set -gx UNIV_REPOS_PATH ~/univ-repos
+    set -gx PLAYGROUND_PATH ~/playground
+    set -gx CODEWARS_PATH ~/codewars
+    set -gx ZEROJUDGE_PATH ~/zerojudge
+
     # tools
     starship init fish | source
     zoxide init fish --hook=prompt | source
