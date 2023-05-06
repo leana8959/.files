@@ -5,7 +5,7 @@ function largest-objects-in-repo
     # translated to fish with ChatGPT, reviewed by Léana :P
 
     # set the internal field spereator to line break, so that we can iterate easily over the verify-pack output
-    set -fx IFS "\n"
+    set -x IFS "\n"
 
     # list all objects including their size, sort by size, take top 10
     set objects (git verify-pack -v .git/objects/pack/pack-*.idx | grep -v chain | sort -k3nr | head)
