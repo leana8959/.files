@@ -41,7 +41,7 @@ require("lazy").setup({
 	{ "akinsho/toggleterm.nvim",        version = "*" },
 
 	-- Can't live without
-	"folke/zen-mode.nvim",
+	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 	"numToStr/Comment.nvim",
 	"tpope/vim-surround",
 	"lewis6991/gitsigns.nvim",
