@@ -7,5 +7,11 @@
 			"\treturn 0;",
 			"}"
 		]
+	},
+	"Debug expression": {
+		"prefix": "dbg",
+		"body": [
+			"printf(\"${1:expression}: ${2:format}\\n\", ${1:expression});"
+		]
 	}
 }
