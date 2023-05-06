@@ -17,5 +17,3 @@ BinPackParameters: false
 
 BreakBeforeBraces: Linux
 BreakStringLiterals: false
-
-PointerAlignment: Left
