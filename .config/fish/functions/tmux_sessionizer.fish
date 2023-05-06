@@ -13,37 +13,37 @@ function tmux_sessionizer --description "create tmux sessions"
         end | fzf)
 
     switch $selected
-        case ''
+    case ''
+        return 0
+
+    case "play"
+        read -P "Give it a name: " name
+        if test -z $name
             return 0
+        else
+            set selected ~/playground/"$name"
+            mkdir -p $selected
+        end
 
-        case "play"
-            read -P "Give it a name: " name
-            if test -z $name
-                return 0
-            else
-                set selected ~/playground/"$name"
-                mkdir -p $selected
-            end
+    case "codewars rust"
+        read -P "Give it a name: " name
+        if test -z $name
+            return 0
+        else
+            set kata_name (snakecase $name)
+            set selected $CODEWARS_PATH/Rust/$kata_name
+            cargo new $selected --name codewars_$kata_name --vcs none
+        end
 
-        case "codewars rust"
-            read -P "Give it a name: " name
-            if test -z $name
-                return 0
-            else
-                set kata_name (snakecase $name)
-                set selected $CODEWARS_PATH/Rust/$kata_name
-                cargo new $selected --name codewars_$kata_name --vcs none
-            end
-
-        case "zerojudge c"
-            read -P "Give it a name: " name
-            if test -z $name
-                return 0
-            else
-                set selected $ZEROJUDGE_PATH/$name
-                mkdir -p $selected
-                touch $selected/main.c
-            end
+    case "zerojudge c"
+        read -P "Give it a name: " name
+        if test -z $name
+            return 0
+        else
+            set selected $ZEROJUDGE_PATH/$name
+            mkdir -p $selected
+            touch $selected/main.c
+        end
     end
 
     set selected_name (echo $selected | tr . _)
