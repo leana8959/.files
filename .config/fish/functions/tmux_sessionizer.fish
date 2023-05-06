@@ -8,6 +8,7 @@ function tmux_sessionizer --description "create tmux sessions"
             find $CODEWARS_PATH/rust -mindepth 1 -maxdepth 1 -type d;
             echo "play";
             echo "codewars_rust";
+            echo "zerojudge_c";
         end | fzf)
 
     switch $selected
@@ -31,6 +32,16 @@ function tmux_sessionizer --description "create tmux sessions"
                 set kata_name (snakecase $selected)
                 set selected $CODEWARS_PATH/Rust/$kata_name
                 cargo new $selected --name codewars_$kata_name --vcs none
+            end
+
+        case "zerojudge_c"
+            read -P "Give it a name: " selected
+            if test -z $selected
+                return 0
+            else
+                set name $selected
+                set selected $ZEROJUDGE_PATH
+                touch $ZEROJUDGE_PATH/$name.c
             end
     end
 
