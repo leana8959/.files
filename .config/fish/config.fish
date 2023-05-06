@@ -12,14 +12,14 @@ if status is-interactive
     --color=info:#4271ae,prompt:#8959a8,pointer:#d7005f
     --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
     # fzf preview theme (bat)
-    set -gx fzf_preview_file_cmd "bat --style=numbers --color=always --theme OneHalfLight"
+    set -gx fzf_preview_file_cmd 'bat --style=numbers --color=always --theme OneHalfLight'
 
     # fd theme
     set -gx LS_COLORS (vivid -m 24-bit generate one-light)
 
     # tools
     starship init fish | source
-    zoxide init fish --hook="prompt" | source
+    zoxide init fish --hook=prompt | source
 end
 
 # iTerm2 intergration
