@@ -48,7 +48,7 @@ abbr yt 'yt-dlp -f "b" --no-playlist \
 abbr ytpl 'yt-dlp -f "b" \
 -o "~/Downloads/%(playlist_index)s - %(title)s.%(ext)s" \
 '
-abbr ip 'curl ipinfo.io'
+abbr myip 'curl ipinfo.io'
 abbr news newsboat
 abbr :q exit
 abbr :Q exit
