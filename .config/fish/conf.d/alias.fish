@@ -53,6 +53,10 @@ abbr news newsboat
 abbr :q exit
 abbr :Q exit
 
+# ssh
+abbr pi 'ssh pi4'
+abbr mainframe 'ssh mainframe'
+
 ## Preferences
 abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua && prevd'
 abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && prevd'
