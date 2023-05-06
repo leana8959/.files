@@ -3,9 +3,10 @@
 function tmux_sessionizer --description "create tmux sessions"
     set selected \
         (begin
-            find $REPOS_PATH $UNIV_REPOS_PATH -mindepth 2 -maxdepth 2 -type d;
-            find $PLAYGROUND_PATH -mindepth 1 -maxdepth 1 -type d;
-            find $CODEWARS_PATH/rust -mindepth 1 -maxdepth 1 -type d;
+            fd . $REPOS_PATH $UNIV_REPOS_PATH --exact-depth 2 --type d;
+            fd . $PLAYGROUND_PATH --exact-depth 1 --type d;
+            fd . $CODEWARS_PATH/rust --exact-depth 1 --type d;
+            fd . $ZEROJUDGE_PATH --exact-depth 1 --type d;
             echo "play";
             echo "codewars rust";
             echo "zerojudge c";
