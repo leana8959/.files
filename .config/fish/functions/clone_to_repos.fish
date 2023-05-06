@@ -1,4 +1,4 @@
-function clone_repo
+function clone_to_repos
     if count $argv > /dev/null
         set name_repo (echo $argv | sd -p '.*[:/]([\w\d._-]+)/([\w\d._-]+).git$' '$1 $2')
         set name (echo $name_repo | cut -d ' ' -f1)
