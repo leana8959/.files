@@ -40,8 +40,9 @@ function tmux_sessionizer --description "create tmux sessions"
             if test -z $name
                 return 0
             else
-                set selected $ZEROJUDGE_PATH
-                touch $ZEROJUDGE_PATH/$name.c
+                set selected $ZEROJUDGE_PATH/$name
+                mkdir -p $selected
+                touch $selected/main.c
             end
     end
 
