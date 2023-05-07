@@ -6,11 +6,15 @@ AlignConsecutiveBitFields: true
 AlignConsecutiveDeclarations: true
 AlignConsecutiveMacros: true
 AlignTrailingComments: true
+AlignArrayOfStructures: Right
+AlignAfterOpenBracket: BlockIndent
 
 AllowAllArgumentsOnNextLine: true
 AllowShortBlocksOnASingleLine: Empty
 AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
 
 BinPackArguments: false
 BinPackParameters: false
