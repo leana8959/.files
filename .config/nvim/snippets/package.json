@@ -3,6 +3,10 @@
 	"contributes": {
 		"snippets": [
 			{
+				"language": "haskell",
+				"path": "./haskell.json"
+			},
+			{
 				"language": "scala",
 				"path": "./scala.json"
 			},

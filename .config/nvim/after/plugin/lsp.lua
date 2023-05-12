@@ -161,6 +161,12 @@ require "lspconfig".metals.setup {
 require "lspconfig".hls.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
+	settings = {
+		haskell = {
+			cabalFormattingProvider = "cabalfmt",
+			formattingProvider = "fourmolu"
+		}
+	}
 }
 -- Python
 require "lspconfig".pylsp.setup {
