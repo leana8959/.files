@@ -49,7 +49,7 @@ function tmux_sessionizer --description "create tmux sessions"
     set selected_name (echo $selected | tr . _)
     set tmux_running (pgrep tmux)
 
-    if [ -z $TMUX ] && [ -z $tmux_running ]
+    if [ -z "$TMUX" ] && [ -z "$tmux_running" ]
         tmux \
             new-session -s $selected_name -c $selected \; \
             send-keys -t $selected_name nvim ENTER \; \
