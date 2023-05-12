@@ -1,0 +1,14 @@
+{
+	"Main module": {
+		"prefix": "mm",
+		"body": [
+			"module Main where",
+			"",
+			"",
+			"",
+			"main = do",
+			"print $ \"hello\""
+		],
+		"description": "Map using dictionary comprehension"
+	}
+}
