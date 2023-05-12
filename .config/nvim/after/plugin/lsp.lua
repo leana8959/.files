@@ -67,8 +67,16 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Spell check
 local common_dictionary = {
+	-- Me stuff
 	"Yu", "Hui", "Léana", "Chiang",
 	"ISTIC",
+	-- LaTeX
+	"compat",
+	-- Tech terms
+	"Vec", "VecDeque", "array", "stack", "queue", "deque", "string", "cursor", "matched",
+	"HashMap", "HashSet", "dédupliquer",
+	-- Rapport BIO
+	"dédupliquer", "read", "reads", "contig", "Debruijn", "mer",
 }
 require "lspconfig".ltex.setup {
 	on_attach = on_attach,
