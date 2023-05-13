@@ -7,7 +7,7 @@
 			"",
 			"",
 			"main = do",
-			"print $ \"hello\""
+			"  print $ \"hello\""
 		],
 		"description": "Map using dictionary comprehension"
 	}
