@@ -29,6 +29,7 @@ require("lazy").setup({
 	{ "fcpg/vim-fahrenheit",        name = "fahrenheit" },
 	{ "adigitoleo/vim-mellow",      name = "mellow" },
 	{ "neanias/everforest-nvim",    name = "everforest" },
+	{ "AlexvZyl/nordic.nvim",       name = "nordic" },
 
 	-- Nice to have
 	"tpope/vim-sleuth",
@@ -38,7 +39,7 @@ require("lazy").setup({
 	"simrat39/symbols-outline.nvim",
 	"ellisonleao/glow.nvim",
 	"nvim-tree/nvim-web-devicons",
-	{ "akinsho/toggleterm.nvim",        version = "*" },
+	{ "akinsho/toggleterm.nvim",     version = "*" },
 
 	-- Can't live without
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
