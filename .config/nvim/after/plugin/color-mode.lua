@@ -1,4 +1,4 @@
-vim.cmd.colorscheme "rose-pine"
+vim.cmd.colorscheme "one-nvim"
 
 local use_light = function()
 	vim.api.nvim_create_autocmd("ColorScheme", {
@@ -14,8 +14,8 @@ local use_light = function()
 			-- vim.cmd ("highlight DiagnosticHint guibg=black")
 
 			-- TreesitterContext border
-			vim.cmd("highlight TreesitterContext guibg=#e0dad3")
-			vim.cmd("highlight TreesitterContextBottom guibg=#e0dad3 gui=underline guisp=Grey")
+			vim.cmd("highlight TreesitterContext guibg=#EEEEEE")
+			vim.cmd("highlight TreesitterContextBottom guibg=#EEEEEE gui=underline guisp=Grey")
 
 			-- Diff colors override
 			vim.cmd("highlight DiffAdd guibg=#f0f0f0")
