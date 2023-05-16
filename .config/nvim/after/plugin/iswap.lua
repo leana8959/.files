@@ -41,5 +41,5 @@ require "iswap".setup {
   hl_grey_priority = '1000',
 }
 
-vim.keymap.set('n', "s<Left>", ":ISwapNodeWithLeft<CR>", { desc = "Swap argument with left" })
-vim.keymap.set('n', "s<Right>", ":ISwapNodeWithRight<CR>", { desc = "Swap argument with right" })
+vim.keymap.set('n', "<leader>s<Left>", ":ISwapNodeWithLeft<CR>", { desc = "Swap argument with left" })
+vim.keymap.set('n', "<leader>s<Right>", ":ISwapNodeWithRight<CR>", { desc = "Swap argument with right" })
