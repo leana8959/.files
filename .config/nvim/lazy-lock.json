@@ -16,6 +16,7 @@
   "indent-blankline.nvim": { "branch": "master", "commit": "018bd04d80c9a73d399c1061fa0c3b14a7614399" },
   "iswap.nvim": { "branch": "master", "commit": "aed5aa196651926871a9d881a80aef868199c2a5" },
   "lazy.nvim": { "branch": "main", "commit": "83a625f5c884a3ceee821ce54a812c8321ecba31" },
+  "leap": { "branch": "main", "commit": "6f2912755c9c4ae790abd829f0cf1b07c037b2a4" },
   "lsp-format.nvim": { "branch": "master", "commit": "ca0df5c8544e51517209ea7b86ecc522c98d4f0a" },
   "lualine.nvim": { "branch": "master", "commit": "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "cec0e6dd534ade486b5eeb59ebcfa8d51c3e8c5e" },
@@ -26,6 +27,7 @@
   "nightfly": { "branch": "master", "commit": "5f12e607b6d3b1a5aebe129dc0b5f7d85dc33eb3" },
   "no-neck-pain.nvim": { "branch": "main", "commit": "d3527936c4944baf0227c4f5b7fd64e7119ac13c" },
   "nord": { "branch": "main", "commit": "f13f5dfbb784deddbc1d8195f34dfd9ec73e2295" },
+  "nordic": { "branch": "main", "commit": "bd4cf4e4ca8b6a8b63e2e6e38d2112a59be45494" },
   "nvim-autopairs": { "branch": "master", "commit": "7747bbae60074acf0b9e3a4c13950be7a2dff444" },
   "nvim-cmp": { "branch": "main", "commit": "1cad30fcffa282c0a9199c524c821eadc24bf939" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6" },
@@ -45,6 +47,7 @@
   "undotree": { "branch": "master", "commit": "485f01efde4e22cb1ce547b9e8c9238f36566f21" },
   "vim-be-good": { "branch": "master", "commit": "c290810728a4f75e334b07dc0f3a4cdea908d351" },
   "vim-fugitive": { "branch": "master", "commit": "5f0d280b517cacb16f59316659966c7ca5e2bea2" },
+  "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" }
