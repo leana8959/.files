@@ -21,5 +21,36 @@
 			"~»"
 		],
 		"description": "Closing French quote with non breaking space"
+	},
+	"template": {
+		"prefix": "template",
+		"body": [
+			"\\documentclass[a4paper, 11pt]{article}",
+			"\\usepackage[T1]{fontenc}",
+			"\\usepackage[french]{babel}",
+			"",
+			"\\usepackage{minted}",
+			"\\usepackage{parskip}",
+			"\\usepackage{graphicx}",
+			"\\usepackage{multido}",
+			"\\usepackage{fancyvrb}",
+			"\\usepackage{tikz}",
+			"\\usetikzlibrary{tikzmark}",
+			"\\usepackage{tkz-euclide}",
+			"\\usepackage{pgfplots}",
+			"\\usepackage{caption}",
+			"\\pgfplotsset{compat=1.18}",
+			"",
+			"\\title{Put your title here}",
+			"\\author{Léana CHIANG}",
+			"",
+			"\\begin{document}",
+			"",
+			"\\maketitle",
+			"",
+			"",
+			"",
+			"\\end{document}"
+		]
 	}
 }
