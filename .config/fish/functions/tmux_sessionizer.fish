@@ -25,7 +25,8 @@ function tmux_sessionizer --description "create tmux sessions"
         if test -z $name
             return 0
         else
-            set selected ~/playground/"$name"
+            set name (snakecase $name)
+            set selected ~/playground/$name/
             mkdir -p $selected
         end
 
@@ -35,7 +36,7 @@ function tmux_sessionizer --description "create tmux sessions"
             return 0
         else
             set kata_name (snakecase $name)
-            set selected $CODEWARS_PATH/Rust/$kata_name
+            set selected $CODEWARS_PATH/Rust/$kata_name/
             cargo new $selected --name codewars_$kata_name --vcs none
         end
 
@@ -45,7 +46,7 @@ function tmux_sessionizer --description "create tmux sessions"
             return 0
         else
             set name (snakecase $name)
-            set selected $CODEWARS_PATH/Haskell/$name
+            set selected $CODEWARS_PATH/Haskell/$name/
             mkdir -p $selected
             touch $selected/main.hs
         end
@@ -56,7 +57,7 @@ function tmux_sessionizer --description "create tmux sessions"
             return 0
         else
             set name (snakecase $name)
-            set selected $CODEWARS_PATH/C/$name
+            set selected $CODEWARS_PATH/C/$name/
             mkdir -p $selected
             touch $selected/main.c
         end
@@ -66,7 +67,7 @@ function tmux_sessionizer --description "create tmux sessions"
         if test -z $name
             return 0
         else
-            set selected $ZEROJUDGE_PATH/$name
+            set selected $ZEROJUDGE_PATH/$name/
             mkdir -p $selected
             touch $selected/main.c
         end
