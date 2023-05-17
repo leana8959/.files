@@ -68,7 +68,7 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Spell check
 local common_dictionary = {
 	-- Me stuff
-	"Yu", "Hui", "Léana", "Chiang",
+	"Yu", "Hui", "Léana", "Chiang", "CHIANG",
 	"ISTIC",
 	-- LaTeX
 	"compat",
