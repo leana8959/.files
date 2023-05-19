@@ -1,11 +1,11 @@
 require "lualine".setup({
   options = {
     icons_enabled = true,
-    theme = 'auto',
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    theme = 'nord',
+    component_separators = {},
+    section_separators = {},
     disabled_filetypes = {
-      statusline = {},
+      statusline = { "fugitive", "fugitiveblame" },
       winbar = {},
     },
     ignore_focus = {},
@@ -18,18 +18,20 @@ require "lualine".setup({
     }
   },
   sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { 'filename' },
-    lualine_x = { 'encoding' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location' }
+    lualine_a = { 'branch' },
+    lualine_b = { 'diff', 'diagnostics' },
+    lualine_c = {
+      { 'filename', newfile_status = true, path = 3 }
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { 'progress' }
   },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { { 'filename', path = 2 } },
-    lualine_x = { 'location' },
+    lualine_c = { { 'filename', path = 4 } },
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
