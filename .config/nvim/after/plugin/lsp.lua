@@ -133,7 +133,7 @@ require "lspconfig".rust_analyzer.setup {
 	cmd = { "rustup", "run", "stable", "rust-analyzer" }
 }
 -- tex
-require "lspconfig".digestif.setup {
+require "lspconfig".texlab.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
