@@ -5,8 +5,8 @@ require "lualine".setup({
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {
-      statusline = { "fugitive", "fugitiveblame" },
-      winbar = {},
+      statusline = {},
+      winbar = { "gitcommit", "fugitive", "fugitiveblame" },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -17,7 +17,7 @@ require "lualine".setup({
       winbar = 1000,
     }
   },
-  sections = {
+  winbar = {
     lualine_a = { 'branch' },
     lualine_b = { 'diff', 'diagnostics' },
     lualine_c = {
@@ -27,7 +27,7 @@ require "lualine".setup({
     lualine_y = {},
     lualine_z = { 'progress' }
   },
-  inactive_sections = {
+  inactive_winbar = {
     lualine_a = {},
     lualine_b = {},
     lualine_c = { { 'filename', path = 4 } },
@@ -35,8 +35,8 @@ require "lualine".setup({
     lualine_y = {},
     lualine_z = {}
   },
+  sections = {},
+  inactive_sections = {},
   tabline = {},
-  winbar = {},
-  inactive_winbar = {},
   extensions = {}
 })
