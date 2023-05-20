@@ -30,7 +30,6 @@ vim.opt.smartindent = true
 vim.opt.scrolloff = 14
 
 vim.opt.cmdheight = 0
-vim.opt.laststatus = 0
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
