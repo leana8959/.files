@@ -25,6 +25,9 @@ if status is-interactive
     set -Ux CODEWARS_PATH ~/codewars
     set -Ux ZEROJUDGE_PATH ~/zerojudge
 
+    # gopath
+    set -gx GOPATH ~/.go
+
     # tools
     starship init fish | source
     zoxide init fish --hook=prompt | source
