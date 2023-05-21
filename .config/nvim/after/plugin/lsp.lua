@@ -126,6 +126,11 @@ require "lspconfig".lua_ls.setup {
 		}
 	},
 }
+-- Go
+require "lspconfig".gopls.setup {
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
 -- Rust
 require "lspconfig".rust_analyzer.setup {
 	on_attach = on_attach,
