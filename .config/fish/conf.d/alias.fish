@@ -3,6 +3,8 @@ switch (uname)
 case "Linux"
     alias chmod='chmod --preserve-root'
     alias chown='chown --preserve-root'
+    abbr ss 'sudo systemctl'
+    abbr se 'sudoedit'
 case "Darwin"
     alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
     alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
