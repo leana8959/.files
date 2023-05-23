@@ -19,8 +19,12 @@ style = 'bold warning'
 format = '[$hostname]($style):'
 
 [character]
-success_symbol = '[⮑ ](hint)'
-error_symbol = '[⮑ ](error)'
+success_symbol = '\[[I](hint)\]'            # Insert
+error_symbol = '\[[I](error)\]'             # Insert
+vimcmd_symbol = '\[[N](hint)\]'             # Normal
+vimcmd_replace_symbol = '\[[R](hint)\]'     # Replace
+vimcmd_replace_one_symbol = '\[[R](hint)\]' # Replace
+vimcmd_visual_symbol = '\[[V](hint)\]'      # Visual
 
 [directory]
 truncation_length = 4

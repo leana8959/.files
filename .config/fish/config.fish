@@ -25,6 +25,12 @@ if status is-interactive
     set -Ux CODEWARS_PATH ~/codewars
     set -Ux ZEROJUDGE_PATH ~/zerojudge
 
+    # vi cursor style
+    set -gx fish_cursor_default block
+    set -gx fish_cursor_insert line
+    set -gx fish_cursor_replace_one underscore
+    set -gx fish_cursor_visual block
+
     # gopath
     set -gx GOPATH ~/.go
 
