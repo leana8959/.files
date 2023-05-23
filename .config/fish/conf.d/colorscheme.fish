@@ -47,6 +47,9 @@ set -gx fish_color_user normal
 # The hostname in the default prompt
 set -gx fish_color_host normal
 
+## Vi
+set -gx fish_color_selection  --background e6e6e6
+
 ## Pager
 # The progress bar at the bottom left corner
 set -gx fish_pager_color_progress 00a6b2 --reverse #teal
