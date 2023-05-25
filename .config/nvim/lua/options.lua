@@ -42,3 +42,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex" },
 	callback = function() vim.opt_local.wrap = true end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "rust" },
+	callback = function() vim.cmd("set iskeyword+=&") end,
+})
