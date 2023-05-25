@@ -29,11 +29,6 @@ vim.keymap.set("n", "<leader>nf",
 	{ desc = "Open new buffer" }
 )
 
-vim.keymap.set("n", "<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace current word", noremap = true }
-)
-
 vim.keymap.set("c", "#lm", [[\{-}]], { desc = "[L]azy [M]atch" })
 vim.keymap.set("c", "#capl", [[\(.\{-}\)]], { desc = "[CAP]ture [L]ess" })
 vim.keymap.set("c", "#capm", [[\(.*\)]], { desc = "[CAP]ture [M]ore" })
