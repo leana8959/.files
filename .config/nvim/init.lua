@@ -42,7 +42,8 @@ require("lazy").setup({
 	{ "akinsho/toggleterm.nvim",     version = "*" },
 
 	-- Can't live without
-	{ "ggandor/leap.nvim",           name = "leap", dependencies = "tpope/vim-repeat" },
+	{ "nvim-pack/nvim-spectre",      dependencies = "nvim-lua/plenary.nvim" },
+	{ "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 	"numToStr/Comment.nvim",
 	"tpope/vim-surround",
