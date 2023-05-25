@@ -17,7 +17,6 @@ if status is-interactive
     # fd theme
     set -gx LS_COLORS (vivid -m 24-bit generate one-light)
 
-
     # repo paths
     set -Ux REPOS_PATH ~/repos
     set -Ux UNIV_REPOS_PATH ~/univ-repos
@@ -26,6 +25,7 @@ if status is-interactive
     set -Ux ZEROJUDGE_PATH ~/zerojudge
 
     # vi cursor style
+    fish_vi_key_bindings
     set -gx fish_cursor_default block
     set -gx fish_cursor_insert line
     set -gx fish_cursor_replace_one underscore
