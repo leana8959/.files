@@ -13,6 +13,7 @@ case "Darwin"
 end
 
 ## Git
+abbr lg 'lazygit'
 abbr gaa 'git add (git rev-parse --show-toplevel)'
 abbr ga. 'git add .'
 abbr gcm 'git commit'
