@@ -1,5 +1,5 @@
 function update_dotfiles
-    cd $DOTFILES_PATH
+    cd ~/.dotfiles/
     git reset --hard
     git pull origin main
     prevd
