@@ -47,3 +47,8 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "rust" },
 	callback = function() vim.cmd("set iskeyword+=&") end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "fish" },
+	callback = function() vim.cmd("set iskeyword+=$") end,
+})
