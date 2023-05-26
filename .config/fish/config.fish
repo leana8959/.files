@@ -18,11 +18,18 @@ if status is-interactive
     set -gx LS_COLORS (vivid -m 24-bit generate one-light)
 
     # repo paths
+    # universal because tmux_sessionizer is run in non-interactive mode
     set -Ux REPOS_PATH ~/repos
     set -Ux UNIV_REPOS_PATH ~/univ-repos
     set -Ux PLAYGROUND_PATH ~/playground
     set -Ux CODEWARS_PATH ~/codewars
     set -Ux ZEROJUDGE_PATH ~/zerojudge
+
+    # dotfiles
+    set -Ux DOTFILES_PATH ~/.dotfiles
+
+    # gopath
+    set -gx GOPATH ~/.go
 
     # vi cursor style
     fish_vi_key_bindings
@@ -30,9 +37,6 @@ if status is-interactive
     set -gx fish_cursor_insert line
     set -gx fish_cursor_replace_one underscore
     set -gx fish_cursor_visual block
-
-    # gopath
-    set -gx GOPATH ~/.go
 
     # tools
     starship init fish | source
