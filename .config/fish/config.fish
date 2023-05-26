@@ -25,9 +25,6 @@ if status is-interactive
     set -Ux CODEWARS_PATH ~/codewars
     set -Ux ZEROJUDGE_PATH ~/zerojudge
 
-    # dotfiles
-    set -Ux DOTFILES_PATH ~/.dotfiles
-
     # gopath
     set -gx GOPATH ~/.go
 
