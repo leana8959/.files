@@ -1,6 +1,6 @@
 function update_dotfiles
     cd ~/.dotfiles/
     git reset --hard
-    git pull origin main
+    git pull --set-upstream origin main
     prevd
 end
