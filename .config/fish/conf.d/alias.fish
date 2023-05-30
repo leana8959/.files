@@ -12,6 +12,9 @@ case "Darwin"
     alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
 end
 
+## Docker
+abbr dc 'docker-compose'
+
 ## Git
 abbr lg 'lazygit'
 abbr gaa 'git add (git rev-parse --show-toplevel)'
