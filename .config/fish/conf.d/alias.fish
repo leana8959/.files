@@ -58,6 +58,7 @@ abbr myip 'curl ipinfo.io'
 abbr news newsboat
 abbr :q exit
 abbr :Q exit
+alias :w 'echo "Are you drunk??"'
 
 # ssh
 abbr pi 'ssh pi4'
