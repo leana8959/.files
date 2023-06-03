@@ -32,6 +32,7 @@ require("lazy").setup({
 	{ "AlexvZyl/nordic.nvim",       name = "nordic" },
 
 	-- Nice to have
+	"RaafatTurki/hex.nvim",
 	"tpope/vim-sleuth",
 	"mg979/vim-visual-multi",
 	"nvim-lualine/lualine.nvim",
