@@ -1,6 +1,3 @@
 [submodule "TOH-Quotes"]
 	path = TOH-Quotes
-	url = ssh://git@git.earth2077.fr:2222/leana/TOH-Quotes.git
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = git@git.earth2077.fr:leana/TOH-Quotes.git
