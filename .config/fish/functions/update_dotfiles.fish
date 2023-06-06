@@ -3,4 +3,5 @@ function update_dotfiles
     git reset --hard
     git pull --set-upstream origin main
     prevd
+    restow
 end
