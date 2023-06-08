@@ -1,3 +1,14 @@
 [[language]]
+name = "toml"
+language-server = { command = "", args = [] }
+
+[[language]]
 name = "rust"
 auto-format = true
+language-server = { command = "rustup", args = [
+  "run",
+  "stable",
+  "rust-analyzer",
+] }
+[language.auto-pairs]
+'|' = '|'
