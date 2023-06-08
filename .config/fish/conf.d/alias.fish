@@ -39,6 +39,7 @@ abbr r 'cd ~/repos/'
 abbr ts tmux_sessionizer
 abbr ta tmux_attach
 abbr v nvim
+abbr x hx
 
 ## brew
 abbr bis 'brew install'
@@ -66,7 +67,8 @@ abbr pi 'ssh pi4'
 abbr mainframe 'ssh mainframe'
 
 ## Preferences
-abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && nvim ../../init.lua && prevd'
-abbr fp 'cd ~/.dotfiles/.config/fish/ && nvim config.fish && prevd'
-abbr tp 'nvim ~/.dotfiles/.tmux.conf'
-abbr sp 'nvim ~/.dotfiles/.config/starship.toml'
+abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && $EDITOR ../../init.lua && prevd'
+abbr xp 'cd ~/.dotfiles/.config/helix && $EDITOR config.toml && prevd'
+abbr fp 'cd ~/.dotfiles/.config/fish/ && $EDITOR config.fish && prevd'
+abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
+abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
