@@ -5,6 +5,7 @@ starship
 neovim
 fzf
 gcc
+helix
 ltex-ls
 lua-language-server
 macchina

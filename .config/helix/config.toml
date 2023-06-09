@@ -2,9 +2,35 @@ theme = "onelight"
 
 [editor]
 line-number = "relative"
+shell = ["fish", "-c"]
+rulers = [80]
+completion-trigger-len = 1
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+
+[editor.file-picker]
+hidden = false
 
 [editor.cursor-shape]
 insert = "bar"
+select = "underline"
 
 [editor.soft-wrap]
 enable = true
+
+[keys.normal]
+K = "hover"
+'{' = "goto_prev_paragraph"
+'}' = "goto_next_paragraph"
+C-u = ["half_page_up", "align_view_center"]
+C-d = ["half_page_down", "align_view_center"]
+n = ["search_next", "align_view_center"]
+N = ["search_prev", "align_view_center"]
+C-r = ":config-reload"
+
+[keys.normal."space"]
+'=' = ":fmt"
+f = "file_picker_in_current_directory"
+F = "file_picker"
