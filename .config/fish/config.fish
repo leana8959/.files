@@ -1,6 +1,6 @@
 if status is-interactive
     # Default editor
-    set -gx EDITOR hx
+    set -gx EDITOR nvim
 
     # Set TTY for GPG
     set -gx GPG_TTY (tty)

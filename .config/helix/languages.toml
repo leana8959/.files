@@ -4,11 +4,13 @@ language-server = { command = "", args = [] }
 
 [[language]]
 name = "rust"
-auto-format = true
+auto-format = false
 language-server = { command = "rustup", args = [
   "run",
   "stable",
   "rust-analyzer",
 ] }
-[language.auto-pairs]
-'|' = '|'
+
+[[language]]
+name = "markdown"
+language-server = { command = "ltex-ls" }
