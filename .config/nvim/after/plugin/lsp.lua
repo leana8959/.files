@@ -30,7 +30,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', 'gu', ts.lsp_references, { desc = "LSP Usages (Telescope)", buffer = bufnr })
 	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
 	vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, { desc = "Code lens", buffer = bufnr })
-	vim.keymap.set('n', '<leader>f',
+	vim.keymap.set('n', '<leader>=',
 		function() vim.lsp.buf.format { async = true } end,
 		{ desc = "LSP format", buffer = bufnr }
 	)
