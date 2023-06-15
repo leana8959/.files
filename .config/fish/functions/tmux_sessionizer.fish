@@ -14,7 +14,7 @@ function tmux_sessionizer --description "create tmux sessions"
             echo "codewars haskell";
             echo "codewars c";
             echo "zerojudge c";
-        end | fzf)
+        end 2> /dev/null | fzf)
 
     switch $selected
     case ''
