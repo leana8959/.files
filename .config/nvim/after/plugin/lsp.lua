@@ -15,12 +15,6 @@ local on_attach = function(_, bufnr)
 	-- See `:help vim.lsp.*`
 	local ts = require "telescope.builtin"
 
-	local rename = function()
-		vim.ui.input(
-			{ prompt = "Rename symbol: " },
-			function(new_name) if (new_name ~= nil) then vim.lsp.buf.rename(new_name) end end)
-	end
-
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufnr })
 	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufnr })
 	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
@@ -34,7 +28,7 @@ local on_attach = function(_, bufnr)
 		function() vim.lsp.buf.format { async = true } end,
 		{ desc = "LSP format", buffer = bufnr }
 	)
-	vim.keymap.set('n', '<leader>r', rename, { desc = "LSP Rename symbol", buffer = bufnr })
+	vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = "LSP Rename symbol", buffer = bufnr })
 end
 
 -- Gutter symbols setup
