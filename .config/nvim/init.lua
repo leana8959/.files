@@ -44,7 +44,7 @@ require("lazy").setup({
 	"mizlan/iswap.nvim",
 	{ "ThePrimeagen/harpoon",           dependencies = "nvim-lua/plenary.nvim" },
 	{ "folke/todo-comments.nvim",       dependencies = "nvim-lua/plenary.nvim" },
-	{ "wintermute-cell/gitignore.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
+	{ "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim" },
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
