@@ -21,36 +21,22 @@ require("lazy").setup({
 
 	-- Colorschemes
 	"Th3Whit3Wolf/one-nvim",
-	{ "catppuccin/nvim",            name = "catppuccin" },
-	{ "bluz71/vim-nightfly-colors", name = "nightfly",  lazy = false, priority = 1000 },
-	{ "nordtheme/vim",              name = "nord" },
-	{ "rose-pine/neovim",           name = "rose-pine" },
-	{ "savq/melange-nvim",          name = "melange" },
-	{ "fcpg/vim-fahrenheit",        name = "fahrenheit" },
-	{ "adigitoleo/vim-mellow",      name = "mellow" },
-	{ "neanias/everforest-nvim",    name = "everforest" },
-	{ "AlexvZyl/nordic.nvim",       name = "nordic" },
 
 	-- Nice to have
 	"RaafatTurki/hex.nvim",
-	"tpope/vim-sleuth",
-	"mg979/vim-visual-multi",
 	"nvim-lualine/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
 	"simrat39/symbols-outline.nvim",
-	"ellisonleao/glow.nvim",
 	"nvim-tree/nvim-web-devicons",
-	{ "akinsho/toggleterm.nvim",     version = "*" },
 
 	-- Can't live without
-	{ "nvim-pack/nvim-spectre",      dependencies = "nvim-lua/plenary.nvim" },
+	"tpope/vim-sleuth",
 	{ "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 	"numToStr/Comment.nvim",
 	"tpope/vim-surround",
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/indent-blankline.nvim",
-	"lukoshkin/trailing-whitespace",
 	"windwp/nvim-autopairs",
 	"tpope/vim-fugitive",
 	"mbbill/undotree",
@@ -61,7 +47,8 @@ require("lazy").setup({
 	{ "wintermute-cell/gitignore.nvim", dependencies = { "nvim-telescope/telescope.nvim" } },
 	{
 		"hrsh7th/nvim-cmp",
-		dependencies = { "hrsh7th/cmp-nvim-lsp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip"
 		}
@@ -84,16 +71,14 @@ require("lazy").setup({
 		build = ":TSUpdate",
 	},
 	"nvim-treesitter/nvim-treesitter-context",
-	"lukas-reineke/lsp-format.nvim",
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"j-hui/fidget.nvim",
+			{ "j-hui/fidget.nvim", tag = "legacy" },
 			"folke/neodev.nvim",
 		},
 	},
-}, {
-	install = { colorscheme = { "rose-pine" } },
-})
+}, {}
+)
