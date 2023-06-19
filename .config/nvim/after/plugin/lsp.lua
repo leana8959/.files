@@ -126,10 +126,10 @@ require "lspconfig".gopls.setup {
 	capabilities = capabilities,
 }
 -- Rust
-require "lspconfig".rust_analyzer.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	cmd = { "rustup", "run", "stable", "rust-analyzer" }
+require "rust-tools".setup {
+	server = {
+		cmd = { "rustup", "run", "stable", "rust-analyzer" }
+	}
 }
 -- tex
 require "lspconfig".texlab.setup {

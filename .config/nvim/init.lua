@@ -68,6 +68,7 @@ require("lazy").setup({
 	},
 
 	-- Power tools
+	{ "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
