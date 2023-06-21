@@ -31,14 +31,17 @@ vim.opt.scrolloff = 14
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+	callback = function() vim.highlight.on_yank() end,
 })
 
+
+vim.cmd([[set listchars=tab:\ \ ,trail:␣]])
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex" },
-	callback = function() vim.cmd("setlocal wrap") end,
+	callback = function()
+		vim.cmd("setlocal list")
+		vim.cmd("setlocal wrap")
+	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
