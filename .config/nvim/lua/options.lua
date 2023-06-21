@@ -11,7 +11,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
--- wrapping makes the editor slow, turn it off by default
+-- wrapping makes the editor EXTREMELY slow, turn it off by default
 vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakindent = true
@@ -27,7 +27,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 
-vim.opt.scrolloff = 14
+vim.opt.scrolloff = 5
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
