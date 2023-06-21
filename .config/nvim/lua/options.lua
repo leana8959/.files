@@ -38,15 +38,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex" },
-	callback = function() vim.opt_local.wrap = true end,
+	callback = function() vim.cmd("setlocal wrap") end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "rust" },
-	callback = function() vim.cmd("set iskeyword+=&") end,
+	callback = function() vim.cmd("setlocal iskeyword+=&") end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "fish" },
-	callback = function() vim.cmd("set iskeyword+=$") end,
+	callback = function() vim.cmd("setlocal iskeyword+=$") end,
 })
