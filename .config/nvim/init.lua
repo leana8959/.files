@@ -48,6 +48,7 @@ require("lazy").setup({
 	},
 
 	-- Can't live without
+	"godlygeek/tabular",
 	"tpope/vim-sleuth",
 	{ "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
