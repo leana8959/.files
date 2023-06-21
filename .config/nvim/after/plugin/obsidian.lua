@@ -1,6 +1,6 @@
 require "obsidian".setup {
 	disable_frontmatter = true,
-	dir = "~/Documents/Diary/",
+	dir = "~/repos/leana/diary/",
 	daily_notes = {
 		date_format = "%s",
 	},
