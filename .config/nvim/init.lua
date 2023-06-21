@@ -28,6 +28,16 @@ require("lazy").setup({
 	"norcalli/nvim-colorizer.lua",
 	"simrat39/symbols-outline.nvim",
 	"nvim-tree/nvim-web-devicons",
+	{
+		"epwalsh/obsidian.nvim",
+		lazy = true,
+		event = { "BufReadPre " .. vim.fn.expand("~") .. "/repos/leana/diary/**.md" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
+		},
+	},
 
 	-- Can't live without
 	"tpope/vim-sleuth",
@@ -76,7 +86,7 @@ require("lazy").setup({
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			{ "j-hui/fidget.nvim", tag = "legacy" },
+			{ enabled = false, "j-hui/fidget.nvim", tag = "legacy" },
 			"folke/neodev.nvim",
 		},
 	},
