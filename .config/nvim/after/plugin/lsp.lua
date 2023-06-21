@@ -128,6 +128,7 @@ require "lspconfig".gopls.setup {
 -- Rust
 require "rust-tools".setup {
 	server = {
+		on_attach = on_attach,
 		cmd = { "rustup", "run", "stable", "rust-analyzer" }
 	}
 }
