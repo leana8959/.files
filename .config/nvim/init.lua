@@ -20,7 +20,15 @@ require("lazy").setup({
 	"Eandrju/cellular-automaton.nvim",
 
 	-- Colorschemes
-	"Th3Whit3Wolf/one-nvim",
+	-- "Th3Whit3Wolf/one-nvim",
+	-- { "leana8959/one-nvim",          branch = "debug", },
+	{
+		"leana8959/one-nvim",
+		config = function()
+			vim.opt.background = "light"
+			vim.cmd.colorscheme("one-nvim")
+		end
+	},
 
 	-- Nice to have
 	"RaafatTurki/hex.nvim",
