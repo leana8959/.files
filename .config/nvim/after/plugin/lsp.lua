@@ -117,19 +117,19 @@ require "lspconfig".lua_ls.setup {
 				enable = true,
 				defaultConfig = {
 					-- tab
-					indent_style = "tab",
-					tab_width = "2",
+					indent_style                       = "tab",
+					tab_width                          = "2",
 					-- alignment
-					align_call_args = "true",
-					align_function_params = "true",
-					align_continuous_assign_statement = "true",
-					align_continuous_rect_table_field = "true",
-					align_continuous_line_space = "2",
-					align_if_branch = "true",
-					align_array_table = "true",
+					align_call_args                    = "true",
+					align_function_params              = "true",
+					align_continuous_assign_statement  = "true",
+					align_continuous_rect_table_field  = "true",
+					align_continuous_line_space        = "2",
+					align_if_branch                    = "true",
+					align_array_table                  = "true",
 					align_continuous_similar_call_args = "true",
-					align_continuous_inline_comment = "true",
-					align_chain_expr = "only_call_stmt",
+					align_continuous_inline_comment    = "true",
+					align_chain_expr                   = "only_call_stmt",
 				}
 			}
 		}
@@ -179,7 +179,7 @@ require "lspconfig".hls.setup {
 	settings = {
 		haskell = {
 			cabalFormattingProvider = "cabalfmt",
-			formattingProvider = "fourmolu"
+			formattingProvider = "ormolu"
 		}
 	}
 }
