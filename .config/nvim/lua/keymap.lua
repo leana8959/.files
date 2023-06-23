@@ -42,3 +42,9 @@ vim.keymap.set("n", "<leader>w",
 	function() vim.cmd.setlocal("invwrap") end,
 	{ desc = "toggle wrap locally", silent = true }
 )
+vim.keymap.set("n", "<leader>hg",
+	function()
+		for _, v in ipairs(vim.treesitter.get_captures_at_cursor()) do print(v) end
+	end,
+	{ desc = "show highlight group at cursor", silent = true }
+)

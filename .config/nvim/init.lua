@@ -21,9 +21,10 @@ require("lazy").setup({
 
 	-- Colorschemes
 	-- "Th3Whit3Wolf/one-nvim",
-	-- { "leana8959/one-nvim",          branch = "debug", },
 	{
 		"leana8959/one-nvim",
+		-- enabled = false,
+		-- branch = "debug",
 		config = function()
 			vim.opt.background = "light"
 			vim.cmd.colorscheme("one-nvim")
@@ -31,6 +32,7 @@ require("lazy").setup({
 	},
 
 	-- Nice to have
+	"nvim-treesitter/playground",
 	"RaafatTurki/hex.nvim",
 	"nvim-lualine/lualine.nvim",
 	"norcalli/nvim-colorizer.lua",
@@ -95,7 +97,7 @@ require("lazy").setup({
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			{ enabled = false, "j-hui/fidget.nvim", tag = "legacy" },
+			{ enabled = true, "j-hui/fidget.nvim", tag = "legacy" },
 			"folke/neodev.nvim",
 		},
 	},
