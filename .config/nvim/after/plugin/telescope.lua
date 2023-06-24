@@ -4,6 +4,10 @@ local themes = require "telescope.themes"
 
 telescope.setup {
 	defaults = {
+		borderchars = {
+			" ", " ", " ", " ",
+			" ", " ", " ", " ",
+		},
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,

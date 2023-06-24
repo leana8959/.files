@@ -24,7 +24,7 @@ require("lazy").setup({
 	{
 		"leana8959/one-nvim",
 		-- enabled = false,
-		-- branch = "debug",
+		branch = "tweaks",
 		config = function()
 			vim.opt.background = "light"
 			vim.cmd.colorscheme("one-nvim")
@@ -92,6 +92,7 @@ require("lazy").setup({
 		build = ":TSUpdate",
 	},
 	"nvim-treesitter/nvim-treesitter-context",
+	"nvim-treesitter/playground",
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
