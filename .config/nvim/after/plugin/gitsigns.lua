@@ -46,7 +46,6 @@ vim.keymap.set("n",
   function()
     vim.cmd("Gitsigns toggle_numhl")
     vim.cmd("Gitsigns toggle_signs")
-    vim.cmd("Gitsigns toggle_word_diff")
   end,
   { desc = "[G]it High[l]ight" }
 )
