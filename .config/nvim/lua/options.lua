@@ -35,10 +35,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 
 vim.cmd([[set listchars=tab:\ \ ,trail:␣]])
+vim.opt.list = true
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex" },
 	callback = function()
-		vim.cmd("setlocal list")
 		vim.cmd("setlocal wrap")
 	end,
 })
