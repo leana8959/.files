@@ -47,8 +47,7 @@ function tmux_sessionizer --description "create tmux sessions"
         else
             set name (snakecase $name)
             set selected $CODEWARS_PATH/Haskell/$name/
-            mkdir -p $selected
-            touch $selected/main.hs
+            cabal init $selected --non-interactive
         end
 
     case "codewars c"
