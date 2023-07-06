@@ -35,6 +35,9 @@ if status is-interactive
     set -gx fish_cursor_replace_one underscore
     set -gx fish_cursor_visual block
 
+    # Ansible path
+    set -gx ANSIBLE_CONFIG ~/.ansible.cfg
+
     # tools
     starship init fish | source
     zoxide init fish --hook=prompt | source
