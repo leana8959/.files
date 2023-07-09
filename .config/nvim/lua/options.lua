@@ -8,7 +8,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.filetype = "on"
 
 vim.opt.tabstop = 4
-vim.opt.expandtab = false
+vim.opt.expandtab = true
 
 -- wrapping makes the editor EXTREMELY slow, turn it off by default
 vim.opt.wrap = false
