@@ -184,7 +184,8 @@ require "lspconfig".metals.setup {
 -- -- `haskell-tools` needs to be in `ftplugin`.
 -- -- To simplify the setup, we create an autocmd instead.
 local setup_ht = function()
-	require("haskell-tools").start_or_attach {
+	local ht = require("haskell-tools")
+	ht.start_or_attach {
 		tools = {
 			hover = {
 				border = border,
@@ -192,12 +193,17 @@ local setup_ht = function()
 			}
 		},
 		hls = {
-			on_attach = on_attach
+			on_attach = function(client, bufnr)
+				on_attach(client, bufnr)
+				vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
+					{ desc = "Hoogle signature", buffer = bufnr })
+				vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
+			end
 		}
 	}
 end
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "cabal", "haskell", "lhaskell" },
+	pattern = "haskell",
 	callback = setup_ht
 })
 
