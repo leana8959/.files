@@ -47,7 +47,11 @@ function tmux_sessionizer --description "create tmux sessions"
         else
             set name (snakecase $name)
             set selected $CODEWARS_PATH/Haskell/$name/
-            cabal init $selected --non-interactive
+
+            cabal init $selected --non-interactive && \
+            sed -i '' \
+                -E 's/^.*build-depends:.*$/    build-depends:\n        base ^>=4.17.0.0,\n        QuickCheck,\n        hspec,/' \
+                *.cabal
         end
 
     case "codewars c"
