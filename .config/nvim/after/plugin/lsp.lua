@@ -181,10 +181,16 @@ require "lspconfig".metals.setup {
 }
 
 -- Haskell
--- `haskell-tools` needs to be in `ftplugin`.
--- To simplify the setup, we create an autocmd instead.
+-- -- `haskell-tools` needs to be in `ftplugin`.
+-- -- To simplify the setup, we create an autocmd instead.
 local setup_ht = function()
 	require("haskell-tools").start_or_attach {
+		tools = {
+			hover = {
+				border = border,
+				stylize_markdown = true,
+			}
+		},
 		hls = {
 			on_attach = on_attach
 		}
