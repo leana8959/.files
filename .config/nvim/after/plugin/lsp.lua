@@ -179,17 +179,22 @@ require "lspconfig".metals.setup {
 	on_attach = on_attach,
 	capabilities = capabilities,
 }
+
 -- Haskell
-require "lspconfig".hls.setup {
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		haskell = {
-			cabalFormattingProvider = "cabalfmt",
-			formattingProvider = "ormolu"
+-- `haskell-tools` needs to be in `ftplugin`.
+-- To simplify the setup, we create an autocmd instead.
+local setup_ht = function()
+	require("haskell-tools").start_or_attach {
+		hls = {
+			on_attach = on_attach
 		}
 	}
-}
+end
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "cabal", "haskell", "lhaskell" },
+	callback = setup_ht
+})
+
 -- Python
 require "lspconfig".pylsp.setup {
 	on_attach = on_attach,
