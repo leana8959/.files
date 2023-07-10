@@ -198,7 +198,12 @@ local setup_ht = function()
 				vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
 					{ desc = "Hoogle signature", buffer = bufnr })
 				vim.keymap.set('n', '<space>ea', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
-			end
+			end,
+			default_settings = {
+				haskell = {
+					formattingProvider = "stylish-haskell"
+				}
+			}
 		}
 	}
 end
