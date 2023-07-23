@@ -24,7 +24,7 @@ require("lazy").setup({
 	{
 		"leana8959/one-nvim",
 		-- enabled = false,
-		branch = "tweaks",
+		-- branch = "tweaks",
 		config = function()
 			vim.opt.background = "light"
 			vim.cmd.colorscheme("one-nvim")
@@ -51,7 +51,6 @@ require("lazy").setup({
 
 	-- Can't live without
 	"godlygeek/tabular",
-	"tpope/vim-sleuth",
 	{ "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
 	{ "shortcuts/no-neck-pain.nvim", version = "*" },
 	"numToStr/Comment.nvim",

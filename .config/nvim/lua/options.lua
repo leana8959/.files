@@ -9,6 +9,7 @@ vim.opt.filetype = "on"
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
 
 -- wrapping makes the editor EXTREMELY slow, turn it off by default
 vim.opt.wrap = false

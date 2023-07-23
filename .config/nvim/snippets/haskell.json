@@ -1,14 +1,9 @@
 {
-	"Main module": {
-		"prefix": "mm",
+	"Assertion": {
+		"prefix": "asrt",
 		"body": [
-			"module Main where",
-			"",
-			"",
-			"",
-			"main = do",
-			"  print $ \"hello\""
+			"print $ assert ($0) \"Ok\""
 		],
-		"description": "Map using dictionary comprehension"
+		"description": "Assert"
 	}
 }
