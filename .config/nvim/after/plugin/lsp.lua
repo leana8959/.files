@@ -209,7 +209,7 @@ local setup_ht = function()
     }
 end
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "haskell", "cabal" },
+    pattern = { "haskell", "lhaskell", "cabal" },
     callback = setup_ht,
 })
 
