@@ -72,3 +72,9 @@ abbr xp 'cd ~/.dotfiles/.config/helix && $EDITOR config.toml && prevd'
 abbr fp 'cd ~/.dotfiles/.config/fish/ && $EDITOR config.fish && prevd'
 abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
 abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
+
+## Python
+abbr vv 'python3 -m venv venv && source venv/bin/activate.fish'
+abbr von 'source venv/bin/activate.fish'
+abbr voff 'deactivate'
+
