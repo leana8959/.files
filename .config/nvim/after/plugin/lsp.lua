@@ -202,6 +202,7 @@ local setup_ht = function()
             default_settings = {
                 haskell = {
                     -- formattingProvider = "stylish-haskell"
+                    -- formattingProvider = "fourmolu"
                     formattingProvider = "ormolu"
                 }
             }
