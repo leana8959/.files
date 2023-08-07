@@ -194,10 +194,12 @@ local setup_ht = function()
         },
         hls = {
             on_attach = function(client, bufnr)
+                vim.cmd("setlocal shiftwidth=2")
                 on_attach(client, bufnr)
                 vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
                     { desc = "Hoogle signature", buffer = bufnr })
                 vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
+                vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
             end,
             default_settings = {
                 haskell = {
