@@ -1,8 +1,8 @@
-local all =
+local prefs =
 {
 	RGB      = true,
 	RRGGBB   = true,
-	names    = true,
+	names    = false,
 	RRGGBBAA = true,
 	rgb_fn   = true,
 	hsl_fn   = true,
@@ -11,7 +11,9 @@ local all =
 }
 
 require "colorizer".setup {
-	lua = all,
-	css = all,
-	scss = all,
+	lua = prefs,
+	css = prefs,
+	scss = prefs,
+	fish = prefs,
+	toml = prefs,
 }
