@@ -1,9 +1,2 @@
 {
-	"Assertion": {
-		"prefix": "asrt",
-		"body": [
-			"print $ assert ($0) \"Ok\""
-		],
-		"description": "Assert"
-	}
 }
