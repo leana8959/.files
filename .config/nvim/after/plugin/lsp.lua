@@ -181,40 +181,32 @@ require "lspconfig".metals.setup {
 }
 
 -- Haskell
--- -- `haskell-tools` needs to be in `ftplugin`.
--- -- To simplify the setup, we create an autocmd instead.
-local setup_ht = function()
-    local ht = require("haskell-tools")
-    ht.start_or_attach {
-        tools = {
-            hover = {
-                border = border,
-                stylize_markdown = true,
-            }
-        },
-        hls = {
-            on_attach = function(client, bufnr)
-                vim.cmd("setlocal shiftwidth=2")
-                on_attach(client, bufnr)
-                vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
-                    { desc = "Hoogle signature", buffer = bufnr })
-                vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
-                vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
-            end,
-            default_settings = {
-                haskell = {
-                    -- formattingProvider = "stylish-haskell"
-                    formattingProvider = "fourmolu"
-                    -- formattingProvider = "ormolu"
-                }
+vim.g.haskell_tools = {
+    tools = {
+        hover = {
+            border = border,
+            stylize_markdown = true,
+        }
+    },
+    hls = {
+        on_attach = function(client, bufnr)
+            local ht = require("haskell-tools")
+
+            vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
+                { desc = "Hoogle signature", buffer = bufnr })
+            vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
+            vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
+
+            vim.cmd("setlocal shiftwidth=2")
+            on_attach(client, bufnr)
+        end,
+        default_settings = {
+            haskell = {
+                formattingProvider = "fourmolu"
             }
         }
     }
-end
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "haskell", "lhaskell", "cabal" },
-    callback = setup_ht,
-})
+}
 
 -- Python
 require "lspconfig".pylsp.setup {

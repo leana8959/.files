@@ -81,7 +81,8 @@ require("lazy").setup({
     {
         'mrcjkb/haskell-tools.nvim',
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-        branch = "1.x.x"
+        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+        branch = "2.x.x",
     },
     {
         "nvim-telescope/telescope.nvim",
