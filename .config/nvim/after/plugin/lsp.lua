@@ -79,10 +79,9 @@ local common_dictionary = {
     -- Rapport BIO
     "dédupliquer", "read", "reads", "contig", "Debruijn", "mer",
 }
+-- FIXME: this thing fails to run in French when babel latex english is present
 require "lspconfig".ltex.setup {
     on_attach = on_attach,
-    cmd = { "ltex-ls" },
-    filetypes = { "markdown", "text", "gitcommit", "tex" },
     settings = {
         ltex = {
             language = "auto",
