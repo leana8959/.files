@@ -9,12 +9,14 @@ function tmux_sessionizer --description "create tmux sessions"
             fd . $CODEWARS_PATH/Rust --exact-depth 1 --type d;
             fd . $CODEWARS_PATH/Python --exact-depth 1 --type d;
             fd . $CODEWARS_PATH/C --exact-depth 1 --type d;
+            fd . $CODEWARS_PATH/Shell --exact-depth 1 --type d;
             fd . $ZEROJUDGE_PATH --exact-depth 1 --type d;
             echo "play";
             echo "codewars haskell";
             echo "codewars rust";
             echo "codewars python";
             echo "codewars c";
+            echo "codewars shell";
             echo "zerojudge c";
         end 2> /dev/null | fzf)
 
@@ -77,6 +79,17 @@ function tmux_sessionizer --description "create tmux sessions"
             set selected $CODEWARS_PATH/C/$name/
             mkdir -p $selected
             touch $selected/main.c
+        end
+
+    case "codewars shell"
+        read -P "Give it a name: " name
+        if test -z $name
+            return 0
+        else
+            set name (snakecase $name)
+            set selected $CODEWARS_PATH/Shell/$name/
+            mkdir -p $selected
+            touch $selected/main.sh
         end
 
     case "zerojudge c"
