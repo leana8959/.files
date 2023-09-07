@@ -90,6 +90,7 @@ function tmux_sessionizer --description "create tmux sessions"
             set selected $CODEWARS_PATH/Shell/$name/
             mkdir -p $selected
             touch $selected/main.sh
+            touch $selected/test.rb
         end
 
     case "zerojudge c"
