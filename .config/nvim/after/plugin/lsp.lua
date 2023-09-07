@@ -223,3 +223,9 @@ require "lspconfig".html.setup {
     capabilities = capabilities,
     filetypes = { "html", "xhtml" },
 }
+-- Bash
+require "lspconfig".bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "sh" },
+}
