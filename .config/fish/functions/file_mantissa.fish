@@ -3,6 +3,6 @@ function file_mantissa --description 'Obtain file name without extension'
         echo (basename $argv) | sed 's/\.[^.]*$//'
     else
         echo "Please supply a path"
-        return 1 
+        return 1
     end
 end
