@@ -9,7 +9,7 @@ function install_fisher --description 'Install fisher and its plugins'
     fisher install patrickf1/colored_man_pages.fish
 
     # matching paired symbols https://github.com/laughedelic/pisces
-    # fisher install laughedelic/pisces
+    fisher install laughedelic/pisces
 
     # only keep command that succeeded in history
     fisher install meaningful-ooo/sponge
