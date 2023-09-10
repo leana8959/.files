@@ -229,3 +229,8 @@ require "lspconfig".bashls.setup {
     capabilities = capabilities,
     filetypes = { "sh" },
 }
+-- TypeScript
+require "lspconfig".tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
