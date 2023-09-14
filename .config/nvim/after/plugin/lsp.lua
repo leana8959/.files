@@ -234,3 +234,12 @@ require "lspconfig".tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+-- Typst
+require "lspconfig".typst_lsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        exportPdf = "onType"
+    }
+}
+vim.filetype.add({ extension = { typ = "typst" } })
