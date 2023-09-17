@@ -5,7 +5,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
-vim.opt.filetype = "on"
 
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
@@ -15,6 +14,7 @@ vim.opt.shiftwidth = 4
 vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakindent = true
+vim.opt.filetype = "on"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -29,11 +29,12 @@ vim.opt.smartindent = true
 
 vim.opt.scrolloff = 5
 
+vim.opt.colorcolumn = "80"
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function() vim.highlight.on_yank() end,
 })
-
 
 vim.cmd([[set listchars=tab:\ \ ,trail:␣]])
 vim.opt.list = true
