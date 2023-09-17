@@ -20,11 +20,8 @@ require("lazy").setup({
     "Eandrju/cellular-automaton.nvim",
 
     -- Colorschemes
-    -- "Th3Whit3Wolf/one-nvim",
     {
         "leana8959/one-nvim",
-        -- enabled = false,
-        -- branch = "tweaks",
         config = function()
             vim.opt.background = "light"
             vim.cmd.colorscheme("one-nvim")
@@ -88,7 +85,7 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = { "nvim-lua/plenary.nvim" }
+        dependencies = "nvim-lua/plenary.nvim"
     },
     {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -106,9 +103,8 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            { enabled = true, "j-hui/fidget.nvim", tag = "legacy" },
+            { "j-hui/fidget.nvim", enabled = true, tag = "legacy" },
             "folke/neodev.nvim",
         },
     },
-}, {}
-)
+})
