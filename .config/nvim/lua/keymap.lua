@@ -1,48 +1,38 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+local map = vim.keymap.set
+
 -- From THE one and only "Primeagen"
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line up" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line down" })
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move page down with cursor centered" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move page up with cursor centered" })
-vim.keymap.set("n", "n", "nzzzv", { desc = "Find next with cursor centered" })
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Find last with cursor centered" })
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>pv",
-	function() vim.cmd("Explore") end,
-	{ desc = "Show file explorer" }
-)
+map("n", "<leader>pv", function() vim.cmd("Explore") end)
 
-vim.keymap.set("n", "J", "mzJ`z", { desc = "Join line below without moving cursor" })
+map("n", "J", "mzJ`z")
 
-vim.keymap.set({ "n", "x", "v" }, "<leader>d", '"_d', { desc = "Delete without cutting" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>c", '"_dc', { desc = "Change without cutting" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>p", '"_dP', { desc = "Paste without copying selected" })
-vim.keymap.set({ "n", "x", "v" }, "<leader>y", '"+y', { desc = "Copy to system clipboard" })
+map({ "n", "x", "v" }, "<leader>d", '"_d')
+map({ "n", "x", "v" }, "<leader>c", '"_dc')
+map({ "n", "x", "v" }, "<leader>p", '"_dP')
+map({ "n", "x", "v" }, "<leader>y", '"+y')
 
-vim.keymap.set("n", "Q", "<nop>", { desc = "It's the worse place in the universe" })
+map("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>nf",
-	function() vim.cmd("enew") end,
-	{ desc = "Open new buffer" }
-)
+map("n", "<leader>nf", function() vim.cmd("enew") end)
 
-vim.keymap.set("c", "#lm", [[\{-}]], { desc = "[L]azy [M]atch" })
-vim.keymap.set("c", "#capl", [[\(.\{-}\)]], { desc = "[CAP]ture [L]ess" })
-vim.keymap.set("c", "#capm", [[\(.*\)]], { desc = "[CAP]ture [M]ore" })
+map("c", "#lm", [[\{-}]])
+map("c", "#capl", [[\(.\{-}\)]])
+map("c", "#capm", [[\(.*\)]])
 
-vim.keymap.set("n", "j", "gj", { desc = "J that works with line wrap" })
-vim.keymap.set("n", "k", "gk", { desc = "K that works with line wrap" })
-vim.keymap.set("n", "<Down>", "g<Down>", { desc = "<Down> that works with line wrap" })
-vim.keymap.set("n", "<Up>", "g<Up>", { desc = "<Up> that works with line wrap" })
+map("n", "j", "gj")
+map("n", "k", "gk")
+map("n", "<Down>", "g<Down>")
+map("n", "<Up>", "g<Up>")
 
-vim.keymap.set("n", "<leader>w",
-	function() vim.cmd.setlocal("invwrap") end,
-	{ desc = "toggle wrap locally", silent = true }
-)
-vim.keymap.set("n", "<leader>hg",
-	function() vim.cmd("TSHighlightCapturesUnderCursor") end,
-	{ desc = "show highlight group at cursor", silent = true }
-)
+map("n", "<leader>w", function() vim.cmd.setlocal("invwrap") end)
+map("n", "<leader>hg", function() vim.cmd("TSHighlightCapturesUnderCursor") end)
