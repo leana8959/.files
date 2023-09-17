@@ -174,11 +174,20 @@ require "lspconfig".jdtls.setup {
     capabilities = capabilities,
 }
 -- Scala
-require "lspconfig".metals.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
+local metals_config = require "metals".bare_config()
+metals_config.capabilities = capabilities
+metals_config.on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    local metals = require "metals"
+    vim.keymap.set('n', '<leader>se', metals.hover_worksheet(),
+        { desc = "scala evaluate" })
+end
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "scala", "sbt", "java" },
+    callback = function()
+        require "metals".initialize_or_attach(metals_config)
+    end
+})
 -- Haskell
 vim.g.haskell_tools = {
     tools = {
@@ -191,10 +200,12 @@ vim.g.haskell_tools = {
         on_attach = function(client, bufnr)
             local ht = require("haskell-tools")
 
-            vim.keymap.set('n', '<space>hs', ht.hoogle.hoogle_signature,
+            vim.keymap.set('n', '<leader>hs', ht.hoogle.hoogle_signature,
                 { desc = "Hoogle signature", buffer = bufnr })
-            vim.keymap.set('n', '<space>he', ht.lsp.buf_eval_all, { desc = "Evaluate all", buffer = bufnr })
-            vim.keymap.set('n', '<space>hr', ht.repl.toggle, { desc = "Toggle repl" })
+            vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all,
+                { desc = "Haskell evaluate", buffer = bufnr })
+            vim.keymap.set('n', '<leader>hr',
+                ht.repl.toggle, { desc = "Toggle repl" })
 
             vim.cmd("setlocal shiftwidth=2")
             on_attach(client, bufnr)
@@ -206,7 +217,6 @@ vim.g.haskell_tools = {
         }
     }
 }
-
 -- Python
 require "lspconfig".pylsp.setup {
     on_attach = on_attach,
