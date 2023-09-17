@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 require("fidget").setup({
     text = {
         spinner = "dots",
@@ -10,32 +12,34 @@ require "mason-lspconfig".setup {
     ensure_installed = {},
     automatic_installation = false
 }
+
 require "neodev".setup()
 
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "open diagnostic in a float window" })
-vim.keymap.set('n', '<leader>pe', vim.diagnostic.goto_prev, { desc = "goto [P]revious [E]rror" })
-vim.keymap.set('n', '<leader>ne', vim.diagnostic.goto_next, { desc = "goto [N]ext [E]rror" })
+map('n', '<leader>e', vim.diagnostic.open_float)
+map('n', '<leader>pe', vim.diagnostic.goto_prev)
+map('n', '<leader>ne', vim.diagnostic.goto_next)
 
 local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- See `:help vim.lsp.*`
     local ts = require "telescope.builtin"
+    local opts = { buffer = bufnr }
 
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP Hover", buffer = bufnr })
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { desc = "LSP Signature help", buffer = bufnr })
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "LSP Declaration", buffer = bufnr })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Definitions", buffer = bufnr })
-    vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = "LSP Type definitions", buffer = bufnr })
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "LSP Implementations", buffer = bufnr })
-    vim.keymap.set('n', 'gu', ts.lsp_references, { desc = "LSP Usages (Telescope)", buffer = bufnr })
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code action", buffer = bufnr })
-    vim.keymap.set('n', '<leader>cl', vim.lsp.codelens.run, { desc = "Code lens", buffer = bufnr })
-    vim.keymap.set('n', '<leader>f',
+    map('n', 'K', vim.lsp.buf.hover, opts)
+    map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    map('n', 'gD', vim.lsp.buf.declaration, opts)
+    map('n', 'gd', vim.lsp.buf.definition, opts)
+    map('n', 'gtd', vim.lsp.buf.type_definition, opts)
+    map('n', 'gi', vim.lsp.buf.implementation, opts)
+    map('n', 'gu', ts.lsp_references, opts)
+    map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+    map('n', '<leader>cl', vim.lsp.codelens.run, opts)
+    map('n', '<leader>r', vim.lsp.buf.rename, opts)
+    map('n', '<leader>f',
         function() vim.lsp.buf.format { async = true } end,
-        { desc = "LSP format", buffer = bufnr }
+        opts
     )
-    vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, { desc = "LSP Rename symbol", buffer = bufnr })
 end
 
 -- Gutter symbols setup
@@ -47,14 +51,10 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSign
 
 -- Border setup
 local border = {
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
-    { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
 }
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -74,8 +74,8 @@ local common_dictionary = {
     -- LaTeX
     "compat",
     -- Tech terms
-    "Vec", "VecDeque", "array", "stack", "queue", "deque", "string", "cursor", "matched",
-    "HashMap", "HashSet", "dédupliquer",
+    "Vec", "VecDeque", "array", "stack", "queue", "deque", "string", "cursor",
+    "matched", "HashMap", "HashSet", "dédupliquer",
     -- Rapport BIO
     "dédupliquer", "read", "reads", "contig", "Debruijn", "mer",
 }
@@ -85,9 +85,7 @@ require "lspconfig".ltex.setup {
     settings = {
         ltex = {
             language = "auto",
-            additionalRules = {
-                motherTongue = "en-US"
-            },
+            additionalRules = { motherTongue = "en-US" },
             trace = { server = "verbose" },
             dictionary = {
                 ["en-US"] = common_dictionary,
@@ -117,29 +115,6 @@ require "lspconfig".cssls.setup {
 require "lspconfig".lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        lua = {
-            format = {
-                enable = true,
-                defaultConfig = {
-                    -- tab
-                    indent_style                       = "tab",
-                    tab_width                          = "2",
-                    -- alignment
-                    align_call_args                    = "true",
-                    align_function_params              = "true",
-                    align_continuous_assign_statement  = "true",
-                    align_continuous_rect_table_field  = "true",
-                    align_continuous_line_space        = "2",
-                    align_if_branch                    = "true",
-                    align_array_table                  = "true",
-                    align_continuous_similar_call_args = "true",
-                    align_continuous_inline_comment    = "true",
-                    align_chain_expr                   = "only_call_stmt",
-                }
-            }
-        }
-    },
 }
 -- Go
 require "lspconfig".gopls.setup {
@@ -195,13 +170,11 @@ vim.g.haskell_tools = {
     hls = {
         on_attach = function(client, bufnr)
             local ht = require("haskell-tools")
+            local opts = { buffer = bufnr }
 
-            vim.keymap.set('n', '<leader>hs', ht.hoogle.hoogle_signature,
-                { desc = "Hoogle signature", buffer = bufnr })
-            vim.keymap.set('n', '<leader>he', ht.lsp.buf_eval_all,
-                { desc = "Haskell evaluate", buffer = bufnr })
-            vim.keymap.set('n', '<leader>hr',
-                ht.repl.toggle, { desc = "Toggle repl" })
+            map('n', '<leader>hs', ht.hoogle.hoogle_signature, opts)
+            map('n', '<leader>he', ht.lsp.buf_eval_all, opts)
+            map('n', '<leader>hr', ht.repl.toggle, opts)
 
             vim.cmd("setlocal shiftwidth=2")
             on_attach(client, bufnr)
