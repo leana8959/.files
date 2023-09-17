@@ -63,7 +63,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
--- Language servers
+-- LSPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Spell check
@@ -174,14 +174,10 @@ require "lspconfig".jdtls.setup {
     capabilities = capabilities,
 }
 -- Scala
-local metals_config = require "metals".bare_config()
+local metals = require "metals"
+local metals_config = metals.bare_config()
 metals_config.capabilities = capabilities
-metals_config.on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    local metals = require "metals"
-    vim.keymap.set('n', '<leader>se', metals.hover_worksheet(),
-        { desc = "scala evaluate" })
-end
+metals_config.on_attach = on_attach
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "scala", "sbt", "java" },
     callback = function()
