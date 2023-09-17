@@ -1,56 +1,59 @@
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+local opt = vim.opt
+local api = vim.api
 
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.cursorline = true
-vim.opt.signcolumn = "yes"
+opt.hlsearch = false
+opt.incsearch = true
 
-vim.opt.tabstop = 4
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.signcolumn = "yes"
+
+opt.tabstop = 4
+opt.expandtab = true
+opt.shiftwidth = 4
 
 -- wrapping makes the editor EXTREMELY slow, turn it off by default
-vim.opt.wrap = false
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-vim.opt.filetype = "on"
+opt.wrap = false
+opt.linebreak = true
+opt.breakindent = true
+opt.filetype = "on"
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undofile = true
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
 
-vim.opt.termguicolors = true
-vim.opt.mouse = "a"
+opt.termguicolors = true
+opt.mouse = "a"
 
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.smartindent = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.smartindent = true
 
-vim.opt.scrolloff = 5
+opt.scrolloff = 5
 
-vim.opt.colorcolumn = "80"
+opt.colorcolumn = "80"
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function() vim.highlight.on_yank() end,
 })
 
 vim.cmd([[set listchars=tab:\ \ ,trail:␣]])
-vim.opt.list = true
-vim.api.nvim_create_autocmd("FileType", {
+opt.list = true
+api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex", "typst" },
 	callback = function()
 		vim.cmd("setlocal wrap")
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+api.nvim_create_autocmd("FileType", {
 	pattern = { "rust" },
 	callback = function() vim.cmd("setlocal iskeyword+=&") end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+api.nvim_create_autocmd("FileType", {
 	pattern = { "fish" },
 	callback = function() vim.cmd("setlocal iskeyword+=$") end,
 })
