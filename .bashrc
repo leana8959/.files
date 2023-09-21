@@ -14,3 +14,5 @@ alias gpm="git fetch && git merge"
 
 alias ll="ls -l"
 alias la="ls -la"
+
+export EDITOR=vim
