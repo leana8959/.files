@@ -17,4 +17,8 @@ alias gpm='git fetch && git merge'
 alias ll='ls -l'
 alias la='ls -la'
 
+alias v='vim'
+
 export EDITOR=vim
+
+PS1='\[\e[38;5;203m\]\h\[\e[0m\]:\[\e[48;5;63m\]\w\n\[\e[0m\]$ '
