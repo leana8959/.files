@@ -4,7 +4,6 @@ case "Linux"
     alias chmod='chmod --preserve-root'
     alias chown='chown --preserve-root'
     abbr ss 'sudo systemctl'
-    abbr se 'sudoedit'
 case "Darwin"
     alias hide_desktop='defaults write com.apple.finder CreateDesktop false; killall Finder'
     alias show_desktop='defaults write com.apple.finder CreateDesktop true; killall Finder'
@@ -16,13 +15,12 @@ end
 abbr dc 'docker-compose'
 
 ## Git
-abbr lg 'lazygit'
 abbr gaa 'git add (git rev-parse --show-toplevel)'
 abbr ga. 'git add .'
 abbr gcm 'git commit'
 abbr gcl 'git clone'
 abbr gl 'git log'
-abbr gs 'git switch'
+abbr gsw 'git switch'
 abbr gp 'git pull'
 abbr gP 'git push'
 abbr gpr 'git fetch && git rebase'
@@ -31,22 +29,12 @@ abbr clone 'clone_to_repos'
 
 ## FS
 alias tree='tree -Cph -L 1'
-abbr t 'tree'
-abbr d 'cd ~/.dotfiles/.config/'
-abbr r 'cd ~/repos/'
 
 ## Editor
 abbr ts tmux_sessionizer
 abbr ta tmux_attach
 abbr v nvim
 abbr x hx
-
-## brew
-abbr bis 'brew install'
-abbr bif 'brew info'
-abbr br 'brew rmtree'
-abbr bs 'brew search'
-abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
 ## Misc
 alias restow='cd ~/.dotfiles/ && stow -D . && stow -S . && prevd'
@@ -77,4 +65,3 @@ abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 abbr vv 'python3 -m venv venv && source venv/bin/activate.fish'
 abbr von 'source venv/bin/activate.fish'
 abbr voff 'deactivate'
-
