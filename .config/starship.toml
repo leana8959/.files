@@ -1,5 +1,5 @@
 format = '''
-$hostname$directory$python
+$status$hostname$directory$python
 $character
 '''
 right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
@@ -20,7 +20,7 @@ format = '[$hostname]($style):'
 
 [character]
 success_symbol = '[󰘧](black)'           # Insert
-error_symbol = '[󰘧](error)'             # Insert
+error_symbol = '[󰘧](black)'             # Insert
 vimcmd_symbol = '[󰘧](hint)'             # Normal
 vimcmd_replace_symbol = '[󰘧](hint)'     # Replace
 vimcmd_replace_one_symbol = '[󰘧](hint)' # Replace
@@ -34,6 +34,10 @@ format = '[$path]($style)( [$read_only]($read_only_style))'
 read_only = ''
 read_only_style = 'error'
 truncation_symbol = '…/'
+
+[status]
+format = '([\[$status\]](bold error) )'
+disabled = false
 
 [python]
 style = 'hint'
