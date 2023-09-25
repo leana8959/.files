@@ -155,10 +155,20 @@ require "lspconfig".taplo.setup {
 }
 
 -- Java
-require "lspconfig".jdtls.setup {
+local config = {
     on_attach = on_attach,
     capabilities = capabilities,
+    cmd = { "/opt/homebrew/bin/jdtls" },
+    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
 }
+local jdtls_group = vim.api.nvim_create_augroup("jdtls", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "java" },
+    callback = function()
+        require('jdtls').start_or_attach(config)
+    end,
+    group = jdtls_group
+})
 
 -- Scala
 local metals = require "metals"

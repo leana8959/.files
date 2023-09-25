@@ -74,7 +74,8 @@ require("lazy").setup({
     },
 
     -- Power tools
-    { 'scalameta/nvim-metals',    dependencies = "nvim-lua/plenary.nvim" },
+    "git@github.com:mfussenegger/nvim-jdtls.git",
+    { "scalameta/nvim-metals",    dependencies = "nvim-lua/plenary.nvim" },
     { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
     {
         'mrcjkb/haskell-tools.nvim',
