@@ -35,6 +35,11 @@ if status is-interactive
     set -gx fish_cursor_replace_one underscore
     set -gx fish_cursor_visual block
 
+    # Java Home
+    set -x JAVA_HOME (/usr/libexec/java_home -v 17)
+    alias java $JAVA_HOME/bin/java
+    alias sbt 'sbt -java-home=$JAVA_HOME'
+
     # Ansible path
     set -gx ANSIBLE_CONFIG ~/.ansible.cfg
 
