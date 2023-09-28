@@ -38,7 +38,9 @@ if status is-interactive
     # Java Home
     set -x JAVA_HOME (/usr/libexec/java_home -v 17)
     alias java $JAVA_HOME/bin/java
-    alias sbt 'sbt -java-home=$JAVA_HOME'
+
+    # SBT JVM setting
+    alias sbt "sbt -java-home $JAVA_HOME"
 
     # Ansible path
     set -gx ANSIBLE_CONFIG ~/.ansible.cfg
