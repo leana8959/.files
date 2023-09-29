@@ -54,7 +54,11 @@ require("lazy").setup({
     "numToStr/Comment.nvim",
     "tpope/vim-surround",
     "lewis6991/gitsigns.nvim",
-    "lukas-reineke/indent-blankline.nvim",
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
+    },
     "windwp/nvim-autopairs",
     "tpope/vim-fugitive",
     "mbbill/undotree",
