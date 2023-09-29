@@ -28,9 +28,10 @@ opt.mouse = "a"
 
 opt.ignorecase = true
 opt.smartcase = true
+opt.autoindent = true
 opt.smartindent = true
 
-opt.scrolloff = 5
+opt.scrolloff = 3
 
 opt.colorcolumn = "80"
 
@@ -39,8 +40,12 @@ api.nvim_create_autocmd("TextYankPost", {
 	callback = function() vim.highlight.on_yank() end,
 })
 
-vim.cmd([[set listchars=tab:\ \ ,trail:␣]])
+opt.listchars = {
+	tab = " ",
+	trail = "␣",
+}
 opt.list = true
+
 api.nvim_create_autocmd("FileType", {
 	pattern = { "markdown", "tex", "typst" },
 	callback = function()
