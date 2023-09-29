@@ -36,31 +36,31 @@ opt.scrolloff = 3
 opt.colorcolumn = "80"
 
 api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	callback = function() vim.highlight.on_yank() end,
+    pattern = "*",
+    callback = function() vim.highlight.on_yank() end,
 })
 
 opt.listchars = {
-	tab = " ",
-	trail = "␣",
+    tab = " ",
+    trail = "␣",
 }
 opt.list = true
 
 api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "tex", "typst" },
-	callback = function()
-		vim.cmd("setlocal wrap")
-	end,
+    pattern = { "markdown", "tex", "typst" },
+    callback = function()
+        vim.cmd("setlocal wrap")
+    end,
 })
 
 api.nvim_create_autocmd("FileType", {
-	pattern = { "rust" },
-	callback = function() vim.cmd("setlocal iskeyword+=&") end,
+    pattern = { "rust" },
+    callback = function() vim.cmd("setlocal iskeyword+=&") end,
 })
 
 api.nvim_create_autocmd("FileType", {
-	pattern = { "fish" },
-	callback = function() vim.cmd("setlocal iskeyword+=$") end,
+    pattern = { "fish" },
+    callback = function() vim.cmd("setlocal iskeyword+=$") end,
 })
 
 vim.filetype.add({ extension = { typ = "typst" } })

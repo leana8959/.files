@@ -3,13 +3,13 @@ local actions = require "telescope.actions"
 local themes = require "telescope.themes"
 
 telescope.setup {
-	defaults = {
-		mappings = {
-			i = {
-				["<esc>"] = actions.close,
-			},
-		},
-	},
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    },
 }
 
 -- Enable telescope fzf native, if installed
@@ -18,8 +18,8 @@ pcall(require "telescope".load_extension, 'fzf')
 local builtin = require "telescope.builtin"
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>/',
-	function() builtin.current_buffer_fuzzy_find(themes.get_dropdown { previewer = false }) end,
-	{ desc = '[/] Fuzzily search in current buffer]' }
+    function() builtin.current_buffer_fuzzy_find(themes.get_dropdown { previewer = false }) end,
+    { desc = '[/] Fuzzily search in current buffer]' }
 )
 vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Search [A]ll [F]iles' })
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
