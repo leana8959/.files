@@ -9,7 +9,23 @@ require("fidget").setup({
 
 require "mason".setup()
 require "mason-lspconfig".setup {
-    ensure_installed = {},
+    ensure_installed = {
+        "ltex",
+        "jsonls",
+        "lemminx",
+        "cssls",
+        "lua_ls",
+        "gopls",
+        "texlab",
+        "marksman",
+        "taplo",
+        "pylsp",
+        "clangd",
+        "html",
+        "bashls",
+        "tsserver",
+        "typst_lsp",
+    },
     automatic_installation = false
 }
 
