@@ -236,7 +236,7 @@ vim.g.haskell_tools = {
         end,
         default_settings = {
             haskell = {
-                formattingProvider = "fourmolu"
+                formattingProvider = "fourmolu",
             }
         }
     }
@@ -274,13 +274,13 @@ require "lspconfig".tsserver.setup {
     capabilities = capabilities,
 }
 
--- Typst
-require "lspconfig".typst_lsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        exportPdf = "onType"
-    }
-}
+-- -- Typst
+-- require "lspconfig".typst_lsp.setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--     settings = {
+--         exportPdf = "onType"
+--     }
+-- }
 
 vim.filetype.add({ extension = { typ = "typst" } })

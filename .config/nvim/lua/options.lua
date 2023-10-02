@@ -41,7 +41,7 @@ api.nvim_create_autocmd("TextYankPost", {
 })
 
 opt.listchars = {
-    tab = " ",
+    tab = " ",
     trail = "␣",
 }
 opt.list = true
