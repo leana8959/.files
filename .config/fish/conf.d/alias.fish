@@ -17,7 +17,7 @@ abbr dc 'docker-compose'
 ## Git
 abbr gaa 'git add (git rev-parse --show-toplevel)'
 abbr ga. 'git add .'
-abbr gcm 'git commit'
+abbr gc 'git commit'
 abbr gcl 'git clone'
 abbr gl 'git log'
 abbr gsw 'git switch'
