@@ -144,14 +144,6 @@ require "lspconfig".gopls.setup {
     capabilities = capabilities,
 }
 
--- Rust
-require "rust-tools".setup {
-    server = {
-        on_attach = on_attach,
-        cmd = { "rustup", "run", "stable", "rust-analyzer" }
-    }
-}
-
 -- tex
 require "lspconfig".texlab.setup {
     on_attach = on_attach,
@@ -169,6 +161,50 @@ require "lspconfig".taplo.setup {
     on_attach = on_attach,
     capabilities = capabilities,
 }
+
+-- Python
+require "lspconfig".pylsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+-- C
+require "lspconfig".clangd.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+-- HTML
+require "lspconfig".html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "html", "xhtml" },
+}
+
+-- Bash
+require "lspconfig".bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "sh" },
+}
+
+-- TypeScript
+require "lspconfig".tsserver.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+-- Typst
+require "lspconfig".typst_lsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        exportPdf = "onType"
+    }
+}
+vim.filetype.add({ extension = { typ = "typst" } })
+
+-- Standalone plugins
 
 -- Java
 local config = {
@@ -258,45 +294,10 @@ vim.g.haskell_tools = {
     }
 }
 
--- Python
-require "lspconfig".pylsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+-- Rust
+require "rust-tools".setup {
+    server = {
+        on_attach = on_attach,
+        cmd = { "rustup", "run", "stable", "rust-analyzer" }
+    }
 }
-
--- C
-require "lspconfig".clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- HTML
-require "lspconfig".html.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "html", "xhtml" },
-}
-
--- Bash
-require "lspconfig".bashls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "sh" },
-}
-
--- TypeScript
-require "lspconfig".tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- -- Typst
--- require "lspconfig".typst_lsp.setup {
---     on_attach = on_attach,
---     capabilities = capabilities,
---     settings = {
---         exportPdf = "onType"
---     }
--- }
-
-vim.filetype.add({ extension = { typ = "typst" } })
