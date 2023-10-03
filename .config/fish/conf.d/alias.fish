@@ -36,6 +36,10 @@ abbr ta tmux_attach
 abbr v nvim
 abbr x hx
 
+
+## brew
+abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
+
 ## Misc
 alias restow='cd ~/.dotfiles/ && stow -D . && stow -S . && prevd'
 abbr yt 'yt-dlp -f "b" --no-playlist \
