@@ -35,7 +35,7 @@ map('n', '<leader>e', vim.diagnostic.open_float)
 map('n', '<leader>pe', vim.diagnostic.goto_prev)
 map('n', '<leader>ne', vim.diagnostic.goto_next)
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- See `:help vim.lsp.*`
@@ -56,6 +56,11 @@ local on_attach = function(_, bufnr)
         function() vim.lsp.buf.format { async = true } end,
         opts
     )
+
+    local navic = require "nvim-navic"
+    if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+    end
 end
 
 -- Gutter symbols setup
@@ -198,9 +203,9 @@ require "lspconfig".tsserver.setup {
 require "lspconfig".typst_lsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-        exportPdf = "onType"
-    }
+    -- settings = {
+    --     exportPdf = "onType",
+    -- },
 }
 vim.filetype.add({ extension = { typ = "typst" } })
 
