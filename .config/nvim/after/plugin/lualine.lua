@@ -1,12 +1,12 @@
 require "lualine".setup({
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = "auto",
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {
-      statusline = {},
-      winbar = {},
+      statusline = { "fugitive" },
+      winbar = { "fugitive" },
     },
     ignore_focus = {},
     always_divide_middle = true,
@@ -19,19 +19,19 @@ require "lualine".setup({
   },
   sections = {
     lualine_a = {},
-    lualine_b = { 'diagnostics' },
+    lualine_b = { "diagnostics" },
     lualine_c = {
-      'progress',
-      { 'filename', newfile_status = true, path = 3 }
+      -- { "filename", newfile_status = true, path = 1 },
+      { "navic" }
     },
     lualine_x = {},
-    lualine_y = { 'diff' },
-    lualine_z = { 'branch' }
+    lualine_y = {},
+    lualine_z = { "progress" }
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = {},
-    lualine_c = { { 'filename', path = 4 } },
+    lualine_b = { { "filename", path = 4 } },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
     lualine_z = {}
