@@ -48,7 +48,6 @@ if status is-interactive
 
     # tools
     starship init fish | source
-    zoxide init fish --hook=prompt | source
 end
 
 # iTerm2 intergration
