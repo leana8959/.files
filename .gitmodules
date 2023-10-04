@@ -1,3 +1,6 @@
 [submodule "TOH-Quotes"]
 	path = TOH-Quotes
 	url = git@git.earth2077.fr:leana/TOH-Quotes.git
+[submodule "fleabag-quotes"]
+	path = fleabag-quotes
+	url = git@git.earth2077.fr:leana/fleabag-quotes.git
