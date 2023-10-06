@@ -207,7 +207,6 @@ require "lspconfig".typst_lsp.setup {
     --     exportPdf = "onType",
     -- },
 }
-vim.filetype.add({ extension = { typ = "typst" } })
 
 -- Standalone plugins
 
