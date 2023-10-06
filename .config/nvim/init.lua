@@ -34,7 +34,7 @@ require("lazy").setup({
     "nvim-treesitter/playground",
     "RaafatTurki/hex.nvim",
     "nvim-lualine/lualine.nvim",
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     "simrat39/symbols-outline.nvim",
     "nvim-tree/nvim-web-devicons",
     {
@@ -79,7 +79,7 @@ require("lazy").setup({
     },
 
     -- Power tools
-    "git@github.com:mfussenegger/nvim-jdtls.git",
+    "mfussenegger/nvim-jdtls",
     { "scalameta/nvim-metals",    dependencies = "nvim-lua/plenary.nvim" },
     { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
     {
