@@ -30,7 +30,7 @@ require "lualine".setup({
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = { { "filename", path = 4 } },
+    lualine_b = { { "filename", path = 3 } },
     lualine_c = {},
     lualine_x = {},
     lualine_y = {},
