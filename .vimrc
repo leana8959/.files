@@ -4,4 +4,3 @@ set shiftwidth=4
 syntax enable
 set incsearch
 set relativenumber
-
