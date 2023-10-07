@@ -5,19 +5,19 @@ function tmux_sessionizer --description "create tmux sessions"
         (begin
             fd . $REPOS_PATH $UNIV_REPOS_PATH --exact-depth 2 --type d;
             fd . $PLAYGROUND_PATH --exact-depth 1 --type d;
-            fd . $CODEWARS_PATH/Haskell --exact-depth 1 --type d;
-            fd . $CODEWARS_PATH/Rust --exact-depth 1 --type d;
-            fd . $CODEWARS_PATH/Python --exact-depth 1 --type d;
-            fd . $CODEWARS_PATH/C --exact-depth 1 --type d;
-            fd . $CODEWARS_PATH/Shell --exact-depth 1 --type d;
-            fd . $ZEROJUDGE_PATH --exact-depth 1 --type d;
+            # fd . $CODEWARS_PATH/Haskell --exact-depth 1 --type d;
+            # fd . $CODEWARS_PATH/Rust --exact-depth 1 --type d;
+            # fd . $CODEWARS_PATH/Python --exact-depth 1 --type d;
+            # fd . $CODEWARS_PATH/C --exact-depth 1 --type d;
+            # fd . $CODEWARS_PATH/Shell --exact-depth 1 --type d;
+            # fd . $ZEROJUDGE_PATH --exact-depth 1 --type d;
             echo "play";
-            echo "codewars haskell";
-            echo "codewars rust";
-            echo "codewars python";
-            echo "codewars c";
-            echo "codewars shell";
-            echo "zerojudge c";
+            # echo "codewars haskell";
+            # echo "codewars rust";
+            # echo "codewars python";
+            # echo "codewars c";
+            # echo "codewars shell";
+            # echo "zerojudge c";
         end 2> /dev/null | fzf)
 
     switch $selected
