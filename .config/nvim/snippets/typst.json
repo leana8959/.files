@@ -1,0 +1,32 @@
+{
+	"Enum item": {
+		"prefix": "ei",
+		"body": [
+			"#enum.item[",
+			"$0",
+			"]"
+		]
+	},
+	"List item": {
+		"prefix": "li",
+		"body": [
+			"#list.item[",
+			"$0",
+			"]"
+		]
+	},
+	"Raw box": {
+		"prefix": "r",
+		"body": [
+			"``` $0 ```"
+		]
+	},
+	"Raw block": {
+		"prefix": "rr",
+		"body": [
+			"```",
+			"$0",
+			"```"
+		]
+	}
+}
