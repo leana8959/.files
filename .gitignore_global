@@ -2,7 +2,7 @@
 # The following was generated with gitignore.nvim: #
 #--------------------------------------------------#
 # Gitignore for the following technologies: C, Rust, Scala, Vim, Python,
-# Haskell, Java, C++, rust-analyzer, SBT, Metals, Gradle
+# Haskell, Java, C++, rust-analyzer, SBT, Metals, Gradle, OCaml
 
 # Prerequisites
 *.d
@@ -378,6 +378,41 @@ gradle-app.setting
 
 # Java heap dump
 *.hprof
+
+#--------------------------------------------------#
+# The following was generated with gitignore.nvim: #
+#--------------------------------------------------#
+# Gitignore for the following technologies: Gradle
+
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+
+# ocamlbuild working directory
+_build/
+
+# ocamlbuild targets
+*.byte
+*.native
+
+# oasis generated files
+setup.data
+setup.log
+
+# Merlin configuring file for Vim and Emacs
+.merlin
+
+# Dune generated files
+*.install
+
+# Local OPAM switch
+_opam/
 
 ## My rules
 
