@@ -38,7 +38,7 @@ ls.add_snippets("typst", {
     s("entry", {
         t({
             "#entry(",
-            "  " .. os.date("(year: %Y, month: %m, day:%d)"),
+            "  " .. os.date("(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"),
             ")[",
             "",
         }),
@@ -87,6 +87,6 @@ cmp.setup({
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
-        { name = "buffer" },
+        { name = "buffer",  keyword_length = 7 },
     },
 })
