@@ -43,6 +43,11 @@ if status is-interactive
         alias sbt "sbt -java-home $JAVA_HOME"
     end
 
+    # OCaml opam environment
+    if command -q opam
+        eval (opam env)
+    end
+
     # Ansible path
     set -gx ANSIBLE_CONFIG ~/.ansible.cfg
 

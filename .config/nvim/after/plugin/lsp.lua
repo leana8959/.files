@@ -208,7 +208,15 @@ require "lspconfig".typst_lsp.setup {
     -- },
 }
 
--- Standalone plugins
+-- OCaml
+require "lspconfig".ocamllsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
+------------------------
+-- Standalone plugins --
+------------------------
 
 -- Java
 local config = {
