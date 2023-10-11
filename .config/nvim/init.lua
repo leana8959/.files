@@ -88,7 +88,7 @@ require("lazy").setup({
         ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
         branch = "2.x.x",
     },
-    "kaarmu/typst.vim",
+    { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
