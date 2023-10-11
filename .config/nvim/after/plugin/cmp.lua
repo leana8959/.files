@@ -21,7 +21,7 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
 
--- require "luasnip.loaders.from_vscode".lazy_load({ paths = { "./snippets" } })
+require "luasnip.loaders.from_vscode".lazy_load({ paths = { "./snippets" } })
 
 -- Some hack
 ls.config.set_config({
