@@ -24,9 +24,21 @@
 	"Raw block": {
 		"prefix": "rr",
 		"body": [
-			"```",
+			"```$1",
 			"$0",
 			"```"
+		]
+	},
+	"Config report": {
+		"prefix": "report",
+		"body": [
+			"#import \"template/report.typ\": *",
+			"",
+			"#show: doc => conf.with(",
+			"  \"$1\",",
+			"  lang: \"fr\",",
+			")(doc)",
+			"$0"
 		]
 	}
 }
