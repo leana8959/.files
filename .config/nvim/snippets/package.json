@@ -3,6 +3,10 @@
 	"contributes": {
 		"snippets": [
 			{
+				"language": "all",
+				"path": "./emoji.json"
+			},
+			{
 				"language": "haskell",
 				"path": "./haskell.json"
 			},
