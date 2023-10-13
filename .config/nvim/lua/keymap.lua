@@ -39,3 +39,5 @@ map("n", "<leader>gp", function() vim.cmd("G pull") end)
 
 map("n", "<leader>w", function() vim.cmd.setlocal("invwrap") end)
 map("n", "<leader>hg", function() vim.cmd("TSHighlightCapturesUnderCursor") end)
+
+map("n", "<leader>ta", function() vim.cmd("Tabularize /=") end)
