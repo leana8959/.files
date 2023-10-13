@@ -1,4 +1,4 @@
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
 set -o vi
 
 function gaa() {
@@ -22,4 +22,4 @@ export EDITOR=vim
 
 bind -x '"\C-l": clear;'
 
-PS1='\[\e[38;5;203m\]\h\[\e[0m\]:\[\e[48;5;63m\]\w\n\[\e[0m\]$ '
+# PS1='\[\e[38;5;203m\]\h\[\e[0m\]:\[\e[48;5;63m\]\w\n\[\e[0m\]$ '
