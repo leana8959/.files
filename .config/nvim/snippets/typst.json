@@ -32,12 +32,13 @@
 	"Config report": {
 		"prefix": "report",
 		"body": [
-			"#import \"template/report.typ\": *",
+			"#import \"template/report.typ\": conf",
 			"",
-			"#show: doc => conf.with(",
-			"  \"$1\",",
-			"  lang: \"fr\",",
-			")(doc)",
+			"#show: conf.with(",
+			"  title  : \"${1}\",",
+			"  author : \"${2:Léana CHIANG}\",",
+			"  lang   : \"${3:fr}\",",
+			")",
 			"$0"
 		]
 	}
