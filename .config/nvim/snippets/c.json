@@ -13,5 +13,14 @@
 		"body": [
 			"printf(\"${1:expression}: ${2:format}\\n\", ${1:expression});"
 		]
+	},
+	"Check pointer": {
+		"prefix": "cpt",
+		"body": [
+			"if (${1:ptr} == NULL) {",
+			"\treturn;",
+			"}",
+			"$0"
+		]
 	}
 }
