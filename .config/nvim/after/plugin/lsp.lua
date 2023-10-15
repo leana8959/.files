@@ -203,9 +203,9 @@ require "lspconfig".tsserver.setup {
 require "lspconfig".typst_lsp.setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    -- settings = {
-    --     exportPdf = "onType",
-    -- },
+    settings = {
+        exportPdf = "never",
+    },
 }
 
 -- OCaml
