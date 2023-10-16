@@ -25,7 +25,24 @@ require("lazy").setup({
         config = function()
             vim.opt.background = "light"
             vim.cmd.colorscheme("one-nvim")
-        end
+        end,
+        enabled = false,
+    },
+    {
+        "owickstrom/vim-colors-paramount",
+        config = function()
+            vim.opt.background = "light"
+            vim.cmd.colorscheme "paramount"
+        end,
+        enabled = false,
+    },
+    {
+        "https://git.earth2077.fr/leana/curry.nvim",
+        config = function()
+            vim.opt.background = "light"
+            vim.cmd.colorscheme "curry"
+        end,
+        enabled = true,
     },
 
     -- Nice to have
