@@ -22,17 +22,25 @@
 		]
 	},
 	"Raw block": {
-		"prefix": "rr",
+		"prefix": "rb",
 		"body": [
 			"```$1",
 			"$0",
 			"```"
 		]
 	},
+	"sourcecode": {
+		"prefix": "sc",
+		"body": [
+			"#sourcecode[```$1",
+			"$0",
+			"```]"
+		]
+	},
 	"Config report": {
 		"prefix": "report",
 		"body": [
-			"#import \"template/report.typ\": conf",
+			"#import \"template/report.typ\": *",
 			"",
 			"#show: conf.with(",
 			"  title  : \"${1}\",",
