@@ -34,11 +34,18 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local function show_date()
+    return os.date("(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)")
+end
 ls.add_snippets("typst", {
     s("entry", {
         t({
             "#entry(",
-            "  " .. os.date("(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"),
+            ""
+        }),
+        f(show_date),
+        t({
+            "",
             ")[",
             "",
         }),
