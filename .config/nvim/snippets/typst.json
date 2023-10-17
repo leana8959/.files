@@ -37,6 +37,14 @@
 			"```]"
 		]
 	},
+	"showybox": {
+		"prefix": "sb",
+		"body": [
+			"#showybox(title: \"$1\")[",
+			"$0",
+			"```]"
+		]
+	},
 	"Config report": {
 		"prefix": "report",
 		"body": [
