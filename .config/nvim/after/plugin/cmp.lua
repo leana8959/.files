@@ -35,7 +35,7 @@ local has_words_before = function()
 end
 
 local function show_date()
-    return os.date("(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)")
+    return "  " .. os.date("(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)")
 end
 ls.add_snippets("typst", {
     s("entry", {
