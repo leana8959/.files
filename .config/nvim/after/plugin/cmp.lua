@@ -79,7 +79,7 @@ local function right()
     return " " .. cms
 end
 ls.add_snippets("all", {
-    s("ban", {
+    s("banner", {
         f(horizon, { 1 }),
         t({ "", "" }),
         f(left), i(1), f(right),
