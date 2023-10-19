@@ -58,7 +58,7 @@ local function horizon(args)
     assert(vim.bo.commentstring ~= "", "comment string is not set")
     local cms = vim.bo.commentstring:gsub("%s*%%s", "")
     local chr = cms:gsub("%s*", ""):sub(0, 1)
-    local len = args[1][1]:len()
+    local len = vim.fn.strdisplaywidth(args[1][1])
 
     local acc = cms
     for i = 1, len + cms:len() + 1, 1 do
