@@ -54,6 +54,41 @@ ls.add_snippets("typst", {
     }),
 })
 
+local function horizon(args)
+    assert(vim.bo.commentstring ~= "", "comment string is not set")
+    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
+    local chr = cms:gsub("%s*", ""):sub(0, 1)
+    local len = args[1][1]:len()
+
+    local acc = cms
+    for i = 1, len + cms:len(), 1 do
+        acc = acc .. chr
+    end
+    acc = acc .. cms
+
+    return acc
+end
+local function left()
+    assert(vim.bo.commentstring ~= "", "comment string is not set")
+    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
+    return cms .. " "
+end
+local function right()
+    assert(vim.bo.commentstring ~= "", "comment string is not set")
+    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
+    return " " .. cms
+end
+ls.add_snippets("all", {
+    s("ban", {
+        f(horizon, { 1 }),
+        t({ "", "" }),
+        f(left), i(1), f(right),
+        t({ "", "" }),
+        f(horizon, { 1 }),
+    })
+})
+
+
 cmp.setup({
     snippet = {
         expand = function(args)
