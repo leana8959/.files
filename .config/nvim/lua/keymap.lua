@@ -46,3 +46,5 @@ map("n", "<leader>tC", function() vim.cmd([[Tabularize /\/\/]]) end)
 
 map("n", "<leader>+x", function() vim.cmd("!chmod +x %") end)
 map("n", "<leader>-x", function() vim.cmd("!chmod -x %") end)
+
+map("n", "<leader>tw", function() vim.cmd("Twilight") end)
