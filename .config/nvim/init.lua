@@ -48,6 +48,7 @@ require("lazy").setup({
     -- Nice to have
     "tpope/vim-sleuth",
     { "SmiteshP/nvim-navic",         dependencies = "neovim/nvim-lspconfig" },
+    "folke/twilight.nvim",
     "nvim-treesitter/playground",
     "RaafatTurki/hex.nvim",
     "nvim-lualine/lualine.nvim",
