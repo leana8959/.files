@@ -63,4 +63,12 @@ api.nvim_create_autocmd("FileType", {
     callback = function() vim.cmd("setlocal iskeyword+=$") end,
 })
 
+api.nvim_create_autocmd("BufEnter", {
+    pattern  = { "Caddyfile" },
+    callback = function()
+        vim.opt_local.filetype = "Caddy"
+        vim.bo.commentstring   = "# %s"
+    end,
+})
+
 vim.filetype.add({ extension = { typ = "typst" } })
