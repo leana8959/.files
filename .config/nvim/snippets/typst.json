@@ -18,7 +18,7 @@
 	"Raw box": {
 		"prefix": "r",
 		"body": [
-			"``` $0 ```"
+			"```$1 $0 ```"
 		]
 	},
 	"Raw block": {
@@ -42,7 +42,35 @@
 		"body": [
 			"#showybox(title: \"$1\")[",
 			"$0",
-			"```]"
+			"]"
+		]
+	},
+	"showybox definition": {
+		"prefix": "sd",
+		"body": [
+			"#showybox_definition(title: \"$1\")[",
+			"$0",
+			"]"
+		]
+	},
+	"showybox example": {
+		"prefix": "se",
+		"body": [
+			"#showybox_example(title: \"$1\")[",
+			"$0",
+			"]"
+		]
+	},
+	"arrow right": {
+		"prefix": "->",
+		"body": [
+			"#sym.arrow"
+		]
+	},
+	"arrow left": {
+		"prefix": "<-",
+		"body": [
+			"#sym.arrow.l"
 		]
 	},
 	"Config report": {
