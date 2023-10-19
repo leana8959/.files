@@ -64,7 +64,7 @@ api.nvim_create_autocmd("FileType", {
 })
 
 api.nvim_create_autocmd("BufEnter", {
-    pattern  = { "Caddyfile" },
+    pattern  = { "*Caddyfile*" },
     callback = function()
         vim.opt_local.filetype = "Caddy"
         vim.bo.commentstring   = "# %s"
