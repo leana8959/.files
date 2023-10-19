@@ -85,7 +85,6 @@ ls.add_snippets("all", {
         f(left), i(1), f(right),
         t({ "", "" }),
         f(horizon, { 1 }),
-        t({ "", "" }), i(0),
     })
 })
 
