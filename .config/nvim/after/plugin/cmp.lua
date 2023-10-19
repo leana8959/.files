@@ -61,10 +61,10 @@ local function horizon(args)
     local len = args[1][1]:len()
 
     local acc = cms
-    for i = 1, len + cms:len(), 1 do
+    for i = 1, len + cms:len() + 1, 1 do
         acc = acc .. chr
     end
-    acc = acc .. cms
+    acc = acc .. chr
 
     return acc
 end
