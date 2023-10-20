@@ -123,7 +123,6 @@ require("lazy").setup({
         build = ":TSUpdate",
     },
     "nvim-treesitter/nvim-treesitter-context",
-    "nvim-treesitter/playground",
     {
         "neovim/nvim-lspconfig",
         dependencies = {
