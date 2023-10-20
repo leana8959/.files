@@ -7,6 +7,10 @@ require("fidget").setup({
     },
 })
 
+local ufo = require("ufo")
+map("n", "zR", ufo.openAllFolds)
+map("n", "zM", ufo.closeAllFolds)
+
 require "mason".setup()
 require "mason-lspconfig".setup {
     ensure_installed = {
@@ -87,6 +91,11 @@ end
 -- LSPs / DAPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+ufo.setup()
 
 -- Spell check
 local common_dictionary = {
