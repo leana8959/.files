@@ -97,6 +97,7 @@ require("lazy").setup({
     },
 
     -- Power tools
+    { "turbio/bracey.vim",        build = "npm install --prefix server" },
     "mfussenegger/nvim-jdtls",
     { "scalameta/nvim-metals",    dependencies = "nvim-lua/plenary.nvim" },
     { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
