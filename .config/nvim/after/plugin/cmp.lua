@@ -54,29 +54,36 @@ ls.add_snippets("typst", {
     }),
 })
 
-local function horizon(args)
+local function get_cms()
     assert(vim.bo.commentstring ~= "", "comment string is not set")
-    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
-    local chr = cms:gsub("%s*", ""):sub(0, 1)
+    local left  = vim.bo.commentstring:gsub("%s*%%s.*", "")
+    local right = vim.bo.commentstring:gsub(".*%%s%s*", "")
+    if right == "" then right = left end
+    return {
+        left  = left,
+        right = right,
+    }
+end
+local function horizon(args)
+    local cms = get_cms()
+    local chr = cms.left:sub(-1)
     local len = vim.fn.strdisplaywidth(args[1][1])
 
-    local acc = cms
-    for i = 1, len + cms:len() + 1, 1 do
+    local acc = cms.left
+    for _ = 1, len + cms.right:len(), 1 do
         acc = acc .. chr
     end
-    acc = acc .. chr
+    acc = acc .. cms.right
 
     return acc
 end
 local function left()
-    assert(vim.bo.commentstring ~= "", "comment string is not set")
-    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
-    return cms .. " "
+    local cms = get_cms()
+    return cms.left .. " "
 end
 local function right()
-    assert(vim.bo.commentstring ~= "", "comment string is not set")
-    local cms = vim.bo.commentstring:gsub("%s*%%s", "")
-    return " " .. cms
+    local cms = get_cms()
+    return " " .. cms.right
 end
 ls.add_snippets("all", {
     s("banner", {
