@@ -84,8 +84,6 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true
 }
 local ufo = require("ufo")
-map("n", "zR", ufo.openAllFolds)
-map("n", "zM", ufo.closeAllFolds)
 ufo.setup()
 
 -- Spell check
