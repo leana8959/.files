@@ -73,5 +73,10 @@ api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+api.nvim_create_autocmd("Filetype", {
+    pattern  = { "skel" },
+    callback = function() vim.bo.commentstring = "(* %s *)" end,
+})
+
 vim.filetype.add({ extension = { typ = "typst" } })
 vim.filetype.add({ extension = { skel = "skel", sk = "skel" } })
