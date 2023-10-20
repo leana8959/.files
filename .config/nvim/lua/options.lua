@@ -36,6 +36,11 @@ opt.scrolloff = 3
 
 opt.colorcolumn = "80"
 
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+
 api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function() vim.highlight.on_yank() end,
