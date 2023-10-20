@@ -1,15 +1,8 @@
 local map = vim.keymap.set
 
 require("fidget").setup({
-    text = {
-        spinner = "dots",
-        -- done = "[Ok]",
-    },
+    text = { spinner = "dots" },
 })
-
-local ufo = require("ufo")
-map("n", "zR", ufo.openAllFolds)
-map("n", "zM", ufo.closeAllFolds)
 
 require "mason".setup()
 require "mason-lspconfig".setup {
@@ -41,8 +34,6 @@ map('n', '<leader>ne', vim.diagnostic.goto_next)
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- See `:help vim.lsp.*`
     local ts = require "telescope.builtin"
     local opts = { buffer = bufnr }
 
@@ -56,12 +47,9 @@ local on_attach = function(client, bufnr)
     map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
     map('n', '<leader>cl', vim.lsp.codelens.run, opts)
     map('n', '<leader>r', vim.lsp.buf.rename, opts)
-    map('n', '<leader>f',
-        function() vim.lsp.buf.format { async = true } end,
-        opts
-    )
+    map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
 
-    local navic = require "nvim-navic"
+    local navic = require("nvim-navic")
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
     end
@@ -73,7 +61,6 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = 'W', texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignHint", { text = 'H', texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
-
 -- Border setup
 local border = {
     { " ", "FloatBorder" }, { " ", "FloatBorder" },
@@ -83,18 +70,22 @@ local border = {
 }
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-    opts = opts or {}
-    opts.border = opts.border or border
+    opts.border = border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- LSPs / DAPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
+
+-- Folding support
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true
 }
+local ufo = require("ufo")
+map("n", "zR", ufo.openAllFolds)
+map("n", "zM", ufo.closeAllFolds)
 ufo.setup()
 
 -- Spell check
