@@ -36,6 +36,12 @@ syn region skelBranching matchgroup=skelStruct start="\<branch\>" matchgroup=ske
 syn region skelBranching matchgroup=skelStruct start="\<match\>" matchgroup=skelStruct end="\<end\>" contains=ALLBUT,skelWithErr,skelEndErr
 syn region skelLetIn matchgroup=skelStruct start="\<let\>" matchgroup=skelStruct end="\<in\>" contains=ALLBUT,skelInErr
 
+syn region skelStruct matchgroup=skelStruct start="<" matchgroup=skelStruct end=">" contains=ALLBUT,skelAngleErr,skelCommaErr
+syn region skelStruct matchgroup=skelStruct start="(" matchgroup=skelStruct end=")" contains=ALLBUT,skelParErr,skelCommaErr
+
+syn region skelComment start="(\*" end="\*)" contains=skelTodo,skelComment
+syn region skelMeaningfulComment start="(\*\*" end="\*)" contains=skelComment
+
 syn match skelKeyChar ":"
 syn match skelKeyChar "→"
 syn match skelKeyChar "->"
@@ -46,8 +52,9 @@ syn match skelKeyChar "="
 syn match skelKeyChar ";"
 
 hi def link skelDeclaration Keyword
-hi def link skelConstructor Constant
+hi def link skelConstructor Function
 hi def link skelComment Comment
+hi def link skelMeaningfulComment Comment
 hi def link skelTodo Todo
 hi def link skelOr Statement
 hi def link skelWith Statement
@@ -61,17 +68,8 @@ hi def link skelAngleErr skelErr
 hi def link skelCommaErr skelErr
 hi def link skelErr Error
 
-hi def link skelKeyChar Keyword
+hi def link skelKeyChar Operator
 hi def link skelStruct Statement
-
-hi def link skelMeaningfulComment Comment
-
-syn region skelStruct matchgroup=skelStruct start="<" matchgroup=skelStruct end=">" contains=ALLBUT,skelAngleErr,skelCommaErr
-syn region skelStruct matchgroup=skelStruct start="(" matchgroup=skelStruct end=")" contains=ALLBUT,skelParErr,skelCommaErr
-
-syn region skelMeaningfulComment start="(\*\*" end="\*)" contains=skelComment
-
-syn region skelComment start="(\*" end="\*)" contains=skelTodo,skelComment
 
 """"" Folding of comments of type (** * sthg *)
 syn region skelCommentLvl1 keepend transparent start="(\* \* " end="(\* \*"me=e-7 skip="(\* \*\*" contains=ALL fold
