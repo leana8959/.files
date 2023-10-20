@@ -63,6 +63,8 @@ api.nvim_create_autocmd("FileType", {
     callback = function() vim.cmd("setlocal iskeyword+=$") end,
 })
 
+-- Using `sudoedit` would create gibberish extension names,
+-- detection using extension would hence not work.
 api.nvim_create_autocmd("BufEnter", {
     pattern  = { "*Caddyfile*" },
     callback = function()
@@ -72,3 +74,4 @@ api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.filetype.add({ extension = { typ = "typst" } })
+vim.filetype.add({ extension = { skel = "skel", sk = "skel" } })
