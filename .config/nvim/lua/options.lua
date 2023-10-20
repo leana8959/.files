@@ -1,45 +1,44 @@
-local opt = vim.opt
-local api = vim.api
-local map = vim.keymap.set
+local opt          = vim.opt
+local api          = vim.api
+local map          = vim.keymap.set
 
-opt.hlsearch = false
-opt.incsearch = true
+opt.hlsearch       = false
+opt.incsearch      = true
 
-opt.number = true
+opt.number         = true
 opt.relativenumber = true
-opt.cursorline = true
-opt.signcolumn = "yes"
+opt.cursorline     = true
+opt.signcolumn     = "yes"
 
-opt.tabstop = 4
-opt.expandtab = true
-opt.shiftwidth = 4
+opt.tabstop        = 4
+opt.expandtab      = true
+opt.shiftwidth     = 4
 
 -- wrapping makes the editor EXTREMELY slow, turn it off by default
-opt.wrap = false
-opt.linebreak = true
-opt.breakindent = true
-opt.filetype = "on"
+opt.wrap           = false
+opt.linebreak      = true
+opt.breakindent    = true
+opt.filetype       = "on"
 
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
+opt.swapfile       = false
+opt.backup         = false
+opt.undofile       = true
 
-opt.termguicolors = true
-opt.mouse = "a"
+opt.termguicolors  = true
+opt.mouse          = "a"
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.autoindent = true
-opt.smartindent = true
+opt.ignorecase     = true
+opt.smartcase      = true
+opt.autoindent     = true
+opt.smartindent    = true
 
-opt.scrolloff = 3
+opt.scrolloff      = 3
 
-opt.colorcolumn = "80"
+opt.colorcolumn    = "80"
 
-opt.foldcolumn = "1"
-opt.foldlevel = 99
+opt.foldlevel      = 99
 opt.foldlevelstart = 99
-opt.foldenable = true
+opt.foldenable     = true
 
 api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
