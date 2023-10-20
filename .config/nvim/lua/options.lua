@@ -1,5 +1,6 @@
 local opt = vim.opt
 local api = vim.api
+local map = vim.keymap.set
 
 opt.hlsearch = false
 opt.incsearch = true
@@ -75,7 +76,16 @@ api.nvim_create_autocmd("BufEnter", {
 
 api.nvim_create_autocmd("Filetype", {
     pattern  = { "skel" },
-    callback = function() vim.bo.commentstring = "(* %s *)" end,
+    callback = function()
+        vim.bo.commentstring = "(* %s *)"
+        map('n', '<leader>f',
+            function()
+                vim.cmd(":w")
+                vim.cmd([[silent exec "!necroprint % -o %"]])
+                vim.cmd(":e")
+            end,
+            { buffer = true })
+    end,
 })
 
 vim.filetype.add({ extension = { typ = "typst" } })
