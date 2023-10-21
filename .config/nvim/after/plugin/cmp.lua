@@ -54,6 +54,48 @@ ls.add_snippets("typst", {
     }),
 })
 
+local function list_rec()
+    return sn(nil, {
+        c(1, {
+            t(""),
+            sn(nil, { t({ "", "- " }), i(1), d(2, list_rec, {}), }),
+        }),
+    });
+end
+local function enum_rec()
+    return sn(nil, {
+        c(1, {
+            t(""),
+            sn(nil, { t({ "", "+ " }), i(1), d(2, enum_rec, {}), }),
+        }),
+    });
+end
+local function wrapped_rec()
+    return sn(nil, {
+        c(1, {
+            t(""),
+            sn(nil, { t({ "", "" }), i(1), t([[\]]), d(2, wrapped_rec, {}), }),
+        }),
+    });
+end
+ls.add_snippets("all", {
+    s("-", {
+        t({ "- " }), i(1),
+        d(2, list_rec, {}),
+        i(0),
+    }),
+    s("+", {
+        t({ "+ " }), i(1),
+        d(2, enum_rec, {}),
+        i(0),
+    }),
+    s("wrapped", {
+        i(1), t([[\]]),
+        d(2, wrapped_rec, {}),
+        i(0),
+    }),
+})
+
 local function get_cms()
     assert(vim.bo.commentstring ~= "", "comment string is not set")
     local left  = vim.bo.commentstring:gsub("%s*%%s.*", "")
@@ -95,7 +137,6 @@ ls.add_snippets("all", {
     })
 })
 
-
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -103,18 +144,9 @@ cmp.setup({
         end,
     },
     mapping = cmp.mapping.preset.insert {
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-u>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Insert,
-            select = true,
-        },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-                -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-                -- they way you will only jump inside the snippet region
             elseif ls.expand_or_locally_jumpable() then
                 ls.expand_or_jump()
             elseif has_words_before() then
@@ -128,6 +160,30 @@ cmp.setup({
                 cmp.select_prev_item()
             elseif ls.jumpable(-1) then
                 ls.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<CR>"] = cmp.mapping(function(fallback)
+            if ls.choice_active() then
+                ls.change_choice(1)
+            elseif cmp.visible() then
+                cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Insert,
+                    select = true
+                })()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<S-CR>"] = cmp.mapping(function(fallback)
+            if ls.choice_active() then
+                ls.change_choice(-1)
+            elseif cmp.visible() then
+                cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true
+                })()
             else
                 fallback()
             end
