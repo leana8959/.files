@@ -112,7 +112,7 @@ local function horizon(args)
     local len = vim.fn.strdisplaywidth(args[1][1])
 
     local acc = cms.left
-    for _ = 1, len + cms.right:len(), 1 do
+    for _ = cms.left:len(), len + cms.right:len() + 1, 1 do
         acc = acc .. chr
     end
     acc = acc .. cms.right
