@@ -24,6 +24,7 @@ map({ "n", "x", "v" }, "<leader>y", '"+y')
 map("n", "Q", "<nop>")
 
 map("n", "<leader>nf", function() vim.cmd("enew") end)
+map("n", "<leader>so", function() vim.cmd("so %") end)
 
 map("c", "#lm", [[\{-}]])
 map("c", "#capl", [[\(.\{-}\)]])
@@ -42,7 +43,7 @@ map("n", "<leader>hg", function() vim.cmd("Inspect") end)
 
 map("n", "<leader>ta", function() vim.cmd("Tabularize /=") end)
 map("n", "<leader>tc", function() vim.cmd("Tabularize /:") end)
-map("n", "<leader>tC", function() vim.cmd([[Tabularize /\/\/]]) end)
+map("n", "<leader>tC", function() vim.cmd("Tabularize trailing_c_comments") end)
 
 map("n", "<leader>+x", function() vim.cmd("!chmod +x %") end)
 map("n", "<leader>-x", function() vim.cmd("!chmod -x %") end)
