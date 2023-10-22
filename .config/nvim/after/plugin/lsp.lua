@@ -55,6 +55,12 @@ local on_attach = function(client, bufnr)
     end
 end
 
+-- Diagnostic display configuration
+vim.diagnostic.config({
+    virtual_text = false,
+    severity_sort = true,
+})
+
 -- Gutter symbols setup
 vim.fn.sign_define("DiagnosticSignError", { text = 'E', texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = 'W', texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
