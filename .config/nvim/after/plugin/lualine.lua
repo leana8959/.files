@@ -30,20 +30,18 @@ require "lualine".setup({
   sections = {
     lualine_a = {},
     lualine_b = { "diagnostics", diagnostic_message },
-    lualine_c = {
-      { "navic" },
-    },
+    lualine_c = { "navic", },
     lualine_x = {},
     lualine_y = {},
     lualine_z = { "progress" }
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = { { "filename", path = 3 } },
-    lualine_c = {},
+    lualine_b = { "diagnostics", diagnostic_message },
+    lualine_c = { "navic", },
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {}
+    lualine_z = { "progress" }
   },
   winbar = {},
   inactive_winbar = {},
