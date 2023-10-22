@@ -1,3 +1,13 @@
+local function diagnostic_message()
+  local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  local ds = vim.diagnostic.get(0, { lnum = row - 1 })
+  if #ds >= 1 then
+    return ds[1].message
+  else
+    return ""
+  end
+end
+
 require "lualine".setup({
   options = {
     icons_enabled = true,
@@ -19,10 +29,9 @@ require "lualine".setup({
   },
   sections = {
     lualine_a = {},
-    lualine_b = { "diagnostics" },
+    lualine_b = { "diagnostics", diagnostic_message },
     lualine_c = {
-      -- { "filename", newfile_status = true, path = 1 },
-      { "navic" }
+      { "navic" },
     },
     lualine_x = {},
     lualine_y = {},
