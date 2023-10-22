@@ -40,6 +40,8 @@ opt.foldlevel      = 99
 opt.foldlevelstart = 99
 opt.foldenable     = true
 
+vim.o.winbar       = "%{%v:lua.require'winbar'.eval()%}"
+
 api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function() vim.highlight.on_yank() end,
