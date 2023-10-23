@@ -1,15 +1,29 @@
 local telescope = require "telescope"
 local actions = require "telescope.actions"
 local themes = require "telescope.themes"
+local config = require "telescope.config"
+
+-- Clone the default Telescope configuration
+local vimgrep_arguments = { unpack(config.values.vimgrep_arguments) }
+
+table.insert(vimgrep_arguments, "--hidden") -- search hidden
+table.insert(vimgrep_arguments, "--glob")   -- ignore git
+table.insert(vimgrep_arguments, "!**/.git/*")
 
 telescope.setup {
     defaults = {
+        vimgrep_arguments = vimgrep_arguments,
         mappings = {
             i = {
                 ["<esc>"] = actions.close,
             },
         },
     },
+    pickers = {
+        find_files = {
+            find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        }
+    }
 }
 
 -- Enable telescope fzf native, if installed
