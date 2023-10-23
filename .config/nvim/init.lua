@@ -15,100 +15,96 @@ require("keymap")
 require("options")
 
 require("lazy").setup({
-    -- Fun stuff
-    "ThePrimeagen/vim-be-good",
-    "Eandrju/cellular-automaton.nvim",
 
-    -- Colorschemes
-    {
-        "leana8959/one-nvim",
-        config = function()
-            vim.opt.background = "light"
-            vim.cmd.colorscheme("one-nvim")
-        end,
-        enabled = false,
-    },
-    {
-        "owickstrom/vim-colors-paramount",
-        config = function()
-            vim.opt.background = "light"
-            vim.cmd.colorscheme "paramount"
-        end,
-        enabled = false,
-    },
-    {
-        "https://git.earth2077.fr/leana/curry.nvim",
-        config = function()
-            vim.opt.background = "light"
-            vim.cmd.colorscheme "curry"
-        end,
-        enabled = true,
-    },
-
-    -- Nice to have
-    "tpope/vim-sleuth",
-    { "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
-    { "SmiteshP/nvim-navic",   dependencies = "neovim/nvim-lspconfig" },
-    "folke/twilight.nvim",
-    "nvim-treesitter/playground",
-    "RaafatTurki/hex.nvim",
-    "nvim-lualine/lualine.nvim",
-    "NvChad/nvim-colorizer.lua",
-    "simrat39/symbols-outline.nvim",
-    "nvim-tree/nvim-web-devicons",
-    {
-        "epwalsh/obsidian.nvim",
-        lazy = true,
-        event = { "BufReadPre " .. vim.fn.expand("~") .. "/repos/leana/diary/**.md" },
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "nvim-telescope/telescope.nvim",
-        },
-    },
-
-    -- Can't live without
-    "godlygeek/tabular",
+    ----------------------
+    -- Misc / utilities --
+    ----------------------
+    "nvim-tree/nvim-web-devicons", -- Icons
+    "numToStr/Comment.nvim",       -- `gc` to comment
+    "tpope/vim-sleuth",            -- tab / space detection
+    "tpope/vim-surround",          -- Surround motions
+    "tpope/vim-fugitive",          -- Git util
+    "windwp/nvim-autopairs",       -- Pair symbols
+    "mbbill/undotree",             -- Treeview of history
+    "godlygeek/tabular",           -- Vertical alignment
+    -- Jump anywhere
     { "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
-    { "shortcuts/no-neck-pain.nvim", version = "*" },
-    "numToStr/Comment.nvim",
-    "tpope/vim-surround",
-    "lewis6991/gitsigns.nvim",
+    -- Folding
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async"
+    },
+    -- Generate `.gitignore`
+    {
+        "wintermute-cell/gitignore.nvim",
+        dependencies = "nvim-telescope/telescope.nvim"
+    },
+
+    ----------------
+    -- Style / UI --
+    ----------------
+    "folke/twilight.nvim",                            -- Zen mode
+    { "shortcuts/no-neck-pain.nvim", version = "*" }, -- Align buffer
+    "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
+    "NvChad/nvim-colorizer.lua",                      -- Show color
+    -- Indent char style with scoping
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {}
     },
-    "windwp/nvim-autopairs",
-    "tpope/vim-fugitive",
-    "mbbill/undotree",
-    "rafamadriz/friendly-snippets",
-    "mizlan/iswap.nvim",
-    { "ThePrimeagen/harpoon",           dependencies = "nvim-lua/plenary.nvim" },
-    { "folke/todo-comments.nvim",       dependencies = "nvim-lua/plenary.nvim" },
-    { "wintermute-cell/gitignore.nvim", dependencies = "nvim-telescope/telescope.nvim" },
+    -- Jump like a ninja
     {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            'hrsh7th/cmp-buffer',
-            "hrsh7th/cmp-nvim-lsp",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip"
-        }
+        "ThePrimeagen/harpoon",
+        dependencies = "nvim-lua/plenary.nvim"
     },
+    -- Highlight comments
+    {
+        "folke/todo-comments.nvim",
+        dependencies = "nvim-lua/plenary.nvim"
+    },
+    -- Status line
+    "nvim-lualine/lualine.nvim",
+    { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
 
-    -- Power tools
-    { "turbio/bracey.vim",        build = "npm install --prefix server" },
+    ---------------
+    -- LSP / DAP --
+    ---------------
+    "neovim/nvim-lspconfig",                   -- Collection of preconfigured LSP clients
+    "folke/neodev.nvim",                       -- neovim lua helper
+    "williamboman/mason.nvim",                 -- portable package manager
+    "williamboman/mason-lspconfig.nvim",
+    { "j-hui/fidget.nvim",   tag = "legacy" }, -- Show fancy LSP messages
+    "mfussenegger/nvim-dap",                   -- DAP
+
+    -----------------------
+    -- Language specific --
+    -----------------------
+    -- Java
     "mfussenegger/nvim-jdtls",
+    -- Scala
     { "scalameta/nvim-metals",    dependencies = "nvim-lua/plenary.nvim" },
+    -- Rust
     { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
+    -- Haskell
     {
         'mrcjkb/haskell-tools.nvim',
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
         ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
         branch = "2.x.x",
     },
-    { "kaarmu/typst.vim", ft = { "typst" }, lazy = false },
+    -- Typst
+    {
+        "kaarmu/typst.vim",
+        ft = "typst",
+        lazy = false
+    },
+    -- HTML / JavaScript (live preview)
+    { "turbio/bracey.vim",               build = "npm install --prefix server" },
+
+    ---------------
+    -- Telescope --
+    ---------------
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -119,19 +115,38 @@ require("lazy").setup({
         build = "make",
         cond = vim.fn.executable("make") == 1
     },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-    },
+
+    ----------------
+    -- TreeSitter --
+    ----------------
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     "nvim-treesitter/nvim-treesitter-context",
+
+    -----------
+    -- Games --
+    -----------
+    "ThePrimeagen/vim-be-good",
+    "Eandrju/cellular-automaton.nvim",
+
+    ------------------
+    -- Colorschemes --
+    ------------------
     {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-            { "j-hui/fidget.nvim", enabled = true, tag = "legacy" },
-            "folke/neodev.nvim",
-        },
+        "https://git.earth2077.fr/leana/curry.nvim",
+        config = function()
+            vim.opt.background = "light"
+            vim.cmd.colorscheme "curry"
+        end,
+        enabled = true,
     },
-    "mfussenegger/nvim-dap",
+
+    ----------------
+    -- Completion --
+    ----------------
+    "hrsh7th/nvim-cmp",
+    'hrsh7th/cmp-buffer',
+    "hrsh7th/cmp-nvim-lsp",
+    "L3MON4D3/LuaSnip",
+    "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets",
 })
