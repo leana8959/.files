@@ -8,10 +8,53 @@ local function diagnostic_message()
   end
 end
 
+local curry_theme = {
+  normal = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+  },
+  insert = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+  },
+  visual = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+  },
+  replace = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+  },
+  inactive = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+  },
+}
+
 require "lualine".setup({
   options = {
     icons_enabled = true,
-    theme = "auto",
+    theme = curry_theme,
     component_separators = {},
     section_separators = {},
     disabled_filetypes = {
@@ -29,7 +72,14 @@ require "lualine".setup({
   },
   sections = {
     lualine_a = {},
-    lualine_b = { "diagnostics", diagnostic_message },
+    lualine_b = {
+      {
+        "diagnostics",
+        colored = true,
+        symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' }
+      },
+      diagnostic_message
+    },
     lualine_c = { "navic", },
     lualine_x = {},
     lualine_y = {},
@@ -37,7 +87,14 @@ require "lualine".setup({
   },
   inactive_sections = {
     lualine_a = {},
-    lualine_b = { "diagnostics", diagnostic_message },
+    lualine_b = {
+      {
+        "diagnostics",
+        colored = false,
+        symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' }
+      },
+      diagnostic_message
+    },
     lualine_c = { "navic", },
     lualine_x = {},
     lualine_y = {},
