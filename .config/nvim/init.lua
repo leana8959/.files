@@ -34,7 +34,11 @@ require("lazy").setup({
         config = function() require("Comment").setup() end,
     },
     -- Jump anywhere
-    { "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
+    {
+        "ggandor/leap.nvim",
+        dependencies = "tpope/vim-repeat",
+        config = function() require('leap').add_default_mappings() end
+    },
     -- Folding
     {
         "kevinhwang91/nvim-ufo",
@@ -71,17 +75,17 @@ require("lazy").setup({
     },
     -- Status line
     "nvim-lualine/lualine.nvim",
-    { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
+    { "SmiteshP/nvim-navic",         dependencies = "neovim/nvim-lspconfig" },
 
     ---------------
     -- LSP / DAP --
     ---------------
-    "neovim/nvim-lspconfig",                   -- Collection of preconfigured LSP clients
-    "folke/neodev.nvim",                       -- neovim lua helper
-    "williamboman/mason.nvim",                 -- portable package manager
+    "neovim/nvim-lspconfig",                        -- Collection of preconfigured LSP clients
+    "folke/neodev.nvim",                            -- neovim lua helper
+    "williamboman/mason.nvim",                      -- portable package manager
     "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim",   tag = "legacy" }, -- Show fancy LSP messages
-    "mfussenegger/nvim-dap",                   -- DAP
+    { "j-hui/fidget.nvim",        tag = "legacy" }, -- Show fancy LSP messages
+    "mfussenegger/nvim-dap",                        -- DAP
 
     -----------------------
     -- Language specific --
