@@ -63,3 +63,19 @@ map("n", "<leader>gl",
         vim.cmd("Gitsigns toggle_signs")
     end
 )
+
+map('n', "<leader><space>", ":Git<CR>5<Down>")
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "fugitive" },
+    callback = function()
+        vim.keymap.set("n", "<leader><space>", ":q<CR>", { buffer = true })
+    end,
+})
+
+map('n', "<leader>gb", ":Git blame<CR>", { desc = "open fugitive blame" })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "fugitiveblame" },
+    callback = function()
+        vim.keymap.set("n", "<leader>gb", ":q<CR>", { buffer = true })
+    end,
+})
