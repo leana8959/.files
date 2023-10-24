@@ -3,14 +3,6 @@
 	"contributes": {
 		"snippets": [
 			{
-				"language": "haskell",
-				"path": "./haskell.json"
-			},
-			{
-				"language": "scala",
-				"path": "./scala.json"
-			},
-			{
 				"language": "c",
 				"path": "./c.json"
 			},
@@ -23,8 +15,8 @@
 				"path": "./rust.json"
 			},
 			{
-				"language": "xml",
-				"path": "./xml.json"
+				"language": "scala",
+				"path": "./scala.json"
 			},
 			{
 				"language": "tex",
@@ -33,6 +25,10 @@
 			{
 				"language": "typst",
 				"path": "./typst.json"
+			},
+			{
+				"language": "xml",
+				"path": "./xml.json"
 			}
 		]
 	}
