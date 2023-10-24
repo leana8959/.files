@@ -64,6 +64,7 @@ map("n", "<leader>gl",
     end
 )
 
+-- Fugitive
 map('n', "<leader><space>", ":Git<CR>5<Down>")
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "fugitive" },
@@ -71,7 +72,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.keymap.set("n", "<leader><space>", ":q<CR>", { buffer = true })
     end,
 })
-
 map('n', "<leader>gb", ":Git blame<CR>", { desc = "open fugitive blame" })
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "fugitiveblame" },
@@ -79,3 +79,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.keymap.set("n", "<leader>gb", ":q<CR>", { buffer = true })
     end,
 })
+
+-- NoNeckPain
+map("n", "<leader>z", ":NoNeckPain<CR>", { desc = "Center this shit plz" })
