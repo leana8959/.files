@@ -82,3 +82,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- NoNeckPain
 map("n", "<leader>z", ":NoNeckPain<CR>", { desc = "Center this shit plz" })
+
+-- Todo-Comments
+map('n', '<leader>td', function() vim.cmd("TodoTelescope") end)
