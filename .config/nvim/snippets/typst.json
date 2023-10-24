@@ -73,6 +73,12 @@
 			"#sym.arrow.l"
 		]
 	},
+	"xarrow": {
+		"prefix": "xa",
+		"body": [
+			"#xarrow[$1]$0"
+		]
+	},
 	"Config report": {
 		"prefix": "report",
 		"body": [
