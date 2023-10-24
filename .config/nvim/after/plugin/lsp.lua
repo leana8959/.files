@@ -6,23 +6,7 @@ require("fidget").setup({
 
 require "mason".setup()
 require "mason-lspconfig".setup {
-    ensure_installed = {
-        -- "ltex",
-        -- "jsonls",
-        -- "lemminx",
-        -- "cssls",
-        -- "lua_ls",
-        -- "gopls",
-        -- "texlab",
-        -- "marksman",
-        -- "taplo",
-        -- "pylsp",
-        -- "clangd",
-        -- "html",
-        -- "bashls",
-        -- "tsserver",
-        -- "typst_lsp",
-    },
+    ensure_installed = {},
     automatic_installation = false
 }
 
@@ -112,7 +96,6 @@ require "lspconfig".ltex.setup {
         ltex = {
             language = "auto",
             additionalRules = { motherTongue = "en-US" },
-            trace = { server = "verbose" },
             dictionary = {
                 ["en-US"] = common_dictionary,
                 ["fr"] = common_dictionary
