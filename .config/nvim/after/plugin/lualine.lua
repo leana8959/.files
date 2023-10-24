@@ -76,7 +76,7 @@ require "lualine".setup({
       {
         "diagnostics",
         colored = true,
-        symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' }
+        symbols = { error = 'E', warn = 'W', info = '·', hint = 'H' }
       },
       diagnostic_message
     },
