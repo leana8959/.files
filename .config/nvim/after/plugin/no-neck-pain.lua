@@ -4,5 +4,3 @@ require "no-neck-pain".setup {
         right = { enabled = false, }
     }
 }
-
-vim.keymap.set("n", "<leader>z", ":NoNeckPain<CR>", { desc = "Center this shit plz" })
