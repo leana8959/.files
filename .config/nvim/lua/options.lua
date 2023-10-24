@@ -56,6 +56,8 @@ opt.list = true
 api.nvim_create_autocmd("FileType", {
     pattern = { "markdown", "tex", "typst" },
     callback = function()
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop = 4
         vim.cmd("setlocal wrap")
     end,
 })
