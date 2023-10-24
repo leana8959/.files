@@ -85,3 +85,6 @@ map("n", "<leader>z", ":NoNeckPain<CR>", { desc = "Center this shit plz" })
 
 -- Todo-Comments
 map('n', '<leader>td', function() vim.cmd("TodoTelescope") end)
+
+-- Undotree
+map('n', "<leader>u", function() vim.cmd("UndotreeToggle") end)
