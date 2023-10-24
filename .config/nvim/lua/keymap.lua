@@ -31,20 +31,35 @@ map("n", "<leader>so", function() vim.cmd("so %") end)    -- Source buffer
 map("c", "#capl", [[\(.\{-}\)]])                          -- helpers in regex
 map("c", "#capm", [[\(.*\)]])
 
-map("n", "<leader>gP", function() vim.cmd("G push") end) -- Git
-map("n", "<leader>gp", function() vim.cmd("G pull") end)
-
 map("n", "<leader>+x", function() vim.cmd("!chmod +x %") end) -- Permission
 map("n", "<leader>-x", function() vim.cmd("!chmod -x %") end)
 
 map("n", "<leader>w", function() vim.cmd.setlocal("invwrap") end) -- linewrap
 
-map("n", "<leader>ta", function() vim.cmd("Tabularize /=") end)   -- Alignment
+map("n", "<leader>hg", function() vim.cmd("Inspect") end)         -- Highlight Group
+
+map("n", "Q", "<nop>")                                            -- *do not* repeat the last recorded register [count] times.
+
+-------------
+-- Plugins --
+-------------
+
+-- Tabular
+map("n", "<leader>ta", function() vim.cmd("Tabularize /=") end)
 map("n", "<leader>tc", function() vim.cmd("Tabularize /:") end)
 map("n", "<leader>tC", function() vim.cmd("Tabularize trailing_c_comments") end)
 
-map("n", "<leader>hg", function() vim.cmd("Inspect") end) -- Highlight Group
+-- Fugitive
+map("n", "<leader>gP", function() vim.cmd("G push") end)
+map("n", "<leader>gp", function() vim.cmd("G pull") end)
 
+-- Twilight
 map("n", "<leader>tw", function() vim.cmd("Twilight") end)
 
-map("n", "Q", "<nop>") -- *do not* repeat the last recorded register [count] times.
+-- Gitsigns
+map("n", "<leader>gl",
+    function()
+        vim.cmd("Gitsigns toggle_numhl")
+        vim.cmd("Gitsigns toggle_signs")
+    end
+)
