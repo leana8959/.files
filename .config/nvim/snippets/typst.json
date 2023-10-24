@@ -53,6 +53,14 @@
 			"]"
 		]
 	},
+	"showybox remark": {
+		"prefix": "sr",
+		"body": [
+			"#showybox_remark(title: \"$1\")[",
+			"$0",
+			"]"
+		]
+	},
 	"showybox example": {
 		"prefix": "se",
 		"body": [
