@@ -21,13 +21,18 @@ require("lazy").setup({
     -- Misc / utilities --
     ----------------------
     "nvim-tree/nvim-web-devicons", -- Icons
-    "numToStr/Comment.nvim",       -- `gc` to comment
     "tpope/vim-sleuth",            -- tab / space detection
     "tpope/vim-surround",          -- Surround motions
     "tpope/vim-fugitive",          -- Git util
     "windwp/nvim-autopairs",       -- Pair symbols
     "mbbill/undotree",             -- Treeview of history
     "godlygeek/tabular",           -- Vertical alignment
+    -- `gc` to comment
+    {
+        "numToStr/Comment.nvim",
+        lazy = false,
+        config = function() require("Comment").setup() end,
+    },
     -- Jump anywhere
     { "ggandor/leap.nvim",           dependencies = "tpope/vim-repeat" },
     -- Folding
