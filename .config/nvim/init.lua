@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("keymap")
 require("options")
+require("autocmds")
 
 require("lazy").setup({
 
