@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-require("fidget").setup {
+require "fidget".setup {
     text = { spinner = "dots" },
 }
 
@@ -29,7 +29,7 @@ local on_attach = function(client, bufno)
     map("n", "<leader>r", vim.lsp.buf.rename, opts)
     map("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
 
-    local navic = require("nvim-navic")
+    local navic = require "nvim-navic"
     if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufno)
     end
@@ -69,7 +69,7 @@ capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly = true,
 }
-local ufo = require("ufo")
+local ufo = require "ufo"
 ufo.setup()
 
 ----------------------
@@ -232,7 +232,7 @@ local jdtls_group = vim.api.nvim_create_augroup("jdtls", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "java" },
     callback = function()
-        require("jdtls").start_or_attach(config)
+        require "jdtls".start_or_attach(config)
     end,
     group = jdtls_group,
 })
@@ -263,12 +263,12 @@ metals_config.on_attach = function(client, bufnr)
     map("n", "<leader>ws", metals.hover_worksheet)
 
     map("n", "<leader>dc", require "dap".continue)
-    map("n", "<leader>dr", require("dap").repl.toggle)
-    map("n", "<leader>dK", require("dap.ui.widgets").hover)
-    map("n", "<leader>dt", require("dap").toggle_breakpoint)
-    map("n", "<leader>dso", require("dap").step_over)
-    map("n", "<leader>dsi", require("dap").step_into)
-    map("n", "<leader>dl", require("dap").run_last)
+    map("n", "<leader>dr", require "dap".repl.toggle)
+    map("n", "<leader>dK", require "dap.ui.widgets".hover)
+    map("n", "<leader>dt", require "dap".toggle_breakpoint)
+    map("n", "<leader>dso", require "dap".step_over)
+    map("n", "<leader>dsi", require "dap".step_into)
+    map("n", "<leader>dl", require "dap".run_last)
 
     on_attach(client, bufnr)
 end
@@ -291,14 +291,14 @@ vim.g.haskell_tools = {
     },
     hls = {
         on_attach = function(client, bufnr)
-            local ht = require("haskell-tools")
+            local ht = require "haskell-tools"
             local opts = { buffer = bufnr }
 
             map("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
             map("n", "<leader>he", ht.lsp.buf_eval_all, opts)
             map("n", "<leader>hr", ht.repl.toggle, opts)
 
-            vim.cmd("setlocal shiftwidth=2")
+            vim.cmd "setlocal shiftwidth=2"
             on_attach(client, bufnr)
         end,
         default_settings = {

@@ -13,9 +13,9 @@ local default = {
     always_update = true,
 }
 
-require "colorizer".setup({
+require "colorizer".setup {
     filetypes = {
-        '*',
+        "*",
     },
     user_default_options = default,
-})
+}
