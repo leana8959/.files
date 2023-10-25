@@ -38,3 +38,16 @@ opt.foldlevelstart = 99
 opt.foldenable     = true
 
 opt.winbar         = "%{%v:lua.require'winbar'.eval()%}"
+
+-- Helix style border
+local border = {
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+}
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts.border = border
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
