@@ -35,6 +35,19 @@ local on_attach = function(client, bufnr)
     end
 end
 
+-- Helix style border
+local border = {
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+}
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts.border = border
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 -- Diagnostic display configuration
 vim.diagnostic.config({
     virtual_text = false,
@@ -58,6 +71,10 @@ capabilities.textDocument.foldingRange = {
 }
 local ufo = require("ufo")
 ufo.setup()
+
+----------------------
+-- Language servers --
+----------------------
 
 -- Spell check
 local common_dictionary = {
