@@ -12,10 +12,10 @@ require "mason-lspconfig".setup {
 
 require "neodev".setup()
 
-local on_attach = function(client, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+local on_attach = function(client, bufno)
+    vim.api.nvim_buf_set_option(bufno, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
     local ts = require "telescope.builtin"
-    local opts = { buffer = bufnr }
+    local opts = { buffer = bufno }
 
     map('n', 'K', vim.lsp.buf.hover, opts)
     map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
 
     local navic = require("nvim-navic")
     if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
+        navic.attach(client, bufno)
     end
 end
 
