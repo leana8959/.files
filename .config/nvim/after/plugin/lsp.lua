@@ -298,7 +298,7 @@ vim.g.haskell_tools = {
             map("n", "<leader>he", ht.lsp.buf_eval_all, opts)
             map("n", "<leader>hr", ht.repl.toggle, opts)
 
-            vim.cmd "setlocal shiftwidth=2"
+            vim.opt_local.shiftwidth = 2
             on_attach(client, bufnr)
         end,
         default_settings = {
