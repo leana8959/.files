@@ -51,19 +51,6 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = 'W', texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignHint", { text = 'H', texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
--- Border setup
-local border = {
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-}
-local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-    opts.border = border
-    return orig_util_open_floating_preview(contents, syntax, opts, ...)
-end
-
 -- LSPs / DAPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
