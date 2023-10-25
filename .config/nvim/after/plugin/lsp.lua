@@ -126,7 +126,11 @@ require "lspconfig".cssls.setup {
 
 -- Lua
 require "lspconfig".lua_ls.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufno)
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop = 2
+        on_attach(client, bufno)
+    end,
     capabilities = capabilities,
 }
 
