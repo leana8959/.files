@@ -39,14 +39,6 @@ if status is-interactive
     set -gx fish_cursor_replace_one underscore
     set -gx fish_cursor_visual block
 
-    if [ (uname) = "Darwin" ]
-        # Java Home
-        set -x JAVA_HOME (/usr/libexec/java_home -v 17)
-        alias java $JAVA_HOME/bin/java
-        # SBT JVM setting
-        alias sbt "sbt -java-home $JAVA_HOME"
-    end
-
     # OCaml opam environment
     if command -q opam
         eval (opam env)
