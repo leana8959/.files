@@ -1,33 +1,33 @@
 local map = vim.keymap.set
 
-require("fidget").setup({
+require("fidget").setup {
     text = { spinner = "dots" },
-})
+}
 
 require "mason".setup()
 require "mason-lspconfig".setup {
     ensure_installed = {},
-    automatic_installation = false
+    automatic_installation = false,
 }
 
 require "neodev".setup()
 
 local on_attach = function(client, bufno)
-    vim.api.nvim_buf_set_option(bufno, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
     local ts = require "telescope.builtin"
     local opts = { buffer = bufno }
 
-    map('n', 'K', vim.lsp.buf.hover, opts)
-    map('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-    map('n', 'gD', vim.lsp.buf.declaration, opts)
-    map('n', 'gd', vim.lsp.buf.definition, opts)
-    map('n', 'gtd', vim.lsp.buf.type_definition, opts)
-    map('n', 'gi', vim.lsp.buf.implementation, opts)
-    map('n', 'gu', ts.lsp_references, opts)
-    map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    map('n', '<leader>cl', vim.lsp.codelens.run, opts)
-    map('n', '<leader>r', vim.lsp.buf.rename, opts)
-    map('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
+    map("n", "K", vim.lsp.buf.hover, opts)
+    map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    map("n", "gD", vim.lsp.buf.declaration, opts)
+    map("n", "gd", vim.lsp.buf.definition, opts)
+    map("n", "gtd", vim.lsp.buf.type_definition, opts)
+    map("n", "gi", vim.lsp.buf.implementation, opts)
+    map("n", "gu", ts.lsp_references, opts)
+    map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+    map("n", "<leader>cl", vim.lsp.codelens.run, opts)
+    map("n", "<leader>r", vim.lsp.buf.rename, opts)
+    map("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
 
     local navic = require("nvim-navic")
     if client.server_capabilities.documentSymbolProvider then
@@ -49,16 +49,16 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Diagnostic display configuration
-vim.diagnostic.config({
+vim.diagnostic.config {
     virtual_text = false,
     severity_sort = true,
-})
+}
 
 -- Gutter symbols setup
-vim.fn.sign_define("DiagnosticSignError", { text = 'E', texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { text = 'W', texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { text = 'H', texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { text = '·', texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = "W", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "H", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = "·", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
 -- LSPs / DAPs
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -67,7 +67,7 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Folding support
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
-    lineFoldingOnly = true
+    lineFoldingOnly = true,
 }
 local ufo = require("ufo")
 ufo.setup()
@@ -98,7 +98,7 @@ require "lspconfig".ltex.setup {
             additionalRules = { motherTongue = "en-US" },
             dictionary = {
                 ["en-US"] = common_dictionary,
-                ["fr"] = common_dictionary
+                ["fr"] = common_dictionary,
             },
         },
     },
@@ -126,12 +126,22 @@ require "lspconfig".cssls.setup {
 
 -- Lua
 require "lspconfig".lua_ls.setup {
-    on_attach = function(client, bufno)
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.tabstop = 2
-        on_attach(client, bufno)
-    end,
+    on_attach = on_attach,
     capabilities = capabilities,
+    settings = {
+        Lua = {
+            format = {
+                defaultConfig = {
+                    -- Learn more:
+                    -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
+                    indent_style = "space",
+                    quote_style = "double",
+                    call_arg_parentheses = "remove",
+                    trailing_table_separator = "remove",
+                },
+            },
+        },
+    },
 }
 
 -- Go
@@ -216,15 +226,15 @@ local config = {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = { "/opt/homebrew/bin/jdtls" },
-    root_dir = vim.fs.dirname(vim.fs.find({ 'gradlew', '.git', 'mvnw' }, { upward = true })[1]),
+    root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
 local jdtls_group = vim.api.nvim_create_augroup("jdtls", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "java" },
     callback = function()
-        require('jdtls').start_or_attach(config)
+        require("jdtls").start_or_attach(config)
     end,
-    group = jdtls_group
+    group = jdtls_group,
 })
 
 -- Scala
@@ -237,13 +247,13 @@ require "dap".configurations.scala = {
         type = "scala",
         request = "launch",
         name = "RunOrTest",
-        metals = { runType = "runOrTestFile", },
+        metals = { runType = "runOrTestFile" },
     },
     {
         type = "scala",
         request = "launch",
         name = "Test Target",
-        metals = { runType = "testTarget", },
+        metals = { runType = "testTarget" },
     },
 }
 
@@ -268,7 +278,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         require "metals".initialize_or_attach(metals_config)
     end,
-    group = nvim_metals_group
+    group = nvim_metals_group,
 })
 
 -- Haskell
@@ -277,16 +287,16 @@ vim.g.haskell_tools = {
         hover = {
             border = border,
             stylize_markdown = true,
-        }
+        },
     },
     hls = {
         on_attach = function(client, bufnr)
             local ht = require("haskell-tools")
             local opts = { buffer = bufnr }
 
-            map('n', '<leader>hs', ht.hoogle.hoogle_signature, opts)
-            map('n', '<leader>he', ht.lsp.buf_eval_all, opts)
-            map('n', '<leader>hr', ht.repl.toggle, opts)
+            map("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
+            map("n", "<leader>he", ht.lsp.buf_eval_all, opts)
+            map("n", "<leader>hr", ht.repl.toggle, opts)
 
             vim.cmd("setlocal shiftwidth=2")
             on_attach(client, bufnr)
@@ -295,15 +305,15 @@ vim.g.haskell_tools = {
             haskell = {
                 -- formattingProvider = "fourmolu",
                 formattingProvider = "stylish-haskell",
-            }
-        }
-    }
+            },
+        },
+    },
 }
 
 -- Rust
 require "rust-tools".setup {
     server = {
         on_attach = on_attach,
-        cmd = { "rustup", "run", "stable", "rust-analyzer" }
-    }
+        cmd = { "rustup", "run", "stable", "rust-analyzer" },
+    },
 }
