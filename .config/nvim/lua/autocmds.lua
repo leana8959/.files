@@ -2,8 +2,8 @@ local api = vim.api
 local opt = vim.opt
 local map = vim.keymap.set
 
-vim.filetype.add({ extension = { typ = "typst" } })
-vim.filetype.add({ extension = { skel = "skel", sk = "skel" } })
+vim.filetype.add { extension = { typ = "typst" } }
+vim.filetype.add { extension = { skel = "skel", sk = "skel" } }
 
 api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
@@ -21,29 +21,29 @@ api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt_local.shiftwidth = 4
         vim.opt_local.tabstop = 4
-        vim.cmd("setlocal wrap")
+        vim.cmd "setlocal wrap"
     end,
 })
 
 api.nvim_create_autocmd("FileType", {
     pattern = "rust",
-    callback = function() vim.cmd("setlocal iskeyword+=&") end,
+    callback = function() vim.cmd "setlocal iskeyword+=&" end,
 })
 
 api.nvim_create_autocmd("FileType", {
     pattern = "fish",
-    callback = function() vim.cmd("setlocal iskeyword+=$") end,
+    callback = function() vim.cmd "setlocal iskeyword+=$" end,
 })
 
 api.nvim_create_autocmd("Filetype", {
     pattern  = "skel",
     callback = function()
         vim.bo.commentstring = "(* %s *)"
-        map('n', '<leader>f',
+        map("n", "<leader>f",
             function()
-                vim.cmd(":w")
-                vim.cmd([[silent exec "!necroprint % -o %"]])
-                vim.cmd(":e")
+                vim.cmd ":w"
+                vim.cmd [[silent exec "!necroprint % -o %"]]
+                vim.cmd ":e"
             end,
             { buffer = true })
     end,

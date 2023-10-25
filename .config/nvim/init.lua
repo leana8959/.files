@@ -1,21 +1,21 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
+    vim.fn.system {
         "git",
         "clone",
         "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
         "--branch=stable", -- latest stable release
         lazypath,
-    })
+    }
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("keymap")
-require("options")
-require("autocmds")
+require "keymap"
+require "options"
+require "autocmds"
 
-require("lazy").setup({
+require "lazy".setup {
 
     ----------------------
     -- Misc / utilities --
@@ -31,23 +31,23 @@ require("lazy").setup({
     {
         "numToStr/Comment.nvim",
         lazy = false,
-        config = function() require("Comment").setup() end,
+        config = function() require "Comment".setup() end,
     },
     -- Jump anywhere
     {
         "ggandor/leap.nvim",
         dependencies = "tpope/vim-repeat",
-        config = function() require('leap').add_default_mappings() end
+        config = function() require "leap".add_default_mappings() end,
     },
     -- Folding
     {
         "kevinhwang91/nvim-ufo",
-        dependencies = "kevinhwang91/promise-async"
+        dependencies = "kevinhwang91/promise-async",
     },
     -- Generate `.gitignore`
     {
         "wintermute-cell/gitignore.nvim",
-        dependencies = "nvim-telescope/telescope.nvim"
+        dependencies = "nvim-telescope/telescope.nvim",
     },
 
     ----------------
@@ -61,17 +61,17 @@ require("lazy").setup({
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        opts = {}
+        opts = {},
     },
     -- Jump like a ninja
     {
         "ThePrimeagen/harpoon",
-        dependencies = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim",
     },
     -- Highlight comments
     {
         "folke/todo-comments.nvim",
-        dependencies = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim",
     },
     -- Status line
     "nvim-lualine/lualine.nvim",
@@ -98,16 +98,16 @@ require("lazy").setup({
     { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
     -- Haskell
     {
-        'mrcjkb/haskell-tools.nvim',
+        "mrcjkb/haskell-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+        ft = { "haskell", "lhaskell", "cabal", "cabalproject" },
         branch = "2.x.x",
     },
     -- Typst
     {
         "kaarmu/typst.vim",
         ft = "typst",
-        lazy = false
+        lazy = false,
     },
     -- HTML / JavaScript (live preview)
     { "turbio/bracey.vim",               build = "npm install --prefix server" },
@@ -118,12 +118,12 @@ require("lazy").setup({
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim",
     },
     {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
-        cond = vim.fn.executable("make") == 1
+        cond = vim.fn.executable "make" == 1,
     },
 
     ----------------
@@ -154,9 +154,9 @@ require("lazy").setup({
     -- Completion --
     ----------------
     "hrsh7th/nvim-cmp",
-    'hrsh7th/cmp-buffer',
+    "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
-})
+}
