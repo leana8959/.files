@@ -17,28 +17,28 @@ opt.listchars = {
 opt.list = true
 
 api.nvim_create_autocmd("FileType", {
-    pattern = { "markdown", "tex", "typst" },
+    pattern  = { "markdown", "tex", "typst" },
     callback = function()
         vim.opt_local.shiftwidth = 4
-        vim.opt_local.tabstop = 4
-        vim.cmd "setlocal wrap"
+        vim.opt_local.tabstop    = 4
+        vim.opt_local.wrap       = true
     end,
 })
 
 api.nvim_create_autocmd("FileType", {
     pattern = "rust",
-    callback = function() vim.cmd "setlocal iskeyword+=&" end,
+    callback = function() vim.opt_local.iskeyword:append "&" end,
 })
 
 api.nvim_create_autocmd("FileType", {
     pattern = "fish",
-    callback = function() vim.cmd "setlocal iskeyword+=$" end,
+    callback = function() vim.opt_local.iskeyword:append "$" end,
 })
 
 api.nvim_create_autocmd("Filetype", {
     pattern  = "skel",
     callback = function()
-        vim.bo.commentstring = "(* %s *)"
+        vim.opt_local.commentstring = "(* %s *)"
         map("n", "<leader>f",
             function()
                 vim.cmd ":w"
@@ -52,9 +52,9 @@ api.nvim_create_autocmd("Filetype", {
 -- Using `sudoedit` would create gibberish extension names,
 -- detection using extension would hence not work.
 api.nvim_create_autocmd("BufEnter", {
-    pattern  = { "*Caddyfile*" },
+    pattern  = "*Caddyfile*",
     callback = function()
-        vim.opt_local.filetype = "Caddy"
-        vim.bo.commentstring   = "# %s"
+        vim.opt_local.filetype      = "Caddy"
+        vim.opt_local.commentstring = "# %s"
     end,
 })
