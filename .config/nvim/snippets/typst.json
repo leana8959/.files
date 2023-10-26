@@ -40,7 +40,7 @@
 	"showybox": {
 		"prefix": "sb",
 		"body": [
-			"#showybox(title: \"$1\")[",
+			"#showybox(title: [ $1 ])[",
 			"$0",
 			"]"
 		]
@@ -48,7 +48,7 @@
 	"showybox definition": {
 		"prefix": "sd",
 		"body": [
-			"#showybox_definition(title: \"$1\")[",
+			"#showybox_definition(title: [ $1 ])[",
 			"$0",
 			"]"
 		]
@@ -56,7 +56,7 @@
 	"showybox remark": {
 		"prefix": "sr",
 		"body": [
-			"#showybox_remark(title: \"$1\")[",
+			"#showybox_remark(title: [ $1 ])[",
 			"$0",
 			"]"
 		]
@@ -64,7 +64,7 @@
 	"showybox example": {
 		"prefix": "se",
 		"body": [
-			"#showybox_example(title: \"$1\")[",
+			"#showybox_example(title: [ $1 ])[",
 			"$0",
 			"]"
 		]
