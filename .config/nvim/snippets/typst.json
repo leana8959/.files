@@ -15,20 +15,6 @@
 			"]"
 		]
 	},
-	"Raw box": {
-		"prefix": "r",
-		"body": [
-			"```$1 $0 ```"
-		]
-	},
-	"Raw block": {
-		"prefix": "rb",
-		"body": [
-			"```$1",
-			"$0",
-			"```"
-		]
-	},
 	"sourcecode": {
 		"prefix": "sc",
 		"body": [
