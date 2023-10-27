@@ -14,14 +14,11 @@ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 -------------------
 npairs.add_rules {
     Rule("$", "$", { "tex", "typst" })
-        :with_move(cond.done()),
+        :with_pair(cond.not_before_regex "%a")
+        :with_pair(cond.not_after_regex "%a")
+        :with_move(cond.done),
 
-    Rule("_", "_", { "typst" })
-        :with_move(cond.done()),
-    Rule("*", "*", { "typst" })
-        :with_move(cond.done()),
-
-    Rule("```", "```", { "typst" })
+    Rule("```", "```", "typst")
         :with_pair(cond.not_before_text "```")
         :with_cr(cond.done),
 }
