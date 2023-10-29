@@ -106,6 +106,7 @@ function tmux_sessionizer --description "create tmux sessions"
     set selected_name (echo $selected | tr . _)
     set tmux_running (pgrep tmux)
 
+    # create and attach first session
     if [ -z "$TMUX" ] && [ -z "$tmux_running" ]
         tmux \
             new-session -s $selected_name -c $selected \; \
@@ -115,6 +116,8 @@ function tmux_sessionizer --description "create tmux sessions"
         return 0
     end
 
+
+    # create session if doesn't exist
     if ! tmux has-session -t=$selected_name 2> /dev/null
         tmux \
             new-session -ds $selected_name -c $selected \; \
@@ -123,6 +126,7 @@ function tmux_sessionizer --description "create tmux sessions"
             select-window -t $selected_name:1 \;
     end
 
+    # attach or switch
     if [ -z $TMUX ]
         tmux attach-session -t $selected_name
     else
