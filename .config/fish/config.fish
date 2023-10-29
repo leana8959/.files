@@ -49,6 +49,12 @@ if status is-interactive
 
     # tools
     starship init fish | source
+
+    # call tmux_home
+    if [ -z $TMUX ]
+        tmux attach-session -t "home"
+    end
+
 end
 
 # iTerm2 intergration
