@@ -52,7 +52,7 @@ if status is-interactive
 
     # call tmux_home
     if [ -z $TMUX ]
-        tmux attach-session -t "home"
+        tmux_home
     end
 
 end
