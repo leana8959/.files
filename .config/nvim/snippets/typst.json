@@ -55,22 +55,15 @@
 			"]"
 		]
 	},
-	"arrow right": {
-		"prefix": "->",
+	"algorithm": {
+		"prefix": "algo",
 		"body": [
-			"#sym.arrow"
-		]
-	},
-	"arrow left": {
-		"prefix": "<-",
-		"body": [
-			"#sym.arrow.l"
-		]
-	},
-	"xarrow": {
-		"prefix": "xa",
-		"body": [
-			"#xarrow[$1]$0"
+			"#algorithm(",
+			"\tcaption: [ $1 ],",
+			"\tpseudocode(",
+			"\t\t$0",
+			"\t),",
+			")"
 		]
 	},
 	"Config report": {
