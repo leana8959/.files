@@ -54,48 +54,6 @@ ls.add_snippets("typst", {
     }),
 })
 
-local function list_rec()
-    return sn(nil, {
-        c(1, {
-            t "",
-            sn(nil, { t { "", "- " }, i(1), d(2, list_rec, {}) }),
-        }),
-    });
-end
-local function enum_rec()
-    return sn(nil, {
-        c(1, {
-            t "",
-            sn(nil, { t { "", "+ " }, i(1), d(2, enum_rec, {}) }),
-        }),
-    });
-end
-local function wrapped_rec()
-    return sn(nil, {
-        c(1, {
-            t "",
-            sn(nil, { t { "", "" }, i(1), t [[\]], d(2, wrapped_rec, {}) }),
-        }),
-    });
-end
-ls.add_snippets("all", {
-    s("-", {
-        t { "- " }, i(1),
-        d(2, list_rec, {}),
-        i(0),
-    }),
-    s("+", {
-        t { "+ " }, i(1),
-        d(2, enum_rec, {}),
-        i(0),
-    }),
-    s("wrapped", {
-        i(1), t [[\]],
-        d(2, wrapped_rec, {}),
-        i(0),
-    }),
-})
-
 local function get_cms()
     assert(vim.bo.commentstring ~= "", "comment string is not set")
     local left  = vim.bo.commentstring:gsub("%s*%%s.*", "")
