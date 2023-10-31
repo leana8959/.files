@@ -28,7 +28,7 @@ abbr gpm 'git fetch && git merge'
 abbr clone 'clone_to_repos'
 
 ## FS
-alias tree='tree -Cph -L 1'
+alias tree='tree -Cph'
 
 ## Editor
 abbr ts tmux_sessionizer
