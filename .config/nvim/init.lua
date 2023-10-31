@@ -108,6 +108,10 @@ require "lazy".setup {
         "kaarmu/typst.vim",
         ft = "typst",
         lazy = false,
+        -- major performance decrease
+        -- https://github.com/kaarmu/typst.vim/issues/64
+        enabled = false,
+
     },
     -- HTML / JavaScript (live preview)
     { "turbio/bracey.vim",               build = "npm install --prefix server" },
