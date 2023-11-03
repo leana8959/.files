@@ -60,9 +60,10 @@
 		"body": [
 			"#algorithm(",
 			"\tcaption: [ $1 ],",
-			"\tpseudocode(",
+			"\t{",
+			"\t\tpseudocode(",
 			"\t\t$0",
-			"\t),",
+			"\t)},",
 			")"
 		]
 	},
