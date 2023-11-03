@@ -20,9 +20,9 @@ elif is_app_installed reattach-to-user-namespace; then
 elif [ -n "${DISPLAY-}" ] && is_app_installed xsel; then
   copy_backend="xsel -i --clipboard"
 elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then
-  copy_backend="xclip -i"
+  copy_backend="xclip -i -f -selection primary | xclip -i -selection clipboard"
 else
   exit 1
 fi
 
-printf "%s" "$buf" | $copy_backend
+printf "%s" "$buf" | eval "$copy_backend"
