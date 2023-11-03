@@ -2,7 +2,7 @@ local function diagnostic_message()
     local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
     local ds = vim.diagnostic.get(0, { lnum = row - 1 })
     if #ds >= 1 then
-        return ds[1].message
+        return ds[1].message:gsub("%%", "%%%%");
     else
         return ""
     end
