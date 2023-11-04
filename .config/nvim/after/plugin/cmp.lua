@@ -23,10 +23,10 @@ local conds_expand = require "luasnip.extras.conditions.expand"
 
 require "luasnip.loaders.from_vscode".lazy_load { paths = { "./snippets" } }
 
--- Some hack
-ls.config.set_config {
-    region_check_events = "InsertEnter",
-    delete_check_events = "InsertLeave",
+ls.setup {
+    update_events = { "TextChanged", "TextChangedI" },
+    -- region_check_events = "InsertEnter",
+    -- delete_check_events = "InsertLeave",
 }
 local has_words_before = function()
     unpack = unpack or table.unpack
@@ -34,6 +34,9 @@ local has_words_before = function()
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
+--------------
+-- Snippets --
+--------------
 local function show_date()
     return "  " .. os.date "(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"
 end
@@ -95,6 +98,9 @@ ls.add_snippets("all", {
     }),
 })
 
+---------------
+-- Setup CMP --
+---------------
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -129,7 +135,7 @@ cmp.setup {
                 cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
-                }()
+                } ()
             else
                 fallback()
             end
@@ -141,7 +147,7 @@ cmp.setup {
                 cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
-                }()
+                } ()
             else
                 fallback()
             end
