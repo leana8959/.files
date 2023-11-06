@@ -57,12 +57,6 @@ require "lazy".setup {
     { "shortcuts/no-neck-pain.nvim", version = "*" }, -- Align buffer
     "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
     "NvChad/nvim-colorizer.lua",                      -- Show color
-    -- Indent char style with scoping
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {},
-    },
     -- Jump like a ninja
     {
         "ThePrimeagen/harpoon",
