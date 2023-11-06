@@ -38,20 +38,13 @@ end
 -- Snippets --
 --------------
 local function show_date()
-    return "  " .. os.date "(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"
+    return os.date "(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"
 end
 ls.add_snippets("typst", {
     s("entry", {
-        t {
-            "#entry(",
-            "",
-        },
+        t "#entry(",
         f(show_date),
-        t {
-            "",
-            ")[",
-            "",
-        },
+        t { ")[", "" },
         i(0),
         t { "", "]" },
     }),
