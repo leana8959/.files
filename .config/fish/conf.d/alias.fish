@@ -35,6 +35,7 @@ abbr ts tmux_sessionizer
 abbr ta tmux_attach
 abbr v nvim
 abbr x hx
+abbr se sudoedit
 
 
 ## brew
