@@ -114,7 +114,7 @@ require "lazy".setup {
 
     },
     -- HTML / JavaScript (live preview)
-    { "turbio/bracey.vim",               build = "npm install --prefix server" },
+    { "turbio/bracey.vim",                       build = "npm install --prefix server" },
 
     ---------------
     -- Telescope --
@@ -133,9 +133,9 @@ require "lazy".setup {
     ----------------
     -- TreeSitter --
     ----------------
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    "nvim-treesitter/nvim-treesitter-context",
-    "nvim-treesitter/playground",
+    { "nvim-treesitter/nvim-treesitter",         build = ":TSUpdate" },
+    { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+    { "nvim-treesitter/playground",              enabled = false },
 
     -----------
     -- Games --
