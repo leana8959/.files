@@ -80,3 +80,9 @@ nmap <Leader>-x :!chmod -x %<CR>
 
 nmap <Leader>w :setlocal invwrap " linewrap
 nmap Q <nop>
+
+
+"""""""""""""""
+" Colorscheme "
+"""""""""""""""
+colorscheme paramount
