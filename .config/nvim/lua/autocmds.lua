@@ -1,5 +1,4 @@
 local api = vim.api
-local opt = vim.opt
 local map = vim.keymap.set
 
 vim.filetype.add { extension = { typ = "typst" } }
@@ -9,12 +8,6 @@ api.nvim_create_autocmd("TextYankPost", {
     pattern = "*",
     callback = function() vim.highlight.on_yank() end,
 })
-
-opt.listchars = {
-    tab   = " ",
-    trail = "␣",
-}
-opt.list = true
 
 api.nvim_create_autocmd("FileType", {
     pattern  = { "markdown", "tex", "typst" },
@@ -56,5 +49,18 @@ api.nvim_create_autocmd("BufEnter", {
     callback = function()
         vim.opt_local.filetype      = "Caddy"
         vim.opt_local.commentstring = "# %s"
+    end,
+})
+
+-- Update leading indent guide
+-- source: https://github.com/thaerkh/vim-indentguides
+api.nvim_create_autocmd("OptionSet", {
+    pattern  = "shiftwidth",
+    callback = function()
+        if vim.o.expandtab then
+            local c = ""
+            for _ = c:len(), vim.o.shiftwidth + 1, 1 do c = c .. " " end
+            vim.opt.listchars:append { leadmultispace = c }
+        end
     end,
 })
