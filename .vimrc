@@ -32,6 +32,11 @@ set scrolloff=3
 
 set colorcolumn=80
 
+" indent guide
+set list
+setlocal listchars=trail:␣,tab:│\
+autocmd OptionSet shiftwidth execute 'setlocal listchars=trail:␣,tab:│\ ,leadmultispace:' . repeat('\ ', &sw - 1)
+
 """""""""""
 " Keymaps "
 """""""""""
