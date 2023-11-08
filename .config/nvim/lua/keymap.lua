@@ -3,7 +3,7 @@ vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
 local unmap = vim.keymap.del
-local api = vim.api
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Move
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -40,7 +40,7 @@ map("n", "<leader>w", function()
     vim.o.wrap = not vim.o.wrap
     if vim.o.wrap then linewrap_jk_on() else linewrap_jk_off() end
 end)
-api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern  = { "markdown", "tex", "typst" },
     callback = function()
         vim.opt_local.shiftwidth = 4
@@ -91,25 +91,28 @@ map("n", "<leader>gl",
 
 -- Fugitive
 map("n", "<leader><space>", ":Git<CR>5<Down>")
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "fugitive" },
-    callback = function()
-        vim.keymap.set("n", "<leader><space>", ":q<CR>", { buffer = true })
-    end,
+autocmd("FileType", {
+    pattern = "fugitive",
+    callback = function() map("n", "<leader><space>", ":q<CR>", { buffer = true }) end,
 })
-map("n", "<leader>gb", ":Git blame<CR>", { desc = "open fugitive blame" })
-vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "fugitiveblame" },
-    callback = function()
-        vim.keymap.set("n", "<leader>gb", ":q<CR>", { buffer = true })
-    end,
+map("n", "<leader>gb", ":Git blame<CR>")
+autocmd("FileType", {
+    pattern = "fugitiveblame",
+    callback = function() map("n", "<leader>gb", ":q<CR>", { buffer = true }) end,
 })
 
 -- NoNeckPain
-map("n", "<leader>z", ":NoNeckPain<CR>", { desc = "Center this shit plz" })
+map("n", "<leader>z", ":NoNeckPain<CR>")
 
 -- Todo-Comments
 map("n", "<leader>td", function() vim.cmd "TodoTelescope" end)
 
 -- Undotree
-map("n", "<leader>u", function() vim.cmd "UndotreeToggle" end)
+map("n", "<leader>u", function()
+    vim.cmd "UndotreeToggle"
+    vim.cmd "UndotreeFocus"
+end)
+autocmd("FileType", {
+    pattern = "undotree",
+    callback = function() map("n", "<leader>gb", ":q<CR>", { buffer = true }) end,
+})
