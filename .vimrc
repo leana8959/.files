@@ -69,16 +69,16 @@ nmap k gk
 nmap <Down> g<Down>
 nmap <Up> g<Up>
 
-nmap <Leader>pv :Explore<CR> "  Project View
-nmap <Leader>nf :enew<CR>    "  New File
-nmap <Leader>so :so %<CR>    "  Source buffer
-cmap #capl \(.\{-}\)     "  helpers in regex
+nmap <Leader>pv :Explore<CR> " Project View
+nmap <Leader>nf :enew<CR>    " New File
+nmap <Leader>so :so %<CR>    " Source buffer
+cmap #capl \(.\{-}\)         " helpers in regex
 cmap #capm \(.*\)
 
-nmap <Leader>+x :!chmod +x %<CR> "  Permission
+nmap <Leader>+x :!chmod +x %<CR> " Permission
 nmap <Leader>-x :!chmod -x %<CR>
 
-nmap <Leader>w :setlocal invwrap " linewrap
+nmap <Leader>w :setlocal invwrap<CR> " linewrap
 nmap Q <nop>
 
 
