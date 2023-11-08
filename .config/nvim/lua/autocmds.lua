@@ -1,25 +1,25 @@
-local api = vim.api
 local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
 
 vim.filetype.add { extension = { typ = "typst" } }
 vim.filetype.add { extension = { skel = "skel", sk = "skel" } }
 
-api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
     pattern = "*",
     callback = function() vim.highlight.on_yank() end,
 })
 
-api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = "rust",
     callback = function() vim.opt_local.iskeyword:append "&" end,
 })
 
-api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = "fish",
     callback = function() vim.opt_local.iskeyword:append "$" end,
 })
 
-api.nvim_create_autocmd("Filetype", {
+autocmd("Filetype", {
     pattern  = "skel",
     callback = function()
         vim.opt_local.commentstring = "(* %s *)"
@@ -35,7 +35,7 @@ api.nvim_create_autocmd("Filetype", {
 
 -- Using `sudoedit` would create gibberish extension names,
 -- detection using extension would hence not work.
-api.nvim_create_autocmd("BufEnter", {
+autocmd("BufEnter", {
     pattern  = "*Caddyfile*",
     callback = function()
         vim.opt_local.filetype      = "Caddy"
@@ -45,7 +45,7 @@ api.nvim_create_autocmd("BufEnter", {
 
 -- Update leading indent guide
 -- source: https://github.com/thaerkh/vim-indentguides
-api.nvim_create_autocmd("OptionSet", {
+autocmd("OptionSet", {
     pattern  = "shiftwidth",
     callback = function()
         if vim.o.expandtab then
