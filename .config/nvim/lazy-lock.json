@@ -42,6 +42,7 @@
   "typst.vim": { "branch": "main", "commit": "2fddf2beeec265e0a41dd24ac668d825f8f3657a" },
   "undotree": { "branch": "master", "commit": "170aa9e516b6926e6bddfe21bbf01f2283a00e7d" },
   "vim-be-good": { "branch": "master", "commit": "c290810728a4f75e334b07dc0f3a4cdea908d351" },
+  "vim-colors-paramount": { "branch": "master", "commit": "a5601d36fb6932e8d1a6f8b37b179a99b1456798" },
   "vim-fugitive": { "branch": "master", "commit": "46eaf8918b347906789df296143117774e827616" },
   "vim-repeat": { "branch": "master", "commit": "24afe922e6a05891756ecf331f39a1f6743d3d5a" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
