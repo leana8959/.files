@@ -1,7 +1,7 @@
 """""""""""
 " Options "
 """""""""""
-set invhlsearch
+set nohlsearch
 set incsearch
 
 set number
@@ -10,14 +10,14 @@ set cursorline
 
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
-set invwrap
+set nowrap
 set linebreak
 set breakindent
 
-set invswapfile
-set invbackup
+set noswapfile
+set nobackup
 set undofile
 
 set termguicolors
