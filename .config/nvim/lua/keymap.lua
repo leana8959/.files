@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 
 local map = vim.keymap.set
 local unmap = vim.keymap.del
+local api = vim.api
 
 -- Move
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -39,6 +40,15 @@ map("n", "<leader>w", function()
     vim.o.wrap = not vim.o.wrap
     if vim.o.wrap then linewrap_jk_on() else linewrap_jk_off() end
 end)
+api.nvim_create_autocmd("FileType", {
+    pattern  = { "markdown", "tex", "typst" },
+    callback = function()
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.tabstop    = 4
+        vim.opt_local.wrap       = true
+        linewrap_jk_on()
+    end,
+})
 
 map("n", "<leader>pv", function() vim.cmd "Explore" end)     -- Project View
 map("n", "<leader>nf", function() vim.cmd "enew" end)        -- New File

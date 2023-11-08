@@ -104,11 +104,14 @@ require "lazy".setup {
         lazy = false,
         -- major performance decrease
         -- https://github.com/kaarmu/typst.vim/issues/64
-        enabled = false,
+        enabled = true,
 
     },
     -- HTML / JavaScript (live preview)
-    { "turbio/bracey.vim",                       build = "npm install --prefix server" },
+    {
+        "turbio/bracey.vim",
+        build = "npm install --prefix server"
+    },
 
     ---------------
     -- Telescope --
