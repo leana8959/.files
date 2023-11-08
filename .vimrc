@@ -1,6 +1,26 @@
+""""""""""""
+" vim-plug "
+""""""""""""
+call plug#begin()
+
+" Colorscheme
+Plug 'owickstrom/vim-colors-paramount'
+
+" Utils
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'mbbill/undotree'
+Plug 'godlygeek/tabular'
+
+call plug#end()
+
 """""""""""
 " Options "
 """""""""""
+set belloff=all
+
 set nohlsearch
 set incsearch
 
@@ -81,6 +101,24 @@ nmap <Leader>-x :!chmod -x %<CR>
 nmap <Leader>w :setlocal invwrap<CR> " linewrap
 nmap Q <nop>
 
+"""""""""""""""""""
+" Plugin mappings "
+"""""""""""""""""""
+
+" Fugitive
+nmap <leader><space> :Git<CR>5<Down>
+autocmd FileType fugitive nmap <buffer> <leader><space> :q<CR>
+nmap <leader>gb :Git blame<CR>
+autocmd FileType fugitiveblame nmap <buffer> <leader>gb :q<CR>
+
+" Undotree
+nmap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+autocmd FileType undotree nmap <buffer> <leader>u :q<CR>
+
+" Tabular
+nmap <leader>ta Tabularize /=<CR>
+nmap <leader>tc Tabularize /:<CR>
+nmap <leader>tC Tabularize trailing_c_comments<CR>
 
 """""""""""""""
 " Colorscheme "
