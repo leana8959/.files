@@ -143,14 +143,8 @@ require "lazy".setup {
     ------------------
     -- Colorschemes --
     ------------------
-    {
-        "https://git.earth2077.fr/leana/curry.nvim",
-        config = function()
-            vim.opt.background = "light"
-            vim.cmd.colorscheme "curry"
-        end,
-        enabled = true,
-    },
+    "https://git.earth2077.fr/leana/curry.nvim",
+    "owickstrom/vim-colors-paramount",
 
     ----------------
     -- Completion --
@@ -162,3 +156,5 @@ require "lazy".setup {
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
 }
+
+vim.cmd.colorscheme "curry"
