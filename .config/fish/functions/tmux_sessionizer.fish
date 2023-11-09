@@ -94,7 +94,7 @@ function tmux_sessionizer --description "create tmux sessions"
             mkdir -p $selected
             touch $selected/main.c
             echo "run:
-	gcc -I/opt/homebrew/include main.c
+	gcc -I/opt/homebrew/include -L/opt/homebrew/lib -lcriterion main.c
 	./a.out" > $selected/makefile
         end
         # }}}
