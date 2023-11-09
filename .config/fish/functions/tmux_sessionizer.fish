@@ -135,7 +135,7 @@ function tmux_sessionizer --description "create tmux sessions"
             select-window -t $session_name:1 \;
     end
 
-    # attach or switch
+    set -U TMUX_LAST (tmux display-message -p '#S')
     if [ -z $TMUX ]
         tmux attach-session -t $session_name
     else

@@ -11,8 +11,8 @@ function tmux_attach --description "attach to existing tmux sessions"
         return 0
     end
 
-    # attach or switch
-    if [ -z "$TMUX" ]
+    set -U TMUX_LAST (tmux display-message -p '#S')
+    if [ -z $TMUX ]
         tmux attach-session -t $selected
     else
         tmux switch-client -t $selected
