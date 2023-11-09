@@ -1,14 +1,10 @@
-bat
+delta
 dust
 fd
 fzf
-gcc
-helix
 neovim
 ripgrep
-sd
 starship
 tmux
 tree
 vivid
-zoxide
