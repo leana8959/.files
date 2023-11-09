@@ -9,32 +9,12 @@ require "gitsigns".setup {
         end
 
         -- Navigation
-        map("n", "hj", function()
-            gs.next_hunk()
-            vim.cmd.normal "zz"
-        end)
-
-        map("n", "hk", function()
-            gs.prev_hunk()
-            vim.cmd.normal "zz"
-        end)
+        map("n", "hj", gs.next_hunk)
+        map("n", "hk", gs.prev_hunk)
 
         -- Actions
-        map("n", "hs",
-            function()
-                vim.cmd.normal "mh"
-                gs.stage_hunk()
-                gs.next_hunk()
-                vim.cmd.normal "zz"
-            end
-        )
-        map("n", "hu",
-            function()
-                vim.cmd.normal "`h"
-                vim.cmd.normal "zz"
-                gs.undo_stage_hunk()
-            end
-        )
+        map("n", "hs", gs.stage_hunk)
+        map("n", "hu", gs.undo_stage_hunk)
         map("n", "hr", gs.reset_hunk)
 
         map("v", "hs", function() gs.stage_hunk { vim.fn.line ".", vim.fn.line "v" } end)
