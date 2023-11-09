@@ -55,7 +55,7 @@ vim.diagnostic.config {
 }
 
 -- Set log level
-vim.lsp.log.set_level("OFF")
+vim.lsp.set_log_level "off"
 
 -- Gutter symbols setup
 vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
