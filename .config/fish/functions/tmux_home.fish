@@ -1,20 +1,18 @@
 function tmux_home
 
-    set session_name "home"
-
     # create session if doesn't exist
-    if ! tmux has-session -t=$session_name 2> /dev/null
+    if ! tmux has-session -t="home" 2> /dev/null
         tmux \
-            new-session -ds $session_name \; \
-            new-window -t $session_name \; \
-            select-window -t $session_name:1
+            new-session -ds "home" \; \
+            new-window -t "home" \; \
+            select-window -t "home":1
     end
 
-    # attach or switch
+    set -U TMUX_LAST (tmux display-message -p '#S')
     if [ -z $TMUX ]
-        tmux attach-session -t $session_name
+        tmux attach-session -t "home"
     else
-        tmux switch-client -t $session_name
+        tmux switch-client -t "home"
     end
 
 end
