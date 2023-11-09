@@ -10,26 +10,28 @@ require "gitsigns".setup {
 
         -- Navigation
         map("n", "hj", function()
-            vim.schedule(function() gs.next_hunk() end)
-            return "<Ignore>"
-        end, { expr = true })
+            gs.next_hunk()
+            vim.cmd.normal "zz"
+        end)
 
         map("n", "hk", function()
-            vim.schedule(function() gs.prev_hunk() end)
-            return "<Ignore>"
-        end, { expr = true })
+            gs.prev_hunk()
+            vim.cmd.normal "zz"
+        end)
 
         -- Actions
         map("n", "hs",
             function()
-                vim.cmd.normal "mZ"
+                vim.cmd.normal "mh"
                 gs.stage_hunk()
                 gs.next_hunk()
+                vim.cmd.normal "zz"
             end
         )
         map("n", "hu",
             function()
-                vim.cmd.normal "`Z"
+                vim.cmd.normal "`h"
+                vim.cmd.normal "zz"
                 gs.undo_stage_hunk()
             end
         )
