@@ -37,7 +37,6 @@ abbr v nvim
 abbr x hx
 abbr se sudoedit
 
-
 ## brew
 abbr bbb 'brew update && brew upgrade && brew autoremove && brew cleanup'
 
@@ -60,9 +59,9 @@ abbr pi 'ssh pi4'
 abbr mainframe 'ssh mainframe'
 
 ## Preferences
-abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin/ && $EDITOR ../../init.lua && prevd'
+abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin && $EDITOR ../../init.lua && prevd'
 abbr xp 'cd ~/.dotfiles/.config/helix && $EDITOR config.toml && prevd'
-abbr fp 'cd ~/.dotfiles/.config/fish/ && $EDITOR config.fish && prevd'
+abbr fp 'cd ~/.dotfiles/.config/fish/functions && $EDITOR ../config.fish && prevd'
 abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
 abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 
