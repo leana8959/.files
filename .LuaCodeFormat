@@ -1,6 +1,0 @@
-# see https://github.com/CppCXY/EmmyLuaCodeStyle
-[*.lua]
-indent_style = space
-quote_style = double
-call_arg_parentheses = remove
-trailing_table_separator = smart
