@@ -124,31 +124,22 @@ function tmux_sessionizer --description "create tmux sessions"
         # }}}
     end
 
-    set selected_name (echo $selected | tr . _)
-    set tmux_running (pgrep tmux)
+    set session_name (echo $selected | tr . _)
 
-    # create and attach first session
-    if [ -z "$TMUX" ] && [ -z "$tmux_running" ]
+    # create session if doesn't exist
+    if ! tmux has -t=$session_name 2> /dev/null
         tmux \
-            new-session -s $selected_name -c $selected \; \
-            send-keys -t $selected_name $EDITOR ENTER \; \
-            new-window -t $selected_name -c $selected \; \
-            select-window -t $selected_name:1 \;
+            new-session -ds $session_name -c $selected \; \
+            send-keys -t $session_name $EDITOR ENTER \; \
+            new-window -t $session_name -c $selected \; \
+            select-window -t $session_name:1 \;
+    end
+
+    # attach or switch
+    if [ -z $TMUX ]
+        tmux attach-session -t $session_name
     else
-        # create session if doesn't exist
-        if ! tmux has-session -t=$selected_name 2> /dev/null
-            tmux \
-                new-session -ds $selected_name -c $selected \; \
-                send-keys -t $selected_name $EDITOR ENTER \; \
-                new-window -t $selected_name -c $selected \; \
-                select-window -t $selected_name:1 \;
-        end
-        # attach or switch
-        if [ -z $TMUX ]
-            tmux attach-session -t $selected_name
-        else
-            tmux switch-client -t $selected_name
-        end
+        tmux switch-client -t $session_name
     end
 
 end
