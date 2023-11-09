@@ -57,49 +57,49 @@ set colorcolumn=80
 """""""""""
 let mapleader = " "
 
-vmap J :m '>+1<CR>gv=gv
-vmap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 " Centered motions
-nmap <C-d> <C-d>zz
-nmap <C-u> <C-u>zz
-nmap n nzzzv
-nmap N Nzzzv
-nmap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
 " Better clipboard
-nmap <Leader>d "_d
-nmap <Leader>c "_dc
-nmap <Leader>p "_dP
-nmap <Leader>y "+y
+nnoremap <Leader>d "_d
+nnoremap <Leader>c "_dc
+nnoremap <Leader>p "_dP
+nnoremap <Leader>y "+y
 
-xmap <Leader>d "_d
-xmap <Leader>c "_dc
-xmap <Leader>p "_dP
-xmap <Leader>y "+y
+xnoremap <Leader>d "_d
+xnoremap <Leader>c "_dc
+xnoremap <Leader>p "_dP
+xnoremap <Leader>y "+y
 
-vmap <Leader>d "_d
-vmap <Leader>c "_dc
-vmap <Leader>p "_dP
-vmap <Leader>y "+y
+vnoremap <Leader>d "_d
+vnoremap <Leader>c "_dc
+vnoremap <Leader>p "_dP
+vnoremap <Leader>y "+y
 
 " Linewrap jk
-nmap j gj
-nmap k gk
-nmap <Down> g<Down>
-nmap <Up> g<Up>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> g<Down>
+nnoremap <Up> g<Up>
 
-nmap <Leader>pv :Explore<CR> " Project View
-nmap <Leader>nf :enew<CR>    " New File
-nmap <Leader>so :so %<CR>    " Source buffer
-cmap #capl \(.\{-}\)         " helpers in regex
-cmap #capm \(.*\)
+nnoremap <Leader>pv :Explore<CR> " Project View
+nnoremap <Leader>nf :enew<CR>    " New File
+nnoremap <Leader>so :so %<CR>    " Source buffer
+cnoremap #capl \(.\{-}\)         " helpers in regex
+cnoremap #capm \(.*\)
 
-nmap <Leader>+x :!chmod +x %<CR> " Permission
-nmap <Leader>-x :!chmod -x %<CR>
+nnoremap <Leader>+x :!chmod +x %<CR> " Permission
+nnoremap <Leader>-x :!chmod -x %<CR>
 
-nmap <Leader>w :setlocal invwrap<CR> " linewrap
-nmap Q <nop>
+nnoremap <Leader>w :setlocal invwrap<CR> " linewrap
+nnoremap Q <nop>
 
 """""""""""""""""""
 " Plugin mappings "
