@@ -21,7 +21,7 @@ call plug#end()
 """""""""""
 set belloff=all
 
-set nohlsearch
+set hlsearch
 set incsearch
 
 set number
