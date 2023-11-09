@@ -1,0 +1,28 @@
+[user]
+	name = Léana 江
+	email = leana.jiang@icloud.com
+	signingkey = 3659D5C87A4BC5D7699B37D84E887A4CA9714ADA
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = mistress
+[push]
+	autoSetupRemote = true
+[core]
+	excludesFile = ~/.gitignore_global
+	pager = delta --syntax-theme "OneHalfLight"
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = true
+	true-color = always
+	side-by-side = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
+[color]
+	ui = auto
+[pull]
+	ff = only

@@ -4,6 +4,7 @@ function tmux_sessionizer --description "create tmux sessions"
     set selected \
         # {{{
         (begin
+            # use fd even thought it's an extra dependency because find is too slow
             fd . $REPOS_PATH $UNIV_REPOS_PATH --exact-depth 2 --type d;
             fd . $PLAYGROUND_PATH --exact-depth 1 --type d;
             fd . $CODEWARS_PATH/Haskell --exact-depth 1 --type d;
