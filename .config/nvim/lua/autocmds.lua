@@ -49,9 +49,7 @@ autocmd("OptionSet", {
     pattern  = "shiftwidth",
     callback = function()
         if vim.o.expandtab then
-            local c = ""
-            for _ = c:len(), vim.o.shiftwidth + 1, 1 do c = c .. " " end
-            vim.opt.listchars:append { leadmultispace = c }
+            vim.opt.listchars:append { leadmultispace = "" }
         end
     end,
 })
