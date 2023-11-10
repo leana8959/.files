@@ -44,13 +44,14 @@ local border = {
 }
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
     opts.border = border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Diagnostic display configuration
 vim.diagnostic.config {
-    virtual_text = false,
+    virtual_text  = false,
     severity_sort = true,
 }
 
@@ -70,7 +71,7 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Folding support
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
-    lineFoldingOnly = true,
+    lineFoldingOnly     = true,
 }
 local ufo = require "ufo"
 ufo.setup()
