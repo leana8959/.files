@@ -91,6 +91,24 @@ ls.add_snippets("all", {
     }),
 })
 
+local function fold_start()
+    local cms = get_cms()
+    return cms.left .. " {{{" .. cms.right
+end
+local function fold_end()
+    local cms = get_cms()
+    return cms.left .. " }}}" .. cms.right
+end
+ls.add_snippets("all", {
+    s("fold", {
+        f(fold_start),
+        t { "", "" },
+        i(1),
+        t { "", "" },
+        f(fold_end),
+    }),
+})
+
 ---------------
 -- Setup CMP --
 ---------------
