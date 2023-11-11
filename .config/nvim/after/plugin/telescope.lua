@@ -32,7 +32,6 @@ ts.setup {
 pcall(require "telescope".load_extension, "fzf")
 
 
-map("n", "<leader>?", builtin.oldfiles)
 map("n", "<leader>/",
     function()
         builtin.current_buffer_fuzzy_find(themes.get_dropdown { previewer = false })
@@ -40,7 +39,7 @@ map("n", "<leader>/",
 )
 map("n", "<leader>sf", builtin.find_files)
 map("n", "<leader>gf", builtin.git_files)
-map("n", "<leader>sh", builtin.help_tags)
+map("n", "<leader>?", builtin.help_tags)
 map("n", "<leader>sw", builtin.grep_string)
 map("n", "<leader>sg", builtin.live_grep)
 map("n", "<leader>sd", builtin.diagnostics)
