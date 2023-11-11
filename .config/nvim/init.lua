@@ -138,6 +138,7 @@ require "lazy".setup {
     -----------
     "ThePrimeagen/vim-be-good",
     "Eandrju/cellular-automaton.nvim",
+    "wakatime/vim-wakatime",
 
     ------------------
     -- Colorschemes --
