@@ -5,18 +5,7 @@ vim.filetype.add { extension = { typ = "typst" } }
 vim.filetype.add { extension = { skel = "skel", sk = "skel" } }
 
 autocmd("TextYankPost", {
-    pattern = "*",
     callback = function() vim.highlight.on_yank() end,
-})
-
-autocmd("FileType", {
-    pattern = "rust",
-    callback = function() vim.opt_local.iskeyword:append "&" end,
-})
-
-autocmd("FileType", {
-    pattern = "fish",
-    callback = function() vim.opt_local.iskeyword:append "$" end,
 })
 
 autocmd("Filetype", {
@@ -56,3 +45,6 @@ autocmd("OptionSet", {
         end
     end,
 })
+
+-- Enable NoNeckPain
+autocmd("UIEnter", { callback = function() vim.cmd "NoNeckPain" end })
