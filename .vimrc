@@ -14,6 +14,8 @@ Plug 'tpope/vim-commentary'
 Plug 'mbbill/undotree'
 Plug 'godlygeek/tabular'
 
+Plug 'wakatime/vim-wakatime'
+
 call plug#end()
 
 """""""""""
