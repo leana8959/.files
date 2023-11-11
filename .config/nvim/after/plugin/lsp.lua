@@ -1,16 +1,42 @@
+----------------------
+-- Language servers --
+----------------------
+local servers = {
+    bashls    = {}, -- bash
+    clangd    = {}, -- C/CPP
+    cssls     = {}, -- CSS
+    html      = {}, -- HTML
+    jsonls    = {}, -- JSON
+    lemminx   = {}, -- XML
+    marksman  = {}, -- Markdown
+    ocamllsp  = {}, -- OCaml
+    -- pylsp     = {}, -- Python
+    -- pyright   = {},
+    pylyzer   = {},
+    taplo     = {}, -- toml
+    texlab    = {}, -- texlab
+    tsserver  = {}, -- TypeScript
+    typst_lsp = { exportPdf = "never" },
+    lua_ls    = {
+        Lua = {
+            format = {
+                defaultConfig = {
+                    -- Learn more:
+                    -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
+                    indent_style = "space",
+                    quote_style = "double",
+                    call_arg_parentheses = "remove",
+                    trailing_table_separator = "remove",
+                },
+            },
+        },
+    },
+}
+
+-------------
+-- Helpers --
+-------------
 local map = vim.keymap.set
-
-require "fidget".setup {
-    text = { spinner = "dots" },
-}
-
-require "mason".setup()
-require "mason-lspconfig".setup {
-    ensure_installed = {},
-    automatic_installation = false,
-}
-
-require "neodev".setup()
 
 local on_attach = function(client, bufno)
     vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -50,10 +76,7 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 -- Diagnostic display configuration
-vim.diagnostic.config {
-    virtual_text  = false,
-    severity_sort = true,
-}
+vim.diagnostic.config { virtual_text = false, severity_sort = true }
 
 -- Set log level
 vim.lsp.set_log_level "off"
@@ -64,161 +87,36 @@ vim.fn.sign_define("DiagnosticSignWarn", { text = "W", texthl = "DiagnosticSignW
 vim.fn.sign_define("DiagnosticSignHint", { text = "H", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "·", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
 
--- LSPs / DAPs
+-- Capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
-
--- Folding support
+-- Folding
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
     lineFoldingOnly     = true,
 }
-local ufo = require "ufo"
-ufo.setup()
 
-----------------------
--- Language servers --
-----------------------
+----------
+-- Init --
+----------
+require "fidget".setup { text = { spinner = "dots" } }
+require "mason".setup()
+require "mason-lspconfig".setup()
+require "neodev".setup()
+require "ufo".setup()
 
--- Spell check
-local common_dictionary = {
-    -- Me stuff
-    "Yu", "Hui", "Léana", "Chiang", "CHIANG",
-    "ISTIC",
-    -- LaTeX
-    "compat",
-    -- Tech terms
-    "Vec", "VecDeque", "array", "stack", "queue", "deque", "string", "cursor",
-    "matched", "HashMap", "HashSet", "dédupliquer",
-    -- Rapport BIO
-    "dédupliquer", "read", "reads", "contig", "Debruijn", "mer",
-}
--- FIXME: this thing fails to run in French when babel latex english is present
-require "lspconfig".ltex.setup {
-    on_attach = on_attach,
-    settings = {
-        ltex = {
-            language = "auto",
-            additionalRules = { motherTongue = "en-US" },
-            dictionary = {
-                ["en-US"] = common_dictionary,
-                ["fr"] = common_dictionary,
-            },
-        },
-    },
-    flags = { debounce_text_changes = 10000 },
-    capabilities = capabilities,
-}
+local mason_lspconfig = require "mason-lspconfig"
 
--- JSON
-require "lspconfig".jsonls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- XML
-require "lspconfig".lemminx.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- CSS
-require "lspconfig".cssls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- Lua
-require "lspconfig".lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            format = {
-                defaultConfig = {
-                    -- Learn more:
-                    -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
-                    indent_style = "space",
-                    quote_style = "double",
-                    call_arg_parentheses = "remove",
-                    trailing_table_separator = "remove",
-                },
-            },
-        },
-    },
-}
-
--- Go
-require "lspconfig".gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- tex
-require "lspconfig".texlab.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- Markdown
-require "lspconfig".marksman.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- TOML
-require "lspconfig".taplo.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- Python
-require "lspconfig".pylsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-require "lspconfig".pyright.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- C
-require "lspconfig".clangd.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- HTML
-require "lspconfig".html.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "html", "xhtml" },
-}
-
--- Bash
-require "lspconfig".bashls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "sh" },
-}
-
--- TypeScript
-require "lspconfig".tsserver.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
-
--- Typst
-require "lspconfig".typst_lsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = { exportPdf = "never" },
-}
-
--- OCaml
-require "lspconfig".ocamllsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require "lspconfig"[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+            filetypes = (servers[server_name] or {}).filetypes,
+        }
+    end,
 }
 
 ------------------------
