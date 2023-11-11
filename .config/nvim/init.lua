@@ -130,7 +130,11 @@ require "lazy".setup {
     ----------------
     -- TreeSitter --
     ----------------
-    { "nvim-treesitter/nvim-treesitter",         build = ":TSUpdate" },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+        build = ":TSUpdate"
+    },
     { "nvim-treesitter/nvim-treesitter-context", enabled = false },
     { "nvim-treesitter/playground",              enabled = false },
 
