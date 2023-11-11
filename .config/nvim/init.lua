@@ -21,18 +21,14 @@ require "lazy".setup {
     -- Misc / utilities --
     ----------------------
     "nvim-tree/nvim-web-devicons", -- Icons
-    "tpope/vim-sleuth",            -- tab / space detection
+    "tpope/vim-sleuth",            -- Tab / Space detection
     "tpope/vim-surround",          -- Surround motions
     "tpope/vim-fugitive",          -- Git util
     "windwp/nvim-autopairs",       -- Pair symbols
     "mbbill/undotree",             -- Treeview of history
     "godlygeek/tabular",           -- Vertical alignment
     -- `gc` to comment
-    {
-        "numToStr/Comment.nvim",
-        lazy = false,
-        config = function() require "Comment".setup() end,
-    },
+    { "numToStr/Comment.nvim",       opts = {} },
     -- Jump anywhere
     {
         "ggandor/leap.nvim",
@@ -58,28 +54,27 @@ require "lazy".setup {
     "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
     "NvChad/nvim-colorizer.lua",                      -- Show color
     -- Jump like a ninja
-    {
-        "ThePrimeagen/harpoon",
-        dependencies = "nvim-lua/plenary.nvim",
-    },
+    { "ThePrimeagen/harpoon",     dependencies = "nvim-lua/plenary.nvim" },
     -- Highlight comments
-    {
-        "folke/todo-comments.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
-    },
+    { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
     -- Status line
     "nvim-lualine/lualine.nvim",
-    { "SmiteshP/nvim-navic",         dependencies = "neovim/nvim-lspconfig" },
+    -- Breadcrumbs
+    { "SmiteshP/nvim-navic",      dependencies = "neovim/nvim-lspconfig" },
 
     ---------------
     -- LSP / DAP --
     ---------------
-    "neovim/nvim-lspconfig",                        -- Collection of preconfigured LSP clients
-    "folke/neodev.nvim",                            -- neovim lua helper
-    "williamboman/mason.nvim",                      -- portable package manager
-    "williamboman/mason-lspconfig.nvim",
-    { "j-hui/fidget.nvim",        tag = "legacy" }, -- Show fancy LSP messages
-    "mfussenegger/nvim-dap",                        -- DAP
+    {
+        "neovim/nvim-lspconfig",                     -- (official) basic LSP Configuration & Plugins
+        dependencies = {
+            "williamboman/mason.nvim",               -- Automatically install LSPs to stdpath for neovim
+            "williamboman/mason-lspconfig.nvim",
+            { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
+            "folke/neodev.nvim",                     -- Additional lua configuration
+        },
+    },
+    "mfussenegger/nvim-dap", -- DAP
 
     -----------------------
     -- Language specific --
@@ -102,10 +97,6 @@ require "lazy".setup {
         "kaarmu/typst.vim",
         ft = "typst",
         lazy = false,
-        -- major performance decrease
-        -- https://github.com/kaarmu/typst.vim/issues/64
-        enabled = true,
-
     },
     -- HTML / JavaScript (live preview)
     {
@@ -119,12 +110,14 @@ require "lazy".setup {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = "nvim-lua/plenary.nvim",
-    },
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = vim.fn.executable "make" == 1,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                cond = vim.fn.executable "make" == 1,
+            },
+        },
     },
 
     ----------------
@@ -132,11 +125,13 @@ require "lazy".setup {
     ----------------
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+        },
         build = ":TSUpdate"
     },
-    { "nvim-treesitter/nvim-treesitter-context", enabled = false },
     { "nvim-treesitter/playground",              enabled = false },
+    { "nvim-treesitter/nvim-treesitter-context", enabled = false },
 
     -----------
     -- Games --
@@ -153,12 +148,17 @@ require "lazy".setup {
     ----------------
     -- Completion --
     ----------------
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "L3MON4D3/LuaSnip",
-    "saadparwaiz1/cmp_luasnip",
-    "rafamadriz/friendly-snippets",
+    {
+        "hrsh7th/nvim-cmp",                 -- Autocompletion
+        dependencies = {
+            "L3MON4D3/LuaSnip",             -- Snippet Engine
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",         -- LSP completion
+            "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
+            "hrsh7th/cmp-buffer",           -- Buffer Cmp Source
+        },
+    },
+
 }
 
 vim.cmd.colorscheme "curry"
