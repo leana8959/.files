@@ -66,13 +66,13 @@ require "lazy".setup {
     -- LSP / DAP --
     ---------------
     {
-        "neovim/nvim-lspconfig",                     -- (official) basic LSP Configuration & Plugins
+        "neovim/nvim-lspconfig",                         -- (official) basic LSP Configuration & Plugins
         dependencies = {
-            "williamboman/mason.nvim",               -- Automatically install LSPs to stdpath for neovim
-            "williamboman/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-            { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
-            "folke/neodev.nvim",                     -- Additional lua configuration
+            { "j-hui/fidget.nvim", tag = "legacy" },     -- LSP Spinner
+            "folke/neodev.nvim",                         -- Additional lua configuration
+            "williamboman/mason.nvim",                   -- Automatically install LSPs to stdpath for neovim
+            "williamboman/mason-lspconfig.nvim",         -- Interface between LSP and Mason
+            "WhoIsSethDaniel/mason-tool-installer.nvim", -- Linter and stuff
         },
     },
     "mfussenegger/nvim-dap", -- DAP
