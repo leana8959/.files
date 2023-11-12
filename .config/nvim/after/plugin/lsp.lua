@@ -42,9 +42,6 @@ local servers = {
 -- NOTE: uses mason's package names
 local tools = {
     "shellcheck", -- bash
-    "shfmt",
-    "vint",       -- vim script
-    "commitlint"  -- git commit
 }
 
 -------------
