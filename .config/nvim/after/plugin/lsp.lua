@@ -197,6 +197,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Haskell
 vim.g.haskell_tools = {
     tools = {
+        log = { level = vim.log.levels.OFF },
         hover = {
             border = border,
             stylize_markdown = true,
@@ -216,8 +217,8 @@ vim.g.haskell_tools = {
         end,
         default_settings = {
             haskell = {
-                -- formattingProvider = "fourmolu",
-                formattingProvider = "stylish-haskell",
+                formattingProvider = "fourmolu",
+                -- formattingProvider = "stylish-haskell",
             },
         },
     },
