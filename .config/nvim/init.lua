@@ -70,6 +70,7 @@ require "lazy".setup {
         dependencies = {
             "williamboman/mason.nvim",               -- Automatically install LSPs to stdpath for neovim
             "williamboman/mason-lspconfig.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
             { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
             "folke/neodev.nvim",                     -- Additional lua configuration
         },
