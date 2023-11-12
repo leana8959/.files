@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 ----------------------
 -- Language servers --
 ----------------------
@@ -17,6 +19,7 @@ local servers = {
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
     typst_lsp = { exportPdf = "never" },
+    vimls     = {}, -- vim
     lua_ls    = {
         Lua = {
             format = {
@@ -33,11 +36,20 @@ local servers = {
     },
 }
 
+------------------
+-- Linters, etc --
+------------------
+-- NOTE: uses mason's package names
+local tools = {
+    "shellcheck", -- bash
+    "shfmt",
+    "vint",       -- vim script
+    "commitlint"  -- git commit
+}
+
 -------------
 -- Helpers --
 -------------
-local map = vim.keymap.set
-
 local on_attach = function(client, bufno)
     vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
     local ts = require "telescope.builtin"
@@ -112,12 +124,14 @@ mason_lspconfig.setup_handlers {
     function(server_name)
         require "lspconfig"[server_name].setup {
             capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
+            on_attach    = on_attach,
+            settings     = servers[server_name],
+            filetypes    = (servers[server_name] or {}).filetypes,
         }
     end,
 }
+
+require "mason-tool-installer".setup { ensure_installed = tools }
 
 ------------------------
 -- Standalone plugins --
