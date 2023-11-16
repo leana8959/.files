@@ -15,10 +15,10 @@
 			"]"
 		]
 	},
-	"sourcecode": {
+	"code": {
 		"prefix": "sc",
 		"body": [
-			"#sourcecode[```$1",
+			"#code[```$1",
 			"$0",
 			"```]"
 		]
@@ -26,33 +26,41 @@
 	"showybox": {
 		"prefix": "sb",
 		"body": [
-			"#showybox(title: [ $1 ])[",
-			"$0",
-			"]"
+			"#showybox(title: [ $1 ],",
+			"[ $0 ]",
+			")"
 		]
 	},
 	"showybox definition": {
 		"prefix": "sd",
 		"body": [
-			"#showybox_definition(title: [ $1 ])[",
-			"$0",
-			"]"
+			"#showybox_definition(title: [ $1 ],",
+			"[ $0 ]",
+			")"
 		]
 	},
 	"showybox remark": {
 		"prefix": "sr",
 		"body": [
-			"#showybox_remark(title: [ $1 ])[",
-			"$0",
-			"]"
+			"#showybox_remark(title: [ $1 ],",
+			"[ $0 ]",
+			")"
 		]
 	},
 	"showybox example": {
 		"prefix": "se",
 		"body": [
-			"#showybox_example(title: [ $1 ])[",
-			"$0",
-			"]"
+			"#showybox_example(title: [ $1 ],",
+			"[ $0 ]",
+			")"
+		]
+	},
+	"showybox file": {
+		"prefix": "sf",
+		"body": [
+			"#showybox_file(title: [ $1 ],",
+			"[ $0 ]",
+			")"
 		]
 	},
 	"algorithm": {
