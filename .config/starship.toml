@@ -7,68 +7,68 @@ right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 palette = 'lilac'
 
 [palettes.lilac]
-accent = '#875fff'
+accent       = '#875fff'
 accent_trans = '#efebfc'
-warning = '#ff5f00'
-hint = '#aaaaaa'
-error = '#c82829'
+warning      = '#ff5f00'
+hint         = '#aaaaaa'
+error        = '#c82829'
 
 [hostname]
 ssh_only = true
-style = 'bold warning'
-format = '[$hostname]($style):'
+style    = 'bold warning'
+format   = '[$hostname]($style):'
 
 [username]
 style_root = 'warning bold'
 style_user = 'hint'
-format = '( [\($user\)]($style))'
+format     = '( [\($user\)]($style))'
 
 [character]
-success_symbol = '[󰘧](black)'           # Insert
-error_symbol = '[󰘧](black)'             # Insert
-vimcmd_symbol = '[󰘧](hint)'             # Normal
-vimcmd_replace_symbol = '[󰘧](hint)'     # Replace
-vimcmd_replace_one_symbol = '[󰘧](hint)' # Replace
-vimcmd_visual_symbol = '[󰘧](hint)'      # Visual
+success_symbol            = '[󰘧](black)' # Insert
+error_symbol              = '[󰘧](black)' # Insert
+vimcmd_symbol             = '[󰘧](hint)'  # Normal
+vimcmd_replace_symbol     = '[󰘧](hint)'  # Replace
+vimcmd_replace_one_symbol = '[󰘧](hint)'  # Replace
+vimcmd_visual_symbol      = '[󰘧](hint)'  # Visual
 
 [directory]
 truncation_length = 4
-truncate_to_repo = false
-style = 'fg:black bg:accent_trans'
-format = '[$path]($style)( [$read_only]($read_only_style))'
-read_only = ''
-read_only_style = 'error'
+truncate_to_repo  = false
+style             = 'fg:black bg:accent_trans'
+format            = '[$path]($style)( [$read_only]($read_only_style))'
+read_only         = ''
+read_only_style   = 'error'
 truncation_symbol = '…/'
 
 [status]
-format = '([\[$status\]](bold error) )'
+format   = '([\[$status\]](bold error) )'
 disabled = false
 
 [python]
-style = 'hint'
+style  = 'hint'
 format = '( [\($virtualenv\)]($style))'
 
 [cmd_duration]
-min_time = 5_000
+min_time          = 5_000
 show_milliseconds = true
-format = '([$duration]($style) )'
+format            = '([$duration]($style) )'
 
 [git_state]
-style = 'bold red'
+style  = 'bold red'
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_branch]
 symbol = ''
-style = 'hint'
+style  = 'hint'
 format = '[$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
-style = 'accent'
+style  = 'accent'
 format = '[\(](hint)[$hash$tag]($style)[\)](hint)'
 
 [git_status]
-ahead = '⇡$count'
-behind = '⇣$count'
+ahead    = '⇡$count'
+behind   = '⇣$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
-style = 'bold accent'
-format = '([\[](hint)[$all_status$ahead_behind]($style)[\]](hint))'
+style    = 'bold accent'
+format   = '([\[](hint)[$all_status$ahead_behind]($style)[\]](hint))'
