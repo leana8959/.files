@@ -12,9 +12,9 @@ local servers = {
     lemminx   = {}, -- XML
     marksman  = {}, -- Markdown
     ocamllsp  = {}, -- OCaml
-    -- pylsp     = {}, -- Python
+    pylsp     = {}, -- Python
     -- pyright   = {},
-    pylyzer   = {},
+    -- pylyzer   = {},
     taplo     = {}, -- toml
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
@@ -115,8 +115,22 @@ require "neodev".setup()
 require "ufo".setup()
 
 local mason_lspconfig = require "mason-lspconfig"
+local mappings = mason_lspconfig.get_mappings().lspconfig_to_mason
 
-mason_lspconfig.setup { ensure_installed = vim.tbl_keys(servers) }
+-- Install all command
+-- Credit https://github.com/williamboman/mason.nvim/issues/130#issuecomment-1217773757
+vim.api.nvim_create_user_command("MasonInstallAll", function()
+    local map = require "utils".Map
+    local mason_names = map(
+        vim.tbl_keys(servers),
+        function(lsp_name) return mappings[lsp_name] end
+    )
+    print(vim.inspect(mason_names))
+    local mason_name = table.concat(mason_names, " ")
+    vim.cmd("MasonInstall " .. mason_name)
+end, {})
+
+mason_lspconfig.setup()
 mason_lspconfig.setup_handlers {
     function(server_name)
         require "lspconfig"[server_name].setup {
