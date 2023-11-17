@@ -1,6 +1,6 @@
 format = '''
-$status$hostname$directory$python
-$character$username 
+$status$hostname$directory$python$username
+$character
 '''
 right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 
@@ -21,7 +21,7 @@ format = '[$hostname]($style):'
 [username]
 style_root = 'warning bold'
 style_user = 'hint'
-format = '\([$user]($style)\)'
+format = '( [\($user\)]($style))'
 
 [character]
 success_symbol = '[󰘧](black)'           # Insert
@@ -30,7 +30,6 @@ vimcmd_symbol = '[󰘧](hint)'             # Normal
 vimcmd_replace_symbol = '[󰘧](hint)'     # Replace
 vimcmd_replace_one_symbol = '[󰘧](hint)' # Replace
 vimcmd_visual_symbol = '[󰘧](hint)'      # Visual
-format = '$symbol'
 
 [directory]
 truncation_length = 4
