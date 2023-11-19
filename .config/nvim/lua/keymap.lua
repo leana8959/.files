@@ -116,3 +116,9 @@ autocmd("FileType", {
     pattern = "undotree",
     callback = function() map("n", "<leader>gb", ":q<CR>", { buffer = true }) end,
 })
+
+-- color-picker
+local opts = { noremap = true, silent = true }
+
+map("n", "<C-c>", "<cmd>PickColor<cr>", opts)
+map("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
