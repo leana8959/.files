@@ -146,6 +146,7 @@ require "lazy".setup {
     ------------------
     "https://git.earth2077.fr/leana/curry.nvim",
     "owickstrom/vim-colors-paramount",
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
     ----------------
     -- Completion --
@@ -164,3 +165,5 @@ require "lazy".setup {
 }
 
 vim.cmd.colorscheme "curry"
+-- vim.opt.background = "light"
+-- vim.cmd.colorscheme "catppuccin"
