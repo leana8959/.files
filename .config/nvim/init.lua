@@ -27,7 +27,7 @@ require "lazy".setup {
     "windwp/nvim-autopairs",       -- Pair symbols
     "mbbill/undotree",             -- Treeview of history
     "godlygeek/tabular",           -- Vertical alignment
-    "ziontee113/color-picker.nvim", -- Color picker
+    "uga-rosa/ccc.nvim",           -- Color picker
     -- `gc` to comment
     { "numToStr/Comment.nvim",       opts = {} },
     -- Jump anywhere
