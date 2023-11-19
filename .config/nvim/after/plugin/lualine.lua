@@ -8,47 +8,21 @@ local function diagnostic_message()
     end
 end
 
+local grey = {
+    a = { bg = "#e4e4e5" },
+    b = { bg = "#e4e4e5" },
+    c = { bg = "#e4e4e5" },
+    x = { bg = "#e4e4e5" },
+    y = { bg = "#e4e4e5" },
+    z = { bg = "#e4e4e5" },
+}
+
 local curry_theme = {
-    normal = {
-        a = { bg = "#e4e4e5" },
-        b = { bg = "#e4e4e5" },
-        c = { bg = "#e4e4e5" },
-        x = { bg = "#e4e4e5" },
-        y = { bg = "#e4e4e5" },
-        z = { bg = "#e4e4e5" },
-    },
-    insert = {
-        a = { bg = "#e4e4e5" },
-        b = { bg = "#e4e4e5" },
-        c = { bg = "#e4e4e5" },
-        x = { bg = "#e4e4e5" },
-        y = { bg = "#e4e4e5" },
-        z = { bg = "#e4e4e5" },
-    },
-    visual = {
-        a = { bg = "#e4e4e5" },
-        b = { bg = "#e4e4e5" },
-        c = { bg = "#e4e4e5" },
-        x = { bg = "#e4e4e5" },
-        y = { bg = "#e4e4e5" },
-        z = { bg = "#e4e4e5" },
-    },
-    replace = {
-        a = { bg = "#e4e4e5" },
-        b = { bg = "#e4e4e5" },
-        c = { bg = "#e4e4e5" },
-        x = { bg = "#e4e4e5" },
-        y = { bg = "#e4e4e5" },
-        z = { bg = "#e4e4e5" },
-    },
-    inactive = {
-        a = { bg = "#e4e4e5" },
-        b = { bg = "#e4e4e5" },
-        c = { bg = "#e4e4e5" },
-        x = { bg = "#e4e4e5" },
-        y = { bg = "#e4e4e5" },
-        z = { bg = "#e4e4e5" },
-    },
+    normal   = grey,
+    insert   = grey,
+    visual   = grey,
+    replace  = grey,
+    inactive = grey,
 }
 
 require "lualine".setup {
