@@ -116,6 +116,7 @@ require "neodev".setup()
 require "ufo".setup()
 
 local mason_lspconfig = require "mason-lspconfig"
+mason_lspconfig.setup()
 local mappings = mason_lspconfig.get_mappings().lspconfig_to_mason
 
 -- Install all command
@@ -131,17 +132,16 @@ usercmd("MasonInstallAll",
         vim.cmd("MasonInstall " .. mason_name)
     end, {})
 
-mason_lspconfig.setup()
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require "lspconfig"[server_name].setup {
+local foreach = require "utils".Foreach
+foreach(servers,
+    function(k, v)
+        require "lspconfig"[k].setup {
             capabilities = capabilities,
             on_attach    = on_attach,
-            settings     = servers[server_name],
-            filetypes    = (servers[server_name] or {}).filetypes,
+            settings     = v,
+            filetypes    = (v or {}).filetypes,
         }
-    end,
-}
+    end)
 
 require "mason-tool-installer".setup { ensure_installed = tools }
 
