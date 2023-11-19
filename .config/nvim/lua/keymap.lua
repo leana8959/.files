@@ -118,7 +118,4 @@ autocmd("FileType", {
 })
 
 -- color-picker
-local opts = { noremap = true, silent = true }
-
-map("n", "<C-c>", "<cmd>PickColor<cr>", opts)
-map("i", "<C-c>", "<cmd>PickColorInsert<cr>", opts)
+map("n", "<C-c>", function() vim.cmd "CccPick" end, { silent = true })
