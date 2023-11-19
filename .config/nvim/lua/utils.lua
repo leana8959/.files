@@ -1,6 +1,6 @@
 M = {}
 
-function Map(tbl, f)
+M.Map = function(tbl, f)
     local t = {}
     for k, v in pairs(tbl) do
         t[k] = f(v)
@@ -8,6 +8,10 @@ function Map(tbl, f)
     return t
 end
 
-M.Map = Map
+M.Foreach = function(tbl, f)
+    for k, v in pairs(tbl) do
+        f(k, v)
+    end
+end
 
 return M
