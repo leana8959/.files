@@ -166,5 +166,3 @@ require "lazy".setup {
 }
 
 vim.cmd.colorscheme "curry"
--- vim.opt.background = "light"
--- vim.cmd.colorscheme "catppuccin"

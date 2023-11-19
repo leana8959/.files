@@ -8,7 +8,7 @@
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "44b16d11215dce86f253ce0c30949813c0a90765" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
-  "curry.nvim": { "branch": "mistress", "commit": "7f2849f287189273e3c48cae6135d1c1113c64f8" },
+  "curry.nvim": { "branch": "mistress", "commit": "9d12159e7d1131c5dd8b960d4d199a3461526a85" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
   "friendly-snippets": { "branch": "main", "commit": "43727c2ff84240e55d4069ec3e6158d74cb534b6" },
   "gitignore.nvim": { "branch": "master", "commit": "e0e0c511595681ef826a91a9e8449e86049406a0" },
