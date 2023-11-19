@@ -39,9 +39,7 @@ opt.foldenable     = true
 
 opt.winbar         = "%{%v:lua.require'winbar'.eval()%}"
 
-opt.listchars      = {
-    tab   = "│ ",
-    trail = "␣",
-}
+opt.showmode       = false
 
+opt.listchars      = { tab = "│ ", trail = "␣" }
 opt.list           = true
