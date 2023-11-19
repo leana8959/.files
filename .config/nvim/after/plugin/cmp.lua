@@ -38,7 +38,7 @@ end
 -- Snippets --
 --------------
 local function show_date()
-    return os.date "(year: %Y, month: %m, day:%d, hour: %H, minute: %M, second: %S)"
+    return os.date "(year: %Y, month: %m, day: %d, hour: %H, minute: %M, second: %S)"
 end
 ls.add_snippets("typst", {
     s("entry", {
@@ -167,6 +167,6 @@ cmp.setup {
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
-        { name = "buffer",  keyword_length = 7 },
+        { name = "buffer",  keyword_length = 4 },
     },
 }
