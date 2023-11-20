@@ -50,6 +50,7 @@ syn match skelKeyChar "|"
 syn match skelKeyChar "="
 syn match skelKeyChar ";"
 
+hi def link skelLCI               Identifier
 hi def link skelDeclaration       Keyword
 hi def link skelConstructor       Function
 hi def link skelComment           Comment
