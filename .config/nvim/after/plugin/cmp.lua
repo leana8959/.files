@@ -112,6 +112,7 @@ ls.add_snippets("all", {
 ---------------
 -- Setup CMP --
 ---------------
+local Contains = require "utils".Contains
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -168,5 +169,20 @@ cmp.setup {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "buffer",  keyword_length = 4 },
+        {
+            name           = "spell",
+            keyword_length = 7,
+            option         = {
+                keep_all_entries  = true,
+                enable_in_context = function()
+                    local ft = vim.opt.filetype
+                    return Contains({
+                        "tex",
+                        "markdown",
+                        "typst",
+                    }, ft)
+                end,
+            },
+        }
     },
 }
