@@ -14,4 +14,8 @@ M.Foreach = function(tbl, f)
     end
 end
 
+M.Contains = function(tbl, elem)
+    return tbl[elem] ~= nil
+end
+
 return M

@@ -159,7 +159,8 @@ require "lazy".setup {
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",         -- LSP completion
             "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
-            "hrsh7th/cmp-buffer",           -- Buffer Cmp Source
+            "hrsh7th/cmp-buffer",           -- Buffer cmp Source
+            "f3fora/cmp-spell"              -- Spell cmp source
         },
     },
 
