@@ -175,7 +175,7 @@ cmp.setup {
             option         = {
                 keep_all_entries  = true,
                 enable_in_context = function()
-                    local ft = vim.opt.filetype
+                    local ft = vim.bo.filetype
                     return Contains({
                         "tex",
                         "markdown",

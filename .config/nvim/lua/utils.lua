@@ -15,7 +15,12 @@ M.Foreach = function(tbl, f)
 end
 
 M.Contains = function(tbl, elem)
-    return tbl[elem] ~= nil
+    for _, v in pairs(tbl) do
+        if v == elem then
+            return true
+        end
+    end
+    return false
 end
 
 return M
