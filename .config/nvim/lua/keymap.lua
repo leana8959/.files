@@ -43,8 +43,8 @@ end)
 autocmd("FileType", {
     pattern  = { "markdown", "tex", "typst" },
     callback = function()
-        vim.opt_local.shiftwidth = 4
-        vim.opt_local.tabstop    = 4
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop    = 2
         vim.opt_local.wrap       = true
         linewrap_jk_on()
     end,
