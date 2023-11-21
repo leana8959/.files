@@ -113,6 +113,11 @@ ls.add_snippets("all", {
 -- Setup CMP --
 ---------------
 local Contains = require "utils".Contains
+local of_filetype = function(fts)
+    local ft = vim.bo.filetype
+    return Contains(fts, ft)
+end
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -120,7 +125,7 @@ cmp.setup {
         end,
     },
     mapping = cmp.mapping.preset.insert {
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function(fallback) -- Next or jump
             if cmp.visible() then
                 cmp.select_next_item()
             elseif ls.expand_or_locally_jumpable() then
@@ -131,7 +136,7 @@ cmp.setup {
                 fallback()
             end
         end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback) -- Previous
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif ls.jumpable(-1) then
@@ -140,10 +145,15 @@ cmp.setup {
                 fallback()
             end
         end, { "i", "s" }),
-        ["<CR>"] = cmp.mapping(function(fallback)
-            if ls.choice_active() then
-                ls.change_choice(1)
-            elseif cmp.visible() then
+        ["<A-Tab>"] = cmp.mapping(function(fallback) -- Force jump
+            if ls.expand_or_locally_jumpable() then
+                ls.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<CR>"] = cmp.mapping(function(fallback) -- Confirm
+            if cmp.visible() then
                 cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
@@ -152,10 +162,8 @@ cmp.setup {
                 fallback()
             end
         end, { "i", "s" }),
-        ["<S-CR>"] = cmp.mapping(function(fallback)
-            if ls.choice_active() then
-                ls.change_choice(-1)
-            elseif cmp.visible() then
+        ["<S-CR>"] = cmp.mapping(function(fallback) -- Confirm and replace
+            if cmp.visible() then
                 cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
@@ -168,21 +176,30 @@ cmp.setup {
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
-        { name = "buffer",  keyword_length = 4 },
         {
-            name           = "spell",
-            keyword_length = 7,
-            option         = {
-                keep_all_entries  = true,
+            name = "buffer", keyword_length = 4,
+            option = {
                 enable_in_context = function()
-                    local ft = vim.bo.filetype
-                    return Contains({
+                    return of_filetype {
                         "tex",
                         "markdown",
                         "typst",
-                    }, ft)
+                    }
                 end,
             },
-        }
+        },
+        {
+            name = "spell", keyword_length = 7,
+            option = {
+                keep_all_entries  = true,
+                enable_in_context = function()
+                    return of_filetype {
+                        "tex",
+                        "markdown",
+                        "typst",
+                    }
+                end,
+            },
+        },
     },
 }
