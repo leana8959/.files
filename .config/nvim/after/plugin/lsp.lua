@@ -27,10 +27,10 @@ local servers = {
                 defaultConfig = {
                     -- Learn more:
                     -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
-                    indent_style = "space",
-                    quote_style = "double",
-                    call_arg_parentheses = "remove",
-                    trailing_table_separator = "remove",
+                    indent_style             = "space",
+                    quote_style              = "double",
+                    call_arg_parentheses     = "remove",
+                    trailing_table_separator = "smart",
                 },
             },
         },
@@ -142,7 +142,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     return newVirtText
 end
 require "ufo".setup {
-    fold_virt_text_handler = handler
+    fold_virt_text_handler = handler,
 }
 
 
