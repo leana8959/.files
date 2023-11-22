@@ -25,9 +25,8 @@ require "luasnip.loaders.from_vscode".lazy_load { paths = { "./snippets" } }
 
 ls.setup {
     update_events = { "TextChanged", "TextChangedI" },
-    -- region_check_events = "InsertEnter",
-    -- delete_check_events = "InsertLeave",
 }
+
 local has_words_before = function()
     unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -177,7 +176,7 @@ cmp.setup {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         {
-            name = "buffer", keyword_length = 4,
+            name = "buffer", keyword_length = 10,
             option = {
                 enable_in_context = function()
                     return of_filetype {
@@ -189,7 +188,7 @@ cmp.setup {
             },
         },
         {
-            name = "spell", keyword_length = 7,
+            name = "spell", keyword_length = 10,
             option = {
                 keep_all_entries  = true,
                 enable_in_context = function()
