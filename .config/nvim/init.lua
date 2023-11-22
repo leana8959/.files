@@ -73,7 +73,6 @@ require "lazy".setup {
             "folke/neodev.nvim",                         -- Additional lua configuration
             "williamboman/mason.nvim",                   -- Automatically install LSPs to stdpath for neovim
             "williamboman/mason-lspconfig.nvim",         -- Interface between LSP and Mason
-            "WhoIsSethDaniel/mason-tool-installer.nvim", -- Linter and stuff
         },
     },
     "mfussenegger/nvim-dap", -- DAP
