@@ -23,4 +23,25 @@ M.Contains = function(tbl, elem)
     return false
 end
 
+M.Filter = function(tbl, pred)
+    local t = {}
+    for k, v in pairs(tbl) do
+        if pred(v) then
+            t[k] = v
+        end
+    end
+    return t
+end
+
+M.Concat = function(tbl1, tbl2)
+    local t = {}
+    for k, v in pairs(tbl1) do
+        t[k] = v
+    end
+    for k, v in pairs(tbl2) do
+        t[k] = v
+    end
+    return t
+end
+
 return M
