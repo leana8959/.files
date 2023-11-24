@@ -72,15 +72,12 @@ function tmux_sessionizer --description "create tmux sessions"
         if test -z $name
             return 0
         else
-            set name (snakecase $name)
+            set name (snakecase $name | tr '_' '-')
             set selected $CODEWARS_PATH/Haskell/$name
 
-            mkdir -p $selected
-            set output (cd $selected ; cabal init --non-interactive ; prevd)
-            set filename (echo $output | grep -E -o "[A-Za-z0-9-]+\.cabal")
-            sed -i '' \
-                -E 's/^.*build-depends:.*$/    build-depends:\n        base ^>=4.17.0.0,\n        QuickCheck,\n        hspec,/' \
-                "$selected/$filename"
+            cd $CODEWARS_PATH/Haskell ; \
+                stack new $name "https://git.earth2077.fr/leana/stack-templates/raw/branch/mistress/codewars.hsfiles" --resolver lts-21.13 ; \
+                prevd
         end
         # }}}
 

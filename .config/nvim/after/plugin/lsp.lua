@@ -270,8 +270,8 @@ vim.g.haskell_tools = {
         end,
         default_settings = {
             haskell = {
-                formattingProvider = "fourmolu",
-                -- formattingProvider = "stylish-haskell",
+                -- formattingProvider = "fourmolu",
+                formattingProvider = "stylish-haskell",
             },
         },
     },
