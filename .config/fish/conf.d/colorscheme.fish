@@ -30,13 +30,13 @@ set -g fish_color_redirection $gold
 # process separators like ; and &
 set -g fish_color_end $black --bold
 # syntax errors
-set -g fish_color_error $grey --underline
+set -g fish_color_error $black
 # ordinary command parameters
 set -g fish_color_param $red
 # parameters that are filenames (if the file exists)
 set -g fish_color_valid_path --italics
 # options starting with “-”, up to the first “--” parameter
-set -g fish_color_option $red
+set -g fish_color_option $cyan
 # comments like ‘# important’
 set -g fish_color_comment $grey
 # selected text in vi visual mode
