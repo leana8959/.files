@@ -1,5 +1,5 @@
 function fish_greeting
-    set_color $fish_color_option --bold --italics
+    set_color --bold --italics
     switch $FISH_GREETING
     case "toh"
         cat ~/.quotes/toh/* | shuf -n 1
