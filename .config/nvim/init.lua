@@ -67,12 +67,12 @@ require "lazy".setup {
     -- LSP / DAP --
     ---------------
     {
-        "neovim/nvim-lspconfig",                         -- (official) basic LSP Configuration & Plugins
+        "neovim/nvim-lspconfig",                     -- (official) basic LSP Configuration & Plugins
         dependencies = {
-            { "j-hui/fidget.nvim", tag = "legacy" },     -- LSP Spinner
-            "folke/neodev.nvim",                         -- Additional lua configuration
-            "williamboman/mason.nvim",                   -- Automatically install LSPs to stdpath for neovim
-            "williamboman/mason-lspconfig.nvim",         -- Interface between LSP and Mason
+            { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
+            "folke/neodev.nvim",                     -- Additional lua configuration
+            "williamboman/mason.nvim",               -- Automatically install LSPs to stdpath for neovim
+            "williamboman/mason-lspconfig.nvim",     -- Interface between LSP and Mason
         },
     },
     "mfussenegger/nvim-dap", -- DAP
@@ -102,7 +102,7 @@ require "lazy".setup {
     -- HTML / JavaScript (live preview)
     {
         "turbio/bracey.vim",
-        build = "npm install --prefix server"
+        build = "npm install --prefix server",
     },
 
     ---------------
@@ -129,7 +129,7 @@ require "lazy".setup {
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
-        build = ":TSUpdate"
+        build = ":TSUpdate",
     },
     { "nvim-treesitter/nvim-treesitter-context" },
     { "nvim-treesitter/playground",             enabled = false },
@@ -159,7 +159,8 @@ require "lazy".setup {
             "hrsh7th/cmp-nvim-lsp",         -- LSP completion
             "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
             "hrsh7th/cmp-buffer",           -- Buffer cmp Source
-            "f3fora/cmp-spell"              -- Spell cmp source
+            "f3fora/cmp-spell",             -- Spell cmp source
+            "mrcjkb/haskell-snippets.nvim", -- Haskell snippets
         },
     },
 
