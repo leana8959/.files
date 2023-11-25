@@ -6,17 +6,26 @@ if status is-interactive
     set -g GPG_TTY (tty)
 
     # fzf layout & theme
-    set -g FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --height=90% --preview-window=wrap --marker=">"
-    --color=fg:#4d4d4c,bg:#eeeeee,hl:#d7005f
-    --color=fg+:#4d4d4c,bg+:#e8e8e8,hl+:#d7005f
-    --color=info:#4271ae,prompt:#8959a8,pointer:#d7005f
-    --color=marker:#4271ae,spinner:#4271ae,header:#4271ae'
+    set -g FZF_DEFAULT_OPTS '
+    --cycle
+    --layout=reverse
+    --border=sharp
+    --height=90%
+    --preview-window=wrap
+    --color=fg:#383A42,bg:#eeeeee,hl:#ca1243
+    --color=fg+:#383A42,bg+:#d0d0d0,hl+:#ca1243
+    --color=info:#0184bc,prompt:#645199,pointer:#645199
+    --color=marker:#0184bc,spinner:#645199,header:#645199
+    --color=gutter:#eeeeee'
 
     # fzf preview theme (bat)
     set -g fzf_preview_file_cmd 'delta'
 
     # fd theme
     set -g LS_COLORS (vivid -m 24-bit generate one-light)
+
+    # fzf-fish search hidden files
+    set fzf_fd_opts --hidden --exclude=.git
 
     # repo paths
     # universal because tmux_sessionizer is run in non-interactive mode
