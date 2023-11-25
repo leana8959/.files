@@ -46,7 +46,7 @@ set fish_color_operator $orange
 # character escapes like \n and \x70
 set fish_color_escape $purple
 # autosuggestions (the proposed rest of a command)
-set fish_color_autosuggestion $accent
+set fish_color_autosuggestion $grey
 # The current working directory in the default prompt
 set fish_color_cwd $black
 # The current working directory in the default prompt for the root user
