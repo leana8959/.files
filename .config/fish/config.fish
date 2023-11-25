@@ -1,12 +1,20 @@
+# repo paths
+# tmux_sessionizer is run in non-interactive mode
+set REPOS_PATH ~/repos
+set UNIV_REPOS_PATH ~/univ-repos
+set PLAYGROUND_PATH ~/playground
+set CODEWARS_PATH ~/codewars
+set ZEROJUDGE_PATH ~/zerojudge
+
 if status is-interactive
     # Default editor
-    set -gx EDITOR nvim
+    set -x EDITOR nvim
 
     # Set TTY for GPG
-    set -g GPG_TTY (tty)
+    set -x GPG_TTY (tty)
 
     # fzf layout & theme
-    set -g FZF_DEFAULT_OPTS '
+    set -x FZF_DEFAULT_OPTS '
     --cycle
     --layout=reverse
     --border=sharp
@@ -19,34 +27,26 @@ if status is-interactive
     --color=gutter:#eeeeee'
 
     # fzf preview theme (bat)
-    set -g fzf_preview_file_cmd 'delta'
+    set -x fzf_preview_file_cmd 'delta'
 
     # fd theme
-    set -g LS_COLORS (vivid -m 24-bit generate one-light)
+    set -x LS_COLORS (vivid -m 24-bit generate one-light)
 
     # fzf-fish search hidden files
     set fzf_fd_opts --hidden --exclude=.git
 
-    # repo paths
-    # universal because tmux_sessionizer is run in non-interactive mode
-    set -U REPOS_PATH ~/repos
-    set -U UNIV_REPOS_PATH ~/univ-repos
-    set -U PLAYGROUND_PATH ~/playground
-    set -U CODEWARS_PATH ~/codewars
-    set -U ZEROJUDGE_PATH ~/zerojudge
-
     # delta
-    set -g DELTA_FEATURES +side-by-side
+    set -x DELTA_FEATURES +side-by-side
 
     # gopath
-    set -g GOPATH ~/.go
+    set -x GOPATH ~/.go
 
     # vi cursor style
     fish_vi_key_bindings
-    set -g fish_cursor_default block
-    set -g fish_cursor_insert line
-    set -g fish_cursor_replace_one underscore
-    set -g fish_cursor_visual block
+    set fish_cursor_default block
+    set fish_cursor_insert line
+    set fish_cursor_replace_one underscore
+    set fish_cursor_visual block
 
     # OCaml opam environment
     if command -q opam
@@ -54,7 +54,7 @@ if status is-interactive
     end
 
     # Ansible path
-    set -g ANSIBLE_CONFIG ~/.ansible.cfg
+    set -x ANSIBLE_CONFIG ~/.ansible.cfg
 
     # tools
     starship init fish | source
@@ -63,6 +63,20 @@ if status is-interactive
     if [ -z $TMUX ]
         tmux_home
     end
+
+else # non-interactive
+
+    # fzf layout & theme
+    set FZF_DEFAULT_OPTS '
+    --cycle
+    --border=sharp
+    --height=90%
+    --preview-window=wrap
+    --color=fg:#383A42,bg:#eeeeee,hl:#ca1243
+    --color=fg+:#383A42,bg+:#d0d0d0,hl+:#ca1243
+    --color=info:#0184bc,prompt:#645199,pointer:#645199
+    --color=marker:#0184bc,spinner:#645199,header:#645199
+    --color=gutter:#eeeeee'
 
 end
 
