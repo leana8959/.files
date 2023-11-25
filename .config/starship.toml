@@ -34,12 +34,12 @@ style_user = 'grey'
 format     = '( [\($user\)]($style))'
 
 [character]
-success_symbol            = '[󰘧](black)' # Insert
-error_symbol              = '[󰘧](black)' # Insert
-vimcmd_symbol             = '[󰘧](grey)'   # Normal
-vimcmd_replace_symbol     = '[󰘧](grey)'   # Replace
-vimcmd_replace_one_symbol = '[󰘧](grey)'   # Replace
-vimcmd_visual_symbol      = '[󰘧](grey)'   # Visual
+success_symbol            = '[\$](black)' # Insert
+error_symbol              = '[\$](black)' # Insert
+vimcmd_symbol             = '[N](grey)'   # Normal
+vimcmd_replace_symbol     = '[R](grey)'   # Replace
+vimcmd_replace_one_symbol = '[R](grey)'   # Replace
+vimcmd_visual_symbol      = '[V](grey)'   # Visual
 
 [directory]
 truncation_length = 4
