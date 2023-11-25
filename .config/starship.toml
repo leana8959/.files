@@ -9,10 +9,10 @@ right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 palette = 'lilac'
 
 [palettes.lilac]
-accent       = "#645199" # Haskell purple
+accent       = '#645199' # Haskell purple
 accent_trans = '#efebfc'
-warning      = "#e45649"
-hint         = "#a0a1a7"
+warning      = '#e45649'
+hint         = '#a0a1a7'
 error        = '#c82829'
 
 [hostname]
@@ -53,7 +53,6 @@ format = '( [\($virtualenv\)]($style))'
 [cmd_duration]
 min_time          = 5_000
 show_milliseconds = true
-style             = 'hint italic'
 format            = '([$duration]($style) )'
 
 [git_state]
