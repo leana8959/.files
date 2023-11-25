@@ -30,7 +30,7 @@ set -g fish_color_redirection $gold
 # process separators like ; and &
 set -g fish_color_end $black --bold
 # syntax errors
-set -g fish_color_error $grey --italics
+set -g fish_color_error $grey --underline
 # ordinary command parameters
 set -g fish_color_param $red
 # parameters that are filenames (if the file exists)
@@ -72,17 +72,17 @@ set -g fish_pager_color_progress --reverse $cyan
 # the background color of a line
 set -g fish_pager_color_background $black
 # the prefix string, i.e. the string that is to be completed
-set -g fish_pager_color_prefix $accent
+set -g fish_pager_color_prefix $black
 # the completion itself, i.e. the proposed rest of the string
-set -g fish_pager_color_completion $black
+set -g fish_pager_color_completion $grey
 # the completion description
 set -g fish_pager_color_description $grey
 # background of the selected completion
-set -g fish_pager_color_selected_background --reverse
+set -g fish_pager_color_selected_background $black
 # prefix of the selected completion
-set -g fish_pager_color_selected_prefix $red
+set -g fish_pager_color_selected_prefix
 # suffix of the selected completion
-set -g fish_pager_color_selected_completion
+set -g fish_pager_color_selected_completion $red
 # description of the selected completion
 set -g fish_pager_color_selected_description $gold
 # ## Alternating colors

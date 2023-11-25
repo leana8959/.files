@@ -6,32 +6,40 @@ $character
 '''
 right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 
-palette = 'lilac'
+palette = 'curry'
 
-[palettes.lilac]
+[palettes.curry]
 accent       = '#645199' # Haskell purple
 accent_trans = '#efebfc'
-warning      = '#e45649'
-hint         = '#a0a1a7'
-error        = '#c82829'
+black        = '#383A42'
+grey         = '#a0a1a7'
+cyan         = '#0184bc'
+blue         = '#4078f2'
+purple       = '#a626a4'
+green        = '#50a14f'
+orange       = '#e45649'
+red          = '#ca1243'
+brown        = '#986801'
+gold         = '#c18401'
+tinted_bg    = '#eeeeee'
 
 [hostname]
 ssh_only = true
-style    = 'bold warning'
+style    = 'bold orange'
 format   = '[$hostname]($style):'
 
 [username]
-style_root = 'warning bold'
-style_user = 'hint'
+style_root = 'bold orange'
+style_user = 'grey'
 format     = '( [\($user\)]($style))'
 
 [character]
 success_symbol            = '[󰘧](black)' # Insert
 error_symbol              = '[󰘧](black)' # Insert
-vimcmd_symbol             = '[󰘧](hint)'  # Normal
-vimcmd_replace_symbol     = '[󰘧](hint)'  # Replace
-vimcmd_replace_one_symbol = '[󰘧](hint)'  # Replace
-vimcmd_visual_symbol      = '[󰘧](hint)'  # Visual
+vimcmd_symbol             = '[󰘧](grey)'   # Normal
+vimcmd_replace_symbol     = '[󰘧](grey)'   # Replace
+vimcmd_replace_one_symbol = '[󰘧](grey)'   # Replace
+vimcmd_visual_symbol      = '[󰘧](grey)'   # Visual
 
 [directory]
 truncation_length = 4
@@ -39,20 +47,21 @@ truncate_to_repo  = false
 style             = 'fg:black bg:accent_trans'
 format            = '[$path]($style)( [$read_only]($read_only_style))'
 read_only         = ''
-read_only_style   = 'error'
+read_only_style   = 'red'
 truncation_symbol = '…/'
 
 [status]
-format   = '([\[$status\]](bold error) )'
+format   = '([\[$status\]](bold red) )'
 disabled = false
 
 [python]
-style  = 'hint'
+style  = 'grey'
 format = '( [\($virtualenv\)]($style))'
 
 [cmd_duration]
 min_time          = 5_000
 show_milliseconds = true
+style             = 'brown'
 format            = '([$duration]($style) )'
 
 [git_state]
@@ -61,16 +70,16 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_branch]
 symbol = ''
-style  = 'hint'
+style  = 'grey'
 format = '[$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
 style  = 'accent'
-format = '[\(](hint)[$hash$tag]($style)[\)](hint)'
+format = '[\(](grey)[$hash$tag]($style)[\)](grey)'
 
 [git_status]
 ahead    = '⇡$count'
 behind   = '⇣$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
 style    = 'bold accent'
-format   = '([\[](hint)[$all_status$ahead_behind]($style)[\]](hint))'
+format   = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
