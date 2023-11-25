@@ -1,2 +1,3 @@
 .config/nvim/lua/.luarc.json
 !.config/fish/conf.d/
+!.local/bin/

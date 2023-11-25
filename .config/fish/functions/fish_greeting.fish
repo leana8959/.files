@@ -1,5 +1,5 @@
 function fish_greeting
-    set_color --bold --italics
+    set_color --italics
     switch $FISH_GREETING
     case "toh"
         cat ~/.quotes/toh/* | shuf -n 1
@@ -7,6 +7,8 @@ function fish_greeting
         cat ~/.quotes/fleabag/* | shuf -n 1
     case "date"
         date
+    case "citation"
+        ~/.local/bin/citation.py
     case "*"
     end
 end
