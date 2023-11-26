@@ -9,6 +9,15 @@ autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end,
 })
 
+autocmd("FileType", {
+    pattern  = { "markdown", "tex", "typst" },
+    callback = function()
+        vim.opt_local.shiftwidth = 2
+        vim.opt_local.tabstop    = 2
+        vim.opt_local.textwidth  = 80
+    end,
+})
+
 autocmd("Filetype", {
     pattern  = "skel",
     callback = function()
