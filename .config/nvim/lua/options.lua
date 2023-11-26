@@ -43,3 +43,5 @@ opt.showmode       = false
 
 opt.listchars      = { tab = "│ ", trail = "␣" }
 opt.list           = true
+
+vim.g.netrw_banner = 0
