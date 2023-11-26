@@ -8,11 +8,7 @@ function fish_greeting
     case "date"
         date
     case "citation"
-        if type rust_citation 2>&1 > /dev/null
-            rust_citation
-        else
-            ~/.local/bin/citation.py
-        end
+        ~/.local/bin/citation.py
     case "*"
     end
 end
