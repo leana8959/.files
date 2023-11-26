@@ -10,25 +10,32 @@ local Concat                          = require "utils".Concat
 -- Language servers --
 ----------------------
 local servers                         = {
-    bashls    = {}, -- bash
-    clangd    = {}, -- C/CPP
-    cssls     = {}, -- CSS
-    html      = {}, -- HTML
-    jsonls    = {}, -- JSON
-    lemminx   = {}, -- XML
-    marksman  = {}, -- Markdown
-    ocamllsp  = {   -- OCaml
+    bashls        = {}, -- bash
+    clangd        = {}, -- C/CPP
+    cssls         = {}, -- CSS
+    html          = {}, -- HTML
+    jsonls        = {}, -- JSON
+    lemminx       = {}, -- XML
+    marksman      = {}, -- Markdown
+    pylsp         = {}, -- Python
+    -- pyright = {},
+    -- pylyzer = {},
+    taplo         = {}, -- toml
+    texlab        = {}, -- texlab
+    tsserver      = {}, -- TypeScript
+    vimls         = {}, -- vim
+
+    perlnavigator = {   -- Perl
+        cmd = { "~/.local/share/nvim/mason/bin/perlnavigator", "--stdio" },
+    },
+    ocamllsp      = { -- OCaml
         exclude = true,
     },
-    pylsp     = {}, -- Python
-    -- pyright   = {},
-    -- pylyzer   = {},
-    taplo     = {}, -- toml
-    texlab    = {}, -- texlab
-    tsserver  = {}, -- TypeScript
-    typst_lsp = { exportPdf = "never" },
-    vimls     = {}, -- vim
-    lua_ls    = {
+    typst_lsp     = { -- Typst
+        exportPdf = "never",
+    },
+
+    lua_ls        = { -- Lua
         Lua = {
             format = {
                 defaultConfig = {
@@ -42,8 +49,8 @@ local servers                         = {
             },
         },
     },
-}
 
+}
 ------------------
 -- Linters, etc --
 ------------------
