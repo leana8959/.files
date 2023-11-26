@@ -1,13 +1,17 @@
-vim.g.mapleader = " "
+vim.g.mapleader      = " "
 vim.g.maplocalleader = " "
 
-local map = vim.keymap.set
-local unmap = vim.keymap.del
-local autocmd = vim.api.nvim_create_autocmd
+local map            = vim.keymap.set
+local unmap          = vim.keymap.del
+local autocmd        = vim.api.nvim_create_autocmd
 
 -- Move
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Indent without leaving visual
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- Centered motions
 map("n", "<C-d>", "<C-d>zz")
@@ -40,6 +44,9 @@ map("n", "<leader>w", function()
     vim.o.wrap = not vim.o.wrap
     if vim.o.wrap then linewrap_jk_on() else linewrap_jk_off() end
 end)
+
+-- Replace selected token
+map("v", "<leader>r", [["ry:%s/\(<C-r>r\)//g<Left><Left>]])
 
 map("n", "<leader>pv", function() vim.cmd "Explore" end)     -- Project View
 map("n", "<leader>nf", function() vim.cmd "enew" end)        -- New File
