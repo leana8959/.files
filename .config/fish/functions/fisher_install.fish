@@ -1,4 +1,4 @@
-function install_fisher --description 'Install fisher and its plugins'
+function fisher_install --description 'Install fisher and its plugins'
     # fisher
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
@@ -8,8 +8,8 @@ function install_fisher --description 'Install fisher and its plugins'
     # https://github.com/PatrickF1/colored_man_pages.fish
     fisher install patrickf1/colored_man_pages.fish
 
-    # matching paired symbols https://github.com/laughedelic/pisces
-    fisher install laughedelic/pisces
+    # # matching paired symbols https://github.com/laughedelic/pisces
+    # fisher install laughedelic/pisces
 
     # only keep command that succeeded in history
     fisher install meaningful-ooo/sponge
