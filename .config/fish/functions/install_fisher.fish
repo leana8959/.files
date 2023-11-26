@@ -1,4 +1,4 @@
-function fisher_install --description 'Install fisher and its plugins'
+function install_fisher --description 'Install fisher and its plugins'
     # fisher
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
