@@ -21,5 +21,5 @@ cs = zip(
 
 c = random.choice(list(cs))
 
-print(f"{Style.BRIGHT}{c[0]}{Style.RESET_ALL}")
-print(f"{Style.DIM}~ {c[1][0]} « {c[1][1]} »{Style.RESET_ALL}")
+print(f"{Style.BRIGHT}« {c[0]} »{Style.RESET_ALL}")
+print(f"{Style.DIM}~ {c[1][0]} - {c[1][1]}{Style.RESET_ALL}")
