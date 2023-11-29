@@ -12,6 +12,7 @@ function tmux_attach --description "attach to existing tmux sessions"
     end
 
     set -U TMUX_LAST (tmux display-message -p '#S')
+
     if [ -z $TMUX ]
         tmux attach-session -t $selected
     else

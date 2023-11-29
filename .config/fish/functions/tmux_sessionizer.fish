@@ -20,8 +20,10 @@ function tmux_sessionizer --description "create tmux sessions"
             echo "codewars c";
             echo "codewars shell";
             echo "zerojudge c";
-        end 2> /dev/null | fzf)
+        end 2> /dev/null | sed -e "s|^$HOME|~|" | fzf)
         # }}}
+
+    set selected (echo $selected | sed -e "s|^~|$HOME|")
 
     if [ -z $selected ]
         commandline --function repaint
@@ -124,6 +126,7 @@ function tmux_sessionizer --description "create tmux sessions"
     end
 
     set session_name (echo $selected | tr . _)
+    set -U TMUX_LAST (tmux display-message -p '#S')
 
     # create session if doesn't exist
     if ! tmux has -t=$session_name 2> /dev/null
@@ -134,7 +137,6 @@ function tmux_sessionizer --description "create tmux sessions"
             select-window -t $session_name:1 \;
     end
 
-    set -U TMUX_LAST (tmux display-message -p '#S')
     if [ -z $TMUX ]
         tmux attach-session -t $session_name
     else
