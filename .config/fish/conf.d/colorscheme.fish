@@ -62,7 +62,7 @@ set fish_color_status $red
 # the ‘^C’ indicator on a canceled command
 set fish_color_cancel $accent --reverse
 # history search matches and selected pager items (background only)
-set fish_color_search_match --reverse
+set fish_color_search_match --background $visual
 
 #########
 # Pager #
