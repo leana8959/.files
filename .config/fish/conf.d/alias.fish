@@ -52,7 +52,6 @@ abbr myip 'curl ipinfo.io'
 abbr news newsboat
 abbr :q exit
 abbr :Q exit
-alias :w 'echo "Are you drunk??"'
 
 # ssh
 abbr pi 'ssh pi4'
@@ -69,3 +68,9 @@ abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 abbr vv 'python3 -m venv venv && source venv/bin/activate.fish'
 abbr von 'source venv/bin/activate.fish'
 abbr voff 'deactivate'
+
+# Search
+abbr s 'search.py'
+abbr syt 'search.py -m yt'
+abbr sgh 'search.py -m gh'
+abbr sfj 'search.py -m fj'
