@@ -10,32 +10,28 @@ local Concat                          = require "utils".Concat
 -- Language servers --
 ----------------------
 local servers                         = {
-    bashls        = {}, -- bash
-    clangd        = {}, -- C/CPP
-    cssls         = {}, -- CSS
-    html          = {}, -- HTML
-    jsonls        = {}, -- JSON
-    lemminx       = {}, -- XML
-    marksman      = {}, -- Markdown
-    pylsp         = {}, -- Python
-    -- pyright = {},
-    -- pylyzer = {},
-    taplo         = {}, -- toml
-    texlab        = {}, -- texlab
-    tsserver      = {}, -- TypeScript
-    vimls         = {}, -- vim
+    bashls    = {}, -- bash
+    clangd    = {}, -- C/CPP
+    cssls     = {}, -- CSS
+    html      = {}, -- HTML
+    jsonls    = {}, -- JSON
+    lemminx   = {}, -- XML
+    marksman  = {}, -- Markdown
+    pyright   = {}, -- Python
+    pylsp     = {},
+    taplo     = {}, -- toml
+    texlab    = {}, -- texlab
+    tsserver  = {}, -- TypeScript
+    vimls     = {}, -- vim
 
-    perlnavigator = {   -- Perl
-        cmd = { "~/.local/share/nvim/mason/bin/perlnavigator", "--stdio" },
-    },
-    ocamllsp      = { -- OCaml
+    ocamllsp  = {   -- OCaml
         exclude = true,
     },
-    typst_lsp     = { -- Typst
+    typst_lsp = { -- Typst
         exportPdf = "never",
     },
 
-    lua_ls        = { -- Lua
+    lua_ls    = { -- Lua
         Lua = {
             format = {
                 defaultConfig = {
@@ -277,8 +273,8 @@ vim.g.haskell_tools = {
         end,
         default_settings = {
             haskell = {
-                -- formattingProvider      = "fourmolu",
-                formattingProvider      = "stylish-haskell",
+                formattingProvider      = "fourmolu",
+                -- formattingProvider      = "stylish-haskell",
                 cabalFormattingProvider = "cabal-fmt",
             },
         },

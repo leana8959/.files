@@ -144,9 +144,8 @@ require "lazy".setup {
     ------------------
     -- Colorschemes --
     ------------------
-    "https://git.earth2077.fr/leana/curry.nvim",
     "owickstrom/vim-colors-paramount",
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "https://git.earth2077.fr/leana/curry.nvim", branch = "lua" },
 
     ----------------
     -- Completion --
