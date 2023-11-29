@@ -1,10 +1,3 @@
-# repo paths
-set REPOS_PATH ~/repos
-set UNIV_REPOS_PATH ~/univ-repos
-set PLAYGROUND_PATH ~/playground
-set CODEWARS_PATH ~/codewars
-set ZEROJUDGE_PATH ~/zerojudge
-
 if status is-interactive
 
     set -x EDITOR nvim                                    # Default editor
@@ -16,17 +9,22 @@ if status is-interactive
     set -x GOPATH ~/.go                                   # gopath
     set -x ANSIBLE_CONFIG ~/.ansible.cfg                  # Ansible path
 
+    # repo paths
+    set REPOS_PATH ~/repos
+    set UNIV_REPOS_PATH ~/univ-repos
+    set PLAYGROUND_PATH ~/playground
+    set CODEWARS_PATH ~/codewars
+    set ZEROJUDGE_PATH ~/zerojudge
+
     # OCaml opam environment
     if command -q opam
         eval (opam env)
     end
 
     # fzf layout & theme
-    set -x FZF_DEFAULT_OPTS '
+    set FZF_DEFAULT_OPTS '
     --cycle
-    --layout=reverse
-    --border=sharp
-    --height=90%
+    --border=none
     --preview-window=wrap
     --color=fg:#383A42,bg:#eeeeee,hl:#ca1243
     --color=fg+:#383A42,bg+:#d0d0d0,hl+:#ca1243
@@ -48,19 +46,6 @@ if status is-interactive
     if [ -z $TMUX ]
         tmux_home
     end
-
-else # non-interactive
-
-    # fzf layout & theme
-    set FZF_DEFAULT_OPTS '
-    --cycle
-    --border=none
-    --preview-window=wrap
-    --color=fg:#383A42,bg:#eeeeee,hl:#ca1243
-    --color=fg+:#383A42,bg+:#d0d0d0,hl+:#ca1243
-    --color=info:#0184bc,prompt:#645199,pointer:#645199
-    --color=marker:#0184bc,spinner:#645199,header:#645199
-    --color=gutter:#eeeeee'
 
 end
 
