@@ -264,9 +264,9 @@ vim.g.haskell_tools = {
             local ht = require "haskell-tools"
             local opts = { buffer = bufnr }
 
-            map("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
             map("n", "<leader>he", ht.lsp.buf_eval_all, opts)
-            map("n", "<leader>hr", ht.repl.toggle, opts)
+            -- map("n", "<leader>hs", ht.hoogle.hoogle_signature, opts)
+            -- map("n", "<leader>hr", ht.repl.toggle, opts)
 
             vim.opt_local.shiftwidth = 2
             on_attach(client, bufnr)
