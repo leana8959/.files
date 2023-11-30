@@ -23,7 +23,7 @@ if status is-interactive
     end
 
     # fzf layout & theme
-    set FZF_DEFAULT_OPTS '
+    set -x FZF_DEFAULT_OPTS '
     --cycle
     --border=none
     --preview-window=wrap
