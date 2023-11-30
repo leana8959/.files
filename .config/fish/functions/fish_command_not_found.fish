@@ -1,6 +1,6 @@
 function fish_command_not_found
 
-    set hour (date +"%H hour")
+    set hour (date +"%H")
     set user (whoami)
 
     set words                              \
