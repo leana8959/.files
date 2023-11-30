@@ -88,8 +88,8 @@ map("n", "<leader>gl",
 
 -- Fugitive
 map("n", "<leader><space>", ":Git<CR>5<Down>")
-map("n", "gu", ":diffget //2<CR>")
-map("n", "gh", ":diffget //3<CR>")
+map("n", "<leader>gu", ":diffget //2<CR>")
+map("n", "<leader>gh", ":diffget //3<CR>")
 autocmd("FileType", {
     pattern = "fugitive",
     callback = function() map("n", "<leader><space>", ":q<CR>", { buffer = true }) end,
