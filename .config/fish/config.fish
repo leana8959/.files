@@ -1,6 +1,6 @@
 if status is-interactive
 
-    set -x SHELL fish
+    set -x SHELL (which fish)
     set -x EDITOR nvim                                    # Default editor
     set -x GPG_TTY (tty)                                  # Set TTY for GPG
     set -x fzf_preview_file_cmd 'delta'                   # fzf preview theme (bat)
