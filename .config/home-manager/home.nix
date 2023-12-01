@@ -83,11 +83,13 @@ in {
     # java
     jdk17
     gradle
+    jdt-language-server
 
-    #
+    # go
     go
 
     # scala
+    ammonite
     sbt
     coursier
 
