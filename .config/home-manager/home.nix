@@ -58,6 +58,7 @@ in {
     delta
     git-filter-repo
     gnupg
+    pwgen # password generator
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -76,6 +77,7 @@ in {
     tea       # gitea's CLI tool
 
     # C
+    clang_16
     criterion
 
     # java
@@ -101,6 +103,14 @@ in {
     # typst
     typst
   ] ++ lib.optionals (isLinux) [
+
+    # C
+    clang_16
+    valgrind
+    gdb
+
+    traceroute
+
   ]);
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
