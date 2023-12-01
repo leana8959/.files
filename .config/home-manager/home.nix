@@ -77,7 +77,6 @@ in {
     tea       # gitea's CLI tool
 
     # C
-    clang_16
     criterion
 
     # java
@@ -107,7 +106,6 @@ in {
   ] ++ lib.optionals (isLinux) [
 
     # C
-    clang_16
     valgrind
     gdb
 
