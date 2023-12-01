@@ -65,7 +65,7 @@ abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
 abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 
 # Home-manager
-abbr np '$EDITOR ~/.dotfiles/home-manager/default.nix'
+abbr np '$EDITOR ~/.dotfiles/.config/home-manager/home.nix'
 abbr hs 'home-manager switch'
 
 ## Python
