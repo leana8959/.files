@@ -94,6 +94,9 @@ in {
     ammonite # repl
     metals   # LSP
     sbt      # build tool
+    scala_3
+    scalafmt
+    scalafix
 
     # rust
     rustup
