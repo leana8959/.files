@@ -67,6 +67,7 @@ abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 # Home-manager
 abbr np '$EDITOR ~/.dotfiles/.config/home-manager/home.nix'
 abbr hs 'home-manager switch'
+alias nix-shell 'nix-shell --run fish'
 
 ## Python
 abbr vv 'python3 -m venv venv && source venv/bin/activate.fish'

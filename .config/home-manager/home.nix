@@ -32,6 +32,10 @@ in {
 
     # shell
     bash
+    (python39.withPackages(ps: with ps; [
+      beautifulsoup4
+      requests
+    ]))
     fish
     tmux
     stow
@@ -60,13 +64,14 @@ in {
     gnupg
     pwgen # password generator
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
   ] ++ lib.optionals (isDarwin) [
+
+    (nerdfonts.override { fonts = [
+      "CascadiaCode"
+      "JetBrainsMono"
+      "Meslo"
+    ]; })
 
     asciinema # record videos
     cmus      # music player
@@ -75,6 +80,7 @@ in {
     hyperfine # benchmark tool
     jq        # json parser
     tea       # gitea's CLI tool
+    yt-dlp    # download youtube videos
 
     # C
     criterion
@@ -84,13 +90,10 @@ in {
     gradle
     jdt-language-server
 
-    # go
-    go
-
     # scala
-    ammonite
-    sbt
-    coursier
+    ammonite # repl
+    metals   # LSP
+    sbt      # build tool
 
     # rust
     rustup
@@ -100,9 +103,13 @@ in {
 
     # haskell
     stack
+    haskell-language-server
+    haskellPackages.hoogle
+    haskellPackages.cabal-fmt
 
     # typst
     typst
+
   ] ++ lib.optionals (isLinux) [
 
     # C
