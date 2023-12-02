@@ -25,57 +25,46 @@ local curry_theme = {
     inactive = grey,
 }
 
+
+local sections = {
+    lualine_a = {},
+    lualine_b = {
+        {
+            "diagnostics",
+            colored = true,
+            symbols = { error = "E", warn = "W", info = "·", hint = "H" },
+        },
+        diagnostic_message,
+    },
+    lualine_c = { "navic" },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { "progress", "branch" },
+}
+
 require "lualine".setup {
-    options = {
-        icons_enabled = true,
-        theme = curry_theme,
+    options           = {
+        icons_enabled        = true,
+        theme                = curry_theme,
         component_separators = {},
-        section_separators = {},
-        disabled_filetypes = {
+        section_separators   = {},
+        disabled_filetypes   = {
             statusline = { "fugitive" },
-            winbar = { "fugitive" },
+            winbar     = { "fugitive" },
         },
-        ignore_focus = {},
+        ignore_focus         = {},
         always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
+        globalstatus         = false,
+        refresh              = {
             statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
+            tabline    = 1000,
+            winbar     = 1000,
         },
     },
-    sections = {
-        lualine_a = {},
-        lualine_b = {
-            {
-                "diagnostics",
-                colored = true,
-                symbols = { error = "E", warn = "W", info = "·", hint = "H" },
-            },
-            diagnostic_message,
-        },
-        lualine_c = { "navic" },
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { "progress" },
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {
-            {
-                "diagnostics",
-                colored = false,
-                symbols = { error = "E", warn = "W", info = "·", hint = "H" },
-            },
-            diagnostic_message,
-        },
-        lualine_c = { "navic" },
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { "progress" },
-    },
-    winbar = {},
-    inactive_winbar = {},
-    tabline = {},
-    extensions = {},
+    sections          = sections,
+    inactive_sections = sections,
+    winbar            = {},
+    inactive_winbar   = {},
+    tabline           = {},
+    extensions        = {},
 }
