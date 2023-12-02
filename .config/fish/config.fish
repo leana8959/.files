@@ -1,3 +1,10 @@
+# repo paths
+set REPOS_PATH ~/repos
+set UNIV_REPOS_PATH ~/univ-repos
+set PLAYGROUND_PATH ~/playground
+set CODEWARS_PATH ~/codewars
+set ZEROJUDGE_PATH ~/zerojudge
+
 if status is-interactive
 
     set -x EDITOR nvim                                    # Default editor
@@ -8,13 +15,6 @@ if status is-interactive
     set -x DELTA_FEATURES +side-by-side                   # delta
     set -x GOPATH ~/.go                                   # gopath
     set -x ANSIBLE_CONFIG ~/.ansible.cfg                  # Ansible path
-
-    # repo paths
-    set REPOS_PATH ~/repos
-    set UNIV_REPOS_PATH ~/univ-repos
-    set PLAYGROUND_PATH ~/playground
-    set CODEWARS_PATH ~/codewars
-    set ZEROJUDGE_PATH ~/zerojudge
 
     # OCaml opam environment
     if command -q opam

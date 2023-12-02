@@ -126,7 +126,6 @@ function tmux_sessionizer --description "create tmux sessions"
     end
 
     set session_name (echo $selected | tr . _)
-    set -U TMUX_LAST (tmux display-message -p '#S')
 
     # create session if doesn't exist
     if ! tmux has -t=$session_name 2> /dev/null
@@ -137,6 +136,7 @@ function tmux_sessionizer --description "create tmux sessions"
             select-window -t $session_name:1 \;
     end
 
+    set -U TMUX_LAST (tmux display-message -p '#S')
     if [ -z $TMUX ]
         tmux attach-session -t $session_name
     else
