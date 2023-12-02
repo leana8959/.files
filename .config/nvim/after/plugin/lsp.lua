@@ -23,6 +23,7 @@ local servers                         = {
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
     vimls     = {}, -- vim
+    rnix      = {}, -- Nix
 
     ocamllsp  = {   -- OCaml
         exclude = true,
