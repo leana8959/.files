@@ -104,11 +104,12 @@ in {
     # npm
     nodejs_20
 
-    # haskell
-    stack
-    haskell-language-server
-    haskellPackages.hoogle
-    haskellPackages.cabal-fmt
+    # # haskell
+    # stack
+    # haskell.compiler.ghc947
+    # haskell-language-server
+    # haskellPackages.hoogle
+    # haskellPackages.cabal-fmt
 
     # typst
     typst
