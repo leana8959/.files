@@ -199,7 +199,7 @@ local config = {
         -- https://github.com/NixOS/nixpkgs/issues/232822#issuecomment-1564243667
         -- `-data` argument is necessary
         "jdt-language-server",
-        "-data", "$XDG_CACHE_HOME/jdtls/$PWD",
+        "-data", vim.fn.expand "~/.cache/jdtls" .. vim.fn.expand "%:p:h",
     },
     root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
