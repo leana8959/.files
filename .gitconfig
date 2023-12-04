@@ -26,3 +26,5 @@
 	ui = auto
 [pull]
 	ff = only
+[safe]
+	directory = /etc/docker/compose
