@@ -1,10 +1,9 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{ config, pkgs, ... }:
+
+let
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
-in {
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "leana";
@@ -32,7 +31,7 @@ in {
 
     # shell
     bash
-    (python39.withPackages(ps: with ps; [
+    (python39.withPackages (ps: with ps; [
       beautifulsoup4
       requests
     ]))
@@ -64,25 +63,28 @@ in {
     gnupg
     pwgen # password generator
 
-
   ] ++ lib.optionals (isDarwin) [
 
-    (nerdfonts.override { fonts = [
-      "CascadiaCode"
-      "JetBrainsMono"
-      "Meslo"
-    ]; })
+    (nerdfonts.override {
+      fonts = [
+        "CascadiaCode"
+        "JetBrainsMono"
+        "Meslo"
+      ];
+    })
 
     asciinema # record videos
-    cmus      # music player
-    cmusfm    # cmus with last.fm support
-    gh        # github's CLI tool
+    # # NOTE: Broken, to be fixed
+    # cmus # music player
+    cmusfm # cmus with last.fm support
+    gh # github's CLI tool
     hyperfine # benchmark tool
-    jq        # json parser
-    tea       # gitea's CLI tool
-    yt-dlp    # download youtube videos
+    jq # json parser
+    tea # gitea's CLI tool
+    yt-dlp # download youtube videos
 
     # C
+    # NOTE: untested
     criterion
 
     # java
@@ -92,8 +94,8 @@ in {
 
     # scala
     ammonite # repl
-    metals   # LSP
-    sbt      # build tool
+    metals # LSP
+    sbt # build tool
     scala_3
     scalafmt
     scalafix
@@ -104,21 +106,27 @@ in {
     # npm
     nodejs_20
 
-    # # haskell
-    # stack
-    # haskell.compiler.ghc947
-    # haskell-language-server
-    # haskellPackages.hoogle
-    # haskellPackages.cabal-fmt
+    # # OCaml
+    # # Doesn't work
+    # opam
+
+    # haskell
+    haskell.compiler.ghc947
+    haskell-language-server
+    haskellPackages.hoogle
+    haskellPackages.cabal-fmt
+    haskellPackages.cabal-install
+    haskellPackages.hlint
 
     # typst
     typst
 
   ] ++ lib.optionals (isLinux) [
 
-    # C
-    valgrind
-    gdb
+    # # C
+    # # NOTE: doesn't work
+    # valgrind
+    # gdb
 
     traceroute
 
