@@ -76,9 +76,8 @@ local on_attach                       = function(client, bufno)
     map("n", "<leader>r", vim.lsp.buf.rename, opts)
     map("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
 
-    local navic = require "nvim-navic"
     if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufno)
+        require "nvim-navic".attach(client, bufno)
     end
 end
 
@@ -95,6 +94,14 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts.border = border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+-- Type signature
+require "lsp_signature".setup {
+    doc_lines   = 7,
+    bind        = true,
+    border      = border,
+    hint_enable = false,
+}
 
 -- Diagnostic display configuration
 vim.diagnostic.config { virtual_text = false, severity_sort = true }
