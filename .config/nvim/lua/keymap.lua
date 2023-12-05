@@ -41,9 +41,6 @@ map("n", "<leader>w", function()
     if vim.o.wrap then linewrap_jk_on() else linewrap_jk_off() end
 end)
 
--- gq the entire paragraph
-map("n", "gq", "mzvipgq`z")
-
 -- Replace selected token
 map("v", "<leader>r", [["ry:%s/\(<C-r>r\)//g<Left><Left>]])
 
