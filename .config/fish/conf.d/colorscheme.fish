@@ -1,6 +1,6 @@
 # Learn more: https://fishshell.com/docs/current/interactive.html
 
-set -l black 383A42
+set -l black 000000
 set -l white ffffff
 set -l grey a0a1a7
 set -l cyan 0184bc
