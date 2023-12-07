@@ -163,5 +163,14 @@ in
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+
+    direnv = {
+      enable            = true;
+      nix-direnv.enable = true;
+    };
+
+  };
+
 }
