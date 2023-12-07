@@ -34,6 +34,7 @@ if status is-interactive
 
     # tools
     starship init fish | source
+    direnv hook fish | source
 
     # vi cursor style
     fish_vi_key_bindings
