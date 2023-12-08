@@ -44,7 +44,7 @@ end)
 -- Replace selected token
 map("v", "<leader>r", [["ry:%s/\(<C-r>r\)//g<Left><Left>]])
 
-map("n", "<leader>pv", function() vim.cmd "Explore" end)     -- Project View
+map("n", "<leader>pv", function() vim.cmd "Oil" end)         -- Project View
 map("n", "<leader>nf", function() vim.cmd "enew" end)        -- New File
 map("n", "<leader>so", function() vim.cmd "so %" end)        -- Source buffer
 map("c", "#capl", [[\(.\{-}\)]])                             -- helpers in regex
