@@ -26,40 +26,34 @@ in
     helix
     gnused
     neovim
+    ripgrep
     vim
     tmux
 
     # shell
-    bash
-    (python39.withPackages (ps: with ps; [
+    fish
+    (python39.withPackages(ps: with ps; [
       beautifulsoup4
       requests
     ]))
-    fish
-    tmux
     stow
 
-    # fancy utilities
     fd
-    figlet
     fzf
     htop
-    iperf
-    macchina # screenfetch
-    ncdu
-    parallel
-    ripgrep
-    rsync
     starship
-    tldr
     tree
-    vivid # LS_COLORS generator
-    watchexec
+    vivid
+
+    # fancy utilities
+    figlet
+    macchina
+    ncdu
+    tldr
 
     # git related
     bat
     delta
-    git-filter-repo
     gnupg
     pwgen # password generator
 
@@ -73,51 +67,22 @@ in
       ];
     })
 
-    asciinema # record videos
+    asciinema
     # # NOTE: Broken, to be fixed
-    # cmus # music player
-    cmusfm # cmus with last.fm support
-    gh # github's CLI tool
-    hyperfine # benchmark tool
-    jq # json parser
-    tea # gitea's CLI tool
-    yt-dlp # download youtube videos
+    # cmus
+    cmusfm
+    hyperfine
+    tea
+    yt-dlp
+    watchexec
 
-    # C
-    # NOTE: untested
-    criterion
-
-    # java
     jdk17
-    gradle
-    jdt-language-server
-
-    # scala
-    ammonite # repl
-    metals # LSP
-    sbt # build tool
-    scala_3
-    scalafmt
-    scalafix
-
-    # rust
     rustup
-
-    # npm
     nodejs_20
 
     # # OCaml
-    # # Doesn't work
+    # # NOTE: Doesn't work
     # opam
-
-    # haskell
-    stack
-    haskell.compiler.ghc947
-    (haskell-language-server.override { supportedGhcVersions = [ "947" ]; })
-    haskellPackages.hoogle
-    haskellPackages.cabal-fmt
-    haskellPackages.cabal-install
-    haskellPackages.hlint
 
     # typst
     typst
@@ -128,8 +93,6 @@ in
     # # NOTE: doesn't work
     # valgrind
     # gdb
-
-    traceroute
 
   ]);
 
