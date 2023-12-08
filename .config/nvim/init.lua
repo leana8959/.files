@@ -28,8 +28,10 @@ require "lazy".setup {
     "mbbill/undotree",             -- Treeview of history
     "godlygeek/tabular",           -- Vertical alignment
     "uga-rosa/ccc.nvim",           -- Color picker
+    -- File manager
+    { "stevearc/oil.nvim",     opts = {} },
     -- `gc` to comment
-    { "numToStr/Comment.nvim",       opts = {} },
+    { "numToStr/Comment.nvim", opts = {} },
     -- Jump anywhere
     {
         "ggandor/leap.nvim",
@@ -55,9 +57,9 @@ require "lazy".setup {
     "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
     "NvChad/nvim-colorizer.lua",                      -- Show color
     -- Jump like a ninja
-    { "ThePrimeagen/harpoon",     dependencies = "nvim-lua/plenary.nvim" },
+    { "ThePrimeagen/harpoon",        dependencies = "nvim-lua/plenary.nvim" },
     -- Highlight comments
-    { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
+    { "folke/todo-comments.nvim",    dependencies = "nvim-lua/plenary.nvim" },
     -- Status line
     "nvim-lualine/lualine.nvim",
     -- Breadcrumbs

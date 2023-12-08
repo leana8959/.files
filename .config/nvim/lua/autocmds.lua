@@ -56,9 +56,6 @@ autocmd("OptionSet", {
     end,
 })
 
--- Enable NoNeckPain
-autocmd("UIEnter", { callback = function() vim.cmd "NoNeckPain" end })
-
 -- Retab file with specified shiftwidth
 usercmd("Retab", function(opts)
     local dst         = tonumber(opts.fargs[1])
