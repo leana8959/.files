@@ -26,6 +26,7 @@ in
     helix
     gnused
     neovim
+    rnix-lsp
     ripgrep
     vim
     tmux
