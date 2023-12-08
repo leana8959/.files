@@ -67,6 +67,8 @@ abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 # Home-manager
 abbr np '$EDITOR ~/.dotfiles/.config/home-manager/home.nix'
 abbr hs 'home-manager switch'
+
+abbr ns 'nix-shell -p'
 alias nix-shell 'nix-shell --run fish'
 
 ## Python
