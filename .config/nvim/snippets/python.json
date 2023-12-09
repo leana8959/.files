@@ -1,20 +1,20 @@
 {
-	"Dict map": {
-		"prefix": "dm",
+	"Dict comprehension": {
+		"prefix": "dc",
 		"body": [
 			"{",
-			"\t${1:key}:${2:value}",
-			"\tfor ${3:var} in ${4:iterated}",
+			"\t${3:key}:${4:value}",
+			"\tfor ${1:var} in ${2:iterated}",
 			"}",
 			""
 		]
 	},
-	"List map": {
-		"prefix": "lm",
+	"List comprehension": {
+		"prefix": "lc",
 		"body": [
 			"[",
-			"\t${1:var}${2:transformation}",
-			"\tfor ${1:var} in ${3:iterated}",
+			"\t${3:var}${4:transformation}",
+			"\tfor ${1:var} in ${2:iterated}",
 			"]",
 			""
 		]
