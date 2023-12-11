@@ -1,121 +1,11 @@
+colorscheme spotify
+
 set aaa_mode=album
-set altformat_current= %F 
-set altformat_playlist= %f%= %d 
-set altformat_title=%f
-set altformat_trackwin= %f%= %d 
-set auto_expand_albums_follow=true
-set auto_expand_albums_search=true
-set auto_expand_albums_selcur=true
-set auto_reshuffle=true
-set buffer_seconds=10
-set color_cmdline_attr=default
-set color_cmdline_bg=233
-set color_cmdline_fg=231
-set color_cur_sel_attr=default
-set color_error=196
-set color_info=81
-set color_separator=47
-set color_statusline_attr=default
-set color_statusline_bg=232
-set color_statusline_fg=34
-set color_titleline_attr=default
-set color_titleline_bg=232
-set color_titleline_fg=83
-set color_trackwin_album_attr=bold
-set color_trackwin_album_bg=default
-set color_trackwin_album_fg=default
-set color_win_attr=default
-set color_win_bg=233
-set color_win_cur=47
-set color_win_cur_attr=default
-set color_win_cur_sel_attr=default
-set color_win_cur_sel_bg=239
-set color_win_cur_sel_fg=47
-set color_win_dir=47
-set color_win_fg=252
-set color_win_inactive_cur_sel_attr=default
-set color_win_inactive_cur_sel_bg=233
-set color_win_inactive_cur_sel_fg=47
-set color_win_inactive_sel_attr=default
-set color_win_inactive_sel_bg=235
-set color_win_inactive_sel_fg=47
-set color_win_sel_attr=default
-set color_win_sel_bg=240
-set color_win_sel_fg=47
-set color_win_title_attr=default
-set color_win_title_bg=232
-set color_win_title_fg=83
 set confirm_run=true
 set continue=true
 set continue_album=true
-set device=/dev/cdrom
-set display_artist_sort_name=false
-set dsp.ao.buffer_size=16384
-set dsp.ao.device_interface=
-set dsp.ao.driver=
-set dsp.ao.wav_counter=1
-set dsp.ao.wav_dir=/Users/leana
-set dsp.coreaudio.device=
-set dsp.coreaudio.enable_hog_mode=false
-set dsp.coreaudio.sync_sample_rate=false
 set follow=true
-set format_clipped_text=…
-set format_current= %a - %l%! - %n. %t%= %y 
-set format_playlist= %-21%a %3n. %t%= %y %d %{?X!=0?%3X ?    }
-set format_playlist_va= %-21%A %3n. %t (%a)%= %y %d %{?X!=0?%3X ?    }
-set format_statusline= %{status} %{?show_playback_position?%{position} %{?duration?/ %{duration} }?%{?duration?%{duration} }}- %{total} %{?bpm>0?at %{bpm} BPM }%{?volume>=0?vol: %{?lvolume!=rvolume?%{lvolume},%{rvolume} ?%{volume} }}%{?stream?buf: %{buffer} }%{?show_current_bitrate & bitrate>=0? %{bitrate} kbps }%=%{?repeat_current?repeat current?%{?play_library?%{playlist_mode} from %{?play_sorted?sorted }library?playlist}} | %1{continue}%1{follow}%1{repeat}%1{shuffle} 
-set format_title=%a - %l - %t (%y)
-set format_trackwin=%3n. %t%= %y %d 
-set format_trackwin_album= %l %= %{albumduration} 
-set format_trackwin_va=%3n. %t (%a)%= %y %d 
-set format_treewin=  %l
-set format_treewin_artist=%a
-set icecast_default_charset=ISO-8859-1
-set id3_default_charset=ISO-8859-1
-set input.aac.priority=50
-set input.cue.priority=50
-set input.flac.priority=50
-set input.mad.priority=55
-set input.mp4.priority=50
-set input.opus.priority=50
-set input.vorbis.priority=50
-set input.wav.priority=50
-set lib_add_filter=
-set lib_sort=albumartist date album discnumber tracknumber title filename play_count
-set mouse=false
-set mpris=true
-set output_plugin=coreaudio
-set passwd=
-set pause_on_output_change=false
-set pl_sort=
-set play_library=true
-set play_sorted=true
-set repeat=true
-set repeat_current=false
-set replaygain=disabled
-set replaygain_limit=true
-set replaygain_preamp=0.000000
-set resume=false
-set rewind_offset=5
-set scroll_offset=2
-set set_term_title=true
-set show_all_tracks=true
-set show_current_bitrate=false
-set show_hidden=true
-set show_playback_position=true
-set show_remaining_time=true
-set shuffle=tracks
-set skip_track_info=false
-set smart_artist_sort=true
-set softvol=false
-set softvol_state=0 0
-set start_view=tree
-set status_display_program=cmusfm
-set stop_after_queue=false
-set time_show_leading_zero=true
-set tree_width_max=0
-set tree_width_percent=33
-set wrap_search=true
+
 bind -f browser - browser-up
 bind -f browser i toggle show_hidden
 bind -f browser space win-activate
@@ -202,6 +92,7 @@ bind -f common x player-play
 bind -f common y win-add-p
 bind -f common { vol -1% -0
 bind -f common } vol -0 -1%
+
 fset 90s=date>=1990&date<2000
 fset classical=genre="Classical"
 fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
