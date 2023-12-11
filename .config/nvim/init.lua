@@ -168,3 +168,4 @@ require "lazy".setup {
 }
 
 vim.cmd.colorscheme "curry"
+vim.cmd "hi Normal guibg=NONE ctermbg=NONE"
