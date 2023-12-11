@@ -9,6 +9,19 @@ in
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      cmus = prev.cmus.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [
+          (prev.fetchpatch {
+            url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
+            hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
+          })
+        ];
+      });
+    })
+  ];
+
   home.packages = with pkgs; ([
 
     # text/editors
@@ -59,7 +72,7 @@ in
 
     asciinema
     # # NOTE: Broken, to be fixed
-    # cmus
+    cmus
     cmusfm
     hyperfine
     tea
