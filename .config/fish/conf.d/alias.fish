@@ -72,7 +72,7 @@ abbr ns 'nix-shell -p'
 alias nix-shell 'nix-shell --run fish'
 
 ## Python
-abbr vv 'python3 -m venv venv && source venv/bin/activate.fish'
+abbr vnew 'python3 -m venv venv && source venv/bin/activate.fish'
 abbr von 'source venv/bin/activate.fish'
 abbr voff 'deactivate'
 
