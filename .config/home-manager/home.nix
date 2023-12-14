@@ -2,6 +2,9 @@
 
 let
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
+  inherit (pkgs.lib) optionals;
+
+  unstable = import <nixos-unstable> {};
 in
 {
   home.username = "leana";
@@ -14,7 +17,7 @@ in
       cmus = prev.cmus.overrideAttrs (old: {
         patches = (old.patches or []) ++ [
           (prev.fetchpatch {
-            url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
+            url  = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
             hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
           })
         ];
@@ -60,7 +63,7 @@ in
     gnupg
     pwgen # password generator
 
-  ] ++ lib.optionals (isDarwin) [
+  ] ++ optionals (isDarwin) [
 
     (nerdfonts.override {
       fonts = [
@@ -71,7 +74,6 @@ in
     })
 
     asciinema
-    # # NOTE: Broken, to be fixed
     cmus
     cmusfm
     hyperfine
@@ -88,9 +90,9 @@ in
     # opam
 
     # typst
-    typst
+    unstable.typst
 
-  ] ++ lib.optionals (isLinux) [
+  ] ++ optionals (isLinux) [
 
     # # C
     # # NOTE: doesn't work
