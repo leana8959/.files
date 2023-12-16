@@ -4,7 +4,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
   inherit (pkgs.lib) optionals;
 
-  unstable = import <nixos-unstable> {};
+  unstable = import (fetchTarball https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz) { };
 in
 {
   home.username = "leana";
@@ -61,7 +61,6 @@ in
     bat
     delta
     gnupg
-    pwgen # password generator
 
   ] ++ optionals (isDarwin) [
 
@@ -85,19 +84,16 @@ in
     rustup
     nodejs_20
 
-    # # OCaml
-    # # NOTE: Doesn't work
-    # opam
+    # # NOTE: should be fixed soon
+    # unstable.opam
 
-    # typst
     unstable.typst
 
   ] ++ optionals (isLinux) [
 
-    # # C
     # # NOTE: doesn't work
     # valgrind
-    # gdb
+    gdb
 
   ]);
 
