@@ -61,6 +61,13 @@ map("n", "<leader>ne", vim.diagnostic.goto_next)
 
 map("t", "<Leader><ESC>", "<C-\\><C-n>")
 
+-- Resize window using shift + arrow keys
+-- Credit: github.com/GrizzlT
+map("n", "<S-Up>", "<cmd>resize +2<cr>")
+map("n", "<S-Down>", "<cmd>resize -2<cr>")
+map("n", "<S-Left>", "<cmd>vertical resize -2<cr>")
+map("n", "<S-Right>", "<cmd>vertical resize +2<cr>")
+
 -------------
 -- Plugins --
 -------------
@@ -69,10 +76,6 @@ map("t", "<Leader><ESC>", "<C-\\><C-n>")
 map("n", "<leader>ta", function() vim.cmd "Tabularize /=" end)
 map("n", "<leader>tc", function() vim.cmd "Tabularize /:" end)
 map("n", "<leader>tC", function() vim.cmd "Tabularize trailing_c_comments" end)
-
--- Fugitive
-map("n", "<leader>gP", function() vim.cmd "G push" end)
-map("n", "<leader>gp", function() vim.cmd "G pull" end)
 
 -- Twilight
 map("n", "<leader>tw", function() vim.cmd "Twilight" end)
@@ -86,6 +89,9 @@ map("n", "<leader>gl",
 )
 
 -- Fugitive
+map("n", "<leader>gP", function() vim.cmd "G push" end)
+map("n", "<leader>gp", function() vim.cmd "G pull" end)
+
 map("n", "<leader><space>", ":Git<CR>5<Down>")
 map("n", "<leader>gu", ":diffget //2<CR>")
 map("n", "<leader>gh", ":diffget //3<CR>")
