@@ -23,11 +23,7 @@ local servers                         = {
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
     vimls     = {}, -- vim
-    rnix      = {}, -- Nix
 
-    ocamllsp  = {   -- OCaml
-        exclude = true,
-    },
     typst_lsp = { -- Typst
         exportPdf = "never",
     },
@@ -47,6 +43,13 @@ local servers                         = {
         },
     },
 
+    nil_ls    = { -- Nix
+        masonExclude = true,
+    },
+
+    ocamllsp  = { -- OCaml
+        masonExclude = true,
+    },
 }
 ------------------
 -- Linters, etc --
@@ -173,7 +176,7 @@ usercmd("MasonInstallAll",
     function()
         local server_names = Filter(
             servers,
-            function(server) return not server.exclude end
+            function(server) return not server.masonExclude end
         )
         local mason_names = Concat(
             Map(
