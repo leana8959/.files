@@ -4,7 +4,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
   inherit (pkgs.lib) optionals;
 
-  unstable = import (fetchTarball https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz) { };
+  unstable = import (fetchTarball "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz") { };
 in
 {
   home.username = "leana";
@@ -31,7 +31,7 @@ in
     helix
     gnused
     neovim
-    rnix-lsp
+    nil
     ripgrep
     vim
     tmux
@@ -50,6 +50,7 @@ in
     starship
     tree
     vivid
+    rsync
 
     # fancy utilities
     figlet
