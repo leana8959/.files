@@ -24,20 +24,24 @@ local servers                         = {
     tsserver  = {}, -- TypeScript
     vimls     = {}, -- vim
 
-    typst_lsp = { -- Typst
-        exportPdf = "never",
+    typst_lsp = {   -- Typst
+        settings = {
+            exportPdf = "never",
+        },
     },
 
     lua_ls    = { -- Lua
-        Lua = {
-            format = {
-                defaultConfig = {
-                    -- Learn more:
-                    -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
-                    indent_style             = "space",
-                    quote_style              = "double",
-                    call_arg_parentheses     = "remove",
-                    trailing_table_separator = "smart",
+        settings = {
+            Lua = {
+                format = {
+                    defaultConfig = {
+                        -- Learn more:
+                        -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
+                        indent_style             = "space",
+                        quote_style              = "double",
+                        call_arg_parentheses     = "remove",
+                        trailing_table_separator = "smart",
+                    },
                 },
             },
         },
@@ -188,13 +192,15 @@ usercmd("MasonInstallAll",
         vim.cmd("MasonInstall " .. table.concat(mason_names, " "))
     end, {})
 
+local lspconfig = require "lspconfig"
+lspconfig.util.default_config = vim.tbl_extend("force",
+    lspconfig.util.default_config, { capabilities = capabilities, on_attach = on_attach })
+
 Foreach(servers,
     function(k, v)
         require "lspconfig"[k].setup {
-            capabilities = capabilities,
-            on_attach    = on_attach,
-            settings     = v,
-            filetypes    = v.filetypes,
+            settings  = v.settings,
+            on_attach = v.on_attach,
         }
     end)
 
