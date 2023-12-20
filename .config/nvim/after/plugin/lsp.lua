@@ -49,7 +49,7 @@ local servers                         = {
 
     nil_ls    = { -- Nix
         masonExclude = true,
-        on_attach    = function(client, bufno)
+        on_attach    = function(_, bufno)
             vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
             map("n", "<leader>f",
                 function()
@@ -59,7 +59,6 @@ local servers                         = {
                 end,
                 { buffer = bufno })
         end,
-
     },
 
     ocamllsp  = { -- OCaml
@@ -203,15 +202,15 @@ usercmd("MasonInstallAll",
         vim.cmd("MasonInstall " .. table.concat(mason_names, " "))
     end, {})
 
-local lspconfig = require "lspconfig"
-lspconfig.util.default_config = vim.tbl_extend("force",
-    lspconfig.util.default_config, { capabilities = capabilities, on_attach = on_attach })
-
 Foreach(servers,
     function(k, v)
         require "lspconfig"[k].setup {
-            settings  = v.settings,
-            on_attach = v.on_attach,
+            capabilities = capabilities,
+            settings     = v.settings,
+            on_attach    = function(client, bufno)
+                on_attach(client, bufno)
+                v.on_attach(client, bufno)
+            end,
         }
     end)
 
