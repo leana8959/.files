@@ -49,6 +49,17 @@ local servers                         = {
 
     nil_ls    = { -- Nix
         masonExclude = true,
+        on_attach    = function(client, bufno)
+            vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
+            map("n", "<leader>f",
+                function()
+                    vim.cmd ":w"
+                    vim.cmd [[silent exec "!alejandra %"]]
+                    vim.cmd ":e"
+                end,
+                { buffer = bufno })
+        end,
+
     },
 
     ocamllsp  = { -- OCaml
