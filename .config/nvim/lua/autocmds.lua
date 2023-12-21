@@ -58,11 +58,18 @@ autocmd("OptionSet", {
 
 -- Retab file with specified shiftwidth
 usercmd("Retab", function(opts)
-    local dst         = tonumber(opts.fargs[1])
-    vim.opt.expandtab = false
+    if #opts.fargs ~= 2 then
+        print "should have two arguments"
+        return
+    end
+    local src          = tonumber(opts.fargs[1])
+    local dst          = tonumber(opts.fargs[2])
+    vim.opt.shiftwidth = src
+    vim.opt.tabstop    = src
+    vim.opt.expandtab  = false
     vim.cmd "%retab!"
     vim.opt.shiftwidth = dst
     vim.opt.tabstop    = dst
     vim.opt.expandtab  = true
     vim.cmd "%retab!"
-end, { nargs = 1 })
+end, { nargs = "+" })
