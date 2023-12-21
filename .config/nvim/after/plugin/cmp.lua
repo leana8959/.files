@@ -94,8 +94,8 @@ ls.add_snippets("all", {
 -------------
 -- Haskell --
 -------------
-local haskell_snippets = require('haskell-snippets').all
-ls.add_snippets('haskell', haskell_snippets, { key = 'haskell' })
+local haskell_snippets = require "haskell-snippets".all
+ls.add_snippets("haskell", haskell_snippets, { key = "haskell" })
 
 ---------------
 -- Setup CMP --
