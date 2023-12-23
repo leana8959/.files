@@ -83,6 +83,14 @@
     # valgrind
 
     # gdb
+
+    # new stuff
+    dmenu
+    xmobar
+    scrot
+    xscreensaver
+    trayer
+    xclip
   ];
 
   programs = {
