@@ -1,0 +1,21 @@
+-- vim:et:sw=2:ts=2:ft=haskell
+
+Config { overrideRedirect = False
+       , font             = "xft:JetBrainsMono NF"
+       , bgColor          = "#000000"
+       , fgColor          = "#FFFFFF"
+       , position = TopW L 90
+       , commands = [ Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high", "red"
+                        , "--normal", "green"
+                        ] 10
+                    , Run Memory [ "--template", "Mem: <usedratio>%" ] 10
+                    , Run Date "%a %Y-%m-%d %H:%M" "date" 10
+                    , Run XMonadLog
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%XMonadLog% }{ %cpu% | %memory% | %date% "
+       }

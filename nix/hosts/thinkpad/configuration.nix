@@ -70,10 +70,14 @@
     };
     displayManager.gdm.enable = true;
   };
-  programs.gnome-terminal.enable = true;
-  programs.firefox.enable = true;
 
-  programs.fish.enable = true;
+  programs = {
+    nm-applet.enable = true;
+    gnome-terminal.enable = true;
+    firefox.enable = true;
+    fish.enable = true;
+  };
+
   users.defaultUserShell = pkgs.fish;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -84,10 +88,7 @@
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
