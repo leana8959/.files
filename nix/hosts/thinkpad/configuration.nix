@@ -188,6 +188,10 @@ in {
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
+      extraPackages = hp:
+        with hp; [
+          neat-interpolation
+        ];
     };
     displayManager.gdm.enable = true;
   };

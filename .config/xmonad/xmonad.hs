@@ -1,4 +1,5 @@
--- vim:et:sw=2:ts=2
+{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 import XMonad
 import XMonad.Core
@@ -18,6 +19,9 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
+
+import NeatInterpolation
+import qualified Data.Text as T
 
 xmonadConfig = def
   { modMask           = mod4Mask
@@ -48,6 +52,15 @@ myKeymaps =
         ( src
         , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ]
         )
+      toggleXkbLayout = T.unpack
+        [text|
+        if setxkbmap -query | grep dvorak 2>&1 > /dev/null; then
+            setxkbmap us
+        else
+            setxkbmap us dvorak
+        fi
+        |]
+
 
   in  [ ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
@@ -62,17 +75,26 @@ myKeymaps =
         (controlMask .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
+      -- keyboard layout switch
+      -- TODO: add direct toggles
+      , ((controlMask, xK_space), spawn toggleXkbLayout)
+
      ]
 
 -- Xmobar's [p]retty [p]rinter
 myXmobarPP = def
 
 myStartupHook = do
-  spawnOnce "trayer --edge top --align right --SetDockType true \
-            \--SetPartialStrut true --expand true --width 10 \
-            \--transparent true --tint 0x5f5f5f --height 18"
+  spawnOnce $ T.unpack
+    [text|
+    trayer --edge top --align right --SetDockType true  \
+        --SetPartialStrut true --expand true --width 10 \
+        --transparent true --tint 0x5f5f5f --height 18
+    |]
 
 main = xmonad
       . ewmhFullscreen . ewmh
       . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
       $ xmonadConfig
+
+-- vim:et:sw=2:ts=2
