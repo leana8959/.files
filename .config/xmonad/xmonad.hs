@@ -3,9 +3,12 @@
 import XMonad
 import XMonad.Core
 
+import XMonad.Actions.PerWindowKeys
+
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
+import XMonad.Util.Paste
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.Spacing
@@ -41,11 +44,25 @@ myLayoutHook =
       $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
 
 myKeymaps =
-  [ ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
-  , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
-  , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
-  , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
-  ]
+  let remap src dst =
+        ( src
+        , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ]
+        )
+
+  in  [ ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
+      , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
+      , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
+      , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
+
+      -- tab navigation in firefox
+      , remap
+        (controlMask .|. shiftMask, xK_bracketright)
+        [ (className =? "firefox", sendKey controlMask xK_Tab) ]
+      , remap
+        (controlMask .|. shiftMask, xK_bracketleft)
+        [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
+
+     ]
 
 -- Xmobar's [p]retty [p]rinter
 myXmobarPP = def
