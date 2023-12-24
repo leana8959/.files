@@ -14,4 +14,7 @@
       LC_TIME = "fr_FR.UTF-8";
     };
   };
+
+  # TODO: configure this
+  # i18n.inputMethod.enabled = "fcitx5";
 }
