@@ -84,7 +84,7 @@
 
     # gdb
 
-    # new stuff
+    # Window Manager related
     dmenu
     xmobar
     scrot
@@ -94,8 +94,6 @@
   ];
 
   programs = {
-    home-manager.enable = true;
-
     direnv = {
       enable = true;
       nix-direnv.enable = true;
