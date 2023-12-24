@@ -3,7 +3,7 @@
 import XMonad
 import XMonad.Core
 
-import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
 
@@ -12,25 +12,22 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 
 import XMonad.Hooks.EwmhDesktops
-
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
-import qualified XMonad.Util.Run as Run
-
-myTerm = "gnome-terminal"
-runInTerm = Run.runInTerm myTerm
-
 xmonadConfig = def
-  { modMask           = mod1Mask
+  { modMask           = mod4Mask
   , terminal          = myTerm
   , focusFollowsMouse = True
   , borderWidth       = 2
   , workspaces        = show <$> [1..4]
   , layoutHook        = myLayoutHook
   , startupHook       = myStartupHook
-  } `additionalKeysP` myKeymaps
+  }
+  `additionalKeys` myKeymaps
+
+myTerm = "gnome-terminal"
 
 myLayoutHook =
   let nmaster  = 1
@@ -44,10 +41,10 @@ myLayoutHook =
       $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
 
 myKeymaps =
-  [ (("M-C-f"), spawn "firefox")
-  , (("M-C-s"), unGrab *> spawn "scrot -s")
-  , (("M-C-z"), spawn "xscreensaver-command -lock")
-  , (("M-C-c"), runInTerm "fish -c tmux_cmus") -- FIXME:
+  [ ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
+  , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
+  , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
+  , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
   ]
 
 -- Xmobar's [p]retty [p]rinter
