@@ -45,6 +45,8 @@ myKeymaps =
   , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
   , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
   , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
+
+  -- TODO: https://libreddit.earth2077.fr/r/xmonad/comments/i1s9do/keybinding_send_key_to_application/
   ]
 
 -- Xmobar's [p]retty [p]rinter
