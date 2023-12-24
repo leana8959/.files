@@ -12,15 +12,15 @@
     nixunstable,
     home-manager,
     ...
-  } @ inputs: let
-    inherit (nixpkgs.lib) nixosSystem;
+  }: let
+    inherit (nixpkgs) lib;
   in {
     nixosConfigurations = {
       thinkpad = let
         system = "aarch64-linux";
         unstable = import nixunstable {inherit system;};
       in
-        nixosSystem {
+        lib.nixosSystem {
           specialArgs = {inherit system;};
           modules = [
             ./hosts/thinkpad/configuration.nix
@@ -29,7 +29,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.leana = import ./hosts/thinkpad/home.nix;
+                users.leana = import ./home;
                 extraSpecialArgs = {inherit unstable;};
               };
             }
