@@ -11,7 +11,6 @@
     ./hardware-configuration.nix
 
     ./bootloader.nix
-    ./keyboard-layout.nix
     ./locale.nix
     ./networking.nix
     ./packages.nix
