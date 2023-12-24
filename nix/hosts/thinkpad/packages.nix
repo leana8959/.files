@@ -18,13 +18,12 @@
 
   services.xserver = {
     enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 40;
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp:
-        with hp; [
-          neat-interpolation
-        ];
+      extraPackages = hp: with hp; [neat-interpolation];
     };
     displayManager.gdm.enable = true;
   };
