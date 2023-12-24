@@ -24,13 +24,15 @@ import NeatInterpolation
 import qualified Data.Text as T
 
 xmonadConfig = def
-  { modMask           = mod4Mask
-  , terminal          = myTerm
-  , focusFollowsMouse = True
-  , borderWidth       = 2
-  , workspaces        = show <$> [1..4]
-  , layoutHook        = myLayoutHook
-  , startupHook       = myStartupHook
+  { modMask            = mod4Mask
+  , terminal           = myTerm
+  , focusFollowsMouse  = True
+  , borderWidth        = 2
+  , workspaces         = show <$> [1..4]
+  , layoutHook         = myLayoutHook
+  , startupHook        = myStartupHook
+  , normalBorderColor  = "#2a00a6"
+  , focusedBorderColor = "#875fff"
   }
   `additionalKeys` myKeymaps
 
@@ -44,7 +46,7 @@ myLayoutHook =
       threeCol = ThreeColMid nmaster delta ratio
       mag      = magnifiercz' 1.3
 
-  in  spacingWithEdge 7
+  in  spacingWithEdge 5
       $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
 
 myKeymaps =
