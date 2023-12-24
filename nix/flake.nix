@@ -11,19 +11,19 @@
   }: let
     inherit (nixpkgs) lib;
     withSystem = (
-      system: hostname: (lib.nixosSystem {
+      device: system: hostname: (lib.nixosSystem {
         specialArgs = {
           inherit nixpkgs;
           inherit nixunstable;
           inherit system;
           inherit hostname;
         };
-        modules = [./hosts/thinkpad/configuration.nix];
+        modules = [./hosts/${device}/configuration.nix];
       })
     );
   in {
     nixosConfigurations = {
-      thinkpad = withSystem "aarch64-linux" "nixie-test";
+      thinkpad = withSystem "thinkpad" "aarch64-linux" "nixie-test";
     };
   };
 }
