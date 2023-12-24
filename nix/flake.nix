@@ -23,7 +23,7 @@
     );
   in {
     nixosConfigurations = {
-      thinkpad = withSystem "aarch64-linux" "nixie";
+      thinkpad = withSystem "aarch64-linux" "nixie-test";
     };
   };
 }
