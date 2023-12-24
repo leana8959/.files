@@ -4,11 +4,12 @@ import XMonad
 import XMonad.Core
 
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Ungrab
 import XMonad.Util.SpawnOnce
+import XMonad.Util.Ungrab
 
-import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Magnifier
+import XMonad.Layout.Spacing
+import XMonad.Layout.ThreeColumns
 
 import XMonad.Hooks.EwmhDesktops
 
@@ -27,18 +28,20 @@ xmonadConfig = def
   , focusFollowsMouse = True
   , borderWidth       = 2
   , workspaces        = show <$> [1..4]
-  , layoutHook        = myLayout
+  , layoutHook        = myLayoutHook
   , startupHook       = myStartupHook
   } `additionalKeysP` myKeymaps
 
-myLayout =
+myLayoutHook =
   let nmaster  = 1
       ratio    = 3/5
       delta    = 3/100
       tiled    = Tall nmaster delta ratio
       threeCol = ThreeColMid nmaster delta ratio
       mag      = magnifiercz' 1.3
-  in  mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
+
+  in  spacingWithEdge 7
+      $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
 
 myKeymaps =
   [ (("M-C-f"), spawn "firefox")
