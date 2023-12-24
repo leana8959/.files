@@ -53,6 +53,7 @@
         specialArgs = args;
         modules = [
           ./hosts/${device}/default.nix
+          ./layouts
           home-manager.nixosModules.home-manager
           {
             home-manager = {

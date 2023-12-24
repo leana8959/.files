@@ -54,10 +54,10 @@ myKeymaps =
         )
       toggleXkbLayout = T.unpack
         [text|
-        if setxkbmap -query | grep dvorak 2>&1 > /dev/null; then
-            setxkbmap us
+        if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
+            setxkbmap dvorak
         else
-            setxkbmap us dvorak
+            setxkbmap dvorak-french
         fi
         |]
 
