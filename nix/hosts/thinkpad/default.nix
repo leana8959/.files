@@ -14,6 +14,7 @@
     ./locale.nix
     ./networking.nix
     ./packages.nix
+    ./sound.nix
     ./users.nix
   ];
 
