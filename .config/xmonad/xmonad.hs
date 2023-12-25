@@ -60,7 +60,11 @@ myLayoutHook =
 -- Only remove mappings that needs pass through.
 -- If a new mapping is added, the old one is overridden
 myUnmaps =
-  []
+  [ (myMod, xK_h)
+  , (myMod, xK_l)
+  ]
+  ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
+  ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
 
 myKeymaps =
   let remap src dst =
@@ -94,16 +98,24 @@ myKeymaps =
       , ((controlMask, xK_space), spawn toggleXkbLayout)
 
       -- TODO: add media keys configurations
+
+      -- resize windows
+      , ((myMod .|. shiftMask, xK_comma) , sendMessage Expand)
+      , ((myMod .|. shiftMask, xK_period), sendMessage Shrink)
+
+      -- force back to tiling
+      , ((myMod .|. shiftMask, xK_t), withFocused $ windows . W.sink)
      ]
 
      -- organic window jumping
-     ++ [ ((myMod, n), windows $ W.greedyView space )
+     ++ [ ((myMod, n), windows $ W.greedyView space)
           | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
      ]
 
      -- organic window yeeting
-     ++ [ ((myMod .|. shiftMask, n), windows $ W.shift space )
+     ++ [ ((myMod .|. mod1Mask, n), windows $ W.shift space)
           | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
+
      ]
 
 -- Xmobar's [p]retty [p]rinter
@@ -112,9 +124,10 @@ myXmobarPP = def
 myStartupHook = do
   spawnOnce $ T.unpack
     [text|
-    trayer --edge top --align right --SetDockType true  \
+    trayer                                              \
+        --edge top --align right --SetDockType true     \
         --SetPartialStrut true --expand true --width 10 \
-        --transparent true --tint 0x5f5f5f --height 18
+        --transparent false --tint 0xFFFFFF --height 18
     |]
 
 main = xmonad
