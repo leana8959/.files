@@ -1,10 +1,4 @@
-{
-  pkgs,
-  unstable,
-  system,
-  hostname,
-  ...
-}: {
+{pkgs, ...}: {
   system.stateVersion = "23.11";
 
   imports = [
