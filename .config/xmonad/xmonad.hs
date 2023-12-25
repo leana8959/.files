@@ -28,7 +28,7 @@ import qualified Data.Text as T
 xmonadConfig = def
   { modMask            = myMod
   , terminal           = myTerm
-  , focusFollowsMouse  = True
+  , focusFollowsMouse  = False
   , borderWidth        = 2
   , workspaces         = myWorkspaces
   , layoutHook         = myLayoutHook
@@ -92,6 +92,8 @@ myKeymaps =
       -- keyboard layout switch
       -- TODO: add direct toggles
       , ((controlMask, xK_space), spawn toggleXkbLayout)
+
+      -- TODO: add media keys configurations
      ]
 
      -- organic window jumping

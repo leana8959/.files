@@ -18,7 +18,7 @@
 
   services.xserver = {
     enable = true;
-    autoRepeatDelay = 200;
+    autoRepeatDelay = 300;
     autoRepeatInterval = 40;
     windowManager.xmonad = {
       enable = true;
