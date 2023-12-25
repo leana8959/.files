@@ -45,6 +45,7 @@
     bat
     delta
     gnupg
+    git-lfs
 
     (nerdfonts.override {
       fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];
