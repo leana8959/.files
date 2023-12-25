@@ -4,80 +4,16 @@
   wired,
   ...
 }: {
-  home.username = "leana";
-  home.homeDirectory = "/home/leana";
-
-  home.stateVersion = "23.11";
-
-  home.packages = with pkgs; [
-    # text/editors
-    helix
-    gnused
-    neovim
-    ripgrep
-    vim
-    tmux
-
-    # nix
-    nil
-    alejandra
-
-    # shell
-    fish
-    # (python39.withPackages (ps: with ps; [beautifulsoup4 requests]))
-    stow
-
-    fd
-    fzf
-    htop
-    starship
-    tree
-    vivid
-    rsync
-
-    # fancy utilities
-    figlet
-    macchina
-    ncdu
-    tldr
-
-    # git related
-    bat
-    delta
-    gnupg
-    git-lfs
-
-    (nerdfonts.override {
-      fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];
-    })
-
-    asciinema
-    cmus
-    cmusfm
-    hyperfine
-    tea
-    yt-dlp
-    watchexec
-
-    # jdk17
-    # rustup
-    # nodejs_20
-
-    unstable.typst
-
-    # # NOTE: doesn't work
-    # valgrind
-
-    # gdb
-
-    wired.wired
+  imports = [
+    ./dev.nix
+    ./gui.nix
   ];
 
-  # gtk = {
-  #   enable = true;
-  #   cursorTheme.package = pkgs.google-cursor;
-  #   cursorTheme.name = "GoogleDot-Red";
-  # };
+  home = {
+    username = "leana";
+    homeDirectory = "/home/leana";
+    stateVersion = "23.11";
+  };
 
   programs = {
     home-manager.enable = true;
@@ -87,4 +23,28 @@
       nix-direnv.enable = true;
     };
   };
+
+  home.packages = with pkgs; [
+    # shell and script dependencies
+    fish
+    figlet
+    gnused
+    starship
+    stow
+    ripgrep
+    fd
+    fzf
+    vivid
+
+    # utils
+    htop
+    tree
+    rsync
+    tldr
+    unstable.typst
+
+    # music
+    cmus
+    cmusfm
+  ];
 }
