@@ -6,7 +6,7 @@ import XMonad.Core
 
 import XMonad.Actions.PerWindowKeys
 
-import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.EZConfig (additionalKeys, removeKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
 import XMonad.Util.Paste
@@ -20,23 +20,30 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
+import qualified XMonad.StackSet as W
+
 import NeatInterpolation
 import qualified Data.Text as T
 
 xmonadConfig = def
-  { modMask            = mod4Mask
+  { modMask            = myMod
   , terminal           = myTerm
   , focusFollowsMouse  = True
   , borderWidth        = 2
-  , workspaces         = show <$> [1..4]
+  , workspaces         = myWorkspaces
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
   , normalBorderColor  = "#2a00a6"
   , focusedBorderColor = "#875fff"
   }
+  `removeKeys`     myUnmaps
   `additionalKeys` myKeymaps
 
 myTerm = "gnome-terminal"
+
+myMod = mod4Mask
+
+myWorkspaces = map show [1..4]
 
 myLayoutHook =
   let nmaster  = 1
@@ -48,6 +55,12 @@ myLayoutHook =
 
   in  spacingWithEdge 5
       $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
+
+
+-- Only remove mappings that needs pass through.
+-- If a new mapping is added, the old one is overridden
+myUnmaps =
+  []
 
 myKeymaps =
   let remap src dst =
@@ -62,9 +75,8 @@ myKeymaps =
             setxkbmap dvorak-french
         fi
         |]
-
-
-  in  [ ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
+  in  [ -- shortcuts
+        ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
       , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
       , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
@@ -80,7 +92,16 @@ myKeymaps =
       -- keyboard layout switch
       -- TODO: add direct toggles
       , ((controlMask, xK_space), spawn toggleXkbLayout)
+     ]
 
+     -- organic window jumping
+     ++ [ ((myMod, n), windows $ W.greedyView space )
+          | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
+     ]
+
+     -- organic window yeeting
+     ++ [ ((myMod .|. shiftMask, n), windows $ W.shift space )
+          | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
      ]
 
 -- Xmobar's [p]retty [p]rinter
