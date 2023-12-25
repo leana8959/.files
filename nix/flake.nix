@@ -9,6 +9,8 @@
     };
 
     wired.url = "github:Toqozz/wired-notify";
+
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = {
@@ -16,6 +18,7 @@
     nixunstable,
     home-manager,
     wired,
+    agenix,
     ...
   }: let
     pkgsForSystem = system:
@@ -46,6 +49,7 @@
     unstableForSystem = system: import nixunstable {inherit system;};
 
     wiredForSystem = system: wired.packages.${system};
+    agenixForSystem = system: agenix.packages.${system};
 
     withSystem = (
       device: system: hostname: let
@@ -53,6 +57,7 @@
           pkgs = pkgsForSystem system;
           unstable = unstableForSystem system;
           wired = wiredForSystem system;
+          agenix = agenixForSystem system;
           inherit system hostname;
         };
       in (nixpkgs.lib.nixosSystem {

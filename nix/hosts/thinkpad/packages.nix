@@ -1,6 +1,6 @@
 {
   pkgs,
-  unstable,
+  agenix,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -9,6 +9,8 @@
     stow
     git
     gcc
+
+    agenix.default
   ];
 
   # TODO: try to move this to home-manager
