@@ -7,15 +7,18 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wired.url = "github:Toqozz/wired-notify";
   };
 
   outputs = {
     nixpkgs,
     nixunstable,
     home-manager,
+    wired,
     ...
   }: let
-    pkgsWith = system:
+    pkgsForSystem = system:
       import nixpkgs {
         inherit system;
         overlays = [
@@ -40,13 +43,16 @@
           ];
       };
 
-    unstableWith = system: import nixunstable {inherit system;};
+    unstableForSystem = system: import nixunstable {inherit system;};
+
+    wiredForSystem = system: wired.packages.${system};
 
     withSystem = (
       device: system: hostname: let
         args = {
-          pkgs = pkgsWith system;
-          unstable = unstableWith system;
+          pkgs = pkgsForSystem system;
+          unstable = unstableForSystem system;
+          wired = wiredForSystem system;
           inherit system hostname;
         };
       in (nixpkgs.lib.nixosSystem {
