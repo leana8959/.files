@@ -122,6 +122,7 @@ myKeymaps =
 myXmobarPP = def
 
 myStartupHook = do
+  -- system tray
   spawnOnce $ T.unpack
     [text|
     trayer                                              \
@@ -129,6 +130,8 @@ myStartupHook = do
         --SetPartialStrut true --expand true --width 10 \
         --transparent false --tint 0xFFFFFF --height 18
     |]
+  -- notification daemon
+  spawnOnce "/usr/bin/env wired &"
 
 main = xmonad
       . ewmhFullscreen . ewmh

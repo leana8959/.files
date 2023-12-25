@@ -1,6 +1,7 @@
 {
   pkgs,
   unstable,
+  wired,
   ...
 }: {
   home.username = "leana";
@@ -67,6 +68,8 @@
     # valgrind
 
     # gdb
+
+    wired.wired
   ];
 
   # gtk = {
