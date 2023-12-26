@@ -82,7 +82,7 @@ myKeymaps =
   in  [ -- shortcuts
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
-      , ((controlMask .|. mod1Mask, xK_z), spawn "xsreensaver-command -lock")
+      , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
       , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
 
       -- tab navigation in firefox
@@ -132,6 +132,8 @@ myStartupHook = do
     |]
   -- notification daemon
   spawnOnce "/usr/bin/env wired &"
+  -- screensaver
+  spawnOnce "/usr/bin/env xscreensaver --no-splash &"
 
 main = xmonad
       . ewmhFullscreen . ewmh
