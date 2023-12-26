@@ -20,6 +20,10 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
+import XMonad.ManageHook
+
+import Graphics.X11.ExtraTypes.XF86
+
 import qualified XMonad.StackSet as W
 
 import NeatInterpolation
@@ -28,9 +32,10 @@ import qualified Data.Text as T
 xmonadConfig = def
   { modMask            = myMod
   , terminal           = myTerm
-  , focusFollowsMouse  = False
+  , focusFollowsMouse  = True
   , borderWidth        = 2
   , workspaces         = myWorkspaces
+  , manageHook         = myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
   , normalBorderColor  = "#2a00a6"
@@ -47,15 +52,18 @@ myWorkspaces = map show [1..4]
 
 myLayoutHook =
   let nmaster  = 1
-      ratio    = 3/5
+      ratio    = 1/2
       delta    = 3/100
       tiled    = Tall nmaster delta ratio
       threeCol = ThreeColMid nmaster delta ratio
       mag      = magnifiercz' 1.3
 
   in  spacingWithEdge 5
-      $ mag tiled ||| Mirror tiled ||| Full ||| mag threeCol
+      $ tiled ||| Full ||| (mag $ tiled ||| threeCol)
 
+myManageHook = composeAll
+  [ className =? "cinny" --> doFloat <+> doShift "4"
+  ]
 
 -- Only remove mappings that needs pass through.
 -- If a new mapping is added, the old one is overridden
@@ -66,24 +74,48 @@ myUnmaps =
   ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
   ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
 
+toggleXkbLayout = T.unpack
+  [text|
+  if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
+      setxkbmap dvorak
+  else
+      setxkbmap dvorak-french
+  fi
+  |]
+externalScreenOnly = T.unpack
+  [text|
+  if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
+      xrandr --output eDP-1 --off
+  else
+      xrandr --auto
+  fi
+  |]
+
 myKeymaps =
   let remap src dst =
         ( src
         , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ]
         )
-      toggleXkbLayout = T.unpack
-        [text|
-        if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
-            setxkbmap dvorak
-        else
-            setxkbmap dvorak-french
-        fi
-        |]
   in  [ -- shortcuts
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
       , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
       , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
+
+      -- toggle external display
+      , ((controlMask, xK_F7), spawn "xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94 && xrandr --output eDP-1 --off || xrandr --auto")
+
+      -- FIXME: brightness adjustments
+      , ((controlMask, xK_F5), spawn "light -S 10")
+      , ((controlMask, xK_F6), spawn "light -A 10")
+
+      -- volume adjustments
+      , ((controlMask, xK_F1), spawn "amixer set Master toggle")
+      , ((controlMask, xK_F2), spawn "amixer set Master 5%-")
+      , ((controlMask, xK_F3), spawn "amixer set Master 5%+")
+      , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
+      , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
+      , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
 
       -- tab navigation in firefox
       , remap
@@ -134,6 +166,10 @@ myStartupHook = do
   spawnOnce "/usr/bin/env wired &"
   -- screensaver
   spawnOnce "/usr/bin/env xscreensaver --no-splash &"
+  -- bluetooth applet
+  spawnOnce "/usr/bin/env blueman-applet &"
+  -- external display hack
+  spawnOnce externalScreenOnly
 
 main = xmonad
       . ewmhFullscreen . ewmh

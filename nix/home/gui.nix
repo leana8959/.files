@@ -1,4 +1,8 @@
-{pkgs, wired, ...}: {
+{
+  pkgs,
+  wired,
+  ...
+}: {
   home.packages = with pkgs; [
     # Window Manager related
     (nerdfonts.override {fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];})
@@ -11,6 +15,13 @@
     wired.wired
 
     # GUI apps
-    # discord
+
+    # social
+    discord
+    element-desktop
+
+    # misc
+    bitwarden
+    gnome.gnome-terminal
   ];
 }

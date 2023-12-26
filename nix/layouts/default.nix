@@ -1,6 +1,7 @@
 {...}: {
   services.xserver.xkb = {
     layout = "dvorak";
+    options = "caps:swapescape";
     extraLayouts = {
       "dvorak" = {
         languages = ["us"];

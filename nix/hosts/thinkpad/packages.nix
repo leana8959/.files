@@ -5,11 +5,16 @@
 }: {
   environment.systemPackages = with pkgs; [
     curl
-    vim
     stow
-    git
     gcc
 
     agenix.default
   ];
+
+  programs.vim.defaultEditor = true;
+  programs.git.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+  };
 }
