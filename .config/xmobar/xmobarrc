@@ -4,7 +4,7 @@ Config { overrideRedirect = False
        , font             = "xft:JetBrainsMono NF"
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
-       , position = TopW L 90
+       , position = TopW L 100
        , commands = [ Run Kbd [("dvorak-french", "🇫🇷"), ("dvorak", "🇺🇸")]
                     , Run ThermalZone 0 ["-t", "󰔏 <temp>°C"] 30
                     , Run Alsa "default" "Master"
