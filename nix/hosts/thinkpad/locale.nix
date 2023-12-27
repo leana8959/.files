@@ -71,7 +71,7 @@
     "Hotkey/TriggerKeys" = {};
     "Hotkey/AltTriggerKeys" = {"0" = "Shift_L";};
     "Hotkey/EnumerateGroupForwardKeys" = {"0" = "Control+space";};
-    "Hotkey/EnumerateGroupBackwardKeys" = {};
+    "Hotkey/EnumerateGroupBackwardKeys" = {"0" = "Control+Shift+space";};
 
     "Hotkey/PrevPage" = {"0" = "Up";};
     "Hotkey/NextPage" = {"0" = "Down";};
