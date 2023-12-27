@@ -113,24 +113,20 @@ myKeymaps =
       -- toggle external display
       , ((controlMask, xK_F7), spawn externalScreenOnly)
 
-      -- FIXME: brightness adjustments
-      , ((controlMask, xK_F5), spawn "light -S 10")
-      , ((controlMask, xK_F6), spawn "light -A 10")
+      , ((0, xF86XK_MonBrightnessDown), spawn "light -U 10")
+      , ((0, xF86XK_MonBrightnessUp), spawn "light -A 10")
 
       -- volume adjustments
-      , ((controlMask, xK_F1), spawn "amixer set Master toggle")
-      , ((controlMask, xK_F2), spawn "amixer set Master 5%-")
-      , ((controlMask, xK_F3), spawn "amixer set Master 5%+")
       , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
       , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
       , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
 
       -- tab navigation in firefox
       , remapWithFallback
-        (controlMask .|. shiftMask, xK_bracketright)
+        (shiftMask, xK_bracketright)
         [ (className =? "firefox", sendKey controlMask xK_Tab) ]
       , remapWithFallback
-        (controlMask .|. shiftMask, xK_bracketleft)
+        (shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
       -- -- NOTE: use fcitx instead
