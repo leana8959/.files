@@ -10,6 +10,7 @@
     ./gui.nix
     ./locale.nix
     ./networking.nix
+    ./bluetooth.nix
     ./packages.nix
   ];
 
