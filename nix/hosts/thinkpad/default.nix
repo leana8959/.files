@@ -26,7 +26,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["wheel" "video"];
     packages = [];
   };
 
