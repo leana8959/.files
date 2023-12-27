@@ -4,6 +4,8 @@
   imports = [
     ./hardware-configuration.nix
 
+    # ./agenix.nix
+
     ./battery.nix
     ./gui.nix
     ./locale.nix
@@ -19,6 +21,7 @@
   programs.fish.enable = true;
   environment.shells = [pkgs.fish];
   users.users.leana = {
+    uid = 1000;
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
@@ -31,7 +34,6 @@
     mediaKeys.enable = true;
   };
   hardware.pulseaudio.enable = true;
-
 
   nix = {
     package = pkgs.nixFlakes;

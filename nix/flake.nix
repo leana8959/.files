@@ -10,7 +10,7 @@
 
     wired.url = "github:Toqozz/wired-notify";
 
-    agenix.url = "github:ryantm/agenix";
+    agenix.url = "github:ryantm/agenix/0.15.0";
   };
 
   outputs = {
@@ -42,7 +42,6 @@
         config.allowUnfreePredicate = pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
             "discord"
-            "prl-tools"
           ];
       };
 
@@ -65,6 +64,7 @@
         modules = [
           ./hosts/${device}/default.nix
           ./layouts
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
