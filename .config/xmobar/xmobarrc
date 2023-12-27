@@ -5,17 +5,29 @@ Config { overrideRedirect = False
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
        , position = TopW L 90
-       , commands = [ Run Cpu
-                        [ "-L", "3"
-                        , "-H", "50"
-                        , "--high", "red"
-                        , "--normal", "green"
+       , commands = [ Run Kbd [("dvorak-french", "🇫🇷"), ("dvorak", "🇺🇸")]
+                    , Run ThermalZone 0 ["-t", "󰔏 <temp>°C"] 30
+                    , Run Alsa "default" "Master"
+                        [ "-t", "<status> <volume>%"
+                        , "--"
+                        , "-O", "󰕾"
+                        , "-o", "󰖁"
+                        ]
+                    , Run Memory [ "-t", "󰍛 <usedratio>%" ] 30
+                    , Run Date "%a:%d:%H:%M:%S" "date" 10
+                    , Run Battery
+                        [ "-t", "<acstatus>:<left>%"
+                        , "--"
+                        , "-O", "󰂄"
+                        , "-i", "󱟦"
+                        , "-o", "󰁾"
+                        , "-h", "green"
+                        , "-m", "yell"
+                        , "-l", "red"
                         ] 10
-                    , Run Memory [ "--template", "Mem: <usedratio>%" ] 10
-                    , Run Date "%a %Y-%m-%d %H:%M" "date" 10
                     , Run XMonadLog
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %cpu% | %memory% | %date% "
+       , template = "%XMonadLog% }{ %kbd% | %alsa:default:Master% | %thermal0% | %memory% | %battery% | %date% "
        }
