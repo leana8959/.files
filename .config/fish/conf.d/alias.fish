@@ -63,10 +63,13 @@ abbr fp 'cd ~/.dotfiles/.config/fish/functions && $EDITOR ../config.fish && prev
 abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
 abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 
-# Home-manager
+# Home-Manager / NixOS
 abbr np 'cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd'
 abbr hs 'home-manager switch'
 abbr ns 'sudo nixos-rebuild switch --flake ~/.dotfiles/nix#thinkpad'
+
+# XMonad
+abbr xp 'cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd'
 
 abbr nsh 'nix-shell -p'
 alias nix-shell 'nix-shell --run fish'
