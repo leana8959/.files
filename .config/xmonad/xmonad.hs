@@ -161,22 +161,10 @@ myKeymaps =
 myXmobarPP = def
 
 myStartupHook = do
-  -- system tray
-  spawnOnce $ T.unpack
-    [text|
-    trayer                                              \
-        --edge top --align right --SetDockType true     \
-        --SetPartialStrut true --expand true --width 10 \
-        --transparent false --tint 0xFFFFFF --height 18
-    |]
-  -- notification daemon
-  spawnOnce "/usr/bin/env wired &"
-  -- screensaver
-  spawnOnce "/usr/bin/env xscreensaver --no-splash &"
-  -- bluetooth applet
-  spawnOnce "/usr/bin/env blueman-applet &"
-  -- external display hack
-  spawnOnce externalScreenOnly
+  spawnOnce "/usr/bin/env wired &"                    -- notification daemon
+  spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
+  spawnOnce "/usr/bin/env blueman-applet &"           -- bluetooth applet
+  spawnOnce externalScreenOnly                        -- external display hack
 
   -- launch some useful softwares
   spawnOnce "/usr/bin/env element-desktop &"

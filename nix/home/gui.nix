@@ -13,7 +13,6 @@
     xmobar
     scrot
     xscreensaver
-    trayer
     xclip
     wired.wired
 
