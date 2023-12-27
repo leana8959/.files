@@ -1,14 +1,14 @@
 {...}: {
   services.xserver.xkb = {
-    layout = "dvorak";
+    layout = "myDvorak";
     options = "caps:swapescape";
     extraLayouts = {
-      "dvorak" = {
+      "myDvorak" = {
         languages = ["us"];
         symbolsFile = ./dvorak.xkb;
         description = "Leana's dvorak";
       };
-      "dvorak-french" = {
+      "myDvorakFrench" = {
         languages = ["fr"];
         symbolsFile = ./dvorak-french.xkb;
         description = "Leana's dvorak but baguette";
