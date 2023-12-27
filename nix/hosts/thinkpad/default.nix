@@ -1,6 +1,16 @@
 {pkgs, ...}: {
   system.stateVersion = "23.11";
 
+  imports = [
+    ./hardware-configuration.nix
+
+    ./battery.nix
+    ./gui.nix
+    ./locale.nix
+    ./networking.nix
+    ./packages.nix
+  ];
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -22,14 +32,6 @@
   };
   hardware.pulseaudio.enable = true;
 
-  imports = [
-    ./hardware-configuration.nix
-
-    ./locale.nix
-    ./networking.nix
-    ./packages.nix
-    ./gui.nix
-  ];
 
   nix = {
     package = pkgs.nixFlakes;
