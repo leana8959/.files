@@ -5,7 +5,11 @@ Config { overrideRedirect = False
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
        , position = TopW L 100
-       , commands = [ Run Kbd [("dvorak-french", "🇫🇷"), ("dvorak", "🇺🇸")]
+       , commands = [ Run Kbd
+                        [ ("myDvorakFrench", "🇫🇷")
+                        , ("myDvorak", "🇺🇸")
+                        , ("us", "🇹🇼")
+                        ]
                     , Run ThermalZone 0 ["-t", "󰔏 <temp>°C"] 30
                     , Run Alsa "default" "Master"
                         [ "-t", "<status> <volume>%"
