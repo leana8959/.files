@@ -59,16 +59,16 @@ abbr mainframe 'ssh mainframe'
 
 ## Preferences
 abbr vp 'cd ~/.dotfiles/.config/nvim/after/plugin && $EDITOR ../../init.lua && prevd'
-abbr xp 'cd ~/.dotfiles/.config/helix && $EDITOR config.toml && prevd'
 abbr fp 'cd ~/.dotfiles/.config/fish/functions && $EDITOR ../config.fish && prevd'
 abbr tp '$EDITOR ~/.dotfiles/.tmux.conf'
 abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 
 # Home-manager
-abbr np '$EDITOR ~/.dotfiles/.config/home-manager/home.nix'
+abbr np 'cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd'
 abbr hs 'home-manager switch'
+abbr ns 'sudo nixos-rebuild switch --flake ~/.dotfiles/nix#thinkpad'
 
-abbr ns 'nix-shell -p'
+abbr nsh 'nix-shell -p'
 alias nix-shell 'nix-shell --run fish'
 
 ## Python
