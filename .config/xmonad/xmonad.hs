@@ -35,7 +35,7 @@ xmonadConfig = def
   { modMask            = myMod
   , terminal           = myTerm
   , focusFollowsMouse  = True
-  , borderWidth        = 2
+  , borderWidth        = 5
   , workspaces         = myWorkspaces
   , manageHook         = myManageHook
   , layoutHook         = myLayoutHook
@@ -56,13 +56,12 @@ myLayoutHook =
   let nmaster  = 1
       ratio    = 1/2
       delta    = 3/100
-      tiled    = Tall nmaster delta ratio
-      threeCol = ThreeColMid nmaster delta ratio
       mag      = magnifiercz' 1.3
-
-  in  lessBorders Screen
+      tall     = Tall nmaster delta ratio
+      threeCol = ThreeColMid nmaster delta ratio
+  in  lessBorders Screen -- hide border in full screen
       $ spacingWithEdge 5
-      $ tiled ||| Full ||| (mag $ tiled ||| threeCol)
+      $ tall ||| Mirror tall ||| Full ||| (mag $ tall ||| threeCol)
 
 myManageHook = composeAll
   [ className =? "Element"                  --> doShift "2"
@@ -169,8 +168,6 @@ myStartupHook = do
   -- launch some useful softwares
   spawnOnce "/usr/bin/env element-desktop &"
   spawnOnce "/usr/bin/env discord &"
-
-  windows $ W.greedyView (myWorkspaces !! 0)
 
 main = xmonad
       . ewmhFullscreen . ewmh
