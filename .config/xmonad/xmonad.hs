@@ -78,14 +78,16 @@ myUnmaps =
   ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
   ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
 
-toggleXkbLayout = T.unpack
-  [text|
-  if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
-      setxkbmap dvorak
-  else
-      setxkbmap dvorak-french
-  fi
-  |]
+-- -- NOTE: use fcitx instead
+-- -- Keeping this just in case
+-- toggleXkbLayout = T.unpack
+--   [text|
+--   if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
+--       setxkbmap dvorak
+--   else
+--       setxkbmap dvorak-french
+--   fi
+--   |]
 externalScreenOnly = T.unpack
   [text|
   if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
@@ -131,9 +133,10 @@ myKeymaps =
         (controlMask .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
-      -- keyboard layout switch
-      -- TODO: add direct toggles
-      , ((controlMask, xK_space), spawn toggleXkbLayout)
+      -- -- NOTE: use fcitx instead
+      -- -- Keeping this just in case
+      -- -- keyboard layout switch
+      -- , ((controlMask, xK_space), spawn toggleXkbLayout)
 
       -- TODO: add media keys configurations
 
@@ -164,6 +167,8 @@ myStartupHook = do
   spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
   spawnOnce "/usr/bin/env blueman-applet &"           -- bluetooth applet
   spawnOnce externalScreenOnly                        -- external display hack
+
+  spawnOnce "fcitx5 &" -- input method
 
   -- launch some useful softwares
   spawnOnce "/usr/bin/env element-desktop &"
