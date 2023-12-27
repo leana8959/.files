@@ -18,10 +18,9 @@
     nil
     alejandra
 
-    # TODO: enable this when thinkpad is actually here
-    # (python39.withPackages (ps: with ps; [beautifulsoup4 requests]))
-    # jdk17
-    # rustup
-    # nodejs_20
+    (python39.withPackages (ps: with ps; [beautifulsoup4 requests]))
+    jdk17
+    rustup
+    nodejs_20
   ];
 }

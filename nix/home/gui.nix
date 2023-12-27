@@ -4,8 +4,11 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # Window Manager related
+    # fonts
     (nerdfonts.override {fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];})
+    lmodern
+
+    # Window Manager related
     dmenu
     xmobar
     scrot
@@ -20,8 +23,19 @@
     discord
     element-desktop
 
-    # misc
+    # productivity
     bitwarden
+    sioyek
+
+    # util
     gnome.gnome-terminal
   ];
+
+  home.pointerCursor = {
+    x11.enable = true;
+    gtk.enable = true;
+    name = "Adwaita";
+    package = pkgs.gnome.adwaita-icon-theme;
+    size = 32;
+  };
 }
