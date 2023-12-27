@@ -3,4 +3,5 @@ let
   users = [leana];
 in {
   "truenas_smb.age".publicKeys = users;
+  "wpa_password.age".publicKeys = users;
 }
