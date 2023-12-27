@@ -10,7 +10,7 @@ xkb_symbols "dvorak-french" {
     key <AE02>	{[            egrave,            at                            ]};
     key <AE03>	{[            eacute,    numbersign                            ]};
     key <AE04>	{[             U22c5,        dollar                            ]};
-    key <AE05>	{[        VoidSymbol,       percent                            ]};
+    key <AE05>	{[                oe,       percent                            ]};
     key <AE06>	{[    dead_diaeresis,   asciicircum                            ]};
     key <AE07>	{[   dead_circumflex,     ampersand                            ]};
     key <AE08>	{[          ccedilla,      asterisk,    Ccedilla               ]};
@@ -56,4 +56,3 @@ xkb_symbols "dvorak-french" {
     key <AB10>	{[         z,    Z                                             ]};
 
 };
-
