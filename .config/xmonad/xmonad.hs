@@ -7,16 +7,18 @@ import XMonad.Core
 import XMonad.Actions.PerWindowKeys
 
 import XMonad.Util.EZConfig (additionalKeys, removeKeys)
+import XMonad.Util.Paste
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
-import XMonad.Util.Paste
 
 import XMonad.Layout.Magnifier
+import XMonad.Layout.NoBorders
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 
-import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 
@@ -58,11 +60,14 @@ myLayoutHook =
       threeCol = ThreeColMid nmaster delta ratio
       mag      = magnifiercz' 1.3
 
-  in  spacingWithEdge 5
+  in  lessBorders Screen
+      $ spacingWithEdge 5
       $ tiled ||| Full ||| (mag $ tiled ||| threeCol)
 
 myManageHook = composeAll
-  [ className =? "cinny" --> doFloat <+> doShift "4"
+  [ className =? "Element"                  --> doShift "2"
+  , className =? "discord"                  --> doShift "2"
+  , className =? ".blueman-manager-wrapped" --> doFloat
   ]
 
 -- Only remove mappings that needs pass through.
@@ -92,18 +97,20 @@ externalScreenOnly = T.unpack
   |]
 
 myKeymaps =
-  let remap src dst =
-        ( src
-        , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ]
-        )
+  let remapWithFallback src dst =
+        (src , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ])
   in  [ -- shortcuts
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
-      , ((controlMask .|. mod1Mask, xK_s), spawn "scrot -s")
       , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
       , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
 
+      -- screenshot
+      , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
+      , ((mod4Mask .|. shiftMask, xK_4), spawn "scrot -s -F - | xclip -in -selection clipboard -t image/png")
+      , ((controlMask .|. mod4Mask .|. shiftMask, xK_4), spawn "scrot -s")
+
       -- toggle external display
-      , ((controlMask, xK_F7), spawn "xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94 && xrandr --output eDP-1 --off || xrandr --auto")
+      , ((controlMask, xK_F7), spawn externalScreenOnly)
 
       -- FIXME: brightness adjustments
       , ((controlMask, xK_F5), spawn "light -S 10")
@@ -118,10 +125,10 @@ myKeymaps =
       , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
 
       -- tab navigation in firefox
-      , remap
+      , remapWithFallback
         (controlMask .|. shiftMask, xK_bracketright)
         [ (className =? "firefox", sendKey controlMask xK_Tab) ]
-      , remap
+      , remapWithFallback
         (controlMask .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
@@ -170,6 +177,12 @@ myStartupHook = do
   spawnOnce "/usr/bin/env blueman-applet &"
   -- external display hack
   spawnOnce externalScreenOnly
+
+  -- launch some useful softwares
+  spawnOnce "/usr/bin/env element-desktop &"
+  spawnOnce "/usr/bin/env discord &"
+
+  windows $ W.greedyView (myWorkspaces !! 0)
 
 main = xmonad
       . ewmhFullscreen . ewmh
