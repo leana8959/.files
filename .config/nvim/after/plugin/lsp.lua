@@ -54,7 +54,7 @@ local servers                         = {
             map("n", "<leader>f",
                 function()
                     vim.cmd ":w"
-                    vim.cmd [[silent exec "!alejandra %"]]
+                    vim.cmd [[silent exec "!nixfmt %"]]
                     vim.cmd ":e"
                 end,
                 { buffer = bufno })
