@@ -10,9 +10,11 @@ import XMonad.Util.EZConfig (additionalKeys, removeKeys)
 import XMonad.Util.Paste
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
+import XMonad.Util.NamedScratchpad
 
 import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
 import XMonad.Layout.ThreeColumns
 
@@ -37,7 +39,7 @@ xmonadConfig = def
   , focusFollowsMouse  = True
   , borderWidth        = 5
   , workspaces         = myWorkspaces
-  , manageHook         = myManageHook
+  , manageHook         = namedScratchpadManageHook scratchpads <+> myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
   , normalBorderColor  = "#2a00a6"
@@ -46,7 +48,7 @@ xmonadConfig = def
   `removeKeys`     myUnmaps
   `additionalKeys` myKeymaps
 
-myTerm = "gnome-terminal"
+myTerm = "kitty"
 
 myMod = mod4Mask
 
@@ -67,6 +69,13 @@ myManageHook = composeAll
   [ className =? "Element"                  --> doShift "2"
   , className =? "discord"                  --> doShift "2"
   , className =? ".blueman-manager-wrapped" --> doFloat
+  ]
+
+scratchpads =
+  [ NS "cmus"
+      (myTerm ++ " -T 'cmus' cmus")
+      (title =? "cmus")
+      (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
   ]
 
 -- Only remove mappings that needs pass through.
@@ -103,7 +112,7 @@ myKeymaps =
   in  [ -- shortcuts
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
-      , ((controlMask .|. mod1Mask, xK_c), spawn $ unwords [ myTerm, "--", "fish -c tmux_cmus" ])
+      , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
 
       -- screenshot
       , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
@@ -123,10 +132,10 @@ myKeymaps =
 
       -- tab navigation in firefox
       , remapWithFallback
-        (myMod .|. shiftMask, xK_bracketright)
+        (controlMask .|. shiftMask, xK_bracketright)
         [ (className =? "firefox", sendKey controlMask xK_Tab) ]
       , remapWithFallback
-        (myMod .|. shiftMask, xK_bracketleft)
+        (controlMask .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
       -- -- NOTE: use fcitx instead
@@ -155,16 +164,14 @@ myKeymaps =
 
      ]
 
--- Xmobar's [p]retty [p]rinter
-myXmobarPP = def
+myPrettyPrinter = filterOutWsPP [scratchpadWorkspaceTag] $ xmobarPP
 
 myStartupHook = do
   spawnOnce "/usr/bin/env wired &"                    -- notification daemon
   spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
   spawnOnce "/usr/bin/env blueman-applet &"           -- bluetooth applet
   spawnOnce externalScreenOnly                        -- external display hack
-
-  spawnOnce "fcitx5 &" -- input method
+  spawnOnce "fcitx5 &"                                -- input method
 
   -- launch some useful softwares
   spawnOnce "/usr/bin/env element-desktop &"
@@ -172,7 +179,9 @@ myStartupHook = do
 
 main = xmonad
       . ewmhFullscreen . ewmh
-      . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
+      . withEasySB
+        (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter))
+        defToggleStrutsKey
       $ xmonadConfig
 
 -- vim:et:sw=2:ts=2
