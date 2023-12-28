@@ -19,6 +19,8 @@ Config { overrideRedirect = False
                         ]
                     , Run Memory [ "-t", "󰍛 <usedratio>%" ] 30
                     , Run Date "%a:%d:%H:%M:%S" "date" 10
+                    , Run DynNetwork
+                        [ "-t", "<dev> <tx>KB<rx>KB" ] 10
                     , Run Battery
                         [ "-t", "<acstatus>:<left>%"
                         , "--"
@@ -33,5 +35,5 @@ Config { overrideRedirect = False
                     ]
        , sepChar  = "%"
        , alignSep = "}{"
-       , template = "%XMonadLog% }{ %kbd% | %alsa:default:Master% | %thermal0% | %memory% | %battery% | %date% "
+       , template = "%XMonadLog% }{ %kbd% | %alsa:default:Master% | %thermal0% | %memory% | %dynnetwork% | %battery% | %date% "
        }
