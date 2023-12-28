@@ -13,74 +13,65 @@
     agenix.url = "github:ryantm/agenix/0.15.0";
   };
 
-  outputs = {
-    nixpkgs,
-    nixunstable,
-    home-manager,
-    wired,
-    agenix,
-    ...
-  }: let
-    pkgsForSystem = system:
-      import nixpkgs {
-        inherit system;
-        overlays = [
-          (final: prev: {
-            cmus = prev.cmus.overrideAttrs (old: {
-              patches =
-                (old.patches or [])
-                ++ [
+  outputs = { nixpkgs, nixunstable, home-manager, wired, agenix, ... }:
+    let
+      pkgsForSystem = system:
+        import nixpkgs {
+          inherit system;
+          overlays = [
+            (final: prev: {
+              cmus = prev.cmus.overrideAttrs (old: {
+                patches = (old.patches or [ ]) ++ [
                   (prev.fetchpatch {
-                    url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
-                    hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
+                    url =
+                      "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
+                    hash =
+                      "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
                   })
                 ];
-            });
-          })
-        ];
-
-        config.allowUnfreePredicate = pkg:
-          builtins.elem (nixpkgs.lib.getName pkg) [
-            "discord"
+              });
+            })
           ];
-      };
 
-    unstableForSystem = system: import nixunstable {inherit system;};
-
-    wiredForSystem = system: wired.packages.${system};
-    agenixForSystem = system: agenix.packages.${system};
-
-    withSystem = (
-      device: system: hostname: let
-        args = {
-          pkgs = pkgsForSystem system;
-          unstable = unstableForSystem system;
-          wired = wiredForSystem system;
-          agenix = agenixForSystem system;
-          inherit system hostname;
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [ "discord" ];
         };
-      in (nixpkgs.lib.nixosSystem {
-        specialArgs = args;
-        modules = [
-          ./hosts/${device}/default.nix
-          ./layouts
-          agenix.nixosModules.default
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.leana = import ./home;
-              extraSpecialArgs = args;
-            };
-          }
-        ];
-      })
-    );
-  in {
-    nixosConfigurations = {
-      thinkpad-test = withSystem "thinkpad" "aarch64-linux" "nixie-test";
-      thinkpad = withSystem "thinkpad" "x86_64-linux" "nixie";
+
+      unstableForSystem = system: import nixunstable { inherit system; };
+
+      wiredForSystem = system: wired.packages.${system};
+      agenixForSystem = system: agenix.packages.${system};
+
+      withSystem = (device: system: hostname:
+        let
+          args = {
+            pkgs = pkgsForSystem system;
+            unstable = unstableForSystem system;
+            wired = wiredForSystem system;
+            agenix = agenixForSystem system;
+            inherit system hostname;
+          };
+        in (nixpkgs.lib.nixosSystem {
+          specialArgs = args;
+          modules = [
+            ./hosts/${device}/default.nix
+            ./layouts
+            agenix.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.leana = import ./home;
+                extraSpecialArgs = args;
+              };
+            }
+          ];
+        }));
+    in {
+      nixosConfigurations = {
+        thinkpad-test = withSystem "thinkpad" "aarch64-linux" "nixie-test";
+        thinkpad = withSystem "thinkpad" "x86_64-linux" "nixie";
+      };
     };
-  };
 }
