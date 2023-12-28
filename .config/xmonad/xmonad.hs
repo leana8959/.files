@@ -66,9 +66,10 @@ myLayoutHook =
       $ tall ||| Mirror tall ||| Full ||| (mag $ tall ||| threeCol)
 
 myManageHook = composeAll
-  [ className =? "Element"                  --> doShift "2"
+  [ className =? ".blueman-manager-wrapped" --> doFloat
+  , className =? "Element"                  --> doShift "2"
   , className =? "discord"                  --> doShift "2"
-  , className =? ".blueman-manager-wrapped" --> doFloat
+  , className =? "thunderbird"              --> doShift "2"
   ]
 
 scratchpads =
@@ -87,16 +88,6 @@ myUnmaps =
   ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
   ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
 
--- -- NOTE: use fcitx instead
--- -- Keeping this just in case
--- toggleXkbLayout = T.unpack
---   [text|
---   if setxkbmap -query | grep dvorak-french 2>&1 > /dev/null; then
---       setxkbmap dvorak
---   else
---       setxkbmap dvorak-french
---   fi
---   |]
 externalScreenOnly = T.unpack
   [text|
   if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
@@ -109,9 +100,8 @@ externalScreenOnly = T.unpack
 myKeymaps =
   let remapWithFallback src dst =
         (src , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ])
-  in  [ -- shortcuts
+  in  [ -- programs
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
-      , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
       , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
 
       -- screenshot
@@ -120,7 +110,7 @@ myKeymaps =
       , ((controlMask .|. mod4Mask .|. shiftMask, xK_4), spawn "scrot -s")
 
       -- toggle external display
-      , ((controlMask, xK_F7), spawn externalScreenOnly)
+      , ((0, xF86XK_Display), spawn externalScreenOnly)
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 10")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 10")
@@ -130,6 +120,14 @@ myKeymaps =
       , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
       , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
 
+      -- playback control
+      , ((0, xF86XK_AudioPrev), spawn "playerctl previous")
+      , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
+      , ((0, xF86XK_AudioNext), spawn "playerctl next")
+
+      -- screensaver
+      , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
+
       -- tab navigation in firefox
       , remapWithFallback
         (controlMask .|. shiftMask, xK_bracketright)
@@ -137,13 +135,6 @@ myKeymaps =
       , remapWithFallback
         (controlMask .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
-
-      -- -- NOTE: use fcitx instead
-      -- -- Keeping this just in case
-      -- -- keyboard layout switch
-      -- , ((controlMask, xK_space), spawn toggleXkbLayout)
-
-      -- TODO: add media keys configurations
 
       -- resize windows
       , ((myMod .|. shiftMask, xK_comma) , sendMessage Shrink)
@@ -167,15 +158,16 @@ myKeymaps =
 myPrettyPrinter = filterOutWsPP [scratchpadWorkspaceTag] $ xmobarPP
 
 myStartupHook = do
-  spawnOnce "/usr/bin/env wired &"                    -- notification daemon
-  spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
-  spawnOnce "/usr/bin/env blueman-applet &"           -- bluetooth applet
   spawnOnce externalScreenOnly                        -- external display hack
   spawnOnce "fcitx5 &"                                -- input method
+  spawnOnce "/usr/bin/env wired &"                    -- notification daemon
+  spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
+  spawnOnce "playerctld daemon"                       -- player controller
 
   -- launch some useful softwares
   spawnOnce "/usr/bin/env element-desktop &"
   spawnOnce "/usr/bin/env discord &"
+  spawnOnce "/usr/bin/env thunderbird &"
 
 main = xmonad
       . ewmhFullscreen . ewmh
