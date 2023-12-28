@@ -14,6 +14,7 @@
     noto-fonts-color-emoji
     noto-fonts-emoji-blob-bin
     hanazono
+    cascadia-code
 
     # Window Manager related
     dmenu
@@ -34,6 +35,7 @@
     sioyek
 
     # util
+    # TODO: use the programs option to change profiles
     gnome.gnome-terminal
   ];
 

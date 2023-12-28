@@ -111,10 +111,17 @@
         user_pref("media.rdd-vpx.enabled", true);
       '';
       userChrome = ''
-        # a css
+        #statuspanel-label {
+            font-size: 18px !important;
+            font-family: "Cascadia Code" !important;
+        }
+        .urlbar-input-box {
+            font-size: 18px !important;
+            font-family: "Cascadia Code" !important;
+        }
       '';
       userContent = ''
-        # Here too
+        # a css
       '';
       extensions = with nur.repos.rycee.firefox-addons; [
         ublock-origin
