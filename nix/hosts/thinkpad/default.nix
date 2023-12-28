@@ -20,7 +20,7 @@
   };
 
   programs.fish.enable = true;
-  environment.shells = [pkgs.fish];
+  security.sudo.extraConfig = "Defaults lecture = always";
   users.users.leana = {
     uid = 1000;
     shell = pkgs.fish;
@@ -41,5 +41,14 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 45d";
+    };
+    settings = {
+      auto-optimise-store = true;
+      substituters = ["https://nix-community.cachix.org"];
+    };
   };
 }
