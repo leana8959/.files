@@ -59,7 +59,7 @@ myLayoutHook =
       mag      = magnifiercz' 1.3
       tall     = Tall nmaster delta ratio
       threeCol = ThreeColMid nmaster delta ratio
-  in  lessBorders Screen -- hide border in full screen
+  in  lessBorders OnlyScreenFloat -- hide border in full screen
       $ spacingWithEdge 5
       $ tall ||| Mirror tall ||| Full ||| (mag $ tall ||| threeCol)
 
