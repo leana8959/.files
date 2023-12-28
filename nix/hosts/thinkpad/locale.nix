@@ -13,13 +13,17 @@
       LC_TELEPHONE = "fr_FR.UTF-8";
       LC_TIME = "fr_FR.UTF-8";
     };
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "fr_FR.UTF-8/UTF-8"
+      "zh_TW.UTF-8/UTF-8"
+    ];
   };
 
   i18n.inputMethod.enabled = "fcitx5";
   i18n.inputMethod.fcitx5.addons = with pkgs; [
     fcitx5-chinese-addons
     fcitx5-table-extra
-    fcitx5-chewing
   ];
   i18n.inputMethod.fcitx5.ignoreUserConfig = true;
 
@@ -95,6 +99,24 @@
       AllowInputMethodForPassword = false;
       ShowPreeditForPassword = false;
       AutoSavePeriod = "30";
+    };
+  };
+
+  i18n.inputMethod.fcitx5.settings.addons = {
+    classicui.globalSection = {
+      "Vertical Candidate List" = false;
+      WheelForPaging = true;
+      Font = "HanaMinB 12";
+      MenuFont = "HanaMinB 12";
+      TrayFont = "HanaMinB 12";
+      PreferTextIcon = false;
+      ShowLayoutNameInIcon = true;
+      UseInputMethodLanguageToDisplayText = true;
+      Theme = "default";
+      DarkTheme = "default-dark";
+      UseDarkTheme = false;
+      UseAccentColor = true;
+      PerScreenDPI = false;
     };
   };
 }

@@ -13,6 +13,7 @@
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-emoji-blob-bin
+    hanazono
 
     # Window Manager related
     dmenu
