@@ -16,7 +16,6 @@
 
   services.openssh.enable = true;
 
-
   environment.systemPackages = [pkgs.cifs-utils];
   fileSystems."/mnt/data" = {
     device = "//10.0.0.20/data";
@@ -32,6 +31,7 @@
     enable = true;
     userControlled.enable = true;
     environmentFile = config.age.secrets.wpa_password.path;
+    # To add networks: https://nixos.wiki/wiki/Wpa_supplicant
     networks = {
       "HiddenParadize@Earth2077".psk = "@HOME@";
     };
