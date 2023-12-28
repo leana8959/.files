@@ -26,10 +26,11 @@
     xmobar
     scrot
     xclip
+    xscreensaver # TODO: why the service option won't work ?
     wired.wired
+    playerctl
 
     # GUI apps
-
     # social
     discord
     element-desktop
@@ -39,17 +40,6 @@
     sioyek
     thunderbird
   ];
-
-  services.xscreensaver = {
-    enable = true;
-    settings = {
-      fade = false;
-      unfade = false;
-      timeout = "0:10:00";
-      lock = true;
-      mode = "unknownpleasures";
-    };
-  };
 
   programs.kitty = {
     enable = true;

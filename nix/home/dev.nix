@@ -7,6 +7,7 @@
     hyperfine
     watchexec
     tea
+    tokei
 
     # Generic LSPs
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
