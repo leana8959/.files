@@ -68,7 +68,7 @@
             urls = [{
               template = "https://invidious.earth2077.fr/search";
               params = [{
-                name = "query";
+                name = "q";
                 value = "{searchTerms}";
               }];
             }];
