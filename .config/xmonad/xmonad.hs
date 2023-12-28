@@ -123,10 +123,10 @@ myKeymaps =
 
       -- tab navigation in firefox
       , remapWithFallback
-        (shiftMask, xK_bracketright)
+        (myMod .|. shiftMask, xK_bracketright)
         [ (className =? "firefox", sendKey controlMask xK_Tab) ]
       , remapWithFallback
-        (shiftMask, xK_bracketleft)
+        (myMod .|. shiftMask, xK_bracketleft)
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
       -- -- NOTE: use fcitx instead
