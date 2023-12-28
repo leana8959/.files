@@ -11,13 +11,15 @@
     wired.url = "github:Toqozz/wired-notify";
 
     agenix.url = "github:ryantm/agenix/0.15.0";
+
+    nixnur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, nixunstable, home-manager, wired, agenix, ... }:
+  outputs = { nixpkgs, nixunstable, home-manager, wired, agenix, nixnur, ... }:
     let
-      pkgsForSystem = system:
+      pkgsS = s:
         import nixpkgs {
-          inherit system;
+          system = s;
           overlays = [
             (final: prev: {
               cmus = prev.cmus.overrideAttrs (old: {
@@ -34,21 +36,32 @@
           ];
 
           config.allowUnfreePredicate = pkg:
-            builtins.elem (nixpkgs.lib.getName pkg) [ "discord" ];
+            builtins.elem (nixpkgs.lib.getName pkg) [
+              "discord"
+              "languagetool"
+            ];
         };
 
-      unstableForSystem = system: import nixunstable { inherit system; };
+      unstableS = s: import nixunstable { system = s; };
 
-      wiredForSystem = system: wired.packages.${system};
-      agenixForSystem = system: agenix.packages.${system};
+      wiredS = s: wired.packages.${s};
+
+      agenixS = s: agenix.packages.${s};
+
+      nurS = s:
+        import nixnur {
+          nurpkgs = pkgsS s;
+          pkgs = pkgsS s;
+        };
 
       withSystem = (device: system: hostname:
         let
           args = {
-            pkgs = pkgsForSystem system;
-            unstable = unstableForSystem system;
-            wired = wiredForSystem system;
-            agenix = agenixForSystem system;
+            pkgs = pkgsS system;
+            unstable = unstableS system;
+            wired = wiredS system;
+            agenix = agenixS system;
+            nur = nurS system;
             inherit system hostname;
           };
         in (nixpkgs.lib.nixosSystem {

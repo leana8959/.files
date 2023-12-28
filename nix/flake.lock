@@ -123,6 +123,21 @@
         "type": "github"
       }
     },
+    "nixnur": {
+      "locked": {
+        "lastModified": 1703767643,
+        "narHash": "sha256-zUFIJWDQg0kL0Wy26NC4Y5EMWe8nx7vlBoCP/0aCFIw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "db2144bf7f54ce3d0c9519dfd6d342f761e7159e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1703013332,
@@ -191,6 +206,7 @@
       "inputs": {
         "agenix": "agenix",
         "home-manager": "home-manager_2",
+        "nixnur": "nixnur",
         "nixpkgs": "nixpkgs_2",
         "nixunstable": "nixunstable",
         "wired": "wired"

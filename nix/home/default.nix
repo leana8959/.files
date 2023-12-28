@@ -1,12 +1,5 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
-  imports = [
-    ./dev.nix
-    ./gui.nix
-  ];
+{ pkgs, unstable, ... }: {
+  imports = [ ./dev.nix ./gui.nix ./browser.nix];
 
   home = {
     username = "leana";
@@ -16,12 +9,12 @@
 
   programs = {
     home-manager.enable = true;
-    firefox.enable = true;
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
   };
+
 
   home.packages = with pkgs; [
     # shell and script dependencies
