@@ -51,16 +51,19 @@
     };
   };
 
-  programs.gnome-terminal = {
+  programs.kitty = {
     enable = true;
-    themeVariant = "light";
-    showMenubar = false;
-    profile."060efe23-3ab4-4c71-8a38-dd13f89b400d" = {
-      default = true;
-      visibleName = "Atom OneLight";
-      audibleBell = false;
-      font = "CaskaydiaCove Nerd Font Mono 15";
+    font = {
+      name = "CaskaydiaCove Nerd Font Mono";
+      size = 15;
     };
+    settings = {
+      foreground = "#000000";
+      background = "#ffffff";
+      confirm_os_window_close = 0;
+      text_composition_strategy = "1.55 5";
+    };
+    shellIntegration.enableFishIntegration = true;
   };
 
 }
