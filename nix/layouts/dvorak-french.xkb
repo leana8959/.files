@@ -15,7 +15,7 @@ xkb_symbols "dvorak-french" {
     key <AE07>	{[   dead_circumflex,     ampersand                            ]};
     key <AE08>	{[          ccedilla,      asterisk,    Ccedilla               ]};
     key <AE09>	{[            agrave,     parenleft,  dead_grave,  dead_breve  ]};
-    key <AE10>	{[        VoidSymbol,    parenright,       U00ba               ]};
+    key <AE10>	{[            ugrave,    parenright,       U00ba               ]};
     key <AE11>	{[       bracketleft,     braceleft                            ]};
     key <AE12>	{[      bracketright,    braceright,  dead_tilde               ]};
 
