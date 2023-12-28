@@ -1,11 +1,7 @@
-{
-  pkgs,
-  wired,
-  ...
-}: {
+{ pkgs, wired, ... }: {
   home.packages = with pkgs; [
     # fonts
-    (nerdfonts.override {fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];})
+    (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" "Meslo" ]; })
     lmodern
     noto-fonts
     noto-fonts-lgc-plus
