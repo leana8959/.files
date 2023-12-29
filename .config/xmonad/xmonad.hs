@@ -102,10 +102,10 @@ myKeymaps =
         let fallback = [ (pure True, uncurry sendKey src) ]
         in  (src, bindFirst . (++fallback) $ dst)
   in  [ -- programs
-        ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
-      , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
-      , ((controlMask .|. mod1Mask, xK_p), namedScratchpadAction scratchpads "bitwarden")
-      , ((controlMask .|. mod1Mask, xK_h), namedScratchpadAction scratchpads "btop")
+        ((controlMask .|. myMod, xK_f), spawn "firefox")
+      , ((controlMask .|. myMod, xK_m), namedScratchpadAction scratchpads "cmus")
+      , ((controlMask .|. myMod, xK_p), namedScratchpadAction scratchpads "bitwarden")
+      , ((controlMask .|. myMod, xK_h), namedScratchpadAction scratchpads "btop")
 
       -- screenshot
       , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
@@ -131,6 +131,9 @@ myKeymaps =
       -- Begin / End
       , ((mod4Mask, xK_Left), sendKey 0 xK_Home)
       , ((mod4Mask, xK_Right), sendKey 0 xK_End)
+
+      -- Delete
+      , ((mod4Mask, xK_BackSpace), sendKey 0 xK_Delete)
 
       -- screensaver
       , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
