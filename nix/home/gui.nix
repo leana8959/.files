@@ -26,6 +26,7 @@
     xmobar
     scrot
     xclip
+    feh
     xscreensaver # TODO: why the service option won't work ?
     wired.wired
     playerctl
@@ -51,7 +52,7 @@
       foreground = "#000000";
       background = "#ffffff";
       confirm_os_window_close = 0;
-      text_composition_strategy = "1.55 5";
+      text_composition_strategy = "1.55 0";
     };
     shellIntegration.enableFishIntegration = true;
   };
