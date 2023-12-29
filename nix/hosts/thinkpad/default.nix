@@ -7,6 +7,7 @@
     ./battery.nix
     ./gui.nix
     ./locale.nix
+    ./audio.nix
     ./networking.nix
     ./bluetooth.nix
     ./packages.nix
@@ -26,19 +27,6 @@
     description = "leana";
     extraGroups = [ "wheel" "video" "audio" ];
     packages = [ ];
-  };
-
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
   };
 
   nix = {
