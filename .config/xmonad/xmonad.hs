@@ -77,6 +77,10 @@ scratchpads =
       (myTerm ++ " -T 'cmus' cmus")
       (title =? "cmus")
       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+  , NS "bitwarden"
+      ("bitwarden")
+      (className =? "Bitwarden")
+      (customFloating $ W.RationalRect (1/2) (1/6) (2/5) (2/3))
   ]
 
 -- Only remove mappings that needs pass through.
@@ -95,6 +99,7 @@ myKeymaps =
   in  [ -- programs
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
+      , ((controlMask .|. mod1Mask, xK_p), namedScratchpadAction scratchpads "bitwarden")
 
       -- screenshot
       , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
