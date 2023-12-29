@@ -77,9 +77,9 @@ scratchpads =
       (myTerm ++ " -T 'cmus' cmus")
       (title =? "cmus")
       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
-  , NS "htop"
-      (myTerm ++ " -T 'htop' htop")
-      (title =? "htop")
+  , NS "btop"
+      (myTerm ++ " -T 'btop' btop")
+      (title =? "btop")
       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
   , NS "bitwarden"
       ("bitwarden")
@@ -104,7 +104,7 @@ myKeymaps =
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
       , ((controlMask .|. mod1Mask, xK_p), namedScratchpadAction scratchpads "bitwarden")
-      , ((controlMask .|. mod1Mask, xK_h), namedScratchpadAction scratchpads "htop")
+      , ((controlMask .|. mod1Mask, xK_h), namedScratchpadAction scratchpads "btop")
 
       -- screenshot
       , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
@@ -182,9 +182,9 @@ setupXmobar = T.unpack
 myStartupHook = do
   spawnOnce setupMonitors                                      -- External display hack
   spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
-  spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
   spawnOnce "pgrep xscreensaver || xscreensaver --no-splash &" -- Screensaver
   spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
+  spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
   -- launch some useful softwares
   spawnOnce "element-desktop &"
