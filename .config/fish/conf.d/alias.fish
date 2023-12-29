@@ -13,6 +13,8 @@ end
 
 ## Docker
 abbr dc 'docker-compose'
+## TODO: write a wrapper for this to consider both cases
+alias docker-compose='docker compose'
 
 ## Git
 abbr gaa 'git add (git rev-parse --show-toplevel)'
