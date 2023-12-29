@@ -12,6 +12,7 @@
     ./networking.nix
     ./bluetooth.nix
     ./packages.nix
+    ./virt.nix
   ];
 
   boot.loader = {
@@ -26,7 +27,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
-    extraGroups = [ "wheel" "video" "audio" ];
+    extraGroups = [ "wheel" "video" "audio" "docker" ];
     packages = [ ];
   };
 
