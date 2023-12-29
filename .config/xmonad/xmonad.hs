@@ -88,15 +88,6 @@ myUnmaps =
   ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
   ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
 
-externalScreenOnly = T.unpack
-  [text|
-  if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
-      xrandr --output eDP-1 --off
-  else
-      xrandr --auto
-  fi
-  |]
-
 myKeymaps =
   let remapWithFallback src dst =
         (src , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ])
@@ -110,7 +101,7 @@ myKeymaps =
       , ((controlMask .|. mod4Mask .|. shiftMask, xK_4), spawn "scrot -s")
 
       -- toggle external display
-      , ((0, xF86XK_Display), spawn externalScreenOnly)
+      , ((0, xF86XK_Display), spawn setupMonitors)
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 10")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 10")
@@ -157,22 +148,38 @@ myKeymaps =
 
 myPrettyPrinter = filterOutWsPP [scratchpadWorkspaceTag] $ xmobarPP
 
+setupMonitors = T.unpack
+  [text|
+  if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
+      xrandr --output eDP-1 --off
+  else
+      xrandr --auto
+  fi
+  feh --bg-fill .wallpapers/haskell-pattern.png
+  |]
+
+setupXmobar = T.unpack
+  [text|
+  xmobar -x 0 ~/.config/xmobar/xmobarrc
+  xmobar -x 1 ~/.config/xmobar/xmobarrc
+  |]
+
 myStartupHook = do
-  spawnOnce externalScreenOnly                        -- external display hack
-  spawnOnce "fcitx5 &"                                -- input method
-  spawnOnce "/usr/bin/env wired &"                    -- notification daemon
-  spawnOnce "/usr/bin/env xscreensaver --no-splash &" -- screensaver
-  spawnOnce "playerctld daemon"                       -- player controller
+  spawnOnce setupMonitors                                      -- External display hack
+  spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
+  spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
+  spawnOnce "pgrep xscreensaver || xscreensaver --no-splash &" -- Screensaver
+  spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
 
   -- launch some useful softwares
-  spawnOnce "/usr/bin/env element-desktop &"
-  spawnOnce "/usr/bin/env discord &"
-  spawnOnce "/usr/bin/env thunderbird &"
+  spawnOnce "element-desktop &"
+  spawnOnce "discord &"
+  spawnOnce "thunderbird &"
 
 main = xmonad
       . ewmhFullscreen . ewmh
       . withEasySB
-        (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter))
+        (statusBarProp setupXmobar (pure myPrettyPrinter))
         defToggleStrutsKey
       $ xmonadConfig
 
