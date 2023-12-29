@@ -77,6 +77,10 @@ scratchpads =
       (myTerm ++ " -T 'cmus' cmus")
       (title =? "cmus")
       (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+  , NS "htop"
+      (myTerm ++ " -T 'htop' htop")
+      (title =? "htop")
+      (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
   , NS "bitwarden"
       ("bitwarden")
       (className =? "Bitwarden")
@@ -100,6 +104,7 @@ myKeymaps =
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
       , ((controlMask .|. mod1Mask, xK_p), namedScratchpadAction scratchpads "bitwarden")
+      , ((controlMask .|. mod1Mask, xK_h), namedScratchpadAction scratchpads "htop")
 
       -- screenshot
       , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
