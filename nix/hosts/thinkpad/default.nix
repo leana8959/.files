@@ -1,10 +1,8 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   system.stateVersion = "23.11";
 
   imports = [
     ./hardware-configuration.nix
-
-    # ./agenix.nix
 
     ./battery.nix
     ./gui.nix
@@ -26,15 +24,22 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
-    extraGroups = ["wheel" "video"];
-    packages = [];
+    extraGroups = [ "wheel" "video" "audio" ];
+    packages = [ ];
   };
 
   sound = {
     enable = true;
     mediaKeys.enable = true;
   };
-  hardware.pulseaudio.enable = true;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
 
   nix = {
     package = pkgs.nixFlakes;
@@ -48,7 +53,7 @@
     };
     settings = {
       auto-optimise-store = true;
-      substituters = ["https://nix-community.cachix.org"];
+      substituters = [ "https://nix-community.cachix.org" ];
     };
   };
 }
