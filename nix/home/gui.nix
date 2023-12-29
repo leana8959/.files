@@ -40,6 +40,7 @@
     bitwarden
     sioyek
     thunderbird
+    gnome.eog
   ];
 
   programs.kitty = {
