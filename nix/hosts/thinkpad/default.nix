@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
 
+    ./age.nix
     ./battery.nix
     ./gui.nix
     ./locale.nix
