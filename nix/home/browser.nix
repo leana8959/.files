@@ -130,6 +130,7 @@
         bitwarden
         tridactyl
         languagetool
+        bypass-paywalls-clean
       ];
     };
   };
