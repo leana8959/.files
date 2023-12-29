@@ -22,7 +22,7 @@
     vivid
 
     # utils
-    htop
+    btop
     tree
     rsync
     tldr
