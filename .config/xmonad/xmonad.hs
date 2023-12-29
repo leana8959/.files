@@ -90,7 +90,8 @@ myUnmaps =
 
 myKeymaps =
   let remapWithFallback src dst =
-        (src , bindFirst $ dst ++ [ (pure True, uncurry sendKey src) ])
+        let fallback = [ (pure True, uncurry sendKey src) ]
+        in  (src, bindFirst . (++fallback) $ dst)
   in  [ -- programs
         ((controlMask .|. mod1Mask, xK_f), spawn "firefox")
       , ((controlMask .|. mod1Mask, xK_m), namedScratchpadAction scratchpads "cmus")
@@ -115,6 +116,10 @@ myKeymaps =
       , ((0, xF86XK_AudioPrev), spawn "playerctl previous")
       , ((0, xF86XK_AudioPlay), spawn "playerctl play-pause")
       , ((0, xF86XK_AudioNext), spawn "playerctl next")
+
+      -- Begin / End
+      , ((mod4Mask, xK_Left), sendKey 0 xK_Home)
+      , ((mod4Mask, xK_Right), sendKey 0 xK_End)
 
       -- screensaver
       , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
