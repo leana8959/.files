@@ -141,8 +141,6 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 -- Init --
 ----------
 require "fidget".setup { text = { spinner = "dots" } }
-require "mason".setup()
-require "mason-lspconfig".setup()
 require "neodev".setup()
 
 -- Folding
@@ -178,29 +176,6 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     return newVirtText
 end
 require "ufo".setup { fold_virt_text_handler = handler }
-
-
-local mason_lspconfig = require "mason-lspconfig"
-mason_lspconfig.setup()
-local mappings = mason_lspconfig.get_mappings().lspconfig_to_mason
-
--- Install all command
--- Credit https://github.com/williamboman/mason.nvim/issues/130#issuecomment-1217773757
-usercmd("MasonInstallAll",
-    function()
-        local server_names = Filter(
-            servers,
-            function(server) return not server.masonExclude end
-        )
-        local mason_names = Concat(
-            Map(
-                vim.tbl_keys(server_names),
-                function(lsp_name) return mappings[lsp_name] end
-            ),
-            tools
-        )
-        vim.cmd("MasonInstall " .. table.concat(mason_names, " "))
-    end, {})
 
 Foreach(servers,
     function(k, v)
