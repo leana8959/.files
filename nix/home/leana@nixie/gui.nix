@@ -47,7 +47,7 @@
     enable = true;
     font = {
       name = "CaskaydiaCove Nerd Font Mono";
-      size = 15;
+      size = 18;
     };
     settings = {
       foreground = "#000000";
