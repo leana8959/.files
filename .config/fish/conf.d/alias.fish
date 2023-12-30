@@ -67,9 +67,9 @@ abbr sp '$EDITOR ~/.dotfiles/.config/starship.toml'
 
 # Home-Manager / NixOS
 abbr np 'cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd'
-abbr ns 'sudo nixos-rebuild switch --flake ~/.dotfiles/nix#thinkpad'
+abbr ns 'sudo nixos-rebuild switch --flake ~/.dotfiles/nix#nixie'
 abbr hp 'cd ~/.dotfiles/.config/home-manager && $EDITOR flake.nix && prevd'
-abbr hs 'home-manager switch --flake ~/.dotfiles/.config/home-manager#leana@macOS'
+abbr hs 'home-manager switch --flake ~/.dotfiles/.config/home-manager#@macOS'
 
 # XMonad
 abbr xp 'cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd'
