@@ -43,11 +43,6 @@ if status is-interactive
     set fish_cursor_replace_one underscore
     set fish_cursor_visual block
 
-    # call tmux_home
-    if [ -z $TMUX ]
-        tmux_home
-    end
-
 end
 
 # iTerm2 intergration
