@@ -68,6 +68,7 @@ myLayoutHook =
 myManageHook = composeAll
   [ className =? ".blueman-manager-wrapped" --> doFloat
   , className =? "Eog"                      --> doFloat
+  , title     =? "Picture-in-Picture"       --> doFloat
   , className =? "Element"                  --> doShift "2"
   , className =? "discord"                  --> doShift "2"
   , className =? "thunderbird"              --> doShift "2"
