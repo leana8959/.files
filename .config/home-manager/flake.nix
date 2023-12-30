@@ -21,8 +21,10 @@
               cmus = prev.cmus.overrideAttrs (old: {
                 patches = (old.patches or [ ]) ++ [
                   (prev.fetchpatch {
-                    url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
-                    hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
+                    url =
+                      "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
+                    hash =
+                      "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
                   })
                 ];
               });
@@ -49,6 +51,9 @@
 
       homeConfigurations."leana@macOS" =
         withSystem "leana@macOS" "aarch64-darwin";
+
+      homeConfigurations."leana@earth2077.fr" =
+        withSystem "leana@earth2077.fr" "x86_64-linux";
 
     };
 }
