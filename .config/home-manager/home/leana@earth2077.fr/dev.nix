@@ -32,19 +32,19 @@
     alejandra
     nixfmt
 
-    (python39.withPackages (ps:
-      with ps; [
-        beautifulsoup4
-        requests
-
-        # python-lsp-server
-        # rope
-        # pyflakes
-        # mccabe
-        # pycodestyle
-        # pydocstyle
-        # autopep8
-      ]))
+    # (python39.withPackages (ps:
+    #   with ps; [
+    #     beautifulsoup4
+    #     requests
+    #
+    #     # python-lsp-server
+    #     # rope
+    #     # pyflakes
+    #     # mccabe
+    #     # pycodestyle
+    #     # pydocstyle
+    #     # autopep8
+    #   ]))
 
     # jdk17
     # rustup

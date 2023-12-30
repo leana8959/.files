@@ -26,7 +26,6 @@
     tree
     rsync
     tldr
-    unstable.typst
   ];
 
 }
