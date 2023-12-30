@@ -8,6 +8,7 @@
     watchexec
     tea
     tokei
+    gnumake
 
     # Generic LSPs
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
