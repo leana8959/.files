@@ -63,11 +63,12 @@ myLayoutHook =
       threeCol = ThreeColMid nmaster delta ratio
   in  lessBorders OnlyScreenFloat -- hide border in full screen
       $ spacingWithEdge 5
-      $ tall ||| Mirror tall ||| Full ||| (mag $ tall ||| threeCol)
+      $ tall ||| Full ||| Mirror tall ||| (mag $ tall ||| threeCol)
 
 myManageHook = composeAll
   [ className =? ".blueman-manager-wrapped" --> doFloat
   , className =? "Eog"                      --> doFloat
+  , title     =? "easyeffects"              --> doFloat
   , title     =? "Picture-in-Picture"       --> doFloat
   , className =? "Element"                  --> doShift "2"
   , className =? "discord"                  --> doShift "2"
