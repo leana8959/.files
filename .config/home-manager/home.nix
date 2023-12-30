@@ -70,6 +70,8 @@ in {
       bat
       delta
       gnupg
+      git
+      git-lfs
     ]
     ++ optionals isDarwin [
       (nerdfonts.override {
