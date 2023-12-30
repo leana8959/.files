@@ -72,8 +72,6 @@ require "lazy".setup {
         dependencies = {
             { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
             "folke/neodev.nvim",                     -- Additional lua configuration
-            "williamboman/mason.nvim",               -- Automatically install LSPs to stdpath for neovim
-            "williamboman/mason-lspconfig.nvim",     -- Interface between LSP and Mason
         },
     },
     "mfussenegger/nvim-dap", -- DAP
