@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, unstable, ... }: {
   home.packages = with pkgs; [
     # Editors and utils
     tmux
@@ -49,6 +49,7 @@
     jdk17
     rustup
     nodejs_20
+    unstable.opam
   ];
 
   programs.direnv = {
