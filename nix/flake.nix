@@ -54,7 +54,7 @@
           pkgs = pkgsS s;
         };
 
-      withSystem = (device: system: hostname:
+      nixosWithSystem = (device: system:
         let
           args = {
             pkgs = pkgsS system;
@@ -62,7 +62,8 @@
             wired = wiredS system;
             agenix = agenixS system;
             nur = nurS system;
-            inherit system hostname;
+            hostname = device;
+            inherit system;
           };
         in (nixpkgs.lib.nixosSystem {
           specialArgs = args;
@@ -75,16 +76,36 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.leana = import ./home;
+                users.leana = import (./home/leana + "@${device}");
                 extraSpecialArgs = args;
               };
             }
           ];
         }));
+
+      homeManagerWithSystem = (device: system:
+        let
+          pkgs = pkgsS system;
+          unstable = unstableS system;
+        in home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
+          extraSpecialArgs = {
+            system = system;
+            inherit unstable;
+          };
+          modules = [ (./home/leana + "@${device}") ];
+        });
+
     in {
       nixosConfigurations = {
-        thinkpad-test = withSystem "thinkpad" "aarch64-linux" "nixie-test";
-        thinkpad = withSystem "thinkpad" "x86_64-linux" "nixie";
+        nixie-test = nixosWithSystem "nixie-test" "aarch64-linux";
+        nixie = nixosWithSystem "nixie" "x86_64-linux";
       };
+
+      homeConfigurations = {
+        "macOS" = homeManagerWithSystem "macOS" "aarch64-darwin";
+        "earth2077.fr" = homeManagerWithSystem "earth2077.fr" "x86_64-linux";
+      };
+
     };
 }

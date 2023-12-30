@@ -103,13 +103,15 @@
           "Wikipedia (en)".metaData.alias = "@wk";
         };
       };
-      settings = { "general.smoothScroll" = true; };
-      extraConfig = ''
-        user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-        user_pref("full-screen-api.ignore-widgets", true);
-        user_pref("media.ffmpeg.vaapi.enabled", true);
-        user_pref("media.rdd-vpx.enabled", true);
-      '';
+      extraConfig =
+        # FIXME: not working?
+        ''
+          user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+          user_pref("full-screen-api.ignore-widgets", true);
+          user_pref("media.ffmpeg.vaapi.enabled", true);
+          user_pref("media.rdd-vpx.enabled", true);
+          user_pref("layout.css.devPixelsPerPx", 1.2);
+        '';
       userChrome = ''
         #statuspanel-label {
             font-size: 18px !important;
