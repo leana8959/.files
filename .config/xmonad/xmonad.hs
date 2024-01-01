@@ -181,7 +181,13 @@ myKeymaps =
 
      ]
 
-myPrettyPrinter = filterOutWsPP [scratchpadWorkspaceTag] $ xmobarPP
+myPrettyPrinter =
+  filterOutWsPP [scratchpadWorkspaceTag]
+  $ def
+  { ppCurrent         = xmobarColor "#000000" "#ffffff"
+  , ppHiddenNoWindows = xmobarColor "#a9a9a9" ""
+  , ppSep             = " ⋅ "
+  }
 
 setupMonitors = T.unpack
   [text|
