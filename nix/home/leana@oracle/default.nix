@@ -4,8 +4,8 @@
   imports = [ ./dev.nix ];
 
   home = {
-    username = "leana";
-    homeDirectory = "/home/opc";
+    username = "ubuntu";
+    homeDirectory = "/home/ubuntu";
     stateVersion = "23.11";
   };
 
