@@ -10,19 +10,20 @@ local Concat                          = require "utils".Concat
 -- Language servers --
 ----------------------
 local servers                         = {
-    bashls    = {}, -- bash
+    bashls    = {}, -- Bash
     clangd    = {}, -- C/CPP
     cssls     = {}, -- CSS
     html      = {}, -- HTML
     jsonls    = {}, -- JSON
     lemminx   = {}, -- XML
     marksman  = {}, -- Markdown
-    pyright   = {}, -- Python
-    pylsp     = {},
-    taplo     = {}, -- toml
+    phpactor  = {}, -- PHP
+    pylsp     = {}, -- Python
+    pyright   = {},
+    taplo     = {}, -- TOML
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
-    vimls     = {}, -- vim
+    vimls     = {}, -- Vim Script
 
     typst_lsp = {   -- Typst
         settings = {
@@ -54,7 +55,7 @@ local servers                         = {
             map("n", "<leader>f",
                 function()
                     vim.cmd ":w"
-                    vim.cmd [[silent exec "!nixfmt %"]]
+                    vim.cmd [[silent exec "!alejandra %"]]
                     vim.cmd ":e"
                 end,
                 { buffer = bufno })
