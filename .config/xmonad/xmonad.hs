@@ -42,7 +42,7 @@ xmonadConfig = def
   , manageHook         = namedScratchpadManageHook scratchpads <+> myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
-  , normalBorderColor  = "#2a00a6"
+  , normalBorderColor  = "#18005f"
   , focusedBorderColor = "#875fff"
   }
   `removeKeys`     myUnmaps
@@ -52,7 +52,7 @@ myTerm = "kitty"
 
 myMod = mod4Mask
 
-myWorkspaces = map show [1..4]
+myWorkspaces = ["H", "T", "N", "S"]
 
 myLayoutHook =
   let nmaster  = 1
@@ -70,9 +70,9 @@ myManageHook = composeAll
   , className =? "Eog"                      --> doFloat
   , title     =? "easyeffects"              --> doFloat
   , title     =? "Picture-in-Picture"       --> doFloat
-  , className =? "Element"                  --> doShift "2"
-  , className =? "discord"                  --> doShift "2"
-  , className =? "thunderbird"              --> doShift "2"
+  , className =? "Element"                  --> doShift (myWorkspaces !! 1)
+  , className =? "discord"                  --> doShift (myWorkspaces !! 1)
+  , className =? "thunderbird"              --> doShift (myWorkspaces !! 1)
   ]
 
 scratchpads =
@@ -110,15 +110,21 @@ myKeymaps =
       , ((controlMask .|. myMod, xK_h), namedScratchpadAction scratchpads "btop")
 
       -- screenshot
-      , ((mod4Mask .|. shiftMask, xK_3), spawn "scrot -F - | xclip -in -selection clipboard -t image/png")
-      , ((mod4Mask .|. shiftMask, xK_4), spawn "scrot -s -F - | xclip -in -selection clipboard -t image/png")
-      , ((controlMask .|. mod4Mask .|. shiftMask, xK_4), spawn "scrot -s")
+      , ( (mod4Mask .|. shiftMask, xK_3)
+        , spawn "scrot -F - | xclip -in -selection clipboard -t image/png"
+        )
+      , ( (mod4Mask .|. shiftMask, xK_4)
+        , spawn "scrot -s -F - | xclip -in -selection clipboard -t image/png"
+        )
+      , ( (controlMask .|. mod4Mask .|. shiftMask, xK_4)
+        , spawn "scrot -s"
+        )
 
       -- toggle external display
       , ((0, xF86XK_Display), spawn setupMonitors)
 
-      , ((0, xF86XK_MonBrightnessDown), spawn "light -U 10")
-      , ((0, xF86XK_MonBrightnessUp), spawn "light -A 10")
+      , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
+      , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
 
       -- volume adjustments
       , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
@@ -137,8 +143,16 @@ myKeymaps =
       -- Delete
       , ((mod4Mask, xK_BackSpace), sendKey 0 xK_Delete)
 
-      -- screensaver
-      , ((controlMask .|. mod1Mask, xK_z), spawn "xscreensaver-command -lock")
+      -- screensaver / suspend
+      , ( (controlMask .|. mod1Mask, xK_l)
+        , spawn "xscreensaver-command -lock"
+        )
+      , ( (controlMask .|. mod1Mask, xK_z)
+        , spawn "xscreensaver-command -lock ; systemctl suspend"
+        )
+      , ( (shiftMask .|. controlMask .|. mod1Mask, xK_z)
+        , spawn "xscreensaver-command -lock ; systemctl hibernate"
+        )
 
       -- tab navigation in firefox
       , remapWithFallback
@@ -193,9 +207,9 @@ myStartupHook = do
   spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
   -- launch some useful softwares
-  spawnOnce "element-desktop &"
-  spawnOnce "discord &"
-  spawnOnce "thunderbird &"
+  -- spawnOnce "element-desktop &"
+  -- spawnOnce "discord &"
+  -- spawnOnce "thunderbird &"
 
 main = xmonad
       . ewmhFullscreen . ewmh
