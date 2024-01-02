@@ -42,6 +42,8 @@
     evince
     thunderbird
     gnome.eog
+    gnome.nautilus
+    gnome.sushi
   ];
 
   programs.kitty = {
@@ -55,7 +57,7 @@
       background = "#ffffff";
       confirm_os_window_close = 0;
       text_composition_strategy = "1.55 0";
-      shell = "fish";
+      shell = "fish -c tmux_home";
     };
     extraConfig = ''
       background #f8f8f8
