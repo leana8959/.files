@@ -105,8 +105,8 @@
       homeConfigurations = {
         "macOS" = homeManagerWithSystem "macOS" "aarch64-darwin";
         "earth2077.fr" = homeManagerWithSystem "earth2077.fr" "x86_64-linux";
-        "oracle" = homeManagerWithSystem "oracle" "x86_64-linux";
+        "pi4" = homeManagerWithSystem "pi4" "aarch64-linux";
+        "oracle" = homeManagerWithSystem "oracle" "aarch64-linux";
       };
-
     };
 }
