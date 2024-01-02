@@ -66,14 +66,16 @@ myLayoutHook =
       $ tall ||| Full ||| Mirror tall ||| (mag $ tall ||| threeCol)
 
 myManageHook = composeAll
-  [ className =? ".blueman-manager-wrapped" --> doFloat
-  , className =? "Eog"                      --> doFloat
-  , className =? "Evince"                   --> doFloat
-  , title     =? "easyeffects"              --> doFloat
-  , title     =? "Picture-in-Picture"       --> doFloat
-  , className =? "Element"                  --> doShift (myWorkspaces !! 1)
-  , className =? "discord"                  --> doShift (myWorkspaces !! 1)
-  , className =? "thunderbird"              --> doShift (myWorkspaces !! 1)
+  [ className =? ".blueman-manager-wrapped"    --> doFloat
+  , className =? "Eog"                         --> doFloat
+  , className =? "Org.gnome.NautilusPreviewer" --> doFloat
+  , className =? "Org.gnome.Nautilus"          --> doFloat
+  , className =? "Evince"                      --> doFloat
+  , title     =? "easyeffects"                 --> doFloat
+  , title     =? "Picture-in-Picture"          --> doFloat
+  , className =? "Element"                     --> doShift (myWorkspaces !! 1)
+  , className =? "discord"                     --> doShift (myWorkspaces !! 1)
+  , className =? "thunderbird"                 --> doShift (myWorkspaces !! 1)
   ]
 
 scratchpads =
