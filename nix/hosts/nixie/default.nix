@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   system.stateVersion = "23.11";
 
   imports = [
@@ -27,8 +27,8 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
-    extraGroups = [ "wheel" "video" "audio" "docker" ];
-    packages = [ ];
+    extraGroups = ["wheel" "video" "audio" "docker"];
+    packages = [];
   };
 
   nix = {
@@ -39,11 +39,8 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 45d";
+      options = "--delete-older-than 15d";
     };
-    settings = {
-      auto-optimise-store = true;
-      substituters = [ "https://nix-community.cachix.org" ];
-    };
+    settings.substituters = ["https://nix-community.cachix.org"];
   };
 }
