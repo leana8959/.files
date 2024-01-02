@@ -55,21 +55,21 @@ myMod = mod4Mask
 myWorkspaces = ["H", "T", "N", "S"]
 
 myLayoutHook =
-  let nmaster  = 1
-      ratio    = 1/2
-      delta    = 3/100
-      mag      = magnifiercz' 1.3
-      tall     = Tall nmaster delta ratio
-      threeCol = ThreeColMid nmaster delta ratio
-  in  lessBorders OnlyScreenFloat -- hide border in full screen
-      $ spacingWithEdge 5
-      $ tall ||| Full ||| Mirror tall ||| (mag $ tall ||| threeCol)
+  let tall = renamed [Replace "VIRT"]
+             . lessBorders OnlyScreenFloat
+             . spacingWithEdge 5
+             $ Tall 1 (3/100) (1/2)
+      full = renamed [Replace "FULL"]
+             . lessBorders OnlyScreenFloat
+             . spacingWithEdge 5
+             $ Full
+  in  tall ||| full
 
 myManageHook = composeAll
   [ className =? ".blueman-manager-wrapped"    --> doFloat
   , className =? "Eog"                         --> doFloat
   , className =? "Org.gnome.NautilusPreviewer" --> doFloat
-  , className =? "Org.gnome.Nautilus"          --> doFloat
+  , className =? "org.gnome.Nautilus"          --> doFloat -- FIXME: won't float
   , className =? "Evince"                      --> doFloat
   , title     =? "easyeffects"                 --> doFloat
   , title     =? "Picture-in-Picture"          --> doFloat
@@ -216,9 +216,9 @@ myStartupHook = do
   spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
   -- launch some useful softwares
-  -- spawnOnce "element-desktop &"
-  -- spawnOnce "discord &"
-  -- spawnOnce "thunderbird &"
+  spawnOnce "element-desktop &"
+  spawnOnce "discord &"
+  spawnOnce "thunderbird &"
 
 main = xmonad
       . ewmhFullscreen . ewmh
