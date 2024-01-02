@@ -128,6 +128,7 @@
         tridactyl
         languagetool
         bypass-paywalls-clean
+        news-feed-eradicator
       ];
     };
   };

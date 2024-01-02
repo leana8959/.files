@@ -39,6 +39,7 @@
     # productivity
     bitwarden
     sioyek
+    evince
     thunderbird
     gnome.eog
   ];
@@ -54,7 +55,7 @@
       background = "#ffffff";
       confirm_os_window_close = 0;
       text_composition_strategy = "1.55 0";
-      shell = "fish -c tmux_home";
+      shell = "fish";
     };
     extraConfig = ''
       background #f8f8f8
