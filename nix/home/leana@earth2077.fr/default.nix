@@ -20,6 +20,7 @@
     fd
     fzf
     vivid
+    gcc
 
     # utils
     btop
