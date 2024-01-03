@@ -27,14 +27,24 @@
     userControlled.enable = true;
     environmentFile = config.age.secrets.wpa_password.path;
     # To add networks: https://nixos.wiki/wiki/Wpa_supplicant
-    networks = {"HiddenParadize@Earth2077".psk = "@HOME@";};
+    networks = {
+      "HiddenParadize@Earth2077".psk = "@HOME@";
+      "iPhone de Léana 江".psk = "@PHONE@";
+      eduroam = {
+        auth = ''
+          key_mgmt=WPA-EAP
+          eap=PWD
+          identity="@EDUROAM_ID@"
+          password="@EDUROAM_PSK@"
+        '';
+      };
+    };
   };
 
   networking.firewall = {allowedUDPPorts = [660];};
   networking.wireguard.interfaces = {
     wg0 = {
       ips = ["10.66.66.50/32"];
-      # listenPort = 660;
       privateKeyFile = config.age.secrets.wireguard_priv.path;
       peers = [
         {
@@ -42,7 +52,7 @@
           presharedKeyFile = config.age.secrets.wireguard_psk.path;
           allowedIPs = ["10.0.0.20/32" "10.0.0.31/32"];
           endpoint = "earth2077.fr:660";
-          persistentKeepalive = 30;
+          persistentKeepalive = 25;
         }
       ];
     };
