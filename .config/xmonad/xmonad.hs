@@ -69,7 +69,6 @@ myManageHook = composeAll
   [ className =? ".blueman-manager-wrapped"    --> doFloat
   , className =? "Eog"                         --> doFloat
   , className =? "Org.gnome.NautilusPreviewer" --> doFloat
-  , className =? "org.gnome.Nautilus"          --> doFloat -- FIXME: won't float
   , className =? "Evince"                      --> doFloat
   , title     =? "easyeffects"                 --> doFloat
   , title     =? "Picture-in-Picture"          --> doFloat
