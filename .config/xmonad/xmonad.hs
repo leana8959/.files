@@ -78,6 +78,7 @@ myManageHook = composeAll
   , className =? "Element"                     --> doShift "CHAT"
   , className =? "discord"                     --> doShift "CHAT"
   , className =? "thunderbird"                 --> doShift "CHAT"
+  , className =? "Mattermost"                  --> doShift "CHAT"
   ]
 
 scratchpads =

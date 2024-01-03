@@ -35,6 +35,7 @@
     # social
     discord
     element-desktop
+    mattermost-desktop
 
     # productivity
     bitwarden
