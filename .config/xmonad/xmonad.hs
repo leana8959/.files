@@ -52,14 +52,17 @@ myTerm = "kitty"
 
 myMod = mod4Mask
 
-myWorkspaces = ["H", "T", "N", "S"]
+myWorkspaces =
+  [ "CODE", "CHAT", "REC", "UNIV"
+  , "PERS", "WEB" , "YT", "ADM"
+  ]
 
 myLayoutHook =
-  let tall = renamed [Replace "VIRT"]
+  let tall = renamed [Replace "virt"]
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
              $ Tall 1 (3/100) (1/2)
-      full = renamed [Replace "FULL"]
+      full = renamed [Replace "full"]
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
              $ Full
@@ -72,9 +75,9 @@ myManageHook = composeAll
   , className =? "Evince"                      --> doFloat
   , title     =? "easyeffects"                 --> doFloat
   , title     =? "Picture-in-Picture"          --> doFloat
-  , className =? "Element"                     --> doShift (myWorkspaces !! 1)
-  , className =? "discord"                     --> doShift (myWorkspaces !! 1)
-  , className =? "thunderbird"                 --> doShift (myWorkspaces !! 1)
+  , className =? "Element"                     --> doShift "CHAT"
+  , className =? "discord"                     --> doShift "CHAT"
+  , className =? "thunderbird"                 --> doShift "CHAT"
   ]
 
 scratchpads =
@@ -105,6 +108,10 @@ myKeymaps =
   let remapWithFallback src dst =
         let fallback = [ (pure True, uncurry sendKey src) ]
         in  (src, bindFirst . (++fallback) $ dst)
+      workspaceKeys =
+        [ xK_h, xK_t, xK_n, xK_s
+        , xK_m, xK_w, xK_v, xK_z
+        ]
   in  [ -- programs
         ((controlMask .|. myMod, xK_f), spawn "firefox")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction scratchpads "cmus")
@@ -174,21 +181,21 @@ myKeymaps =
 
      -- organic window jumping
      ++ [ ((myMod, n), windows $ W.greedyView space)
-          | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
+          | (n, space) <- zip workspaceKeys myWorkspaces
      ]
 
      -- organic window yeeting
      ++ [ ((myMod .|. mod1Mask, n), windows $ W.shift space)
-          | (n, space) <- zip [xK_h, xK_t, xK_n, xK_s] myWorkspaces
+          | (n, space) <- zip workspaceKeys myWorkspaces
 
      ]
 
 myPrettyPrinter =
   filterOutWsPP [scratchpadWorkspaceTag]
   $ def
-  { ppCurrent         = xmobarColor "#000000" "#ffffff"
-  , ppHiddenNoWindows = xmobarColor "#a9a9a9" ""
-  , ppSep             = " ⋅ "
+  { ppCurrent         = xmobarColor "#FFFFFF" "" . wrap "[" "]"
+  , ppHiddenNoWindows = xmobarColor "#9c9c9c" ""
+  , ppSep             = " | "
   }
 
 setupMonitors = T.unpack
