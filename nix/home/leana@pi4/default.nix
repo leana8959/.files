@@ -1,7 +1,11 @@
-{ pkgs, unstable, ... }: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.home-manager.enable = true;
 
-  imports = [ ./dev.nix ];
+  imports = [./dev.nix];
 
   home = {
     username = "leana";
@@ -28,5 +32,4 @@
     rsync
     tldr
   ];
-
 }

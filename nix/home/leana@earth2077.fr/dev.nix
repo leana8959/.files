@@ -1,4 +1,8 @@
-{ pkgs, unstable, ... }: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   home.packages = with pkgs; [
     # Editors and utils
     tmux

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   services.xserver.enable = true;
 
   services.xserver = {
@@ -11,7 +11,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp: with hp; [ neat-interpolation ];
+      extraPackages = hp: with hp; [neat-interpolation];
     };
   };
 
@@ -20,7 +20,7 @@
       naturalScrolling = true;
       accelSpeed = "-0.5";
     };
-    touchpad = { naturalScrolling = true; };
+    touchpad = {naturalScrolling = true;};
   };
 
   programs.light.enable = true;

@@ -1,7 +1,11 @@
-{ pkgs, unstable, ... }: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.home-manager.enable = true;
 
-  imports = [ ./dev.nix ./fonts.nix ];
+  imports = [./dev.nix ./fonts.nix];
 
   home = {
     username = "leana";
@@ -32,5 +36,4 @@
     cmus
     cmusfm
   ];
-
 }

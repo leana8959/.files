@@ -1,7 +1,11 @@
-{ pkgs, unstable, ... }: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.home-manager.enable = true;
 
-  imports = [ ./dev.nix ./gui.nix ./browser.nix ];
+  imports = [./dev.nix ./gui.nix ./browser.nix];
 
   home = {
     username = "leana";

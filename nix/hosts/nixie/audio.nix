@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   sound = {
     enable = true;
     mediaKeys.enable = true;
@@ -12,5 +12,5 @@
     jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ helvum pavucontrol easyeffects ];
+  environment.systemPackages = with pkgs; [helvum pavucontrol easyeffects];
 }
