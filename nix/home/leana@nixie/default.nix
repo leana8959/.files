@@ -27,6 +27,7 @@
     rsync
     tldr
     unstable.typst
+    hledger
 
     # music
     cmus
