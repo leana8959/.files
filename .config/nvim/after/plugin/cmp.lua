@@ -4,6 +4,7 @@ local ls = require "luasnip"
 local s = ls.snippet
 local sn = ls.snippet_node
 local t = ls.text_node
+local cr = function() return t { "", "" } end -- linebreak
 local i = ls.insert_node
 local f = ls.function_node
 local c = ls.choice_node
@@ -40,13 +41,13 @@ ls.setup { update_events = { "TextChanged", "TextChangedI" } }
 -----------
 -- Typst --
 -----------
-local function show_date()
+local function show_date_typst_entry()
     return os.date "(year: %Y, month: %m, day: %d, hour: %H, minute: %M, second: %S)"
 end
 ls.add_snippets("typst", {
     s("entry", {
         t "#entry(",
-        f(show_date),
+        f(show_date_typst_entry),
         t { ")[", "" },
         i(0),
         t { "", "]" },
@@ -88,6 +89,36 @@ ls.add_snippets("all", {
         f(left), i(1), f(right),
         t { "", "" },
         f(horizon, { 1 }),
+    }),
+})
+
+------------
+-- Ledger --
+------------
+local function show_date_ledger_entry()
+    return os.date "%Y-%m-%d"
+end
+-- shortcuts
+ls.add_snippets("ledger", {
+    s("lessive", {
+        f(show_date_ledger_entry), t " ", t "Lessive (CROUS)", cr(),
+        t "\texpenses                         3.00 EUR", cr(),
+        t "\tassets:compte_courant           -3.00 EUR", cr(),
+    }),
+    s("sechoir", {
+        f(show_date_ledger_entry), t " ", t "Sechoir (CROUS)", cr(),
+        t "\texpenses                         1.50 EUR", cr(),
+        t "\tassets:compte_courant           -1.50 EUR", cr(),
+    }),
+})
+
+-- generalized entry
+local id = function(args) return args[1][1] end
+ls.add_snippets("ledger", {
+    s("entry", {
+        f(show_date_ledger_entry), t " ", i(1), cr(),
+        t "\texpenses                         ", i(2), t " EUR", cr(),
+        t "\tassets:compte_courant           -", f(id, { 2 }), t " EUR", cr(),
     }),
 })
 
