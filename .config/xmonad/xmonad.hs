@@ -154,13 +154,13 @@ myKeymaps =
       , ((mod4Mask, xK_BackSpace), sendKey 0 xK_Delete)
 
       -- screensaver / suspend
-      , ( (controlMask .|. mod1Mask, xK_l)
+      , ( (controlMask .|. mod4Mask, xK_l)
         , spawn "xscreensaver-command -lock"
         )
-      , ( (controlMask .|. mod1Mask, xK_z)
+      , ( (controlMask .|. mod4Mask, xK_z)
         , spawn "xscreensaver-command -lock ; systemctl suspend"
         )
-      , ( (shiftMask .|. controlMask .|. mod1Mask, xK_z)
+      , ( (shiftMask .|. controlMask .|. mod4Mask, xK_z)
         , spawn "xscreensaver-command -lock ; systemctl hibernate"
         )
 
