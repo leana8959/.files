@@ -7,16 +7,14 @@ import XMonad.Core
 import XMonad.Actions.PerWindowKeys
 
 import XMonad.Util.EZConfig (additionalKeys, removeKeys)
+import XMonad.Util.NamedScratchpad
 import XMonad.Util.Paste
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Ungrab
-import XMonad.Util.NamedScratchpad
 
-import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
-import XMonad.Layout.ThreeColumns
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -32,6 +30,7 @@ import qualified XMonad.StackSet as W
 
 import NeatInterpolation
 import qualified Data.Text as T
+import System.Exit
 
 xmonadConfig = def
   { modMask            = myMod
@@ -182,14 +181,11 @@ myKeymaps =
 
      -- organic window jumping
      ++ [ ((myMod, n), windows $ W.greedyView space)
-          | (n, space) <- zip workspaceKeys myWorkspaces
-     ]
+        | (n, space) <- zip workspaceKeys myWorkspaces]
 
      -- organic window yeeting
      ++ [ ((myMod .|. mod1Mask, n), windows $ W.shift space)
-          | (n, space) <- zip workspaceKeys myWorkspaces
-
-     ]
+        | (n, space) <- zip workspaceKeys myWorkspaces]
 
 myPrettyPrinter =
   filterOutWsPP [scratchpadWorkspaceTag]
