@@ -222,11 +222,6 @@ myStartupHook = do
   spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
   spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
-  -- launch some useful softwares
-  spawnOnce "element-desktop &"
-  spawnOnce "discord &"
-  spawnOnce "thunderbird &"
-
 main = xmonad
       . ewmhFullscreen . ewmh
       . withEasySB
