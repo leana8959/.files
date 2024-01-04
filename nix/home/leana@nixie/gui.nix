@@ -41,11 +41,15 @@
     bitwarden
     sioyek
     evince
-    thunderbird
     gnome.eog
     gnome.nautilus
     gnome.sushi
   ];
+
+  programs.thunderbird = {
+    enable = true;
+    profiles."leana".isDefault = true;
+  };
 
   programs.kitty = {
     enable = true;
