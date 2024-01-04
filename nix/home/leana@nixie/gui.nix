@@ -1,5 +1,8 @@
-{ pkgs, wired, ... }: {
-
+{
+  pkgs,
+  wired,
+  ...
+}: {
   home.pointerCursor = {
     x11.enable = true;
     gtk.enable = true;
@@ -10,7 +13,7 @@
 
   home.packages = with pkgs; [
     # fonts
-    (nerdfonts.override { fonts = [ "CascadiaCode" "JetBrainsMono" "Meslo" ]; })
+    (nerdfonts.override {fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];})
     lmodern
     noto-fonts
     noto-fonts-lgc-plus
@@ -89,5 +92,4 @@
     '';
     shellIntegration.enableFishIntegration = true;
   };
-
 }
