@@ -47,12 +47,9 @@
     gnome.eog
     gnome.nautilus
     gnome.sushi
+    evolution
+    gnome.gnome-calendar
   ];
-
-  programs.thunderbird = {
-    enable = true;
-    profiles."leana".isDefault = true;
-  };
 
   programs.kitty = {
     enable = true;
