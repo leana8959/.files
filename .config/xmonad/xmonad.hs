@@ -174,8 +174,8 @@ myKeymaps =
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
       -- resize windows
-      , ((myMod .|. shiftMask, xK_comma) , sendMessage Shrink)
-      , ((myMod .|. shiftMask, xK_period), sendMessage Expand)
+      , ((myMod .|. shiftMask, xK_comma) , sendMessage Expand)
+      , ((myMod .|. shiftMask, xK_period), sendMessage Shrink)
 
       -- force back to tiling
       , ((myMod .|. shiftMask, xK_t), withFocused $ windows . W.sink)
