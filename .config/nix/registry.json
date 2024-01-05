@@ -1,0 +1,15 @@
+{
+  "flakes": [
+    {
+      "from": {
+        "id": "flakies",
+        "type": "indirect"
+      },
+      "to": {
+        "type": "git",
+        "url": "https://git.earth2077.fr/leana/nix-templates"
+      }
+    }
+  ],
+  "version": 2
+}
