@@ -8,7 +8,7 @@
     gtk.enable = true;
     name = "Adwaita";
     package = pkgs.gnome.adwaita-icon-theme;
-    size = 48;
+    size = 32;
   };
 
   home.packages = with pkgs; [
@@ -72,18 +72,18 @@
       selection_background #ececec
       color0 #000000
       color8 #000000
-      color1 #de3d35
-      color9 #de3d35
-      color2 #3e953a
-      color10 #3e953a
-      color3 #d2b67b
-      color11 #d2b67b
-      color4 #2f5af3
-      color12 #2f5af3
+      color1 #ca1243
+      color9 #ca1243
+      color2 #50a14f
+      color10 #50a14f
+      color3 #e5bf6d
+      color11 #e5bf6d
+      color4 #4078f2
+      color12 #4078f2
       color5 #950095
       color13 #a00095
-      color6 #3e953a
-      color14 #3e953a
+      color6 #0184bc
+      color14 #0184bc
       color7 #bbbbbb
       color15 #ffffff
       selection_foreground #f8f8f8
