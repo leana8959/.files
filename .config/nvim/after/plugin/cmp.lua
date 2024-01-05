@@ -102,13 +102,13 @@ end
 ls.add_snippets("ledger", {
     s("lessive", {
         f(show_date_ledger_entry), t " ", t "Lessive (CROUS)", cr(),
-        t "\texpenses                         3.00 EUR", cr(),
-        t "\tassets:compte_courant           -3.00 EUR", cr(),
+        t "\texpenses                         3,00 EUR", cr(),
+        t "\tassets:compte_courant           -3,00 EUR", cr(),
     }),
     s("sechoir", {
         f(show_date_ledger_entry), t " ", t "Sechoir (CROUS)", cr(),
-        t "\texpenses                         1.50 EUR", cr(),
-        t "\tassets:compte_courant           -1.50 EUR", cr(),
+        t "\texpenses                         1,50 EUR", cr(),
+        t "\tassets:compte_courant           -1,50 EUR", cr(),
     }),
 })
 
