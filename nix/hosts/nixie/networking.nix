@@ -10,16 +10,30 @@
 
   services.openssh.enable = true;
 
-  fileSystems."/mnt/data" = {
-    device = "10.0.0.20:/mnt/mainPool/data";
-    fsType = "nfs";
-    options = [
+  fileSystems = let
+    opts = [
       "noauto"
       "x-systemd.automount"
       "x-systemd.idle-timeout=60"
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
     ];
+  in {
+    "/mnt/data" = {
+      device = "10.0.0.20:/mnt/mainPool/data";
+      fsType = "nfs";
+      options = opts;
+    };
+    "/mnt/archive" = {
+      device = "10.0.0.20:/mnt/mainPool/data/Archive";
+      fsType = "nfs";
+      options = opts;
+    };
+    "/mnt/documents" = {
+      device = "10.0.0.20:/mnt/mainPool/data/Documents";
+      fsType = "nfs";
+      options = opts;
+    };
   };
 
   networking.wireless = {
