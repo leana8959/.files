@@ -27,7 +27,13 @@
     shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
-    extraGroups = ["wheel" "video" "audio" "docker"];
+    extraGroups = [
+      "wheel" # sudoers
+      "video" # light
+      "audio" # pipewire
+      "docker"
+      "vboxusers"
+    ];
     packages = [];
   };
 
