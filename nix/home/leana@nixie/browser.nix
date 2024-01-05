@@ -120,6 +120,8 @@
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "layout.css.devPixelsPerPx" = 1.2;
+        "browser.tabs.loadInBackground" = true;
+        "browser.ctrlTab.sortByRecentlyUsed" = false;
       };
       userChrome = ''
         #statuspanel-label {
