@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   home.packages = with pkgs; [
     # Editors and utils
     tmux
@@ -46,9 +50,16 @@
         pydocstyle
         autopep8
       ]))
+
     jdk17
     rustup
     nodejs_20
+
+    haskell.compiler.ghc947
+    (haskell-language-server.override {supportedGhcVersions = ["947"];})
+    haskellPackages.stylish-haskell
+
+    unstable.opam
   ];
 
   programs.direnv = {
