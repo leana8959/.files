@@ -62,6 +62,7 @@ myLayoutHook =
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
              . reflectHoriz
+             . reflectVert
              $ Tall 1 (3/100) (1/2)
       full = renamed [Replace "full"]
              . lessBorders OnlyScreenFloat
