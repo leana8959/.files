@@ -15,6 +15,7 @@ import XMonad.Util.Ungrab
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Renamed
 import XMonad.Layout.Spacing
+import XMonad.Layout.Reflect
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
@@ -60,6 +61,7 @@ myLayoutHook =
   let tall = renamed [Replace "virt"]
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
+             . reflectHoriz
              $ Tall 1 (3/100) (1/2)
       full = renamed [Replace "full"]
              . lessBorders OnlyScreenFloat
