@@ -49,6 +49,7 @@
     gnome.sushi
     evolution
     gnome.gnome-calendar
+    p7zip
   ];
 
   programs.kitty = {
