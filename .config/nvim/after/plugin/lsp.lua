@@ -218,6 +218,7 @@ vim.api.nvim_create_autocmd("FileType", {
 local metals = require "metals"
 local metals_config = metals.bare_config()
 metals_config.capabilities = capabilities
+metals_config.settings.useGlobalExecutable = true
 
 require "dap".configurations.scala = {
     {
