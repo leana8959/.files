@@ -1,37 +1,47 @@
-{-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE QuasiQuotes       #-}
 
-import XMonad
-import XMonad.Core
+import           XMonad
 
-import XMonad.Actions.PerWindowKeys
+import           XMonad.Actions.PerWindowKeys (bindFirst)
 
-import XMonad.Util.EZConfig (additionalKeys, removeKeys)
-import XMonad.Util.NamedScratchpad
-import XMonad.Util.Paste
-import XMonad.Util.SpawnOnce
-import XMonad.Util.Ungrab
+import           XMonad.Util.EZConfig         (additionalKeys, removeKeys)
+import           XMonad.Util.NamedScratchpad  (NamedScratchpad (NS),
+                                               customFloating,
+                                               namedScratchpadAction,
+                                               namedScratchpadManageHook,
+                                               scratchpadWorkspaceTag)
+import           XMonad.Util.Paste            (sendKey)
+import           XMonad.Util.SpawnOnce        (spawnOnce)
 
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Renamed
-import XMonad.Layout.Spacing
-import XMonad.Layout.Reflect
+import           XMonad.Layout.NoBorders      (Ambiguity (OnlyScreenFloat),
+                                               lessBorders)
+import           XMonad.Layout.Reflect        (reflectHoriz, reflectVert)
+import           XMonad.Layout.Renamed        (Rename (Replace), renamed)
+import           XMonad.Layout.Spacing        (spacingWithEdge)
 
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
+import           XMonad.Hooks.DynamicLog      (PP (ppCurrent, ppHiddenNoWindows, ppSep),
+                                               filterOutWsPP, wrap, xmobarColor)
+import           XMonad.Hooks.EwmhDesktops    (ewmh, ewmhFullscreen)
+import           XMonad.Hooks.StatusBar       (defToggleStrutsKey,
+                                               statusBarProp, withEasySB)
+import           XMonad.Hooks.StatusBar.PP    (PP (ppCurrent, ppHiddenNoWindows, ppSep),
+                                               filterOutWsPP, wrap, xmobarColor)
 
-import XMonad.ManageHook
+import           Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume,
+                                               xF86XK_AudioMute,
+                                               xF86XK_AudioNext,
+                                               xF86XK_AudioPlay,
+                                               xF86XK_AudioPrev,
+                                               xF86XK_AudioRaiseVolume,
+                                               xF86XK_Display,
+                                               xF86XK_MonBrightnessDown,
+                                               xF86XK_MonBrightnessUp)
 
-import Graphics.X11.ExtraTypes.XF86
+import qualified XMonad.StackSet              as W
 
-import qualified XMonad.StackSet as W
-
-import NeatInterpolation
-import qualified Data.Text as T
-import System.Exit
+import qualified Data.Text                    as T
+import           NeatInterpolation            (text)
 
 xmonadConfig = def
   { modMask            = myMod
@@ -111,8 +121,8 @@ myUnmaps =
   [ (myMod, xK_h)
   , (myMod, xK_l)
   ]
-  ++ [ ((myMod              , n)) | n <- [xK_1 .. xK_9] ]
-  ++ [ ((myMod .|. shiftMask, n)) | n <- [xK_1 .. xK_9] ]
+  ++ [ (myMod              , n) | n <- [xK_1 .. xK_9] ]
+  ++ [ (myMod .|. shiftMask, n) | n <- [xK_1 .. xK_9] ]
 
 myKeymaps =
   let remapWithFallback src dst =
