@@ -117,8 +117,8 @@ local id = function(args) return args[1][1] end
 ls.add_snippets("ledger", {
     s("entry", {
         f(show_date_ledger_entry), t " ", i(1), cr(),
-        t "\texpenses                         ", i(2), t " EUR", cr(),
-        t "\tassets:compte_courant           -", f(id, { 2 }), t " EUR", cr(),
+        t "\texpenses:", i(2), t "            ", i(3), t " EUR", cr(),
+        t "\tassets:compte_courant           -", f(id, { 3 }), t " EUR", cr(),
     }),
 })
 
