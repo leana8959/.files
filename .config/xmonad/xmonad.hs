@@ -70,12 +70,16 @@ myLayoutHook =
              $ Full
   in  tall ||| full
 
-myManageHook = composeAll
-  [ className =? ".blueman-manager-wrapped"    --> doFloat
-  , className =? "Eog"                         --> doFloat
-  , className =? "Org.gnome.NautilusPreviewer" --> doFloat
-  , className =? "Evince"                      --> doFloat
-  , title     =? "easyeffects"                 --> doFloat
+myManageHook =
+  let
+    centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+  in
+  composeAll
+  [ className =? ".blueman-manager-wrapped"    --> centeredFloat
+  , className =? "Eog"                         --> centeredFloat
+  , className =? "Org.gnome.NautilusPreviewer" --> centeredFloat
+  , className =? "Evince"                      --> centeredFloat
+  , title     =? "easyeffects"                 --> centeredFloat
   , title     =? "Picture-in-Picture"          --> doFloat
   , className =? "Element"                     --> doShift "CHAT"
   , className =? "discord"                     --> doShift "CHAT"
@@ -84,16 +88,19 @@ myManageHook = composeAll
   ]
 
 scratchpads =
+  let
+    centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+  in
   [ NS "cmus"
       (myTerm ++ " -T 'cmus' cmus")
       (title =? "cmus")
-      (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+      centeredFloat
   , NS "btop"
       (myTerm ++ " -T 'btop' btop")
       (title =? "btop")
-      (customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3))
+      centeredFloat
   , NS "bitwarden"
-      ("bitwarden")
+      "bitwarden"
       (className =? "Bitwarden")
       (customFloating $ W.RationalRect (1/2) (1/6) (2/5) (2/3))
   ]
