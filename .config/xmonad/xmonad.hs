@@ -195,6 +195,10 @@ myKeymaps =
       , ((myMod .|. shiftMask, xK_comma) , sendMessage Expand)
       , ((myMod .|. shiftMask, xK_period), sendMessage Shrink)
 
+      -- Increment / decrement the number of windows in the master area
+      , ((myMod ,xK_comma ), sendMessage (IncMasterN (-1)))
+      , ((myMod ,xK_period), sendMessage (IncMasterN 1))
+
       -- force back to tiling
       , ((myMod .|. shiftMask, xK_t), withFocused $ windows . W.sink)
      ]
