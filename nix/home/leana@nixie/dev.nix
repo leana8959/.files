@@ -51,15 +51,7 @@
         autopep8
       ]))
 
-    jdk17
-    rustup
-    nodejs_20
-
-    haskell.compiler.ghc947
-    (haskell-language-server.override {supportedGhcVersions = ["947"];})
-    haskellPackages.stylish-haskell
-
-    unstable.opam
+    # unstable.opam # maybe I'll need this
   ];
 
   programs.direnv = {
