@@ -28,6 +28,7 @@ import           XMonad.Hooks.StatusBar       (defToggleStrutsKey,
 import           XMonad.Hooks.StatusBar.PP    (PP (ppCurrent, ppHiddenNoWindows, ppSep),
                                                filterOutWsPP, wrap, xmobarColor)
 
+
 import           Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume,
                                                xF86XK_AudioMute,
                                                xF86XK_AudioNext,
@@ -49,7 +50,7 @@ xmonadConfig = def
   , focusFollowsMouse  = True
   , borderWidth        = 5
   , workspaces         = myWorkspaces
-  , manageHook         = namedScratchpadManageHook scratchpads <+> myManageHook
+  , manageHook         = myManageHook
   , layoutHook         = myLayoutHook
   , startupHook        = myStartupHook
   , normalBorderColor  = "#18005f"
@@ -80,10 +81,9 @@ myLayoutHook =
              $ Full
   in  tall ||| full
 
+centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+
 myManageHook =
-  let
-    centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
-  in
   composeAll
   [ className =? ".blueman-manager-wrapped"    --> centeredFloat
   , className =? "Eog"                         --> centeredFloat
@@ -96,11 +96,9 @@ myManageHook =
   , className =? "thunderbird"                 --> doShift "CHAT"
   , className =? "Mattermost"                  --> doShift "CHAT"
   ]
+  <+> namedScratchpadManageHook myScratchpads
 
-scratchpads =
-  let
-    centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
-  in
+myScratchpads =
   [ NS "cmus"
       (myTerm ++ " -T 'cmus' cmus")
       (title =? "cmus")
@@ -134,9 +132,9 @@ myKeymaps =
         ]
   in  [ -- programs
         ((controlMask .|. myMod, xK_f), spawn "firefox")
-      , ((controlMask .|. myMod, xK_m), namedScratchpadAction scratchpads "cmus")
-      , ((controlMask .|. myMod, xK_p), namedScratchpadAction scratchpads "bitwarden")
-      , ((controlMask .|. myMod, xK_h), namedScratchpadAction scratchpads "btop")
+      , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
+      , ((controlMask .|. myMod, xK_p), namedScratchpadAction myScratchpads "bitwarden")
+      , ((controlMask .|. myMod, xK_h), namedScratchpadAction myScratchpads "btop")
 
       -- screenshot
       , ( (mod4Mask .|. shiftMask, xK_3)
