@@ -7,7 +7,7 @@
       },
       "to": {
         "type": "git",
-        "url": "https://git.earth2077.fr/leana/nix-templates"
+        "url": "https://git.earth2077.fr/leana/flakies"
       }
     }
   ],
