@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes       #-}
 
-import           XMonad
+import           XMonad                       hiding (tile)
 
 import           XMonad.Actions.PerWindowKeys (bindFirst)
 
@@ -41,6 +41,9 @@ import           Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume,
 
 import qualified XMonad.StackSet              as W
 
+import           Control.Monad                (msum)
+import           Data.Ratio                   (Ratio, (%))
+
 import qualified Data.Text                    as T
 import           NeatInterpolation            (text)
 
@@ -68,17 +71,52 @@ myWorkspaces =
   , "PERS", "WEB" , "YT", "ADM"
   ]
 
+data TallR a = TallR { tallNMaster        :: !Int      -- ^ The default number of windows in the master pane (default: 1)
+                     , tallRatioIncrement :: !Rational -- ^ Percent of screen to increment by when resizing panes (default: 3/100)
+                     , tallRatio          :: !Rational -- ^ Default proportion of screen occupied by master pane (default: 1/2)
+                     }
+              deriving (Show, Read)
+
+instance LayoutClass TallR a where
+    description _ = "Tall"
+
+    pureLayout (TallR nmaster _ frac) r s = zip ws rs
+      where ws = W.integrate s
+            rs = tile frac r nmaster (length ws)
+
+    pureMessage (TallR nmaster delta frac) m =
+            msum [fmap resize     (fromMessage m)
+                 ,fmap incmastern (fromMessage m)]
+
+      where resize Shrink             = TallR nmaster delta (max 0 $ frac-delta)
+            resize Expand             = TallR nmaster delta (min 1 $ frac+delta)
+            incmastern (IncMasterN d) = TallR (max 0 (nmaster+d)) delta frac
+
+-- A modified verison of the built-in `tile` function
+-- that puts master on the right
+tile
+    :: Rational  -- ^ @frac@, what proportion of the screen to devote to the master area
+    -> Rectangle -- ^ @r@, the rectangle representing the screen
+    -> Int       -- ^ @nmaster@, the number of windows in the master pane
+    -> Int       -- ^ @n@, the total number of windows to tile
+    -> [Rectangle]
+tile f r nmaster n =
+  if n <= nmaster || nmaster == 0
+    then splitVertically n r
+    else
+      let (r1, r2) = splitHorizontallyBy f r
+      in  splitVertically nmaster r2 ++ splitVertically (n-nmaster) r1
+
 myLayoutHook =
   let tall = renamed [Replace "virt"]
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
-             . reflectHoriz
-             . reflectVert
-             $ Tall 1 (3/100) (1/2)
+             $ TallR 1 (3/100) (1/2)
       full = renamed [Replace "full"]
              . lessBorders OnlyScreenFloat
              . spacingWithEdge 5
              $ Full
+
   in  tall ||| full
 
 centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
@@ -190,8 +228,8 @@ myKeymaps =
         [ (className =? "firefox", sendKey (controlMask .|. shiftMask) xK_Tab) ]
 
       -- resize windows
-      , ((myMod .|. shiftMask, xK_comma) , sendMessage Expand)
-      , ((myMod .|. shiftMask, xK_period), sendMessage Shrink)
+      , ((myMod .|. shiftMask, xK_comma) , sendMessage Shrink)
+      , ((myMod .|. shiftMask, xK_period), sendMessage Expand)
 
       -- Increment / decrement the number of windows in the master area
       , ((myMod ,xK_comma ), sendMessage (IncMasterN (-1)))
