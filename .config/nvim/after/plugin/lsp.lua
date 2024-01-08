@@ -1,14 +1,12 @@
 local map                             = vim.keymap.set
-local usercmd                         = vim.api.nvim_create_user_command
 
-local Map                             = require "utils".Map
 local Foreach                         = require "utils".Foreach
-local Filter                          = require "utils".Filter
-local Concat                          = require "utils".Concat
 
 ----------------------
 -- Language servers --
 ----------------------
+-- NOTE: put settings into `settings`
+-- use another `on_attach` field if needed
 local servers                         = {
     bashls    = {}, -- Bash
     clangd    = {}, -- C/CPP
@@ -24,9 +22,13 @@ local servers                         = {
     texlab    = {}, -- texlab
     tsserver  = {}, -- TypeScript
     vimls     = {}, -- Vim Script
+    ocamllsp  = {}, -- OCaml
 
     typst_lsp = {   -- Typst
         settings = {
+            root_dir =
+                vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1])
+                or vim.loop.cwd(),
             exportPdf = "never",
         },
     },
@@ -49,8 +51,7 @@ local servers                         = {
     },
 
     nil_ls    = { -- Nix
-        masonExclude = true,
-        on_attach    = function(_, bufno)
+        on_attach = function(_, bufno)
             vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
             map("n", "<leader>f",
                 function()
@@ -62,16 +63,6 @@ local servers                         = {
         end,
     },
 
-    ocamllsp  = { -- OCaml
-        masonExclude = true,
-    },
-}
-------------------
--- Linters, etc --
-------------------
--- NOTE: uses mason's package names
-local tools                           = {
-    "shellcheck", -- bash
 }
 
 -------------
@@ -194,15 +185,18 @@ Foreach(servers,
 -- Standalone plugins --
 ------------------------
 -- Java
-local java_cwd = vim.fs.dirname(
-    vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]
-)
+local java_cwd =
+    vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1])
+    or vim.loop.cwd()
 local config = {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
         -- https://github.com/NixOS/nixpkgs/issues/232822#issuecomment-1564243667
         -- `-data` argument is necessary
+        --
+        -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/issues/2424
+        -- `-data` argument too long
         "jdt-language-server",
         "-data", java_cwd .. "/.jdtls",
     },
