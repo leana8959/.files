@@ -61,6 +61,8 @@
         pkgs = pkgsS s;
       };
 
+    mypkgsS = s: import ./mypkgs {pkgs = pkgsS s;};
+
     nixosWithSystem = device: system: let
       args = {
         pkgs = pkgsS system;
@@ -68,6 +70,7 @@
         wired = wiredS system;
         agenix = agenixS system;
         nur = nurS system;
+        mypkgs = mypkgsS system;
         hostname = device;
         inherit system;
       };
