@@ -33,6 +33,16 @@ autocmd("Filetype", {
     end,
 })
 
+autocmd("Filetype", {
+    pattern = "why3",
+    callback = function()
+        vim.opt_local.commentstring = "(* %s *)"
+        vim.opt_local.shiftwidth    = 2
+        vim.opt_local.tabstop       = 2
+        vim.opt_local.expandtab     = true
+    end,
+})
+
 -- Using `sudoedit` would create gibberish extension names,
 -- detection using extension would hence not work.
 autocmd("BufEnter", {
