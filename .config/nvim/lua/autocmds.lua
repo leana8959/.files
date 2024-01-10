@@ -4,6 +4,7 @@ local usercmd = vim.api.nvim_create_user_command
 
 vim.filetype.add { extension = { typ = "typst" } }
 vim.filetype.add { extension = { skel = "skel", sk = "skel" } }
+vim.filetype.add { extension = { mlw = "why3" } }
 
 autocmd("TextYankPost", {
     callback = function() vim.highlight.on_yank() end,
