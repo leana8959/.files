@@ -12,6 +12,7 @@ endif
 syn case match
 
 syn match whyOperator "="
+syn match whyOperator ":="
 syn match whyOperator "+"
 syn match whyOperator "-"
 syn match whyOperator "*"
