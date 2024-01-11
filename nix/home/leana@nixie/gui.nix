@@ -45,7 +45,7 @@
     sioyek
     evince
     gnome.eog
-    cinnamon.nemo
+    gnome.nautilus
     gnome.sushi
     evolution
     gnome.gnome-calendar
