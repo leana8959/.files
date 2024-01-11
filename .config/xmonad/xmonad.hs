@@ -241,11 +241,11 @@ myKeymaps =
 
      -- organic window jumping
      ++ [ ((myMod, n), windows $ W.greedyView space)
-        | (n, space) <- zip workspaceKeys myWorkspaces]
+        | (n, space) <- zip workspaceKeys myWorkspaces ]
 
      -- organic window yeeting
      ++ [ ((myMod .|. mod1Mask, n), windows $ W.shift space)
-        | (n, space) <- zip workspaceKeys myWorkspaces]
+        | (n, space) <- zip workspaceKeys myWorkspaces ]
 
 myPrettyPrinter =
   filterOutWsPP [scratchpadWorkspaceTag]
