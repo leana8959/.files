@@ -7,6 +7,7 @@
       autoRepeatInterval = 40;
     };
 
+    picom.enable = true;
     xserver.displayManager.lightdm = {
       enable = true;
       background = ../../wallpapers/haskell.png;
