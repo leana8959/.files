@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services = {
     xserver.enable = true;
 
@@ -11,6 +11,11 @@
     xserver.displayManager.lightdm = {
       enable = true;
       background = ../../wallpapers/haskell.png;
+      greeters.gtk.cursorTheme = {
+        name = "Adwaita";
+        package = pkgs.gnome.adwaita-icon-theme;
+        size = 32;
+      };
     };
     xserver.windowManager.xmonad = {
       enable = true;
