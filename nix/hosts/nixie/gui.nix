@@ -7,8 +7,10 @@
       autoRepeatInterval = 40;
     };
 
-    xserver.desktopManager.wallpaper.mode = "fill";
-
+    xserver.displayManager.lightdm = {
+      enable = true;
+      background = ../../wallpapers/haskell.png;
+    };
     xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
