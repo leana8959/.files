@@ -55,7 +55,6 @@
     # unstable.opam # maybe I'll need this
 
     mypkgs.logisim-evolution
-    # (pkgs.callPackage ../common/mypkgs/logisim-evolution.nix {inherit pkgs;})
   ];
 
   programs.direnv = {
