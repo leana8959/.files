@@ -10,7 +10,7 @@
     picom.enable = true;
     xserver.displayManager.lightdm = {
       enable = true;
-      background = ../../wallpapers/haskell.png;
+      background = "#000000";
       greeters.gtk.cursorTheme = {
         name = "Adwaita";
         package = pkgs.gnome.adwaita-icon-theme;
