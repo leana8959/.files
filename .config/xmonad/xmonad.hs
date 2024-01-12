@@ -262,7 +262,6 @@ setupMonitors = T.unpack
   else
       xrandr --auto
   fi
-  feh --bg-fill .wallpapers/haskell-pattern.png
   |]
 
 setupXmobar = T.unpack
