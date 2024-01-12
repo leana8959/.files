@@ -32,6 +32,7 @@
     tldr
     unstable.typst
     hledger
+    irssi
 
     # music
     cmus
