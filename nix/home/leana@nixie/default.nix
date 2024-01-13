@@ -30,8 +30,6 @@
     tree
     rsync
     tldr
-    unstable.typst
-    hledger
     irssi
 
     # music
