@@ -185,22 +185,16 @@ Foreach(servers,
 -- Standalone plugins --
 ------------------------
 -- Java
-local java_cwd =
-    vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1])
-    or vim.loop.cwd()
 local config = {
     on_attach = on_attach,
     capabilities = capabilities,
     cmd = {
         -- https://github.com/NixOS/nixpkgs/issues/232822#issuecomment-1564243667
         -- `-data` argument is necessary
-        --
-        -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/issues/2424
-        -- `-data` argument too long
         "jdt-language-server",
-        "-data", java_cwd .. "/.jdtls",
+        "-data", vim.fn.expand "~/.cache/jdtls" .. vim.fn.expand "%:p:h",
     },
-    root_dir = java_cwd,
+    root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
 local jdtls_group = vim.api.nvim_create_augroup("jdtls", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
