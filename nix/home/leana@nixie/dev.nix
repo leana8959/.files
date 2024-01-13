@@ -24,7 +24,6 @@
     texlab # LaTeX
     typescript # TypeScript
     nodePackages.vim-language-server # Vim Script
-    typst-lsp # Typst
     lua-language-server # Lua
 
     # git
