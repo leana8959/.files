@@ -120,6 +120,11 @@ ls.add_snippets("ledger", {
         t "\texpenses:", i(2), t "            ", i(3), t " EUR", cr(),
         t "\tassets:compte_courant           -", f(id, { 3 }), t " EUR", cr(),
     }),
+    s("entry'", {
+        i(1), t " ", i(2), cr(),
+        t "\texpenses:", i(3), t "            ", i(4), t " EUR", cr(),
+        t "\tassets:compte_courant           -", f(id, { 4 }), t " EUR", cr(),
+    }),
 })
 
 -------------
