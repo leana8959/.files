@@ -11,10 +11,11 @@ case "Darwin"
     alias add_spacer_tile='defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock'
 end
 
+## idiot protection
+alias rm='rm -i'
+
 ## Docker
-abbr dc 'docker-compose'
-## TODO: write a wrapper for this to consider both cases
-alias docker-compose='docker compose'
+abbr dc 'docker compose'
 
 ## Git
 abbr gaa 'git add (git rev-parse --show-toplevel)'
