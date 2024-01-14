@@ -8,21 +8,21 @@
     tmux
     neovim
     vim
-    hyperfine
-    watchexec
-    tea
-    tokei
+    # hyperfine
+    # watchexec
+    # tea
+    # tokei
 
-    # Generic LSPs
-    vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-    nodePackages.bash-language-server # Bash
-    marksman # Markdown
-    nodePackages.pyright # Python
-    taplo # TOML
-    texlab # LaTeX
-    typescript # TypeScript
-    nodePackages.vim-language-server # Vim Script
-    lua-language-server # Lua
+    # # Generic LSPs
+    # vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+    # nodePackages.bash-language-server # Bash
+    # marksman # Markdown
+    # nodePackages.pyright # Python
+    # taplo # TOML
+    # texlab # LaTeX
+    # typescript # TypeScript
+    # nodePackages.vim-language-server # Vim Script
+    # lua-language-server # Lua
 
     # git
     git
@@ -33,7 +33,7 @@
 
     nil
     alejandra
-    nixfmt
+    # nixfmt
 
     # (python39.withPackages (ps:
     #   with ps; [
@@ -48,11 +48,6 @@
     #     # pydocstyle
     #     # autopep8
     #   ]))
-
-    # jdk17
-    # rustup
-    # nodejs_20
-    # unstable.opam
   ];
 
   programs.direnv = {
