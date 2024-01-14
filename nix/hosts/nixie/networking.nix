@@ -63,7 +63,6 @@
     };
   };
 
-  # TODO: fix this ahhhhhh
   systemd.targets.wireguard-wg0.wantedBy = lib.mkForce [];
   networking.wireguard = {
     interfaces = {
@@ -80,7 +79,7 @@
             publicKey = "amb6icauPN4P/suyNZoPsVVkB5+MiAnhFF6hIeUiNFE=";
             presharedKeyFile = config.age.secrets.wireguard_psk.path;
             allowedIPs = ["10.66.66.1/32" "10.0.0.20/32" "10.0.0.31/32"];
-            endpoint = "earth2077.fr:660";
+            endpoint = "moon.earth2077.fr:660";
             persistentKeepalive = 25;
           }
         ];
