@@ -36,4 +36,6 @@
     cmus
     cmusfm
   ];
+
+  services.gnome-keyring.enable = true;
 }
