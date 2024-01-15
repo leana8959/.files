@@ -1,14 +1,10 @@
 {
   pkgs,
-  unstable,
   mypkgs,
   ...
 }: {
   home.packages = with pkgs; [
-    # Editors and utils
-    tmux
-    neovim
-    vim
+    # utils
     hyperfine
     watchexec
     tea
@@ -26,16 +22,8 @@
     nodePackages.vim-language-server # Vim Script
     lua-language-server # Lua
 
-    # git
-    git
-    git-lfs
-    bat
-    delta
-    gnupg
-
     nil
     alejandra
-    nixfmt
 
     (python39.withPackages (ps:
       with ps; [
@@ -55,9 +43,4 @@
 
     mypkgs.logisim-evolution
   ];
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-  };
 }
