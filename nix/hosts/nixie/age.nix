@@ -7,7 +7,6 @@
       mode = "644";
       owner = "leana";
     };
-    secrets.truenas_smb.file = ../../secrets/truenas_smb.age;
     secrets.wpa_password.file = ../../secrets/wpa_password.age;
     secrets.wireguard_priv.file = ../../secrets/wireguard_priv.age;
     secrets.wireguard_psk.file = ../../secrets/wireguard_psk.age;
