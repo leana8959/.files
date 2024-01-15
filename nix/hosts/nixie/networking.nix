@@ -47,7 +47,6 @@
       "iPhone de Léana 江".psk = "@PHONE@";
       eduroam = {
         authProtocols = ["WPA-EAP"];
-        # TODO:l'esperluette casse tout
         auth = ''
           pairwise=CCMP
           group=CCMP TKIP
