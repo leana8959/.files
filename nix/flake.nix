@@ -27,20 +27,6 @@
     pkgsS = s:
       import nixpkgs {
         system = s;
-        overlays = [
-          (final: prev: {
-            cmus = prev.cmus.overrideAttrs (old: {
-              patches =
-                (old.patches or [])
-                ++ [
-                  (prev.fetchpatch {
-                    url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
-                    hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
-                  })
-                ];
-            });
-          })
-        ];
 
         config.allowUnfreePredicate = pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
@@ -106,13 +92,12 @@
       };
   in {
     nixosConfigurations = {
-      nixie-test = nixosWithSystem "nixie-test" "aarch64-linux";
       nixie = nixosWithSystem "nixie" "x86_64-linux";
     };
 
     homeConfigurations = {
+      # "earth2077.fr" = homeManagerWithSystem "earth2077.fr" "x86_64-linux";
       "macOS" = homeManagerWithSystem "macOS" "aarch64-darwin";
-      "earth2077.fr" = homeManagerWithSystem "earth2077.fr" "x86_64-linux";
       "pi4" = homeManagerWithSystem "pi4" "aarch64-linux";
       "oracle" = homeManagerWithSystem "oracle" "aarch64-linux";
     };
