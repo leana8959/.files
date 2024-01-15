@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home = {
-    username = "leana";
-    homeDirectory = "/home/leana";
+    username = lib.mkDefault "leana";
+    homeDirectory = lib.mkDefault "/home/leana";
     stateVersion = "23.11";
   };
   programs = {
@@ -34,6 +38,7 @@
     tmux
     neovim
     vim
+    gcc
 
     # git
     git
