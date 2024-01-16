@@ -11,8 +11,6 @@
     size = 32;
   };
 
-  services.gnome-keyring.enable = true;
-
   home.packages = with pkgs; [
     # fonts
     (nerdfonts.override {fonts = ["CascadiaCode" "JetBrainsMono" "Meslo"];})
