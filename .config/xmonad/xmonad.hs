@@ -236,8 +236,8 @@ myKeymaps =
       , ((myMod ,xK_comma ), sendMessage (IncMasterN (-1)))
       , ((myMod ,xK_period), sendMessage (IncMasterN 1))
 
-      -- force back to tiling
-      , ((myMod .|. shiftMask, xK_t), withFocused $ windows . W.sink)
+      -- sink
+      , ((myMod .|. shiftMask, xK_s), withFocused $ windows . W.sink)
      ]
 
      -- organic window jumping
