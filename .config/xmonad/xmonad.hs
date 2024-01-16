@@ -120,13 +120,14 @@ myLayoutHook =
   in  tall ||| full
 
 centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
+longFloat     = customFloating $ W.RationalRect (2/7) 0 (3/7) 1
 
 myManageHook =
   composeAll
   [ className =? ".blueman-manager-wrapped"    --> centeredFloat
   , className =? "Eog"                         --> centeredFloat
   , className =? "Org.gnome.NautilusPreviewer" --> centeredFloat
-  , className =? "Evince"                      --> centeredFloat
+  , className =? "Evince"                      --> longFloat
   , title     =? "easyeffects"                 --> centeredFloat
   , title     =? "Picture-in-Picture"          --> doFloat
   , className =? "Element"                     --> doShift "CHAT"
