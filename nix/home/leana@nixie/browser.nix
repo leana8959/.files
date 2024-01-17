@@ -104,14 +104,18 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@np"];
           };
+          "Hoogle" = {
+            urls = [
+              {template = "https://hoogle.haskell.org/?hoogle={searchTerms}";}
+            ];
+            iconUpdateURL = "https://hoogle.haskell.org/favicon.png";
+            definedAliases = ["@hg"];
+          };
           "NixOS Wiki" = {
             urls = [
-              {
-                template = "https://nixos.wiki/index.php?search={searchTerms}";
-              }
+              {template = "https://nixos.wiki/index.php?search={searchTerms}";}
             ];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
-            updateInterval = 24 * 60 * 60 * 1000;
             definedAliases = ["@nw"];
           };
           "Wikipedia (en)".metaData.alias = "@wk";
