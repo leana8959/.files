@@ -58,33 +58,6 @@
         force = true;
         default = "searxng";
         engines = {
-          Searxng = {
-            urls = [
-              {
-                template = "https://searxng.earth2077.fr/search";
-                params = [
-                  {
-                    name = "query";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-          };
-          Invidious = {
-            urls = [
-              {
-                template = "https://invidious.earth2077.fr/search";
-                params = [
-                  {
-                    name = "q";
-                    value = "{searchTerms}";
-                  }
-                ];
-              }
-            ];
-            definedAliases = ["@yt"];
-          };
           "Nix Packages" = {
             urls = [
               {
@@ -104,12 +77,32 @@
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
             definedAliases = ["@np"];
           };
+          Searxng = {
+            urls = [
+              {template = "https://searxng.earth2077.fr/search?query={searchTerms}";}
+            ];
+            iconUpdateURL = "https://searxng.earth2077.fr/favicon.png";
+          };
+          Invidious = {
+            urls = [
+              {template = "https://invidious.earth2077.fr/search?q={searchTerms}";}
+            ];
+            definedAliases = ["@yt"];
+            iconUpdateURL = "https://invidious.earth2077.fr/favicon-32x32.png";
+          };
           "Hoogle" = {
             urls = [
               {template = "https://hoogle.haskell.org/?hoogle={searchTerms}";}
             ];
             iconUpdateURL = "https://hoogle.haskell.org/favicon.png";
             definedAliases = ["@hg"];
+          };
+          "Genius" = {
+            urls = [
+              {template = "https://genius.com/search?q={searchTerms}";}
+            ];
+            iconUpdateURL = "https://genius.com/favicon.ico";
+            definedAliases = ["@ge"];
           };
           "NixOS Wiki" = {
             urls = [
