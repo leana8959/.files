@@ -51,7 +51,7 @@
           pairwise=CCMP
           group=CCMP TKIP
           eap=PEAP
-          ca_cert="/home/leana/.config/certs/universite_de_rennes.pem"
+          ca_cert="${./certs/universite_de_rennes.pem}"
           identity="@EDUROAM_ID@"
           altsubject_match="DNS:radius.univ-rennes1.fr;DNS:radius1.univ-rennes1.fr;DNS:radius2.univ-rennes1.fr;DNS:vmradius-psf1.univ-rennes1.fr;DNS:vmradius-psf2.univ-rennes1.fr"
           phase2="auth=MSCHAPV2"
