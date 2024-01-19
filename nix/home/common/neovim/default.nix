@@ -3,7 +3,7 @@
   home.file = {
     neovim = {
       recursive = true;
-      source = ../../../../.config/nvim;
+      source = ./nvim;
       target = ".config/nvim";
     };
   };
