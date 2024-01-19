@@ -6,7 +6,7 @@
       enable = true;
       shellInit = readFile ./shellInit.fish;
       interactiveShellInit = let
-        readGlobalFishConfigs = ns:
+        readConfigs = ns:
           foldl' (l: r: l + "\n" + r) ""
           (
             map
@@ -15,12 +15,13 @@
           );
       in
         readFile ./interactiveShellInit.fish
-        + readGlobalFishConfigs [
+        + readConfigs [
           "alias"
           "bind"
           "colorscheme"
           "locale"
         ];
+
       functions = let
         makeFishFunctions = ns:
           listToAttrs
@@ -29,7 +30,7 @@
             (n: [
               {
                 name = n;
-                value = {body = readFile ./functions/${n}.fish;};
+                value = readFile ./functions/${n}.fish;
               }
             ])
             ns
@@ -42,7 +43,6 @@
           "fish_command_not_found"
           "fish_greeting"
           "fish_remove_path"
-          "install_fisher"
           "largest-objects-in-repo"
           "snakecase"
           "timestamp"
