@@ -3,7 +3,8 @@
 
   home.file = {
     btop = {
-      source = ../../../../.config/btop;
+      recursive = true;
+      source = ./btop;
       target = ".config/btop";
     };
   };
