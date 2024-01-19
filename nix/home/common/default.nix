@@ -20,10 +20,7 @@
     ./neovim
   ];
 
-  # TODO: potentially drop legacy support
-  programs = let
-    inherit (builtins) readFile foldl' map listToAttrs concatMap;
-  in {
+  programs = {
     home-manager.enable = true;
     direnv = {
       enable = true;
