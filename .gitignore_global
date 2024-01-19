@@ -1,5 +1,0 @@
-# Some sensible gitignores
-# The rest are done in per-project basis
-
-.DS_Store
-.direnv/

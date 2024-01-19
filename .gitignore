@@ -1,4 +1,0 @@
-.config/nvim/lua/.luarc.json
-.vim/plugged/
-!.config/fish/conf.d/
-!.local/bin/
