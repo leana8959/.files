@@ -1,4 +1,3 @@
-function fish_greeting
     set_color --italics
     switch $FISH_GREETING
     case "toh"
@@ -11,4 +10,3 @@ function fish_greeting
         ~/.local/bin/citation.py
     case "*"
     end
-end
