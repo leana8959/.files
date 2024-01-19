@@ -20,11 +20,9 @@
     efi.canTouchEfiVariables = true;
   };
 
-  programs.fish.enable = true;
   security.sudo.extraConfig = "Defaults lecture = always";
   users.users.leana = {
     uid = 1000;
-    shell = pkgs.fish;
     isNormalUser = true;
     description = "leana";
     extraGroups = [
