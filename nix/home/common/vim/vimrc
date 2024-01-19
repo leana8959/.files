@@ -1,26 +1,3 @@
-""""""""""""
-" vim-plug "
-""""""""""""
-call plug#begin()
-
-" Colorscheme
-Plug 'owickstrom/vim-colors-paramount'
-
-" Utils
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'mbbill/undotree'
-Plug 'godlygeek/tabular'
-
-Plug 'wakatime/vim-wakatime'
-
-call plug#end()
-
-"""""""""""
-" Options "
-"""""""""""
 set belloff=all
 
 set hlsearch
@@ -125,4 +102,5 @@ nmap <leader>tC Tabularize trailing_c_comments<CR>
 """""""""""""""
 " Colorscheme "
 """""""""""""""
-colorscheme paramount
+" TODO: package paramount myself !
+" colorscheme paramount

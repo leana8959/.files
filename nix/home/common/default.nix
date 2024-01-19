@@ -18,6 +18,7 @@
     ./btop
 
     ./neovim
+    ./vim
   ];
 
   programs = {
@@ -45,7 +46,6 @@
 
     # Editors
     tmux
-    vim
     gcc
   ];
 }
