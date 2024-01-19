@@ -42,5 +42,6 @@
     # unstable.opam # maybe I'll need this
 
     mypkgs.logisim-evolution
+    rars
   ];
 }
