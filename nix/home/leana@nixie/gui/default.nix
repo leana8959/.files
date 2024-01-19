@@ -67,7 +67,7 @@
       background = "#ffffff";
       confirm_os_window_close = 0;
       text_composition_strategy = "1.55 0";
-      shell = "fish";
+      shell = "${pkgs.fish}/bin/fish -c tmux_home";
     };
     extraConfig = ''
       background #f8f8f8
