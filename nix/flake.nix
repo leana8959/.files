@@ -24,42 +24,40 @@
     nixnur,
     ...
   }: let
-    pkgsS = s:
-      import nixpkgs {
-        system = s;
-
+    argsS = {
+      system,
+      device,
+    }: {
+      inherit system;
+      pkgs = import nixpkgs {
+        system = system;
         config.allowUnfreePredicate = pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
             "discord"
             "languagetool"
           ];
       };
+      unstable = nixunstable {system = system;};
+    };
 
-    unstableS = s: import nixunstable {system = s;};
-
-    wiredS = s: wired.packages.${s};
-
-    agenixS = s: agenix.packages.${s};
-
-    nurS = s:
-      import nixnur {
-        nurpkgs = pkgsS s;
-        pkgs = pkgsS s;
+    extraArgsS = {
+      system,
+      device,
+    }: let
+      args = argsS {inherit system device;};
+    in {
+      wired = wired.packages.${system};
+      agenix = agenix.packages.${system};
+      nur = import nixnur {
+        nurpkgs = args.pkgs;
+        pkgs = args.pkgs;
       };
-
-    mypkgsS = s: import ./mypkgs {pkgs = pkgsS s;};
+      mypkgs = import ./mypkgs {pkgs = args.pkgs;};
+      hostname = device;
+    };
 
     nixosWithSystem = device: system: let
-      args = {
-        pkgs = pkgsS system;
-        unstable = unstableS system;
-        wired = wiredS system;
-        agenix = agenixS system;
-        nur = nurS system;
-        mypkgs = mypkgsS system;
-        hostname = device;
-        inherit system;
-      };
+      args = (argsS {inherit system device;}) // (extraArgsS {inherit system device;});
     in (nixpkgs.lib.nixosSystem {
       specialArgs = args;
       modules = [
@@ -79,14 +77,14 @@
     });
 
     homeManagerWithSystem = device: system: let
-      pkgs = pkgsS system;
-      unstable = unstableS system;
+      args = argsS {inherit system device;};
+      pkgs = args.pkgs;
+      unstable = args.unstable;
     in
       home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
         extraSpecialArgs = {
-          system = system;
-          inherit unstable;
+          inherit unstable system;
         };
         modules = [(./home/leana + "@${device}")];
       };
