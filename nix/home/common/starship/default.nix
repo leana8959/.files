@@ -5,7 +5,7 @@
     starship = {
       enable = true;
       enableFishIntegration = true;
-      settings = fromTOML (readFile ../../../../.config/starship.toml);
+      settings = fromTOML (readFile ./starship.toml);
     };
   };
 }
