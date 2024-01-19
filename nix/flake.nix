@@ -24,11 +24,7 @@
     nixnur,
     ...
   }: let
-    argsS = {
-      system,
-      device,
-    }: {
-      inherit system;
+    argsFor = {system}: {
       pkgs = import nixpkgs {
         system = system;
         config.allowUnfreePredicate = pkg:
@@ -40,11 +36,11 @@
       unstable = nixunstable {system = system;};
     };
 
-    extraArgsS = {
+    extraArgsFor = {
       system,
-      device,
+      hostname,
     }: let
-      args = argsS {inherit system device;};
+      args = argsFor {inherit system;};
     in {
       wired = wired.packages.${system};
       agenix = agenix.packages.${system};
@@ -53,15 +49,18 @@
         pkgs = args.pkgs;
       };
       mypkgs = import ./mypkgs {pkgs = args.pkgs;};
-      hostname = device;
+      hostname = hostname;
     };
 
-    nixosWithSystem = device: system: let
-      args = (argsS {inherit system device;}) // (extraArgsS {inherit system device;});
+    makeOSFor = {
+      system,
+      hostname,
+    }: let
+      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;});
     in (nixpkgs.lib.nixosSystem {
       specialArgs = args;
       modules = [
-        ./hosts/${device}/default.nix
+        ./hosts/${hostname}/default.nix
         ./layouts
         agenix.nixosModules.default
         home-manager.nixosModules.home-manager
@@ -69,15 +68,18 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            users.leana = import (./home/leana + "@${device}");
+            users.leana = import (./home/leana + "@${hostname}");
             extraSpecialArgs = args;
           };
         }
       ];
     });
 
-    homeManagerWithSystem = device: system: let
-      args = argsS {inherit system device;};
+    makeHMFor = {
+      system,
+      hostname,
+    }: let
+      args = argsFor {inherit system;};
       pkgs = args.pkgs;
       unstable = args.unstable;
     in
@@ -86,18 +88,33 @@
         extraSpecialArgs = {
           inherit unstable system;
         };
-        modules = [(./home/leana + "@${device}")];
+        modules = [(./home/leana + "@${hostname}")];
       };
   in {
     nixosConfigurations = {
-      nixie = nixosWithSystem "nixie" "x86_64-linux";
+      nixie = makeOSFor {
+        hostname = "nixie";
+        system = "x86_64-linux";
+      };
     };
 
     homeConfigurations = {
-      # "earth2077.fr" = homeManagerWithSystem "earth2077.fr" "x86_64-linux";
-      "macOS" = homeManagerWithSystem "macOS" "aarch64-darwin";
-      "pi4" = homeManagerWithSystem "pi4" "aarch64-linux";
-      "oracle" = homeManagerWithSystem "oracle" "aarch64-linux";
+      # "earth2077.fr" = makeHMFor {
+      #   hostname = "earth2077.fr";
+      #   system = "x86_64-linux";
+      # };
+      "macOS" = makeHMFor {
+        hostname = "macOS";
+        system = "aarch64-darwin";
+      };
+      "pi4" = makeHMFor {
+        hostname = "pi4";
+        system = "aarch64-linux";
+      };
+      "oracle" = makeHMFor {
+        hostname = "oracle";
+        system = "aarch64-linux";
+      };
     };
   };
 }
