@@ -10,7 +10,7 @@
           foldl' (l: r: l + "\n" + r) ""
           (
             map
-            (n: readFile ../../../../.config/fish/conf.d/${n}.fish)
+            (n: readFile ./conf.d/${n}.fish)
             ns
           );
       in
@@ -29,7 +29,7 @@
             (n: [
               {
                 name = n;
-                value = {body = readFile ../../../../.config/fish/functions/${n}.fish;};
+                value = {body = readFile ./functions/${n}.fish;};
               }
             ])
             ns
