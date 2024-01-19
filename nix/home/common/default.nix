@@ -17,6 +17,8 @@
     ./git
     ./btop
 
+    ./tmux
+
     ./neovim
     ./vim
   ];
@@ -37,15 +39,12 @@
     stow
     fd
     vivid
+    gcc
 
     # utils
     tree
     rsync
     tldr
     irssi
-
-    # Editors
-    tmux
-    gcc
   ];
 }
