@@ -95,7 +95,6 @@
     shellIntegration.enableFishIntegration = true;
   };
 
-  # TODO: why won't my giga mega cool lambda work ?
   home.file = {
     xmonad = {
       recursive = true;
@@ -111,6 +110,10 @@
       recursive = true;
       source = ./wired;
       target = ".config/wired";
+    };
+    xscreensaver = {
+      source = ./xscreensaver/.xscreensaver;
+      target = ".xscreensaver";
     };
   };
 }
