@@ -94,4 +94,23 @@
     '';
     shellIntegration.enableFishIntegration = true;
   };
+
+  # TODO: why won't my giga mega cool lambda work ?
+  home.file = {
+    xmonad = {
+      recursive = true;
+      source = ./xmonad;
+      target = ".config/xmonad";
+    };
+    xmobar = {
+      recursive = true;
+      source = ./xmobar;
+      target = ".config/xmobar";
+    };
+    wired = {
+      recursive = true;
+      source = ./wired;
+      target = ".config/wired";
+    };
+  };
 }
