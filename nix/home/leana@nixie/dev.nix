@@ -11,17 +11,17 @@
     tokei
     gnumake
 
-    # Generic LSPs
+    # use-everywhere LSPs
     vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-    nodePackages.bash-language-server # Bash
-    marksman # Markdown
-    nodePackages.pyright # Python
-    taplo # TOML
-    texlab # LaTeX
-    typescript # TypeScript
-    nodePackages.vim-language-server # Vim Script
-    lua-language-server # Lua
+    shellcheck
+    nodePackages.bash-language-server
+    marksman
+    nodePackages.pyright
+    taplo
+    nodePackages.vim-language-server
+    lua-language-server
 
+    # nix related
     nil
     alejandra
 
