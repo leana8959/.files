@@ -33,6 +33,7 @@ syn keyword whyInclude  module use end
 syn keyword whyBinding  val let in type
 syn keyword whyType     int ref
 syn keyword whyKeyword  if then else match with
+syn keyword whyKeyword  while do done
 syn keyword whyFunction function predicate assert requires ensures invariant variant
 syn keyword WhyResult   result contained
 
@@ -40,7 +41,7 @@ syn region whyParened      matchgroup=NONE start="("       matchgroup=NONE end="
 syn region whyBraced       matchgroup=NONE start="{"       matchgroup=NONE end="}"   contains=ALLBUT,whyBraceErr
 syn region whyEnsureClause matchgroup=NONE start="ensures" matchgroup=NONE end="}"   contains=whyResult
 syn region whyModuleClause matchgroup=NONE start="module"  matchgroup=NONE end=/$/   contains=whyStructure
-syn region whyComment                      start="(\*"                     end="\*)"
+syn region whyComment                      start="(\*"                     end="\*)" contains=whyComment
 
 syn match whyParErr   ")"
 syn match whyBraceErr "}"
