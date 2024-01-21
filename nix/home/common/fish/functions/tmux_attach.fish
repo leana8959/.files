@@ -9,7 +9,7 @@ if [ -z $selected ]
     return 0
 end
 
-set -U TMUX_LAST (tmux display-message -p '#S')
+set -Ux TMUX_LAST (tmux display-message -p '#S')
 
 if [ -z $TMUX ]
     tmux attach-session -t $selected
