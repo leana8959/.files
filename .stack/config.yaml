@@ -1,8 +1,0 @@
-templates:
-  params:
-   author-name: Léana 江
-   author-email: leana.jiang@icloud.com
-   # copyright:
-   github-username: leana8959
-
-system-ghc: true
