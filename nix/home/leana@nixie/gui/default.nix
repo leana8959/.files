@@ -50,10 +50,6 @@
     evolution
     gnome.gnome-calendar
     p7zip
-
-    # music
-    cmus
-    cmusfm
   ];
 
   programs.kitty = {

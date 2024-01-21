@@ -6,9 +6,8 @@ set continue=true
 set continue_album=true
 set follow=true
 
-# # distortion fix https://github.com/cmus/cmus/issues/1130#issuecomment-1003324193
-# set output_plugin=ao
-set output_plugin=alsa
+# distortion fix https://github.com/cmus/cmus/issues/1130#issuecomment-1003324193
+set output_plugin=ao
 
 bind -f browser - browser-up
 bind -f browser i toggle show_hidden
