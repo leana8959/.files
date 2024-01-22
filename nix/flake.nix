@@ -79,15 +79,11 @@
       system,
       hostname,
     }: let
-      args = argsFor {inherit system;};
-      pkgs = args.pkgs;
-      unstable = args.unstable;
+      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;});
     in
       home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
-        extraSpecialArgs = {
-          inherit unstable system;
-        };
+        pkgs = args.pkgs;
+        extraSpecialArgs = args;
         modules = [(./home/leana + "@${hostname}")];
       };
   in {

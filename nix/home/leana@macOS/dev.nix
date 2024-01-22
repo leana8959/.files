@@ -1,29 +1,57 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    # utils
-    hyperfine
-    watchexec
-    tea
-    tokei
+{
+  pkgs,
+  mypkgs,
+  ...
+}: {
+  home.packages = let
+    utils = with pkgs; [
+      hyperfine
+      watchexec
+      tea
+      tokei
+      gnumake
+    ];
 
-    # Generic LSPs
-    vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-    nodePackages.bash-language-server # Bash
-    marksman # Markdown
-    nodePackages.pyright # Python
-    taplo # TOML
-    texlab # LaTeX
-    typescript # TypeScript
-    nodePackages.vim-language-server # Vim Script
-    lua-language-server # Lua
+    lsps = with pkgs; [
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+      shellcheck
+      nodePackages.bash-language-server
+      marksman
+      nodePackages.pyright
+      taplo
+      nodePackages.vim-language-server
+      lua-language-server
+    ];
 
-    (python39.withPackages (ps:
-      with ps; [
-        beautifulsoup4
-        requests
-      ]))
+    nix = with pkgs; [
+      nil
+      alejandra
+    ];
 
-    nil
-    alejandra
-  ];
+    pythonToolchain = [
+      (pkgs.python39.withPackages (ps:
+        with ps; [
+          beautifulsoup4
+          requests
+
+          python-lsp-server
+          rope
+          pyflakes
+          mccabe
+          pycodestyle
+          pydocstyle
+          autopep8
+        ]))
+    ];
+  in
+    [
+      # University stuff
+      # unstable.opam # maybe I'll need this
+      mypkgs.logisim-evolution
+      pkgs.rars
+    ]
+    ++ utils
+    ++ lsps
+    ++ nix
+    ++ pythonToolchain;
 }
