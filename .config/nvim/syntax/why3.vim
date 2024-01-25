@@ -33,7 +33,8 @@ syn keyword whyInclude  module use end
 syn keyword whyBinding  val let in type
 syn keyword whyType     int ref
 syn keyword whyKeyword  if then else match with
-syn keyword whyKeyword  while do done
+syn keyword whyKeyword  for while do done
+syn keyword whyKeyword  forall
 syn keyword whyFunction function predicate assert requires ensures invariant variant
 syn keyword WhyResult   result contained
 
