@@ -30,6 +30,7 @@
       nix-direnv.enable = true;
     };
     ripgrep.enable = true;
+    gpg.enable = true;
   };
 
   home.packages = with pkgs; [
