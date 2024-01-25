@@ -35,7 +35,6 @@ require "tangerine".setup {
     },
 }
 
-
 ----------
 -- Lazy --
 ----------
@@ -202,7 +201,6 @@ require "lazy".setup {
 
 }
 
-require "options"
 require "autocmds"
 
 vim.cmd.colorscheme "curry"
