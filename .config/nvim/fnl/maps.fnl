@@ -110,8 +110,8 @@
 ; Undotree
 (map [:n] "<leader>u"
   (fn []
-    vim.cmd "UndotreeToggle"
-    vim.cmd "UndotreeFocus"))
+    (vim.cmd "UndotreeToggle")
+    (vim.cmd "UndotreeFocus")))
 
 ; color-picker
 (map [:n] "<C-c>" (fn [] (vim.cmd "CccPick")) {:silent true})
