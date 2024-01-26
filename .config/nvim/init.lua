@@ -201,6 +201,4 @@ require "lazy".setup {
 
 }
 
-require "autocmds"
-
 vim.cmd.colorscheme "curry"
