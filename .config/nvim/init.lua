@@ -1,17 +1,12 @@
--------------------
--- tangerin.nvim --
--------------------
-local pack = "lazy"
+--------------------
+-- tangerine.nvim --
+--------------------
 local function bootstrap(url, ref)
     local name = url:gsub(".*/", "")
     local path
 
-    if pack == "lazy" then
-        path = vim.fn.stdpath "data" .. "/lazy/" .. name
-        vim.opt.rtp:prepend(path)
-    else
-        path = vim.fn.stdpath "data" .. "/site/pack/" .. pack .. "/start/" .. name
-    end
+    path = vim.fn.stdpath "data" .. "/lazy/" .. name
+    vim.opt.runtimepath:prepend(path)
 
     if vim.fn.isdirectory(path) == 0 then
         print(name .. ": installing in data dir...")
@@ -27,11 +22,12 @@ local function bootstrap(url, ref)
 end
 bootstrap("https://github.com/udayvir-singh/tangerine.nvim", "v2.8")
 bootstrap "https://github.com/udayvir-singh/hibiscus.nvim"
+
 require "tangerine".setup {
     target = vim.fn.stdpath [[data]] .. "/tangerine",
     compiler = {
         verbose = false,
-        hooks = { "onsave", "oninit" },
+        hooks = { "oninit" },
     },
 }
 
@@ -51,7 +47,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "lazy".setup {
+require "lazy".setup({
 
     ----------------------
     -- Misc / utilities --
@@ -199,6 +195,10 @@ require "lazy".setup {
         },
     },
 
-}
+}, {
+    performance = {
+        reset_packpath = false,
+    },
+})
 
 vim.cmd.colorscheme "curry"
