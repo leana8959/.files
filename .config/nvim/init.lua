@@ -201,4 +201,6 @@ require "lazy".setup({
     },
 })
 
+require "plugins"
+
 vim.cmd.colorscheme "curry"
