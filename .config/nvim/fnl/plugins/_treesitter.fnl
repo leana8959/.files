@@ -6,8 +6,7 @@
                          (local (ok stats)
                                 (pcall vim.loop.fs_stat
                                        (vim.api.nvim_buf_get_name buf)))
-                         (when (and (and ok stats) (> stats.size max-filesize))
-                           true))
+                         (and ok stats (> stats.size max-filesize)))
               :ensure_installed {}
               :highlight {:enable true}
               :sync_install false
