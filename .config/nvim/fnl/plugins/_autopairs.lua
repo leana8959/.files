@@ -2,7 +2,13 @@ local Rule = require "nvim-autopairs.rule"
 local cond = require "nvim-autopairs.conds"
 local npairs = require "nvim-autopairs"
 
-npairs.setup()
+npairs.setup
+{
+    disable_filetype = {
+        "fennel", "clojure", "lisp", "racket", "scheme",
+    },
+}
+
 
 -- Intergration with `cmp`
 local cmp = require "cmp"
