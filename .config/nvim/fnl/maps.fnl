@@ -49,7 +49,7 @@
 (map! [:n] :<leader>-x ":!chmod -x %<CR>")
 
 ; Highlight Group
-(map! [:n] :<leader>hg :Inspect<CR>)
+(map! [:n] :<leader>hg ":Inspect<CR>")
 
 ; *do not* repeat the last recorded register [count] times.
 (map! [:n] :Q :<nop>)
