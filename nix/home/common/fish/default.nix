@@ -47,21 +47,34 @@
         "tmux_sessionizer"
         "update_dotfiles"
       ];
-
-    plugins = let
-      makeFishPlugins = ns: (concatMap
-        (n: [
-          {
-            name = n;
-            src = pkgs.fishPlugins.${n};
-          }
-        ])
-        ns);
-    in
-      makeFishPlugins [
-        "fzf-fish"
-        "colored-man-pages"
-        "sponge"
-      ];
+    plugins = [
+      {
+        name = "fzf-fish";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "fzf.fish";
+          rev = "e5d54b93cd3e096ad6c2a419df33c4f50451c900";
+          sha256 = "sha256-5cO5Ey7z7KMF3vqQhIbYip5JR6YiS2I9VPRd6BOmeC8=";
+        };
+      }
+      {
+        name = "colored-man-pages";
+        src = pkgs.fetchFromGitHub {
+          owner = "PatrickF1";
+          repo = "colored_man_pages.fish";
+          rev = "f885c2507128b70d6c41b043070a8f399988bc7a";
+          sha256 = "sha256-ii9gdBPlC1/P1N9xJzqomrkyDqIdTg+iCg0mwNVq2EU=";
+        };
+      }
+      {
+        name = "sponge";
+        src = pkgs.fetchFromGitHub {
+          owner = "meaningful-ooo";
+          repo = "sponge";
+          rev = "384299545104d5256648cee9d8b117aaa9a6d7be";
+          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
+        };
+      }
+    ];
   };
 }
