@@ -29,9 +29,11 @@
 (fn has-words-before []
   (local unpack (or unpack table.unpack))
   (local [line col] (vim.api.nvim_win_get_cursor 0))
-  (and (not= col 0)
-       (nil? (let [l (. (vim.api.nvim_buf_get_lines 0 (- line 1) line true) 1)]
-               (: (: l :sub col col) :match "%s")))))
+  (and (not= col 0) (nil? (-> (vim.api.nvim_buf_get_lines 0 (- line 1) line
+                                                          true)
+                              (. 1)
+                              (: :sub col col)
+                              (: :match "%s")))))
 
 ;;;;;;;;;;;;;;;
 ; Lazy loader ;
