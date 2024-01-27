@@ -78,7 +78,7 @@
 
           (.. acc right))]
     [(s "banner"
-      [ (f horizon [ 1 ]) (cr)
+      [ (f horizon [ 1 ])                        (cr)
         (f left) (t " ") (i 1) (t " ") (f right) (cr)
         (f horizon [ 1 ])])]))
 
