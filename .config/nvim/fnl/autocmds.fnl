@@ -7,7 +7,7 @@
 (vim.filetype.add {:extension {:skel :skel :sk :skel}})
 (vim.filetype.add {:extension {:mlw :why3}})
 
-(autocmd :TextYankPost {:callback (fn [] (vim.highlight.on_yank))})
+(autocmd :TextYankPost {:callback #(vim.highlight.on_yank)})
 
 (autocmd :FileType {:pattern [:markdown :tex :typst]
                     :callback (fn []
