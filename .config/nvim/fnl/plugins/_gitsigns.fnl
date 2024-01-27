@@ -28,4 +28,4 @@
                              (map! [n :buffer] :<leader>pd gs.toggle_deleted)
                              ;; Text object
                              (map! [ox] :ih ":<C-U>Gitsigns select_hunk<CR>")))}]
-  (require-then :gitsigns #($.setup)))
+  (require-then :gitsigns #($.setup config)))
