@@ -1,47 +1,44 @@
-(fn opt [k v] (tset vim.opt k v))
-(fn opt [k v] (tset vim.opt k v))
+(import-macros {: set!} :hibiscus.vim)
 
-(opt :hlsearch false)
-(opt :incsearch true)
-
-(opt :number true)
-(opt :relativenumber true)
-(opt :cursorline true)
-(opt :signcolumn "yes")
-
-(opt :tabstop 4)
-(opt :expandtab true)
-(opt :shiftwidth 4)
-
-(opt :wrap false) ; Slows the editor
-(opt :linebreak true)
-(opt :breakindent true)
-(opt :filetype "on")
-
-(opt :swapfile false)
-(opt :backup false)
-(opt :undofile true)
-
-(opt :termguicolors true)
-(opt :mouse "a")
-
-(opt :ignorecase true)
-(opt :smartcase true)
-(opt :autoindent true)
-(opt :smartindent true)
-
-(opt :scrolloff 3)
-
-(opt :colorcolumn "80")
-
-(opt :foldlevel 99)
-(opt :foldlevelstart 99)
-(opt :foldenable true)
-
-(opt :winbar "%{%v:lua.require'winbar'.eval()%}")
-
-(opt :showmode false)
-
-(opt :listchars
-  { :tab  "│ " :trail "␣" })
-(opt :list true)
+(let [opts {;; search
+            :hlsearch false
+            :incsearch true
+            :ignorecase true
+            :smartcase true
+            ;; line number
+            :number true
+            :relativenumber true
+            :signcolumn :yes
+            :cursorline true
+            ;; spacing
+            :tabstop 4
+            :expandtab true
+            :shiftwidth 4
+            :autoindent true
+            :smartindent true
+            ;; line breaking
+            :wrap false
+            :linebreak true
+            :breakindent true
+            ;; no ~swp nonsense
+            :filetype :on
+            :swapfile false
+            :backup false
+            :undofile true
+            ;; terminal
+            :termguicolors true
+            :mouse :a
+            :scrolloff 3
+            :colorcolumn :80
+            ;; folding
+            :foldlevel 99
+            :foldlevelstart 99
+            :foldenable true
+            ;; winbar
+            :winbar "%{%v:lua.require'winbar'.eval()%}"
+            :showmode false
+            ;; listing
+            :listchars {:tab "│ " :trail "␣"}
+            :list true}]
+  (each [k v (pairs opts)]
+    (set! k v)))
