@@ -26,7 +26,10 @@
           (map "n" "<leader>f"
               (fn []
                 (vim.cmd ":w")
-                (vim.cmd "silect exec \"necroprint % -o %\"")
+                (vim.cmd "silent exec \"!necroprint % -o %\"")
+                (vim.cmd ":e"))
+              {:buffer true})
+           )})
                 (vim.cmd ":e"))
               {:buffer true})
            )})
