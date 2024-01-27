@@ -64,7 +64,7 @@
                {1 :mrcjkb/haskell-tools.nvim
                 :dependencies [:nvim-lua/plenary.nvim
                                :nvim-telescope/telescope.nvim]
-                :ft {:haskell :lhaskell :cabal :cabalproject}
+                :ft [:haskell :lhaskell :cabal :cabalproject]
                 :branch :2.x.x}
                ; Typst
                {1 :kaarmu/typst.vim :ft :typst :lazy false}
