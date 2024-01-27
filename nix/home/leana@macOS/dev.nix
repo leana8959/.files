@@ -21,6 +21,7 @@
       taplo
       nodePackages.vim-language-server
       lua-language-server
+      fnlfmt
     ];
 
     nix = with pkgs; [
