@@ -30,6 +30,15 @@
                 (vim.cmd ":e"))
               {:buffer true})
            )})
+
+(autocmd "FileType"
+  { :pattern "fennel"
+    :callback
+      (fn []
+          (map "n" "<leader>f"
+              (fn []
+                (vim.cmd ":w")
+                (vim.cmd "silent exec \"!fnlfmt --fix %\"")
                 (vim.cmd ":e"))
               {:buffer true})
            )})
