@@ -3,7 +3,11 @@
 (fn diagnostic-message []
   (let [{: row} (vim.api.nvim_win_get_cursor 0)
         ds (vim.diagnostic.get 0 {:lnum (- row 1)})]
-    (if (>= (length ds) 1) (: (. (fst ds) :message) :gsub "%%" "%%%%") "")))
+    (if (>= (length ds) 1)
+        (-> (fst ds)
+            (. :message)
+            (: :gsub "%%" "%%%%"))
+        "")))
 
 (local grey {:a {:bg "#e4e4e5"}
              :b {:bg "#e4e4e5"}
