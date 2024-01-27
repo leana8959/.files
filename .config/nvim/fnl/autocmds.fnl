@@ -13,7 +13,7 @@
                     :callback (fn []
                                 (setlocal! :shiftwidth 2)
                                 (setlocal! :tabstop 2)
-                                (setlocal! :textwidth 2))})
+                                (setlocal! :textwidth 80))})
 
 (autocmd :FileType {:pattern :skel
                     :callback (fn []
