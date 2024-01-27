@@ -24,7 +24,7 @@
 
     ## Preferences
     np = "cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd";
-    vp = "cd ~/.dotfiles/.config/nvim/after/plugin && $EDITOR ../../init.lua && prevd";
+    vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.fnl && prevd";
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
 
     # Home-Manager / NixOS
