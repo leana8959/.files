@@ -45,7 +45,7 @@
   (map! [n :buffer] :<leader>r vim.lsp.buf.rename)
   (map! [n :buffer] :<leader>f #(vim.lsp.buf.format {:async true}))
   (when client.server_capabilities.documentSymbolProvider
-    ((. (require :nvim-navic) :attach) client bufno)))
+    (require-then :nvim-navic #($.attach client bufno))))
 
 (local border [[" " :FloatBorder]
                [" " :FloatBorder]
@@ -129,14 +129,13 @@
                   new-virt-text))]
   (require-then :ufo #($.setup {:fold_virt_text_handler handler})))
 
-(Foreach servers
-         (fn [k v]
-           (let [config {: capabilities
-                         :on_attach (fn [client bufno]
-                                      (on_attach client bufno)
-                                      (v.on_attach client bufno))
-                         :settings v.settings}]
-             (require-then :lspconfig #((. (. $ k) :setup) config)))))
+(Foreach servers (fn [k v]
+                   (let [config {: capabilities
+                                 :on_attach #((on_attach $) (v.on_attach $))
+                                 :settings v.settings}]
+                     ((-> (require :lspconfig)
+                          (. k)
+                          (. :setup)) config))))
 
 (let [config {: capabilities
               :cmd [:jdt-language-server
