@@ -1,8 +1,6 @@
-(macro require-plugins [ns]
-  `(each [_# n# (ipairs ,ns)]
-     (require (.. :plugins._ n#))))
+(import-macros {: require-plugins!} :macros)
 
-(require-plugins [:lazy
+(require-plugins! [:lazy
                   :autopairs
                   :cmp
                   :colorizer
