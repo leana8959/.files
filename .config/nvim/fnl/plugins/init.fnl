@@ -1,6 +1,8 @@
 (macro r [name]
   `(require (.. :plugins._ ,name)))
 
+(r :lazy)
+
 (r :autopairs)
 (r :cmp)
 (r :colorizer)
