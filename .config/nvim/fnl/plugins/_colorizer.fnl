@@ -1,4 +1,4 @@
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
 (let [default {;;#RGB hex codes 
                :RGB true
@@ -21,4 +21,4 @@
                :mode :background
                :always_update true}
       conf {:filetypes ["*"] :user_default_options default}]
-  (require-then :colorizer #($.setup conf)))
+  (require-then! :colorizer #($.setup conf)))

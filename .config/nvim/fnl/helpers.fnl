@@ -1,8 +1,5 @@
 (local M {})
 
-(lambda M.require-then [module callback]
-  (callback (require module)))
-
 (lambda M.map [tbl f]
   (let [t {}]
     (each [k v (pairs tbl)] (tset t k (f v)))

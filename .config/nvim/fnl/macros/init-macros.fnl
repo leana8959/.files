@@ -10,4 +10,7 @@
 (lambda M.snd! [obj]
   `(. ,obj 2))
 
+(lambda M.require-then! [module callback]
+  `(,callback (require ,module)))
+
 M

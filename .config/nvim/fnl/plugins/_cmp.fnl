@@ -1,5 +1,5 @@
 (import-macros {: nil?} :hibiscus.core)
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
 (local cmp (require :cmp))
 (local ls (require :luasnip))
@@ -38,7 +38,7 @@
 ;;;;;;;;;;;;;;;
 ; Lazy loader ;
 ;;;;;;;;;;;;;;;
-(require-then :luasnip.loaders.from_vscode
+(require-then! :luasnip.loaders.from_vscode
               #($.lazy_load {:paths [:./snippets]}))
 
 ;;;;;;;;
