@@ -129,12 +129,14 @@
   (require-then! :ufo #($.setup {:fold_virt_text_handler handler})))
 
 (for! (fn [k v]
-                   (let [config {: capabilities
-                                 :on_attach #((on_attach $) (v.on_attach $))
-                                 :settings v.settings}]
-                     ((-> (require :lspconfig)
-                          (. k)
-                          (. :setup)) config))) servers)
+        (let [config {: capabilities
+                      :on_attach (fn [client bufno]
+                                   (on_attach client bufno)
+                                   (v.on_attach client bufno))
+                      :settings v.settings}]
+          ((-> (require :lspconfig)
+               (. k)
+               (. :setup)) config))) servers)
 
 (let [config {: capabilities
               :cmd [:jdt-language-server
@@ -149,7 +151,7 @@
   (local jdtls-group (vim.api.nvim_create_augroup :jdtls {:clear true}))
   (vim.api.nvim_create_autocmd :FileType
                                {:callback #(require-then! :jdtls
-                                                         #($.start_or_attach config))
+                                                          #($.start_or_attach config))
                                 :group jdtls-group
                                 :pattern [:java]}))
 
@@ -184,7 +186,7 @@
          (vim.api.nvim_create_augroup :nvim-metals {:clear true}))
   (vim.api.nvim_create_autocmd :FileType
                                {:callback #(require-then! :metals
-                                                         #($.initialize_or_attach metals-config))
+                                                          #($.initialize_or_attach metals-config))
                                 :group nvim-metals-group
                                 :pattern [:scala :sbt]}))
 
