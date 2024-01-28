@@ -1,17 +1,17 @@
-(macro r [name]
-  `(require (.. :plugins._ ,name)))
+(macro require-plugins [ns]
+  `(each [_# n# (ipairs ,ns)]
+     (require (.. :plugins._ n#))))
 
-(r :lazy)
-
-(r :autopairs)
-(r :cmp)
-(r :colorizer)
-(r :gitsigns)
-(r :harpoon)
-(r :lsp)
-(r :lualine)
-(r :no-neck-pain)
-(r :oil)
-(r :telescope)
-(r :todo-comments)
-(r :treesitter)
+(require-plugins [:lazy
+                  :autopairs
+                  :cmp
+                  :colorizer
+                  :gitsigns
+                  :harpoon
+                  :lsp
+                  :lualine
+                  :no-neck-pain
+                  :oil
+                  :telescope
+                  :todo-comments
+                  :treesitter])
