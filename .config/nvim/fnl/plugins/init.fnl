@@ -1,4 +1,5 @@
-(fn r [name] (require (.. "plugins._" name)))
+(macro r [name]
+  `(require (.. :plugins._ ,name)))
 
 (r :autopairs)
 (r :cmp)
