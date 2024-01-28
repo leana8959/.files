@@ -3,12 +3,6 @@
 (lambda M.require-then [module callback]
   (callback (require module)))
 
-(lambda M.fst [obj]
-  (. obj 1))
-
-(lambda M.snd [obj]
-  (. obj 2))
-
 (lambda M.map [tbl f]
   (let [t {}]
     (each [k v (pairs tbl)] (tset t k (f v)))
