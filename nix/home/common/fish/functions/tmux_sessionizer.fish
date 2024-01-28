@@ -134,7 +134,11 @@ if ! tmux has -t=$session_name 2> /dev/null
         select-window -t $session_name:1 \;
 end
 
-set -Ux TMUX_LAST (tmux display-message -p '#S')
+# echo "---sess---" >> /tmp/TMUX_DEBUG
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+
 if [ -z $TMUX ]
     tmux attach-session -t $session_name
 else

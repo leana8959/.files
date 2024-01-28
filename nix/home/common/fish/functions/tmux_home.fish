@@ -6,7 +6,11 @@ if ! tmux has-session -t="home" 2> /dev/null
         select-window -t "home":1
 end
 
-set -U TMUX_LAST (tmux display-message -p '#S')
+# echo "---home---" >> /tmp/TMUX_DEBUG
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+
 if [ -z $TMUX ]
     tmux attach-session -t "home"
 else
