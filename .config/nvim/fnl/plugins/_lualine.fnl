@@ -1,11 +1,10 @@
-(import-macros {: require-then!} :macros)
-(local {: fst} (require :helpers))
+(import-macros {: require-then! : fst!} :macros)
 
 (fn diagnostic-message []
   (let [{: row} (vim.api.nvim_win_get_cursor 0)
         ds (vim.diagnostic.get 0 {:lnum (- row 1)})]
     (if (>= (length ds) 1)
-        (-> (fst ds)
+        (-> (fst! ds)
             (. :message)
             (: :gsub "%%" "%%%%"))
         "")))

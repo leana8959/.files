@@ -1,5 +1,5 @@
 (import-macros {: nil?} :hibiscus.core)
-(import-macros {: require-then!} :macros)
+(import-macros {: require-then! : elem!} :macros)
 
 (local cmp (require :cmp))
 (local ls (require :luasnip))
@@ -39,7 +39,7 @@
 ; Lazy loader ;
 ;;;;;;;;;;;;;;;
 (require-then! :luasnip.loaders.from_vscode
-              #($.lazy_load {:paths [:./snippets]}))
+               #($.lazy_load {:paths [:./snippets]}))
 
 ;;;;;;;;
 ; Init ;
@@ -157,8 +157,7 @@
                                                                   :select true}))
                                            ($))
                                       [:i :s])}
-      sources (let [{: contains} (require :helpers)
-                    of-filetype (fn [fts] (contains fts vim.bo.filetype))]
+      sources (let [of-filetype (fn [fts] (elem! vim.bo.filetype fts))]
                 [{:name :luasnip}
                  {:name :nvim_lsp}
                  {:name :buffer
