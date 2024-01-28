@@ -24,6 +24,6 @@ require "tangerine".setup {
     target = vim.fn.stdpath [[data]] .. "/tangerine",
     compiler = {
         verbose = false,
-        hooks = { "oninit" },
+        hooks = { "oninit", "onsave" },
     },
 }
