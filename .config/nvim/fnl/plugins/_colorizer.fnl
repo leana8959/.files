@@ -1,4 +1,4 @@
-(import-macros {: require-then!} :macros)
+(import-macros {: req-do!} :macros)
 
 (let [default {;;#RGB hex codes 
                :RGB true
@@ -21,4 +21,4 @@
                :mode :background
                :always_update true}
       conf {:filetypes ["*"] :user_default_options default}]
-  (require-then! :colorizer #($.setup conf)))
+  (req-do! :colorizer #($.setup conf)))

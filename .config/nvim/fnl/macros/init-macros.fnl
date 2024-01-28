@@ -10,7 +10,7 @@
 (lambda M.snd! [obj]
   `(. ,obj 2))
 
-(lambda M.require-then! [module callback]
+(lambda M.req-do! [module callback]
   `(,callback (require ,module)))
 
 (lambda M.for! [f tbl]

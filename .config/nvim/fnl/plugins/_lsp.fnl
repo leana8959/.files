@@ -1,5 +1,5 @@
 (import-macros {: exec! : map! : setlocal!} :hibiscus.vim)
-(import-macros {: fst! : require-then! : for!} :macros)
+(import-macros {: fst! : req-do! : for!} :macros)
 (local map vim.keymap.set)
 
 (local servers
@@ -44,7 +44,7 @@
   (map! [n :buffer] :<leader>r vim.lsp.buf.rename)
   (map! [n :buffer] :<leader>f #(vim.lsp.buf.format {:async true}))
   (when client.server_capabilities.documentSymbolProvider
-    (require-then! :nvim-navic #($.attach client bufno))))
+    (req-do! :nvim-navic #($.attach client bufno))))
 
 (local border [[" " :FloatBorder]
                [" " :FloatBorder]
@@ -62,7 +62,7 @@
     (orig contents syntax opts ...)))
 
 (let [config {:bind true : border :doc_lines 7 :hint_enable false}]
-  (require-then! :lsp_signature #($.setup config)))
+  (req-do! :lsp_signature #($.setup config)))
 
 (vim.diagnostic.config {:severity_sort true :virtual_text false})
 (vim.lsp.set_log_level :off)
@@ -88,10 +88,10 @@
 
 (var capabilities (vim.lsp.protocol.make_client_capabilities))
 (set capabilities
-     (require-then! :cmp_nvim_lsp #($.default_capabilities capabilities)))
+     (req-do! :cmp_nvim_lsp #($.default_capabilities capabilities)))
 
-(require-then! :fidget #($.setup {:text {:spinner :dots}}))
-(require-then! :neodev #($.setup))
+(req-do! :fidget #($.setup {:text {:spinner :dots}}))
+(req-do! :neodev #($.setup))
 
 ;;;;;;;;;;;
 ; Folding ;
@@ -126,7 +126,7 @@
                     (set cur-width (+ cur-width chunk-width)))
                   (table.insert new-virt-text [suffix :MoreMsg])
                   new-virt-text))]
-  (require-then! :ufo #($.setup {:fold_virt_text_handler handler})))
+  (req-do! :ufo #($.setup {:fold_virt_text_handler handler})))
 
 (for! (fn [k v]
         (let [config {: capabilities
@@ -150,8 +150,8 @@
                                                            {:upward true})))}]
   (local jdtls-group (vim.api.nvim_create_augroup :jdtls {:clear true}))
   (vim.api.nvim_create_autocmd :FileType
-                               {:callback #(require-then! :jdtls
-                                                          #($.start_or_attach config))
+                               {:callback #(req-do! :jdtls
+                                                    #($.start_or_attach config))
                                 :group jdtls-group
                                 :pattern [:java]}))
 
@@ -185,8 +185,8 @@
   (local nvim-metals-group
          (vim.api.nvim_create_augroup :nvim-metals {:clear true}))
   (vim.api.nvim_create_autocmd :FileType
-                               {:callback #(require-then! :metals
-                                                          #($.initialize_or_attach metals-config))
+                               {:callback #(req-do! :metals
+                                                    #($.initialize_or_attach metals-config))
                                 :group nvim-metals-group
                                 :pattern [:scala :sbt]}))
 
@@ -205,4 +205,4 @@
               :log {:level vim.log.levels.OFF}}})
 
 (let [config {:server {: on_attach}}]
-  (require-then! :rust-tools #($.setup config)))
+  (req-do! :rust-tools #($.setup config)))

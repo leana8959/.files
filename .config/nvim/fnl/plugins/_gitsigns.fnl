@@ -1,5 +1,5 @@
 (import-macros {: map!} :hibiscus.vim)
-(import-macros {: require-then!} :macros)
+(import-macros {: req-do!} :macros)
 
 (let [config {:on_attach (fn [bufno]
                            (let [gs package.loaded.gitsigns]
@@ -28,4 +28,4 @@
                              (map! [n :buffer] :<leader>pd gs.toggle_deleted)
                              ;; Text object
                              (map! [ox] :ih ":<C-U>Gitsigns select_hunk<CR>")))}]
-  (require-then! :gitsigns #($.setup config)))
+  (req-do! :gitsigns #($.setup config)))

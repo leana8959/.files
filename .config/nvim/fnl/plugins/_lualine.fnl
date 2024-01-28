@@ -1,4 +1,4 @@
-(import-macros {: require-then! : fst!} :macros)
+(import-macros {: req-do! : fst!} :macros)
 
 (fn diagnostic-message []
   (let [{: row} (vim.api.nvim_win_get_cursor 0)
@@ -48,4 +48,4 @@
               : sections
               :tabline {}
               :winbar {}}]
-  (require-then! :lualine #($.setup config)))
+  (req-do! :lualine #($.setup config)))
