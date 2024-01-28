@@ -26,6 +26,10 @@ case "play"
 end
 
 set session_name (echo $selected | tr . _)
+# echo "---sess---" >> /tmp/TMUX_DEBUG
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
 
 # create session if doesn't exist
 if ! tmux has -t=$session_name 2> /dev/null
@@ -35,11 +39,6 @@ if ! tmux has -t=$session_name 2> /dev/null
         new-window -t $session_name -c $selected \; \
         select-window -t $session_name:1 \;
 end
-
-# echo "---sess---" >> /tmp/TMUX_DEBUG
-# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
-echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
-# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
 
 if [ -z $TMUX ]
     tmux attach-session -t $session_name
