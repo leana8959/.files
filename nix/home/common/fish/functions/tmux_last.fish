@@ -1,5 +1,5 @@
 # create session if doesn't exist
-set session_name $TMUX_LAST
+set session_name (cat /tmp/TMUX_LAST)
 if ! tmux has-session -t=$session_name 2> /dev/null
     tmux \
         new-session -ds $session_name \; \
@@ -7,7 +7,11 @@ if ! tmux has-session -t=$session_name 2> /dev/null
         select-window -t $session_name:1
 end
 
-set -U TMUX_LAST (tmux display-message -p '#S')
+# echo "---last---" >> /tmp/TMUX_DEBUG
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+
 if [ -z $TMUX ]
     tmux attach-session -t $session_name
 else

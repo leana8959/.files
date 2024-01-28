@@ -9,7 +9,10 @@ if [ -z $selected ]
     return 0
 end
 
-set -Ux TMUX_LAST (tmux display-message -p '#S')
+# echo "---attach---" >> /tmp/TMUX_DEBUG
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
+# echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
 
 if [ -z $TMUX ]
     tmux attach-session -t $selected
