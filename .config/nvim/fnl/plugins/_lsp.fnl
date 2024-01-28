@@ -1,7 +1,6 @@
 (import-macros {: exec! : map! : setlocal!} :hibiscus.vim)
-(local {: require-then : fst} (require :helpers))
+(local {: require-then : fst : foreach} (require :helpers))
 (local map vim.keymap.set)
-(local Foreach (. (require :utils) :Foreach))
 
 (local servers
        {:bashls {}
@@ -129,7 +128,7 @@
                   new-virt-text))]
   (require-then :ufo #($.setup {:fold_virt_text_handler handler})))
 
-(Foreach servers (fn [k v]
+(foreach servers (fn [k v]
                    (let [config {: capabilities
                                  :on_attach #((on_attach $) (v.on_attach $))
                                  :settings v.settings}]

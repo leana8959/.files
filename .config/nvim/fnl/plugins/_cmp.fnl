@@ -157,8 +157,8 @@
                                                                   :select true}))
                                            ($))
                                       [:i :s])}
-      sources (let [{: Contains} (require :utils)
-                    of-filetype (fn [fts] (Contains fts vim.bo.filetype))]
+      sources (let [{: contains} (require :helpers)
+                    of-filetype (fn [fts] (contains fts vim.bo.filetype))]
                 [{:name :luasnip}
                  {:name :nvim_lsp}
                  {:name :buffer
