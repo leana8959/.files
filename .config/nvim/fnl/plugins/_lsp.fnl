@@ -1,5 +1,6 @@
 (import-macros {: exec! : map! : setlocal!} :hibiscus.vim)
-(local {: require-then : fst : foreach} (require :helpers))
+(import-macros {: fst!} :macros)
+(local {: require-then : foreach} (require :helpers))
 (local map vim.keymap.set)
 
 (local servers
@@ -25,8 +26,8 @@
         :nil_ls {:on_attach #(map! [n :buffer] :<leader>f
                                    #(exec! [w] [silent exec "!alejandra %"] [e]))}
         :typst_lsp {:settings {:exportPdf :never
-                               :root_dir (or (vim.fs.dirname (fst (vim.fs.find [:.git]
-                                                                               {:upward true})))
+                               :root_dir (or (vim.fs.dirname (fst! (vim.fs.find [:.git]
+                                                                                {:upward true})))
                                              (vim.loop.cwd))}}})
 
 (fn on_attach [client bufno]
@@ -106,7 +107,7 @@
                   (local target-width (- width suf-width))
                   (var cur-width 0)
                   (each [_ chunk (ipairs virt-text)]
-                    (var chunk-text (fst chunk))
+                    (var chunk-text (fst! chunk))
                     (var chunk-width (vim.fn.strdisplaywidth chunk-text))
                     (if (> target-width (+ cur-width chunk-width))
                         (table.insert new-virt-text chunk)
@@ -142,10 +143,10 @@
                     (.. (vim.fn.expand "~/.cache/jdtls")
                         (vim.fn.expand "%:p:h"))]
               : on_attach
-              :root_dir (vim.fs.dirname (fst (vim.fs.find [:gradlew
-                                                           :.git
-                                                           :mvnw]
-                                                          {:upward true})))}]
+              :root_dir (vim.fs.dirname (fst! (vim.fs.find [:gradlew
+                                                            :.git
+                                                            :mvnw]
+                                                           {:upward true})))}]
   (local jdtls-group (vim.api.nvim_create_augroup :jdtls {:clear true}))
   (vim.api.nvim_create_autocmd :FileType
                                {:callback #(require-then :jdtls
