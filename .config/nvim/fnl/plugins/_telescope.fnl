@@ -1,4 +1,4 @@
-(import-macros {: require-then!} :macros)
+(import-macros {: req-do!} :macros)
 (local map vim.keymap.set)
 
 (local ts (require :telescope))
@@ -20,7 +20,7 @@
                                                  :--glob
                                                  :!**/.git/*]}}})
 
-(pcall (require-then! :telescope #$.load_extension) :fzf)
+(pcall (req-do! :telescope #$.load_extension) :fzf)
 (map :n :<leader>/
      #(builtin.current_buffer_fuzzy_find (themes.get_dropdown {:previewer false})))
 

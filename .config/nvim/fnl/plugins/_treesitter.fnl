@@ -1,4 +1,4 @@
-(import-macros {: require-then!} :macros)
+(import-macros {: req-do!} :macros)
 
 (let [config {:auto_install true
               :disable (fn [lang buf]
@@ -23,7 +23,7 @@
                             :swap {:enable true
                                    :swap_next {:<leader>a "@parameter.inner"}
                                    :swap_previous {:<leader>A "@parameter.inner"}}}}]
-  (require-then! :nvim-treesitter.configs #($.setup config)))
+  (req-do! :nvim-treesitter.configs #($.setup config)))
 
 (let [config {:enable true
               :line_numbers true
@@ -33,4 +33,4 @@
               :multiline_threshold 20
               :trim_scope :outer
               :zindex 20}]
-  (require-then! :treesitter-context #($.setup config)))
+  (req-do! :treesitter-context #($.setup config)))
