@@ -1,4 +1,4 @@
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
 (let [lazypath (.. (vim.fn.stdpath :data) :/lazy/lazy.nvim)]
   (when (not (vim.loop.fs_stat lazypath))
@@ -25,7 +25,7 @@
                {1 :numToStr/Comment.nvim :opts {}}
                {1 :ggandor/leap.nvim
                 :dependencies :tpope/vim-repeat
-                :config #(require-then :leap #($.add_default_mappings))}
+                :config #(require-then! :leap #($.add_default_mappings))}
                {1 :kevinhwang91/nvim-ufo
                 :dependencies :kevinhwang91/promise-async}
                {1 :wintermute-cell/gitignore.nvim
@@ -110,4 +110,4 @@
                                :f3fora/cmp-spell
                                :mrcjkb/haskell-snippets.nvim]}]
       opts {:performance {:rtp {:reset false}}}]
-  (require-then :lazy #($.setup plugins opts)))
+  (require-then! :lazy #($.setup plugins opts)))

@@ -1,7 +1,7 @@
 (import-macros {: map!} :hibiscus.vim)
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
-(require-then :harpoon #($.setup))
+(require-then! :harpoon #($.setup))
 
 (let [ui (require :harpoon.ui)
       mark (require :harpoon.mark)]

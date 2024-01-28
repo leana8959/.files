@@ -1,4 +1,4 @@
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
 (local conf {:default_file_explorer false
              :columns []
@@ -22,4 +22,4 @@
                        :g. :actions.toggle_hidden
                        "g\\" :actions.toggle_trash}})
 
-(require-then :oil #($.setup conf))
+(require-then! :oil #($.setup conf))

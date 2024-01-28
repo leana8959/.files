@@ -1,4 +1,4 @@
-(local {: require-then} (require :helpers))
+(import-macros {: require-then!} :macros)
 
 (let [config {:keywords {:FIX {:alt [:FIXME :BUG :FIXIT :ISSUE]
                                :color :error
@@ -11,4 +11,4 @@
                                 :icon :T}
                          :TODO {:color :info :icon " "}
                          :WARN {:alt [:WARNING :XXX] :color :warning :icon "!"}}}]
-  (require-then :todo-comments #($.setup config)))
+  (require-then! :todo-comments #($.setup config)))
