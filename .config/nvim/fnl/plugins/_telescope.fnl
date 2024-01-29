@@ -1,5 +1,5 @@
 (import-macros {: req-do!} :macros)
-(local map vim.keymap.set)
+(import-macros {: map!} :hibiscus.vim)
 
 (local ts (require :telescope))
 (local actions (require :telescope.actions))
@@ -21,13 +21,14 @@
                                                  :!**/.git/*]}}})
 
 (pcall (req-do! :telescope #$.load_extension) :fzf)
-(map :n :<leader>/
-     #(builtin.current_buffer_fuzzy_find (themes.get_dropdown {:previewer false})))
+(map! [:n] :<leader>/
+      #(builtin.current_buffer_fuzzy_find (themes.get_dropdown {:previewer false})))
 
-(map :n :<leader>sf builtin.find_files)
-(map :n :<leader>gf builtin.git_files)
-(map :n :<leader>? builtin.help_tags)
-(map :n :<leader>sw builtin.grep_string)
-(map :n :<leader>sg builtin.live_grep)
-(map :n :<leader>sd builtin.diagnostics)
-(map :n :<leader>b builtin.buffers)
+(map! [:n] :<leader>sf builtin.find_files "Find Files")
+(map! [:n] :<leader>gf builtin.git_files "Find Git files")
+(map! [:n] :<leader>? builtin.help_tags "Search in :h")
+(map! [:n] :<leader>sw builtin.grep_string "Search word")
+(map! [:n] :<leader>sg builtin.live_grep "Live Grep")
+(map! [:n] :<leader>sd builtin.diagnostics "Search diagnostics")
+(map! [:n] :<leader>b builtin.buffers "Search buffers")
+(map! [:n] :<leader>ss builtin.spell_suggest "Search spell suggestions")
