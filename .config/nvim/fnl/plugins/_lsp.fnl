@@ -27,7 +27,9 @@
         :typst_lsp {:settings {:exportPdf :never
                                :root_dir (or (vim.fs.dirname (fst! (vim.fs.find [:.git]
                                                                                 {:upward true})))
-                                             (vim.loop.cwd))}}})
+                                             (vim.loop.cwd))}
+                    :on_attach #((map! [n :buffer] :<leader>f
+                                       #(exec! [silent exec "!typstfmt %"])))}})
 
 (fn on_attach [client bufno]
   (vim.api.nvim_buf_set_option bufno :omnifunc "v:lua.vim.lsp.omnifunc")
