@@ -4,6 +4,7 @@ set selected \
         # use fd even though it's an extra dependency because find is too slow
         fd . $REPOS_PATH $UNIV_REPOS_PATH --exact-depth 2 --type d;
         fd . $PLAYGROUND_PATH --exact-depth 1 --type d;
+        echo "play"
     end 2> /dev/null | sed -e "s|^$HOME|~|" | fzf)
 
 set selected (echo $selected | sed -e "s|^~|$HOME|")
