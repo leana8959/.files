@@ -10,8 +10,10 @@
 (cmp.event:on :confirm_done (cmp-autopairs.on_confirm_done))
 
 (npairs.add_rules [(-> (Rule "$" "$" [:tex :typst])
-                       (: :with_pair (cond.not_before_regex "%a"))
+                       (: :with_pair (cond.not_after_text "$"))
+                       (: :with_pair (cond.not_before_text "$"))
                        (: :with_pair (cond.not_after_regex "%a"))
+                       (: :with_pair (cond.not_before_regex "%a"))
                        (: :with_move cond.done))
                    (-> (Rule "```" "```" :typst)
                        (: :with_pair (cond.not_before_text "```"))
