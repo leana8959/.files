@@ -1,3 +1,4 @@
+(import-macros {: inc! : dec!} :hibiscus.core)
 (local Rule (require :nvim-autopairs.rule))
 (local cond (require :nvim-autopairs.conds))
 (local npairs (require :nvim-autopairs))
@@ -38,13 +39,13 @@
                        (: :with_pair
                           #(= (.. a1 a2)
                               ($.line:sub (- $.col (length a1))
-                                          (- (+ $.col (length a2)) 1))))
+                                          (dec! (+ $.col (length a2))))))
                        (: :with_move #false)
                        (: :with_cr #false)
                        (: :with_del
                           #(let [[ _ col ] (vim.api.nvim_win_get_cursor 0)]
                              (= (.. a1 ins ins a2)
-                                ($.line:sub (+ (- (- col (length a1)) (length ins)) 1)
+                                ($.line:sub (inc! (- (- col (length a1)) (length ins)))
                                             (+ (+ col (length ins)) (length a2)))))))))
 
 (ml-comment "(" "*" ")" [:ocaml :why3 :skel])
