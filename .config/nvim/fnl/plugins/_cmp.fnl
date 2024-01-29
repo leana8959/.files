@@ -27,13 +27,14 @@
 (local conds_expand (require :luasnip.extras.conditions.expand))
 
 (fn has-words-before []
-  (local unpack (or unpack table.unpack))
   (local [line col] (vim.api.nvim_win_get_cursor 0))
-  (and (not= col 0) (nil? (-> (vim.api.nvim_buf_get_lines 0 (- line 1) line
-                                                          true)
-                              (. 1)
-                              (: :sub col col)
-                              (: :match "%s")))))
+  (let [is-first-line (not= col 0)
+        has-words-before (-> (vim.api.nvim_buf_get_lines 0 (- line 1) line true)
+                             (. 1)
+                             (: :sub col col)
+                             (: :match "%s")
+                             (nil?))]
+    (and is-first-line has-words-before)))
 
 ;;;;;;;;;;;;;;;
 ; Lazy loader ;
