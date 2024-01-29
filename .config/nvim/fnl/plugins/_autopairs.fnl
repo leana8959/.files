@@ -18,3 +18,14 @@
                    (-> (Rule "```" "```" :typst)
                        (: :with_pair (cond.not_before_text "```"))
                        (: :with_cr cond.done))])
+
+;; Move past commas and semicolons
+;; credits: https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#move-past-commas-and-semicolons
+(each [_ punct (ipairs ["," ";"])]
+  (npairs.add_rule (-> (Rule "" punct)
+                       (: :with_move #(= $.char punct))
+                       (: :with_pair #false)
+                       (: :with_del #false)
+                       (: :with_cr #false)
+                       (: :use_key punct))))
+
