@@ -28,6 +28,5 @@
         ".direnv/"
       ];
     };
-    bat.enable = true;
   };
 }
