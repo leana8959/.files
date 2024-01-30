@@ -19,10 +19,8 @@
 
     functions = let
       makeFishFunctions = ns:
-        listToAttrs
-        (
-          concatMap
-          (n: [
+        listToAttrs (
+          concatMap (n: [
             {
               name = n;
               value = readFile ./functions/${n}.fish;
