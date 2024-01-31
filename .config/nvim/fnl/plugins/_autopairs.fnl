@@ -30,11 +30,11 @@
                        (: :with_cr #false)
                        (: :use_key punct))))
 
-;; ML comments
+;; Pair with insertion
 ;; credits: https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#insertion-with-surrounding-check
 
 ;; fnlfmt: skip
-(fn ml-comment [a1 ins a2 lang]
+(fn pair_with_insertion [a1 ins a2 lang]
   (npairs.add_rule (-> (Rule ins ins lang)
                        (: :with_pair
                           #(= (.. a1 a2)
@@ -48,5 +48,7 @@
                                 ($.line:sub (inc! (- (- col (length a1)) (length ins)))
                                             (+ (+ col (length ins)) (length a2)))))))))
 
-(ml-comment "(" "*" ")" [:ocaml :why3 :skel])
-(ml-comment "(*" " " "*)" [:ocaml :why3 :skel])
+(pair_with_insertion "(" "*" ")" [:ocaml :why3 :skel])
+(pair_with_insertion "(*" " " "*)" [:ocaml :why3 :skel])
+
+(pair_with_insertion "{" " " "}" [:why3])
