@@ -52,3 +52,5 @@
 (pair_with_insertion "(*" " " "*)" [:ocaml :why3 :skel])
 
 (pair_with_insertion "{" " " "}" nil)
+
+(pair_with_insertion "[" " " "]" :typst)
