@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./aliasesAbbrs.nix];
+
   programs.fish = let
     inherit (builtins) readFile foldl' map listToAttrs concatMap;
     inherit (pkgs) callPackage;
@@ -13,9 +15,6 @@
 
     interactiveShellInit =
       readConfigs ["interactiveShellInit" "bind" "colorscheme" "locale"];
-
-    shellAliases = (callPackage ./aliasesAbbrs.nix {}).shellAliases;
-    shellAbbrs = (callPackage ./aliasesAbbrs.nix {}).shellAbbrs;
 
     functions = let
       makeFishFunctions = ns:
