@@ -1,4 +1,4 @@
-{pkgs}: let
+{pkgs, ...}: let
   inherit (pkgs.stdenv) isLinux;
 
   abbrs = {
@@ -63,18 +63,20 @@
     '';
   };
 in {
-  shellAbbrs =
-    abbrs
-    // (
-      if isLinux
-      then abbrsLinux
-      else abbrsMacos
-    );
-  shellAliases =
-    aliases
-    // (
-      if isLinux
-      then aliasesLinux
-      else aliasesMacos
-    );
+  programs.fish = {
+    shellAbbrs =
+      abbrs
+      // (
+        if isLinux
+        then abbrsLinux
+        else abbrsMacos
+      );
+    shellAliases =
+      aliases
+      // (
+        if isLinux
+        then aliasesLinux
+        else aliasesMacos
+      );
+  };
 }
