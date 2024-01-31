@@ -51,4 +51,4 @@
 (pair_with_insertion "(" "*" ")" [:ocaml :why3 :skel])
 (pair_with_insertion "(*" " " "*)" [:ocaml :why3 :skel])
 
-(pair_with_insertion "{" " " "}" [:why3])
+(pair_with_insertion "{" " " "}" nil)
