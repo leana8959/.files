@@ -31,4 +31,4 @@
 (map! [:n] :<leader>sg builtin.live_grep "Live Grep")
 (map! [:n] :<leader>sd builtin.diagnostics "Search diagnostics")
 (map! [:n] :<leader>b builtin.buffers "Search buffers")
-(map! [:n] :<leader>ss builtin.spell_suggest "Search spell suggestions")
+(map! [:n] :<leader>sp builtin.spell_suggest "Search spell suggestions")
