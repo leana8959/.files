@@ -25,12 +25,12 @@
                        (: :with_pair (cond.not_before_text "*"))
                        (: :with_pair (cond.not_after_regex "%a"))
                        (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_cr cond.done))
+                       (: :with_move cond.done))
                    (-> (Rule "*" "*" :typst)
                        (: :with_pair (cond.not_before_text "_"))
                        (: :with_pair (cond.not_after_regex "%a"))
                        (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_cr cond.done))])
+                       (: :with_move cond.done))])
 
 ;; Move past commas and semicolons
 ;; credits: https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#move-past-commas-and-semicolons
