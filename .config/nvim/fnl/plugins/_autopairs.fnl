@@ -18,6 +18,18 @@
                        (: :with_move cond.done))
                    (-> (Rule "```" "```" :typst)
                        (: :with_pair (cond.not_before_text "```"))
+                       (: :with_pair (cond.not_after_regex "%a"))
+                       (: :with_pair (cond.not_before_regex "%a"))
+                       (: :with_cr cond.done))
+                   (-> (Rule "_" "_" :typst)
+                       (: :with_pair (cond.not_before_text "*"))
+                       (: :with_pair (cond.not_after_regex "%a"))
+                       (: :with_pair (cond.not_before_regex "%a"))
+                       (: :with_cr cond.done))
+                   (-> (Rule "*" "*" :typst)
+                       (: :with_pair (cond.not_before_text "_"))
+                       (: :with_pair (cond.not_after_regex "%a"))
+                       (: :with_pair (cond.not_before_regex "%a"))
                        (: :with_cr cond.done))])
 
 ;; Move past commas and semicolons
@@ -54,3 +66,5 @@
 (pair_with_insertion "{" " " "}" nil)
 
 (pair_with_insertion "[" " " "]" :typst)
+
+;; TODO: adapt the "space around =" for "~: " idiom in typst 
