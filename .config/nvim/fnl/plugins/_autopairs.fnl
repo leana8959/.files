@@ -30,6 +30,8 @@
                        (: :with_pair (cond.not_before_text "_"))
                        (: :with_pair (cond.not_after_regex "%a"))
                        (: :with_pair (cond.not_before_regex "%a"))
+                       (: :with_move cond.done))
+                   (-> (Rule :let :in :nix)
                        (: :with_move cond.done))])
 
 ;; Move past commas and semicolons
@@ -62,9 +64,9 @@
 
 (pair_with_insertion "(" "*" ")" [:ocaml :why3 :skel])
 (pair_with_insertion "(*" " " "*)" [:ocaml :why3 :skel])
-
 (pair_with_insertion "{" " " "}" nil)
-
 (pair_with_insertion "[" " " "]" :typst)
+
+(pair_with_insertion :let " " :in :nix)
 
 ;; TODO: adapt the "space around =" for "~: " idiom in typst 
