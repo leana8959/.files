@@ -95,11 +95,11 @@
   ;; shortcuts
   (ls.add_snippets "ledger"
     [(s "lessive"
-      [ (f show-date-ledger-entry) (t " ") (t "Lessive (CROUS)") (cr)
+      [ (f show-date-ledger-entry) (t " ") (t "Lave linge (CROUS)") (cr)
         (t "\texpenses                         3,00 EUR")        (cr)
         (t "\tassets:compte_courant           -3,00 EUR")        (cr)])
      (s "sechoir"
-      [ (f show-date-ledger-entry) (t " ") (t "Sechoir (CROUS)") (cr)
+      [ (f show-date-ledger-entry) (t " ") (t "Sèche linge (CROUS)") (cr)
         (t "\texpenses                         1,50 EUR")        (cr)
         (t "\tassets:compte_courant           -1,50 EUR")        (cr)])])
   ;; generic snippets
