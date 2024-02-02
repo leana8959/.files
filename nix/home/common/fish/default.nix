@@ -3,7 +3,6 @@
 
   programs.fish = let
     inherit (builtins) readFile foldl' map listToAttrs concatMap;
-    inherit (pkgs) callPackage;
     readConfig = n: readFile ./conf.d/${n}.fish;
     readConfigs = ns:
       foldl' (l: r: l + "\n" + r) ""
