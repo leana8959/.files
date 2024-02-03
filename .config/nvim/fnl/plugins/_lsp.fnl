@@ -59,7 +59,7 @@
 
 (let [orig vim.lsp.util.open_floating_preview]
   (fn vim.lsp.util.open_floating_preview [contents syntax opts ...]
-    (set-forcibly! opts (or opts {}))
+    (local opts (or opts {}))
     (set opts.border border)
     (orig contents syntax opts ...)))
 
