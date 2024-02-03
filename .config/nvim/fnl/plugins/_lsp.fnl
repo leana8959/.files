@@ -130,15 +130,15 @@
                   new-virt-text))]
   (req-do! :ufo #($.setup {:fold_virt_text_handler handler})))
 
-(for! (fn [k v]
-        (let [config {: capabilities
-                      :on_attach (fn [client bufno]
-                                   (on_attach client bufno)
-                                   (v.on_attach client bufno))
-                      :settings v.settings}]
-          ((-> (require :lspconfig)
-               (. k)
-               (. :setup)) config))) servers)
+(each [k v (pairs servers)]
+  (local config {: capabilities
+                 :on_attach (fn [client bufno]
+                              (on_attach client bufno)
+                              (v.on_attach client bufno))
+                 :settings v.settings})
+  ((-> (require :lspconfig)
+       (. k)
+       (. :setup)) config))
 
 (let [config {: capabilities
               :cmd [:jdt-language-server
