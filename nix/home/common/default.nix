@@ -16,7 +16,6 @@
     ./fzf
     ./git
     ./btop
-    ./atuin
 
     ./tmux
 
@@ -29,6 +28,13 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+    };
+    atuin = {
+      enable = true;
+      settings = {
+        style = "full";
+        show_preview = true;
+      };
     };
     ripgrep.enable = true;
     gpg.enable = true;
