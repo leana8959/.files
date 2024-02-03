@@ -51,6 +51,7 @@
       unstable.opam
       unstable.cargo
       mypkgs.logisim-evolution
+      mypkgs.necrolib
       pkgs.rars
     ]
     ++ utils

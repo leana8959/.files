@@ -13,6 +13,8 @@
     agenix.url = "github:ryantm/agenix/0.15.0";
 
     nixnur.url = "github:nix-community/NUR";
+
+    opam-nix.url = "github:tweag/opam-nix";
   };
 
   outputs = {
@@ -22,6 +24,7 @@
     wired,
     agenix,
     nixnur,
+    opam-nix,
     ...
   }: let
     argsFor = {system}: {
@@ -62,7 +65,10 @@
         nurpkgs = args.pkgs;
         pkgs = args.pkgs;
       };
-      mypkgs = import ./mypkgs {pkgs = args.pkgs;};
+      mypkgs = import ./mypkgs {
+        pkgs = args.pkgs;
+        inherit opam-nix;
+      };
       hostname = hostname;
     };
 
