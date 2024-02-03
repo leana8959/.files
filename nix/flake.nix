@@ -30,20 +30,6 @@
     argsFor = {system}: {
       pkgs = import nixpkgs {
         system = system;
-        overlays = [
-          (final: prev: {
-            cmus = prev.cmus.overrideAttrs (old: {
-              patches =
-                (old.patches or [])
-                ++ [
-                  (prev.fetchpatch {
-                    url = "https://github.com/cmus/cmus/commit/4123b54bad3d8874205aad7f1885191c8e93343c.patch";
-                    hash = "sha256-YKqroibgMZFxWQnbmLIHSHR5sMJduyEv6swnKZQ33Fg=";
-                  })
-                ];
-            });
-          })
-        ];
         config.allowUnfreePredicate = pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
             "discord"
