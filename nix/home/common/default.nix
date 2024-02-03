@@ -16,6 +16,7 @@
     ./fzf
     ./git
     ./btop
+    ./atuin
 
     ./tmux
 
