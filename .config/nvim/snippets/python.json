@@ -1,31 +1,4 @@
 {
-	"Dict comprehension": {
-		"prefix": "dc",
-		"body": [
-			"{",
-			"\t${3:key}:${4:value}",
-			"\tfor ${1:var} in ${2:iterated}",
-			"}",
-			""
-		]
-	},
-	"List comprehension": {
-		"prefix": "lc",
-		"body": [
-			"[",
-			"\t${3:var}${4:transformation}",
-			"\tfor ${1:var} in ${2:iterated}",
-			"]",
-			""
-		]
-	},
-	"For": {
-		"prefix": "for",
-		"body": [
-			"for ${1:var} in ${2:iterable}:",
-			"\t"
-		]
-	},
 	"Open, read and save file to variable": {
 		"prefix": "open",
 		"body": [
