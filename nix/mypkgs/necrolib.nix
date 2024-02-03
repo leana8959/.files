@@ -6,9 +6,14 @@
 }: let
   pname = "necrolib";
 
+  hashes = {
+    "v0.14.7.1" = "sha256-rFYzNFsT7LIXzWxOogoJd9vh+ywI2N1GE77tnYO7keg=";
+    "v0.14.8" = "sha256-ooc1DfTf4k9vcR2aU6CYzaGCDy4XvX98tvfzTLCljSc=";
+  };
+
   src = pkgs.fetchurl {
     url = "https://gitlab.inria.fr/skeletons/necro/-/archive/${version}/necro-${version}.tar.gz";
-    hash = "sha256-ooc1DfTf4k9vcR2aU6CYzaGCDy4XvX98tvfzTLCljSc=";
+    hash = hashes.${version};
   };
 
   on = opam-nix.lib.${system};
