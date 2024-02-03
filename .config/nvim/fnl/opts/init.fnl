@@ -35,7 +35,7 @@
             :foldlevelstart 99
             :foldenable true
             ;; winbar
-            :winbar "%{%v:lua.require'winbar'.eval()%}"
+            :winbar "%{%v:lua.require'opts.winbar'.eval()%}"
             :showmode false
             ;; listing
             :listchars {:tab "│ " :trail "␣"}
