@@ -2,37 +2,11 @@
 (local Rule (require :nvim-autopairs.rule))
 (local cond (require :nvim-autopairs.conds))
 (local npairs (require :nvim-autopairs))
-
-(npairs.setup {:disable_filetype [:fennel :clojure :lisp :racket :scheme]})
-
 (local cmp (require :cmp))
 (local cmp-autopairs (require :nvim-autopairs.completion.cmp))
 
+(npairs.setup {:disable_filetype [:fennel :clojure :lisp :racket :scheme]})
 (cmp.event:on :confirm_done (cmp-autopairs.on_confirm_done))
-
-(npairs.add_rules [(-> (Rule "$" "$" [:tex :typst])
-                       (: :with_pair (cond.not_after_text "$"))
-                       (: :with_pair (cond.not_before_text "$"))
-                       (: :with_pair (cond.not_after_regex "%a"))
-                       (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_move cond.done))
-                   (-> (Rule "```" "```" :typst)
-                       (: :with_pair (cond.not_before_text "```"))
-                       (: :with_pair (cond.not_after_regex "%a"))
-                       (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_cr cond.done))
-                   (-> (Rule "_" "_" :typst)
-                       (: :with_pair (cond.not_before_text "*"))
-                       (: :with_pair (cond.not_after_regex "%a"))
-                       (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_move cond.done))
-                   (-> (Rule "*" "*" :typst)
-                       (: :with_pair (cond.not_before_text "_"))
-                       (: :with_pair (cond.not_after_regex "%a"))
-                       (: :with_pair (cond.not_before_regex "%a"))
-                       (: :with_move cond.done))
-                   (-> (Rule :let :in :nix)
-                       (: :with_move cond.done))])
 
 ;; Move past commas and semicolons
 ;; credits: https://github.com/windwp/nvim-autopairs/wiki/Custom-rules#move-past-commas-and-semicolons
@@ -62,11 +36,24 @@
                                 ($.line:sub (inc! (- (- col (length a1)) (length ins)))
                                             (+ (+ col (length ins)) (length a2)))))))))
 
+;; ML Languages
 (pair_with_insertion "(" "*" ")" [:ocaml :why3 :skel])
 (pair_with_insertion "(*" " " "*)" [:ocaml :why3 :skel])
+
+;; Generic
 (pair_with_insertion "{" " " "}" nil)
-(pair_with_insertion "[" " " "]" :typst)
+(pair_with_insertion "[" " " "]" :typst :python :haskell)
+
+;; Typst / LaTeX
+(each [_ symb (ipairs ["$" "```" "_" "*"])]
+  (npairs.add_rule (-> (Rule "*" "*" :typst)
+                       (: :with_pair (cond.not_before_text symb))
+                       (: :with_pair (cond.not_after_regex "%a"))
+                       (: :with_pair (cond.not_before_regex "%a"))
+                       (: :with_move cond.done))))
+
+;; Nix
+(npairs.add_rule (-> (Rule :let :in :nix)
+                     (: :with_move cond.done)))
 
 (pair_with_insertion :let " " :in :nix)
-
-;; TODO: adapt the "space around =" for "~: " idiom in typst 
