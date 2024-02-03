@@ -13,10 +13,6 @@
 (lambda M.req-do! [module callback]
   `(,callback (require ,module)))
 
-(lambda M.for! [f tbl]
-  `(each [k# v# (pairs ,tbl)]
-     (,f k# v#)))
-
 (lambda M.elem! [obj tbl]
   `(each [_# v# (pairs ,tbl)]
      (when (= v# ,obj) (lua "return true"))
