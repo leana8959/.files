@@ -1,6 +1,7 @@
 {
   pkgs,
   mypkgs,
+  unstable,
   ...
 }: {
   home.packages = let
@@ -47,7 +48,8 @@
   in
     [
       # University stuff
-      # unstable.opam # maybe I'll need this
+      unstable.opam
+      unstable.cargo
       mypkgs.logisim-evolution
       pkgs.rars
     ]
