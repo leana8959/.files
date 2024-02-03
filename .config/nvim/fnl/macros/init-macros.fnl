@@ -1,6 +1,6 @@
 (local M {})
 
-(lambda M.require-plugins! [ns]
+(lambda M.req-plugins! [ns]
   `(each [_# n# (ipairs ,ns)]
      (require (.. :plugins._ n#))))
 
