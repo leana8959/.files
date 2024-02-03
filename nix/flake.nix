@@ -101,10 +101,6 @@
     };
 
     homeConfigurations = {
-      # "earth2077.fr" = makeHMFor {
-      #   hostname = "earth2077.fr";
-      #   system = "x86_64-linux";
-      # };
       "macOS" = makeHMFor {
         hostname = "macOS";
         system = "aarch64-darwin";
