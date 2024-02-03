@@ -65,7 +65,8 @@
                 :dependencies [:nvim-lua/plenary.nvim
                                :nvim-telescope/telescope.nvim]
                 :ft [:haskell :lhaskell :cabal :cabalproject]
-                :branch :2.x.x}
+                :branch :2.x.x
+                :lazy false}
                ; Typst
                {1 :kaarmu/typst.vim :ft :typst :lazy false}
                ; HTML / JavaScript (live preview)
