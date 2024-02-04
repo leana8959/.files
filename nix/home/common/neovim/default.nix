@@ -1,7 +1,24 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraPackages = with pkgs; [
+      # LSPs
+      vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+      shellcheck
+      nodePackages.bash-language-server
+      marksman
+      nodePackages.pyright
+      taplo
+      nodePackages.vim-language-server
+      lua-language-server
+      fnlfmt
+      nil
+    ];
   };
 
   home.file = let
