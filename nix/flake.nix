@@ -15,6 +15,8 @@
     nixnur.url = "github:nix-community/NUR";
 
     opam-nix.url = "github:tweag/opam-nix";
+
+    audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
   };
 
   outputs = {
@@ -25,6 +27,7 @@
     agenix,
     nixnur,
     opam-nix,
+    audio-lint,
     ...
   }: let
     argsFor = {system}: {
@@ -47,6 +50,7 @@
     in {
       wired = wired.packages.${system};
       agenix = agenix.packages.${system};
+      audio-lint = audio-lint.defaultPackage.${system};
       nur = import nixnur {
         nurpkgs = args.pkgs;
         pkgs = args.pkgs;
