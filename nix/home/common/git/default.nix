@@ -8,7 +8,10 @@
         key = "3659D5C87A4BC5D7699B37D84E887A4CA9714ADA";
         signByDefault = true;
       };
-      lfs.enable = true;
+      lfs = {
+        enable = true;
+        skipSmudge = true;
+      };
       delta = {
         enable = true;
         options = {
