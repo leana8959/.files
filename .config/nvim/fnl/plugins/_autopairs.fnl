@@ -46,7 +46,7 @@
 
 ;; Typst / LaTeX
 (each [_ symb (ipairs ["$" "```" "_" "*"])]
-  (npairs.add_rule (-> (Rule "*" "*" :typst)
+  (npairs.add_rule (-> (Rule symb symb :typst)
                        (: :with_pair (cond.not_before_text symb))
                        (: :with_pair (cond.not_after_regex "%a"))
                        (: :with_pair (cond.not_before_regex "%a"))
