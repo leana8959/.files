@@ -1,5 +1,5 @@
 (import-macros {: exec! : map! : setlocal!} :hibiscus.vim)
-(import-macros {: fst! : req-do! : for!} :macros)
+(import-macros {: fst! : req-do!} :macros)
 (local map vim.keymap.set)
 
 (local servers
@@ -141,7 +141,8 @@
        (. :setup)) config))
 
 (let [config {: capabilities
-              :cmd [:jdt-language-server
+              :cmd [;; :jdt-language-server
+                    :jdtls
                     :-data
                     (.. (vim.fn.expand "~/.cache/jdtls")
                         (vim.fn.expand "%:p:h"))]
