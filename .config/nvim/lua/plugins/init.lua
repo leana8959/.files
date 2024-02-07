@@ -1,0 +1,15 @@
+for _, name in ipairs {
+    "lazy",
+    "autopairs",
+    "cmp",
+    "colorizer",
+    "gitsigns",
+    "harpoon",
+    "lsp",
+    "lualine",
+    "no-neck-pain",
+    "oil",
+    "telescope",
+    "todo-comments",
+    "treesitter",
+} do require("plugins._" .. name) end
