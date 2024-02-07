@@ -18,6 +18,14 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
+    pattern = "asm",
+    callback =
+        function()
+            vim.opt_local["commentstring"] = "# %s"
+        end,
+})
+
+autocmd("FileType", {
     pattern = "skel",
     callback = function()
         vim.opt_local["commentstring"] = "(* %s *)"
