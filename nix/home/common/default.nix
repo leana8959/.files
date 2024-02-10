@@ -49,6 +49,9 @@
     vivid
     gcc
 
+    # nix
+    alejandra
+
     # utils
     tree
     rsync
