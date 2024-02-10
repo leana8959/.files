@@ -12,9 +12,6 @@
     tokei
     gnumake
 
-    # nix
-    alejandra
-
     # University stuff
     unstable.opam
     unstable.cargo
