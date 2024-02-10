@@ -11,15 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins
-local function _2_()
-    local function _3_(_2410)
-        return _2410.add_default_mappings()
-    end
-    return _3_(require "leap")
-end
-
-plugins = {
+local plugins = {
     ----------------------
     -- Misc / utilities --
     ----------------------

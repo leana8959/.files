@@ -1,7 +1,7 @@
 require "maps"
 require "opts"
-require "autocmds"
+require "cmds"
 
-require "plugins"
+require "_lazy"
 
 vim.cmd.colorscheme "curry"
