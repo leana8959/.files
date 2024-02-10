@@ -37,7 +37,7 @@ opt.foldlevel      = 99
 opt.foldlevelstart = 99
 opt.foldenable     = true
 
-opt.winbar         = "%{%v:lua.require'opts.winbar'.eval()%}"
+opt.winbar         = "%{%v:lua.require'winbar'.eval()%}"
 
 opt.showmode       = false
 
