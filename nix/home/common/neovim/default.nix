@@ -1,24 +1,30 @@
 {
   config,
   pkgs,
+  extraLanguageServers ? false,
   ...
 }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    extraPackages = with pkgs; [
-      # LSPs
-      vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-      shellcheck
-      nodePackages.bash-language-server
-      marksman
-      nodePackages.pyright
-      taplo
-      nodePackages.vim-language-server
-      lua-language-server
-      fnlfmt
-      nil
-    ];
+    extraPackages = with pkgs;
+      [
+        lua-language-server
+        nodePackages.bash-language-server
+        shellcheck
+        nil
+      ]
+      ++ (
+        if extraLanguageServers
+        then [
+          nodePackages.vim-language-server
+          vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+          marksman
+          nodePackages.pyright
+          taplo
+        ]
+        else []
+      );
   };
 
   home.file = let

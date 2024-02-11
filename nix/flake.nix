@@ -65,8 +65,9 @@
     makeOSFor = {
       system,
       hostname,
+      extraSettings ? {},
     }: let
-      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;});
+      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
     in (nixpkgs.lib.nixosSystem {
       specialArgs = args;
       modules = [
@@ -88,8 +89,9 @@
     makeHMFor = {
       system,
       hostname,
+      extraSettings ? {},
     }: let
-      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;});
+      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
     in
       home-manager.lib.homeManagerConfiguration {
         pkgs = args.pkgs;
@@ -101,6 +103,9 @@
       nixie = makeOSFor {
         hostname = "nixie";
         system = "x86_64-linux";
+        extraSettings = {
+          extraLanguageServers = true;
+        };
       };
     };
 
@@ -108,11 +113,16 @@
       "macOS" = makeHMFor {
         hostname = "macOS";
         system = "aarch64-darwin";
+        extraSettings = {
+          extraLanguageServers = true;
+        };
       };
+
       "pi4" = makeHMFor {
         hostname = "pi4";
         system = "aarch64-linux";
       };
+
       "oracle" = makeHMFor {
         hostname = "oracle";
         system = "aarch64-linux";
