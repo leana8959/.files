@@ -5,13 +5,6 @@
   ...
 }: {
   home.packages = with pkgs; [
-    # Tools
-    hyperfine
-    watchexec
-    tea
-    tokei
-    gnumake
-
     # University stuff
     unstable.opam
     unstable.cargo

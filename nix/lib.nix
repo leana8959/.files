@@ -43,6 +43,7 @@
 
   defaultExtraSettings = {
     extraLanguageServers = false;
+    extraUtils = false;
     enableCmus = false;
   };
 

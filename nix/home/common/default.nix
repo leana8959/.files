@@ -2,6 +2,7 @@
   pkgs,
   lib,
   enableCmus,
+  extraUtils,
   ...
 }: {
   home = {
@@ -47,22 +48,34 @@
     gpg.enable = true;
   };
 
-  home.packages = with pkgs; [
-    # shell and script dependencies
-    figlet
-    gnused
-    stow
-    fd
-    vivid
-    gcc
+  home.packages = with pkgs;
+    [
+      # shell and script dependencies
+      figlet
+      gnused
+      stow
+      fd
+      vivid
+      gcc
+      rsync
 
-    # nix
-    alejandra
+      # nix
+      alejandra
 
-    # utils
-    tree
-    rsync
-    tldr
-    irssi
-  ];
+      # utils
+      tree
+      tldr
+      irssi
+    ]
+    ++ (
+      if extraUtils
+      then [
+        hyperfine
+        watchexec
+        tea
+        tokei
+        gnumake
+      ]
+      else []
+    );
 }
