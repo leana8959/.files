@@ -1,103 +1,6 @@
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixunstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wired.url = "github:Toqozz/wired-notify";
-
-    agenix.url = "github:ryantm/agenix/0.15.0";
-
-    nixnur.url = "github:nix-community/NUR";
-
-    opam-nix.url = "github:tweag/opam-nix";
-
-    audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
-  };
-
-  outputs = {
-    nixpkgs,
-    nixunstable,
-    home-manager,
-    wired,
-    agenix,
-    nixnur,
-    opam-nix,
-    audio-lint,
-    ...
-  }: let
-    argsFor = {system}: {
-      pkgs = import nixpkgs {
-        system = system;
-        config.allowUnfreePredicate = pkg:
-          builtins.elem (nixpkgs.lib.getName pkg) [
-            "discord"
-            "languagetool"
-          ];
-      };
-      unstable = import nixunstable {system = system;};
-    };
-
-    extraArgsFor = {
-      system,
-      hostname,
-    }: let
-      args = argsFor {inherit system;};
-    in {
-      wired = wired.packages.${system};
-      agenix = agenix.packages.${system};
-      audio-lint = audio-lint.defaultPackage.${system};
-      nur = import nixnur {
-        nurpkgs = args.pkgs;
-        pkgs = args.pkgs;
-      };
-      mypkgs = import ./mypkgs {
-        pkgs = args.pkgs;
-        inherit opam-nix;
-      };
-      hostname = hostname;
-    };
-
-    makeOSFor = {
-      system,
-      hostname,
-      extraSettings ? {},
-    }: let
-      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
-    in (nixpkgs.lib.nixosSystem {
-      specialArgs = args;
-      modules = [
-        ./hosts/${hostname}/default.nix
-        ./layouts
-        agenix.nixosModules.default
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.leana = import (./home/leana + "@${hostname}");
-            extraSpecialArgs = args;
-          };
-        }
-      ];
-    });
-
-    makeHMFor = {
-      system,
-      hostname,
-      extraSettings ? {},
-    }: let
-      args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
-    in
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = args.pkgs;
-        extraSpecialArgs = args;
-        modules = [(./home/leana + "@${hostname}")];
-      };
+  outputs = {...} @ inputs: let
+    inherit (import ./lib.nix inputs) makeOSFor makeHMFor;
   in {
     nixosConfigurations = {
       nixie = makeOSFor {
@@ -128,5 +31,25 @@
         system = "aarch64-linux";
       };
     };
+  };
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixunstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wired.url = "github:Toqozz/wired-notify";
+
+    agenix.url = "github:ryantm/agenix/0.15.0";
+
+    nixnur.url = "github:nix-community/NUR";
+
+    opam-nix.url = "github:tweag/opam-nix";
+
+    audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
   };
 }
