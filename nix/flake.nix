@@ -8,6 +8,7 @@
         system = "x86_64-linux";
         extraSettings = {
           extraLanguageServers = true;
+          enableCmus = true;
         };
       };
     };
@@ -18,6 +19,7 @@
         system = "aarch64-darwin";
         extraSettings = {
           extraLanguageServers = true;
+          enableCmus = true;
         };
       };
 

@@ -43,6 +43,7 @@
 
   defaultExtraSettings = {
     extraLanguageServers = false;
+    enableCmus = false;
   };
 
   makeOSFor = {
