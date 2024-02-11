@@ -1,15 +1,24 @@
 {
   nixpkgs,
   nixunstable,
-  home-manager,
-  wired,
-  agenix,
   nixnur,
-  opam-nix,
+  home-manager,
+  agenix,
+  wired,
   audio-lint,
+  opam-nix,
   ...
-}: rec {
-  argsFor = {system}: {
+}: let
+  defaultExtraSettings = {
+    extraLanguageServers = false;
+    extraUtils = false;
+    enableCmus = false;
+  };
+
+  argsFor = {
+    system,
+    hostname,
+  }: let
     pkgs = import nixpkgs {
       system = system;
       config.allowUnfreePredicate = pkg:
@@ -19,42 +28,28 @@
         ];
     };
     unstable = import nixunstable {system = system;};
-  };
-
-  extraArgsFor = {
-    system,
-    hostname,
-  }: let
-    args = argsFor {inherit system;};
+    nur = import nixnur {
+      inherit pkgs;
+      nurpkgs = pkgs;
+    };
+    mypkgs = import ./mypkgs {
+      inherit pkgs;
+      inherit opam-nix;
+    };
   in {
+    inherit hostname pkgs unstable nur mypkgs;
     wired = wired.packages.${system};
     agenix = agenix.packages.${system};
     audio-lint = audio-lint.defaultPackage.${system};
-    nur = import nixnur {
-      nurpkgs = args.pkgs;
-      pkgs = args.pkgs;
-    };
-    mypkgs = import ./mypkgs {
-      pkgs = args.pkgs;
-      inherit opam-nix;
-    };
-    hostname = hostname;
   };
-
-  defaultExtraSettings = {
-    extraLanguageServers = false;
-    extraUtils = false;
-    enableCmus = false;
-  };
-
+in {
   makeOSFor = {
     system,
     hostname,
     extraSettings ? {},
   }: let
     args =
-      (argsFor {inherit system;})
-      // (extraArgsFor {inherit system hostname;})
+      (argsFor {inherit system hostname;})
       // (defaultExtraSettings // extraSettings);
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
@@ -80,8 +75,7 @@
     extraSettings ? {},
   }: let
     args =
-      (argsFor {inherit system;})
-      // (extraArgsFor {inherit system hostname;})
+      (argsFor {inherit system hostname;})
       // (defaultExtraSettings // extraSettings);
   in
     home-manager.lib.homeManagerConfiguration {
