@@ -44,7 +44,9 @@
   makeOSFor = {
     system,
     hostname,
-    extraSettings ? {},
+    extraSettings ? {
+      extraLanguageServers = false;
+    },
   }: let
     args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
   in (nixpkgs.lib.nixosSystem {
