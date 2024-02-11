@@ -4,14 +4,7 @@
   unstable,
   ...
 }: {
-  home.packages = with pkgs; [
-    # Tools
-    hyperfine
-    watchexec
-    tea
-    tokei
-    gnumake
-
+  home.packages = [
     # University stuff
     unstable.opam
     unstable.cargo
