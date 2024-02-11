@@ -1,9 +1,9 @@
 {
   outputs = {...} @ inputs: let
-    inherit (import ./lib.nix inputs) makeOSFor makeHMFor;
+    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager;
   in {
     nixosConfigurations = {
-      nixie = makeOSFor {
+      nixie = mkNixOS {
         hostname = "nixie";
         system = "x86_64-linux";
         extraSettings = {
@@ -15,7 +15,7 @@
     };
 
     homeConfigurations = {
-      "macOS" = makeHMFor {
+      "macOS" = mkHomeManager {
         hostname = "macOS";
         system = "aarch64-darwin";
         extraSettings = {
@@ -25,12 +25,12 @@
         };
       };
 
-      "pi4" = makeHMFor {
+      "pi4" = mkHomeManager {
         hostname = "pi4";
         system = "aarch64-linux";
       };
 
-      "oracle" = makeHMFor {
+      "oracle" = mkHomeManager {
         hostname = "oracle";
         system = "aarch64-linux";
       };

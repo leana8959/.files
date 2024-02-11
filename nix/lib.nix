@@ -15,10 +15,7 @@
     enableCmus = false;
   };
 
-  argsFor = {
-    system,
-    hostname,
-  }: let
+  mkArgs = system: hostname: let
     pkgs = import nixpkgs {
       system = system;
       config.allowUnfreePredicate = pkg:
@@ -43,14 +40,12 @@
     audio-lint = audio-lint.defaultPackage.${system};
   };
 in {
-  makeOSFor = {
+  mkNixOS = {
     system,
     hostname,
     extraSettings ? {},
   }: let
-    args =
-      (argsFor {inherit system hostname;})
-      // (defaultExtraSettings // extraSettings);
+    args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
@@ -69,14 +64,12 @@ in {
     ];
   });
 
-  makeHMFor = {
+  mkHomeManager = {
     system,
     hostname,
     extraSettings ? {},
   }: let
-    args =
-      (argsFor {inherit system hostname;})
-      // (defaultExtraSettings // extraSettings);
+    args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
