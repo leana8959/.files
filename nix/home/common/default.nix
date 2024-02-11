@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  enableCmus,
   ...
 }: {
   home = {
@@ -9,19 +10,25 @@
     stateVersion = "23.11";
   };
 
-  imports = [
-    ./fish
+  imports =
+    [
+      ./fish
 
-    ./starship
-    ./fzf
-    ./git
-    ./btop
+      ./starship
+      ./fzf
+      ./git
+      ./btop
 
-    ./tmux
+      ./tmux
 
-    ./neovim
-    ./vim
-  ];
+      ./neovim
+      ./vim
+    ]
+    ++ (
+      if enableCmus
+      then [./cmus]
+      else []
+    );
 
   programs = {
     home-manager.enable = true;

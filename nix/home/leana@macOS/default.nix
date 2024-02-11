@@ -1,5 +1,5 @@
 {audio-lint, ...}: {
-  imports = [./dev.nix ./fonts.nix ../common ../common/cmus];
+  imports = [./dev.nix ./fonts.nix ../common];
   home.homeDirectory = "/Users/leana";
 
   home.packages = [
