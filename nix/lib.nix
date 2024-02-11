@@ -41,12 +41,19 @@
     hostname = hostname;
   };
 
+  defaultExtraSettings = {
+    extraLanguageServers = false;
+  };
+
   makeOSFor = {
     system,
     hostname,
     extraSettings ? {},
   }: let
-    args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
+    args =
+      (argsFor {inherit system;})
+      // (extraArgsFor {inherit system hostname;})
+      // (defaultExtraSettings // extraSettings);
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
@@ -70,7 +77,10 @@
     hostname,
     extraSettings ? {},
   }: let
-    args = (argsFor {inherit system;}) // (extraArgsFor {inherit system hostname;}) // extraSettings;
+    args =
+      (argsFor {inherit system;})
+      // (extraArgsFor {inherit system hostname;})
+      // (defaultExtraSettings // extraSettings);
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;

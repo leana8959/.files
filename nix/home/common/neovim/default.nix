@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  extraLanguageServers ? false,
+  extraLanguageServers,
   ...
 }: {
   programs.neovim = {
