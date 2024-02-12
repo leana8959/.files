@@ -24,8 +24,9 @@ map({ "n", "x", "v" }, "<leader>y", '"+y')
 
 -- Linewrap jk
 -- Only use gj et al. when needed
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("n", "<leader>w", function() vim.cmd "setlocal invwrap" end)
 
 -- Replace selected token
 map("v", "<leader>r", [["ry:%s/\(<C-r>r\)//g<Left><Left>]])
