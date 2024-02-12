@@ -57,7 +57,12 @@ in {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.leana = import (./home/leana + "@${hostname}");
+          users.leana = {...}: {
+            imports = [
+              (./home/leana + "@${hostname}")
+              ./home/common
+            ];
+          };
           extraSpecialArgs = args;
         };
       }
@@ -74,6 +79,9 @@ in {
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = [(./home/leana + "@${hostname}")];
+      modules = [
+        (./home/leana + "@${hostname}")
+        ./home/common
+      ];
     };
 }
