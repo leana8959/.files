@@ -3,39 +3,24 @@
     inherit (import ./lib.nix inputs) mkNixOS mkHomeManager;
   in {
     nixosConfigurations = {
-      nixie = mkNixOS {
-        hostname = "nixie";
-        system = "x86_64-linux";
-        extraSettings = {
-          extraLanguageServers = true;
-          extraUtils = true;
-          enableCmus = true;
-          universityTools = true;
-        };
+      nixie = mkNixOS "nixie" "x86_64-linux" {
+        extraLanguageServers = true;
+        extraUtils = true;
+        enableCmus = true;
+        universityTools = true;
       };
     };
 
     homeConfigurations = {
-      "macOS" = mkHomeManager {
-        hostname = "macOS";
-        system = "aarch64-darwin";
-        extraSettings = {
-          extraLanguageServers = true;
-          extraUtils = true;
-          enableCmus = true;
-          universityTools = true;
-        };
+      "macOS" = mkHomeManager "macOS" "aarch64-darwin" {
+        extraLanguageServers = true;
+        extraUtils = true;
+        enableCmus = true;
+        universityTools = true;
       };
 
-      "pi4" = mkHomeManager {
-        hostname = "pi4";
-        system = "aarch64-linux";
-      };
-
-      "oracle" = mkHomeManager {
-        hostname = "oracle";
-        system = "aarch64-linux";
-      };
+      "pi4" = mkHomeManager "pi4" "aarch64-linux" {};
+      "oracle" = mkHomeManager "oracle" "aarch64-linux" {};
     };
   };
 
