@@ -9,7 +9,15 @@
   opam-nix,
   ...
 }: let
+  helperFuncs = {
+    if' = cond: xs:
+      if cond
+      then xs
+      else [];
+  };
+
   defaultExtraSettings = {
+    inherit helperFuncs;
     extraLanguageServers = false;
     extraUtils = false;
     enableCmus = false;
@@ -58,13 +66,8 @@ in {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          users.leana = {...}: {
-            imports = [
-              (./home/leana + "@${hostname}")
-              ./home/common
-            ];
-          };
           extraSpecialArgs = args;
+          users.leana = {...}: {imports = [./home/common (./home/leana + "@${hostname}")];};
         };
       }
     ];
@@ -80,9 +83,6 @@ in {
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = [
-        (./home/leana + "@${hostname}")
-        ./home/common
-      ];
+      modules = [./home/common (./home/leana + "@${hostname}")];
     };
 }

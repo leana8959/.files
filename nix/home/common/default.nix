@@ -6,8 +6,11 @@
   enableCmus,
   extraUtils,
   universityTools,
+  helperFuncs,
   ...
-}: {
+}: let
+  inherit (helperFuncs) if';
+in {
   home = {
     username = lib.mkDefault "leana";
     homeDirectory = lib.mkDefault "/home/leana";
@@ -28,11 +31,7 @@
       ./neovim
       ./vim
     ]
-    ++ (
-      if enableCmus
-      then [./cmus]
-      else []
-    );
+    ++ if' enableCmus [./cmus];
 
   programs = {
     home-manager.enable = true;
@@ -70,26 +69,19 @@
       tldr
       irssi
     ]
-    ++ (
-      if extraUtils
-      then [
-        unstable.opam
-        unstable.cargo
-        hyperfine
-        watchexec
-        tea
-        tokei
-        gnumake
-      ]
-      else []
-    )
-    ++ (
-      if universityTools
-      then [
-        mypkgs.logisim-evolution
-        mypkgs.necrolib
-        pkgs.rars
-      ]
-      else []
-    );
+    ++ if' extraUtils
+    [
+      unstable.opam
+      unstable.cargo
+      hyperfine
+      watchexec
+      tea
+      tokei
+      gnumake
+    ]
+    ++ if' universityTools [
+      mypkgs.logisim-evolution
+      mypkgs.necrolib
+      pkgs.rars
+    ];
 }

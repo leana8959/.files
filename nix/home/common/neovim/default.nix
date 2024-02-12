@@ -2,8 +2,11 @@
   config,
   pkgs,
   extraLanguageServers,
+  helperFuncs,
   ...
-}: {
+}: let
+  inherit (helperFuncs) if';
+in {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -14,17 +17,13 @@
         shellcheck
         nil
       ]
-      ++ (
-        if extraLanguageServers
-        then [
-          nodePackages.vim-language-server
-          vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-          marksman
-          nodePackages.pyright
-          taplo
-        ]
-        else []
-      );
+      ++ if' extraLanguageServers [
+        nodePackages.vim-language-server
+        vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+        marksman
+        nodePackages.pyright
+        taplo
+      ];
   };
 
   home.file = let
