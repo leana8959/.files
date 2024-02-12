@@ -13,6 +13,7 @@
     extraLanguageServers = false;
     extraUtils = false;
     enableCmus = false;
+    universityTools = false;
   };
 
   mkArgs = system: hostname: let

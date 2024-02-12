@@ -10,6 +10,7 @@
           extraLanguageServers = true;
           extraUtils = true;
           enableCmus = true;
+          universityTools = true;
         };
       };
     };
@@ -22,6 +23,7 @@
           extraLanguageServers = true;
           extraUtils = true;
           enableCmus = true;
+          universityTools = true;
         };
       };
 

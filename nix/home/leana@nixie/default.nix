@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  imports = [./dev.nix ./gui ./browser.nix];
+  imports = [./gui ./browser.nix];
 
   home.packages = with pkgs; [
     zip
