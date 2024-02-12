@@ -7,7 +7,6 @@ local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 npairs.setup {
     disable_filetype = { "fennel", "clojure", "lisp", "racket", "scheme" },
 }
-do end
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
@@ -45,8 +44,6 @@ for _, symb in ipairs { "$", "```", "_", "*" } do
     npairs.add_rule(Rule(symb, symb, "typst")
         :with_pair(cond.not_before_text(symb))
         :with_pair(cond.not_after_regex "%a")
-        :with_pair(cond.not_before_regex "%a"):with_move(cond.done))
+        :with_pair(cond.not_before_regex "%a")
+        :with_move(cond.done))
 end
-
-npairs.add_rule(Rule("let", "in", "nix"):with_move(cond.done))
-pair_with_insertion("let", " ", "in", "nix")
