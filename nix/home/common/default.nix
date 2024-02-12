@@ -1,8 +1,11 @@
 {
   pkgs,
+  unstable,
+  mypkgs,
   lib,
   enableCmus,
   extraUtils,
+  universityTools,
   ...
 }: {
   home = {
@@ -70,11 +73,22 @@
     ++ (
       if extraUtils
       then [
+        unstable.opam
+        unstable.cargo
         hyperfine
         watchexec
         tea
         tokei
         gnumake
+      ]
+      else []
+    )
+    ++ (
+      if universityTools
+      then [
+        mypkgs.logisim-evolution
+        mypkgs.necrolib
+        pkgs.rars
       ]
       else []
     );
