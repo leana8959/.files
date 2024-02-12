@@ -49,11 +49,7 @@
     audio-lint = audio-lint.defaultPackage.${system};
   };
 in {
-  mkNixOS = {
-    system,
-    hostname,
-    extraSettings ? {},
-  }: let
+  mkNixOS = hostname: system: extraSettings: let
     args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
@@ -73,11 +69,7 @@ in {
     ];
   });
 
-  mkHomeManager = {
-    system,
-    hostname,
-    extraSettings ? {},
-  }: let
+  mkHomeManager = hostname: system: extraSettings: let
     args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
   in
     home-manager.lib.homeManagerConfiguration {
