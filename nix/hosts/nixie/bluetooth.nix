@@ -1,4 +1,4 @@
-{...}: {
+{
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
   # FIXME: this breaks the handsfree microphone mode for XM4

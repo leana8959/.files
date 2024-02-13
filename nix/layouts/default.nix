@@ -1,4 +1,4 @@
-{...}: {
+{
   services.xserver.xkb = {
     layout = "myDvorak";
     options = "caps:swapescape";
