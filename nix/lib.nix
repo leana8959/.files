@@ -63,7 +63,7 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = args;
-          users.leana = {...}: {imports = [./home/common (./home/leana + "@${hostname}")];};
+          users.leana.imports = [./home/common (./home/leana + "@${hostname}")];
         };
       }
     ];

@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.starship = let
     inherit (builtins) readFile;
   in {

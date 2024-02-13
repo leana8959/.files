@@ -1,4 +1,4 @@
-{...}: {
+{
   age = {
     identityPaths = ["/home/leana/.ssh/id_ed25519"];
     secrets.sshconcfig = {

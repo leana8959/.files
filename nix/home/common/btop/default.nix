@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.btop.enable = true;
 
   # Link manually to get the theme along with the config
