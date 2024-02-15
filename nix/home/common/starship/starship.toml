@@ -43,7 +43,7 @@ vimcmd_visual_symbol      = '[V](grey)'   # Visual
 
 [directory]
 truncation_length = 4
-truncate_to_repo  = false
+truncate_to_repo  = true
 style             = 'fg:black bg:accent_trans'
 format            = '[$path]($style)( [$read_only]($read_only_style))'
 read_only         = ''
