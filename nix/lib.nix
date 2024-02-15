@@ -26,14 +26,14 @@
 
   mkArgs = system: hostname: let
     pkgs = import nixpkgs {
-      system = system;
+      inherit system;
       config.allowUnfreePredicate = pkg:
         builtins.elem (nixpkgs.lib.getName pkg) [
           "discord"
           "languagetool"
         ];
     };
-    unstable = import nixunstable {system = system;};
+    unstable = import nixunstable {inherit system;};
     nur = import nixnur {
       inherit pkgs;
       nurpkgs = pkgs;
