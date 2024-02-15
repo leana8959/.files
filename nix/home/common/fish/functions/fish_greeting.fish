@@ -1,5 +1,5 @@
-    set_color --italics
-    switch $FISH_GREETING
+set_color --italics
+switch $FISH_GREETING
     case "toh"
         cat ~/.quotes/toh/* | shuf -n 1
     case "fleabag"
@@ -9,4 +9,4 @@
     case "citation"
         ~/.local/bin/citation.py
     case "*"
-    end
+end

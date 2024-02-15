@@ -60,6 +60,8 @@ in {
       vivid
       gcc
       rsync
+      # coreutils
+      uutils-coreutils-noprefix
 
       # nix
       alejandra
