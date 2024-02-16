@@ -8,17 +8,20 @@
     ## Git
     gaa = "git add (git rev-parse --show-toplevel)";
     "ga." = "git add .";
+    grg = "git remote get-url";
+    gra = "git remote add";
     gc = "git commit";
-    gs = "git stash";
+    gca = "git commit --amend";
+    gs = "git stash --all";
     gp = "git pull";
     gP = "git push";
+    gb = "git blame -C -C -C";
     clone = "clone_to_repos";
 
     ## Editor
     ts = "tmux_sessionizer";
     ta = "tmux_attach";
     v = "nvim";
-    se = "sudoedit";
 
     ":q" = "exit";
 
@@ -35,18 +38,20 @@
   };
   abbrsLinux = {
     ss = "sudo systemctl";
+    se = "sudoedit";
   };
   abbrsMacos = {};
 
   aliases = {
-    "rm" = "rm -i"; # idiot protection
-    "tree" = "tree -Cph";
-    "restow" = "cd ~/.dotfiles/ && stow -D . && stow -S . && prevd";
-    "nix-shell" = "nix-shell --run fish";
+    rm = "rm -i"; # idiot protection
+    tree = "tree -Cph";
+    restow = "cd ~/.dotfiles/ && stow -D . && stow -S . && prevd";
+    nix-shell = "nix-shell --run fish";
   };
   aliasesLinux = {
     chmod = "chmod --preserve-root";
     chown = "chown --preserve-root";
+    sudoedit = "SUDO_EDITOR=(which nvim) sudoedit";
   };
   aliasesMacos = {
     hide_desktop = ''
