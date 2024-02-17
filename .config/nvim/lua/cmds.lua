@@ -78,6 +78,11 @@ autocmd("OptionSet", {
     end,
 })
 
+autocmd("OptionSet", {
+    pattern = "textwidth",
+    callback = function() vim.o.colorcolumn = tostring(vim.o.textwidth) end,
+})
+
 usercmd("Retab", function(opts)
     if #opts.fargs ~= 2 then return print("should have exactly two argument: [src] and [dst]") end
     local src = tonumber(opts.fargs[1])
