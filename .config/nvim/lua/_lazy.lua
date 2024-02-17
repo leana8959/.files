@@ -2,14 +2,14 @@ local plugins = {
     ----------------------
     -- Misc / utilities --
     ----------------------
-    "nvim-tree/nvim-web-devicons",                                             -- Icons
-    "tpope/vim-sleuth",                                                        -- Tab / Space detection
-    "tpope/vim-surround",                                                      -- Surround motions
-    "tpope/vim-fugitive",                                                      -- Git util
-    { "windwp/nvim-autopairs", event = "InsertEnter" },                        -- Pair symbols
-    "mbbill/undotree",                                                         -- Treeview of history
-    "godlygeek/tabular",                                                       -- Vertical alignment
-    { "stevearc/oil.nvim",     dependencies = "nvim-tree/nvim-web-devicons" }, -- File manager
+    "nvim-tree/nvim-web-devicons", -- Icons
+    "tpope/vim-sleuth", -- Tab / Space detection
+    "tpope/vim-surround", -- Surround motions
+    "tpope/vim-fugitive", -- Git util
+    { "windwp/nvim-autopairs", event = "InsertEnter" }, -- Pair symbols
+    "mbbill/undotree", -- Treeview of history
+    "godlygeek/tabular", -- Vertical alignment
+    { "stevearc/oil.nvim", dependencies = "nvim-tree/nvim-web-devicons" }, -- File manager
     -- `gc` to comment
     {
         "numToStr/Comment.nvim",
@@ -20,7 +20,7 @@ local plugins = {
     {
         "ggandor/leap.nvim",
         dependencies = "tpope/vim-repeat",
-        config = function() require "leap".add_default_mappings() end,
+        config = function() require("leap").add_default_mappings() end,
     },
     -- Folding
     {
@@ -37,8 +37,8 @@ local plugins = {
     -- Style / UI --
     ----------------
     { "shortcuts/no-neck-pain.nvim", version = "*" }, -- Align buffer
-    "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
-    "NvChad/nvim-colorizer.lua",                      -- Show color
+    "lewis6991/gitsigns.nvim", -- Gitsigns in gutter
+    "NvChad/nvim-colorizer.lua", -- Show color
     -- Jump like a ninja
     {
         "ThePrimeagen/harpoon",
@@ -46,11 +46,11 @@ local plugins = {
         branch = "harpoon2",
     },
     -- Highlight comments
-    { "folke/todo-comments.nvim",    dependencies = "nvim-lua/plenary.nvim" },
+    { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
     -- Status line
-    { "nvim-lualine/lualine.nvim",   dependencies = "nvim-tree/nvim-web-devicons" },
+    { "nvim-lualine/lualine.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
     -- Breadcrumbs
-    { "SmiteshP/nvim-navic",         dependencies = "neovim/nvim-lspconfig" },
+    { "SmiteshP/nvim-navic", dependencies = "neovim/nvim-lspconfig" },
 
     ---------------
     -- LSP / DAP --
@@ -92,7 +92,7 @@ local plugins = {
     {
         "turbio/bracey.vim",
         build = "npm install --prefix server",
-        cond = vim.fn.executable "npm" == 1,
+        cond = vim.fn.executable("npm") == 1,
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -102,7 +102,7 @@ local plugins = {
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
-                cond = vim.fn.executable "make" == 1,
+                cond = vim.fn.executable("make") == 1,
             },
         },
     },
@@ -131,14 +131,14 @@ local plugins = {
     -- Completion --
     ----------------
     {
-        "hrsh7th/nvim-cmp",                 -- Autocompletion
+        "hrsh7th/nvim-cmp", -- Autocompletion
         dependencies = {
-            "L3MON4D3/LuaSnip",             -- Snippet Engine
+            "L3MON4D3/LuaSnip", -- Snippet Engine
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",         -- LSP completion
+            "hrsh7th/cmp-nvim-lsp", -- LSP completion
             "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
-            "hrsh7th/cmp-buffer",           -- Buffer cmp source
-            "f3fora/cmp-spell",             -- Spell cmp source
+            "hrsh7th/cmp-buffer", -- Buffer cmp source
+            "f3fora/cmp-spell", -- Spell cmp source
             "mrcjkb/haskell-snippets.nvim", -- Haskell snippets
         },
     },
@@ -146,7 +146,7 @@ local plugins = {
 
 local opts = {}
 
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {
         "git",
@@ -159,4 +159,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "lazy".setup(plugins, opts)
+require("lazy").setup(plugins, opts)

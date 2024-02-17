@@ -13,6 +13,7 @@ in {
     extraPackages = with pkgs;
       [
         lua-language-server
+        stylua
         nodePackages.bash-language-server
         shellcheck
         nil

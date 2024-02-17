@@ -13,24 +13,13 @@ function M.eval()
     local modified = ""
     local readonly = ""
 
-    if vim.bo[buffer].readonly then
-        readonly = "[RO] "
-    end
+    if vim.bo[buffer].readonly then readonly = "[RO] " end
 
-    if vim.bo[buffer].modified then
-        modified = "[+] "
-    end
+    if vim.bo[buffer].modified then modified = "[+] " end
 
     bufname = fn.fnamemodify(bufname, ":p:~")
 
-    return "%="
-        .. "%#WinBarModified#"
-        .. readonly
-        .. modified
-        .. "%*"
-        .. "%#WinBarPath#"
-        .. bufname
-        .. "%*"
+    return "%=" .. "%#WinBarModified#" .. readonly .. modified .. "%*" .. "%#WinBarPath#" .. bufname .. "%*"
 end
 
 return M
