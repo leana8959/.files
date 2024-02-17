@@ -64,9 +64,6 @@ map("n", "<leader>ta", function() vim.cmd "Tabularize /=" end)
 map("n", "<leader>tc", function() vim.cmd "Tabularize /:" end)
 map("n", "<leader>tC", function() vim.cmd "Tabularize trailing_c_comments" end)
 
--- Twilight
-map("n", "<leader>tw", function() vim.cmd "Twilight" end)
-
 -- Gitsigns
 map("n", "<leader>gl",
     function()
@@ -107,6 +104,3 @@ autocmd("FileType", {
     pattern = "undotree",
     callback = function() map("n", "<leader>gb", ":q<CR>", { buffer = true }) end,
 })
-
--- color-picker
-map("n", "<C-c>", function() vim.cmd "CccPick" end, { silent = true })

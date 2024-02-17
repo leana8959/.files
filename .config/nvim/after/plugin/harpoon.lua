@@ -1,19 +1,18 @@
-require "harpoon".setup()
+local harpoon = require "harpoon"
+local map     = vim.keymap.set
 
-local ui   = require "harpoon.ui"
-local mark = require "harpoon.mark"
-local map  = vim.keymap.set
+harpoon:setup()
 
 -- add and view
-map({ "n", "i" }, "<A-c>", function() mark.add_file() end)
-map({ "n", "i" }, "<A-g>", function() ui.toggle_quick_menu() end)
+map({ "n", "i" }, "<A-c>", function() harpoon:list():append() end)
+map({ "n", "i" }, "<A-g>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 -- switch it up!
-map({ "n", "i" }, "<A-h>", function() ui.nav_file(1) end)
-map({ "n", "i" }, "<A-t>", function() ui.nav_file(2) end)
-map({ "n", "i" }, "<A-n>", function() ui.nav_file(3) end)
-map({ "n", "i" }, "<A-s>", function() ui.nav_file(4) end)
-map({ "n", "i" }, "<A-m>", function() ui.nav_file(5) end)
-map({ "n", "i" }, "<A-w>", function() ui.nav_file(6) end)
-map({ "n", "i" }, "<A-v>", function() ui.nav_file(7) end)
-map({ "n", "i" }, "<A-z>", function() ui.nav_file(8) end)
+map({ "n", "i" }, "<A-h>", function() harpoon:list():select(1) end)
+map({ "n", "i" }, "<A-t>", function() harpoon:list():select(2) end)
+map({ "n", "i" }, "<A-n>", function() harpoon:list():select(3) end)
+map({ "n", "i" }, "<A-s>", function() harpoon:list():select(4) end)
+map({ "n", "i" }, "<A-m>", function() harpoon:list():select(5) end)
+map({ "n", "i" }, "<A-w>", function() harpoon:list():select(6) end)
+map({ "n", "i" }, "<A-v>", function() harpoon:list():select(7) end)
+map({ "n", "i" }, "<A-z>", function() harpoon:list():select(8) end)

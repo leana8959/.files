@@ -2,17 +2,20 @@ local plugins = {
     ----------------------
     -- Misc / utilities --
     ----------------------
-    "nvim-tree/nvim-web-devicons", -- Icons
-    "tpope/vim-sleuth",            -- Tab / Space detection
-    "tpope/vim-surround",          -- Surround motions
-    "tpope/vim-fugitive",          -- Git util
-    "windwp/nvim-autopairs",       -- Pair symbols
-    "mbbill/undotree",             -- Treeview of history
-    "godlygeek/tabular",           -- Vertical alignment
-    "uga-rosa/ccc.nvim",           -- Color picker
-    "stevearc/oil.nvim",           -- File manager
+    "nvim-tree/nvim-web-devicons",                                             -- Icons
+    "tpope/vim-sleuth",                                                        -- Tab / Space detection
+    "tpope/vim-surround",                                                      -- Surround motions
+    "tpope/vim-fugitive",                                                      -- Git util
+    { "windwp/nvim-autopairs", event = "InsertEnter" },                        -- Pair symbols
+    "mbbill/undotree",                                                         -- Treeview of history
+    "godlygeek/tabular",                                                       -- Vertical alignment
+    { "stevearc/oil.nvim",     dependencies = "nvim-tree/nvim-web-devicons" }, -- File manager
     -- `gc` to comment
-    { "numToStr/Comment.nvim",       opts = {} },
+    {
+        "numToStr/Comment.nvim",
+        opts = {},
+        lazy = false,
+    },
     -- Jump anywhere
     {
         "ggandor/leap.nvim",
@@ -33,27 +36,30 @@ local plugins = {
     ----------------
     -- Style / UI --
     ----------------
-    "folke/twilight.nvim",                            -- Zen mode
     { "shortcuts/no-neck-pain.nvim", version = "*" }, -- Align buffer
     "lewis6991/gitsigns.nvim",                        -- Gitsigns in gutter
     "NvChad/nvim-colorizer.lua",                      -- Show color
     -- Jump like a ninja
-    { "ThePrimeagen/harpoon",     dependencies = "nvim-lua/plenary.nvim" },
+    {
+        "ThePrimeagen/harpoon",
+        dependencies = "nvim-lua/plenary.nvim",
+        branch = "harpoon2",
+    },
     -- Highlight comments
-    { "folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim" },
+    { "folke/todo-comments.nvim",    dependencies = "nvim-lua/plenary.nvim" },
     -- Status line
-    "nvim-lualine/lualine.nvim",
+    { "nvim-lualine/lualine.nvim",   dependencies = "nvim-tree/nvim-web-devicons" },
     -- Breadcrumbs
-    { "SmiteshP/nvim-navic",      dependencies = "neovim/nvim-lspconfig" },
+    { "SmiteshP/nvim-navic",         dependencies = "neovim/nvim-lspconfig" },
 
     ---------------
     -- LSP / DAP --
     ---------------
     {
-        "neovim/nvim-lspconfig",                     -- (official) basic LSP Configuration & Plugins
+        "neovim/nvim-lspconfig", -- (official) basic LSP Configuration & Plugins
         dependencies = {
-            { "j-hui/fidget.nvim", tag = "legacy" }, -- LSP Spinner
-            "folke/neodev.nvim",                     -- Additional lua configuration
+            "j-hui/fidget.nvim", -- LSP Spinner
+            "folke/neodev.nvim", -- Additional lua configuration
         },
     },
     "mfussenegger/nvim-dap", -- DAP
@@ -62,8 +68,10 @@ local plugins = {
     -- Language specific --
     -----------------------
     "mfussenegger/nvim-jdtls",
-    { "scalameta/nvim-metals",    dependencies = "nvim-lua/plenary.nvim" },
-    { "simrat39/rust-tools.nvim", dependencies = "neovim/nvim-lspconfig" },
+    {
+        "scalameta/nvim-metals",
+        dependencies = "nvim-lua/plenary.nvim",
+    },
     {
         "mrcjkb/rustaceanvim",
         version = "^4",
@@ -84,15 +92,17 @@ local plugins = {
     {
         "turbio/bracey.vim",
         build = "npm install --prefix server",
+        cond = vim.fn.executable "npm" == 1,
     },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = { "nvim-lua/plenary.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
-                cond = (vim.fn.executable "make" == 1),
+                cond = vim.fn.executable "make" == 1,
             },
         },
     },
@@ -106,20 +116,15 @@ local plugins = {
         build = ":TSUpdate",
     },
     "nvim-treesitter/nvim-treesitter-context",
-    { "nvim-treesitter/playground",                enabled = false },
-
 
     -----------
     -- Games --
     -----------
-    "ThePrimeagen/vim-be-good",
-    "Eandrju/cellular-automaton.nvim",
     "wakatime/vim-wakatime",
 
     ------------------
     -- Colorschemes --
     ------------------
-    "owickstrom/vim-colors-paramount",
     { "https://git.earth2077.fr/leana/curry.nvim", branch = "lua" },
 
     ----------------
@@ -132,7 +137,7 @@ local plugins = {
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",         -- LSP completion
             "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
-            "hrsh7th/cmp-buffer",           -- Buffer cmp Source
+            "hrsh7th/cmp-buffer",           -- Buffer cmp source
             "f3fora/cmp-spell",             -- Spell cmp source
             "mrcjkb/haskell-snippets.nvim", -- Haskell snippets
         },
