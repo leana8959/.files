@@ -116,8 +116,7 @@ vim.diagnostic.config { virtual_text = false, severity_sort = true }
 vim.lsp.set_log_level "off"
 
 -- Gutter symbols setup
-vim.fn.sign_define("DiagnosticSignError",
-    { text = "E", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn", { text = "W", texthl = "DiagnosticSignWarn", numhl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignHint", { text = "H", texthl = "DiagnosticSignHint", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { text = "·", texthl = "DiagnosticSignInfo", numhl = "DiagnosticSignInfo" })
@@ -129,7 +128,7 @@ capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
 ----------
 -- Init --
 ----------
-require "fidget".setup { text = { spinner = "dots" } }
+require "fidget".setup()
 require "neodev".setup()
 
 -- Folding
