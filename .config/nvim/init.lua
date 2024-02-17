@@ -1,7 +1,7 @@
-require "maps"
-require "opts"
-require "cmds"
+require("maps")
+require("opts")
+require("cmds")
 
-require "_lazy"
+require("_lazy")
 
-vim.cmd.colorscheme "curry"
+vim.cmd.colorscheme("curry")

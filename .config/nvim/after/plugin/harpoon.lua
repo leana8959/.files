@@ -1,5 +1,5 @@
-local harpoon = require "harpoon"
-local map     = vim.keymap.set
+local harpoon = require("harpoon")
+local map = vim.keymap.set
 
 harpoon:setup()
 

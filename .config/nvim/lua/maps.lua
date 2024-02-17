@@ -1,9 +1,9 @@
-vim.g.mapleader      = " "
+vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-local map            = vim.keymap.set
-local unmap          = vim.keymap.del
-local autocmd        = vim.api.nvim_create_autocmd
+local map = vim.keymap.set
+local unmap = vim.keymap.del
+local autocmd = vim.api.nvim_create_autocmd
 
 -- Move
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -26,20 +26,20 @@ map({ "n", "x", "v" }, "<leader>y", '"+y')
 -- Only use gj et al. when needed
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("n", "<leader>w", function() vim.cmd "setlocal invwrap" end)
+map("n", "<leader>w", function() vim.cmd("setlocal invwrap") end)
 
 -- Replace selected token
 map("v", "<leader>r", [["ry:%s/\(<C-r>r\)//g<Left><Left>]])
 
-map("n", "<leader>pv", function() vim.cmd "Oil" end)         -- Project View
-map("n", "<leader>nf", function() vim.cmd "enew" end)        -- New File
-map("n", "<leader>so", function() vim.cmd "so %" end)        -- Source buffer
-map("c", "#capl", [[\(.\{-}\)]])                             -- helpers in regex
+map("n", "<leader>pv", function() vim.cmd("Oil") end) -- Project View
+map("n", "<leader>nf", function() vim.cmd("enew") end) -- New File
+map("n", "<leader>so", function() vim.cmd("so %") end) -- Source buffer
+map("c", "#capl", [[\(.\{-}\)]]) -- helpers in regex
 map("c", "#capm", [[\(.*\)]])
-map("n", "<leader>+x", function() vim.cmd "!chmod +x %" end) -- Permission
-map("n", "<leader>-x", function() vim.cmd "!chmod -x %" end)
-map("n", "<leader>hg", function() vim.cmd "Inspect" end)     -- Highlight Group
-map("n", "Q", "<nop>")                                       -- *do not* repeat the last recorded register [count] times.
+map("n", "<leader>+x", function() vim.cmd("!chmod +x %") end) -- Permission
+map("n", "<leader>-x", function() vim.cmd("!chmod -x %") end)
+map("n", "<leader>hg", function() vim.cmd("Inspect") end) -- Highlight Group
+map("n", "Q", "<nop>") -- *do not* repeat the last recorded register [count] times.
 
 -- Diagnostics
 map("n", "<leader>e", vim.diagnostic.open_float)
@@ -60,21 +60,19 @@ map("n", "<S-Right>", "<cmd>vertical resize +2<cr>")
 -------------
 
 -- Tabular
-map("n", "<leader>ta", function() vim.cmd "Tabularize /=" end)
-map("n", "<leader>tc", function() vim.cmd "Tabularize /:" end)
-map("n", "<leader>tC", function() vim.cmd "Tabularize trailing_c_comments" end)
+map("n", "<leader>ta", function() vim.cmd("Tabularize /=") end)
+map("n", "<leader>tc", function() vim.cmd("Tabularize /:") end)
+map("n", "<leader>tC", function() vim.cmd("Tabularize trailing_c_comments") end)
 
 -- Gitsigns
-map("n", "<leader>gl",
-    function()
-        vim.cmd "Gitsigns toggle_numhl"
-        vim.cmd "Gitsigns toggle_signs"
-    end
-)
+map("n", "<leader>gl", function()
+    vim.cmd("Gitsigns toggle_numhl")
+    vim.cmd("Gitsigns toggle_signs")
+end)
 
 -- Fugitive
-map("n", "<leader>gP", function() vim.cmd "G push" end)
-map("n", "<leader>gp", function() vim.cmd "G pull" end)
+map("n", "<leader>gP", function() vim.cmd("G push") end)
+map("n", "<leader>gp", function() vim.cmd("G pull") end)
 
 map("n", "<leader><space>", ":Git<CR>5<Down>")
 map("n", "<leader>gu", ":diffget //2<CR>")
@@ -93,12 +91,12 @@ autocmd("FileType", {
 map("n", "<leader>z", ":NoNeckPain<CR>")
 
 -- Todo-Comments
-map("n", "<leader>td", function() vim.cmd "TodoTelescope" end)
+map("n", "<leader>td", function() vim.cmd("TodoTelescope") end)
 
 -- Undotree
 map("n", "<leader>u", function()
-    vim.cmd "UndotreeToggle"
-    vim.cmd "UndotreeFocus"
+    vim.cmd("UndotreeToggle")
+    vim.cmd("UndotreeFocus")
 end)
 autocmd("FileType", {
     pattern = "undotree",

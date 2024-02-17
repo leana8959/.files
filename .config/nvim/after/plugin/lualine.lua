@@ -2,7 +2,7 @@ local function diagnostic_message()
     local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
     local ds = vim.diagnostic.get(0, { lnum = row - 1 })
     if #ds >= 1 then
-        return ds[1].message:gsub("%%", "%%%%");
+        return ds[1].message:gsub("%%", "%%%%")
     else
         return ""
     end
@@ -18,13 +18,12 @@ local grey = {
 }
 
 local curry_theme = {
-    normal   = grey,
-    insert   = grey,
-    visual   = grey,
-    replace  = grey,
+    normal = grey,
+    insert = grey,
+    visual = grey,
+    replace = grey,
     inactive = grey,
 }
-
 
 local sections = {
     lualine_a = {},
@@ -42,29 +41,29 @@ local sections = {
     lualine_z = { "progress", "branch" },
 }
 
-require "lualine".setup {
-    options           = {
-        icons_enabled        = true,
-        theme                = curry_theme,
+require("lualine").setup {
+    options = {
+        icons_enabled = true,
+        theme = curry_theme,
         component_separators = {},
-        section_separators   = {},
-        disabled_filetypes   = {
+        section_separators = {},
+        disabled_filetypes = {
             statusline = { "fugitive" },
-            winbar     = { "fugitive" },
+            winbar = { "fugitive" },
         },
-        ignore_focus         = {},
+        ignore_focus = {},
         always_divide_middle = true,
-        globalstatus         = false,
-        refresh              = {
+        globalstatus = false,
+        refresh = {
             statusline = 1000,
-            tabline    = 1000,
-            winbar     = 1000,
+            tabline = 1000,
+            winbar = 1000,
         },
     },
-    sections          = sections,
+    sections = sections,
     inactive_sections = sections,
-    winbar            = {},
-    inactive_winbar   = {},
-    tabline           = {},
-    extensions        = {},
+    winbar = {},
+    inactive_winbar = {},
+    tabline = {},
+    extensions = {},
 }

@@ -1,81 +1,69 @@
-local map                             = vim.keymap.set
+local map = vim.keymap.set
 
 ----------------------
 -- Language servers --
 ----------------------
 -- NOTE: put settings into `settings`
 -- use another `on_attach` field if needed
-local servers                         = {
-    bashls    = {}, -- Bash
-    clangd    = {}, -- C/CPP
-    cssls     = {}, -- CSS
-    html      = {}, -- HTML
-    jsonls    = {}, -- JSON
-    lemminx   = {}, -- XML
-    marksman  = {}, -- Markdown
-    phpactor  = {}, -- PHP
-    pylsp     = {}, -- Python
-    pyright   = {},
-    taplo     = {}, -- TOML
-    texlab    = {}, -- texlab
-    tsserver  = {}, -- TypeScript
-    vimls     = {}, -- Vim Script
-    ocamllsp  = {}, -- OCaml
+local servers = {
+    bashls = {}, -- Bash
+    clangd = {}, -- C/CPP
+    cssls = {}, -- CSS
+    html = {}, -- HTML
+    jsonls = {}, -- JSON
+    lemminx = {}, -- XML
+    marksman = {}, -- Markdown
+    phpactor = {}, -- PHP
+    pylsp = {}, -- Python
+    pyright = {},
+    taplo = {}, -- TOML
+    texlab = {}, -- texlab
+    tsserver = {}, -- TypeScript
+    vimls = {}, -- Vim Script
+    ocamllsp = {}, -- OCaml
 
-    typst_lsp = {   -- Typst
+    typst_lsp = { -- Typst
         settings = {
-            root_dir =
-                vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1])
-                or vim.loop.cwd(),
+            root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]) or vim.loop.cwd(),
             exportPdf = "never",
         },
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
-                vim.cmd ":w"
-                vim.cmd [[silent exec "!typstfmt %"]]
-                vim.cmd ":e"
+                vim.cmd(":w")
+                vim.cmd([[silent exec "!typstfmt %"]])
+                vim.cmd(":e")
             end, { buffer = bufno })
         end,
     },
 
-    lua_ls    = { -- Lua
-        settings = {
-            Lua = {
-                format = {
-                    defaultConfig = {
-                        -- Learn more:
-                        -- https://github.com/CppCXY/EmmyLuaCodeStyle/blob/master/docs/format_config.md
-                        indent_style             = "space",
-                        quote_style              = "double",
-                        call_arg_parentheses     = "remove",
-                        trailing_table_separator = "smart",
-                    },
-                },
-            },
-        },
-    },
-
-    nil_ls    = { -- Nix
+    lua_ls = { -- Lua
         on_attach = function(_, bufno)
-            vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
-            map("n", "<leader>f",
-                function()
-                    vim.cmd ":w"
-                    vim.cmd [[silent exec "!alejandra %"]]
-                    vim.cmd ":e"
-                end,
-                { buffer = bufno })
+            map("n", "<leader>f", function()
+                vim.cmd(":w")
+                vim.cmd([[silent exec "!stylua %"]])
+                vim.cmd(":e")
+            end, { buffer = bufno })
         end,
     },
 
+    nil_ls = { -- Nix
+        on_attach = function(_, bufno)
+            vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
+            map("n", "<leader>f", function()
+                vim.cmd(":w")
+                vim.cmd([[silent exec "!alejandra %"]])
+                vim.cmd(":e")
+            end, { buffer = bufno })
+        end,
+    },
 }
 
 -------------
 -- Helpers --
 -------------
-local on_attach                       = function(client, bufno)
+local on_attach = function(client, bufno)
     vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    local ts = require "telescope.builtin"
+    local ts = require("telescope.builtin")
     local opts = { buffer = bufno }
 
     map("n", "K", vim.lsp.buf.hover, opts)
@@ -90,17 +78,19 @@ local on_attach                       = function(client, bufno)
     map("n", "<leader>r", vim.lsp.buf.rename, opts)
     map("n", "<leader>f", function() vim.lsp.buf.format { async = true } end, opts)
 
-    if client.server_capabilities.documentSymbolProvider then
-        require "nvim-navic".attach(client, bufno)
-    end
+    if client.server_capabilities.documentSymbolProvider then require("nvim-navic").attach(client, bufno) end
 end
 
 -- Helix style border
-local border                          = {
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
-    { " ", "FloatBorder" }, { " ", "FloatBorder" },
+local border = {
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
+    { " ", "FloatBorder" },
 }
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -113,7 +103,7 @@ end
 vim.diagnostic.config { virtual_text = false, severity_sort = true }
 
 -- Set log level
-vim.lsp.set_log_level "off"
+vim.lsp.set_log_level("off")
 
 -- Gutter symbols setup
 vim.fn.sign_define("DiagnosticSignError", { text = "E", texthl = "DiagnosticSignError", numhl = "DiagnosticSignError" })
@@ -123,18 +113,18 @@ vim.fn.sign_define("DiagnosticSignInfo", { text = "·", texthl = "DiagnosticSign
 
 -- Capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require "cmp_nvim_lsp".default_capabilities(capabilities)
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 ----------
 -- Init --
 ----------
-require "fidget".setup()
-require "neodev".setup()
+require("fidget").setup()
+require("neodev").setup()
 
 -- Folding
 capabilities.textDocument.foldingRange = {
     dynamicRegistration = false,
-    lineFoldingOnly     = true,
+    lineFoldingOnly = true,
 }
 local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
@@ -163,13 +153,13 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
     table.insert(newVirtText, { suffix, "MoreMsg" })
     return newVirtText
 end
-require "ufo".setup { fold_virt_text_handler = handler }
+require("ufo").setup { fold_virt_text_handler = handler }
 
 for k, v in pairs(servers) do
-    require "lspconfig"[k].setup {
+    require("lspconfig")[k].setup {
         capabilities = capabilities,
-        settings     = v.settings,
-        on_attach    = function(client, bufno)
+        settings = v.settings,
+        on_attach = function(client, bufno)
             on_attach(client, bufno)
             v.on_attach(client, bufno)
         end,
@@ -187,26 +177,25 @@ local config = {
         -- https://github.com/NixOS/nixpkgs/issues/232822#issuecomment-1564243667
         -- `-data` argument is necessary
         "jdtls",
-        "-data", vim.fn.expand "~/.cache/jdtls" .. vim.fn.expand "%:p:h",
+        "-data",
+        vim.fn.expand("~/.cache/jdtls") .. vim.fn.expand("%:p:h"),
     },
     root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 }
 local jdtls_group = vim.api.nvim_create_augroup("jdtls", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "java" },
-    callback = function()
-        require "jdtls".start_or_attach(config)
-    end,
+    callback = function() require("jdtls").start_or_attach(config) end,
     group = jdtls_group,
 })
 
 -- Scala
-local metals = require "metals"
+local metals = require("metals")
 local metals_config = metals.bare_config()
 metals_config.capabilities = capabilities
 metals_config.settings.useGlobalExecutable = true
 
-require "dap".configurations.scala = {
+require("dap").configurations.scala = {
     {
         type = "scala",
         request = "launch",
@@ -226,22 +215,20 @@ metals_config.on_attach = function(client, bufnr)
 
     map("n", "<leader>ws", metals.hover_worksheet)
 
-    map("n", "<leader>dc", require "dap".continue)
-    map("n", "<leader>dr", require "dap".repl.toggle)
-    map("n", "<leader>dK", require "dap.ui.widgets".hover)
-    map("n", "<leader>dt", require "dap".toggle_breakpoint)
-    map("n", "<leader>dso", require "dap".step_over)
-    map("n", "<leader>dsi", require "dap".step_into)
-    map("n", "<leader>dl", require "dap".run_last)
+    map("n", "<leader>dc", require("dap").continue)
+    map("n", "<leader>dr", require("dap").repl.toggle)
+    map("n", "<leader>dK", require("dap.ui.widgets").hover)
+    map("n", "<leader>dt", require("dap").toggle_breakpoint)
+    map("n", "<leader>dso", require("dap").step_over)
+    map("n", "<leader>dsi", require("dap").step_into)
+    map("n", "<leader>dl", require("dap").run_last)
 
     on_attach(client, bufnr)
 end
 local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "scala", "sbt" },
-    callback = function()
-        require "metals".initialize_or_attach(metals_config)
-    end,
+    callback = function() require("metals").initialize_or_attach(metals_config) end,
     group = nvim_metals_group,
 })
 
@@ -256,7 +243,7 @@ vim.g.haskell_tools = {
     },
     hls = {
         on_attach = function(client, bufnr)
-            local ht = require "haskell-tools"
+            local ht = require("haskell-tools")
             local opts = { buffer = bufnr }
 
             map("n", "<leader>hhe", ht.lsp.buf_eval_all, opts)
@@ -268,7 +255,7 @@ vim.g.haskell_tools = {
         end,
         default_settings = {
             haskell = {
-                formattingProvider      = "fourmolu",
+                formattingProvider = "fourmolu",
                 cabalFormattingProvider = "cabal-fmt",
             },
         },

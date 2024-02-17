@@ -9,20 +9,16 @@ autocmd("TextYankPost", { callback = vim.highlight.on_yank })
 
 autocmd("FileType", {
     pattern = { "markdown", "tex", "typst" },
-    callback =
-        function()
-            vim.opt_local["shiftwidth"] = 2
-            vim.opt_local["tabstop"] = 2
-            vim.opt_local["textwidth"] = 80
-        end,
+    callback = function()
+        vim.opt_local["shiftwidth"] = 2
+        vim.opt_local["tabstop"] = 2
+        vim.opt_local["textwidth"] = 80
+    end,
 })
 
 autocmd("FileType", {
     pattern = "asm",
-    callback =
-        function()
-            vim.opt_local["commentstring"] = "# %s"
-        end,
+    callback = function() vim.opt_local["commentstring"] = "# %s" end,
 })
 
 autocmd("FileType", {
@@ -30,9 +26,9 @@ autocmd("FileType", {
     callback = function()
         vim.opt_local["commentstring"] = "(* %s *)"
         vim.keymap.set({ "n" }, "<leader>f", function()
-            vim.cmd "w "
-            vim.cmd "silent exec '!necroprint % -o %'"
-            vim.cmd "e "
+            vim.cmd("w ")
+            vim.cmd("silent exec '!necroprint % -o %'")
+            vim.cmd("e ")
         end, { buffer = true, silent = true })
     end,
 })
@@ -42,9 +38,9 @@ autocmd("FileType", {
     callback = function()
         vim.opt_local["list"] = false
         return vim.keymap.set({ "n" }, "<leader>f", function()
-            vim.cmd "w "
-            vim.cmd "silent exec '!fnlfmt --fix %'"
-            vim.cmd "e "
+            vim.cmd("w ")
+            vim.cmd("silent exec '!fnlfmt --fix %'")
+            vim.cmd("e ")
         end, { buffer = true, silent = true })
     end,
 })
@@ -83,17 +79,15 @@ autocmd("OptionSet", {
 })
 
 usercmd("Retab", function(opts)
-    if (#opts.fargs ~= 2) then
-        return print "should have exactly two argument: [src] and [dst]"
-    end
+    if #opts.fargs ~= 2 then return print("should have exactly two argument: [src] and [dst]") end
     local src = tonumber(opts.fargs[1])
     local dst = tonumber(opts.fargs[2])
     vim.opt["shiftwidth"] = src
     vim.opt["tabstop"] = src
     vim.opt["expandtab"] = false
-    vim.cmd "%retab! "
+    vim.cmd("%retab! ")
     vim.opt["shiftwidth"] = dst
     vim.opt["tabstop"] = dst
     vim.opt["expandtab"] = true
-    vim.cmd "%retab! "
+    vim.cmd("%retab! ")
 end, { nargs = "+" })
