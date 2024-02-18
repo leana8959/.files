@@ -46,16 +46,32 @@
             "brst",  # (* *)
             "logic", # \/ /\
         ]
+        disables = [
+            "lteq", # <=
+            "gteq", # >=
+        ]
+
+        [buildPlans.${pname}.variants.design]
+        capital-z = 'straight-serifless-with-crossbar'
+        capital-m = 'hanging-motion-serifed'
+        capital-n = 'standard-motion-serifed'
+        capital-q = 'crossing'
+        m = 'top-left-serifed'
+        n = 'straight-top-left-serifed'
+        lower-lambda = 'tailed-turn'
+        seven = 'straight-serifless-crossbar'
+        number-sign = 'slanted'
+        ampersand = "upper-open"
+        dollar = 'open'
+        percent = 'rings-continuous-slash-also-connected'
       '';
     };
 in {
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["CascadiaCode"];})
-
     (mkNerdFont hiosevka)
-    hiosevka
 
     lmodern
     cascadia-code
+    hiosevka
   ];
 }
