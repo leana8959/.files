@@ -62,6 +62,7 @@ in {
       rsync
       # coreutils
       uutils-coreutils-noprefix
+      parallel
 
       # nix
       alejandra
