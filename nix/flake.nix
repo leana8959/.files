@@ -1,28 +1,28 @@
 {
   outputs = {...} @ inputs: let
-    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager;
-  in {
-    nixosConfigurations = {
-      nixie = mkNixOS "nixie" "x86_64-linux" {
-        extraLanguageServers = true;
-        extraUtils = true;
-        enableCmus = true;
-        universityTools = true;
+    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager myPackages;
+    confs = {
+      nixosConfigurations = {
+        nixie = mkNixOS "nixie" "x86_64-linux" {
+          extraLanguageServers = true;
+          extraUtils = true;
+          enableCmus = true;
+          universityTools = true;
+        };
+      };
+      homeConfigurations = {
+        "macOS" = mkHomeManager "macOS" "aarch64-darwin" {
+          extraLanguageServers = true;
+          extraUtils = true;
+          enableCmus = true;
+          universityTools = true;
+        };
+        "pi4" = mkHomeManager "pi4" "aarch64-linux" {};
+        "oracle" = mkHomeManager "oracle" "aarch64-linux" {};
       };
     };
-
-    homeConfigurations = {
-      "macOS" = mkHomeManager "macOS" "aarch64-darwin" {
-        extraLanguageServers = true;
-        extraUtils = true;
-        enableCmus = true;
-        universityTools = true;
-      };
-
-      "pi4" = mkHomeManager "pi4" "aarch64-linux" {};
-      "oracle" = mkHomeManager "oracle" "aarch64-linux" {};
-    };
-  };
+  in
+    myPackages // confs;
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -31,6 +31,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     wired.url = "github:Toqozz/wired-notify";
     agenix.url = "github:ryantm/agenix/0.15.0";
     nixnur.url = "github:nix-community/NUR";

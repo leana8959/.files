@@ -3,6 +3,7 @@
   nixunstable,
   nixnur,
   home-manager,
+  flake-utils,
   agenix,
   wired,
   audio-lint,
@@ -24,7 +25,7 @@
     universityTools = false;
   };
 
-  mkArgs = system: hostname: let
+  mkArgs = system: let
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfreePredicate = pkg:
@@ -39,19 +40,20 @@
       nurpkgs = pkgs;
     };
     mypkgs = import ./mypkgs {
-      inherit pkgs;
-      inherit unstable;
-      inherit opam-nix;
+      inherit pkgs unstable opam-nix;
     };
   in {
-    inherit hostname pkgs unstable nur mypkgs;
+    inherit pkgs unstable nur mypkgs;
     wired = wired.packages.${system};
     agenix = agenix.packages.${system};
     audio-lint = audio-lint.defaultPackage.${system};
   };
 in {
   mkNixOS = hostname: system: extraSettings: let
-    args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
+    args =
+      (mkArgs system)
+      // {inherit hostname;}
+      // (defaultExtraSettings // extraSettings);
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
@@ -71,11 +73,22 @@ in {
   });
 
   mkHomeManager = hostname: system: extraSettings: let
-    args = (mkArgs system hostname) // (defaultExtraSettings // extraSettings);
+    args =
+      (mkArgs system)
+      // {inherit hostname;}
+      // (defaultExtraSettings // extraSettings);
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
       modules = [./home/common (./home/leana + "@${hostname}")];
     };
+
+  myPackages = flake-utils.lib.eachDefaultSystem (system: let
+    inherit (mkArgs system) mypkgs;
+  in {
+    packages = {
+      inherit (mypkgs) hiosevka hiosevka-nerd-font;
+    };
+  });
 }
