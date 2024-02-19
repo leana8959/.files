@@ -7,6 +7,18 @@ This repo is managed with Nix + GNU stow (for neovim)
 - `starship`
 - `fish`
 
+# Packages
+This repository exports (some of) my custom packages.
+For example, use
+```bash
+nix build -L "git+https://git.earth2077.fr/leana/.files?dir=nix#hiosevka-nerd-font"
+```
+To build hIosevka, Iosevka with Haskell ligatures.
+
+# Layout
+My [dvorak french](https://github.com/leana8959/dvorak-french) layout has been
+ported to linux using nix.
+
 # Theme
 I have made a theme (a fork of Atom's one-light) all my tools are visually
 unified.
