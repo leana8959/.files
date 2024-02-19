@@ -1,0 +1,27 @@
+[buildPlans.hiosevka]
+family = "hIosekva"
+spacing = "term"
+serifs = "sans"
+
+[buildPlans.hiosevka.ligations]
+inherits = "haskell"
+enables = [
+    "brst",          # (* *)
+    "logic",         # \/ /\
+    "lteq-separate", # <=
+    "gteq-separate", # >=
+]
+disables = [
+    "lteq", # <=
+    "gteq", # >=
+]
+
+[buildPlans.hiosevka.variants.design]
+capital-z = 'straight-serifless-with-crossbar'
+capital-q = 'crossing'
+lower-lambda = 'tailed-turn'
+seven = 'straight-serifless-crossbar'
+number-sign = 'slanted'
+ampersand = "upper-open"
+dollar = 'open'
+percent = 'rings-continuous-slash-also-connected'

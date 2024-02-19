@@ -40,6 +40,7 @@
     };
     mypkgs = import ./mypkgs {
       inherit pkgs;
+      inherit unstable;
       inherit opam-nix;
     };
   in {
