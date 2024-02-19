@@ -20,7 +20,6 @@
             --careful \
             --complete \
             --quiet \
-            --adjust-line-height \
             --no-progressbars \
             --outputdir nerd-font
       '';
@@ -38,6 +37,8 @@
     .override {
       set = pname;
       # https://github.com/be5invis/Iosevka/blob/main/doc/custom-build.md
+      # Use `term` spacing to avoid dashed arrow issue
+      # https://github.com/ryanoasis/nerd-fonts/issues/1018
       privateBuildPlan = ''
         [buildPlans.${pname}]
         family = "hIosekva"
