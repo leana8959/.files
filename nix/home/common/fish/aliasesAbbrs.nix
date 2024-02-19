@@ -31,9 +31,9 @@
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
 
     # Home-Manager / NixOS
-    ns = "sudo nixos-rebuild switch --flake ~/.dotfiles/nix#nixie";
+    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#nixie";
     hp = "cd ~/.dotfiles/.config/home-manager && $EDITOR flake.nix && prevd";
-    hs = "home-manager switch --flake ~/.dotfiles/nix#macOS";
+    hs = "home-manager switch -L --flake ~/.dotfiles/nix#macOS";
     nsh = "nix-shell -p";
   };
   abbrsLinux = {
