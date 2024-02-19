@@ -53,7 +53,7 @@ in {
     args =
       (mkArgs system)
       // {inherit hostname;}
-      // (defaultExtraSettings // extraSettings);
+      // {settings = defaultExtraSettings // extraSettings;};
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
@@ -76,7 +76,7 @@ in {
     args =
       (mkArgs system)
       // {inherit hostname;}
-      // (defaultExtraSettings // extraSettings);
+      // {settings = defaultExtraSettings // extraSettings;};
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;

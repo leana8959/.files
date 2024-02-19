@@ -3,13 +3,11 @@
   unstable,
   mypkgs,
   lib,
-  enableCmus,
-  extraUtils,
-  universityTools,
-  helperFuncs,
+  settings,
   ...
 }: let
-  inherit (helperFuncs) if';
+  inherit (settings.helperFuncs) if';
+  inherit (settings) extraUtils enableCmus universityTools;
 in {
   home = {
     username = lib.mkDefault "leana";

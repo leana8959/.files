@@ -1,11 +1,11 @@
 {
   config,
   pkgs,
-  extraLanguageServers,
-  helperFuncs,
+  settings,
   ...
 }: let
-  inherit (helperFuncs) if';
+  inherit (settings.helperFuncs) if';
+  inherit (settings) extraLanguageServers;
 in {
   programs.neovim = {
     enable = true;
