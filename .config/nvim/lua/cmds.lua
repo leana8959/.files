@@ -83,22 +83,6 @@ autocmd("OptionSet", {
     callback = function() vim.o.colorcolumn = tostring(vim.o.textwidth) end,
 })
 
--- Toggle number
--- https://github.com/sitiom/nvim-numbertoggle/blob/main/plugin/numbertoggle.lua
-autocmd({ "BufEnter", "FocusGained", "WinEnter" }, {
-    pattern = "*",
-    callback = function()
-        if vim.o.nu then vim.opt.relativenumber = true end
-    end,
-})
-
-autocmd({ "BufLeave", "FocusLost", "WinLeave" }, {
-    pattern = "*",
-    callback = function()
-        if vim.o.nu then vim.opt.relativenumber = false end
-    end,
-})
-
 usercmd("Retab", function(opts)
     if #opts.fargs ~= 2 then return print("should have exactly two argument: [src] and [dst]") end
     local src = tonumber(opts.fargs[1])
