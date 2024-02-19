@@ -13,10 +13,14 @@
       nativeBuildInputs = [unstable.nerd-font-patcher pkgs.parallel];
       buildPhase = ''
         mkdir -p nerd-font
-        find \( -name \*.ttf -o -name \*.otf \) | parallel nerd-font-patcher {} \
+        find \( -name \*.ttf -o -name \*.otf \) | parallel nerd-font-patcher \
+            {} \
             --name {/.}-NF \
+            --use-single-width-glyphs \
+            --careful \
             --complete \
             --quiet \
+            --adjust-line-height \
             --no-progressbars \
             --outputdir nerd-font
       '';
@@ -37,7 +41,7 @@
       privateBuildPlan = ''
         [buildPlans.${pname}]
         family = "hIosekva"
-        spacing = "normal"
+        spacing = "term"
         serifs = "sans"
 
         [buildPlans.${pname}.ligations]
@@ -45,6 +49,8 @@
         enables = [
             "brst",  # (* *)
             "logic", # \/ /\
+            "lteq-separate", # <=
+            "gteq-separate", # >=
         ]
         disables = [
             "lteq", # <=
@@ -53,11 +59,7 @@
 
         [buildPlans.${pname}.variants.design]
         capital-z = 'straight-serifless-with-crossbar'
-        capital-m = 'hanging-motion-serifed'
-        capital-n = 'standard-motion-serifed'
         capital-q = 'crossing'
-        m = 'top-left-serifed'
-        n = 'straight-top-left-serifed'
         lower-lambda = 'tailed-turn'
         seven = 'straight-serifless-crossbar'
         number-sign = 'slanted'
