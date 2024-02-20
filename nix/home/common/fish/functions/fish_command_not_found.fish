@@ -6,6 +6,7 @@ set words                               \
         "Il est seulement $hour heures" \
         "Reveille-toi, $user"           \
         "Magique de vim !"              \
+        "Magique de nix !"              \
         "As-tu ecris ton journal aujourd'hui ?"
 
 set choice $words[(random 1 (count $words))]
