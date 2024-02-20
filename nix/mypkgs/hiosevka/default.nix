@@ -16,6 +16,7 @@
         mkdir -p nerd-font
         find \( -name \*.ttf -o -name \*.otf \) | parallel nerd-font-patcher \
             {} \
+            --name {/.}-NF \
             --use-single-width-glyphs \
             --careful \
             --complete \
