@@ -1,7 +1,6 @@
 {
   pkgs,
   unstable,
-  ...
 }: let
   mkNerdFont = font:
     pkgs.stdenv.mkDerivation {

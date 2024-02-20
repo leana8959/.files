@@ -40,7 +40,9 @@
       nurpkgs = pkgs;
     };
     mypkgs = import ./mypkgs {
-      inherit pkgs unstable opam-nix;
+      inherit pkgs unstable;
+      inherit system;
+      inherit opam-nix;
     };
   in {
     inherit pkgs unstable nur mypkgs;
@@ -84,11 +86,7 @@ in {
       modules = [./home/common (./home/leana + "@${hostname}")];
     };
 
-  myPackages = flake-utils.lib.eachDefaultSystem (system: let
-    inherit (mkArgs system) mypkgs;
-  in {
-    packages = {
-      inherit (mypkgs) hiosevka hiosevka-nerd-font;
-    };
-  });
+  myPackages =
+    flake-utils.lib.eachDefaultSystem
+    (system: {packages = (mkArgs system).mypkgs;});
 }
