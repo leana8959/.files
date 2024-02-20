@@ -1,14 +1,19 @@
 {
   pkgs,
   unstable,
+  system,
   opam-nix,
   ...
 }: {
-  logisim-evolution = pkgs.callPackage ./logisim-evolution.nix {};
-  necrolib = pkgs.callPackage ./necrolib.nix {inherit opam-nix;};
+  logisim-evolution = import ./logisim-evolution.nix {inherit pkgs;};
+
+  necrolib = import ./necrolib.nix {
+    inherit pkgs system;
+    inherit opam-nix;
+  };
 
   inherit
-    (pkgs.callPackage ./hiosevka {inherit unstable;})
+    (import ./hiosevka {inherit pkgs unstable;})
     hiosevka
     hiosevka-nerd-font
     ;
