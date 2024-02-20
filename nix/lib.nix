@@ -10,15 +10,7 @@
   opam-nix,
   ...
 }: let
-  helperFuncs = {
-    if' = cond: xs:
-      if cond
-      then xs
-      else [];
-  };
-
   defaultExtraSettings = {
-    inherit helperFuncs;
     extraLanguageServers = false;
     extraUtils = false;
     enableCmus = false;

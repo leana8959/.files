@@ -6,8 +6,8 @@
   settings,
   ...
 }: let
-  inherit (settings.helperFuncs) if';
   inherit (settings) extraUtils enableCmus universityTools;
+  inherit (pkgs) lib;
 in {
   home = {
     username = lib.mkDefault "leana";
@@ -29,7 +29,7 @@ in {
       ./neovim
       ./vim
     ]
-    ++ if' enableCmus [./cmus];
+    ++ lib.lists.optional enableCmus ./cmus;
 
   programs = {
     home-manager.enable = true;
@@ -70,7 +70,7 @@ in {
       tldr
       irssi
     ]
-    ++ if' extraUtils
+    ++ lib.lists.optionals extraUtils
     [
       unstable.opam
       unstable.cargo
@@ -80,7 +80,7 @@ in {
       tokei
       gnumake
     ]
-    ++ if' universityTools [
+    ++ lib.lists.optionals universityTools [
       mypkgs.logisim-evolution
       mypkgs.necrolib
       pkgs.rars
