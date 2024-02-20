@@ -4,8 +4,8 @@
   settings,
   ...
 }: let
-  inherit (settings.helperFuncs) if';
   inherit (settings) extraLanguageServers;
+  inherit (pkgs) lib;
 in {
   programs.neovim = {
     enable = true;
@@ -18,7 +18,7 @@ in {
         shellcheck
         nil
       ]
-      ++ if' extraLanguageServers [
+      ++ lib.lists.optionals extraLanguageServers [
         nodePackages.vim-language-server
         vscode-langservers-extracted # HTML/CSS/JSON/ESLint
         marksman
