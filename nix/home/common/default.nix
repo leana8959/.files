@@ -2,13 +2,13 @@
   pkgs,
   unstable,
   mypkgs,
-  lib,
   settings,
   ...
 }: let
   inherit (settings) extraUtils enableCmus universityTools;
   inherit (pkgs) lib;
 in {
+  programs.home-manager.enable = true;
   home = {
     username = lib.mkDefault "leana";
     homeDirectory = lib.mkDefault "/home/leana";
@@ -18,6 +18,7 @@ in {
   imports =
     [
       ./fish
+      ./direnv
 
       ./starship
       ./fzf
@@ -32,11 +33,6 @@ in {
     ++ lib.lists.optional enableCmus ./cmus;
 
   programs = {
-    home-manager.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
     atuin = {
       enable = true;
       settings = {
