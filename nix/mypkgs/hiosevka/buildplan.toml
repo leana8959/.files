@@ -6,10 +6,11 @@ serifs = "sans"
 [buildPlans.hiosevka.ligations]
 inherits = "haskell"
 enables = [
-    "brst",          # (* *)
-    "logic",         # \/ /\
-    "lteq-separate", # <=
-    "gteq-separate", # >=
+    "brst",           # (* *)
+    "logic",          # \/ /\
+    "lteq-separate",  # <=
+    "gteq-separate",  # >=
+    "slash-asterisk", # /* */
 ]
 disables = [
     "lteq", # <=
