@@ -18,10 +18,11 @@
   programs.git = {
     enable = true;
     extraConfig = {
-      init = {defaultBranch = "mistress";}; # haha gay haha
-      push = {autoSetupRemote = true;};
-      pull = {ff = "only";};
-      safe = {directory = "/etc/docker/compose";};
+      init.defaultBranch = "mistress"; # haha gay haha
+      push.autoSetupRemote = true;
+      pull.ff = "only";
+      rerere.enabled = true;
+      safe.directory = "/etc/docker/compose";
     };
     ignores = [
       "*~"
@@ -39,20 +40,21 @@
       key = "3659D5C87A4BC5D7699B37D84E887A4CA9714ADA";
       signByDefault = true;
     };
-    includes = [
-      {
-        condition = "gitdir:~/univ-repos/";
-        contents = {
-          user = {
-            name = "Léana CHIANG";
-            email = "leana.chiang@etudiant.univ-rennes.fr";
-            signingKey = "EB544A6442B3B6CE88CD859732035DB97E777EEB";
-          };
-          commit = {
-            gpgSign = true;
-          };
-        };
-      }
-    ];
   };
+
+  # university identity
+  programs.git.includes = [
+    {
+      condition = "gitdir:~/univ-repos/";
+      contents = {
+        init.defaultBranch = "main";
+        user = {
+          name = "Léana CHIANG";
+          email = "leana.chiang@etudiant.univ-rennes.fr";
+          signingKey = "EB544A6442B3B6CE88CD859732035DB97E777EEB";
+        };
+        commit.gpgSign = true;
+      };
+    }
+  ];
 }
