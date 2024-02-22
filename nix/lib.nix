@@ -1,15 +1,10 @@
 {
   nixpkgs,
   nixunstable,
-  nixnur,
   home-manager,
   flake-utils,
-  agenix,
-  wired,
-  audio-lint,
-  opam-nix,
   ...
-}: let
+} @ input: let
   defaultExtraSettings = {
     extraLanguageServers = false;
     extraUtils = false;
@@ -17,7 +12,7 @@
     universityTools = false;
   };
 
-  mkArgs = system: let
+  mkArgs = system: rec {
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfreePredicate = pkg:
@@ -27,20 +22,18 @@
         ];
     };
     unstable = import nixunstable {inherit system;};
-    nur = import nixnur {
+    nur = import input.nixnur {
       inherit pkgs;
       nurpkgs = pkgs;
     };
     mypkgs = import ./mypkgs {
       inherit pkgs unstable;
       inherit system;
-      inherit opam-nix;
+      inherit (input) opam-nix;
     };
-  in {
-    inherit pkgs unstable nur mypkgs;
-    wired = wired.packages.${system};
-    agenix = agenix.packages.${system};
-    audio-lint = audio-lint.defaultPackage.${system};
+    wired = input.wired.packages.${system};
+    agenix = input.agenix.packages.${system};
+    audio-lint = input.audio-lint.defaultPackage.${system};
   };
 in {
   mkNixOS = hostname: system: extraSettings: let
@@ -53,7 +46,7 @@ in {
     modules = [
       ./hosts/${hostname}/default.nix
       ./layouts
-      agenix.nixosModules.default
+      input.agenix.nixosModules.default
       home-manager.nixosModules.home-manager
       {
         home-manager = {
