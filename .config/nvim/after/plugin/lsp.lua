@@ -253,12 +253,10 @@ vim.g.haskell_tools = {
             vim.opt_local.shiftwidth = 2
             on_attach(client, bufnr)
         end,
-        default_settings = {
-            haskell = {
-                formattingProvider = "fourmolu",
-                cabalFormattingProvider = "cabal-fmt",
-            },
-        },
+        settings = function(project_root)
+            local ht = require("haskell-tools")
+            return ht.lsp.load_hls_settings(project_root, { settings_file_pattern = "hls.json" })
+        end,
     },
 }
 
