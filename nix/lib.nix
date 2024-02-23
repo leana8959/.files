@@ -74,4 +74,8 @@ in {
   myPackages =
     flake-utils.lib.eachDefaultSystem
     (system: {packages = (mkArgs system).mypkgs;});
+
+  formatter =
+    flake-utils.lib.eachDefaultSystem
+    (system: {formatter = (mkArgs system).pkgs.alejandra;});
 }
