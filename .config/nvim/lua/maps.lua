@@ -12,6 +12,8 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 -- Centered motions
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
+map("n", "gd", "gdzz")
+map("n", "``", "``zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "J", "mzJ`z")
