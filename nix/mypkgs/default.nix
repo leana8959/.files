@@ -15,6 +15,7 @@
   inherit
     (import ./hiosevka {inherit pkgs unstable;})
     hiosevka
-    hiosevka-nerd-font
+    hiosevka-nerd-font-mono
+    hiosevka-nerd-font-propo
     ;
 }
