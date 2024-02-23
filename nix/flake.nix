@@ -1,6 +1,6 @@
 {
   outputs = {...} @ inputs: let
-    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager myPackages;
+    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager myPackages formatter;
     myConfigs = {
       nixosConfigurations = {
         nixie = mkNixOS "nixie" "x86_64-linux" {
@@ -22,7 +22,7 @@
       };
     };
   in
-    myPackages // myConfigs;
+    myPackages // myConfigs // formatter;
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
