@@ -11,9 +11,9 @@ This repo is managed with Nix + GNU stow (for neovim)
 This repository exports (some of) my custom packages.
 For example, use
 ```bash
-nix build -L "git+https://git.earth2077.fr/leana/.files?dir=nix#hiosevka-nerd-font"
+nix build -L "git+https://git.earth2077.fr/leana/.files?dir=nix#hiosevka-nerd-font-mono"
 ```
-To build hIosevka, Iosevka with Haskell ligatures.
+To build hIosevka Nerd Font, Iosevka with Haskell ligatures. [^1]
 
 # Layout
 My [dvorak french](https://github.com/leana8959/dvorak-french) layout has been
@@ -47,6 +47,9 @@ completly, sadly.
   My vim-like bindings and fixes for macOS
 
 Have fun :)
+
+
+[^1]: "Mono" means that the icons are of single width. Read more [here](https://github.com/ryanoasis/nerd-fonts/wiki/ScriptOptions)
 
 <!--
 vim:textwidth=80
