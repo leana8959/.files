@@ -19,6 +19,7 @@ in {
     [
       ./fish
       ./direnv
+      ./atuin
 
       ./starship
       ./fzf
@@ -33,14 +34,6 @@ in {
     ++ lib.lists.optional enableCmus ./cmus;
 
   programs = {
-    atuin = {
-      enable = true;
-      flags = ["--disable-up-arrow"];
-      settings = {
-        style = "full";
-        show_preview = true;
-      };
-    };
     ripgrep.enable = true;
     gpg.enable = true;
   };
