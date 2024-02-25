@@ -76,6 +76,7 @@ in {
       tea
       tokei
       gnumake
+      sd
     ]
     ++ lib.lists.optionals universityTools [
       mypkgs.logisim-evolution
