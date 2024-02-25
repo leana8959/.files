@@ -31,7 +31,7 @@
     xclip
     feh
     xscreensaver # TODO: why the service option won't work ?
-    wired.wired
+    wired.default
     playerctl
 
     # GUI apps
