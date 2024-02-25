@@ -33,7 +33,7 @@
     # Home-Manager / NixOS
     ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#nixie";
     hp = "cd ~/.dotfiles/.config/home-manager && $EDITOR flake.nix && prevd";
-    hs = "home-manager switch -L --flake ~/.dotfiles/nix#macOS";
+    hs = "home-manager switch -L --flake ~/.dotfiles/nix#stardust";
     nsh = "nix-shell -p";
   };
   abbrsLinux = {
