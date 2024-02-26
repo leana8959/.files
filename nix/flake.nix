@@ -3,6 +3,7 @@
     inherit (import ./lib.nix inputs) mkNixOS mkHomeManager myPackages formatter;
     myConfigs = {
       nixosConfigurations = {
+        # Thinkpad
         nixie = mkNixOS "nixie" "x86_64-linux" {
           extraLanguageServers = true;
           extraUtils = true;
@@ -11,13 +12,22 @@
         };
       };
       homeConfigurations = {
-        "macOS" = mkHomeManager "macOS" "aarch64-darwin" {
+        # MacBook Pro 2021
+        "stardust" = mkHomeManager "stardust" "aarch64-darwin" {
           extraLanguageServers = true;
           extraUtils = true;
           enableCmus = true;
           universityTools = true;
         };
+        # MacBook Air 2014
+        "legend" = mkHomeManager "legend" "x86_64-darwin" {
+          enableCmus = true;
+        };
+
+        # Raspberry Pi 4
         "pi4" = mkHomeManager "pi4" "aarch64-linux" {};
+
+        # Oracle cloud
         "oracle" = mkHomeManager "oracle" "aarch64-linux" {};
       };
     };
