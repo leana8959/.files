@@ -1,5 +1,6 @@
 {
   pkgs,
+  mypkgs,
   wired,
   ...
 }: {
@@ -23,6 +24,8 @@
     noto-fonts-emoji-blob-bin
     hanazono
     cascadia-code
+    mypkgs.hiosevka-nerd-font-mono
+    mypkgs.hiosevka
 
     # Window Manager related
     dmenu
@@ -55,8 +58,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "CaskaydiaCove Nerd Font Mono";
-      size = 18;
+      name = "HiosevkaNFM";
+      size = 17;
     };
     settings = {
       foreground = "#000000";
