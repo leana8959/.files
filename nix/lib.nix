@@ -35,7 +35,7 @@
     agenix = input.agenix.packages.${system};
     audio-lint = input.audio-lint.defaultPackage.${system};
   };
-in {
+
   mkNixOS = hostname: system: extraSettings: let
     args =
       (mkArgs system)
@@ -53,7 +53,7 @@ in {
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = args;
-          users.leana.imports = [./home/common (./home/leana + "@${hostname}")];
+          users.leana.imports = [./home/common ./home/${hostname}];
         };
       }
     ];
@@ -68,8 +68,16 @@ in {
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = [./home/common (./home/leana + "@${hostname}")];
+      modules = [./home/common ./home/${hostname}];
     };
+in {
+  mkNixOSes = xs:
+    builtins.mapAttrs (hostname: settings: mkNixOS hostname settings.system (settings.settings or {}))
+    xs;
+
+  mkHomeManagers = xs:
+    builtins.mapAttrs (hostname: settings: mkHomeManager hostname settings.system (settings.settings or {}))
+    xs;
 
   myPackages =
     flake-utils.lib.eachDefaultSystem

@@ -4,8 +4,12 @@
     flags = ["--disable-up-arrow"];
     settings = {
       history_filter = [
-        "^ *echo" # sometimes I pipe secrets to files
+        # privacy
+        "^echo"
         "-----BEGIN PGP PRIVATE KEY BLOCK-----"
+
+        # idiot protection
+        "^rm -rf"
       ];
       style = "full";
       show_preview = true;
