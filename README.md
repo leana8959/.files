@@ -7,6 +7,12 @@ This repo is managed with Nix + GNU stow (for neovim)
 - `starship`
 - `fish`
 
+# Hosts
+- bismuth : MacBook Pro 2021
+- carbon : Thinkpad T470
+- tungsten : MacBook Air 2014 (because it gets really hot)
+- hydrogen : Raspberry Pi 4
+
 # Packages
 This repository exports (some of) my custom packages.
 For example, use
