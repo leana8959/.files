@@ -1,38 +1,43 @@
 {
   outputs = {...} @ inputs: let
-    inherit (import ./lib.nix inputs) mkNixOS mkHomeManager myPackages formatter;
-    myConfigs = {
-      nixosConfigurations = {
-        # Thinkpad
-        nixie = mkNixOS "nixie" "x86_64-linux" {
+    inherit (import ./lib.nix inputs) mkNixOSes mkHomeManagers myPackages formatter;
+
+    nixosConfigurations = mkNixOSes {
+      # Thinkpad
+      carbon = {
+        system = "x86_64-linux";
+        settings = {
           extraLanguageServers = true;
           extraUtils = true;
           enableCmus = true;
           universityTools = true;
         };
-      };
-      homeConfigurations = {
-        # MacBook Pro 2021
-        "stardust" = mkHomeManager "stardust" "aarch64-darwin" {
-          extraLanguageServers = true;
-          extraUtils = true;
-          enableCmus = true;
-          universityTools = true;
-        };
-        # MacBook Air 2014
-        "legend" = mkHomeManager "legend" "x86_64-darwin" {
-          enableCmus = true;
-        };
-
-        # Raspberry Pi 4
-        "pi4" = mkHomeManager "pi4" "aarch64-linux" {};
-
-        # Oracle cloud
-        "oracle" = mkHomeManager "oracle" "aarch64-linux" {};
       };
     };
+
+    homeConfigurations = mkHomeManagers {
+      # MacBook Pro 2021
+      bismuth = {
+        system = "aarch64-darwin";
+        settings = {
+          extraLanguageServers = true;
+          extraUtils = true;
+          enableCmus = true;
+          universityTools = true;
+        };
+      };
+      # MacBook Air 2014
+      tungsten = {
+        system = "x86_64-darwin";
+        settings.enableCmus = true;
+      };
+      # Raspberry Pi 4
+      hydrogen.system = "aarch64-linux";
+      # Oracle cloud
+      oracle.system = "aarch64-linux";
+    };
   in
-    myPackages // myConfigs // formatter;
+    myPackages // formatter // {inherit nixosConfigurations homeConfigurations;};
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
