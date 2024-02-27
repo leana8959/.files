@@ -13,6 +13,7 @@
         stylua
         nodePackages.bash-language-server
         shellcheck
+        shfmt
         nil
       ]
       ++ lib.lists.optionals config.extraLanguageServers.enable [
