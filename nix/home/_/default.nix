@@ -2,36 +2,34 @@
   pkgs,
   unstable,
   mypkgs,
-  settings,
+  config,
+  lib,
   ...
-}: let
-  inherit (settings) extraUtils enableCmus universityTools;
-  inherit (pkgs) lib;
-in {
+}: {
+  imports = [
+    ./fish
+    ./direnv
+    ./atuin
+
+    ./starship
+    ./fzf
+    ./git
+    ./btop
+
+    ./tmux
+
+    ./neovim
+    ./vim
+
+    ./cmus
+  ];
+
   programs.home-manager.enable = true;
   home = {
     username = lib.mkDefault "leana";
     homeDirectory = lib.mkDefault "/home/leana";
     stateVersion = "23.11";
   };
-
-  imports =
-    [
-      ./fish
-      ./direnv
-      ./atuin
-
-      ./starship
-      ./fzf
-      ./git
-      ./btop
-
-      ./tmux
-
-      ./neovim
-      ./vim
-    ]
-    ++ lib.lists.optional enableCmus ./cmus;
 
   programs = {
     ripgrep.enable = true;
@@ -60,8 +58,7 @@ in {
       tldr
       irssi
     ]
-    ++ lib.lists.optionals extraUtils
-    [
+    ++ lib.lists.optionals config.extraUtils.enable [
       unstable.opam
       unstable.cargo
       hyperfine
@@ -71,7 +68,7 @@ in {
       gnumake
       sd
     ]
-    ++ lib.lists.optionals universityTools [
+    ++ lib.lists.optionals config.universityTools.enable [
       mypkgs.logisim-evolution
       mypkgs.necrolib
       pkgs.rars

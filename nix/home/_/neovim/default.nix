@@ -1,12 +1,9 @@
 {
   config,
   pkgs,
-  settings,
+  lib,
   ...
-}: let
-  inherit (settings) extraLanguageServers;
-  inherit (pkgs) lib;
-in {
+}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -18,7 +15,7 @@ in {
         shellcheck
         nil
       ]
-      ++ lib.lists.optionals extraLanguageServers [
+      ++ lib.lists.optionals config.extraLanguageServers.enable [
         nodePackages.vim-language-server
         vscode-langservers-extracted # HTML/CSS/JSON/ESLint
         marksman

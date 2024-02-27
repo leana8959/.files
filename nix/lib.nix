@@ -5,13 +5,6 @@
   flake-utils,
   ...
 } @ input: let
-  defaultExtraSettings = {
-    extraLanguageServers = false;
-    extraUtils = false;
-    enableCmus = false;
-    universityTools = false;
-  };
-
   mkArgs = system: rec {
     pkgs = import nixpkgs {
       inherit system;
@@ -36,15 +29,27 @@
     audio-lint = input.audio-lint.defaultPackage.${system};
   };
 
-  mkNixOS = hostname: system: extraSettings: let
-    args =
-      (mkArgs system)
-      // {inherit hostname;}
-      // {settings = defaultExtraSettings // extraSettings;};
+  homeManagerOptions = {lib, ...}: {
+    options = {
+      cmus.enable = lib.mkOption {default = false;};
+      extraUtils.enable = lib.mkOption {default = false;};
+      extraLanguageServers.enable = lib.mkOption {default = false;};
+      universityTools.enable = lib.mkOption {default = false;};
+    };
+  };
+
+  homeManagerModules = hostname: [
+    ./home/_
+    ./home/${hostname}
+    homeManagerOptions
+  ];
+
+  mkNixOS = name: sys: cfgs: let
+    args = (mkArgs sys) // {hostname = name;};
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
-      ./hosts/${hostname}/default.nix
+      ./hosts/${name}/default.nix
       ./layouts
       input.agenix.nixosModules.default
       home-manager.nixosModules.home-manager
@@ -53,22 +58,19 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = args;
-          users.leana.imports = [./home/common ./home/${hostname}];
+          users.leana.imports = (homeManagerModules name) ++ [cfgs];
         };
       }
     ];
   });
 
-  mkHomeManager = hostname: system: extraSettings: let
-    args =
-      (mkArgs system)
-      // {inherit hostname;}
-      // {settings = defaultExtraSettings // extraSettings;};
+  mkHomeManager = name: sys: cfgs: let
+    args = mkArgs sys;
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = [./home/common ./home/${hostname}];
+      modules = (homeManagerModules name) ++ [cfgs];
     };
 in {
   mkNixOSes = xs:
