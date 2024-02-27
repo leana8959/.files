@@ -7,10 +7,10 @@
       carbon = {
         system = "x86_64-linux";
         settings = {
-          extraLanguageServers = true;
-          extraUtils = true;
-          enableCmus = true;
-          universityTools = true;
+          extraLanguageServers.enable = true;
+          extraUtils.enable = true;
+          cmus.enable = true;
+          universityTools.enable = true;
         };
       };
     };
@@ -20,16 +20,16 @@
       bismuth = {
         system = "aarch64-darwin";
         settings = {
-          extraLanguageServers = true;
-          extraUtils = true;
-          enableCmus = true;
-          universityTools = true;
+          extraLanguageServers.enable = true;
+          extraUtils.enable = true;
+          cmus.enable = true;
+          universityTools.enable = true;
         };
       };
       # MacBook Air 2014
       tungsten = {
         system = "x86_64-darwin";
-        settings.enableCmus = true;
+        settings.cmus.enable = true;
       };
       # Raspberry Pi 4
       hydrogen.system = "aarch64-linux";
