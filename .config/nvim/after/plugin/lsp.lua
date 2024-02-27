@@ -6,7 +6,6 @@ local map = vim.keymap.set
 -- NOTE: put settings into `settings`
 -- use another `on_attach` field if needed
 local servers = {
-    bashls = {}, -- Bash
     clangd = {}, -- C/CPP
     cssls = {}, -- CSS
     html = {}, -- HTML
@@ -21,6 +20,16 @@ local servers = {
     tsserver = {}, -- TypeScript
     vimls = {}, -- Vim Script
     ocamllsp = {}, -- OCaml
+
+    bashls = { -- Bash
+        on_attach = function(_, bufno)
+            map("n", "<leader>f", function()
+                vim.cmd.normal("mJ")
+                vim.cmd([[silent exec "%!shfmt"]])
+                vim.cmd.normal("`J")
+            end, { buffer = bufno })
+        end,
+    },
 
     typst_lsp = { -- Typst
         settings = {
