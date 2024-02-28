@@ -1,6 +1,4 @@
 {pkgs, ...}: let
-  inherit (pkgs.stdenv) isLinux;
-
   abbrs = {
     ## Docker
     dc = "docker compose";
@@ -31,16 +29,16 @@
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
 
     # Home-Manager / NixOS
-    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#carbon";
-    hp = "cd ~/.dotfiles/.config/home-manager && $EDITOR flake.nix && prevd";
-    hs = "home-manager switch -L --flake ~/.dotfiles/nix#bismuth";
     nsh = "nix-shell -p";
   };
   abbrsLinux = {
     ss = "sudo systemctl";
     se = "sudoedit";
+    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#carbon";
   };
-  abbrsMacos = {};
+  abbrsDarwin = {
+    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#bismuth";
+  };
 
   aliases = {
     rm = "rm -i"; # idiot protection
@@ -53,7 +51,7 @@
     chown = "chown --preserve-root";
     sudoedit = "SUDO_EDITOR=(which nvim) sudoedit";
   };
-  aliasesMacos = {
+  aliasesDarwin = {
     hide_desktop = ''
       defaults write com.apple.finder CreateDesktop false; killall Finder
     '';
@@ -68,20 +66,22 @@
     '';
   };
 in {
-  programs.fish = {
+  programs.fish = let
+    inherit (pkgs.stdenv) isLinux;
+  in {
     shellAbbrs =
       abbrs
       // (
         if isLinux
         then abbrsLinux
-        else abbrsMacos
+        else abbrsDarwin
       );
     shellAliases =
       aliases
       // (
         if isLinux
         then aliasesLinux
-        else aliasesMacos
+        else aliasesDarwin
       );
   };
 }

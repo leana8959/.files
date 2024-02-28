@@ -1,6 +1,13 @@
 {
   outputs = {...} @ inputs: let
-    inherit (import ./lib.nix inputs) mkNixOSes mkHomeManagers myPackages formatter;
+    inherit
+      (import ./lib.nix inputs)
+      mkNixOSes
+      mkDarwins
+      mkHomeManagers
+      myPackages
+      formatter
+      ;
 
     nixosConfigurations = mkNixOSes {
       # Thinkpad
@@ -16,16 +23,6 @@
     };
 
     homeConfigurations = mkHomeManagers {
-      # MacBook Pro 2021
-      bismuth = {
-        system = "aarch64-darwin";
-        settings = {
-          extraLanguageServers.enable = true;
-          extraUtils.enable = true;
-          cmus.enable = true;
-          universityTools.enable = true;
-        };
-      };
       # MacBook Air 2014
       tungsten = {
         system = "x86_64-darwin";
@@ -36,14 +33,31 @@
       # Oracle cloud
       oracle.system = "aarch64-linux";
     };
+
+    darwinConfigurations = mkDarwins {
+      # MacBook Pro 2021
+      bismuth = {
+        system = "aarch64-darwin";
+        settings = {
+          extraLanguageServers.enable = true;
+          extraUtils.enable = true;
+          cmus.enable = true;
+          universityTools.enable = true;
+        };
+      };
+    };
   in
-    myPackages // formatter // {inherit nixosConfigurations homeConfigurations;};
+    myPackages // formatter // {inherit nixosConfigurations homeConfigurations darwinConfigurations;};
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixunstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
