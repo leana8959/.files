@@ -38,9 +38,9 @@ local servers = {
         },
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
-                vim.cmd(":w")
-                vim.cmd([[silent exec "!typstfmt %"]])
-                vim.cmd(":e")
+                vim.cmd.normal("mJ")
+                vim.cmd([[silent exec "%!typstfmt"]])
+                vim.cmd.normal("`J")
             end, { buffer = bufno })
         end,
     },
