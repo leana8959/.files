@@ -7,6 +7,7 @@
         # privacy
         "^echo"
         "-----BEGIN PGP PRIVATE KEY BLOCK-----"
+        "^mods"
 
         # idiot protection
         "^rm -rf"
