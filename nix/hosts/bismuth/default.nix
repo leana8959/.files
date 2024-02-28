@@ -6,6 +6,8 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
+  imports = [./services.nix];
+
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
