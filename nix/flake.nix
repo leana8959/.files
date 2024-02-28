@@ -68,6 +68,7 @@
     agenix.url = "github:ryantm/agenix/0.15.0";
     nixnur.url = "github:nix-community/NUR";
     opam-nix.url = "github:tweag/opam-nix";
+    llama-cpp.url = "github:ggerganov/llama.cpp";
     # my stuff
     audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
     hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";

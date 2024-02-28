@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, ...} @ input: {
   nixpkgs.hostPlatform = "aarch64-darwin";
   services.nix-daemon.enable = true;
 
@@ -23,5 +23,7 @@
     gnumake
     gnused
     gcc
+
+    input.llama-cpp
   ];
 }

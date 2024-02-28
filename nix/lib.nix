@@ -7,6 +7,7 @@
   ...
 } @ input: let
   mkArgs = system: rec {
+    # package sets
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfreePredicate = pkg:
@@ -25,8 +26,11 @@
       inherit system;
       inherit (input) opam-nix;
     };
+    # packages
     wired = input.wired.packages.${system};
     agenix = input.agenix.packages.${system};
+    llama-cpp = input.llama-cpp.packages.${system}.default;
+    # my packages
     audio-lint = input.audio-lint.defaultPackage.${system};
     hbrainfuck = input.hbrainfuck.packages.${system}.default;
   };
