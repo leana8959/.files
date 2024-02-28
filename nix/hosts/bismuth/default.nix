@@ -1,0 +1,27 @@
+{pkgs, ...}: {
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  services.nix-daemon.enable = true;
+
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 4;
+
+  nix = {
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      allow-import-from-derivation = true
+    '';
+    gc = {
+      automatic = true;
+      options = "--delete-older-than 15d";
+    };
+    settings.auto-optimise-store = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    vim
+    gnumake
+    gnused
+    gcc
+  ];
+}

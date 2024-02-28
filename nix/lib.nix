@@ -2,6 +2,7 @@
   nixpkgs,
   nixunstable,
   home-manager,
+  nix-darwin,
   flake-utils,
   ...
 } @ input: let
@@ -49,10 +50,28 @@
   in (nixpkgs.lib.nixosSystem {
     specialArgs = args;
     modules = [
-      ./hosts/${name}/default.nix
+      ./hosts/${name}
       ./layouts
       input.agenix.nixosModules.default
       home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = args;
+          users.leana.imports = (homeManagerModules name) ++ [cfgs];
+        };
+      }
+    ];
+  });
+
+  mkDarwin = name: sys: cfgs: let
+    args = (mkArgs sys) // {hostname = name;};
+  in (nix-darwin.lib.darwinSystem {
+    specialArgs = args;
+    modules = [
+      ./hosts/${name}
+      home-manager.darwinModules.home-manager
       {
         home-manager = {
           useGlobalPkgs = true;
@@ -79,6 +98,10 @@ in {
 
   mkHomeManagers = xs:
     builtins.mapAttrs (hostname: settings: mkHomeManager hostname settings.system (settings.settings or {}))
+    xs;
+
+  mkDarwins = xs:
+    builtins.mapAttrs (hostname: settings: mkDarwin hostname settings.system (settings.settings or {}))
     xs;
 
   myPackages =

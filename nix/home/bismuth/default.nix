@@ -1,7 +1,7 @@
-{audio-lint, ...}: {
+{audio-lint, lib, ...}: {
   imports = [./fonts.nix];
 
-  home.homeDirectory = "/Users/leana";
+  home.homeDirectory = lib.mkForce "/Users/leana";
 
   home.packages = [
     audio-lint
