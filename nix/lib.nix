@@ -28,6 +28,7 @@
     wired = input.wired.packages.${system};
     agenix = input.agenix.packages.${system};
     audio-lint = input.audio-lint.defaultPackage.${system};
+    hbrainfuck = input.hbrainfuck.packages.${system}.default;
   };
 
   homeManagerOptions = {lib, ...}: {
