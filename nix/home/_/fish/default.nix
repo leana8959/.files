@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   imports = [./aliasesAbbrs.nix];
 
   programs.fish = let
@@ -10,7 +14,15 @@
   in {
     enable = true;
 
-    shellInit = readConfig "shellInit";
+    shellInit =
+      readConfig "shellInit"
+      # Just in case $PATH is broken, add them in an idempotent fashion
+      + ''
+        fish_add_path -m /run/current-system/sw/bin
+        fish_add_path -m /etc/profiles/per-user/${config.home.username}/bin
+        fish_add_path -m ${config.home.homeDirectory}/.nix-profile/bin
+        fish_add_path -m /nix/var/nix/profiles/default/bin
+      '';
 
     interactiveShellInit =
       readConfigs ["interactiveShellInit" "bind" "colorscheme" "locale"];
