@@ -59,9 +59,9 @@ local servers = {
         on_attach = function(_, bufno)
             vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
             map("n", "<leader>f", function()
-                vim.cmd(":w")
-                vim.cmd([[silent exec "!alejandra %"]])
-                vim.cmd(":e")
+                vim.cmd.norm("mJ")
+                vim.cmd(":%!alejandra -qq")
+                vim.cmd.norm("`J")
             end, { buffer = bufno })
         end,
     },
