@@ -13,7 +13,7 @@
     '';
     gc = {
       automatic = true;
-      options = "--delete-older-than 15d";
+      options = "--delete-older-than 60d";
     };
     settings.auto-optimise-store = true;
   };
