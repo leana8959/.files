@@ -33,7 +33,7 @@
   };
   abbrsLinux = {
     ss = "sudo systemctl";
-    se = "sudoedit";
+    se = "SUDO_EDITOR=(which nvim) sudoedit";
     ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#carbon";
   };
   abbrsDarwin = {
@@ -49,7 +49,6 @@
   aliasesLinux = {
     chmod = "chmod --preserve-root";
     chown = "chown --preserve-root";
-    sudoedit = "SUDO_EDITOR=(which nvim) sudoedit";
   };
   aliasesDarwin = {
     hide_desktop = ''
