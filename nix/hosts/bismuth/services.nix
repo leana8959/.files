@@ -3,7 +3,7 @@
   # https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/DesigningDaemons.html#//apple_ref/doc/uid/10000172i-SW4-BBCBHBFB
   environment.userLaunchAgents = {
     llama-server = {
-      enable = true;
+      enable = false;
       target = "llama-server.plist";
       text = ''
         <?xml version="1.0" encoding="UTF-8"?>
