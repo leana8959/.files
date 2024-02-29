@@ -1,10 +1,14 @@
-{pkgs, ...} @ input: {
+{
+  pkgs,
+  hostname,
+  ...
+} @ input: {
   nixpkgs.hostPlatform = "aarch64-darwin";
+  system.stateVersion = 4;
   services.nix-daemon.enable = true;
 
-  # Used for backwards compatibility, please read the changelog before changing.
-  # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  networking.hostName = hostname;
+  environment.shells = [pkgs.fish];
 
   imports = [./services.nix];
 
