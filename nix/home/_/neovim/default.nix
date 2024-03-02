@@ -22,6 +22,7 @@
         marksman
         nodePackages.pyright
         taplo
+        lemminx
       ];
   };
 
