@@ -35,58 +35,59 @@
     hbrainfuck = input.hbrainfuck.packages.${system}.default;
   };
 
-  homeManagerOptions = {lib, ...}: {
+  defaultOptions = {lib, ...}: {
     options = {
       cmus.enable = lib.mkOption {default = false;};
       extraUtils.enable = lib.mkOption {default = false;};
       extraLanguageServers.enable = lib.mkOption {default = false;};
       universityTools.enable = lib.mkOption {default = false;};
+      docker.enable = lib.mkOption {default = false;};
     };
   };
 
-  homeManagerModules = hostname: [
-    ./home/_
-    ./home/${hostname}
-    homeManagerOptions
-  ];
-
   mkNixOS = name: sys: cfgs: let
     args = (mkArgs sys) // {hostname = name;};
-  in (nixpkgs.lib.nixosSystem {
-    specialArgs = args;
-    modules = [
-      ./hosts/${name}
-      ./layouts
-      input.agenix.nixosModules.default
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = args;
-          users.leana.imports = (homeManagerModules name) ++ [cfgs];
-        };
-      }
-    ];
-  });
+  in
+    nixpkgs.lib.nixosSystem {
+      specialArgs = args;
+      modules = [
+        ./hosts/${name}
+        ./layouts
+        input.agenix.nixosModules.default
+        home-manager.nixosModules.home-manager
+        defaultOptions
+        cfgs
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = args;
+            users.leana.imports = [./home/_ ./home/${name} defaultOptions cfgs];
+          };
+        }
+      ];
+    };
 
   mkDarwin = name: sys: cfgs: let
     args = (mkArgs sys) // {hostname = name;};
-  in (nix-darwin.lib.darwinSystem {
-    specialArgs = args;
-    modules = [
-      ./hosts/${name}
-      home-manager.darwinModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = args;
-          users.leana.imports = (homeManagerModules name) ++ [cfgs];
-        };
-      }
-    ];
-  });
+  in
+    nix-darwin.lib.darwinSystem {
+      specialArgs = args;
+      modules = [
+        ./hosts/${name}
+        home-manager.darwinModules.home-manager
+        defaultOptions
+        cfgs
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = args;
+            users.leana.imports = [./home/_ ./home/${name} defaultOptions cfgs];
+          };
+        }
+      ];
+    };
 
   mkHomeManager = name: sys: cfgs: let
     args = mkArgs sys;
@@ -94,7 +95,7 @@
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = (homeManagerModules name) ++ [cfgs];
+      modules = [./home/_ ./home/${name} defaultOptions cfgs];
     };
 in {
   mkNixOSes = xs:
