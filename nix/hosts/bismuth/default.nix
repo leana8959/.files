@@ -10,7 +10,7 @@
   networking.hostName = hostname;
   environment.shells = [pkgs.fish];
 
-  imports = [./services.nix];
+  imports = [./services];
 
   nix = {
     extraOptions = ''
