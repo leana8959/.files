@@ -23,7 +23,7 @@
       automatic = true;
       options = "--delete-older-than 30d";
       interval = {
-        Hour = 24;
+        Hour = 720;
         Minute = 0;
       };
     };
