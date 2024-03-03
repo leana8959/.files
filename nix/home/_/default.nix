@@ -67,6 +67,8 @@
       tokei
       gnumake
       sd
+      act
+      forgejo-actions-runner
     ]
     ++ lib.lists.optionals config.universityTools.enable [
       mypkgs.logisim-evolution
