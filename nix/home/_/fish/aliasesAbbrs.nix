@@ -62,7 +62,7 @@
       defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
     '';
     add_spacer_tile = ''
-      defaults write com.apple.dock persistent-apps -array-add \'{tile-type="small-spacer-tile";}\'; killall Dock
+      defaults write com.apple.dock persistent-apps -array-add '{tile-type="small-spacer-tile";}'; killall Dock
     '';
   };
 in {
