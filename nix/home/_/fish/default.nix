@@ -6,11 +6,9 @@
   imports = [./aliasesAbbrs.nix];
 
   programs.fish = let
-    inherit (builtins) readFile foldl' map listToAttrs concatMap;
+    inherit (builtins) readFile map listToAttrs concatMap;
     readConfig = n: readFile ./conf.d/${n}.fish;
-    readConfigs = ns:
-      foldl' (l: r: l + "\n" + r) ""
-      (map readConfig ns);
+    readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
   in {
     enable = true;
 
