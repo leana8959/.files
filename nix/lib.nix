@@ -45,7 +45,7 @@
     };
   };
 
-  mkNixOS = name: sys: cfgs: let
+  mkNixOS = name: sys: opts: let
     args = (mkArgs sys) // {hostname = name;};
   in
     nixpkgs.lib.nixosSystem {
@@ -56,19 +56,19 @@
         input.agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         defaultOptions
-        cfgs
+        opts
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = args;
-            users.leana.imports = [./home/_ ./home/${name} defaultOptions cfgs];
+            users.leana.imports = [./home/_ ./home/${name} defaultOptions opts];
           };
         }
       ];
     };
 
-  mkDarwin = name: sys: cfgs: let
+  mkDarwin = name: sys: opts: let
     args = (mkArgs sys) // {hostname = name;};
   in
     nix-darwin.lib.darwinSystem {
@@ -77,44 +77,33 @@
         ./hosts/${name}
         home-manager.darwinModules.home-manager
         defaultOptions
-        cfgs
+        opts
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = args;
-            users.leana.imports = [./home/_ ./home/${name} defaultOptions cfgs];
+            users.leana.imports = [./home/_ ./home/${name} defaultOptions opts];
           };
         }
       ];
     };
 
-  mkHomeManager = name: sys: cfgs: let
+  mkHomeManager = name: sys: opts: let
     args = mkArgs sys;
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
       extraSpecialArgs = args;
-      modules = [./home/_ ./home/${name} defaultOptions cfgs];
+      modules = [./home/_ ./home/${name} defaultOptions opts];
     };
+
+  many = func: builtins.mapAttrs (name: opts: func name (opts.system) (opts.settings or {}));
 in {
-  mkNixOSes = xs:
-    builtins.mapAttrs (hostname: settings: mkNixOS hostname settings.system (settings.settings or {}))
-    xs;
+  mkNixOSes = many mkNixOS;
+  mkHomeManagers = many mkHomeManager;
+  mkDarwins = many mkDarwin;
 
-  mkHomeManagers = xs:
-    builtins.mapAttrs (hostname: settings: mkHomeManager hostname settings.system (settings.settings or {}))
-    xs;
-
-  mkDarwins = xs:
-    builtins.mapAttrs (hostname: settings: mkDarwin hostname settings.system (settings.settings or {}))
-    xs;
-
-  myPackages =
-    flake-utils.lib.eachDefaultSystem
-    (system: {packages = (mkArgs system).mypkgs;});
-
-  formatter =
-    flake-utils.lib.eachDefaultSystem
-    (system: {formatter = (mkArgs system).pkgs.alejandra;});
+  myPackages = flake-utils.lib.eachDefaultSystem (system: {packages = (mkArgs system).mypkgs;});
+  formatter = flake-utils.lib.eachDefaultSystem (system: {formatter = (mkArgs system).pkgs.alejandra;});
 }

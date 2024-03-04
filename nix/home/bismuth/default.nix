@@ -10,6 +10,5 @@
   home.packages = [
     input.audio-lint
     input.hbrainfuck
-    pkgs.mods
   ];
 }

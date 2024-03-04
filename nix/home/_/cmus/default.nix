@@ -17,7 +17,7 @@
         if isLinux
         then ./cmus-linux
         else ./cmus-darwin;
-      target = ".config/cmus";
+      target = "${config.xdg.configHome}/cmus";
     };
   };
 }

@@ -5,14 +5,13 @@
   ...
 }: {
   environment.systemPackages = lib.lists.optionals config.docker.enable (
-    let
-      darwinPkgs = lib.lists.optionals pkgs.stdenv.isDarwin [pkgs.colima];
-    in
-      [
-        pkgs.docker
-        pkgs.docker-compose
-      ]
-      ++ darwinPkgs
+    [
+      pkgs.docker
+      pkgs.docker-compose
+    ]
+    ++ lib.lists.optionals pkgs.stdenv.isDarwin [
+      pkgs.colima
+    ]
   );
 
   environment.userLaunchAgents = let
