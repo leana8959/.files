@@ -19,14 +19,6 @@
       keep-outputs = true
       keep-derivations = true
     '';
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 30d";
-      interval = {
-        Hour = 720;
-        Minute = 0;
-      };
-    };
     settings.auto-optimise-store = true;
   };
 
