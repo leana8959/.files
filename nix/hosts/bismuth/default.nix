@@ -26,9 +26,11 @@
     trusted-users = ["leana"];
     trusted-substituters = [
       "https://app.cachix.org/cache/leana8959"
+      "https://llama-cpp.cachix.org"
     ];
     trusted-public-keys = [
       "leana8959.cachix.org-1:0kiyNv2RiR04ldLZRRm7EC3+4slPi364bX8JKzwpv6A="
+      "llama-cpp.cachix.org-1:H75X+w83wUKTIPSO1KWy9ADUrzThyGs8P5tmAbkWhQc="
     ];
   };
 
@@ -37,7 +39,6 @@
     gnumake
     gnused
     gcc
-
-    input.llama-cpp
+    cachix
   ];
 }
