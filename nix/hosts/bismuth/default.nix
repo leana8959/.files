@@ -22,6 +22,16 @@
     settings.auto-optimise-store = true;
   };
 
+  nix.settings = {
+    trusted-users = ["leana"];
+    trusted-substituters = [
+      "https://app.cachix.org/cache/leana8959"
+    ];
+    trusted-public-keys = [
+      "leana8959.cachix.org-1:0kiyNv2RiR04ldLZRRm7EC3+4slPi364bX8JKzwpv6A="
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     gnumake
