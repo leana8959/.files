@@ -51,6 +51,7 @@
     nixpkgs.lib.nixosSystem {
       specialArgs = args;
       modules = [
+        ./hosts/_
         ./hosts/${name}
         ./layouts
         input.agenix.nixosModules.default
@@ -74,6 +75,7 @@
     nix-darwin.lib.darwinSystem {
       specialArgs = args;
       modules = [
+        ./hosts/_
         ./hosts/${name}
         home-manager.darwinModules.home-manager
         defaultOptions
