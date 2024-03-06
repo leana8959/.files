@@ -37,13 +37,6 @@
 
   nix = {
     package = pkgs.nixFlakes;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    optimise = {
-      dates = ["weekly"];
-      automatic = true;
-    };
     settings.trusted-users = ["root" "@wheel"];
   };
 }
