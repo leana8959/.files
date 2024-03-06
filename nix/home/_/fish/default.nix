@@ -15,7 +15,10 @@
     shellInit =
       readConfig "shellInit"
       # Just in case $PATH is broken, add them in an idempotent fashion
+      # Make sure wrapper comes first
+      # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
       + ''
+        fish_add_path -m /run/wrappers/bin
         fish_add_path -m /run/current-system/sw/bin
         fish_add_path -m /etc/profiles/per-user/${config.home.username}/bin
         fish_add_path -m ${config.home.homeDirectory}/.nix-profile/bin
