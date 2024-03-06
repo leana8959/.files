@@ -67,6 +67,7 @@
       tokei
       gnumake
       sd
+      ghostscript
       act
       forgejo-actions-runner
     ]
