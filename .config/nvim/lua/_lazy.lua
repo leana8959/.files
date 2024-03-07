@@ -68,6 +68,7 @@ local plugins = {
     -- Language specific --
     -----------------------
     "mfussenegger/nvim-jdtls",
+    "isobit/vim-caddyfile",
     {
         "scalameta/nvim-metals",
         dependencies = "nvim-lua/plenary.nvim",
