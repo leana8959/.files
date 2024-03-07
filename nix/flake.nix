@@ -6,6 +6,7 @@
       mkDarwins
       mkHomeManagers
       myPackages
+      myLib
       formatter
       ;
 
@@ -48,7 +49,10 @@
       };
     };
   in
-    myPackages // formatter // {inherit nixosConfigurations homeConfigurations darwinConfigurations;};
+    myPackages
+    // myLib
+    // formatter
+    // {inherit nixosConfigurations homeConfigurations darwinConfigurations;};
 
   inputs = {
     # package sets
