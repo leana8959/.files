@@ -12,6 +12,7 @@
       undotree
       tabular
       vim-wakatime
+      vim-caddyfile
     ];
   };
 }
