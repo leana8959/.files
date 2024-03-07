@@ -7,6 +7,11 @@ vim.filetype.add { extension = { mlw = "why3" } }
 
 autocmd("TextYankPost", { callback = vim.highlight.on_yank })
 
+autocmd("BufEnter", {
+    pattern = "justfile",
+    callback = function() vim.opt_local.filetype = "make" end,
+})
+
 autocmd("FileType", {
     pattern = { "markdown", "tex", "typst" },
     callback = function()
