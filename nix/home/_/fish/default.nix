@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   config,
   ...
 }: {
@@ -9,21 +10,28 @@
     inherit (builtins) readFile map listToAttrs concatMap;
     readConfig = n: readFile ./conf.d/${n}.fish;
     readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
+
+    add_paths = ps:
+      lib.trivial.pipe ps [
+        (lib.lists.reverseList) # source paths in reverse order
+        (map (p: "fish_add_path -m ${p}"))
+        (builtins.concatStringsSep "\n")
+      ];
   in {
     enable = true;
 
     shellInit =
       readConfig "shellInit"
       # Just in case $PATH is broken, add them in an idempotent fashion
-      # Make sure wrapper comes first
-      # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
-      + ''
-        fish_add_path -m /run/wrappers/bin
-        fish_add_path -m /run/current-system/sw/bin
-        fish_add_path -m /etc/profiles/per-user/${config.home.username}/bin
-        fish_add_path -m ${config.home.homeDirectory}/.nix-profile/bin
-        fish_add_path -m /nix/var/nix/profiles/default/bin
-      '';
+      + add_paths [
+        # Make sure wrapper comes first
+        # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
+        "/run/wrappers/bin"
+        "/run/current-system/sw/bin"
+        "/etc/profiles/per-user/${config.home.username}/bin"
+        "${config.home.homeDirectory}/.nix-profile/bin"
+        "/nix/var/nix/profiles/default/bin"
+      ];
 
     interactiveShellInit =
       readConfigs ["interactiveShellInit" "bind" "colorscheme" "locale"];
