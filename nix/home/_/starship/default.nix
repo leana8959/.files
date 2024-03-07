@@ -1,9 +1,7 @@
 {
-  programs.starship = let
-    inherit (builtins) readFile;
-  in {
+  programs.starship = {
     enable = true;
     enableFishIntegration = true;
-    settings = fromTOML (readFile ./starship.toml);
+    settings = fromTOML (builtins.readFile ./starship.toml);
   };
 }
