@@ -4,7 +4,7 @@
   config,
   ...
 }: {
-  home = lib.optionalAttrs config.cmus.enable {
+  home = lib.mkIf config.cmus.enable {
     packages = with pkgs; [
       cmus
       cmusfm

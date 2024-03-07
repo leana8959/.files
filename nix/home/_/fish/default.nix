@@ -7,8 +7,7 @@
   imports = [./aliasesAbbrs.nix];
 
   programs.fish = let
-    inherit (builtins) readFile map listToAttrs concatMap;
-    readConfig = n: readFile ./conf.d/${n}.fish;
+    readConfig = n: builtins.readFile ./conf.d/${n}.fish;
     readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
 
     add_paths = ps:
@@ -38,15 +37,13 @@
 
     functions = let
       makeFishFunctions = ns:
-        listToAttrs (
-          concatMap (n: [
-            {
-              name = n;
-              value = readFile ./functions/${n}.fish;
-            }
-          ])
-          ns
-        );
+        lib.trivial.pipe ns [
+          (map (n: {
+            name = n;
+            value = builtins.readFile ./functions/${n}.fish;
+          }))
+          builtins.listToAttrs
+        ];
     in
       makeFishFunctions [
         "clone_to_repos"
