@@ -5,7 +5,8 @@
       mkNixOSes
       mkDarwins
       mkHomeManagers
-      myPackages
+      myPkgs
+      myLib
       formatter
       ;
 
@@ -48,7 +49,10 @@
       };
     };
   in
-    myPackages // formatter // {inherit nixosConfigurations homeConfigurations darwinConfigurations;};
+    {inherit nixosConfigurations homeConfigurations darwinConfigurations;}
+    // formatter
+    // myPkgs
+    // myLib;
 
   inputs = {
     # package sets

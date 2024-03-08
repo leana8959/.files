@@ -6,7 +6,7 @@
   flake-utils,
   ...
 } @ input: let
-  mkArgs = system: rec {
+  mkArgs = system: let
     # package sets
     pkgs = import nixpkgs {
       inherit system;
@@ -21,11 +21,14 @@
       inherit pkgs;
       nurpkgs = pkgs;
     };
-    mypkgs = import ./mypkgs {
+    custom = import ./custom {
       inherit pkgs unstable;
       inherit system;
       inherit (input) opam-nix;
     };
+  in {
+    inherit pkgs unstable nur;
+    inherit (custom) myPkgs myLib;
     # packages
     wired = input.wired.packages.${system};
     agenix = input.agenix.packages.${system};
@@ -106,6 +109,8 @@ in {
   mkHomeManagers = many mkHomeManager;
   mkDarwins = many mkDarwin;
 
-  myPackages = flake-utils.lib.eachDefaultSystem (system: {packages = (mkArgs system).mypkgs;});
   formatter = flake-utils.lib.eachDefaultSystem (system: {formatter = (mkArgs system).pkgs.alejandra;});
+
+  myPkgs = flake-utils.lib.eachDefaultSystem (system: {packages = (mkArgs system).myPkgs;});
+  myLib = flake-utils.lib.eachDefaultSystem (system: {lib = (mkArgs system).myLib;});
 }

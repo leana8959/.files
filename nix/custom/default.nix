@@ -6,7 +6,6 @@
   ...
 }: let
   mkNerdFont = import ./mkNerdFont.nix {inherit pkgs unstable;};
-in rec {
   logisim-evolution = import ./logisim-evolution.nix {inherit pkgs;};
 
   necrolib = import ./necrolib.nix {
@@ -22,5 +21,21 @@ in rec {
   hiosevka-nerd-font-propo = mkNerdFont {
     font = hiosevka;
     extraArgs = ["--name {/.}-NFP" "--variable-width-glyphs"];
+  };
+in {
+  myPkgs = {
+    inherit
+      logisim-evolution
+      necrolib
+      hiosevka
+      hiosevka-nerd-font-mono
+      hiosevka-nerd-font-propo
+      ;
+  };
+
+  myLib = {
+    inherit
+      mkNerdFont
+      ;
   };
 }
