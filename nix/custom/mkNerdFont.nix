@@ -18,6 +18,7 @@ pkgs.stdenv.mkDerivation {
   name = "${font.name}-NerdFont";
   src = font;
   nativeBuildInputs = [unstable.nerd-font-patcher pkgs.parallel];
+
   buildPhase = let
     args = builtins.concatStringsSep " " extraArgs;
     defArgs =
@@ -29,9 +30,15 @@ pkgs.stdenv.mkDerivation {
     find \( -name \*.ttf -o -name \*.otf \) | parallel nerd-font-patcher {} \
         --outputdir nerd-font ${defArgs} ${args}
   '';
+
   installPhase = ''
-    fontdir="$out"/share/fonts/truetype
-    install -d "$fontdir"
-    install nerd-font/* "$fontdir"
+    truetype="$out"/share/fonts/truetype
+    opentype="$out"/share/fonts/opentype
+
+    install -d "$truetype"
+    install -d "$opentype"
+
+    install nerd-font/*.ttf "$truetype"
+    install nerd-font/*.otf "$opentype"
   '';
 }
