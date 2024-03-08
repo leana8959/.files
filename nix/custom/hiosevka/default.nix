@@ -1,7 +1,7 @@
-{pkgs}: let
+{iosevka}: let
   pname = "hiosevka";
 in
-  (pkgs.iosevka.overrideAttrs (_: {inherit pname;}))
+  (iosevka.overrideAttrs (_: {inherit pname;}))
   .override {
     set = pname;
     /*

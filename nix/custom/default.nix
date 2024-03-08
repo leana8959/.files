@@ -1,19 +1,17 @@
 {
-  pkgs,
+  callPackage,
   unstable,
-  system,
   opam-nix,
-  ...
 }: let
-  mkNerdFont = import ./mkNerdFont.nix {inherit pkgs unstable;};
-  logisim-evolution = import ./logisim-evolution.nix {inherit pkgs;};
+  mkNerdFont = callPackage ./mkNerdFont.nix {inherit (unstable) nerd-font-patcher;};
 
-  necrolib = import ./necrolib.nix {
-    inherit pkgs system;
+  logisim-evolution = callPackage ./logisim-evolution.nix {};
+
+  necrolib = callPackage ./necrolib.nix {
     inherit opam-nix;
   };
 
-  hiosevka = import ./hiosevka {inherit pkgs;};
+  hiosevka = callPackage ./hiosevka {};
   hiosevka-nerd-font-mono = mkNerdFont {
     font = hiosevka;
     extraArgs = ["--name {/.}-NFM" "--use-single-width-glyphs"];

@@ -21,9 +21,8 @@
       inherit pkgs;
       nurpkgs = pkgs;
     };
-    custom = import ./custom {
-      inherit pkgs unstable;
-      inherit system;
+    custom = pkgs.callPackage ./custom {
+      inherit unstable;
       inherit (input) opam-nix;
     };
   in {
