@@ -1,7 +1,7 @@
 {
   pkgs,
   unstable,
-  mypkgs,
+  myPkgs,
   config,
   lib,
   ...
@@ -72,8 +72,8 @@
       forgejo-actions-runner
     ]
     ++ lib.lists.optionals config.universityTools.enable [
-      mypkgs.logisim-evolution
-      mypkgs.necrolib
+      myPkgs.logisim-evolution
+      myPkgs.necrolib
       pkgs.rars
     ];
 }

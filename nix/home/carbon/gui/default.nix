@@ -1,6 +1,6 @@
 {
   pkgs,
-  mypkgs,
+  myPkgs,
   wired,
   ...
 }: {
@@ -24,8 +24,8 @@
     noto-fonts-emoji-blob-bin
     hanazono
     cascadia-code
-    mypkgs.hiosevka-nerd-font-mono
-    mypkgs.hiosevka
+    myPkgs.hiosevka-nerd-font-mono
+    myPkgs.hiosevka
 
     # Window Manager related
     dmenu
