@@ -1,12 +1,13 @@
 {
-  pkgs,
-  unstable,
+  nerd-font-patcher,
+  parallel,
+  stdenvNoCC,
 }: {
   font,
   extraArgs ? [],
   useDefaultsArgs ? true,
 }:
-pkgs.stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   /*
   Credits:
   https://github.com/NixOS/nixpkgs/issues/44329#issuecomment-1231189572
@@ -17,7 +18,7 @@ pkgs.stdenv.mkDerivation {
   */
   name = "${font.name}-NerdFont";
   src = font;
-  nativeBuildInputs = [unstable.nerd-font-patcher pkgs.parallel];
+  nativeBuildInputs = [nerd-font-patcher parallel];
 
   buildPhase = let
     args = builtins.concatStringsSep " " extraArgs;
