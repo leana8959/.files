@@ -106,8 +106,6 @@ in {
   mkHomeManagers = many mkHomeManager;
   mkDarwins = many mkDarwin;
 
-  formatter = flake-utils.lib.eachDefaultSystem (system: {formatter = (mkArgs system).pkgs.alejandra;});
-
   myPackages = flake-utils.lib.eachDefaultSystem (system: {packages = (mkArgs system).mypkgs;});
-  myLib = flake-utils.lib.eachDefaultSystem (system: {packages = (mkArgs system).mypkgs.lib;});
+  formatter = flake-utils.lib.eachDefaultSystem (system: {formatter = (mkArgs system).pkgs.alejandra;});
 }
