@@ -39,12 +39,12 @@ pkgs.stdenv.mkDerivation {
 
     if exists nerd-font/*.ttf ; then
       mkdir -p "$truetype"
-      cp --reflink=auto nerd-font/*.ttf "$truetype"
+      cp nerd-font/*.ttf "$truetype"
     fi
 
     if exists nerd-font/*.otf ; then
       mkdir -p "$opentype"
-      cp --reflink=auto nerd-font/*.otf "$opentype"
+      cp nerd-font/*.otf "$opentype"
     fi
   '';
 }
