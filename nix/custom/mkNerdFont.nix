@@ -32,13 +32,19 @@ pkgs.stdenv.mkDerivation {
   '';
 
   installPhase = ''
-    truetype="$out"/share/fonts/truetype
-    opentype="$out"/share/fonts/opentype
+    exists() { [ -e "$1" ]; }
 
-    install -d "$truetype"
-    install -d "$opentype"
+    truetype="$out/share/fonts/truetype"
+    opentype="$out/share/fonts/opentype"
 
-    install nerd-font/*.ttf "$truetype"
-    install nerd-font/*.otf "$opentype"
+    if exists nerd-font/*.ttf ; then
+      mkdir -p "$truetype"
+      cp --reflink=auto nerd-font/*.ttf "$truetype"
+    fi
+
+    if exists nerd-font/*.otf ; then
+      mkdir -p "$opentype"
+      cp --reflink=auto nerd-font/*.otf "$opentype"
+    fi
   '';
 }
