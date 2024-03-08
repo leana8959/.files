@@ -1,10 +1,10 @@
 {
   pkgs,
-  mypkgs,
+  myPkgs,
   ...
 }: {
   home.packages = with pkgs; [
-    mypkgs.hiosevka-nerd-font-mono
+    myPkgs.hiosevka-nerd-font-mono
     jetbrains-mono
 
     lmodern
