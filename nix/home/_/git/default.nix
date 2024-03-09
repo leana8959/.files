@@ -27,8 +27,9 @@
     ignores = [
       "*~"
       "*.swp"
-      ".direnv/"
       ".DS_Store"
+      ".direnv/"
+      "**/result"
     ];
   };
 
