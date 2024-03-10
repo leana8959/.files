@@ -51,7 +51,7 @@
         init.defaultBranch = "main";
         user = {
           name = "Léana CHIANG";
-          email = "leana.chiang@etudiant.univ-rennes.fr";
+          email = "leana.chiang@etudiant.univ-rennes1.fr";
           signingKey = "EB544A6442B3B6CE88CD859732035DB97E777EEB";
         };
         commit.gpgSign = true;
