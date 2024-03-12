@@ -73,8 +73,9 @@
       forgejo-actions-runner
     ]
     ++ lib.lists.optionals config.universityTools.enable [
+      pkgs.rars
       myPkgs.logisim-evolution
       myPkgs.necrolib
-      pkgs.rars
+      myPkgs.why3
     ];
 }
