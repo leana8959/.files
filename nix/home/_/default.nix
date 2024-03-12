@@ -71,6 +71,7 @@
       ghostscript
       act
       forgejo-actions-runner
+      nurl
     ]
     ++ lib.lists.optionals config.universityTools.enable [
       pkgs.rars
