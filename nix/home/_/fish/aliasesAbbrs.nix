@@ -27,9 +27,6 @@
     np = "cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd";
     vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.lua && prevd";
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
-
-    # Home-Manager / NixOS
-    nsh = "nix-shell -p";
   };
   abbrsLinux = {
     ss = "sudo systemctl";
@@ -46,6 +43,9 @@
     tree = "tree -Cph";
     restow = "cd ~/.dotfiles/ && stow -D . && stow -S . && prevd";
     nix-shell = "nix-shell --run fish";
+    # idea taken from https://github.com/nix-community/comma
+    "," = "nix-shell -p";
+    ",," = "nix run";
   };
   aliasesLinux = {
     chmod = "chmod --preserve-root";
