@@ -120,6 +120,16 @@ ls.add_snippets("ledger", {
         t("\tassets:compte_courant           -1,50 EUR"),
         cr(),
     }),
+    s("izly", {
+        f(show_date_ledger_entry),
+        t(" "),
+        t("IZLY"),
+        cr(),
+        t("\texpenses                         3,30 EUR"),
+        cr(),
+        t("\tassets:izly                     -3,30 EUR"),
+        cr(),
+    }),
 })
 
 -- generalized entry
