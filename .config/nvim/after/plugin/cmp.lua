@@ -82,92 +82,59 @@ local function right()
     local cms = get_cms()
     return " " .. cms.right
 end
+
+-- stylua: ignore start
 ls.add_snippets("all", {
     s("banner", {
-        f(horizon, { 1 }),
-        t { "", "" },
-        f(left),
-        i(1),
-        f(right),
-        t { "", "" },
+        f(horizon, { 1 }), cr(),
+        f(left), i(1), f(right), cr(),
         f(horizon, { 1 }),
     }),
 })
+-- stylua: ignore end
 
 ------------
 -- Ledger --
 ------------
 local function show_date_ledger_entry() return os.date("%Y-%m-%d") end
 -- shortcuts
+
+-- stylua: ignore start
 ls.add_snippets("ledger", {
     s("lessive", {
-        f(show_date_ledger_entry),
-        t(" "),
-        t("Lave linge (CROUS)"),
-        cr(),
-        t("\texpenses                         3,00 EUR"),
-        cr(),
-        t("\tassets:compte_courant           -3,00 EUR"),
-        cr(),
+        f(show_date_ledger_entry), t(" "), t("Lave linge (CROUS)"), cr(),
+        t("\texpenses                         3,00 EUR"), cr(),
+        t("\tassets:compte_courant           -3,00 EUR"), cr(),
     }),
     s("sechoir", {
-        f(show_date_ledger_entry),
-        t(" "),
-        t("Sèche linge (CROUS)"),
-        cr(),
-        t("\texpenses                         1,50 EUR"),
-        cr(),
-        t("\tassets:compte_courant           -1,50 EUR"),
-        cr(),
+        f(show_date_ledger_entry), t(" "), t("Sèche linge (CROUS)"), cr(),
+        t("\texpenses                         1,50 EUR"), cr(),
+        t("\tassets:compte_courant           -1,50 EUR"), cr(),
     }),
     s("izly", {
-        f(show_date_ledger_entry),
-        t(" "),
-        t("IZLY"),
-        cr(),
-        t("\texpenses                         3,30 EUR"),
-        cr(),
-        t("\tassets:izly                     -3,30 EUR"),
-        cr(),
+        f(show_date_ledger_entry), t(" "), t("IZLY"), cr(),
+        t("\texpenses                         3,30 EUR"), cr(),
+        t("\tassets:izly                     -3,30 EUR"), cr(),
     }),
 })
+-- stylua: ignore end
 
 -- generalized entry
+-- stylua: ignore start
 local id = function(args) return args[1][1] end
 ls.add_snippets("ledger", {
     s("entry", {
-        f(show_date_ledger_entry),
-        t(" "),
-        i(1),
-        cr(),
-        t("\texpenses:"),
-        i(2),
-        t("            "),
-        i(3),
-        t(" EUR"),
-        cr(),
-        t("\tassets:compte_courant           -"),
-        f(id, { 3 }),
-        t(" EUR"),
-        cr(),
+        f(show_date_ledger_entry), t(" "), i(1), cr(),
+        t("\texpenses:"), i(2), t("            "), i(3), t(" EUR"), cr(),
+        t("\tassets:compte_courant           -"), f(id, { 3 }), t(" EUR"), cr(),
     }),
     s("date-entry", {
-        i(1),
-        t(" "),
-        i(2),
-        cr(),
-        t("\texpenses:"),
-        i(3),
-        t("            "),
-        i(4),
-        t(" EUR"),
-        cr(),
-        t("\tassets:compte_courant           -"),
-        f(id, { 4 }),
-        t(" EUR"),
-        cr(),
+        i(1), t(" "), i(2), cr(),
+        t("\texpenses:"), i(3), t("            "), i(4), t(" EUR"), cr(),
+        t("\tassets:compte_courant           -"), f(id, { 4 }), t(" EUR"), cr(),
     }),
 })
+-- stylua: ignore end
 
 -------------
 -- Haskell --
