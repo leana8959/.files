@@ -2,6 +2,7 @@
   callPackage,
   unstable,
   opam-nix,
+  alt-ergo,
 }: let
   mkNerdFont = callPackage ./mkNerdFont.nix {inherit (unstable) nerd-font-patcher;};
 
@@ -20,6 +21,8 @@
     font = hiosevka;
     extraArgs = ["--name {/.}-NFP" "--variable-width-glyphs"];
   };
+
+  why3 = callPackage ./why3.nix {inherit alt-ergo;};
 in {
   myPkgs = {
     inherit
@@ -28,6 +31,7 @@ in {
       hiosevka
       hiosevka-nerd-font-mono
       hiosevka-nerd-font-propo
+      why3
       ;
   };
 

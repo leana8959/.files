@@ -21,9 +21,14 @@
       inherit pkgs;
       nurpkgs = pkgs;
     };
+    alt-ergo-pin = import input.alt-ergo-pin {
+      inherit system;
+      config.allowUnfree = true;
+    };
     custom = pkgs.callPackage ./custom {
       inherit unstable;
       inherit (input) opam-nix;
+      inherit (alt-ergo-pin) alt-ergo;
     };
   in {
     inherit pkgs unstable nur;
