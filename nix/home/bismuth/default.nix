@@ -11,4 +11,8 @@
     input.audio-lint
     input.hbrainfuck
   ];
+
+  fish.extraCompletions = [
+    input.hbrainfuck
+  ];
 }

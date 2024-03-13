@@ -15,12 +15,22 @@
         (lib.lists.reverseList) # source paths in reverse order
         (map (p: "fish_add_path -m ${p}"))
         (builtins.concatStringsSep "\n")
+        (s: s + "\n")
+      ];
+
+    source_completions = cs:
+      lib.trivial.pipe cs [
+        (map (c: "source ${c}/share/fish/vendor_completions.d/*.fish"))
+        (builtins.concatStringsSep "\n")
+        (s: s + "\n")
       ];
   in {
     enable = true;
 
     shellInit =
       readConfig "shellInit"
+      # Source packages that are not linked
+      + source_completions config.fish.extraCompletions
       # Just in case $PATH is broken, add them in an idempotent fashion
       + add_paths [
         # Make sure wrapper comes first
