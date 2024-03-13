@@ -10,9 +10,11 @@
   home.packages = [
     input.audio-lint
     input.hbrainfuck
+    input.prop-solveur
   ];
 
   fish.extraCompletions = [
     input.hbrainfuck
+    input.prop-solveur
   ];
 }

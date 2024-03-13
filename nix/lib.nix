@@ -40,6 +40,7 @@
     # my packages
     audio-lint = input.audio-lint.defaultPackage.${system};
     hbrainfuck = input.hbrainfuck.packages.${system}.default;
+    prop-solveur = input.prop-solveur.packages.${system}.default;
   };
 
   defaultOptions = {lib, ...}: {
