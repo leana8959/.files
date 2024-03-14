@@ -72,6 +72,7 @@
       act
       forgejo-actions-runner
       nurl
+      onefetch
     ]
     ++ lib.lists.optionals config.universityTools.enable [
       pkgs.rars
