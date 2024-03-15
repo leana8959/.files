@@ -34,6 +34,8 @@
       hydrogen.system = "aarch64-linux";
       # Oracle cloud
       oracle.system = "aarch64-linux";
+      # Linode
+      linode.system = "x86_64-linux";
     };
 
     nixosConfigurations = mkNixOSes {
