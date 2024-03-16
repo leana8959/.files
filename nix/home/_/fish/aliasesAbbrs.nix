@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  hostname,
+  ...
+}: let
   abbrs = {
     ## Docker
     dc = "docker compose";
@@ -31,11 +35,11 @@
   abbrsLinux = {
     ss = "sudo systemctl";
     se = "SUDO_EDITOR=(which nvim) sudoedit";
-    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#carbon";
-    hs = "home-manager switch -L --flake ~/.dotfiles/nix#bismuth";
+    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#${hostname}";
+    hs = "home-manager switch -L --flake ~/.dotfiles/nix#${hostname}";
   };
   abbrsDarwin = {
-    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#bismuth";
+    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#${hostname}";
   };
 
   aliases = {
