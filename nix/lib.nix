@@ -101,7 +101,7 @@
     };
 
   mkHomeManager = name: sys: opts: let
-    args = mkArgs sys;
+    args = mkArgs sys // {hostname = name;};
   in
     home-manager.lib.homeManagerConfiguration {
       pkgs = args.pkgs;
