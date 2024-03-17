@@ -11,4 +11,15 @@
     '';
     settings.auto-optimise-store = true;
   };
+
+  nix.registry.flakies = {
+    from = {
+      id = "flakies";
+      type = "indirect";
+    };
+    to = {
+      type = "git";
+      url = "https://git.earth2077.fr/leana/flakies";
+    };
+  };
 }
