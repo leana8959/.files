@@ -20,6 +20,7 @@ local servers = {
     tsserver = {}, -- TypeScript
     vimls = {}, -- Vim Script
     ocamllsp = {}, -- OCaml
+    gleam = {},
 
     bashls = { -- Bash
         on_attach = function(_, bufno)
@@ -111,9 +112,9 @@ end
 -- Type signature
 require("lsp_signature").setup {
     floating_window = false,
-    hint_enable = true ,
+    hint_enable = true,
     hint_prefix = "󰽏 ",
-    hint_scheme = "Comment"
+    hint_scheme = "Comment",
 }
 
 -- Diagnostic display configuration
