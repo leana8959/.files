@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   config,
   lib,
   ...
@@ -12,6 +13,7 @@
     [
       pkgs.ghc
       pkgs.haskell-language-server
+      unstable.qmk
 
       input.audio-lint
       input.hbrainfuck
