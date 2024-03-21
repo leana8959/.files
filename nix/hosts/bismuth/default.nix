@@ -10,8 +10,6 @@
   networking.hostName = hostname;
   environment.shells = [pkgs.fish];
 
-  imports = [./services];
-
   nix.settings.trusted-users = ["leana"];
 
   environment.systemPackages = with pkgs; [
