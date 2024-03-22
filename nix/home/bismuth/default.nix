@@ -14,6 +14,7 @@
       pkgs.ghc
       pkgs.haskell-language-server
       unstable.qmk
+      unstable.wally-cli
 
       input.audio-lint
       input.hbrainfuck
@@ -26,14 +27,8 @@
     ]
   );
 
-  fish.extraCompletions = (
-    [
-      input.hbrainfuck
-      input.prop-solveur
-    ]
-    ++ lib.lists.optionals config.docker.enable [
-      pkgs.docker
-      pkgs.colima
-    ]
-  );
+  fish.extraCompletions = [
+    input.hbrainfuck
+    input.prop-solveur
+  ];
 }
