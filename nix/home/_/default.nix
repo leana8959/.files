@@ -67,6 +67,7 @@
       tea
       tokei
       gnumake
+      just
       sd
       ghostscript
       act
