@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup {
 
-    ensure_installed = {},
+    ensure_installed = { "haskell", "lua" },
     ignore_install = { "typst", "markdown" },
     sync_install = false,
     auto_install = true,
@@ -45,8 +45,8 @@ require("nvim-treesitter.configs").setup {
 
 require("treesitter-context").setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-    max_lines = 2, -- How many lines the window should span. Values <                                     = 0 mean no limit.
-    min_window_height = 0, -- Minimum editor window height to enable context. Values <                                    = 0 mean no limit.
+    max_lines = 2, -- How many lines the window should span. Values <= 0 mean no limit.
+    min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
     line_numbers = true,
     multiline_threshold = 20, -- Maximum number of lines to collapse for a single context line
     trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
