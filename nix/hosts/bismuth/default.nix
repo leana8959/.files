@@ -12,6 +12,12 @@
 
   nix.settings.trusted-users = ["leana"];
 
+  nix.gc = {
+    automatic = true;
+    interval = {Weekday = 0;};
+    options = "--delete-older-than 30d";
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     gnumake
