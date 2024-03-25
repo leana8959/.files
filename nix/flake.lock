@@ -224,11 +224,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1709667653,
-        "narHash": "sha256-ZzTMbYyotbJsZfRlc4D8Xoz24BiunQzNueocycFA8wY=",
+        "lastModified": 1711390183,
+        "narHash": "sha256-FviVD+5jZ93olfy0Sn3XmUcc/eDpmet+iO6bS334Uz8=",
         "ref": "refs/heads/mistress",
-        "rev": "334bd6d037d586165ea0cd0a0b456e597beb1073",
-        "revCount": 8,
+        "rev": "d4af422a9d974efd01d297f9375969e10e21df3f",
+        "revCount": 16,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/hbrainfuck"
       },
