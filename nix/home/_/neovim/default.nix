@@ -25,6 +25,7 @@
         nodePackages.pyright
         taplo
         lemminx
+        yaml-language-server
       ];
   };
 
