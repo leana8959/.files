@@ -20,7 +20,8 @@ local servers = {
     tsserver = {}, -- TypeScript
     vimls = {}, -- Vim Script
     ocamllsp = {}, -- OCaml
-    gleam = {},
+    gleam = {}, -- Gleam
+    yamlls = {}, -- yaml
 
     bashls = { -- Bash
         on_attach = function(_, bufno)
