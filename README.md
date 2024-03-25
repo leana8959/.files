@@ -23,8 +23,10 @@ To build hIosevka Nerd Font, Iosevka with Haskell ligatures. [^1]
 
 ## Binary Cache
 You can use my binary cache for my packages:
-`https://app.cachix.org/cache/leana8959`
-`leana8959.cachix.org-1:0kiyNv2RiR04ldLZRRm7EC3+4slPi364bX8JKzwpv6A=`
+```
+https://leana8959.cachix.org
+leana8959.cachix.org-1:CxQSAp8lcgMv8Me459of0jdXRW2tcyeYRKTiiUq8z0M=
+```
 
 # Layout
 My [dvorak french](https://github.com/leana8959/dvorak-french) layout has been
