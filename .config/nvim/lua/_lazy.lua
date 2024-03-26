@@ -128,7 +128,11 @@ local plugins = {
     ------------------
     -- Colorschemes --
     ------------------
-    { "https://git.earth2077.fr/leana/curry.nvim", branch = "lua" },
+    {
+        "https://git.earth2077.fr/leana/curry.nvim",
+        branch = "lua",
+        dev = true,
+    },
 
     ----------------
     -- Completion --
@@ -147,7 +151,11 @@ local plugins = {
     },
 }
 
-local opts = {}
+local opts = {
+    dev = {
+        path = "~/repos/leana/",
+    },
+}
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
