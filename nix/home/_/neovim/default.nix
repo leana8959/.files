@@ -2,11 +2,9 @@
   config,
   pkgs,
   lib,
-  neovim-pin,
   ...
 }: {
   programs.neovim = {
-    package = neovim-pin.neovim-unwrapped;
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs;
