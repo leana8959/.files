@@ -15,9 +15,6 @@
           "discord"
           "languagetool"
         ];
-      overlays = [
-        input.neovim-nightly-overlay.overlay
-      ];
     };
     unstable = import nixunstable {inherit system;};
     nur = import input.nixnur {
@@ -28,6 +25,7 @@
       inherit system;
       config.allowUnfree = true;
     };
+    neovim-pin = import input.neovim-pin {inherit system;};
     custom = pkgs.callPackage ./custom {
       inherit unstable;
       inherit (input) opam-nix;
@@ -40,6 +38,7 @@
     wired = input.wired.packages.${system};
     agenix = input.agenix.packages.${system};
     llama-cpp = input.llama-cpp.packages.${system}.default;
+    inherit neovim-pin;
     # my packages
     audio-lint = input.audio-lint.defaultPackage.${system};
     hbrainfuck = input.hbrainfuck.packages.${system}.default;
