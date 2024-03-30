@@ -5,7 +5,7 @@
   nix-darwin,
   flake-utils,
   ...
-}@input:
+}@inputs:
 let
   mkArgs =
     system:
@@ -21,18 +21,18 @@ let
           ];
       };
       unstable = import nixunstable { inherit system; };
-      nur = import input.nixnur {
+      nur = import inputs.nixnur {
         inherit pkgs;
         nurpkgs = pkgs;
       };
-      alt-ergo-pin = import input.alt-ergo-pin {
+      alt-ergo-pin = import inputs.alt-ergo-pin {
         inherit system;
         config.allowUnfree = true;
       };
-      neovim-pin = import input.neovim-pin { inherit system; };
+      neovim-pin = import inputs.neovim-pin { inherit system; };
       custom = pkgs.callPackage ./custom {
         inherit unstable;
-        inherit (input) opam-nix;
+        inherit (inputs) opam-nix;
         inherit (alt-ergo-pin) alt-ergo;
       };
     in
@@ -40,15 +40,15 @@ let
       inherit pkgs unstable nur;
       inherit (custom) myPkgs myLib;
       # packages
-      wired = input.wired.packages.${system};
-      agenix = input.agenix.packages.${system};
-      llama-cpp = input.llama-cpp.packages.${system}.default;
+      wired = inputs.wired.packages.${system};
+      agenix = inputs.agenix.packages.${system};
+      llama-cpp = inputs.llama-cpp.packages.${system}.default;
       inherit neovim-pin;
-      nix-visualize = input.nix-visualize.packages.${system}.default;
+      nix-visualize = inputs.nix-visualize.packages.${system}.default;
       # my packages
-      audio-lint = input.audio-lint.defaultPackage.${system};
-      hbrainfuck = input.hbrainfuck.packages.${system}.default;
-      prop-solveur = input.prop-solveur.packages.${system}.default;
+      audio-lint = inputs.audio-lint.defaultPackage.${system};
+      hbrainfuck = inputs.hbrainfuck.packages.${system}.default;
+      prop-solveur = inputs.prop-solveur.packages.${system}.default;
     };
 
   defaultOptions =
@@ -77,7 +77,7 @@ let
         ./hosts/_
         ./hosts/${name}
         ./layouts
-        input.agenix.nixosModules.default
+        inputs.agenix.nixosModules.default
         home-manager.nixosModules.home-manager
         defaultOptions
         opts
