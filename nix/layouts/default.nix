@@ -4,12 +4,12 @@
     options = "caps:swapescape";
     extraLayouts = {
       "myDvorak" = {
-        languages = ["us"];
+        languages = [ "us" ];
         symbolsFile = ./dvorak.xkb;
         description = "Leana's dvorak";
       };
       "myDvorakFrench" = {
-        languages = ["fr"];
+        languages = [ "fr" ];
         symbolsFile = ./dvorak-french.xkb;
         description = "Leana's dvorak but baguette";
       };

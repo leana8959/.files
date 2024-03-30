@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   system.stateVersion = "23.11";
 
   imports = [
@@ -32,11 +33,14 @@
       "docker"
       "vboxusers"
     ];
-    packages = [];
+    packages = [ ];
   };
 
   nix = {
     package = pkgs.nixFlakes;
-    settings.trusted-users = ["root" "@wheel"];
+    settings.trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
 }

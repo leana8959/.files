@@ -6,7 +6,8 @@
   lib,
   nix-visualize,
   ...
-}: {
+}:
+{
   imports = [
     ./fish
     ./direnv
@@ -37,7 +38,8 @@
     gpg.enable = true;
   };
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       # shell and script dependencies
       figlet

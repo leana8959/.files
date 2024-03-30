@@ -1,4 +1,4 @@
 {
-  imports = [./fonts.nix];
+  imports = [ ./fonts.nix ];
   home.homeDirectory = "/Users/leana";
 }

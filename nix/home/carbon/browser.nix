@@ -1,8 +1,5 @@
+{ pkgs, nur, ... }:
 {
-  pkgs,
-  nur,
-  ...
-}: {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-esr;
@@ -29,7 +26,9 @@
         ExtensionRecommendations = false;
         SkipOnboarding = true;
       };
-      DNSOverHTTPS = {Enabled = true;};
+      DNSOverHTTPS = {
+        Enabled = true;
+      };
       EnableTrackingProtection = {
         Value = true;
         Cryptomining = true;
@@ -75,41 +74,31 @@
               }
             ];
             icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            definedAliases = ["@np"];
+            definedAliases = [ "@np" ];
           };
           Searxng = {
-            urls = [
-              {template = "https://searxng.earth2077.fr/search?query={searchTerms}";}
-            ];
+            urls = [ { template = "https://searxng.earth2077.fr/search?query={searchTerms}"; } ];
             iconUpdateURL = "https://searxng.earth2077.fr/favicon.png";
           };
           Invidious = {
-            urls = [
-              {template = "https://invidious.earth2077.fr/search?q={searchTerms}";}
-            ];
-            definedAliases = ["@yt"];
+            urls = [ { template = "https://invidious.earth2077.fr/search?q={searchTerms}"; } ];
+            definedAliases = [ "@yt" ];
             iconUpdateURL = "https://invidious.earth2077.fr/favicon-32x32.png";
           };
           "Hoogle" = {
-            urls = [
-              {template = "https://hoogle.haskell.org/?hoogle={searchTerms}";}
-            ];
+            urls = [ { template = "https://hoogle.haskell.org/?hoogle={searchTerms}"; } ];
             iconUpdateURL = "https://hoogle.haskell.org/favicon.png";
-            definedAliases = ["@hg"];
+            definedAliases = [ "@hg" ];
           };
           "Genius" = {
-            urls = [
-              {template = "https://genius.com/search?q={searchTerms}";}
-            ];
+            urls = [ { template = "https://genius.com/search?q={searchTerms}"; } ];
             iconUpdateURL = "https://genius.com/favicon.ico";
-            definedAliases = ["@ge"];
+            definedAliases = [ "@ge" ];
           };
           "NixOS Wiki" = {
-            urls = [
-              {template = "https://nixos.wiki/index.php?search={searchTerms}";}
-            ];
+            urls = [ { template = "https://nixos.wiki/index.php?search={searchTerms}"; } ];
             iconUpdateURL = "https://nixos.wiki/favicon.png";
-            definedAliases = ["@nw"];
+            definedAliases = [ "@nw" ];
           };
           "Wikipedia (en)".metaData.alias = "@wk";
         };

@@ -3,7 +3,8 @@
   opam-nix,
   system,
   version ? "v0.14.7.1",
-}: let
+}:
+let
   pname = "necrolib";
 
   hashes = {
@@ -17,14 +18,16 @@
   };
 
   on = opam-nix.lib.${system};
-  query = {ocaml-base-compiler = "4.14.1";};
+  query = {
+    ocaml-base-compiler = "4.14.1";
+  };
 
-  scope = on.buildDuneProject {} pname src query;
+  scope = on.buildDuneProject { } pname src query;
 
   overlay = self: super: {
     # credits: balsoft
     # https://github.com/tweag/opam-nix/discussions/71#discussioncomment-8344504
-    necrolib = super.necrolib.overrideAttrs (oa: {inherit src;});
+    necrolib = super.necrolib.overrideAttrs (oa: { inherit src; });
   };
 in
-  (scope.overrideScope' overlay).${pname}
+(scope.overrideScope' overlay).${pname}

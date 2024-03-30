@@ -4,8 +4,9 @@
   config,
   lib,
   ...
-} @ input: {
-  imports = [./fonts.nix];
+}@input:
+{
+  imports = [ ./fonts.nix ];
 
   home.homeDirectory = lib.mkForce "/Users/leana";
 
