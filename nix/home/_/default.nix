@@ -52,7 +52,7 @@
       parallel
 
       # nix
-      alejandra
+      unstable.nixfmt-rfc-style
 
       # utils
       tree

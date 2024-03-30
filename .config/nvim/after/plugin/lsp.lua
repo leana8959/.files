@@ -62,7 +62,7 @@ local servers = {
             vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
             map("n", "<leader>f", function()
                 vim.cmd.norm("mJ")
-                vim.cmd(":%!alejandra -qq")
+                vim.cmd(":%!nixfmt")
                 vim.cmd.norm("`J")
             end, { buffer = bufno })
         end,
