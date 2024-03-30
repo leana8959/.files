@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   time.timeZone = "Europe/Paris";
   i18n = {
     defaultLocale = "en_US.UTF-8";
@@ -72,15 +73,29 @@
       EnumerateSkipFirst = null;
     };
 
-    "Hotkey/TriggerKeys" = {};
-    "Hotkey/AltTriggerKeys" = {"0" = "Shift_L";};
-    "Hotkey/EnumerateGroupForwardKeys" = {"0" = "Control+space";};
-    "Hotkey/EnumerateGroupBackwardKeys" = {"0" = "Control+Shift+space";};
+    "Hotkey/TriggerKeys" = { };
+    "Hotkey/AltTriggerKeys" = {
+      "0" = "Shift_L";
+    };
+    "Hotkey/EnumerateGroupForwardKeys" = {
+      "0" = "Control+space";
+    };
+    "Hotkey/EnumerateGroupBackwardKeys" = {
+      "0" = "Control+Shift+space";
+    };
 
-    "Hotkey/PrevPage" = {"0" = "Up";};
-    "Hotkey/NextPage" = {"0" = "Down";};
-    "Hotkey/PrevCandidate" = {"0" = "Shift+Tab";};
-    "Hotkey/NextCandidate" = {"0" = "Tab";};
+    "Hotkey/PrevPage" = {
+      "0" = "Up";
+    };
+    "Hotkey/NextPage" = {
+      "0" = "Down";
+    };
+    "Hotkey/PrevCandidate" = {
+      "0" = "Shift+Tab";
+    };
+    "Hotkey/NextCandidate" = {
+      "0" = "Tab";
+    };
 
     Behavior = {
       ActiveByDefault = false;

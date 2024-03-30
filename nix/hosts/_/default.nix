@@ -1,5 +1,5 @@
 {
-  imports = [./substituters.nix];
+  imports = [ ./substituters.nix ];
 
   nix = {
     extraOptions = ''

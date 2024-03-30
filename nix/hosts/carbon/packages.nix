@@ -1,8 +1,5 @@
+{ pkgs, agenix, ... }:
 {
-  pkgs,
-  agenix,
-  ...
-}: {
   environment.systemPackages = with pkgs; [
     curl
     stow

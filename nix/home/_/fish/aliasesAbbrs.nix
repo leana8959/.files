@@ -1,8 +1,5 @@
-{
-  pkgs,
-  hostname,
-  ...
-}: let
+{ pkgs, hostname, ... }:
+let
   abbrs = {
     ## Docker
     dc = "docker compose";
@@ -69,23 +66,14 @@
       defaults write com.apple.dock persistent-apps -array-add '{tile-type="small-spacer-tile";}'; killall Dock
     '';
   };
-in {
-  programs.fish = let
-    inherit (pkgs.stdenv) isLinux;
-  in {
-    shellAbbrs =
-      abbrs
-      // (
-        if isLinux
-        then abbrsLinux
-        else abbrsDarwin
-      );
-    shellAliases =
-      aliases
-      // (
-        if isLinux
-        then aliasesLinux
-        else aliasesDarwin
-      );
-  };
+in
+{
+  programs.fish =
+    let
+      inherit (pkgs.stdenv) isLinux;
+    in
+    {
+      shellAbbrs = abbrs // (if isLinux then abbrsLinux else abbrsDarwin);
+      shellAliases = aliases // (if isLinux then aliasesLinux else aliasesDarwin);
+    };
 }

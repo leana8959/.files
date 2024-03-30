@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     xserver.enable = true;
 
@@ -20,7 +21,7 @@
     xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp: with hp; [neat-interpolation];
+      extraPackages = hp: with hp; [ neat-interpolation ];
     };
 
     xserver.libinput = {

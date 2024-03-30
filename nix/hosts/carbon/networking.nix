@@ -4,38 +4,41 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   networking.hostName = hostname;
 
   networking.networkmanager.enable = lib.mkForce false;
 
   services.openssh.enable = true;
 
-  fileSystems = let
-    opts = [
-      "noauto"
-      "x-systemd.automount"
-      "x-systemd.idle-timeout=60"
-      "x-systemd.device-timeout=5s"
-      "x-systemd.mount-timeout=5s"
-    ];
-  in {
-    "/mnt/data" = {
-      device = "10.0.0.20:/mnt/mainPool/data";
-      fsType = "nfs";
-      options = opts;
+  fileSystems =
+    let
+      opts = [
+        "noauto"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=60"
+        "x-systemd.device-timeout=5s"
+        "x-systemd.mount-timeout=5s"
+      ];
+    in
+    {
+      "/mnt/data" = {
+        device = "10.0.0.20:/mnt/mainPool/data";
+        fsType = "nfs";
+        options = opts;
+      };
+      "/mnt/archive" = {
+        device = "10.0.0.20:/mnt/mainPool/data/Archive";
+        fsType = "nfs";
+        options = opts;
+      };
+      "/mnt/documents" = {
+        device = "10.0.0.20:/mnt/mainPool/data/Documents";
+        fsType = "nfs";
+        options = opts;
+      };
     };
-    "/mnt/archive" = {
-      device = "10.0.0.20:/mnt/mainPool/data/Archive";
-      fsType = "nfs";
-      options = opts;
-    };
-    "/mnt/documents" = {
-      device = "10.0.0.20:/mnt/mainPool/data/Documents";
-      fsType = "nfs";
-      options = opts;
-    };
-  };
 
   networking.wireless = {
     enable = true;
@@ -46,7 +49,7 @@
       "HiddenParadize@Earth2077".psk = "@HOME@";
       "iPhone de Léana 江".psk = "@PHONE@";
       eduroam = {
-        authProtocols = ["WPA-EAP"];
+        authProtocols = [ "WPA-EAP" ];
         auth = ''
           pairwise=CCMP
           group=CCMP TKIP
@@ -62,11 +65,11 @@
     };
   };
 
-  systemd.targets.wireguard-wg0.wantedBy = lib.mkForce [];
+  systemd.targets.wireguard-wg0.wantedBy = lib.mkForce [ ];
   networking.wireguard = {
     interfaces = {
       wg0 = {
-        ips = ["10.66.66.50/32"];
+        ips = [ "10.66.66.50/32" ];
         privateKeyFile = config.age.secrets.wireguard_priv.path;
         postSetup = ''
           ${pkgs.iproute}/bin/ip route replace 10.66.66.1 dev wg0
@@ -77,7 +80,11 @@
           {
             publicKey = "amb6icauPN4P/suyNZoPsVVkB5+MiAnhFF6hIeUiNFE=";
             presharedKeyFile = config.age.secrets.wireguard_psk.path;
-            allowedIPs = ["10.66.66.1/32" "10.0.0.20/32" "10.0.0.31/32"];
+            allowedIPs = [
+              "10.66.66.1/32"
+              "10.0.0.20/32"
+              "10.0.0.31/32"
+            ];
             endpoint = "moon.earth2077.fr:660";
             persistentKeepalive = 25;
           }
