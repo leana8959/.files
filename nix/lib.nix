@@ -39,6 +39,7 @@
     agenix = input.agenix.packages.${system};
     llama-cpp = input.llama-cpp.packages.${system}.default;
     inherit neovim-pin;
+    nix-visualize = input.nix-visualize.packages.${system}.default;
     # my packages
     audio-lint = input.audio-lint.defaultPackage.${system};
     hbrainfuck = input.hbrainfuck.packages.${system}.default;

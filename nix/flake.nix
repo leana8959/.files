@@ -78,6 +78,7 @@
     llama-cpp.url = "github:ggerganov/llama.cpp";
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
     neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
+    nix-visualize.url = "github:craigmbooth/nix-visualize";
     # my stuff
     audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
     hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";

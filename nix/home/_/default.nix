@@ -4,6 +4,7 @@
   myPkgs,
   config,
   lib,
+  nix-visualize,
   ...
 }: {
   imports = [
@@ -74,6 +75,7 @@
       forgejo-actions-runner
       nurl
       onefetch
+      nix-visualize
     ]
     ++ lib.lists.optionals config.universityTools.enable [
       pkgs.rars
