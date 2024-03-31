@@ -90,8 +90,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "PatrickF1";
             repo = "fzf.fish";
-            rev = "e5d54b93cd3e096ad6c2a419df33c4f50451c900";
             sha256 = "sha256-5cO5Ey7z7KMF3vqQhIbYip5JR6YiS2I9VPRd6BOmeC8=";
+            rev = "v10.2";
           };
         }
         {
@@ -108,8 +108,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "meaningful-ooo";
             repo = "sponge";
-            rev = "384299545104d5256648cee9d8b117aaa9a6d7be";
             sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
+            rev = "1.1.0";
           };
         }
       ];
