@@ -13,6 +13,11 @@ autocmd("BufEnter", {
 })
 
 autocmd("FileType", {
+    pattern = "gitcommit",
+    callback = function() vim.opt_local["textwidth"] = 72 end,
+})
+
+autocmd("FileType", {
     pattern = { "markdown", "tex", "typst" },
     callback = function()
         vim.opt_local["shiftwidth"] = 2
