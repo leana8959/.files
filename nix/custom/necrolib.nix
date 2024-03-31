@@ -2,7 +2,7 @@
   pkgs,
   opam-nix,
   system,
-  version ? "v0.14.7.1",
+  version ? "v0.14.9",
 }:
 let
   pname = "necrolib";
@@ -10,6 +10,7 @@ let
   hashes = {
     "v0.14.7.1" = "sha256-rFYzNFsT7LIXzWxOogoJd9vh+ywI2N1GE77tnYO7keg=";
     "v0.14.8" = "sha256-ooc1DfTf4k9vcR2aU6CYzaGCDy4XvX98tvfzTLCljSc=";
+    "v0.14.9" = "sha256-wPOa/08AykXAotQLZ/CfxD0kLTnWHZTiTPW950uBukA=";
   };
 
   src = pkgs.fetchurl {
