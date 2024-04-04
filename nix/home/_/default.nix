@@ -62,8 +62,6 @@
       irssi
     ]
     ++ lib.lists.optionals config.extraUtils.enable [
-      unstable.opam
-      unstable.cargo
       jq
       hyperfine
       watchexec
