@@ -17,6 +17,8 @@
       unstable.qmk
       unstable.wally-cli
 
+      unstable.cargo
+
       input.audio-lint
       input.hbrainfuck
       input.prop-solveur
