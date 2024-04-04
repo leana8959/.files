@@ -20,7 +20,6 @@
             extraUtils.enable = true;
             cmus.enable = true;
             universityTools.enable = true;
-            docker.enable = true;
           };
         };
       };

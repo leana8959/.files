@@ -10,25 +10,22 @@
 
   home.homeDirectory = lib.mkForce "/Users/leana";
 
-  home.packages = (
-    [
-      pkgs.ghc
-      pkgs.haskell-language-server
-      unstable.qmk
-      unstable.wally-cli
+  home.packages = [
+    pkgs.ghc
+    pkgs.haskell-language-server
+    unstable.qmk
+    unstable.wally-cli
 
-      unstable.cargo
+    unstable.cargo
 
-      input.audio-lint
-      input.hbrainfuck
-      input.prop-solveur
-    ]
-    ++ lib.lists.optionals config.docker.enable [
-      pkgs.docker
-      pkgs.docker-compose
-      pkgs.colima
-    ]
-  );
+    input.audio-lint
+    input.hbrainfuck
+    input.prop-solveur
+
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.colima
+  ];
 
   fish.extraCompletions = [
     input.hbrainfuck
