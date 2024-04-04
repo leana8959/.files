@@ -59,7 +59,6 @@ let
         extraUtils.enable = lib.mkOption { default = false; };
         extraLanguageServers.enable = lib.mkOption { default = false; };
         universityTools.enable = lib.mkOption { default = false; };
-        docker.enable = lib.mkOption { default = false; };
         fish.extraCompletions = lib.mkOption { default = [ ]; };
       };
     };
