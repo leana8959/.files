@@ -27,6 +27,8 @@
     pkgs.colima
   ];
 
+  fish.opamInit = true;
+
   fish.extraCompletions = [
     input.hbrainfuck
     input.prop-solveur
