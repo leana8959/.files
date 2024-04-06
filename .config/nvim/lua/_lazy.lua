@@ -130,7 +130,7 @@ local plugins = {
     {
         "https://git.earth2077.fr/leana/curry.nvim",
         branch = "lua",
-        dev = true,
+        -- dev = true,
     },
 
     ----------------
