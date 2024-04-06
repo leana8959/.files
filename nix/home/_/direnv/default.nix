@@ -7,7 +7,7 @@
       let
         home = config.home.homeDirectory;
       in
-      builtins.fromTOML ''
+      fromTOML ''
         [global]
         strict_env = true
         [whitelist]
