@@ -1,4 +1,6 @@
+{ lib, ... }:
 {
   imports = [ ./fonts.nix ];
-  home.homeDirectory = "/Users/leana";
+
+  home.homeDirectory = lib.mkForce "/Users/leana";
 }
