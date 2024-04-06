@@ -36,7 +36,7 @@ let
     hs = "home-manager switch -L --flake ~/.dotfiles/nix#${hostname}";
   };
   abbrsDarwin = {
-    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#${hostname}";
+    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#${hostname} --option sandbox false";
   };
 
   aliases = {
