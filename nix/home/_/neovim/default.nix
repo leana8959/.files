@@ -19,15 +19,14 @@
         shellcheck
         shfmt
         nil
+        yaml-language-server
       ]
       ++ lib.lists.optionals config.extraLanguageServers.enable [
         nodePackages.vim-language-server
         vscode-langservers-extracted # HTML/CSS/JSON/ESLint
         marksman
-        nodePackages.pyright
         taplo
         lemminx
-        yaml-language-server
       ];
   };
 
