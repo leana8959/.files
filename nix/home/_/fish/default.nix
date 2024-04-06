@@ -4,20 +4,21 @@
   config,
   ...
 }:
+with builtins;
 {
   imports = [ ./aliasesAbbrs.nix ];
 
   programs.fish =
     let
-      readConfig = n: builtins.readFile ./conf.d/${n}.fish;
-      readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
+      readConfig = n: readFile ./conf.d/${n}.fish;
+      readConfigs = ns: concatStringsSep "\n" (map readConfig ns);
 
       add_paths =
         ps:
         lib.trivial.pipe ps [
           (lib.lists.reverseList) # source paths in reverse order
           (map (p: "fish_add_path -m ${p}"))
-          (builtins.concatStringsSep "\n")
+          (concatStringsSep "\n")
           (s: s + "\n")
         ];
 
@@ -25,7 +26,7 @@
         cs:
         lib.trivial.pipe cs [
           (map (c: "source ${c}/share/fish/vendor_completions.d/*.fish"))
-          (builtins.concatStringsSep "\n")
+          (concatStringsSep "\n")
           (s: s + "\n")
         ];
     in
@@ -66,10 +67,10 @@
               (map (
                 n: {
                   name = n;
-                  value = builtins.readFile ./functions/${n}.fish;
+                  value = readFile ./functions/${n}.fish;
                 }
               ))
-              builtins.listToAttrs
+              listToAttrs
             ];
         in
         makeFishFunctions [
