@@ -22,14 +22,14 @@
             universityTools.enable = true;
           };
         };
-      };
-
-      homeConfigurations = mkHomeManagers {
         # MacBook Air 2014
         tungsten = {
           system = "x86_64-darwin";
           settings.cmus.enable = true;
         };
+      };
+
+      homeConfigurations = mkHomeManagers {
         # Raspberry Pi 4
         hydrogen.system = "aarch64-linux";
         # Oracle cloud
