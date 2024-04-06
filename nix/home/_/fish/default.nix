@@ -47,12 +47,16 @@
           "/nix/var/nix/profiles/default/bin"
         ];
 
-      interactiveShellInit = readConfigs [
-        "interactiveShellInit"
-        "bind"
-        "colorscheme"
-        "locale"
-      ];
+      interactiveShellInit =
+        readConfigs [
+          "interactiveShellInit"
+          "bind"
+          "colorscheme"
+          "locale"
+        ]
+        + lib.strings.optionalString config.fish.opamInit ''
+          source ${config.home.homeDirectory}/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+        '';
 
       functions =
         let
