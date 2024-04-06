@@ -37,6 +37,7 @@ let
   };
   abbrsDarwin = {
     ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#${hostname} --option sandbox false";
+    nd = "nix develop -L --option sandbox false -c true"; # run the develop once without sandbox
   };
 
   aliases = {
