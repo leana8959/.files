@@ -60,6 +60,7 @@ let
         extraLanguageServers.enable = lib.mkOption { default = false; };
         universityTools.enable = lib.mkOption { default = false; };
         fish.extraCompletions = lib.mkOption { default = [ ]; };
+        git.signCommits = lib.mkOption { default = false; };
       };
     };
 

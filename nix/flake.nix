@@ -20,6 +20,7 @@
             extraUtils.enable = true;
             cmus.enable = true;
             universityTools.enable = true;
+            git.signCommits = true;
           };
         };
         # MacBook Air 2014
