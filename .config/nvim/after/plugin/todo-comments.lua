@@ -7,5 +7,6 @@ require("todo-comments").setup {
         NOTE = { icon = "·", color = "hint", alt = { "INFO" } },
         TEST = { icon = "T", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
         Q = { icon = "?", color = "warning" },
+        R = { icon = "=", color = "hint" },
     },
 }
