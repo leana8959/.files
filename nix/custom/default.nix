@@ -28,6 +28,8 @@ let
   };
 
   why3 = callPackage ./why3.nix { inherit alt-ergo; };
+
+  maeel = callPackage ./maeel.nix { };
 in
 {
   myPkgs = {
@@ -38,6 +40,7 @@ in
       hiosevka-nerd-font-mono
       hiosevka-nerd-font-propo
       why3
+      maeel
       ;
   };
 

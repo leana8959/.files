@@ -1,7 +1,7 @@
 {
   pkgs,
   unstable,
-  config,
+  myPkgs,
   lib,
   ...
 }@input:
@@ -21,6 +21,7 @@
     input.audio-lint
     input.hbrainfuck
     input.prop-solveur
+    myPkgs.maeel
 
     pkgs.docker
     pkgs.docker-compose
