@@ -45,6 +45,8 @@ with builtins;
           "/run/current-system/sw/bin"
           "/etc/profiles/per-user/${config.home.username}/bin"
           "${config.home.homeDirectory}/.nix-profile/bin"
+          "${config.home.homeDirectory}/.dotfiles/.local/bin"
+          "${config.home.homeDirectory}/.local/.local/bin"
           "/nix/var/nix/profiles/default/bin"
         ];
 
