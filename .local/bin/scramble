@@ -1,0 +1,22 @@
+#!/usr/bin/env runhaskell
+
+import System.Environment
+import System.Exit
+
+import Data.Char
+
+help = putStrLn "ThIs pRoGrAm sCrAmBlEs yOuR StRiNg tO MaKe iT FuNnY LoOkInG"
+
+parse []         = getContents
+parse ("-h" : _) = help >> exitSuccess
+parse xs         = pure (unwords xs)
+
+scramble = zipWith ($) alternate
+  where alternate = (cycle [toUpper, toLower])
+
+main = do
+  getArgs
+    >>= parse
+    >>= putStrLn . scramble
+
+  exitSuccess
