@@ -1,5 +1,8 @@
 { pkgs, hostname, ... }@input:
 {
+
+  imports = [ ./builders.nix ];
+
   nixpkgs.hostPlatform = "aarch64-darwin";
   system.stateVersion = 4;
   services.nix-daemon.enable = true;
