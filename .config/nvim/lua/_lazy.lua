@@ -87,11 +87,6 @@ local plugins = {
         lazy = false,
     },
     {
-        "kaarmu/typst.vim",
-        ft = "typst",
-        lazy = false,
-    },
-    {
         "turbio/bracey.vim",
         build = "npm install --prefix server",
         cond = vim.fn.executable("npm") == 1,
@@ -130,7 +125,7 @@ local plugins = {
     {
         "https://git.earth2077.fr/leana/curry.nvim",
         branch = "lua",
-        -- dev = true,
+        dev = false,
     },
 
     ----------------
