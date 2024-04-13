@@ -123,8 +123,7 @@ local plugins = {
     -- Colorschemes --
     ------------------
     {
-        "https://git.earth2077.fr/leana/curry.nvim",
-        branch = "lua",
+        "leana8959/curry.nvim",
         dev = false,
     },
 
