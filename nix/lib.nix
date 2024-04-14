@@ -45,6 +45,7 @@ let
       llama-cpp = inputs.llama-cpp.packages.${system}.default;
       inherit neovim-pin;
       nix-visualize = inputs.nix-visualize.packages.${system}.default;
+      nix-inspect = inputs.nix-inspect.packages.${system}.default;
       # my packages
       audio-lint = inputs.audio-lint.defaultPackage.${system};
       hbrainfuck = inputs.hbrainfuck.packages.${system}.default;

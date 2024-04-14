@@ -23,6 +23,8 @@
     input.prop-solveur
     myPkgs.maeel
 
+    input.nix-inspect
+
     pkgs.docker
     pkgs.docker-compose
     pkgs.colima
