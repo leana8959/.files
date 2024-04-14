@@ -6,7 +6,6 @@
   flake-utils,
   ...
 }@inputs:
-with builtins;
 let
   mkArgs =
     system:
@@ -16,7 +15,7 @@ let
         inherit system;
         config.allowUnfreePredicate =
           pkg:
-          elem (nixpkgs.lib.getName pkg) [
+          builtins.elem (nixpkgs.lib.getName pkg) [
             "discord"
             "languagetool"
           ];
@@ -148,7 +147,7 @@ let
       ];
     };
 
-  many = func: mapAttrs (name: opts: func name (opts.system) (opts.settings or { }));
+  many = func: builtins.mapAttrs (name: opts: func name (opts.system) (opts.settings or { }));
 in
 {
   mkNixOSes = many mkNixOS;
