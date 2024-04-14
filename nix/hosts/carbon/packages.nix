@@ -5,7 +5,7 @@
     stow
     gcc
 
-    agenix.default
+    agenix
   ];
 
   programs.vim.defaultEditor = true;

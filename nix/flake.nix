@@ -1,6 +1,6 @@
 {
   outputs =
-    { ... }@inputs:
+    inputs:
     let
       inherit (import ./lib.nix inputs)
         mkNixOSes
