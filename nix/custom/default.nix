@@ -1,17 +1,17 @@
 {
-  callPackage,
+  pkgs,
   unstable,
   opam-nix,
   alt-ergo,
 }:
 let
-  mkNerdFont = callPackage ./mkNerdFont.nix { inherit (unstable) nerd-font-patcher; };
+  mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { inherit (unstable) nerd-font-patcher; };
 
-  logisim-evolution = callPackage ./logisim-evolution.nix { };
+  logisim-evolution = pkgs.callPackage ./logisim-evolution.nix { };
 
-  necrolib = callPackage ./necrolib.nix { inherit opam-nix; };
+  necrolib = pkgs.callPackage ./necrolib.nix { inherit opam-nix; };
 
-  hiosevka = callPackage ./hiosevka { };
+  hiosevka = pkgs.callPackage ./hiosevka { };
   hiosevka-nerd-font-mono = mkNerdFont {
     font = hiosevka;
     extraArgs = [
@@ -27,9 +27,9 @@ let
     ];
   };
 
-  why3 = callPackage ./why3.nix { inherit alt-ergo; };
+  why3 = pkgs.callPackage ./why3.nix { inherit alt-ergo; };
 
-  maeel = callPackage ./maeel.nix { };
+  maeel = pkgs.callPackage ./maeel.nix { };
 in
 {
   myPkgs = {

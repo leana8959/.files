@@ -4,7 +4,6 @@
   myPkgs,
   config,
   lib,
-  nix-visualize,
   ...
 }:
 {

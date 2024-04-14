@@ -18,12 +18,10 @@
 
     unstable.cargo
 
-    input.audio-lint
-    input.hbrainfuck
-    input.prop-solveur
+    pkgs.audio-lint
+    pkgs.hbrainfuck
+    pkgs.prop-solveur
     myPkgs.maeel
-
-    input.nix-inspect
 
     pkgs.docker
     pkgs.docker-compose
@@ -33,7 +31,7 @@
   fish.opamInit = true;
 
   fish.extraCompletions = [
-    input.hbrainfuck
-    input.prop-solveur
+    pkgs.hbrainfuck
+    pkgs.prop-solveur
   ];
 }

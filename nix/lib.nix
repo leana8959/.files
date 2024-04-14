@@ -10,9 +10,9 @@ let
   mkArgs =
     system:
     let
-      # package sets
       pkgs = import nixpkgs {
         inherit system;
+        overlays = [ (_: _: import ./overlays.nix inputs system) ];
         config.allowUnfreePredicate =
           pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
@@ -30,8 +30,8 @@ let
         config.allowUnfree = true;
       };
       neovim-pin = import inputs.neovim-pin { inherit system; };
-      custom = pkgs.callPackage ./custom {
-        inherit unstable;
+      custom = import ./custom {
+        inherit pkgs unstable;
         inherit (inputs) opam-nix;
         inherit (alt-ergo-pin) alt-ergo;
       };
@@ -39,17 +39,8 @@ let
     {
       inherit pkgs unstable nur;
       inherit (custom) myPkgs myLib;
-      # packages
-      wired = inputs.wired.packages.${system};
-      agenix = inputs.agenix.packages.${system};
-      llama-cpp = inputs.llama-cpp.packages.${system}.default;
+      # packages sets
       inherit neovim-pin;
-      nix-visualize = inputs.nix-visualize.packages.${system}.default;
-      nix-inspect = inputs.nix-inspect.packages.${system}.default;
-      # my packages
-      audio-lint = inputs.audio-lint.defaultPackage.${system};
-      hbrainfuck = inputs.hbrainfuck.packages.${system}.default;
-      prop-solveur = inputs.prop-solveur.packages.${system}.default;
     };
 
   defaultOptions =
@@ -69,7 +60,7 @@ let
   mkNixOS =
     name: sys: opts:
     let
-      args = (mkArgs sys) // {
+      args = mkArgs sys // {
         hostname = name;
       };
     in
@@ -80,9 +71,9 @@ let
         ./hosts/${name}
         ./layouts
         inputs.agenix.nixosModules.default
-        home-manager.nixosModules.home-manager
         defaultOptions
         opts
+        home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -102,7 +93,7 @@ let
   mkDarwin =
     name: sys: opts:
     let
-      args = (mkArgs sys) // {
+      args = mkArgs sys // {
         hostname = name;
       };
     in
@@ -111,9 +102,9 @@ let
       modules = [
         ./hosts/_
         ./hosts/${name}
-        home-manager.darwinModules.home-manager
         defaultOptions
         opts
+        home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;

@@ -44,11 +44,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1707082766,
-        "narHash": "sha256-hCn/EG8ImNb86MII3tAKssaiPZHmxD2muwyVSd1BY6Q=",
+        "lastModified": 1708873592,
+        "narHash": "sha256-gwXE7KRM8nW65WLG17h6zJdnVHrhPUS1P0g9ECnYUuk=",
         "ref": "refs/heads/main",
-        "rev": "a85737f7e52ba6081f3ac75d319e21691e8b4dd0",
-        "revCount": 61,
+        "rev": "d122b0d84b46bdcfed591c23230d72b20eb380ad",
+        "revCount": 62,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/audio-lint"
       },
