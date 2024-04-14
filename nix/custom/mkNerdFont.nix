@@ -8,7 +8,6 @@
   extraArgs ? [ ],
   useDefaultsArgs ? true,
 }:
-with builtins;
 stdenvNoCC.mkDerivation {
   /* Credits:
      https://github.com/NixOS/nixpkgs/issues/44329#issuecomment-1231189572
@@ -26,10 +25,10 @@ stdenvNoCC.mkDerivation {
 
   buildPhase =
     let
-      args = concatStringsSep " " extraArgs;
+      args = builtins.concatStringsSep " " extraArgs;
       defArgs =
         if useDefaultsArgs then
-          concatStringsSep " " [
+          builtins.concatStringsSep " " [
             "--careful"
             "--complete"
             "--quiet"

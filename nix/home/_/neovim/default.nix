@@ -5,7 +5,6 @@
   neovim-pin,
   ...
 }:
-with builtins;
 {
   programs.neovim = {
     package = neovim-pin.neovim-unwrapped;
@@ -33,11 +32,11 @@ with builtins;
 
   home.file =
     let
-      fr_utf-8_spl = fetchurl {
+      fr_utf-8_spl = builtins.fetchurl {
         url = "http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl";
         sha256 = "abfb9702b98d887c175ace58f1ab39733dc08d03b674d914f56344ef86e63b61";
       };
-      fr_utf-8_sug = fetchurl {
+      fr_utf-8_sug = builtins.fetchurl {
         url = "http://ftp.vim.org/vim/runtime/spell/fr.utf-8.sug";
         sha256 = "0294bc32b42c90bbb286a89e23ca3773b7ef50eff1ab523b1513d6a25c6b3f58";
       };
