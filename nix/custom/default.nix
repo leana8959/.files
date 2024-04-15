@@ -27,6 +27,8 @@ let
     ];
   };
 
+  altiosevka = pkgs.callPackage ./altiosevka {};
+
   why3 = pkgs.callPackage ./why3.nix { inherit alt-ergo; };
 
   maeel = pkgs.callPackage ./maeel.nix { };
@@ -39,6 +41,7 @@ in
       hiosevka
       hiosevka-nerd-font-mono
       hiosevka-nerd-font-propo
+      altiosevka
       why3
       maeel
       ;

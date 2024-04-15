@@ -1,0 +1,15 @@
+[buildPlans.altiosevka]
+family = "altiosevka"
+spacing = "term"
+serifs = "sans"
+noLigation = true
+
+[buildPlans.altiosevka.variants.design]
+capital-z = 'straight-serifless-with-crossbar'
+capital-q = 'crossing'
+lower-lambda = 'tailed-turn'
+seven = 'straight-serifless-crossbar'
+number-sign = 'slanted'
+ampersand = "upper-open"
+dollar = 'open'
+percent = 'rings-continuous-slash-also-connected'
