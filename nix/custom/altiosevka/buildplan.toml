@@ -1,5 +1,5 @@
 [buildPlans.altiosevka]
-family = "altiosevka"
+family = "iosevka"
 spacing = "term"
 serifs = "sans"
 noLigation = true
