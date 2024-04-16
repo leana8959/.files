@@ -4,7 +4,7 @@ local map = vim.keymap.set
 harpoon:setup()
 
 -- add and view
-map({ "n", "i" }, "<A-c>", function() harpoon:list():append() end)
+map({ "n", "i" }, "<A-c>", function() harpoon:list():add() end)
 map({ "n", "i" }, "<A-g>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
 -- switch it up!
