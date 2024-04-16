@@ -12,12 +12,16 @@
     ];
     file.cmus = {
       recursive = true;
-      source =
-        let
-          inherit (pkgs.stdenv) isLinux;
-        in
-        if isLinux then ./cmus-linux else ./cmus-darwin;
-      target = "${config.xdg.configHome}/cmus";
+      text =
+        builtins.readFile ./rc
+        + lib.strings.optionalString pkgs.stdenv.isLinux ''
+          set output_plugin=alsa
+        ''
+        + lib.strings.optionalString pkgs.stdenv.isDarwin ''
+          # # distortion fix https://github.com/cmus/cmus/issues/1130#issuecomment-1003324193
+          # set output_plugin=ao
+        '';
+      target = "${config.xdg.configHome}/cmus/rc";
     };
   };
 }
