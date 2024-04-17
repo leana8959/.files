@@ -1,4 +1,9 @@
-{ pkgs, hostname, ... }:
+{
+  pkgs,
+  hostname,
+  lib,
+  ...
+}:
 let
   abbrs = {
     ## Docker
@@ -69,12 +74,14 @@ let
   };
 in
 {
-  programs.fish =
-    let
-      inherit (pkgs.stdenv) isLinux;
-    in
-    {
-      shellAbbrs = abbrs // (if isLinux then abbrsLinux else abbrsDarwin);
-      shellAliases = aliases // (if isLinux then aliasesLinux else aliasesDarwin);
-    };
+  programs.fish = {
+    shellAbbrs =
+      abbrs
+      // (lib.attrsets.optionalAttrs pkgs.stdenv.isLinux abbrsLinux)
+      // (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin abbrsDarwin);
+    shellAliases =
+      aliases
+      // (lib.attrsets.optionalAttrs pkgs.stdenv.isLinux aliasesLinux)
+      // (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin aliasesDarwin);
+  };
 }
