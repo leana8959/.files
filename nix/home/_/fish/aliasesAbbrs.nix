@@ -25,18 +25,18 @@ let
     ":q" = "exit";
 
     ## Preferences
-    np = "cd ~/.dotfiles/nix && $EDITOR flake.nix && prevd";
+    np = "cd ~/.dotfiles && $EDITOR flake.nix && prevd";
     vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.lua && prevd";
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
   };
   abbrsLinux = {
     ss = "sudo systemctl";
     se = "SUDO_EDITOR=(which nvim) sudoedit";
-    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles/nix#${hostname}";
-    hs = "home-manager switch -L --flake ~/.dotfiles/nix#${hostname}";
+    ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles#${hostname}";
+    hs = "home-manager switch -L --flake ~/.dotfiles#${hostname}";
   };
   abbrsDarwin = {
-    ns = "darwin-rebuild switch -L --flake ~/.dotfiles/nix#${hostname} --option sandbox false";
+    ns = "darwin-rebuild switch -L --flake ~/.dotfiles#${hostname} --option sandbox false";
     nd = "nix develop -L --option sandbox false -c true"; # run the develop once without sandbox
   };
 

@@ -2,7 +2,7 @@
   outputs =
     inputs:
     let
-      inherit (import ./lib.nix inputs)
+      inherit (import ./nix/lib.nix inputs)
         mkNixOSes
         mkDarwins
         mkHomeManagers
