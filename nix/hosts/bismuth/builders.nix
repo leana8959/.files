@@ -16,6 +16,21 @@
       ];
       mandatoryFeatures = [ ];
     }
+    {
+      hostName = "oracle";
+      system = "aarch64-linux";
+      protocol = "ssh";
+      sshUser = "ubuntu";
+      sshKey = "/Users/leana/.ssh/id_ed25519";
+      speedFactor = 4;
+      supportedFeatures = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+      mandatoryFeatures = [ ];
+    }
   ];
 
   # # optional, useful when the builder has a faster internet connection than yours
