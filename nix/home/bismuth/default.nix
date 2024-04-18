@@ -17,6 +17,7 @@
     unstable.wally-cli
 
     unstable.cargo
+    pkgs.nix-inspect
 
     pkgs.audio-lint
     pkgs.hbrainfuck
