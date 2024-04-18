@@ -1,10 +1,18 @@
 {
   nix.settings = {
+    /* substituters can only be used by users that are trusted by nix -> nix trusts the user to do it right
+       trusted-substituters can be used by any user -> nix trusts everything the substituter provides
+
+       "In addition, each store path should be trusted as described in trusted-public-keys"
+       -> keys for everything
+    */
+
     substituters = [
-      "https://leana8959.cachix.org"
       "https://nix-community.cachix.org"
+      "https://leana8959.cachix.org"
       "https://llama-cpp.cachix.org"
     ];
+
     trusted-substituters = [
       "https://leana8959.cachix.org"
       "https://nix-community.cachix.org"
