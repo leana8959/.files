@@ -31,9 +31,4 @@
   ];
 
   fish.opamInit = true;
-
-  fish.extraCompletions = [
-    pkgs.hbrainfuck
-    pkgs.prop-solveur
-  ];
 }
