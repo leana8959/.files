@@ -51,7 +51,6 @@ let
         extraUtils.enable = lib.mkOption { default = false; };
         extraLanguageServers.enable = lib.mkOption { default = false; };
         universityTools.enable = lib.mkOption { default = false; };
-        fish.extraCompletions = lib.mkOption { default = [ ]; };
         fish.opamInit = lib.mkOption { default = false; };
         git.signCommits = lib.mkOption { default = false; };
       };
