@@ -12,7 +12,13 @@ let
     let
       pkgs = import nixpkgs {
         inherit system;
-        overlays = [ (_: _: import ./overlays.nix inputs system) ];
+        overlays = [
+          (
+            _: prev:
+            # extend pkgs with other inputs
+            prev.lib.mapAttrs (name: input: input.packages.${system}.default) inputs
+          )
+        ];
         config.allowUnfreePredicate =
           pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
