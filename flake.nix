@@ -77,7 +77,6 @@
     wired.url = "github:Toqozz/wired-notify";
     agenix.url = "github:ryantm/agenix/0.15.0";
     nixnur.url = "github:nix-community/NUR";
-    opam-nix.url = "github:tweag/opam-nix";
     llama-cpp.url = "github:ggerganov/llama.cpp";
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
     neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
