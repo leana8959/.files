@@ -31,6 +31,15 @@ autocmd("FileType", {
     callback = function() vim.opt_local["commentstring"] = "# %s" end,
 })
 
+-- "Projet" language taught at ISTIC
+autocmd("BufEnter", {
+    pattern = "*.pro",
+    callback = function()
+        vim.opt_local["commentstring"] = "{ %s }"
+        vim.opt_local["filetype"] = "projet"
+    end,
+})
+
 autocmd("FileType", {
     pattern = "skel",
     callback = function()
