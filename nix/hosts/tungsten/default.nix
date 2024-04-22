@@ -21,7 +21,6 @@
     vim
     gnumake
     gnused
-    gcc
     cachix
   ];
 }
