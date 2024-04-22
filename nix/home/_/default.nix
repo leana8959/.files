@@ -46,7 +46,6 @@
       stow
       fd
       vivid
-      gcc
       rsync
       # coreutils
       uutils-coreutils-noprefix
