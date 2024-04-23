@@ -30,5 +30,5 @@
     pkgs.colima
   ];
 
-  fish.opamInit = true;
+  # fish.opamInit = true;
 }
