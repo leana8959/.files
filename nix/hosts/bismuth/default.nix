@@ -20,10 +20,10 @@
     options = "--delete-older-than 30d";
   };
 
-  environment.systemPackages = with pkgs; [
-    vim
-    gnumake
-    gnused
-    cachix
+  environment.systemPackages = [
+    pkgs.vim
+    pkgs.gnumake
+    pkgs.gnused
+    pkgs.cachix
   ];
 }

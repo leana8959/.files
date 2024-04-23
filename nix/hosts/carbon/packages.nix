@@ -1,9 +1,9 @@
 { pkgs, agenix, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    curl
-    stow
-    gcc
+  environment.systemPackages = [
+    pkgs.curl
+    pkgs.stow
+    pkgs.gcc
 
     agenix
   ];

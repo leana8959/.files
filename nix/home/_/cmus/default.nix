@@ -6,9 +6,9 @@
 }:
 {
   home = lib.mkIf config.cmus.enable {
-    packages = with pkgs; [
-      cmus
-      cmusfm
+    packages = [
+      pkgs.cmus
+      pkgs.cmusfm
     ];
     file.cmus = {
       recursive = true;

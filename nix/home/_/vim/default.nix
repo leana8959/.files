@@ -7,15 +7,19 @@
     {
       enable = true;
       extraConfig = readFile ./vimrc;
-      plugins = with pkgs.vimPlugins; [
-        vim-sleuth
-        vim-surround
-        vim-fugitive
-        vim-commentary
-        undotree
-        tabular
-        vim-wakatime
-        vim-caddyfile
-      ];
+      plugins =
+        let
+          vpkgs = pkgs.vimPlugins;
+        in
+        [
+          vpkgs.vim-sleuth
+          vpkgs.vim-surround
+          vpkgs.vim-fugitive
+          vpkgs.vim-commentary
+          vpkgs.undotree
+          vpkgs.tabular
+          vpkgs.vim-wakatime
+          vpkgs.vim-caddyfile
+        ];
     };
 }

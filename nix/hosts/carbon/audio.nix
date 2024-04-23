@@ -13,9 +13,9 @@
     jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    helvum
-    pavucontrol
-    easyeffects
+  environment.systemPackages = [
+    pkgs.helvum
+    pkgs.pavucontrol
+    pkgs.easyeffects
   ];
 }

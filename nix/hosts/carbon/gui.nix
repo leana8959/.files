@@ -21,7 +21,7 @@
     xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp: with hp; [ neat-interpolation ];
+      extraPackages = hp: [ hp.neat-interpolation ];
     };
 
     xserver.libinput = {

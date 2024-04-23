@@ -38,41 +38,41 @@
   };
 
   home.packages =
-    with pkgs;
     [
       # shell and script dependencies
-      figlet
-      gnused
-      stow
-      fd
-      vivid
-      rsync
+      pkgs.figlet
+      pkgs.gnused
+      pkgs.stow
+      pkgs.fd
+      pkgs.vivid
+      pkgs.rsync
+
       # coreutils
-      uutils-coreutils-noprefix
-      parallel
+      pkgs.uutils-coreutils-noprefix
 
       # nix
       unstable.nixfmt-rfc-style
 
       # utils
-      tree
-      tldr
-      irssi
+      pkgs.tree
+      pkgs.tldr
+      pkgs.irssi
+      pkgs.parallel
     ]
     ++ lib.lists.optionals config.extraUtils.enable [
-      jq
-      hyperfine
-      watchexec
-      tea
-      tokei
-      gnumake
-      just
-      sd
-      ghostscript
-      act
-      forgejo-actions-runner
-      nurl
-      onefetch
+      pkgs.jq
+      pkgs.hyperfine
+      pkgs.watchexec
+      pkgs.tea
+      pkgs.tokei
+      pkgs.gnumake
+      pkgs.just
+      pkgs.sd
+      pkgs.ghostscript
+      pkgs.act
+      pkgs.forgejo-actions-runner
+      pkgs.nurl
+      pkgs.onefetch
     ]
     ++ lib.lists.optionals config.universityTools.enable [
       pkgs.rars
