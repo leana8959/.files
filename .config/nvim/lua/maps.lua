@@ -8,6 +8,9 @@ local autocmd = vim.api.nvim_create_autocmd
 -- Move
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", ">", ">gv")
+map("v", "<", "<gv")
+map("v", "=", "=gv")
 
 -- Centered motions
 map("n", "<C-d>", "<C-d>zz")
