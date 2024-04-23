@@ -22,9 +22,9 @@
   };
 
   i18n.inputMethod.enabled = "fcitx5";
-  i18n.inputMethod.fcitx5.addons = with pkgs; [
-    fcitx5-chinese-addons
-    fcitx5-table-extra
+  i18n.inputMethod.fcitx5.addons = [
+    pkgs.fcitx5-chinese-addons
+    pkgs.fcitx5-table-extra
   ];
   i18n.inputMethod.fcitx5.ignoreUserConfig = true;
 

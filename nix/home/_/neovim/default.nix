@@ -11,22 +11,21 @@
     enable = true;
     defaultEditor = true;
     extraPackages =
-      with pkgs;
       [
-        lua-language-server
-        stylua
-        nodePackages.bash-language-server
-        shellcheck
-        shfmt
-        nil
-        yaml-language-server
+        pkgs.lua-language-server
+        pkgs.stylua
+        pkgs.nodePackages.bash-language-server
+        pkgs.shellcheck
+        pkgs.shfmt
+        pkgs.nil
+        pkgs.yaml-language-server
       ]
       ++ lib.lists.optionals config.extraLanguageServers.enable [
-        nodePackages.vim-language-server
-        vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-        marksman
-        taplo
-        lemminx
+        pkgs.nodePackages.vim-language-server
+        pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+        pkgs.marksman
+        pkgs.taplo
+        pkgs.lemminx
       ];
   };
 

@@ -5,9 +5,9 @@
     ./browser.nix
   ];
 
-  home.packages = with pkgs; [
-    zip
-    unzip
-    gnutar
+  home.packages = [
+    pkgs.zip
+    pkgs.unzip
+    pkgs.gnutar
   ];
 }

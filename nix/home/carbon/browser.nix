@@ -122,16 +122,20 @@
       userContent = ''
         # a css
       '';
-      extensions = with nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        privacy-badger
-        sponsorblock
-        bitwarden
-        tridactyl
-        languagetool
-        bypass-paywalls-clean
-        news-feed-eradicator
-      ];
+      extensions =
+        let
+          addons = nur.repos.rycee.firefox-addons;
+        in
+        [
+          addons.ublock-origin
+          addons.privacy-badger
+          addons.sponsorblock
+          addons.bitwarden
+          addons.tridactyl
+          addons.languagetool
+          addons.bypass-paywalls-clean
+          addons.news-feed-eradicator
+        ];
     };
   };
 }

@@ -1,11 +1,11 @@
 { pkgs, myPkgs, ... }:
 {
-  home.packages = with pkgs; [
+  home.packages = [
     myPkgs.hiosevka-nerd-font-mono
     myPkgs.hiosevka-nerd-font-propo
-    jetbrains-mono
+    pkgs.jetbrains-mono
 
-    lmodern
-    cascadia-code
+    pkgs.lmodern
+    pkgs.cascadia-code
   ];
 }

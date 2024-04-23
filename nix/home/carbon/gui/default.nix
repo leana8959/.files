@@ -13,53 +13,53 @@
     size = 32;
   };
 
-  home.packages = with pkgs; [
+  home.packages = [
     # fonts
-    (nerdfonts.override {
+    (pkgs.nerdfonts.override {
       fonts = [
         "CascadiaCode"
         "JetBrainsMono"
         "Meslo"
       ];
     })
-    lmodern
-    noto-fonts
-    noto-fonts-lgc-plus
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-color-emoji
-    noto-fonts-emoji-blob-bin
-    hanazono
-    cascadia-code
+    pkgs.lmodern
+    pkgs.noto-fonts
+    pkgs.noto-fonts-lgc-plus
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
+    pkgs.noto-fonts-color-emoji
+    pkgs.noto-fonts-emoji-blob-bin
+    pkgs.hanazono
+    pkgs.cascadia-code
     myPkgs.hiosevka-nerd-font-mono
     myPkgs.hiosevka
 
     # Window Manager related
-    dmenu
-    xmobar
-    scrot
-    xclip
-    feh
-    xscreensaver # TODO: why the service option won't work ?
+    pkgs.dmenu
+    pkgs.xmobar
+    pkgs.scrot
+    pkgs.xclip
+    pkgs.feh
+    pkgs.xscreensaver # TODO: why the service option won't work ?
     wired
-    playerctl
+    pkgs.playerctl
 
     # GUI apps
     # social
-    discord
-    element-desktop
-    mattermost-desktop
+    pkgs.discord
+    pkgs.element-desktop
+    pkgs.mattermost-desktop
 
     # productivity
-    bitwarden
-    sioyek
-    evince
-    gnome.eog
-    gnome.nautilus
-    gnome.sushi
-    evolution
-    gnome.gnome-calendar
-    p7zip
+    pkgs.bitwarden
+    pkgs.sioyek
+    pkgs.evince
+    pkgs.gnome.eog
+    pkgs.gnome.nautilus
+    pkgs.gnome.sushi
+    pkgs.evolution
+    pkgs.gnome.gnome-calendar
+    pkgs.p7zip
   ];
 
   programs.kitty = {
