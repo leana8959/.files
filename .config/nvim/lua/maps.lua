@@ -6,8 +6,8 @@ local unmap = vim.keymap.del
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Move
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", "J", ":m '>+1<CR>gv")
+map("v", "K", ":m '<-2<CR>gv")
 map("v", ">", ">gv")
 map("v", "<", "<gv")
 map("v", "=", "=gv")
