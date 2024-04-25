@@ -22,6 +22,7 @@
       ]
       ++ lib.lists.optionals config.extraLanguageServers.enable [
         pkgs.nodePackages.vim-language-server
+        pkgs.nodePackages.pyright
         pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
         pkgs.marksman
         pkgs.taplo
