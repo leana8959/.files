@@ -26,7 +26,7 @@ syn keyword projetFunction	lire ecrire
 syn keyword projetConditional	si alors sinon fsi
 syn keyword projetRepeat	ttq faire fait
 syn keyword projetStatement	proc var const
-syn keyword projetStatement	programme debut fin
+syn keyword projetStatement	programme module debut fin
 syn keyword projetStruct	record
 syn keyword projetType		ent bool
 
