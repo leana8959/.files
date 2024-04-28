@@ -30,6 +30,4 @@
     pkgs.docker-compose
     pkgs.colima
   ];
-
-  # fish.opamInit = true;
 }
