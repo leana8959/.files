@@ -3,15 +3,16 @@
   unstable,
   myPkgs,
   lib,
+  ghc-pin,
   ...
-}@input:
+}:
 {
   imports = [ ./fonts.nix ];
 
   home.homeDirectory = lib.mkForce "/Users/leana";
 
   home.packages = [
-    pkgs.ghc
+    ghc-pin.ghc
     pkgs.haskell-language-server
     unstable.qmk
     unstable.wally-cli

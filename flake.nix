@@ -80,6 +80,7 @@
     llama-cpp.url = "github:ggerganov/llama.cpp";
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
     neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
+    ghc-pin.url = "github:nixos/nixpkgs/nixos-unstable"; # pin the latest unstable ghc
     nix-visualize.url = "github:craigmbooth/nix-visualize";
     nix-inspect.url = "github:bluskript/nix-inspect";
     # my stuff
