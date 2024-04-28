@@ -36,6 +36,7 @@ let
         config.allowUnfree = true;
       };
       neovim-pin = import inputs.neovim-pin { inherit system; };
+      ghc-pin = import inputs.ghc-pin { inherit system; };
       custom = import ./custom {
         inherit pkgs unstable;
         inherit (inputs) opam-nix;
@@ -46,7 +47,7 @@ let
       inherit pkgs unstable nur;
       inherit (custom) myPkgs myLib;
       # packages sets
-      inherit neovim-pin;
+      inherit neovim-pin ghc-pin;
     };
 
   defaultOptions =
