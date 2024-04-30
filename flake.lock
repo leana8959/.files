@@ -261,6 +261,22 @@
         "type": "github"
       }
     },
+    "ghc-pin": {
+      "locked": {
+        "lastModified": 1714253743,
+        "narHash": "sha256-mdTQw2XlariysyScCv2tTE45QSU9v/ezLcHJ22f0Nxc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "58a1abdbae3217ca6b702f03d3b35125d88a2994",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "hbrainfuck": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -847,6 +863,7 @@
         "alt-ergo-pin": "alt-ergo-pin",
         "audio-lint": "audio-lint",
         "flake-utils": "flake-utils",
+        "ghc-pin": "ghc-pin",
         "hbrainfuck": "hbrainfuck",
         "home-manager": "home-manager_2",
         "llama-cpp": "llama-cpp",
