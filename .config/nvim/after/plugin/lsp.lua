@@ -55,6 +55,14 @@ local servers = {
                 vim.cmd(":e")
             end, { buffer = bufno })
         end,
+        settings = {
+            Lua = {
+                workspace = {
+                    checkThirdParty = "Disable",
+                    library = { vim.env.VIMRUNTIME },
+                },
+            },
+        },
     },
 
     nil_ls = { -- Nix
@@ -138,7 +146,6 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 -- Init --
 ----------
 require("fidget").setup()
-require("neodev").setup()
 
 -- Folding
 capabilities.textDocument.foldingRange = {

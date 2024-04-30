@@ -59,7 +59,6 @@ local plugins = {
         "neovim/nvim-lspconfig", -- (official) basic LSP Configuration & Plugins
         dependencies = {
             "j-hui/fidget.nvim", -- LSP Spinner
-            "folke/neodev.nvim", -- Additional lua configuration
         },
     },
     "mfussenegger/nvim-dap", -- DAP
