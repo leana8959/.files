@@ -1,7 +1,7 @@
 {
-  pkgs,
   lib,
   config,
+  pkgs,
   ...
 }:
 {
@@ -42,13 +42,12 @@
           ++ lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin"
         );
 
-      interactiveShellInit =
-        readConfigs [
-          "interactiveShellInit"
-          "bind"
-          "colorscheme"
-          "locale"
-        ];
+      interactiveShellInit = readConfigs [
+        "interactiveShellInit"
+        "bind"
+        "colorscheme"
+        "locale"
+      ];
 
       functions =
         let
@@ -86,8 +85,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "PatrickF1";
             repo = "fzf.fish";
-            sha256 = "sha256-5cO5Ey7z7KMF3vqQhIbYip5JR6YiS2I9VPRd6BOmeC8=";
-            rev = "v10.2";
+            rev = "v10.3";
+            hash = "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=";
           };
         }
         {
