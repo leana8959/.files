@@ -58,6 +58,7 @@
       pkgs.tldr
       pkgs.irssi
       pkgs.parallel
+      pkgs.findutils # xargs and more
     ]
     ++ lib.lists.optionals config.extraUtils.enable [
       pkgs.jq
