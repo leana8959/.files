@@ -14,7 +14,7 @@
         [global]
         strict_env = true
         [whitelist]
-        prefix = [ "${home}/repos", "${home}/univ-repos", "${home}/playground" ]
+        prefix = [ "${home}/repos/leana", "${home}/univ-repos" ]
       '';
   };
 }
