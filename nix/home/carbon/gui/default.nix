@@ -1,9 +1,7 @@
-{
-  pkgs,
-  myPkgs,
-  wired,
-  ...
-}:
+{ pkgs, ... }:
+let
+  inherit (pkgs) myPkgs wired;
+in
 {
   home.pointerCursor = {
     x11.enable = true;

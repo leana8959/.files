@@ -1,4 +1,7 @@
-{ config, unstable, ... }:
+{ config, pkgs, ... }:
+let
+  inherit (pkgs) unstable;
+in
 {
   programs.direnv = {
     enable = true;

@@ -1,11 +1,13 @@
 {
   pkgs,
-  unstable,
-  myPkgs,
   config,
   lib,
   ...
 }:
+
+let
+  inherit (pkgs) unstable myPkgs;
+in
 {
   imports = [
     ./fish
