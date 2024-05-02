@@ -1,11 +1,7 @@
-{
-  pkgs,
-  unstable,
-  myPkgs,
-  lib,
-  ghc-pin,
-  ...
-}:
+{ pkgs, lib, ... }:
+let
+  inherit (pkgs) myPkgs unstable ghc-pin;
+in
 {
   imports = [ ./fonts.nix ];
 

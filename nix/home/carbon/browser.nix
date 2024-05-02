@@ -1,4 +1,7 @@
-{ pkgs, nur, ... }:
+{ pkgs, ... }:
+let
+  inherit (pkgs) nur;
+in
 {
   programs.firefox = {
     enable = true;
