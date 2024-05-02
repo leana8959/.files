@@ -1,7 +1,7 @@
 {
   outputs =
     inputs:
-    (inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       flake.nixConfig = {
         extra-trusted-substituters = [ "https://leana8959.cachix.org" ];
         extra-trusted-public-keys = [
@@ -27,7 +27,7 @@
         {
           formatter = pkgs.unstable.nixfmt-rfc-style;
         };
-    });
+    };
 
   inputs = {
     # package sets
@@ -42,7 +42,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     flake-parts.url = "github:hercules-ci/flake-parts";
     # packages
     wired.url = "github:Toqozz/wired-notify";
