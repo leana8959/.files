@@ -2,17 +2,24 @@
   outputs =
     inputs:
     (inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "aarch64-darwin"
-        "aarch64-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
+      flake.nixConfig = {
+        extra-trusted-substituters = [ "https://leana8959.cachix.org" ];
+        extra-trusted-public-keys = [
+          "leana8959.cachix.org-1:CxQSAp8lcgMv8Me459of0jdXRW2tcyeYRKTiiUq8z0M="
+        ];
+      };
 
       imports = [
         ./nix/handleInputs # Resolve inputs
         ./nix/custom # Custom package set
         ./nix/lib # Configuration and their generators
+      ];
+
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
       ];
 
       perSystem =

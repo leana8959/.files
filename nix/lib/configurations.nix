@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config.flake = {
+  flake = {
     darwinConfigurations = mkDarwins {
       # MacBook Pro 2021
       bismuth = {
