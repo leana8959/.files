@@ -30,8 +30,6 @@
         necrolib = pkgs.callPackage ./necrolib.nix { };
         why3 = pkgs.callPackage ./why3.nix { inherit (alt-ergo-pin) alt-ergo; };
         maeel = pkgs.callPackage ./maeel.nix { };
-
-        typstyle = unstable.callPackage ./typstyle.nix { };
       };
     };
 }
