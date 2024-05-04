@@ -1,11 +1,11 @@
-{ pkgs, agenix, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
     pkgs.curl
     pkgs.stow
     pkgs.gcc
 
-    agenix
+    pkgs.agenix
   ];
 
   programs.vim.defaultEditor = true;
