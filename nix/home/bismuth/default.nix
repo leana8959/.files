@@ -16,6 +16,7 @@ in
     unstable.cargo
     pkgs.nix-inspect
     pkgs.nix-visualize
+    pkgs.deploy-rs
 
     pkgs.audio-lint
     pkgs.hbrainfuck
