@@ -48,6 +48,7 @@
     llama-cpp.url = "github:ggerganov/llama.cpp";
     nix-visualize.url = "github:craigmbooth/nix-visualize";
     nix-inspect.url = "github:bluskript/nix-inspect";
+    deploy-rs.url = "github:serokell/deploy-rs";
     audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
     hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";
     prop-solveur.url = "git+https://git.earth2077.fr/leana/prop_solveur";
