@@ -9,13 +9,14 @@ in
 
   home.packages = [
     ghc-pin.ghc
-    pkgs.haskell-language-server
+    ghc-pin.haskell-language-server
     unstable.qmk
     unstable.wally-cli
 
     unstable.cargo
     pkgs.nix-inspect
     pkgs.nix-visualize
+    pkgs.deploy-rs
 
     pkgs.audio-lint
     pkgs.hbrainfuck
