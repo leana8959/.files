@@ -39,7 +39,7 @@ in
     gpg.enable = true;
   };
 
-  home.packages =
+  home.packages = lib.mkMerge [
     [
       # shell and script dependencies
       pkgs.figlet
@@ -62,7 +62,8 @@ in
       pkgs.parallel
       pkgs.findutils # xargs and more
     ]
-    ++ lib.lists.optionals config.extraUtils.enable [
+
+    (lib.mkIf config.extraUtils.enable [
       pkgs.jq
       pkgs.hyperfine
       pkgs.watchexec
@@ -76,11 +77,13 @@ in
       pkgs.forgejo-actions-runner
       pkgs.nurl
       pkgs.onefetch
-    ]
-    ++ lib.lists.optionals config.universityTools.enable [
+    ])
+
+    (lib.mkIf config.universityTools.enable [
       pkgs.rars
       myPkgs.logisim-evolution
       myPkgs.necrolib
       myPkgs.why3
-    ];
+    ])
+  ];
 }

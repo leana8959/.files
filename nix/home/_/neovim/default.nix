@@ -9,7 +9,7 @@
     package = pkgs.neovim-pin.neovim-unwrapped;
     enable = true;
     defaultEditor = true;
-    extraPackages =
+    extraPackages = lib.mkMerge [
       [
         pkgs.lua-language-server
         pkgs.stylua
@@ -19,14 +19,15 @@
         pkgs.nil
         pkgs.yaml-language-server
       ]
-      ++ lib.lists.optionals config.extraLanguageServers.enable [
+      (lib.mkIf config.extraLanguageServers.enable [
         pkgs.nodePackages.vim-language-server
         pkgs.nodePackages.pyright
         pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
         pkgs.marksman
         pkgs.taplo
         pkgs.lemminx
-      ];
+      ])
+    ];
   };
 
   home.file =

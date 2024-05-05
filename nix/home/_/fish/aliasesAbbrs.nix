@@ -75,13 +75,15 @@ let
 in
 {
   programs.fish = {
-    shellAbbrs =
+    shellAbbrs = lib.mkMerge [
       abbrs
-      // (lib.attrsets.optionalAttrs pkgs.stdenv.isLinux abbrsLinux)
-      // (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin abbrsDarwin);
-    shellAliases =
+      (lib.mkIf pkgs.stdenv.isLinux abbrsLinux)
+      (lib.mkIf pkgs.stdenv.isDarwin abbrsDarwin)
+    ];
+    shellAliases = lib.mkMerge [
       aliases
-      // (lib.attrsets.optionalAttrs pkgs.stdenv.isLinux aliasesLinux)
-      // (lib.attrsets.optionalAttrs pkgs.stdenv.isDarwin aliasesDarwin);
+      (lib.mkIf pkgs.stdenv.isLinux aliasesLinux)
+      (lib.mkIf pkgs.stdenv.isDarwin aliasesDarwin)
+    ];
   };
 }
