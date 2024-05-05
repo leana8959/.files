@@ -9,7 +9,7 @@ in
 
   home.packages = [
     ghc-pin.ghc
-    pkgs.haskell-language-server
+    ghc-pin.haskell-language-server
     unstable.qmk
     unstable.wally-cli
 
