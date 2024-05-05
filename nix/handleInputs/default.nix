@@ -4,6 +4,7 @@
     {
       system,
       self',
+      inputs',
       pkgs,
       ...
     }:
@@ -12,7 +13,7 @@
         inherit system;
         overlays = [
           # fallback to other inputs
-          (_: prev: prev.lib.mapAttrs (name: input: input.packages.${system}.default) inputs)
+          (_: prev: prev.lib.mapAttrs (name: input: input.packages.default) inputs')
 
           (_: _: {
             unstable = import inputs.nixunstable { inherit system; };
