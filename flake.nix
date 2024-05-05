@@ -52,9 +52,9 @@
     audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
     hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";
     prop-solveur.url = "git+https://git.earth2077.fr/leana/prop_solveur";
+    neovim.url = "github:neovim/neovim/v0.9.5?dir=contrib";
     # pins
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
-    neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
     ghc-pin.url = "github:nixos/nixpkgs/nixos-unstable"; # pin the latest unstable ghc
   };
 }

@@ -15,7 +15,7 @@
           (final: _: inputs.nixpkgs.lib.mapAttrs (name: input: input.packages.default) inputs')
 
           (final: _: {
-            unstable = import inputs.nixunstable { inherit system; };
+            unstable = inputs'.nixunstable.legacyPackages;
             nur = import inputs.nixnur {
               pkgs = final;
               nurpkgs = final;
@@ -27,13 +27,14 @@
 
           # resolve explicitly pinned pkg sets as attributes
           (_: _: {
-            neovim-pin = inputs'.neovim-pin.legacyPackages;
             ghc-pin = inputs'.ghc-pin.legacyPackages;
             alt-ergo-pin = import inputs.alt-ergo-pin {
               inherit system;
               config.allowUnfree = true;
             };
           })
+
+          inputs.neovim.overlay
         ];
 
         config.allowUnfreePredicate =
