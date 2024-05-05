@@ -5,7 +5,6 @@
       system,
       self',
       inputs',
-      pkgs,
       ...
     }:
     {
@@ -13,13 +12,13 @@
         inherit system;
         overlays = [
           # fallback to other inputs
-          (_: prev: prev.lib.mapAttrs (name: input: input.packages.default) inputs')
+          (final: _: inputs.nixpkgs.lib.mapAttrs (name: input: input.packages.default) inputs')
 
-          (_: _: {
+          (final: _: {
             unstable = import inputs.nixunstable { inherit system; };
             nur = import inputs.nixnur {
-              inherit pkgs;
-              nurpkgs = pkgs;
+              pkgs = final;
+              nurpkgs = final;
             };
           })
 
@@ -28,8 +27,8 @@
 
           # resolve explicitly pinned pkg sets as attributes
           (_: _: {
-            neovim-pin = import inputs.neovim-pin { inherit system; };
-            ghc-pin = import inputs.ghc-pin { inherit system; };
+            neovim-pin = inputs'.neovim-pin.legacyPackages;
+            ghc-pin = inputs'.ghc-pin.legacyPackages;
             alt-ergo-pin = import inputs.alt-ergo-pin {
               inherit system;
               config.allowUnfree = true;
