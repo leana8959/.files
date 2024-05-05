@@ -6,7 +6,7 @@
 }:
 {
   programs.neovim = {
-    package = pkgs.neovim-pin.neovim-unwrapped;
+    package = pkgs.neovim;
     enable = true;
     defaultEditor = true;
     extraPackages = lib.mkMerge [
