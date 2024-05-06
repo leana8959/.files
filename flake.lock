@@ -334,11 +334,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1711390183,
-        "narHash": "sha256-FviVD+5jZ93olfy0Sn3XmUcc/eDpmet+iO6bS334Uz8=",
+        "lastModified": 1715037153,
+        "narHash": "sha256-Vk/f40u5oFvgAdW9mXBMdh4XbgkcMxlbRIehmHXNOiE=",
         "ref": "refs/heads/mistress",
-        "rev": "d4af422a9d974efd01d297f9375969e10e21df3f",
-        "revCount": 16,
+        "rev": "11d9d8d295477d9d419d4cd4e759010d6ef0aaa6",
+        "revCount": 22,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/hbrainfuck"
       },
@@ -667,17 +667,17 @@
     },
     "nixpkgs_11": {
       "locked": {
-        "lastModified": 1704295289,
-        "narHash": "sha256-9WZDRfpMqCYL6g/HNWVvXF0hxdaAgwgIGeLYiOhmes8=",
+        "lastModified": 1704631721,
+        "narHash": "sha256-UGNXoKszQq5Xf1SWQp4U9YpAqzUyBsi46D05de7sd2M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b0b2c5445c64191fd8d0b31f2b1a34e45a64547d",
+        "rev": "edebca765c17d551b9634c02f6a02f1b122e0ba0",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-23.11",
         "repo": "nixpkgs",
+        "rev": "edebca765c17d551b9634c02f6a02f1b122e0ba0",
         "type": "github"
       }
     },
@@ -761,17 +761,17 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1704295289,
-        "narHash": "sha256-9WZDRfpMqCYL6g/HNWVvXF0hxdaAgwgIGeLYiOhmes8=",
+        "lastModified": 1713267710,
+        "narHash": "sha256-LB2PcAcrdifcvmbTnVP8Jq1oculfj9YtJAgHCGZRgkA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b0b2c5445c64191fd8d0b31f2b1a34e45a64547d",
+        "rev": "e4330b3996980ccf70918af3c86ea3d89cd5433d",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-23.11",
         "repo": "nixpkgs",
+        "rev": "e4330b3996980ccf70918af3c86ea3d89cd5433d",
         "type": "github"
       }
     },
@@ -904,11 +904,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1710358169,
-        "narHash": "sha256-ciGc8sBaRZMMdV96LBPQUe5Z8KQMZn2fQkxpFEn6pj8=",
+        "lastModified": 1715037570,
+        "narHash": "sha256-fgSQ51VcSyMTgLNF4hVtkYX9jJpuzsjfp461/fA3Qug=",
         "ref": "refs/heads/mistress",
-        "rev": "6b8ce25a22d50a38c707a12748bfb62f2b287396",
-        "revCount": 65,
+        "rev": "da3ca0be6efeaaebb7964a438b909b89a6fc16c9",
+        "revCount": 66,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/prop_solveur"
       },
