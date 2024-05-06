@@ -14,10 +14,13 @@
 
   nix.gc = {
     automatic = true;
-    interval = {
-      Weekday = 0;
-    };
-    options = "--delete-older-than 30d";
+    interval.Weekday = 0;
+    options = "--delete-older-than 15d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    interval.Weekday = 0;
   };
 
   environment.systemPackages = [
