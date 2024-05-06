@@ -58,6 +58,7 @@ in
       pkgs.irssi
       pkgs.parallel
       pkgs.findutils # xargs and more
+      pkgs.du-dust
     ]
 
     (lib.mkIf pkgs.stdenv.isDarwin [
