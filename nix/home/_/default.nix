@@ -49,9 +49,6 @@ in
       pkgs.vivid
       pkgs.rsync
 
-      # coreutils
-      pkgs.uutils-coreutils-noprefix
-
       # nix
       unstable.nixfmt-rfc-style
 
@@ -62,6 +59,11 @@ in
       pkgs.parallel
       pkgs.findutils # xargs and more
     ]
+
+    (lib.mkIf pkgs.stdenv.isDarwin [
+      # coreutils
+      pkgs.uutils-coreutils-noprefix
+    ])
 
     (lib.mkIf config.extraUtils.enable [
       pkgs.jq
