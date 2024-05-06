@@ -3,12 +3,11 @@
     { pkgs, ... }:
     let
       inherit (pkgs) unstable alt-ergo-pin;
+      mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { inherit (unstable) nerd-font-patcher; };
     in
     {
       # Export my package set
       packages = rec {
-        mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { inherit (unstable) nerd-font-patcher; };
-
         hiosevka = pkgs.callPackage ./hiosevka { };
         hiosevka-nerd-font-mono = mkNerdFont {
           font = hiosevka;
