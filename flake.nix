@@ -55,6 +55,6 @@
     neovim.url = "github:neovim/neovim/v0.9.5?dir=contrib";
     # pins
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
-    ghc-pin.url = "github:nixos/nixpkgs/nixos-unstable"; # pin the latest unstable ghc
+    ghc-pin.url = "github:NixOS/nixpkgs/e4330b3996980ccf70918af3c86ea3d89cd5433d"; # stackage LTS 22.16 / ghc964, right before ghc965
   };
 }
