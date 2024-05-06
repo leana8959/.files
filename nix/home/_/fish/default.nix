@@ -54,12 +54,10 @@
           makeFishFunctions =
             ns:
             lib.trivial.pipe ns [
-              (map (
-                n: {
-                  name = n;
-                  value = builtins.readFile ./functions/${n}.fish;
-                }
-              ))
+              (map (n: {
+                name = n;
+                value = builtins.readFile ./functions/${n}.fish;
+              }))
               builtins.listToAttrs
             ];
         in
