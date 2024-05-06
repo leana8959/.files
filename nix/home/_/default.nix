@@ -55,7 +55,6 @@ in
       # utils
       pkgs.tree
       pkgs.tldr
-      pkgs.irssi
       pkgs.parallel
       pkgs.findutils # xargs and more
       pkgs.du-dust
