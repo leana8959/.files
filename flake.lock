@@ -334,11 +334,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1715037153,
-        "narHash": "sha256-Vk/f40u5oFvgAdW9mXBMdh4XbgkcMxlbRIehmHXNOiE=",
+        "lastModified": 1715045075,
+        "narHash": "sha256-dGZe/FvZFOo3didDZxKZK03o+B5gg1AJZ/xU+8j+BfM=",
         "ref": "refs/heads/mistress",
-        "rev": "11d9d8d295477d9d419d4cd4e759010d6ef0aaa6",
-        "revCount": 22,
+        "rev": "3aadc89277eecc9228355064aae3a5147824bce4",
+        "revCount": 23,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/hbrainfuck"
       },
@@ -904,11 +904,11 @@
         "nixpkgs": "nixpkgs_11"
       },
       "locked": {
-        "lastModified": 1715037570,
-        "narHash": "sha256-fgSQ51VcSyMTgLNF4hVtkYX9jJpuzsjfp461/fA3Qug=",
+        "lastModified": 1715045275,
+        "narHash": "sha256-u5PQxn6kfo151oeUUMC+/Davfdb69qPxUxxKQOvNg/s=",
         "ref": "refs/heads/mistress",
-        "rev": "da3ca0be6efeaaebb7964a438b909b89a6fc16c9",
-        "revCount": 66,
+        "rev": "0c1fd1046a727ec36913ac8a02af6e2c9d5583da",
+        "revCount": 67,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/prop_solveur"
       },
