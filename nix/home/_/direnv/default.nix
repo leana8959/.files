@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) unstable;
 in
@@ -9,15 +9,9 @@ in
       enable = true;
       package = unstable.nix-direnv;
     };
-    config =
-      let
-        home = config.home.homeDirectory;
-      in
-      builtins.fromTOML ''
-        [global]
-        strict_env = true
-        [whitelist]
-        prefix = [ "${home}/repos/leana", "${home}/univ-repos" ]
-      '';
+    config = builtins.fromTOML ''
+      [global]
+      strict_env = true
+    '';
   };
 }
