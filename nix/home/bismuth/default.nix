@@ -19,8 +19,9 @@ in
     pkgs.deploy-rs
 
     pkgs.audio-lint
-    pkgs.hbrainfuck
-    pkgs.prop-solveur
+    # # I got myself into the dependency hell, they have a common dependency that clash
+    # pkgs.hbrainfuck
+    # pkgs.prop-solveur
     myPkgs.maeel
 
     pkgs.docker
