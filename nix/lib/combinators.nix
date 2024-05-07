@@ -56,7 +56,9 @@ let
       inputs.nix-darwin.lib.darwinSystem {
         specialArgs = args;
         modules = [
+          { nixpkgs.hostPlatform = sys; }
           "${self}/nix/hosts/_"
+          "${self}/nix/hosts/_darwin"
           "${self}/nix/hosts/${name}"
           defaultOptions
           opts
