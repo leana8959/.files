@@ -136,7 +136,8 @@ in
           addons.bitwarden
           addons.tridactyl
           addons.languagetool
-          addons.bypass-paywalls-clean
+          # # failed to fetch
+          # addons.bypass-paywalls-clean
           addons.news-feed-eradicator
         ];
     };
