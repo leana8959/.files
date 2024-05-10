@@ -79,6 +79,7 @@ in
       pkgs.forgejo-actions-runner
       pkgs.nurl
       pkgs.onefetch
+      pkgs.agenix
     ])
 
     (lib.mkIf config.universityTools.enable [
