@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./combinators.nix ];
+
   flake = {
     darwinConfigurations = mkDarwins {
       # MacBook Pro 2021

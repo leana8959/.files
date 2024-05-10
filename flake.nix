@@ -1,6 +1,5 @@
 {
-  outputs =
-    inputs:
+  outputs = inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       flake.nixConfig = {
         extra-trusted-substituters = [ "https://leana8959.cachix.org" ];
@@ -12,7 +11,7 @@
       imports = [
         ./nix/handleInputs # Resolve inputs
         ./nix/custom # Custom package set
-        ./nix/lib # Configuration and their generators
+        ./nix/configurations # Configuration and their generators
       ];
 
       systems = [
