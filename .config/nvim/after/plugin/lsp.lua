@@ -127,7 +127,7 @@ require("lsp_signature").setup {
 }
 
 -- Diagnostic display configuration
-vim.diagnostic.config { virtual_text = false, severity_sort = true }
+vim.diagnostic.config { virtual_text = true, severity_sort = true }
 
 -- Set log level
 vim.lsp.set_log_level("off")
