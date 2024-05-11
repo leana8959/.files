@@ -1,11 +1,22 @@
 {
   withSystem,
   inputs,
-  defaultOptions,
   self,
   ...
 }:
 let
+  defaultOptions.options =
+    let
+      inherit (inputs.nixpkgs) lib;
+    in
+    {
+      cmus.enable = lib.mkOption { default = false; };
+      extraUtils.enable = lib.mkOption { default = false; };
+      extraLanguageServers.enable = lib.mkOption { default = false; };
+      universityTools.enable = lib.mkOption { default = false; };
+      git.signCommits = lib.mkOption { default = false; };
+    };
+
   mkNixOS =
     name: sys: opts:
     withSystem sys (

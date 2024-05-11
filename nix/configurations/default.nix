@@ -5,6 +5,8 @@
   ...
 }:
 {
+  imports = [ ./combinators.nix ];
+
   flake = {
     darwinConfigurations = mkDarwins {
       # MacBook Pro 2021
@@ -32,6 +34,8 @@
       oracle.system = "aarch64-linux";
       # Linode
       linode.system = "x86_64-linux";
+      # Inria
+      hydragyrum.system = "x86_64-linux";
     };
 
     nixosConfigurations = mkNixOSes {

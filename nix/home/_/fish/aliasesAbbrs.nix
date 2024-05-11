@@ -31,6 +31,7 @@ let
 
     ## Preferences
     np = "cd ~/.dotfiles && $EDITOR flake.nix && prevd";
+    nd = "nix develop -L -c fish";
     vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.lua && prevd";
     xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
   };
@@ -42,7 +43,7 @@ let
   };
   abbrsDarwin = {
     ns = "darwin-rebuild switch -L --flake ~/.dotfiles#${hostname} --option sandbox false";
-    nd = "nix develop -L --option sandbox false -c true"; # run the develop once without sandbox
+    ndd = "nix develop -L --option sandbox false -c true"; # run the develop once without sandbox when needed
   };
 
   aliases = {
