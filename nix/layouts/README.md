@@ -4,6 +4,8 @@ This folder contains my very awesome dvorak French layout on linux
 `$XDG_CONFIG_HOME/.config/xkb` doesn't work.
 [source](https://github.com/elias19r/xkb-layouts)
 
+`# cp dvorak-french.xkb /usr/share/X11/xkb/symbols/`
+
 `/usr/share/X11/xkb/rules/evdev.xml`
 ```xml
 <layoutList>
@@ -11,6 +13,7 @@ This folder contains my very awesome dvorak French layout on linux
     <layout>
         <configItem>
             <name>dvorak-french</name>
+            <shortDescription>Baguette</shortDescription>
             <description>French Dvorak</description>
         </configItem>
     </layout>
@@ -26,6 +29,7 @@ This folder contains my very awesome dvorak French layout on linux
 
 ## Swap escape and capslock
 `dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:swapescape']"`
+(to undo, use `dconf reset`)
 
 # Notes
 Use `setxkbmap -option caps:swapescape` to swap escape and capslock
