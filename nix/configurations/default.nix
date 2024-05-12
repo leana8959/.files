@@ -35,7 +35,13 @@
       # Linode
       linode.system = "x86_64-linux";
       # Inria
-      hydragyrum.system = "x86_64-linux";
+      hydragyrum = {
+        system = "x86_64-linux";
+        # extraLanguageServers.enable = true;
+        # extraUtils.enable = true;
+        # universityTools.enable = true;
+        # git.signCommits = true;
+      };
     };
 
     nixosConfigurations = mkNixOSes {
