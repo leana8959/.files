@@ -21,7 +21,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  security.sudo.extraConfig = "Defaults lecture = always";
   users.users.leana = {
     uid = 1000;
     isNormalUser = true;
