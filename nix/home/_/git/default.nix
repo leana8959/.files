@@ -57,5 +57,16 @@
         };
       };
     }
+    # anima
+    {
+      condition = "gitdir:~/repos/skeletons/";
+      contents = {
+        init.defaultBranch = "main";
+        user = {
+          name = "Leana Chiang";
+          email = "yu-hui.chiang+git@inria.fr";
+        };
+      };
+    }
   ];
 }
