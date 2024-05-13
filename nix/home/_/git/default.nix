@@ -63,7 +63,7 @@
       contents = {
         init.defaultBranch = "main";
         user = {
-          name = "Leana Chiang";
+          name = "Leana CHIANG";
           email = "yu-hui.chiang+git@inria.fr";
         };
         # don't sign because I don't want to deal with the key hassle
