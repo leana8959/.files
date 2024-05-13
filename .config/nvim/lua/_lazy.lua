@@ -79,6 +79,7 @@ local plugins = {
         version = "^4",
         ft = "rust",
     },
+    { "andy-morris/happy.vim", ft = "happy" },
     {
         "mrcjkb/haskell-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
