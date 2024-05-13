@@ -35,7 +35,7 @@
       # Linode
       linode.system = "x86_64-linux";
       # Inria
-      hydragyrum.system = "x86_64-linux";
+      mertensia.system = "x86_64-linux";
     };
 
     nixosConfigurations = mkNixOSes {

@@ -1,11 +1,12 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) ghc-pin;
 in
 {
-  home.homeDirectory = throw "fix this"
-  # lib.mkForce "/Users/leana"
-  ;
+  home = {
+    username = "ychiang";
+    homeDirectory = "/udd/ychiang";
+  };
 
   home.packages = [
     ghc-pin.ghc
