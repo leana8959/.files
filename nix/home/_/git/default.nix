@@ -66,6 +66,8 @@
           name = "Leana Chiang";
           email = "yu-hui.chiang+git@inria.fr";
         };
+        # don't sign because I don't want to deal with the key hassle
+        commit.gpgsign = false;
       };
     }
   ];
