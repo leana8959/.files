@@ -80,6 +80,7 @@ local plugins = {
         ft = "rust",
     },
     { "andy-morris/happy.vim", ft = "happy" },
+    { "vim-scripts/alex.vim", ft = "alex" },
     {
         "mrcjkb/haskell-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
