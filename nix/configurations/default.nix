@@ -37,10 +37,8 @@
       # Inria
       mertensia = {
         system = "x86_64-linux";
-        # extraLanguageServers.enable = true;
-        # extraUtils.enable = true;
-        # universityTools.enable = true;
-        # git.signCommits = true;
+        extraLanguageServers.enable = true;
+        extraUtils.enable = true;
       };
     };
 
