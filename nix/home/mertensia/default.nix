@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) ghc-pin;
+  inherit (pkgs) ghc-pin myPkgs;
 in
 {
   home = {
@@ -11,5 +11,6 @@ in
   home.packages = [
     ghc-pin.ghc
     ghc-pin.haskell-language-server
+    myPkgs.necrolib
   ];
 }
