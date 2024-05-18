@@ -13,6 +13,7 @@
         ./nix/handleInputs # Resolve inputs
         ./nix/custom # Custom package set
         ./nix/configurations # Configuration and their generators
+        ./nix/devShells
       ];
 
       systems = [
