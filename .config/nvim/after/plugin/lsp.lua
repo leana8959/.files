@@ -22,6 +22,7 @@ local servers = {
     ocamllsp = {}, -- OCaml
     gleam = {}, -- Gleam
     yamlls = {}, -- yaml
+    gopls = {}, -- Golang
 
     bashls = { -- Bash
         on_attach = function(_, bufno)
@@ -181,13 +182,13 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 end
 require("ufo").setup { fold_virt_text_handler = handler }
 
-for k, v in pairs(servers) do
-    require("lspconfig")[k].setup {
+for name, config in pairs(servers) do
+    require("lspconfig")[name].setup {
         capabilities = capabilities,
-        settings = v.settings,
+        settings = config.settings,
         on_attach = function(client, bufno)
             on_attach(client, bufno)
-            v.on_attach(client, bufno)
+            config.on_attach(client, bufno)
         end,
     }
 end
