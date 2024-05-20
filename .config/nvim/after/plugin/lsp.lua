@@ -23,6 +23,7 @@ local servers = {
     gleam = {}, -- Gleam
     yamlls = {}, -- yaml
     gopls = {}, -- Golang
+    golangci_lint_ls = {},
 
     bashls = { -- Bash
         on_attach = function(_, bufno)
