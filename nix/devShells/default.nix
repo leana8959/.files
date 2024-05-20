@@ -3,13 +3,21 @@
 {
   perSystem =
     { system, pkgs, ... }:
+    let
+      inherit (pkgs) unstable;
+    in
     {
       devShells.forgejo = pkgs.mkShell {
         name = "forgejo";
         packages = [
           pkgs.sqlite
-          pkgs.go
-          pkgs.gopls
+
+          unstable.go
+          unstable.gopls
+          unstable.golangci-lint
+          unstable.golangci-lint-langserver
+          unstable.gofumpt
+
           pkgs.nodejs_20
           pkgs.gnumake
         ];
