@@ -2,11 +2,19 @@
 {
   programs.vim =
     let
-      inherit (builtins) readFile;
+      paramount = pkgs.vimUtils.buildVimPlugin {
+        name = "paramount";
+        src = pkgs.fetchFromGitHub {
+          owner = "owickstrom";
+          repo = "vim-colors-paramount";
+          rev = "a5601d36fb6932e8d1a6f8b37b179a99b1456798";
+          hash = "sha256-j9nMjKYK7bqrGHprYp0ddLEWs1CNMudxXD13sOROVmY=";
+        };
+      };
     in
     {
       enable = true;
-      extraConfig = readFile ./vimrc;
+      extraConfig = builtins.readFile ./vimrc;
       plugins =
         let
           vpkgs = pkgs.vimPlugins;
@@ -20,6 +28,7 @@
           vpkgs.tabular
           vpkgs.vim-wakatime
           vpkgs.vim-caddyfile
+          paramount
         ];
     };
 }
