@@ -5,7 +5,9 @@
   ...
 }:
 {
-  home = lib.mkIf config.cmus.enable {
+  options.programs.cmus.enable = lib.mkOption { default = false; };
+
+  config.home = lib.mkIf config.programs.cmus.enable {
     packages = [
       pkgs.cmus
       pkgs.cmusfm
