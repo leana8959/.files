@@ -9,7 +9,6 @@
 
   config = {
     programs.neovim = {
-      package = pkgs.neovim;
       enable = true;
       defaultEditor = true;
       extraPackages = lib.mkMerge [

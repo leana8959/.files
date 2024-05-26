@@ -102,5 +102,4 @@ nmap <leader>tC Tabularize trailing_c_comments<CR>
 """""""""""""""
 " Colorscheme "
 """""""""""""""
-" TODO: package paramount myself !
-" colorscheme paramount
+colorscheme paramount
