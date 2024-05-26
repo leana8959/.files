@@ -13,17 +13,20 @@
       bismuth = {
         system = "aarch64-darwin";
         settings = {
-          extraLanguageServers.enable = true;
-          extraUtils.enable = true;
-          cmus.enable = true;
-          universityTools.enable = true;
-          git.signCommits = true;
+          extra.lang-servers.enable = true;
+          extra.utilities.enable = true;
+          extra.university.enable = true;
+          extra.workflow.enable = true;
+          programs.git.signing.signByDefault = true;
+          programs.cmus.enable = true;
         };
       };
       # MacBook Air 2014
       tungsten = {
         system = "x86_64-darwin";
-        settings.cmus.enable = true;
+        settings = {
+          programs.cmus.enable = true;
+        };
       };
     };
 
@@ -37,8 +40,10 @@
       # Inria
       mertensia = {
         system = "x86_64-linux";
-        extraLanguageServers.enable = true;
-        extraUtils.enable = true;
+        settings = {
+          extra.lang-servers.enable = true;
+          extra.utilities.enable = true;
+        };
       };
     };
 
@@ -47,10 +52,10 @@
       carbon = {
         system = "x86_64-linux";
         settings = {
-          extraLanguageServers.enable = true;
-          extraUtils.enable = true;
-          cmus.enable = true;
-          universityTools.enable = true;
+          extra.lang-servers.enable = true;
+          extra.utilities.enable = true;
+          extra.university.enable = true;
+          programs.cmus.enable = true;
         };
       };
     };

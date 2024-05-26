@@ -5,20 +5,9 @@
   ...
 }:
 let
-  defaultOptions.options =
-    let
-      inherit (inputs.nixpkgs) lib;
-    in
-    {
-      cmus.enable = lib.mkOption { default = false; };
-      extraUtils.enable = lib.mkOption { default = false; };
-      extraLanguageServers.enable = lib.mkOption { default = false; };
-      universityTools.enable = lib.mkOption { default = false; };
-      git.signCommits = lib.mkOption { default = false; };
-    };
 
   mkNixOS =
-    name: sys: opts:
+    name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -34,8 +23,6 @@ let
           "${self}/nix/hosts/${name}"
           "${self}/nix/layouts"
           inputs.agenix.nixosModules.default
-          defaultOptions
-          opts
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -45,8 +32,7 @@ let
               users.leana.imports = [
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
-                defaultOptions
-                opts
+                hmOpts
               ];
             };
           }
@@ -55,7 +41,7 @@ let
     );
 
   mkDarwin =
-    name: sys: opts:
+    name: sys: hmOptns:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -71,8 +57,6 @@ let
           "${self}/nix/hosts/_"
           "${self}/nix/hosts/_darwin"
           "${self}/nix/hosts/${name}"
-          defaultOptions
-          opts
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager = {
@@ -82,8 +66,7 @@ let
               users.leana.imports = [
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
-                defaultOptions
-                opts
+                hmOptns
               ];
             };
           }
@@ -92,7 +75,7 @@ let
     );
 
   mkHomeManager =
-    name: sys: opts:
+    name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -107,13 +90,12 @@ let
         modules = [
           "${self}/nix/home/_"
           "${self}/nix/home/${name}"
-          defaultOptions
-          opts
+          hmOpts
         ];
       }
     );
 
-  many = func: builtins.mapAttrs (name: opts: func name (opts.system) (opts.settings or { }));
+  many = func: builtins.mapAttrs (name: hmOpts: func name (hmOpts.system) (hmOpts.settings or { }));
 in
 {
   # promote helper functions into the arguments

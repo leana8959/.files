@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, ... }:
 {
   # git plugins
   programs.git = {
@@ -40,7 +40,7 @@
     userName = "Léana 江";
     signing = {
       key = "3659D5C87A4BC5D7699B37D84E887A4CA9714ADA";
-      signByDefault = config.git.signCommits;
+      signByDefault = lib.mkDefault false;
     };
   };
 
