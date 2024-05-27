@@ -9,6 +9,9 @@
 
   config = {
     programs.neovim = {
+      # default points to `neovim-unwrapped`
+      # this is the overlay
+      package = pkgs.neovim;
       enable = true;
       defaultEditor = true;
       extraPackages = lib.mkMerge [
