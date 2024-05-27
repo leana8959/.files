@@ -32,9 +32,8 @@
               inherit system;
               config.allowUnfree = true;
             };
+            neovim-pin = inputs'.neovim-pin.legacyPackages;
           })
-
-          inputs.neovim.overlay
         ];
 
         config.allowUnfreePredicate =
