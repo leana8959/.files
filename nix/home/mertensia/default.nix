@@ -13,4 +13,6 @@ in
     ghc-pin.haskell-language-server
     myPkgs.necrolib
   ];
+
+  programs.kitty.enable = true;
 }

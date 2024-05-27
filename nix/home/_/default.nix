@@ -18,6 +18,7 @@ in
     ./fish
     ./direnv
     ./atuin
+    ./kitty
 
     ./starship
     ./fzf
@@ -33,7 +34,6 @@ in
   ];
 
   config = {
-
     programs.home-manager.enable = true;
     home = {
       username = lib.mkDefault "leana";
