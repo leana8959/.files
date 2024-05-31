@@ -188,8 +188,8 @@ for name, config in pairs(servers) do
         capabilities = capabilities,
         settings = config.settings,
         on_attach = function(client, bufno)
-            on_attach(client, bufno)
-            config.on_attach(client, bufno)
+            on_attach(client, bufno);
+            (config.on_attach or function(...) end)(client, bufno)
         end,
     }
 end
