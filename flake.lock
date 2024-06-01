@@ -176,11 +176,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1714641030,
-        "narHash": "sha256-yzcRNDoyVP7+SCNX0wmuDju1NUCt8Dz9+lyUXEI0dbI=",
+        "lastModified": 1715865404,
+        "narHash": "sha256-/GJvTdTpuDjNn84j82cU6bXztE0MSkdnTWClUCRub78=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "e5d10a24b66c3ea8f150e47dfdb0416ab7c3390e",
+        "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
         "type": "github"
       },
       "original": {
@@ -299,17 +299,17 @@
     },
     "ghc-pin": {
       "locked": {
-        "lastModified": 1713267710,
-        "narHash": "sha256-LB2PcAcrdifcvmbTnVP8Jq1oculfj9YtJAgHCGZRgkA=",
+        "lastModified": 1716071227,
+        "narHash": "sha256-KTUFPrsI0YW/S8ZcbIAXnWI2BiGm/IGqNAFco88lBYU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e4330b3996980ccf70918af3c86ea3d89cd5433d",
+        "rev": "1faadcf5147b9789aa05bdb85b35061b642500a4",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e4330b3996980ccf70918af3c86ea3d89cd5433d",
+        "rev": "1faadcf5147b9789aa05bdb85b35061b642500a4",
         "type": "github"
       }
     },
@@ -319,11 +319,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1715045075,
-        "narHash": "sha256-dGZe/FvZFOo3didDZxKZK03o+B5gg1AJZ/xU+8j+BfM=",
+        "lastModified": 1716022356,
+        "narHash": "sha256-S2gn3HT3/c0jmySihUJfL7yczRtIhwyoPephPuCvbTg=",
         "ref": "refs/heads/mistress",
-        "rev": "3aadc89277eecc9228355064aae3a5147824bce4",
-        "revCount": 23,
+        "rev": "ae927ca6e3ca5d15cdf7cb5b6c788f9ebbd730a4",
+        "revCount": 25,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/hbrainfuck"
       },
@@ -360,16 +360,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1714043624,
-        "narHash": "sha256-Xn2r0Jv95TswvPlvamCC46wwNo8ALjRCMBJbGykdhcM=",
+        "lastModified": 1716736833,
+        "narHash": "sha256-rNObca6dm7Qs524O4st8VJH6pZ/Xe1gxl+Rx6mcWYo0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "86853e31dc1b62c6eeed11c667e8cdd0285d4411",
+        "rev": "a631666f5ec18271e86a5cde998cba68c33d9ac6",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-23.11",
+        "ref": "release-24.05",
         "repo": "home-manager",
         "type": "github"
       }
@@ -457,16 +457,16 @@
     },
     "neovim-pin": {
       "locked": {
-        "lastModified": 1716509168,
-        "narHash": "sha256-4zSIhSRRIoEBwjbPm3YiGtbd8HDWzFxJjw5DYSDy1n8=",
+        "lastModified": 1717112898,
+        "narHash": "sha256-7R2ZvOnvd9h8fDd65p0JnB7wXfUvreox3xFdYWd1BnY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bfb7a882678e518398ce9a31a881538679f6f092",
+        "rev": "6132b0f6e344ce2fe34fc051b72fb46e34f668e0",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -478,11 +478,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1713946171,
-        "narHash": "sha256-lc75rgRQLdp4Dzogv5cfqOg6qYc5Rp83oedF2t0kDp8=",
+        "lastModified": 1716993688,
+        "narHash": "sha256-vo5k2wQekfeoq/2aleQkBN41dQiQHNTniZeVONWiWLs=",
         "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "230a197063de9287128e2c68a7a4b0cd7d0b50a7",
+        "rev": "c0d5b8c54d6828516c97f6be9f2d00c63a363df4",
         "type": "github"
       },
       "original": {
@@ -533,11 +533,11 @@
     },
     "nixnur": {
       "locked": {
-        "lastModified": 1706975052,
-        "narHash": "sha256-mL+6T/mT65quHznt6TbDacAJ8JoaS99sFk6ZaMH0hG0=",
+        "lastModified": 1717242279,
+        "narHash": "sha256-ovx7RavkxxTXRokC5h1rmKtMZj8QautKLw9XhwGs8R4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6578a7cbd8a0a898f1814e5b7e55015d59f839cb",
+        "rev": "5b704d93015b0e73a5d528fc97598b33e71cda69",
         "type": "github"
       },
       "original": {
@@ -788,32 +788,32 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1714782413,
-        "narHash": "sha256-tbg0MEuKaPcUrnmGCu4xiY5F+7LW2+ECPKVAJd2HLwM=",
+        "lastModified": 1717144377,
+        "narHash": "sha256-F/TKWETwB5RaR8owkPPi+SPJh83AQsm6KrQAlJ8v/uA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "651b4702e27a388f0f18e1b970534162dec09aff",
+        "rev": "805a384895c696f802a9bf5bf4720f37385df547",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-23.11",
+        "ref": "nixos-24.05",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixunstable": {
       "locked": {
-        "lastModified": 1714763106,
-        "narHash": "sha256-DrDHo74uTycfpAF+/qxZAMlP/Cpe04BVioJb6fdI0YY=",
+        "lastModified": 1717112898,
+        "narHash": "sha256-7R2ZvOnvd9h8fDd65p0JnB7wXfUvreox3xFdYWd1BnY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e9be42459999a253a9f92559b1f5b72e1b44c13d",
+        "rev": "6132b0f6e344ce2fe34fc051b72fb46e34f668e0",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -867,11 +867,11 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1715045275,
-        "narHash": "sha256-u5PQxn6kfo151oeUUMC+/Davfdb69qPxUxxKQOvNg/s=",
+        "lastModified": 1717239860,
+        "narHash": "sha256-Kr7TyNGIlf7cmGG6fmZQbeyfhF5369+evg08HJXKQjU=",
         "ref": "refs/heads/mistress",
-        "rev": "0c1fd1046a727ec36913ac8a02af6e2c9d5583da",
-        "revCount": 67,
+        "rev": "77e8ec2d23e940e332fbd11f4b95a1527a1132ae",
+        "revCount": 70,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/prop_solveur"
       },

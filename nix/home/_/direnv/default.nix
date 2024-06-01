@@ -1,13 +1,10 @@
 { pkgs, ... }:
-let
-  inherit (pkgs) unstable;
-in
 {
   programs.direnv = {
     enable = true;
     nix-direnv = {
       enable = true;
-      package = unstable.nix-direnv;
+      package = pkgs.nix-direnv;
     };
     config = builtins.fromTOML ''
       [global]

@@ -8,5 +8,4 @@
     pkgs.gnused
     pkgs.cachix
   ];
-
 }
