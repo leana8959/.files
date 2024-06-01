@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs) unstable myPkgs;
+  inherit (pkgs) myPkgs;
 in
 {
   options.extra = {
@@ -38,7 +38,7 @@ in
     home = {
       username = lib.mkDefault "leana";
       homeDirectory = lib.mkDefault "/home/leana";
-      stateVersion = "23.11";
+      stateVersion = "24.05";
     };
 
     programs = {
@@ -57,7 +57,7 @@ in
         pkgs.rsync
 
         # nix
-        unstable.nixfmt-rfc-style
+        pkgs.nixfmt-rfc-style
 
         # utils
         pkgs.tree

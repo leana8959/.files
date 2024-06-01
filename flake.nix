@@ -26,16 +26,16 @@
       perSystem =
         { pkgs, ... }:
         {
-          formatter = pkgs.unstable.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt-rfc-style;
         };
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    nixunstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixunstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixnur.url = "github:nix-community/NUR";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
@@ -54,8 +54,9 @@
     hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";
     prop-solveur.url = "git+https://git.earth2077.fr/leana/prop_solveur";
     # pins
-    neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
+    neovim-pin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     alt-ergo-pin.url = "github:NixOS/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
-    ghc-pin.url = "github:NixOS/nixpkgs/e4330b3996980ccf70918af3c86ea3d89cd5433d"; # stackage LTS 22.16 / ghc964, right before ghc965
+    # stackage LTS 22.22 / ghc965 (May 19 2024) / hls 2.8.0.0
+    ghc-pin.url = "github:NixOS/nixpkgs/1faadcf5147b9789aa05bdb85b35061b642500a4";
   };
 }

@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  inherit (pkgs) myPkgs unstable ghc-pin;
+  inherit (pkgs) myPkgs ghc-pin;
 in
 {
   imports = [ ./fonts.nix ];
@@ -10,10 +10,10 @@ in
   home.packages = [
     ghc-pin.ghc
     ghc-pin.haskell-language-server
-    unstable.qmk
-    unstable.wally-cli
+    pkgs.qmk
+    pkgs.wally-cli
 
-    unstable.cargo
+    pkgs.cargo
     pkgs.nix-inspect
     pkgs.nix-visualize
     pkgs.deploy-rs

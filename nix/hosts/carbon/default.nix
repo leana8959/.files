@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  system.stateVersion = "23.11";
-
   imports = [
     ./hardware-configuration.nix
 
@@ -51,6 +49,6 @@
 
   nix.optimise = {
     automatic = true;
-    dates = ["weekly"];
+    dates = [ "weekly" ];
   };
 }

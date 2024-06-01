@@ -2,8 +2,8 @@
   perSystem =
     { pkgs, ... }:
     let
-      inherit (pkgs) unstable alt-ergo-pin;
-      mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { inherit (unstable) nerd-font-patcher; };
+      inherit (pkgs) alt-ergo-pin;
+      mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { };
     in
     {
       # Export my package set
