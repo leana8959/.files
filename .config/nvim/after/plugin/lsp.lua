@@ -35,11 +35,7 @@ local servers = {
         end,
     },
 
-    typst_lsp = { -- Typst
-        settings = {
-            root_dir = vim.fs.dirname(vim.fs.find({ ".git" }, { upward = true })[1]) or vim.loop.cwd(),
-            exportPdf = "never",
-        },
+    tinymist = {
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
                 vim.cmd.normal("mJ")
