@@ -6,6 +6,7 @@ require("todo-comments").setup {
         WARN = { icon = "!", color = "warning", alt = { "WARNING", "XXX" } },
         NOTE = { icon = "·", color = "hint", alt = { "INFO" } },
         TEST = { icon = "T", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+        UNIMPLEMENTED = { icon = "@", color = "hint" },
         Q = { icon = "?", color = "warning" },
         R = { icon = "=", color = "hint" },
     },
