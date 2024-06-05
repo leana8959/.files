@@ -78,7 +78,7 @@ in
         pkgs.watchexec
         pkgs.onefetch
         pkgs.ghostscript
-        pkgs.tokei
+        myPkgs.tokei
         pkgs.gnumake
         pkgs.just
         pkgs.nurl

@@ -51,7 +51,7 @@ too late and I want good integration with fish anyway.
 
 # Linux
 Rarely used since I don't have enough time to figure my way out on linux
-completly, sadly.
+completely, sadly.
 - `xmonad`
 - `xmobar`
 - `fcitx`: CangJie (倉頡) input method
