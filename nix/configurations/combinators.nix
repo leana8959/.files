@@ -85,7 +85,7 @@ let
         };
       in
       inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = args.pkgs;
+        inherit (args) pkgs;
         extraSpecialArgs = args;
         modules = [
           "${self}/nix/home/_"
@@ -95,7 +95,7 @@ let
       }
     );
 
-  many = func: builtins.mapAttrs (name: hmOpts: func name (hmOpts.system) (hmOpts.settings or { }));
+  many = func: builtins.mapAttrs (name: hmOpts: func name hmOpts.system (hmOpts.settings or { }));
 in
 {
   # promote helper functions into the arguments

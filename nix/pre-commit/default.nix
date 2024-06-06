@@ -9,7 +9,7 @@
         settings.hooks = {
           nixfmt.enable = true;
           nixfmt.package = pkgs.nixfmt-rfc-style;
-          # statix.enable = true; # FIXME: seems to loop
+          statix.enable = true;
           deadnix.enable = true;
         };
       };
