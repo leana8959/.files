@@ -15,7 +15,7 @@
       add_paths =
         ps:
         lib.trivial.pipe ps [
-          (lib.lists.reverseList) # source paths in reverse order
+          lib.lists.reverseList # source paths in reverse order
           (map (p: "fish_add_path -m ${p}"))
           (builtins.concatStringsSep "\n")
           (s: s + "\n")
