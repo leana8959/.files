@@ -10,6 +10,7 @@ in
 
   home.packages = [
     ghc-pin.ghc
+    ghc-pin.cabal-install
     ghc-pin.haskell-language-server
     myPkgs.necrolib
   ];
