@@ -31,6 +31,7 @@
       ".DS_Store"
       ".direnv/"
       "**/result"
+      ".pre-commit-config.yaml"
     ];
   };
 
