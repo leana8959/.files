@@ -2,6 +2,7 @@
   lib,
   stdenv,
   fetchFromGitHub,
+  fetchpatch,
   rustPlatform,
   libiconv,
   darwin,
@@ -20,6 +21,14 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoSha256 = "sha256-NE6hw6rgSDOsmSD6JpOfBLgGKGPfPmHjpMIsqLOkH7M=";
+
+  patches = [
+    (fetchpatch {
+      name = "typst.patch";
+      url = "https://github.com/XAMPPRocky/tokei/commit/bb911d457d18309c88786ab722d057eeebc5522d.patch";
+      hash = "sha256-gBqOOp3zZcL0SosiVtjnyWJwwLgi/ECiiyelp0rL7+g=";
+    })
+  ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
     libiconv
