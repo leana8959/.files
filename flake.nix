@@ -13,6 +13,7 @@
         ./nix/handleInputs # Resolve inputs
         ./nix/custom # Custom package set
         ./nix/configurations # Configuration and their generators
+        ./nix/pre-commit
         ./nix/devShells
       ];
 
@@ -44,6 +45,7 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     agenix.url = "github:ryantm/agenix/0.15.0";
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     # packages
     wired.url = "github:Toqozz/wired-notify";
     llama-cpp.url = "github:ggerganov/llama.cpp";
