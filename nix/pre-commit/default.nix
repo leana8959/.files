@@ -13,8 +13,9 @@
           statix.enable = true;
           deadnix.enable = true;
 
-          # stylua
-          stylua.enable = true;
+          # lua
+          # FIXME: noisy
+          # stylua.enable = true;
 
           # markdown
           markdownlint.enable = true;
