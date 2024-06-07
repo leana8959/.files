@@ -65,7 +65,6 @@ local servers = {
 
     nil_ls = { -- Nix
         on_attach = function(_, bufno)
-            vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
             map("n", "<leader>f", function()
                 vim.cmd.norm("mJ")
                 vim.cmd(":%!nixfmt")
@@ -79,7 +78,7 @@ local servers = {
 -- Helpers --
 -------------
 local on_attach = function(client, bufno)
-    vim.api.nvim_buf_set_option(bufno, "omnifunc", "v:lua.vim.lsp.omnifunc")
+    vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufno })
     local ts = require("telescope.builtin")
     local opts = { buffer = bufno }
 
