@@ -59,7 +59,6 @@ local plugins = {
 		},
 	},
 	"mfussenegger/nvim-dap", -- DAP
-	{ "ray-x/lsp_signature.nvim", event = "VeryLazy" },
 
 	-----------------------
 	-- Language specific --

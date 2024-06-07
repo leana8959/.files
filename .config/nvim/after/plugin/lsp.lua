@@ -115,14 +115,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
--- Type signature
-require("lsp_signature").setup {
-    floating_window = false,
-    hint_enable = true,
-    hint_prefix = "󰽏 ",
-    hint_scheme = "Comment",
-}
-
 -- Diagnostic display configuration
 vim.diagnostic.config { virtual_text = false, severity_sort = true }
 
