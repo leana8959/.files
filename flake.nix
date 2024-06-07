@@ -3,6 +3,7 @@
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       flake.nixConfig = {
+        extra-substituters = [ "https://leana8959.cachix.org" ];
         extra-trusted-substituters = [ "https://leana8959.cachix.org" ];
         extra-trusted-public-keys = [
           "leana8959.cachix.org-1:CxQSAp8lcgMv8Me459of0jdXRW2tcyeYRKTiiUq8z0M="
