@@ -16,6 +16,7 @@ jobs:
           - logisim-evolution
           - maeel
           - necrolib
+          - tokei
           - why3
 
     runs-on: ubuntu-latest
