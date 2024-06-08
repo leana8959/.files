@@ -16,6 +16,7 @@ in
     pkgs.cargo
     pkgs.nix-inspect
     pkgs.nix-visualize
+    pkgs.nix-du
     pkgs.deploy-rs
 
     pkgs.audio-lint
