@@ -33,6 +33,7 @@ local plugins = {
         "wintermute-cell/gitignore.nvim",
         dependencies = "nvim-telescope/telescope.nvim",
     },
+    "chrisbra/matchit",
 
     ----------------
     -- Style / UI --
