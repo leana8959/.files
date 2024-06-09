@@ -18,8 +18,13 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-    pattern = { "markdown", "tex", "typst" },
+    pattern = { "markdown" },
     callback = function() vim.cmd("setlocal sw=2 ts=2 tw=100 colorcolumn=100 spell spelllang=en,fr") end,
+})
+
+autocmd("FileType", {
+    pattern = { "markdown", "tex", "typst" },
+    callback = function() vim.cmd("setlocal sw=2 ts=2 tw=80 colorcolumn=80 spell spelllang=en,fr") end,
 })
 
 autocmd("FileType", {
@@ -111,3 +116,8 @@ usercmd("Retab", function(opts)
     vim.opt["expandtab"] = true
     vim.cmd("%retab! ")
 end, { nargs = "+" })
+
+autocmd("FileType", {
+    pattern = { "nix", "haskell", "ocaml", "skel" },
+    callback = function() vim.cmd([[let b:match_words = '\<let\>:\<in\>']]) end,
+})
