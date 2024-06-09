@@ -1,47 +1,44 @@
-local opt = vim.opt
+local o = vim.o
 
-opt.hlsearch = false
-opt.incsearch = true
+o.hlsearch = false
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
 
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.signcolumn = "yes"
+o.number = true
+o.relativenumber = true
+o.cursorline = true
+o.signcolumn = "yes"
 
-opt.tabstop = 4
-opt.expandtab = true
-opt.shiftwidth = 4
+o.expandtab = true
 
-opt.wrap = false -- Slows the editor
-opt.linebreak = true
-opt.breakindent = true
-opt.filetype = "on"
+o.wrap = false -- Slows the editor
+o.linebreak = true
+o.breakindent = true
+o.filetype = "on"
 
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
+o.swapfile = false
+o.backup = false
+o.undofile = true
 
-opt.termguicolors = true
-opt.mouse = "a"
+o.termguicolors = true
+o.mouse = "a"
 
-opt.ignorecase = true
-opt.smartcase = true
-opt.autoindent = true
-opt.smartindent = true
+o.autoindent = true
+o.smartindent = true
 
-opt.scrolloff = 3
+o.scrolloff = 3
 
-opt.colorcolumn = "80"
+o.colorcolumn = "80"
 
-opt.foldlevel = 99
-opt.foldlevelstart = 99
-opt.foldenable = true
+-- for UFO
+o.foldlevel = 99
+o.foldlevelstart = 99
+o.foldenable = true
 
-opt.winbar = "%{%v:lua.require'winbar'.eval()%}"
+o.winbar = "%{%v:lua.require'winbar'.eval()%}"
 
-opt.showmode = false
+o.showmode = false
 
-opt.listchars = { tab = "│ ", trail = "␣" }
-opt.list = true
-
-vim.g.netrw_banner = 0
+vim.opt.listchars = { tab = "│ ", trail = "␣" }
+o.list = true
