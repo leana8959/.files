@@ -87,7 +87,7 @@ autocmd("OptionSet", {
 
 autocmd("OptionSet", {
     pattern = "textwidth",
-    callback = function() vim.bo.colorcolumn = tostring(vim.bo.textwidth) end,
+    callback = function() vim.wo.colorcolumn = tostring(vim.bo.textwidth) end,
 })
 
 usercmd("Retab", function(opts)
