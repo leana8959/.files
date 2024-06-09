@@ -10,7 +10,7 @@ local plugins = {
     "mbbill/undotree", -- Treeview of history
     "godlygeek/tabular", -- Vertical alignment
     { "stevearc/oil.nvim", dependencies = "nvim-tree/nvim-web-devicons" }, -- File manager
-    { "uga-rosa/ccc.nvim", config = {} },
+    { "uga-rosa/ccc.nvim", opts = {} },
     -- `gc` to comment
     {
         "numToStr/Comment.nvim",
