@@ -39,7 +39,7 @@ syn region skelAngleStruct matchgroup=NONE start="<" matchgroup=NONE end=">" con
 syn region skelParenStruct matchgroup=NONE start="(" matchgroup=NONE end=")" contains=ALLBUT,skelParErr,skelCommaErr
 
 syn region skelComment           start="(\*"   end="\*)" contains=skelTodo,skelComment
-syn region skelMeaningfulComment start="(\*\*" end="\*)" contains=skelComment
+" syn region skelMeaningfulComment start="(\*\*" end="\*)" contains=skelComment
 
 syn match skelKeyChar ":"
 syn match skelKeyChar "→"
@@ -73,9 +73,9 @@ hi def link skelStruct    Statement
 hi def link skelBranching Bold
 
 """"" Folding of comments of type (** * sthg *)
-syn region skelCommentLvl1 keepend transparent start="(\* \* " end="(\* \*"me=e-7 skip="(\* \*\*" contains=ALL fold
-syn region skelCommentLvl2 keepend transparent start="(\* \*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*" contains=ALL fold
-syn region skelCommentLvl3 keepend transparent start="(\* \*\*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*\*" contains=ALL fold
-syn region skelCommentLvl4 keepend transparent start="(\* \*\*\*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*\*\*" contains=ALL fold
-syn region skelCommentLvl5 keepend transparent start="(\* \*\*\*\*\* " end="(\* \*"me=e-7 contains=ALL fold
+" syn region skelCommentLvl1 keepend transparent start="(\* \* " end="(\* \*"me=e-7 skip="(\* \*\*" contains=ALL fold
+" syn region skelCommentLvl2 keepend transparent start="(\* \*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*" contains=ALL fold
+" syn region skelCommentLvl3 keepend transparent start="(\* \*\*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*\*" contains=ALL fold
+" syn region skelCommentLvl4 keepend transparent start="(\* \*\*\*\* " end="(\* \*"me=e-7 skip="(\* \*\*\*\*\*" contains=ALL fold
+" syn region skelCommentLvl5 keepend transparent start="(\* \*\*\*\*\* " end="(\* \*"me=e-7 contains=ALL fold
 set foldmethod=syntax
