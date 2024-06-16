@@ -34,7 +34,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixunstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixnur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -46,7 +45,10 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     agenix.url = "github:ryantm/agenix/0.15.0";
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # packages
     wired.url = "github:Toqozz/wired-notify";
     llama-cpp.url = "github:ggerganov/llama.cpp";

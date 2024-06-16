@@ -12,10 +12,9 @@
         inherit system;
         overlays = [
           # fallback to other inputs
-          (final: _: inputs.nixpkgs.lib.mapAttrs (name: input: input.packages.default) inputs')
+          (_: _: inputs.nixpkgs.lib.mapAttrs (_: input: input.packages.default) inputs')
 
           (final: _: {
-            unstable = inputs'.nixunstable.legacyPackages;
             nur = import inputs.nixnur {
               pkgs = final;
               nurpkgs = final;
