@@ -20,7 +20,7 @@ ocamlPackages.buildDunePackage {
         "v0.14.7.1" = "sha256-Y7+LcQyz9NP20E1uGJbHE3/gPus6xL2GjL2auxnmPK0=";
         "v0.14.8" = "sha256-MLx3BenTbgFILgQgTOGb2E3R/p3Z1Lsy0ojPbP9g/eg=";
         "v0.14.9" = "sha256-10S+duTyffKUS3BiC5TnGnhjgChhqHivyN/PpTU1q6Q=";
-        "v0.15.0" = "sha256-2ZVc2Je29pPQNA+Oc6lw5Z5obAMTTEB7NvEZ01/12F8=";
+        "v0.15.0" = "sha256-otkqA+5sTzEwQhnUv+cBvWWL4cOL1jr4Sm+vl085LLI=";
       }
       .${version};
   };
