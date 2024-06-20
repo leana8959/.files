@@ -2,6 +2,8 @@
   outputs =
     inputs:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      _module.args.flakeRoot = ./.;
+
       flake.nixConfig = {
         extra-substituters = [ "https://leana8959.cachix.org" ];
         extra-trusted-substituters = [ "https://leana8959.cachix.org" ];

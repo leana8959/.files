@@ -1,6 +1,7 @@
-{ inputs, ... }:
+{ inputs, flakeRoot, ... }:
 {
   imports = [ inputs.pre-commit-hooks.flakeModule ];
+
   perSystem =
     { pkgs, config, ... }:
     {
@@ -14,8 +15,10 @@
           deadnix.enable = true;
 
           # lua
-          # FIXME: noisy
-          # stylua.enable = true;
+          stylua.enable = true;
+          stylua.entry = "${config.pre-commit.settings.hooks.stylua.package}/bin/stylua --config-path ${
+            flakeRoot + "/.config/nvim/stylua.toml"
+          } --respect-ignores";
 
           # markdown
           markdownlint.enable = true;
