@@ -62,6 +62,7 @@
             ];
         in
         makeFishFunctions [
+          ","
           "clone_to_repos"
           "file_extension"
           "file_mantissa"
