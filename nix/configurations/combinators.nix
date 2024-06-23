@@ -46,7 +46,7 @@ let
     );
 
   mkDarwin =
-    name: sys: hmOptns:
+    name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -72,7 +72,7 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                hmOptns
+                hmOpts
               ];
             };
           }
