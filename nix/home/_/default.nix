@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs) myPkgs;
+  inherit (pkgs) myPkgs stdenv;
 in
 {
   options.extra = {
@@ -37,7 +37,7 @@ in
     programs.home-manager.enable = true;
     home = {
       username = lib.mkDefault "leana";
-      homeDirectory = lib.mkDefault "/home/leana";
+      homeDirectory = lib.mkDefault (if stdenv.isLinux then "/home/leana" else "/Users/leana");
       stateVersion = "24.05";
     };
 
