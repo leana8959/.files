@@ -13,15 +13,15 @@ in
     pkgs.qmk
     pkgs.wally-cli
 
-    pkgs.cargo
+    # pkgs.cargo
     pkgs.nix-inspect
-    pkgs.nix-visualize
-    pkgs.nix-du
-    pkgs.deploy-rs
+    # pkgs.nix-visualize
+    # pkgs.nix-du
+    # pkgs.deploy-rs
 
     pkgs.audio-lint
-    pkgs.hbrainfuck
-    pkgs.prop-solveur
+    # pkgs.hbrainfuck
+    # pkgs.prop-solveur
     myPkgs.maeel
 
     pkgs.docker
