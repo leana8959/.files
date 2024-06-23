@@ -55,7 +55,6 @@
     };
     # packages
     wired.url = "github:Toqozz/wired-notify";
-    llama-cpp.url = "github:ggerganov/llama.cpp";
     nix-visualize.url = "github:craigmbooth/nix-visualize";
     nix-inspect.url = "github:bluskript/nix-inspect";
     deploy-rs.url = "github:serokell/deploy-rs";
