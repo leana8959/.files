@@ -35,6 +35,11 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
+    pattern = "ledger",
+    callback = function() vim.cmd("setlocal sw=2 ts=4 spell spelllang=fr") end,
+})
+
+autocmd("FileType", {
     pattern = "asm",
     callback = function() vim.bo.commentstring = "# %s" end,
 })
