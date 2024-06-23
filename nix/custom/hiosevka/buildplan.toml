@@ -25,7 +25,6 @@ ampersand = "et-tailed"
 dollar = 'open'
 cent = "open"
 percent = 'rings-continuous-slash-also-connected'
-at = "fourfold"
 # explicitly declare with-notch
 lig-equal-chain = 'with-notch'
 lig-hyphen-chain = 'with-notch'
