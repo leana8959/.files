@@ -20,3 +20,7 @@ lig-hyphen-chain = 'with-notch'
 lig-plus-chain = 'with-notch'
 lig-double-arrow-bar = 'with-notch'
 lig-single-arrow-bar = 'with-notch'
+
+[buildPlans.altiosevka.variants.italic]
+v = "cursive-serifless"
+w = "cursive-serifless"
