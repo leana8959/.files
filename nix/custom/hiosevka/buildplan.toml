@@ -6,15 +6,13 @@ serifs = "sans"
 [buildPlans.hiosevka.ligations]
 inherits = "haskell"
 enables = [
-    "brst",           # (* *)
-    "logic",          # \/ /\
-    "lteq-separate",  # <=
-    "gteq-separate",  # >=
-    "slash-asterisk", # /* */
+  "brst",           # (* *)
+  "slash-asterisk", # /* */
 ]
 disables = [
-    "lteq", # <=
-    "gteq", # >=
+  "lteq",    # <=
+  "gteq",    # >=
+  "slasheq", # /=
 ]
 
 [buildPlans.hiosevka.variants.design]
@@ -27,3 +25,10 @@ ampersand = "et-tailed"
 dollar = 'open'
 cent = "open"
 percent = 'rings-continuous-slash-also-connected'
+at = "fourfold"
+# explicitly declare with-notch
+lig-equal-chain = 'with-notch'
+lig-hyphen-chain = 'with-notch'
+lig-plus-chain = 'with-notch'
+lig-double-arrow-bar = 'with-notch'
+lig-single-arrow-bar = 'with-notch'
