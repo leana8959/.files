@@ -163,7 +163,7 @@ cmp.setup {
                 cmp.select_next_item()
             elseif ls.expand_or_locally_jumpable() then
                 ls.expand_or_jump()
-            elseif has_words_before() then
+            elseif has_words_before() and (not of_filetype { "ledger" }) then
                 cmp.complete()
             else
                 fallback()
