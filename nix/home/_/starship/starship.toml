@@ -86,4 +86,6 @@ format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
 
 [nix_shell]
 format = '[( \($name\))]($style)'
+unknown_msg = "nix shell"
+# FIXME: this is broken, open a PR
 heuristic = true
