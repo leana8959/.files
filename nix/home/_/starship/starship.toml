@@ -9,80 +9,81 @@ right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 palette = 'curry'
 
 [palettes.curry]
-accent       = '#645199' # Haskell purple
+accent = '#645199'       # Haskell purple
 accent_trans = '#efebfc'
-black        = '#383A42'
-grey         = '#a0a1a7'
-cyan         = '#0184bc'
-blue         = '#4078f2'
-purple       = '#a626a4'
-green        = '#50a14f'
-orange       = '#e45649'
-red          = '#ca1243'
-brown        = '#986801'
-gold         = '#c18401'
-tinted_bg    = '#eeeeee'
+black = '#383A42'
+grey = '#a0a1a7'
+cyan = '#0184bc'
+blue = '#4078f2'
+purple = '#a626a4'
+green = '#50a14f'
+orange = '#e45649'
+red = '#ca1243'
+brown = '#986801'
+gold = '#c18401'
+tinted_bg = '#eeeeee'
 
 [hostname]
 ssh_only = true
-style    = 'bold orange'
-format   = '[$hostname]($style):'
+style = 'bold orange'
+format = '[$hostname]($style):'
 
 [username]
 style_root = 'bold orange'
 style_user = 'grey'
-format     = '( [\($user\)]($style))'
+format = '( [\($user\)]($style))'
 
 [character]
-success_symbol            = '[\$](black)' # Insert
-error_symbol              = '[\$](black)' # Insert
-vimcmd_symbol             = '[N](grey)'   # Normal
-vimcmd_replace_symbol     = '[R](grey)'   # Replace
-vimcmd_replace_one_symbol = '[R](grey)'   # Replace
-vimcmd_visual_symbol      = '[V](grey)'   # Visual
+success_symbol = '[\$](black)'          # Insert
+error_symbol = '[\$](black)'            # Insert
+vimcmd_symbol = '[N](grey)'             # Normal
+vimcmd_replace_symbol = '[R](grey)'     # Replace
+vimcmd_replace_one_symbol = '[R](grey)' # Replace
+vimcmd_visual_symbol = '[V](grey)'      # Visual
 
 [directory]
 truncation_length = 4
-truncate_to_repo  = false
-style             = 'fg:black bg:accent_trans'
-format            = '[$path]($style)( [$read_only]($read_only_style))'
-read_only         = ''
-read_only_style   = 'red'
+truncate_to_repo = false
+style = 'fg:black bg:accent_trans'
+format = '[$path]($style)( [$read_only]($read_only_style))'
+read_only = ''
+read_only_style = 'red'
 truncation_symbol = '…/'
 
 [status]
-format   = '([\[$status\]](bold red) )'
+format = '([\[$status\]](bold red) )'
 disabled = false
 
 [python]
-style  = 'grey'
+style = 'grey'
 format = '( [\($virtualenv\)]($style))'
 
 [cmd_duration]
-min_time          = 5_000
+min_time = 5_000
 show_milliseconds = true
-style             = 'brown'
-format            = '([$duration]($style) )'
+style = 'brown'
+format = '([$duration]($style) )'
 
 [git_state]
-style  = 'bold red'
+style = 'bold red'
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 
 [git_branch]
 symbol = ''
-style  = 'grey'
+style = 'grey'
 format = '[$symbol$branch(:$remote_branch)]($style)'
 
 [git_commit]
-style  = 'accent'
+style = 'accent'
 format = '[\(](grey)[$hash$tag]($style)[\)](grey)'
 
 [git_status]
-ahead    = '⇡$count'
-behind   = '⇣$count'
+ahead = '⇡$count'
+behind = '⇣$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
-style    = 'bold accent'
-format   = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
+style = 'bold accent'
+format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
 
 [nix_shell]
 format = '[( \($name\))]($style)'
+heuristic = true
