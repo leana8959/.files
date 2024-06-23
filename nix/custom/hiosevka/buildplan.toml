@@ -8,8 +8,13 @@ inherits = "haskell"
 enables = [
   "brst",           # (* *)
   "slash-asterisk", # /* */
+  # disable <= =< >= completely (no arrows or comparison ligatures)
+  "lteq-separate",
+  "eqlt-separate",
+  "gteq-separate",
 ]
 disables = [
+  # never enable comparison ligatures
   "lteq",    # <=
   "gteq",    # >=
   "slasheq", # /=
