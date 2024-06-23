@@ -11,17 +11,6 @@
     package = pkgs.nixVersions.nix_2_21;
   };
 
-  nix.registry.flakies = {
-    from = {
-      id = "flakies";
-      type = "indirect";
-    };
-    to = {
-      type = "git";
-      url = "https://git.earth2077.fr/leana/flakies";
-    };
-  };
-
   security.sudo.extraConfig = ''
     Defaults        lecture = always
     Defaults        lecture_file = ${pkgs.writeText "sudo_lecture_file" ''
