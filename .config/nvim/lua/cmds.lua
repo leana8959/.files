@@ -36,7 +36,7 @@ autocmd("FileType", {
 
 autocmd("FileType", {
     pattern = "ledger",
-    callback = function() vim.cmd("setlocal sw=2 ts=4 spell spelllang=fr") end,
+    callback = function() vim.cmd("setlocal varsofttabstop=4,30,8,4 spell spelllang=fr") end,
 })
 
 autocmd("FileType", {
