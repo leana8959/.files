@@ -31,7 +31,7 @@ autocmd("FileType", {
 
 autocmd("FileType", {
     pattern = { "tex", "typst" },
-    callback = function() vim.cmd("setlocal sw=2 ts=2 tw=80 colorcolumn=80 spell spelllang=en,fr") end,
+    callback = function() vim.cmd("setlocal sw=2 ts=2 tw=80 colorcolumn=80 spell spelllang=fr,en") end,
 })
 
 autocmd("FileType", {
