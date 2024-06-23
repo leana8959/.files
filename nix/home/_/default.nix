@@ -41,6 +41,15 @@ in
       stateVersion = "24.05";
     };
 
+    nix.registry = {
+      flakies = {
+        from.id = "flakies";
+        from.type = "indirect";
+        to.type = "git";
+        to.url = "https://git.earth2077.fr/leana/flakies";
+      };
+    };
+
     programs = {
       ripgrep.enable = true;
       gpg.enable = true;

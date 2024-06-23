@@ -5,6 +5,10 @@
   ...
 }:
 let
+  nixpkgsRegistry = {
+    # https://yusef.napora.org/blog/pinning-nixpkgs-flake/
+    nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  };
 
   mkNixOS =
     name: sys: hmOpts:
@@ -32,6 +36,7 @@ let
               users.leana.imports = [
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
+                nixpkgsRegistry
                 hmOpts
               ];
             };
@@ -66,6 +71,7 @@ let
               users.leana.imports = [
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
+                nixpkgsRegistry
                 hmOptns
               ];
             };
@@ -90,6 +96,7 @@ let
         modules = [
           "${self}/nix/home/_"
           "${self}/nix/home/${name}"
+          nixpkgsRegistry
           hmOpts
         ];
       }
