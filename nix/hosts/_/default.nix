@@ -8,6 +8,7 @@
       allow-import-from-derivation = true
       sandbox = true
     '';
+    package = pkgs.nixVersions.nix_2_21;
   };
 
   nix.registry.flakies = {
