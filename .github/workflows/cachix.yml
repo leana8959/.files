@@ -15,7 +15,7 @@ jobs:
           - altiosevka
           - hiosevka
           - hiosevka-nerd-font-mono
-          - hiosevka-nerd-font-propo
+          # - hiosevka-nerd-font-propo # not really used
           - logisim-evolution
           - maeel
           - necrolib
