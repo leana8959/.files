@@ -67,7 +67,6 @@ in
 
         # nix
         pkgs.nixfmt-rfc-style
-        pkgs.comma
 
         # utils
         pkgs.tree
