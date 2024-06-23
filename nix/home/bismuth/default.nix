@@ -1,11 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) myPkgs ghc-pin;
 in
 {
   imports = [ ./fonts.nix ];
-
-  home.homeDirectory = lib.mkForce "/Users/leana";
 
   home.packages = [
     ghc-pin.ghc
