@@ -51,6 +51,7 @@ let
     tree = "tree -Cph";
     restow = "cd ~/.dotfiles/ && stow -D . && stow -S . && prevd";
     nix-shell = "nix-shell --run fish";
+    ",," = "nix shell -c";
   };
   aliasesLinux = {
     chmod = "chmod --preserve-root";
