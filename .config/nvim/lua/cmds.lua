@@ -25,12 +25,12 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
-    pattern = { "markdown" },
+    pattern = "markdown",
     callback = function() vim.cmd("setlocal sw=2 ts=2 tw=100 colorcolumn=100 spell spelllang=en,fr") end,
 })
 
 autocmd("FileType", {
-    pattern = { "markdown", "tex", "typst" },
+    pattern = { "tex", "typst" },
     callback = function() vim.cmd("setlocal sw=2 ts=2 tw=80 colorcolumn=80 spell spelllang=en,fr") end,
 })
 
