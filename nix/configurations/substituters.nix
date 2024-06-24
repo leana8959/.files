@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  nix.package = pkgs.nixVersions.nix_2_21;
+  nix.package = lib.mkDefault pkgs.nixVersions.nix_2_21;
   nix.settings = {
     /*
       substituters can only be used by users that are trusted by nix -> nix trusts the user to do it right
