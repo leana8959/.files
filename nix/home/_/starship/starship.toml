@@ -85,7 +85,8 @@ style = 'bold accent'
 format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
 
 [nix_shell]
-format = '[( \($name\))]($style)'
-unknown_msg = "nix shell"
-# FIXME: this is broken, open a PR
+# https://github.com/starship/starship/blob/073e16b4926009565c06897aabda7f807c63c5a0/src/modules/nix_shell.rs#L66-L70
+# apparently `$name` and `$unknown_msg` are mutually exclusive
+format = '[ \($state( $name)\)]($style) '
+unknown_msg = "nix"
 heuristic = true
