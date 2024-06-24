@@ -32,6 +32,8 @@
 
         # alpha tokei with typst
         tokei = pkgs.callPackage ./tokei.nix { };
+
+        dl-librescore = pkgs.callPackage ./dl-librescore.nix { };
       };
     };
 }
