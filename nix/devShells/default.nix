@@ -30,6 +30,25 @@
             pkgs.iconv
           ];
         };
+
+        starship = pkgs.mkShell {
+          name = "starship";
+          packages =
+            [
+              pkgs.cargo
+              pkgs.rustc
+              pkgs.rust-analyzer
+              pkgs.rustfmt
+              pkgs.iconv
+              pkgs.cmake
+            ]
+            # https://www.reddit.com/r/NixOS/comments/e3xee4/newbie_linking_to_cocoa_frameworks/
+            ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
+              pkgs.darwin.Security
+              pkgs.swiftPackages.Foundation
+              pkgs.darwin.apple_sdk.frameworks.Cocoa
+            ]);
+        };
       };
     };
 }
