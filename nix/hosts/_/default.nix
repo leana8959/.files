@@ -8,7 +8,6 @@
       allow-import-from-derivation = true
       sandbox = true
     '';
-    package = pkgs.nixVersions.nix_2_21;
   };
 
   security.sudo.extraConfig = ''
