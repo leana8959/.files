@@ -1,7 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [ ./substituters.nix ];
-
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
