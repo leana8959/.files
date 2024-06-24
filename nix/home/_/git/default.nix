@@ -32,6 +32,8 @@
       ".direnv/"
       "**/result"
       ".pre-commit-config.yaml"
+      ".config/nvim/spell/"
+      ".local/bin/"
     ];
   };
 
