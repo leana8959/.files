@@ -11,6 +11,7 @@ let
   };
 
   substituters = import ./substituters.nix;
+  extra-substituters = import ./extra-substituters.nix;
 
   mkNixOS =
     name: sys: hmOpts:
@@ -40,8 +41,8 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
+                extra-substituters
                 hmOpts
-                substituters
               ];
             };
           }
@@ -77,7 +78,7 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                substituters
+                extra-substituters
                 hmOpts
               ];
             };
@@ -103,7 +104,7 @@ let
           "${self}/nix/home/_"
           "${self}/nix/home/${name}"
           nixpkgsRegistry
-          substituters
+          extra-substituters
           hmOpts
         ];
       }
