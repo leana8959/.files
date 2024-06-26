@@ -21,22 +21,6 @@
         "type": "github"
       }
     },
-    "alt-ergo-pin": {
-      "locked": {
-        "lastModified": 1654436668,
-        "narHash": "sha256-vwEtkxIEQjymeTk89Ty1MGfRVSWL1/3j1wt5xB5ua88=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1b95daa381fa4a0963217a5d386433c20008208a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1b95daa381fa4a0963217a5d386433c20008208a",
-        "type": "github"
-      }
-    },
     "audio-lint": {
       "inputs": {
         "naersk": "naersk",
@@ -295,22 +279,6 @@
         "type": "github"
       }
     },
-    "ghc-pin": {
-      "locked": {
-        "lastModified": 1716071227,
-        "narHash": "sha256-KTUFPrsI0YW/S8ZcbIAXnWI2BiGm/IGqNAFco88lBYU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1faadcf5147b9789aa05bdb85b35061b642500a4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1faadcf5147b9789aa05bdb85b35061b642500a4",
-        "type": "github"
-      }
-    },
     "gitignore": {
       "inputs": {
         "nixpkgs": [
@@ -452,22 +420,6 @@
       "original": {
         "owner": "yusdacra",
         "repo": "nix-cargo-integration",
-        "type": "github"
-      }
-    },
-    "neovim-pin": {
-      "locked": {
-        "lastModified": 1717112898,
-        "narHash": "sha256-7R2ZvOnvd9h8fDd65p0JnB7wXfUvreox3xFdYWd1BnY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "6132b0f6e344ce2fe34fc051b72fb46e34f668e0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -913,14 +865,11 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "alt-ergo-pin": "alt-ergo-pin",
         "audio-lint": "audio-lint",
         "deploy-rs": "deploy-rs",
         "flake-parts": "flake-parts",
-        "ghc-pin": "ghc-pin",
         "hbrainfuck": "hbrainfuck",
         "home-manager": "home-manager_2",
-        "neovim-pin": "neovim-pin",
         "nix-darwin": "nix-darwin",
         "nix-inspect": "nix-inspect",
         "nix-visualize": "nix-visualize",
