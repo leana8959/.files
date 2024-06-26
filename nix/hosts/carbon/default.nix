@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -33,13 +32,10 @@
     packages = [ ];
   };
 
-  nix = {
-    package = pkgs.nixFlakes;
-    settings.trusted-users = [
-      "root"
-      "@wheel"
-    ];
-  };
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   nix.gc = {
     automatic = true;
