@@ -59,8 +59,17 @@
       inputs.nixpkgs-stable.follows = "nixpkgs";
     };
     # packages
-    audio-lint.url = "git+https://git.earth2077.fr/leana/audio-lint";
-    hbrainfuck.url = "git+https://git.earth2077.fr/leana/hbrainfuck";
-    prop-solveur.url = "git+https://git.earth2077.fr/leana/prop_solveur";
+    audio-lint = {
+      url = "git+https://git.earth2077.fr/leana/audio-lint";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hbrainfuck = {
+      url = "git+https://git.earth2077.fr/leana/hbrainfuck";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    prop-solveur = {
+      url = "git+https://git.earth2077.fr/leana/prop_solveur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
