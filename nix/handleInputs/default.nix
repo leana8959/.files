@@ -11,7 +11,10 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = [
-          (_: _: { agenix = inputs'.agenix.packages.default; })
+          (_: _: {
+            agenix = inputs'.agenix.packages.default;
+            audio-lint = inputs'.audio-lint.packages.default;
+          })
 
           (final: _: {
             wired = final.fetchFromGitHub {
