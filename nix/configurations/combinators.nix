@@ -10,9 +10,6 @@ let
     nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
-  substituters = import ./substituters.nix;
-  extra-substituters = import ./extra-substituters.nix;
-
   mkNixOS =
     name: sys: hmOpts:
     withSystem sys (
@@ -30,7 +27,6 @@ let
           "${self}/nix/hosts/${name}"
           "${self}/nix/layouts"
           inputs.agenix.nixosModules.default
-          substituters
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -41,7 +37,6 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                extra-substituters
                 hmOpts
               ];
             };
@@ -67,7 +62,6 @@ let
           "${self}/nix/hosts/_"
           "${self}/nix/hosts/_darwin"
           "${self}/nix/hosts/${name}"
-          substituters
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager = {
@@ -78,7 +72,6 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                extra-substituters
                 hmOpts
               ];
             };
@@ -104,7 +97,6 @@ let
           "${self}/nix/home/_"
           "${self}/nix/home/${name}"
           nixpkgsRegistry
-          extra-substituters
           hmOpts
         ];
       }
