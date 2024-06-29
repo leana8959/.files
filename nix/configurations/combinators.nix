@@ -7,6 +7,7 @@
 let
   nixpkgsRegistry = {
     # https://yusef.napora.org/blog/pinning-nixpkgs-flake/
+    # Has to be done here because hm-modules don't have access to flake inputs
     nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
