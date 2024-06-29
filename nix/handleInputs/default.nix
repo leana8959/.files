@@ -26,7 +26,6 @@
 
           # resolve pinned pkg sets as attributes
           (_: prev: {
-
             # stackage LTS 22.22 / ghc965 (May 19 2024) / hls 2.8.0.0
             ghc-pin = import (prev.fetchFromGitHub {
               owner = "NixOS";
@@ -54,6 +53,20 @@
               rev = "6132b0f6e344ce2fe34fc051b72fb46e34f668e0";
               hash = "sha256-7R2ZvOnvd9h8fDd65p0JnB7wXfUvreox3xFdYWd1BnY=";
             }) { inherit system; };
+          })
+
+          # https://github.com/tmux/tmux/issues/3983
+          # fix tmux crashing when neovim is used in a nested session
+          (_: prev: {
+            tmux = prev.tmux.overrideAttrs (oa: {
+              patches = (oa.patches or [ ]) ++ [
+                (prev.fetchpatch {
+                  name = "sixel-patch";
+                  url = "https://github.com/tmux/tmux/commit/aa17f0e0c1c8b3f1d6fc8617613c74f07de66fae.patch";
+                  hash = "sha256-jhWGnC9tsGqTTA5tU+i4G3wlwZ7HGz4P0UHl17dVRU4=";
+                })
+              ];
+            });
           })
         ];
 
