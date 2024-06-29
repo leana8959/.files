@@ -99,7 +99,13 @@ let
           "${self}/nix/home/${name}"
           nixpkgsRegistry
           hmOpts
-          { nix.gc.automatic = true; } # enable user gc only when home-manager is used standalone
+          {
+            # Enable user gc only when home-manager is used standalone
+            nix.gc = {
+              automatic = true;
+              frequency = if pkgs.stdenv.isDarwin then "daily" else "1 day";
+            };
+          }
         ];
       }
     );
