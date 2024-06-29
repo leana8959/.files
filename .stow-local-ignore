@@ -1,2 +1,21 @@
-\result
+# https://www.gnu.org/software/stow/manual/stow.html
+
+# git
+\.git
+\.gitignore
+\.gitmodules
+\.github
+
+# nix
+result
+\.direnv
+\.envrc
+flake.nix
+flake.lock
+statix.toml
+nix
 \.pre-commit-config.yaml
+
+# repo related
+^/README.*
+^/LICENSE.*
