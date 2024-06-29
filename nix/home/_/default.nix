@@ -15,6 +15,8 @@ in
   };
 
   imports = [
+    ./user-nixconf.nix
+
     ./fish
     ./direnv
     ./atuin
