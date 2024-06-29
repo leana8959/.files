@@ -98,6 +98,7 @@ let
           "${self}/nix/home/${name}"
           nixpkgsRegistry
           hmOpts
+          { nix.gc.automatic = true; } # enable user gc only when home-manager is used standalone
         ];
       }
     );
