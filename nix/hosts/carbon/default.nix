@@ -13,6 +13,8 @@
     ./virt.nix
   ];
 
+  system.stateVersion = "24.05";
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
