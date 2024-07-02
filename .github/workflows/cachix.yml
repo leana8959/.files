@@ -17,11 +17,8 @@ jobs:
           - hiosevka
           - hiosevka-nerd-font-mono
           # - hiosevka-nerd-font-propo # not really used
-          - logisim-evolution
-          - maeel
           - necrolib
           - tokei
-          - why3
 
     runs-on: ${{ matrix.os }}
     steps:
