@@ -28,7 +28,7 @@
             pkgs.rustc
             pkgs.rust-analyzer
             pkgs.iconv
-          ];
+          ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.Security ]);
         };
 
         starship = pkgs.mkShell {
