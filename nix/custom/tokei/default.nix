@@ -28,6 +28,7 @@ rustPlatform.buildRustPackage rec {
       url = "https://github.com/XAMPPRocky/tokei/commit/bb911d457d18309c88786ab722d057eeebc5522d.patch";
       hash = "sha256-gBqOOp3zZcL0SosiVtjnyWJwwLgi/ECiiyelp0rL7+g=";
     })
+    ./hledger.patch
   ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
