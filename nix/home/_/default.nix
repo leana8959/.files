@@ -32,6 +32,8 @@ in
     ./neovim
     ./vim
 
+    ./password-store
+
     ./cmus
   ];
 
