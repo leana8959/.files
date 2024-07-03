@@ -1,0 +1,32 @@
+diff --git a/languages.json b/languages.json
+index b2899f1..dfeff47 100644
+--- a/languages.json
++++ b/languages.json
+@@ -1406,6 +1406,10 @@
+       "quotes": [["\\\"", "\\\""]],
+       "extensions": ["shader", "cginc"]
+     },
++    "Skel": {
++      "multi_line_comments": [["(*", "*)"]],
++      "extensions": ["skel", "sk"]
++    },
+     "Slang": {
+       "name": "Slang",
+       "line_comment": ["//"],
+diff --git a/tests/data/skel.sk b/tests/data/skel.sk
+new file mode 100644
+index 0000000..c6e8a68
+--- /dev/null
++++ b/tests/data/skel.sk
+@@ -0,0 +1,11 @@
++(* 11 lines 5 code 5 comments 1 blanks *)
++
++(* ^ a blank line, a comment *)
++(*
++a multiline comment
++*)
++type ident
++type term =
++| Var ident
++| Lam (ident, term)
++| App (term, term)

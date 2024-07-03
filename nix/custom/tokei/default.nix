@@ -2,33 +2,32 @@
   lib,
   stdenv,
   fetchFromGitHub,
-  fetchpatch,
   rustPlatform,
   libiconv,
   darwin,
   zlib,
 }:
 
-rustPlatform.buildRustPackage rec {
+let
+  rev = "6392516c47d4573d16886b9fe5f79592b1c70d49";
+in
+
+rustPlatform.buildRustPackage {
   pname = "tokei";
-  version = "13.0.0-alpha.1";
+  version = lib.substring 0 7 rev;
 
   src = fetchFromGitHub {
     owner = "XAMPPRocky";
-    repo = pname;
-    rev = "v${version}";
-    hash = "sha256-oKgTBfwOAP4fJzgN8NBR0KcuVD0caa9Qf3dkCb0zUR8=";
+    repo = "tokei";
+    inherit rev;
+    hash = "sha256-EYr4K1Bt+74jb85UQ3So0efrOcYAq71/4++kMCSPi1E=";
   };
 
-  cargoSha256 = "sha256-NE6hw6rgSDOsmSD6JpOfBLgGKGPfPmHjpMIsqLOkH7M=";
+  cargoSha256 = "sha256-fdAJwQNJczRqy0KQqse8QRx5+1gZTCBw+kkwgn6UGKU=";
 
   patches = [
-    (fetchpatch {
-      name = "typst.patch";
-      url = "https://github.com/XAMPPRocky/tokei/commit/bb911d457d18309c88786ab722d057eeebc5522d.patch";
-      hash = "sha256-gBqOOp3zZcL0SosiVtjnyWJwwLgi/ECiiyelp0rL7+g=";
-    })
     ./hledger.patch
+    ./skel.patch
   ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
