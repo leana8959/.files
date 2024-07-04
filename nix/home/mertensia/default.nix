@@ -20,5 +20,5 @@ in
     target = "${config.home.homeDirectory}/.local/share/fonts/truetype";
   };
 
-  programs.kitty.enable = true;
+  programs.password-store.enable = true;
 }
