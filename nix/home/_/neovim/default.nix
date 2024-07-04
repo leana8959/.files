@@ -29,6 +29,7 @@
           pkgs.marksman
           pkgs.taplo
           pkgs.lemminx
+          pkgs.texlab
         ])
       ];
     };
