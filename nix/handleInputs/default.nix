@@ -11,28 +11,23 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         overlays = [
-          # fallback to other inputs
-          (_: _: inputs.nixpkgs.lib.mapAttrs (_: input: input.packages.default) inputs')
+          (_: _: {
+            agenix = inputs'.agenix.packages.default;
+            audio-lint = inputs'.audio-lint.packages.default;
+          })
 
           (final: _: {
-            nur = import inputs.nixnur {
-              pkgs = final;
-              nurpkgs = final;
+            wired = final.fetchFromGitHub {
+              owner = "Toqozz";
+              repo = "wired-notify";
+              rev = "0.10.6";
+              hash = "sha256-AWIV/+vVwDZECZ4lFMSFyuyUKJc/gb72PiBJv6lbhnc=";
             };
           })
 
-          # extend pkgs with my custom set
-          (_: _: { myPkgs = self'.packages; })
-
-          # resolve explicitly pinned pkg sets as attributes
-          (_: _: {
-            ghc-pin = inputs'.ghc-pin.legacyPackages;
-            alt-ergo-pin = import inputs.alt-ergo-pin {
-              inherit system;
-              config.allowUnfree = true;
-            };
-            neovim-pin = inputs'.neovim-pin.legacyPackages;
-          })
+          (_: _: { myPkgs = self'.packages; }) # extend pkgs with my custom set
+          (import ./pins.nix)
+          (import ./patches.nix)
         ];
 
         config.allowUnfreePredicate =

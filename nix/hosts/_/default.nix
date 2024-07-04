@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  imports = [ ./system-nixconf.nix ];
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes

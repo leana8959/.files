@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -13,6 +12,8 @@
     ./packages.nix
     ./virt.nix
   ];
+
+  system.stateVersion = "24.05";
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -33,13 +34,10 @@
     packages = [ ];
   };
 
-  nix = {
-    package = pkgs.nixFlakes;
-    settings.trusted-users = [
-      "root"
-      "@wheel"
-    ];
-  };
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
   nix.gc = {
     automatic = true;

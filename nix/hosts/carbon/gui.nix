@@ -24,7 +24,7 @@
       extraPackages = hp: [ hp.neat-interpolation ];
     };
 
-    xserver.libinput = {
+    libinput = {
       mouse = {
         naturalScrolling = true;
         accelSpeed = "-0.5";

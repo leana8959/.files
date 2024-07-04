@@ -31,9 +31,11 @@
         maeel = pkgs.callPackage ./maeel.nix { };
 
         # alpha tokei with typst
-        tokei = pkgs.callPackage ./tokei.nix { };
+        tokei = pkgs.callPackage ./tokei { };
 
         dl-librescore = pkgs.callPackage ./dl-librescore.nix { };
+
+        angular-language-server = pkgs.callPackage ./angular-language-server { };
       };
     };
 }
