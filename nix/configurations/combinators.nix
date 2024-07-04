@@ -7,11 +7,9 @@
 let
   nixpkgsRegistry = {
     # https://yusef.napora.org/blog/pinning-nixpkgs-flake/
+    # Has to be done here because hm-modules don't have access to flake inputs
     nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
-
-  substituters = import ./substituters.nix;
-  extra-substituters = import ./extra-substituters.nix;
 
   mkNixOS =
     name: sys: hmOpts:
@@ -30,7 +28,6 @@ let
           "${self}/nix/hosts/${name}"
           "${self}/nix/layouts"
           inputs.agenix.nixosModules.default
-          substituters
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -41,7 +38,6 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                extra-substituters
                 hmOpts
               ];
             };
@@ -67,7 +63,6 @@ let
           "${self}/nix/hosts/_"
           "${self}/nix/hosts/_darwin"
           "${self}/nix/hosts/${name}"
-          substituters
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager = {
@@ -78,7 +73,6 @@ let
                 "${self}/nix/home/_"
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
-                extra-substituters
                 hmOpts
               ];
             };
@@ -104,8 +98,14 @@ let
           "${self}/nix/home/_"
           "${self}/nix/home/${name}"
           nixpkgsRegistry
-          extra-substituters
           hmOpts
+          {
+            # Enable user gc only when home-manager is used standalone
+            nix.gc = {
+              automatic = true;
+              frequency = if pkgs.stdenv.isDarwin then "daily" else "1 day";
+            };
+          }
         ];
       }
     );

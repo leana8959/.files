@@ -15,6 +15,8 @@ in
   };
 
   imports = [
+    ./user-nixconf.nix
+
     ./fish
     ./direnv
     ./atuin
@@ -29,6 +31,8 @@ in
 
     ./neovim
     ./vim
+
+    ./password-store
 
     ./cmus
   ];

@@ -10,17 +10,15 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          - macos-latest # M1
+          - macos-13 # not m1
         package:
           - altiosevka
           - hiosevka
           - hiosevka-nerd-font-mono
           # - hiosevka-nerd-font-propo # not really used
-          - logisim-evolution
-          - maeel
           - necrolib
           - tokei
-          - why3
 
     runs-on: ${{ matrix.os }}
     steps:

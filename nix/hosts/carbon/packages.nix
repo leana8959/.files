@@ -12,7 +12,7 @@
   programs.git.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-curses;
     settings = {
       default-cache-ttl = 1209600;
       max-cache-ttl = 1209600;
