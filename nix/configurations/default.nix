@@ -19,6 +19,7 @@
           extra.workflow.enable = true;
           programs.git.signing.signByDefault = true;
           programs.cmus.enable = true;
+          programs.password-store.enable = true;
         };
       };
       # MacBook Air 2014
