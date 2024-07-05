@@ -1,12 +1,17 @@
 {
+  lib,
   fetchFromGitLab,
   ocaml-ng,
   ocamlPackages ? ocaml-ng.ocamlPackages_4_14,
-  version ? "v0.15.0",
 }:
+
+let
+  rev = "4690dd27717e687b8eba449e44127a53fabe7a2d";
+in
+
 ocamlPackages.buildDunePackage {
   pname = "necrolib";
-  inherit version;
+  version = lib.substring 0 7 rev;
 
   minimalOCamlVersion = "4.14.1";
 
@@ -14,15 +19,8 @@ ocamlPackages.buildDunePackage {
     domain = "gitlab.inria.fr";
     owner = "skeletons";
     repo = "necro";
-    rev = version;
-    hash =
-      {
-        "v0.14.7.1" = "sha256-Y7+LcQyz9NP20E1uGJbHE3/gPus6xL2GjL2auxnmPK0=";
-        "v0.14.8" = "sha256-MLx3BenTbgFILgQgTOGb2E3R/p3Z1Lsy0ojPbP9g/eg=";
-        "v0.14.9" = "sha256-10S+duTyffKUS3BiC5TnGnhjgChhqHivyN/PpTU1q6Q=";
-        "v0.15.0" = "sha256-otkqA+5sTzEwQhnUv+cBvWWL4cOL1jr4Sm+vl085LLI=";
-      }
-      .${version};
+    inherit rev;
+    hash = "sha256-FYeVuSUmA6as0oI80uC3wW8l1/AazOPAtiNsnZyUahU=";
   };
 
   duneVersion = "3";
