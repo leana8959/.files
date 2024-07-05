@@ -90,6 +90,19 @@ let
           inherit pkgs;
           hostname = name;
         };
+
+        # Enable user gc only when home-manager is used standalone
+        auto-gc =
+          { lib, ... }:
+          {
+            nix.gc = {
+              automatic = true;
+              frequency = lib.mkMerge [
+                (lib.mkIf pkgs.stdenv.isDarwin "daily")
+                (lib.mkIf pkgs.stdenv.isLinux "1 day")
+              ];
+            };
+          };
       in
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit (args) pkgs;
@@ -99,13 +112,7 @@ let
           "${self}/nix/home/${name}"
           nixpkgsRegistry
           hmOpts
-          {
-            # Enable user gc only when home-manager is used standalone
-            nix.gc = {
-              automatic = true;
-              frequency = if pkgs.stdenv.isDarwin then "daily" else "1 day";
-            };
-          }
+          auto-gc
         ];
       }
     );
