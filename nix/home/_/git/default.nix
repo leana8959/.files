@@ -42,7 +42,7 @@
     userEmail = "leana.jiang+git@icloud.com";
     userName = "Léana 江";
     signing = {
-      key = "3659D5C87A4BC5D7699B37D84E887A4CA9714ADA";
+      key = "0x4E887A4CA9714ADA";
       signByDefault = lib.mkDefault false;
     };
   };
@@ -56,7 +56,7 @@
         user = {
           name = "Léana CHIANG";
           email = "leana.chiang@etudiant.univ-rennes1.fr";
-          signingKey = "EB544A6442B3B6CE88CD859732035DB97E777EEB";
+          signingKey = "0x32035DB97E777EEB";
         };
       };
     }
