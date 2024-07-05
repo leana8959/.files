@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (pkgs) myPkgs stdenv;
+  inherit (pkgs) myPkgs;
 in
 {
   options.extra = {
@@ -21,13 +21,12 @@ in
     ./direnv
     ./atuin
     ./kitty
-
     ./starship
     ./fzf
-    ./git
     ./btop
 
     ./tmux
+    ./git
     ./neovim
     ./vim
 
@@ -41,17 +40,13 @@ in
     programs.home-manager.enable = true;
     home = {
       username = lib.mkDefault "leana";
-      homeDirectory = lib.mkDefault (if stdenv.isLinux then "/home/leana" else "/Users/leana");
+      homeDirectory = lib.mkDefault (
+        lib.mkMerge [
+          (lib.mkIf pkgs.stdenv.isLinux "/home/leana")
+          (lib.mkIf pkgs.stdenv.isDarwin "/Users/leana")
+        ]
+      );
       stateVersion = "24.05";
-    };
-
-    nix.registry = {
-      flakies = {
-        from.id = "flakies";
-        from.type = "indirect";
-        to.type = "git";
-        to.url = "https://git.earth2077.fr/leana/flakies";
-      };
     };
 
     programs.ripgrep.enable = true;
