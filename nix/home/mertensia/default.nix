@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   inherit (pkgs) ghc-pin myPkgs;
 in
@@ -21,4 +26,10 @@ in
   };
 
   programs.password-store.enable = true;
+
+  # it gets turned off so I need to run it more frequently
+  nix.gc = {
+    automatic = true;
+    frequency = lib.mkForce "3 hours";
+  };
 }
