@@ -34,8 +34,6 @@
         tokei = pkgs.callPackage ./tokei { };
 
         dl-librescore = pkgs.callPackage ./dl-librescore.nix { };
-
-        angular-language-server = pkgs.callPackage ./angular-language-server { };
       };
     };
 }
