@@ -28,11 +28,11 @@ in
     ./btop
 
     ./tmux
-
     ./neovim
     ./vim
 
     ./password-store
+    ./gpg
 
     ./cmus
   ];
@@ -54,11 +54,7 @@ in
       };
     };
 
-    programs = {
-      ripgrep.enable = true;
-      gpg.enable = true;
-    };
-
+    programs.ripgrep.enable = true;
     home.packages = lib.mkMerge [
       [
         # shell and script dependencies
