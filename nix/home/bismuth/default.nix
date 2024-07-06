@@ -21,7 +21,6 @@ in
     # pkgs.hbrainfuck
     # pkgs.prop-solveur
     myPkgs.maeel
-    myPkgs.fish-lsp
 
     pkgs.docker
     pkgs.docker-compose
