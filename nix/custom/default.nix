@@ -28,12 +28,11 @@
         logisim-evolution = pkgs.callPackage ./logisim-evolution.nix { };
         necrolib = pkgs.callPackage ./necrolib.nix { };
         why3 = pkgs.callPackage ./why3.nix { inherit (alt-ergo-pin) alt-ergo; };
-        maeel = pkgs.callPackage ./maeel.nix { };
-
-        # alpha tokei with typst
-        tokei = pkgs.callPackage ./tokei { };
 
         dl-librescore = pkgs.callPackage ./dl-librescore.nix { };
+        fish-lsp = pkgs.callPackage ./fish-lsp { };
+        maeel = pkgs.callPackage ./maeel.nix { };
+        tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
       };
     };
 }
