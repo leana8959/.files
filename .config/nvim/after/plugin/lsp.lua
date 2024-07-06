@@ -24,6 +24,7 @@ local servers = {
     yamlls = {}, -- yaml
     gopls = {}, -- Golang
     golangci_lint_ls = {},
+    fish_lsp = {},
 
     bashls = { -- Bash
         on_attach = function(_, bufno)
