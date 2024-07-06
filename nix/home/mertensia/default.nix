@@ -25,11 +25,6 @@ in
     target = "${config.home.homeDirectory}/.local/share/fonts/truetype";
   };
 
-  programs.password-store.enable = true;
-
   # it gets turned off so I need to run it more frequently
-  nix.gc = {
-    automatic = true;
-    frequency = lib.mkForce "3 hours";
-  };
+  nix.gc.frequency = lib.mkForce "3 hours";
 }
