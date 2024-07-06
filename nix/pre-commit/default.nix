@@ -20,9 +20,6 @@
             flakeRoot + "/.config/nvim/stylua.toml"
           } --respect-ignores";
 
-          # markdown
-          markdownlint.enable = true;
-
           # toml
           taplo.enable = true;
         };
