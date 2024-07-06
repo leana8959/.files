@@ -44,6 +44,7 @@
         settings = {
           extra.lang-servers.enable = true;
           extra.utilities.enable = true;
+          programs.password-store.enable = true;
         };
       };
     };
