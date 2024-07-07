@@ -6,7 +6,7 @@
       history_filter = [
         # privacy
         "^echo"
-        "-----BEGIN PGP PRIVATE KEY BLOCK-----"
+        "^-----BEGIN"
         "^mods"
 
         # idiot protection
