@@ -6,6 +6,7 @@ autocmd("TextYankPost", { callback = vim.highlight.on_yank })
 vim.filetype.add {
     extension = {
         [".*Caddyfile"] = "caddyfile",
+        hledger = "ledger",
         mlw = "why3",
         pro = "projet",
         sk = "skel",
@@ -36,7 +37,11 @@ autocmd("FileType", {
 
 autocmd("FileType", {
     pattern = "ledger",
-    callback = function() vim.cmd("setlocal varsofttabstop=4,30,8,4 spell spelllang=fr") end,
+    callback = function()
+        vim.cmd("setlocal varsofttabstop=4,30,8,4 spell spelllang=fr")
+        -- TODO: remove this when PR is merged
+        vim.bo.commentstring = "; %s"
+    end,
 })
 
 autocmd("FileType", {
