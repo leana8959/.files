@@ -6,12 +6,6 @@ set continue=true
 set continue_album=true
 set follow=true
 
-# distortion fix https://github.com/cmus/cmus/issues/1130#issuecomment-1003324193
-set output_plugin=ao
-
-# # ao causes a output device switching problem https://github.com/cmus/cmus/issues/1130#issuecomment-2081430536
-# set output_plugin=coreaudio
-
 bind -f browser - browser-up
 bind -f browser i toggle show_hidden
 bind -f browser space win-activate
