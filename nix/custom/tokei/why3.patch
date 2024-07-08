@@ -1,0 +1,30 @@
+diff --git a/languages.json b/languages.json
+index dfeff47..0baedb7 100644
+--- a/languages.json
++++ b/languages.json
+@@ -1742,6 +1742,12 @@
+       "line_comment": ["//"],
+       "extensions": ["wgsl"]
+     },
++    "Why3": {
++      "name": "Why3",
++      "quotes": [["\\\"", "\\\""]],
++      "multi_line_comments": [["(*", "*)"]],
++      "extensions": ["mlw"]
++    },
+     "Wolfram": {
+       "quotes": [["\\\"", "\\\""]],
+       "multi_line_comments": [["(*", "*)"]],
+diff --git a/tests/data/why3.mlw b/tests/data/why3.mlw
+new file mode 100644
+index 0000000..0d07bb2
+--- /dev/null
++++ b/tests/data/why3.mlw
+@@ -0,0 +1,7 @@
++(* 7 lines 3 code 3 comments 1 blanks *)
++module Exercice3
++  (* ^ ligne vide *)
++
++  val foo (bar) : baz
++  (* commentaire *)
++end
