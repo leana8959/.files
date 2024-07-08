@@ -28,6 +28,7 @@ rustPlatform.buildRustPackage {
   patches = [
     ./hledger.patch
     ./skel.patch
+    ./why3.patch
   ];
 
   buildInputs = lib.optionals stdenv.isDarwin [
