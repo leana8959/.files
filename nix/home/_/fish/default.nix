@@ -11,36 +11,30 @@
     let
       readConfig = n: builtins.readFile ./conf.d/${n}.fish;
       readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
-
-      add_paths =
-        ps:
-        lib.trivial.pipe ps [
-          lib.lists.reverseList # source paths in reverse order
-          (map (p: "fish_add_path -m ${p}"))
-          (builtins.concatStringsSep "\n")
-          (s: s + "\n")
-        ];
     in
     {
       enable = true;
 
-      shellInit =
-        readConfig "shellInit"
+      shellInit = ''
+        ${readConfig "shellInit"}
+
         # Just in case $PATH is broken, add them in an idempotent fashion
-        + add_paths (
-          [
-            # Make sure wrapper comes first
-            # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
-            "/run/wrappers/bin"
-            "/etc/profiles/per-user/${config.home.username}/bin" # prioritize user path
-            "/run/current-system/sw/bin"
-            "${config.home.homeDirectory}/.nix-profile/bin"
-            "${config.home.homeDirectory}/.dotfiles/.local/bin"
-            "${config.home.homeDirectory}/.local/.local/bin"
-            "/nix/var/nix/profiles/default/bin"
-          ]
-          ++ lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin"
-        );
+        fish_add_path --prepend --move /nix/var/nix/profiles/default/bin
+        fish_add_path --prepend --move ${config.home.homeDirectory}/.local/.local/bin
+        fish_add_path --prepend --move ${config.home.homeDirectory}/.dotfiles/.local/bin
+        fish_add_path --prepend --move ${config.home.homeDirectory}/.nix-profile/bin
+        fish_add_path --prepend --move /run/current-system/sw/bin
+        fish_add_path --prepend --move /etc/profiles/per-user/${config.home.username}/bin # prioritize user path
+
+        # Make sure wrapper comes first
+        # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
+        fish_add_path --prepend --move /run/wrappers/bin
+
+        ${lib.strings.optionalString pkgs.stdenv.isDarwin ''
+          # Add brew, but as fallback
+          fish_add_path --append --move --path /opt/homebrew/bin
+        ''}
+      '';
 
       interactiveShellInit = readConfigs [
         "interactiveShellInit"
