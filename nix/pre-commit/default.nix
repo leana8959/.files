@@ -1,4 +1,4 @@
-{ inputs, flakeRoot, ... }:
+{ inputs, self, ... }:
 {
   imports = [ inputs.pre-commit-hooks.flakeModule ];
 
@@ -17,7 +17,7 @@
           # lua
           stylua.enable = true;
           stylua.entry = "${config.pre-commit.settings.hooks.stylua.package}/bin/stylua --config-path ${
-            flakeRoot + "/.config/nvim/stylua.toml"
+            self + "/.config/nvim/stylua.toml"
           } --respect-ignores";
 
           # toml
