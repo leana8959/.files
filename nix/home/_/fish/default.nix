@@ -32,7 +32,8 @@
 
         ${lib.strings.optionalString pkgs.stdenv.isDarwin ''
           # Add brew, but as fallback
-          fish_add_path --append --move --path /opt/homebrew/bin
+          # Don't move it at all
+          fish_add_path --path --append /opt/homebrew/bin; :
         ''}
       '';
 
