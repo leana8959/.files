@@ -19,6 +19,7 @@
 
         ./nix/homeModules
         ./nix/nixosModules
+        ./nix/darwinModules
       ];
 
       systems = [

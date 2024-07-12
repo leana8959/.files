@@ -61,7 +61,7 @@ let
         modules = [
           { nixpkgs.hostPlatform = sys; }
           self.nixosModules._
-          "${self}/nix/hosts/_darwin"
+          self.darwinModules._
           "${self}/nix/hosts/${name}"
           inputs.home-manager.darwinModules.home-manager
           {
