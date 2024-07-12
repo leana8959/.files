@@ -36,7 +36,7 @@ let
               extraSpecialArgs = args;
               users.leana.imports = [
                 self.homeModules._
-                "${self}/nix/home/${name}"
+                ./home/${name}
                 nixpkgsRegistry
                 hmOpts
               ];
@@ -71,7 +71,7 @@ let
               extraSpecialArgs = args;
               users.leana.imports = [
                 self.homeModules._
-                "${self}/nix/home/${name}"
+                ./home/${name}
                 nixpkgsRegistry
                 hmOpts
               ];
@@ -109,7 +109,7 @@ let
         extraSpecialArgs = args;
         modules = [
           self.homeModules._
-          "${self}/nix/home/${name}"
+          ./home/${name}
           nixpkgsRegistry
           hmOpts
           auto-gc
