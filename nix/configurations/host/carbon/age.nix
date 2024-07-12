@@ -1,7 +1,7 @@
 {
   age = {
     identityPaths = [ "/home/leana/.ssh/id_ed25519" ];
-    secrets.sshconcfig = {
+    secrets.sshconfig = {
       file = ../../secrets/sshconfig.age;
       path = "/home/leana/.ssh/config";
       mode = "644";
