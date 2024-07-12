@@ -11,15 +11,17 @@
       };
 
       imports = [
-        ./nix/handleInputs # Resolve inputs
-        ./nix/custom # Custom package set
-        ./nix/configurations # Configuration and their generators
-        ./nix/pre-commit
-        ./nix/devShells
+        ./nix/configurations
 
         ./nix/homeModules
         ./nix/nixosModules
         ./nix/darwinModules
+
+        ./nix/resolve
+        ./nix/custom
+
+        ./nix/pre-commit
+        ./nix/devShells
       ];
 
       systems = [
