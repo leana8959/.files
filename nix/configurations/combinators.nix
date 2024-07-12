@@ -25,7 +25,7 @@ let
         specialArgs = args;
         modules = [
           self.nixosModules._
-          "${self}/nix/hosts/${name}"
+          ./host/${name}
           "${self}/nix/layouts"
           inputs.agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
@@ -62,7 +62,7 @@ let
           { nixpkgs.hostPlatform = sys; }
           self.nixosModules._
           self.darwinModules._
-          "${self}/nix/hosts/${name}"
+          ./host/${name}
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager = {
