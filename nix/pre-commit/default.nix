@@ -25,6 +25,6 @@
         };
       };
 
-      devShells.default = pkgs.mkShell { shellHook = config.pre-commit.installationScript; };
+      devShells.default = pkgs.mkShellNoCC { shellHook = config.pre-commit.installationScript; };
     };
 }
