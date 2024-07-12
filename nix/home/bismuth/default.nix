@@ -15,7 +15,7 @@ in
     pkgs.nix-inspect
     # pkgs.nix-visualize
     # pkgs.nix-du
-    # pkgs.deploy-rs
+    pkgs.deploy-rs
 
     pkgs.audio-lint
     # pkgs.hbrainfuck
