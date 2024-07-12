@@ -16,6 +16,8 @@
         ./nix/configurations # Configuration and their generators
         ./nix/pre-commit
         ./nix/devShells
+
+        ./nix/homeModules
       ];
 
       systems = [

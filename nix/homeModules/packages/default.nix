@@ -4,37 +4,17 @@
   lib,
   ...
 }:
+
 let
   inherit (pkgs) myPkgs;
 in
+
 {
   options.extra = {
     utilities.enable = lib.mkOption { default = false; };
     workflow.enable = lib.mkOption { default = false; };
     university.enable = lib.mkOption { default = false; };
   };
-
-  imports = [
-    ./user-nixconf.nix
-
-    ./fish
-    ./direnv
-    ./atuin
-    ./kitty
-    ./starship
-    ./fzf
-    ./btop
-
-    ./tmux
-    ./git
-    ./neovim
-    ./vim
-
-    ./password-store
-    ./gpg
-
-    ./cmus
-  ];
 
   config = {
     programs.home-manager.enable = true;

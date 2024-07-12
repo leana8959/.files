@@ -35,7 +35,7 @@ let
               useUserPackages = true;
               extraSpecialArgs = args;
               users.leana.imports = [
-                "${self}/nix/home/_"
+                self.homeModules._
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
                 hmOpts
@@ -70,7 +70,7 @@ let
               useUserPackages = true;
               extraSpecialArgs = args;
               users.leana.imports = [
-                "${self}/nix/home/_"
+                self.homeModules._
                 "${self}/nix/home/${name}"
                 nixpkgsRegistry
                 hmOpts
@@ -108,7 +108,7 @@ let
         inherit (args) pkgs;
         extraSpecialArgs = args;
         modules = [
-          "${self}/nix/home/_"
+          self.homeModules._
           "${self}/nix/home/${name}"
           nixpkgsRegistry
           hmOpts
