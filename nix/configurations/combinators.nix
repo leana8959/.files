@@ -25,8 +25,8 @@ let
         specialArgs = args;
         modules = [
           self.nixosModules._
+          self.nixosModules.layouts
           ./host/${name}
-          "${self}/nix/layouts"
           inputs.agenix.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           {
