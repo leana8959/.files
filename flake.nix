@@ -18,6 +18,7 @@
         ./nix/devShells
 
         ./nix/homeModules
+        ./nix/nixosModules
       ];
 
       systems = [
