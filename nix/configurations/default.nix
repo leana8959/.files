@@ -71,8 +71,6 @@ let
 in
 
 {
-  imports = [ ./combinators ];
-
   flake = {
     darwinConfigurations = mkDarwins {
       # MacBook Pro 2021

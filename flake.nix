@@ -16,6 +16,7 @@
         ./nix/homeModules
         ./nix/nixosModules
         ./nix/darwinModules
+        ./nix/flakeModules
 
         ./nix/resolve
         ./nix/custom
