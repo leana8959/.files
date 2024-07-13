@@ -1,14 +1,8 @@
-{ withSystem, flake-parts-lib, ... }:
-
-let
-  inherit (flake-parts-lib) importApply;
-  flakeModules.combinators = importApply ./it.nix { inherit withSystem; };
-in
-
 {
-  imports = [ flakeModules.combinators ];
+  # Note: referencing to self would recurse infinitely.
+  imports = [ ./it.nix ];
 
-  flake = {
-    inherit flakeModules;
+  flake.flakeModules = {
+    combinators = ./it.nix;
   };
 }
