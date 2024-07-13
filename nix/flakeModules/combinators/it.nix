@@ -1,6 +1,4 @@
-localFlake:
-
-{ inputs, ... }:
+{ inputs, withSystem, ... }:
 let
   mkNixOS =
     nixosModulesOf: homeModulesOf:
@@ -11,7 +9,7 @@ let
       extraHomeConfig ? { },
       ...
     }@args:
-    localFlake.withSystem system (
+    withSystem system (
       { pkgs, ... }:
       let
         specialArgs = {
@@ -44,7 +42,7 @@ let
       extraHomeConfig ? { },
       ...
     }:
-    localFlake.withSystem system (
+    withSystem system (
       { pkgs, ... }:
       let
         specialArgs = {
@@ -76,7 +74,7 @@ let
       extraHomeConfig ? { },
       ...
     }:
-    localFlake.withSystem system (
+    withSystem system (
       { pkgs, ... }:
       let
         specialArgs = {
