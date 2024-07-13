@@ -24,7 +24,9 @@ let
     "cmus"
   ];
 
-  eachModule = lib.attrsets.genAttrs moduleNames (name: ./${name});
+  extraModuleNames = [ "auto-gc" ];
+
+  eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) (name: ./${name});
 
   allModules = {
     imports = map (name: ./${name}) moduleNames;
