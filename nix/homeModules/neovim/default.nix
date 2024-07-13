@@ -4,12 +4,22 @@
   lib,
   ...
 }:
+
+let
+  neovim-pin = import (pkgs.fetchFromGitHub {
+    owner = "NixOS";
+    repo = "nixpkgs";
+    rev = "6132b0f6e344ce2fe34fc051b72fb46e34f668e0";
+    hash = "sha256-7R2ZvOnvd9h8fDd65p0JnB7wXfUvreox3xFdYWd1BnY=";
+  }) { inherit (pkgs) system; };
+in
+
 {
   options.extra.lang-servers.enable = lib.mkOption { default = false; };
 
   config = {
     programs.neovim = {
-      package = pkgs.neovim-pin.neovim-unwrapped;
+      package = neovim-pin.neovim-unwrapped;
       enable = true;
       defaultEditor = true;
       extraPackages = lib.mkMerge [
