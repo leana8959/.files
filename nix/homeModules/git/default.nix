@@ -26,14 +26,26 @@
       safe.directory = "/etc/docker/compose";
     };
     ignores = [
+      # vim
       "*~"
       "*.swp"
+
+      # darwin
       ".DS_Store"
+
+      # nix
       ".direnv/"
       "**/result"
+
+      # pre-commit
       ".pre-commit-config.yaml"
+
+      # dotfiles
       ".config/nvim/spell/"
       ".local/bin/"
+
+      # deploy-rs
+      ".deploy-gc/"
     ];
   };
 
