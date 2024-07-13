@@ -15,7 +15,7 @@ let
 in
 
 {
-  options.extra.lang-servers.enable = lib.mkOption { default = false; };
+  options.extra.lang-servers.enable = lib.mkEnableOption "extra language servers";
 
   config = {
     programs.neovim = {

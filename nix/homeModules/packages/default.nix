@@ -11,9 +11,9 @@ in
 
 {
   options.extra = {
-    utilities.enable = lib.mkOption { default = false; };
-    workflow.enable = lib.mkOption { default = false; };
-    university.enable = lib.mkOption { default = false; };
+    utilities.enable = lib.mkEnableOption "utility packages";
+    workflow.enable = lib.mkEnableOption "worflow packages";
+    university.enable = lib.mkEnableOption "university related packages";
   };
 
   config = {
