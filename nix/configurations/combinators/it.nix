@@ -1,19 +1,10 @@
-{
-  withSystem,
-  inputs,
-  self,
-  ...
-}:
-let
-  nixpkgsRegistry = {
-    # https://yusef.napora.org/blog/pinning-nixpkgs-flake/
-    # Has to be done here because hm-modules don't have access to flake inputs
-    nix.registry.nixpkgs.flake = inputs.nixpkgs;
-  };
+localFlake:
 
+{ inputs, ... }:
+let
   mkNixOS =
     nixosModulesOf: homeModulesOf: name: sys: hmOpts:
-    withSystem sys (
+    localFlake.withSystem sys (
       { pkgs, ... }:
       let
         args = {
@@ -38,7 +29,7 @@ let
 
   mkDarwin =
     darwinModulesOf: homeModulesOf: name: sys: hmOpts:
-    withSystem sys (
+    localFlake.withSystem sys (
       { pkgs, ... }:
       let
         args = {
@@ -63,7 +54,7 @@ let
 
   mkHomeManager =
     homeModulesOf: name: sys: hmOpts:
-    withSystem sys (
+    localFlake.withSystem sys (
       { pkgs, ... }:
       let
         args = {
@@ -77,55 +68,15 @@ let
         modules = homeModulesOf name sys ++ [ hmOpts ];
       }
     );
-
   many = func: builtins.mapAttrs (name: hmOpts: func name hmOpts.system (hmOpts.settings or { }));
 in
 {
-  # promote helper functions into the arguments
   _module.args = {
-    mkNixOSes = many (
+    inherit
+      many
       mkNixOS
-        (name: _: [
-          self.nixosModules._
-          self.nixosModules.layouts
-          ./host/${name}
-          inputs.agenix.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-        ])
-        (
-          name: _: [
-            self.homeModules._
-            ./home/${name}
-            nixpkgsRegistry
-          ]
-        )
-    );
-    mkDarwins = many (
       mkDarwin
-        (name: sys: [
-          { nixpkgs.hostPlatform = sys; }
-          self.nixosModules._
-          self.darwinModules._
-          ./host/${name}
-          inputs.home-manager.darwinModules.home-manager
-        ])
-        (
-          name: _: [
-            self.homeModules._
-            ./home/${name}
-            nixpkgsRegistry
-          ]
-        )
-    );
-    mkHomeManagers = many (
-      mkHomeManager (
-        name: _: [
-          self.homeModules._
-          ./home/${name}
-          nixpkgsRegistry
-          self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
-        ]
-      )
-    );
+      mkHomeManager
+      ;
   };
 }
