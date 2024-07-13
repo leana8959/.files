@@ -5,7 +5,7 @@
   ...
 }:
 {
-  options.programs.cmus.enable = lib.mkOption { default = false; };
+  options.programs.cmus.enable = lib.mkEnableOption "cmus";
 
   config.home = lib.mkIf config.programs.cmus.enable {
     packages = [
