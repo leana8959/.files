@@ -12,7 +12,7 @@ let
   };
 
   mkNixOS =
-    name: sys: hmOpts:
+    nixosModulesOf: homeModulesOf: name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -23,23 +23,13 @@ let
       in
       inputs.nixpkgs.lib.nixosSystem {
         specialArgs = args;
-        modules = [
-          self.nixosModules._
-          self.nixosModules.layouts
-          ./host/${name}
-          inputs.agenix.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
+        modules = nixosModulesOf name sys ++ [
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = args;
-              users.leana.imports = [
-                self.homeModules._
-                ./home/${name}
-                nixpkgsRegistry
-                hmOpts
-              ];
+              users.leana.imports = homeModulesOf name sys ++ [ hmOpts ];
             };
           }
         ];
@@ -47,7 +37,7 @@ let
     );
 
   mkDarwin =
-    name: sys: hmOpts:
+    darwinModulesOf: homeModulesOf: name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -58,23 +48,13 @@ let
       in
       inputs.nix-darwin.lib.darwinSystem {
         specialArgs = args;
-        modules = [
-          { nixpkgs.hostPlatform = sys; }
-          self.nixosModules._
-          self.darwinModules._
-          ./host/${name}
-          inputs.home-manager.darwinModules.home-manager
+        modules = darwinModulesOf name sys ++ [
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = args;
-              users.leana.imports = [
-                self.homeModules._
-                ./home/${name}
-                nixpkgsRegistry
-                hmOpts
-              ];
+              users.leana.imports = homeModulesOf name sys ++ [ hmOpts ];
             };
           }
         ];
@@ -82,7 +62,7 @@ let
     );
 
   mkHomeManager =
-    name: sys: hmOpts:
+    homeModulesOf: name: sys: hmOpts:
     withSystem sys (
       { pkgs, ... }:
       let
@@ -94,13 +74,7 @@ let
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit (args) pkgs;
         extraSpecialArgs = args;
-        modules = [
-          self.homeModules._
-          ./home/${name}
-          nixpkgsRegistry
-          hmOpts
-          self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
-        ];
+        modules = homeModulesOf name sys ++ [ hmOpts ];
       }
     );
 
@@ -109,8 +83,49 @@ in
 {
   # promote helper functions into the arguments
   _module.args = {
-    mkNixOSes = many mkNixOS;
-    mkHomeManagers = many mkHomeManager;
-    mkDarwins = many mkDarwin;
+    mkNixOSes = many (
+      mkNixOS
+        (name: _: [
+          self.nixosModules._
+          self.nixosModules.layouts
+          ./host/${name}
+          inputs.agenix.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+        ])
+        (
+          name: _: [
+            self.homeModules._
+            ./home/${name}
+            nixpkgsRegistry
+          ]
+        )
+    );
+    mkDarwins = many (
+      mkDarwin
+        (name: sys: [
+          { nixpkgs.hostPlatform = sys; }
+          self.nixosModules._
+          self.darwinModules._
+          ./host/${name}
+          inputs.home-manager.darwinModules.home-manager
+        ])
+        (
+          name: _: [
+            self.homeModules._
+            ./home/${name}
+            nixpkgsRegistry
+          ]
+        )
+    );
+    mkHomeManagers = many (
+      mkHomeManager (
+        name: _: [
+          self.homeModules._
+          ./home/${name}
+          nixpkgsRegistry
+          self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
+        ]
+      )
+    );
   };
 }
