@@ -17,43 +17,52 @@ let
 
   mkNixOSes = many (
     mkNixOS
-      (name: _: [
-        self.nixosModules._
-        self.nixosModules.layouts
-        ./host/${name}
-        inputs.agenix.nixosModules.default
-        inputs.home-manager.nixosModules.home-manager
-      ])
       (
-        name: _: [
+        { hostname, ... }:
+        [
+          self.nixosModules._
+          self.nixosModules.layouts
+          ./host/${hostname}
+          inputs.agenix.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+        ]
+      )
+      (
+        { hostname, ... }:
+        [
           self.homeModules._
-          ./home/${name}
+          ./home/${hostname}
           nixpkgsRegistry
         ]
       )
   );
   mkDarwins = many (
     mkDarwin
-      (name: sys: [
-        { nixpkgs.hostPlatform = sys; }
-        self.nixosModules._
-        self.darwinModules._
-        ./host/${name}
-        inputs.home-manager.darwinModules.home-manager
-      ])
       (
-        name: _: [
+        { hostname, system, ... }:
+        [
+          { nixpkgs.hostPlatform = system; }
+          self.nixosModules._
+          self.darwinModules._
+          ./host/${hostname}
+          inputs.home-manager.darwinModules.home-manager
+        ]
+      )
+      (
+        { hostname, ... }:
+        [
           self.homeModules._
-          ./home/${name}
+          ./home/${hostname}
           nixpkgsRegistry
         ]
       )
   );
   mkHomeManagers = many (
     mkHomeManager (
-      name: _: [
+      { hostname, ... }:
+      [
         self.homeModules._
-        ./home/${name}
+        ./home/${hostname}
         nixpkgsRegistry
         self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
       ]
@@ -69,7 +78,7 @@ in
       # MacBook Pro 2021
       bismuth = {
         system = "aarch64-darwin";
-        settings = {
+        extraHomeConfig = {
           extra.lang-servers.enable = true;
           extra.utilities.enable = true;
           extra.university.enable = true;
@@ -82,7 +91,7 @@ in
       # MacBook Air 2014
       tungsten = {
         system = "x86_64-darwin";
-        settings = {
+        extraHomeConfig = {
           programs.cmus.enable = true;
         };
       };
@@ -98,7 +107,7 @@ in
       # Inria
       mertensia = {
         system = "x86_64-linux";
-        settings = {
+        extraHomeConfig = {
           extra.lang-servers.enable = true;
           extra.utilities.enable = true;
           programs.password-store.enable = true;
@@ -110,7 +119,7 @@ in
       # Thinkpad
       carbon = {
         system = "x86_64-linux";
-        settings = {
+        extraHomeConfig = {
           extra.lang-servers.enable = true;
           extra.utilities.enable = true;
           extra.university.enable = true;
