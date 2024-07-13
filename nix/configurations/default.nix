@@ -36,6 +36,7 @@ let
         ]
       )
   );
+
   mkDarwins = many (
     mkDarwin
       (
@@ -57,6 +58,7 @@ let
         ]
       )
   );
+
   mkHomeManagers = many (
     mkHomeManager (
       { hostname, ... }:
@@ -102,7 +104,7 @@ in
       oracle.system = "aarch64-linux";
       # Linode
       linode.system = "x86_64-linux";
-      # Inria
+      # Inria (2024)
       mertensia = {
         system = "x86_64-linux";
         extraHomeConfig = {
