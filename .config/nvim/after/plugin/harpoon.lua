@@ -1,7 +1,9 @@
 local harpoon = require("harpoon")
 local map = vim.keymap.set
 
-harpoon:setup()
+harpoon:setup {
+    settings = { save_on_toggle = true },
+}
 
 -- add and view
 map({ "n", "i" }, "<A-c>", function() harpoon:list():add() end)
