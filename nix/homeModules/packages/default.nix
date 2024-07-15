@@ -20,12 +20,10 @@ in
     programs.home-manager.enable = true;
     home = {
       username = lib.mkDefault "leana";
-      homeDirectory = lib.mkDefault (
-        lib.mkMerge [
-          (lib.mkIf pkgs.stdenv.isLinux "/home/leana")
-          (lib.mkIf pkgs.stdenv.isDarwin "/Users/leana")
-        ]
-      );
+      homeDirectory = lib.mkMerge [
+        (lib.mkIf pkgs.stdenv.isLinux (lib.mkDefault "/home/leana"))
+        (lib.mkIf pkgs.stdenv.isDarwin (lib.mkDefault "/Users/leana"))
+      ];
       stateVersion = "24.05";
     };
 
