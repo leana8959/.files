@@ -1,9 +1,12 @@
+{ self, ... }:
 {
+  flake.lib.mkNerdFont = ./mkNerdFont.nix;
+
   perSystem =
     { pkgs, ... }:
     let
       inherit (pkgs) alt-ergo-pin;
-      mkNerdFont = pkgs.callPackage ./mkNerdFont.nix { };
+      mkNerdFont = pkgs.callPackage self.lib.mkNerdFont { };
     in
     {
       # Export my package set
