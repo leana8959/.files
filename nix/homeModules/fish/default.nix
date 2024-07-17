@@ -18,27 +18,41 @@
       # We need to handle path idempotently, because fish in home-manager is
       # unable to depend on nixos/nix-darwin configurations to figure out the profile.d/nix.sh
       # to source.
-      shellInit = ''
-        ${readConfig "shellInit"}
+      #
+      # The hack is to make terminal emulators  run fish as a login shell
+      # whenever fish should handle the path.
+      # tmux should NOT call fish as a login shell, because it would inherit the
+      # environment variables from its parent shell, which is a login shell.
+      loginShellInit =
+        let
+          paths =
+            [
+              # Make sure wrapper comes first
+              # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
+              "/run/wrappers/bin"
 
-        # Handle path
-        fish_add_path --prepend --move /nix/var/nix/profiles/default/bin
-        fish_add_path --prepend --move ${config.home.homeDirectory}/.local/.local/bin
-        fish_add_path --prepend --move ${config.home.homeDirectory}/.dotfiles/.local/bin
-        fish_add_path --prepend --move ${config.home.homeDirectory}/.nix-profile/bin
-        fish_add_path --prepend --move /run/current-system/sw/bin
-        fish_add_path --prepend --move /etc/profiles/per-user/${config.home.username}/bin # prioritize user path
+              "/etc/profiles/per-user/${config.home.username}/bin"
+              "/run/current-system/sw/bin"
+              "${config.home.homeDirectory}/.nix-profile/bin"
+              "${config.home.homeDirectory}/.dotfiles/.local/bin"
+              "${config.home.homeDirectory}/.local/.local/bin"
+              "/nix/var/nix/profiles/default/bin"
+            ]
+            # Add brew, but as fallback
+            ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
+        in
+        ''
+          begin
+              set ps ${builtins.concatStringsSep " " paths}
 
-        # Make sure wrapper comes first
-        # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
-        fish_add_path --prepend --move /run/wrappers/bin
+              set -e fish_user_paths
+              for p in $ps
+                  test -d $p && set --append fish_user_paths $p
+              end
+          end
+        '';
 
-        ${lib.strings.optionalString pkgs.stdenv.isDarwin ''
-          # Add brew, but as fallback
-          # Don't move it at all
-          fish_add_path --path --append /opt/homebrew/bin; :
-        ''}
-      '';
+      shellInit = readConfig "shellInit";
 
       interactiveShellInit = readConfigs [
         "interactiveShellInit"
