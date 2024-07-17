@@ -1,3 +1,4 @@
+function largest-objects-in-repo
 # Shows you the largest objects in your repo's pack file. Written for osx.
 # @see http://stubbisms.wordpress.com/2009/07/10/git-script-to-show-largest-pack-objects-and-trim-your-waist-line/
 # @author Antony Stubbs
@@ -26,3 +27,4 @@ for obj in $objects
 end
 
 echo -e $output | column -t -s ', '
+end

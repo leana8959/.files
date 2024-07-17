@@ -1,3 +1,4 @@
+function tmux_home
 # echo "---home---" >> /tmp/TMUX_DEBUG
 # echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
 echo (tmux display-message -p '#S') > /tmp/TMUX_LAST
@@ -15,4 +16,5 @@ if [ -z $TMUX ]
     tmux attach-session -t "home"
 else
     tmux switch-client -t "home"
+end
 end
