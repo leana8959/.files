@@ -15,10 +15,13 @@
     {
       enable = true;
 
+      # We need to handle path idempotently, because fish in home-manager is
+      # unable to depend on nixos/nix-darwin configurations to figure out the profile.d/nix.sh
+      # to source.
       shellInit = ''
         ${readConfig "shellInit"}
 
-        # Just in case $PATH is broken, add them in an idempotent fashion
+        # Handle path
         fish_add_path --prepend --move /nix/var/nix/profiles/default/bin
         fish_add_path --prepend --move ${config.home.homeDirectory}/.local/.local/bin
         fish_add_path --prepend --move ${config.home.homeDirectory}/.dotfiles/.local/bin
