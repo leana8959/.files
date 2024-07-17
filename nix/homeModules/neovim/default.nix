@@ -15,9 +15,22 @@ let
 in
 
 {
-  options.extra.lang-servers.enable = lib.mkEnableOption "extra language servers";
+  options.extra.lang-servers = {
+    enable = lib.mkEnableOption "extra language servers";
+    packages = lib.mkOption { };
+  };
 
   config = {
+    extra.lang-servers.packages = [
+      pkgs.nodePackages.vim-language-server
+      pkgs.nodePackages.pyright
+      pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+      pkgs.marksman
+      pkgs.taplo
+      pkgs.lemminx
+      pkgs.texlab
+    ];
+
     programs.neovim = {
       package = neovim-pin.neovim-unwrapped;
       enable = true;
@@ -32,15 +45,7 @@ in
           pkgs.nil
           pkgs.yaml-language-server
         ]
-        (lib.mkIf config.extra.lang-servers.enable [
-          pkgs.nodePackages.vim-language-server
-          pkgs.nodePackages.pyright
-          pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-          pkgs.marksman
-          pkgs.taplo
-          pkgs.lemminx
-          pkgs.texlab
-        ])
+        (lib.mkIf config.extra.lang-servers.enable config.extra.lang-servers.packages)
       ];
     };
 
