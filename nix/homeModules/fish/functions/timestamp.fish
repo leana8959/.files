@@ -1,3 +1,3 @@
 function timestamp
-date +%s
+    date +%s
 end
