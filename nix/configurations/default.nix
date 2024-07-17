@@ -79,7 +79,7 @@ in
       bismuth = {
         system = "aarch64-darwin";
         extraHomeConfig = {
-          extra.lang-servers.enable = true;
+          programs.neovim.extraLangServers.enable = true;
           extra.utilities.enable = true;
           extra.university.enable = true;
           extra.workflow.enable = true;
@@ -108,7 +108,7 @@ in
       mertensia = {
         system = "x86_64-linux";
         extraHomeConfig = {
-          extra.lang-servers.enable = true;
+          programs.neovim.extraLangServers.enable = true;
           extra.utilities.enable = true;
           programs.password-store.enable = true;
         };
@@ -120,7 +120,7 @@ in
       carbon = {
         system = "x86_64-linux";
         extraHomeConfig = {
-          extra.lang-servers.enable = true;
+          programs.neovim.extraLangServers.enable = true;
           extra.utilities.enable = true;
           extra.university.enable = true;
           programs.cmus.enable = true;

@@ -26,4 +26,6 @@ in
     pkgs.docker-compose
     pkgs.colima
   ];
+
+  programs.neovim.extraLangServers.packages = [ myPkgs.fish-lsp ];
 }

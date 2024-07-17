@@ -15,25 +15,15 @@ let
 in
 
 {
-  options.extra.lang-servers = {
+  options.programs.neovim.extraLangServers = {
     enable = lib.mkEnableOption "extra language servers";
-    packages = lib.mkOption { };
+    packages = lib.mkOption { type = with lib.types; listOf package; };
   };
 
   config = {
-    extra.lang-servers.packages = [
-      pkgs.nodePackages.vim-language-server
-      pkgs.nodePackages.pyright
-      pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-      pkgs.marksman
-      pkgs.taplo
-      pkgs.lemminx
-      pkgs.texlab
-    ];
-
     programs.neovim = {
-      package = neovim-pin.neovim-unwrapped;
       enable = true;
+      package = neovim-pin.neovim-unwrapped;
       defaultEditor = true;
       extraPackages = lib.mkMerge [
         [
@@ -45,7 +35,17 @@ in
           pkgs.nil
           pkgs.yaml-language-server
         ]
-        (lib.mkIf config.extra.lang-servers.enable config.extra.lang-servers.packages)
+        (lib.mkIf config.programs.neovim.extraLangServers.enable config.programs.neovim.extraLangServers.packages)
+      ];
+
+      extraLangServers.packages = [
+        pkgs.nodePackages.vim-language-server
+        pkgs.nodePackages.pyright
+        pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+        pkgs.marksman
+        pkgs.taplo
+        pkgs.lemminx
+        pkgs.texlab
       ];
     };
 
