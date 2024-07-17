@@ -1,10 +1,12 @@
 {
-  fetchFromGitHub,
   mkYarnPackage,
+  fetchFromGitHub,
   fetchYarnDeps,
-  nodejs,
   fish,
   fixup-yarn-lock,
+  nodejs,
+  yarn,
+  makeWrapper,
 }:
 
 mkYarnPackage rec {
@@ -19,14 +21,16 @@ mkYarnPackage rec {
   };
 
   offlineCache = fetchYarnDeps {
-    yarnLock = "${src}/yarn.lock";
+    yarnLock = src + "/yarn.lock";
     hash = "sha256-hmaLWO1Sj+2VujrGD2A+COfVE2D+tCnxyojjq1512K4=";
   };
 
   nativeBuildInputs = [
-    fixup-yarn-lock
     fish
+    fixup-yarn-lock
     nodejs
+    yarn
+    makeWrapper
   ];
 
   buildPhase = ''
@@ -38,5 +42,10 @@ mkYarnPackage rec {
     yarn run sh:relink
     # yarn run sh:build-completions
     runHook postBuild
+  '';
+
+  postInstall = ''
+    wrapProgram "$out/bin/fish-lsp" \
+        --set-default fish_lsp_logfile "/tmp/fish_lsp_logs.txt"
   '';
 }
