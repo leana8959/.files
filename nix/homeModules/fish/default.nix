@@ -7,7 +7,31 @@
 {
   imports = [ ./aliasesAbbrs.nix ];
 
-  programs.fish =
+  options.programs.fish.sourcePaths = lib.mkOption {
+    type = with lib.types; nonEmptyListOf str;
+    description = ''
+      Paths to be sourced idempotently at the start of a login-shell.
+    '';
+    default =
+      [
+        # Make sure wrapper comes first
+        # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
+        "/run/wrappers/bin"
+
+        "${config.home.homeDirectory}/.nix-profile/bin"
+        "/nix/profile/bin"
+        "${config.home.homeDirectory}/.local/state/nix/profile/bin"
+
+        "/etc/profiles/per-user/${config.home.username}/bin"
+
+        "/nix/var/nix/profiles/default/bin"
+        "/run/current-system/sw/bin"
+      ]
+      # Add brew, but as fallback
+      ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
+  };
+
+  config.programs.fish =
     let
       readConfig = n: builtins.readFile ./conf.d/${n}.fish;
       readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
@@ -23,36 +47,16 @@
       # whenever fish should handle the path.
       # tmux should NOT call fish as a login shell, because it would inherit the
       # environment variables from its parent shell, which is a login shell.
-      loginShellInit =
-        let
-          paths =
-            [
-              # Make sure wrapper comes first
-              # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
-              "/run/wrappers/bin"
+      loginShellInit = ''
+        begin
+            set ps ${builtins.concatStringsSep " " config.programs.fish.sourcePaths}
 
-              "${config.home.homeDirectory}/.nix-profile/bin"
-              "/nix/profile/bin"
-              "${config.home.homeDirectory}/.local/state/nix/profile/bin"
-
-              "/etc/profiles/per-user/${config.home.username}/bin"
-
-              "/nix/var/nix/profiles/default/bin"
-              "/run/current-system/sw/bin"
-            ]
-            # Add brew, but as fallback
-            ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
-        in
-        ''
-          begin
-              set ps ${builtins.concatStringsSep " " paths}
-
-              set -e fish_user_paths
-              for p in $ps
-                  test -d $p && set --append fish_user_paths $p
-              end
-          end
-        '';
+            set -e fish_user_paths
+            for p in $ps
+                test -d $p && set --append fish_user_paths $p
+            end
+        end
+      '';
 
       shellInit = readConfig "shellInit";
 
