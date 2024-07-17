@@ -60,7 +60,7 @@ in
           sha256 = "0294bc32b42c90bbb286a89e23ca3773b7ef50eff1ab523b1513d6a25c6b3f58";
         };
       in
-      {
+      lib.mkIf config.programs.neovim.enable {
         "nvim/spell/fr.utf-8.spl".source = fr_utf-8_spl;
         "nvim/spell/fr.utf-8.sug".source = fr_utf-8_sug;
       };
