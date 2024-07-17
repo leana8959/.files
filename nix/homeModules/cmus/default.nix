@@ -7,12 +7,12 @@
 {
   options.programs.cmus.enable = lib.mkEnableOption "cmus";
 
-  config.home = lib.mkIf config.programs.cmus.enable {
-    packages = [
+  config = lib.mkIf config.programs.cmus.enable {
+    home.packages = [
       pkgs.cmus
       pkgs.cmusfm
     ];
-    file.cmus = {
+    xdg.configFile."cmus/rc" = {
       recursive = true;
       text = lib.mkMerge [
         (builtins.readFile ./rc)
@@ -29,7 +29,6 @@
           set output_plugin=ao
         '')
       ];
-      target = "${config.xdg.configHome}/cmus/rc";
     };
   };
 }
