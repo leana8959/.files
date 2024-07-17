@@ -49,7 +49,7 @@ in
       ];
     };
 
-    home.file =
+    xdg.configFile =
       let
         fr_utf-8_spl = builtins.fetchurl {
           url = "http://ftp.vim.org/vim/runtime/spell/fr.utf-8.spl";
@@ -61,8 +61,8 @@ in
         };
       in
       {
-        "${config.xdg.configHome}/nvim/spell/fr.utf-8.spl".source = fr_utf-8_spl;
-        "${config.xdg.configHome}/nvim/spell/fr.utf-8.sug".source = fr_utf-8_sug;
+        "nvim/spell/fr.utf-8.spl".source = fr_utf-8_spl;
+        "nvim/spell/fr.utf-8.sug".source = fr_utf-8_sug;
       };
   };
 }
