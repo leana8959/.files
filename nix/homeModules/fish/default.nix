@@ -31,12 +31,14 @@
               # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
               "/run/wrappers/bin"
 
-              "/etc/profiles/per-user/${config.home.username}/bin"
-              "/run/current-system/sw/bin"
               "${config.home.homeDirectory}/.nix-profile/bin"
-              "${config.home.homeDirectory}/.dotfiles/.local/bin"
-              "${config.home.homeDirectory}/.local/.local/bin"
+              "/nix/profile/bin"
+              "${config.home.homeDirectory}/.local/state/nix/profile/bin"
+
+              "/etc/profiles/per-user/${config.home.username}/bin"
+
               "/nix/var/nix/profiles/default/bin"
+              "/run/current-system/sw/bin"
             ]
             # Add brew, but as fallback
             ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
