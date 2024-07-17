@@ -12,23 +12,6 @@
     description = ''
       Paths to be sourced idempotently at the start of a login-shell.
     '';
-    default =
-      [
-        # Make sure wrapper comes first
-        # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
-        "/run/wrappers/bin"
-
-        "${config.home.homeDirectory}/.nix-profile/bin"
-        "/nix/profile/bin"
-        "${config.home.homeDirectory}/.local/state/nix/profile/bin"
-
-        "/etc/profiles/per-user/${config.home.username}/bin"
-
-        "/nix/var/nix/profiles/default/bin"
-        "/run/current-system/sw/bin"
-      ]
-      # Add brew, but as fallback
-      ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
   };
 
   config.xdg.configFile."fish/functions" = lib.mkIf config.programs.fish.enable {
@@ -61,6 +44,24 @@
             end
         end
       '';
+
+      sourcePaths =
+        [
+          # Make sure wrapper comes first
+          # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
+          "/run/wrappers/bin"
+
+          "${config.home.homeDirectory}/.nix-profile/bin"
+          "/nix/profile/bin"
+          "${config.home.homeDirectory}/.local/state/nix/profile/bin"
+
+          "/etc/profiles/per-user/${config.home.username}/bin"
+
+          "/nix/var/nix/profiles/default/bin"
+          "/run/current-system/sw/bin"
+        ]
+        # Add brew, but as fallback
+        ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
 
       shellInit = readConfig "shellInit";
 
