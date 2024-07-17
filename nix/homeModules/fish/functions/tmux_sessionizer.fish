@@ -1,3 +1,4 @@
+function tmux_sessionizer
 # Inspired by the one and only primeagen
 set selected \
     (begin
@@ -45,4 +46,5 @@ if [ -z $TMUX ]
     tmux attach-session -t $session_name
 else
     tmux switch-client -t $session_name
+end
 end

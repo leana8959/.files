@@ -1,3 +1,4 @@
+function fish_command_not_found
 set hour (date +"%H")
 set user (whoami)
 
@@ -12,3 +13,4 @@ set words                               \
 set choice $words[(random 1 (count $words))]
 
 echo -e $choice | figlet -c
+end

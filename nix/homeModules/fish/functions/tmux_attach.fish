@@ -1,3 +1,4 @@
+function tmux_attach
 # abandon if tmux not running
 set tmux_running (pgrep tmux)
 if [ -z "$tmux_running" ]
@@ -18,4 +19,5 @@ if [ -z $TMUX ]
     tmux attach-session -t $selected
 else
     tmux switch-client -t $selected
+end
 end

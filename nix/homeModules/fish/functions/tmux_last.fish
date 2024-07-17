@@ -1,3 +1,4 @@
+function tmux_last
 # create session if doesn't exist
 set session_name (cat /tmp/TMUX_LAST)
 if ! tmux has-session -t=$session_name 2> /dev/null
@@ -16,4 +17,5 @@ if [ -z $TMUX ]
     tmux attach-session -t $session_name
 else
     tmux switch-client -t $session_name
+end
 end

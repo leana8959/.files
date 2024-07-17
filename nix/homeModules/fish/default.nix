@@ -31,6 +31,10 @@
       ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
   };
 
+  config.xdg.configFile."fish/functions" = lib.mkIf config.programs.fish.enable {
+    source = ./functions;
+    recursive = true;
+  };
   config.programs.fish =
     let
       readConfig = n: builtins.readFile ./conf.d/${n}.fish;
@@ -67,35 +71,6 @@
         "locale"
       ];
 
-      functions =
-        let
-          makeFishFunctions =
-            ns:
-            lib.trivial.pipe ns [
-              (map (n: {
-                name = n;
-                value = builtins.readFile ./functions/${n}.fish;
-              }))
-              builtins.listToAttrs
-            ];
-        in
-        makeFishFunctions [
-          ","
-          "clone_to_repos"
-          "file_extension"
-          "file_mantissa"
-          "fish_command_not_found"
-          "fish_greeting"
-          "fish_remove_path"
-          "largest-objects-in-repo"
-          "snakecase"
-          "timestamp"
-          "tmux_attach"
-          "tmux_home"
-          "tmux_last"
-          "tmux_sessionizer"
-          "update_dotfiles"
-        ];
       plugins = [
         {
           name = "fzf-fish";
