@@ -27,5 +27,5 @@ in
     pkgs.colima
   ];
 
-  programs.neovim.extraLangServers.packages = [ myPkgs.fish-lsp ];
+  programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
 }
