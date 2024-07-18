@@ -11,6 +11,7 @@ let
     "layouts"
     "locale"
     "network"
+    "leana"
   ];
 
   sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
