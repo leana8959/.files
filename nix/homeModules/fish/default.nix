@@ -51,6 +51,9 @@
           # https://discourse.nixos.org/t/sudo-run-current-system-sw-bin-sudo-must-be-owned-by-uid-0-and-have-the-setuid-bit-set-and-cannot-chdir-var-cron-bailing-out-var-cron-permission-denied/20463/2
           "/run/wrappers/bin"
 
+          # Make sure nixcpp with the specified version in the flake come first
+          "${config.nix.package}/bin"
+
           "${config.home.homeDirectory}/.nix-profile/bin"
           "/nix/profile/bin"
           "${config.home.homeDirectory}/.local/state/nix/profile/bin"
