@@ -9,9 +9,9 @@
       hostName = "carbon";
       system = "x86_64-linux";
       protocol = "ssh";
-      sshUser = "leana";
+      sshUser = "nix-remote-builder";
       sshKey = "/Users/leana/.ssh/id_ed25519";
-      speedFactor = 2;
+      speedFactor = 4;
       supportedFeatures = [
         "nixos-test"
         "benchmark"
@@ -54,10 +54,10 @@
     {
       hostName = "hydrogen";
       system = "aarch64-linux";
-      protocol = "ssh-ng";
-      sshUser = "leana";
+      protocol = "ssh";
+      sshUser = "nix-remote-builder";
       sshKey = "/Users/leana/.ssh/id_ed25519";
-      speedFactor = 1;
+      speedFactor = 2;
       supportedFeatures = [
         "nixos-test"
         "benchmark"
