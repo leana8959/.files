@@ -144,13 +144,7 @@ in
         };
       };
       # Raspberry Pi 4
-      hydrogen = {
-        system = "aarch64-linux";
-        extraNixOSConfig.imports = [
-          # Uncomment to generate a sdImage
-          (inputs.nixpkgs + "/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
-        ];
-      };
+      hydrogen.system = "aarch64-linux";
     };
   };
 }
