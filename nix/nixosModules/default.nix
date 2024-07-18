@@ -8,12 +8,12 @@ let
     "system-nixconf"
   ];
   moduleNames = [
-    "layouts"
     "locale"
     "network"
     "auto-gc"
   ];
   extraModuleNames = [
+    "layouts"
     "leana"
     "i_am_builder"
   ];
