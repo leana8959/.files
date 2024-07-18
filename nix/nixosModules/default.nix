@@ -12,6 +12,7 @@ let
     "locale"
     "network"
     "leana"
+    "auto-gc"
   ];
 
   sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
