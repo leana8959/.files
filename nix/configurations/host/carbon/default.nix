@@ -18,19 +18,13 @@
     efi.canTouchEfiVariables = true;
   };
 
-  users.users.leana = {
-    uid = 1000;
-    isNormalUser = true;
-    description = "leana";
-    extraGroups = [
-      "wheel" # sudoers
-      "video" # light
-      "audio" # pipewire
-      "docker"
-      "vboxusers"
-    ];
-    packages = [ ];
-  };
+  users.users.leana.extraGroups = [
+    "wheel" # sudoers
+    "video" # light
+    "audio" # pipewire
+    "docker"
+    "vboxusers"
+  ];
 
   nix.settings.trusted-users = [
     "root"
