@@ -1,13 +1,10 @@
 {
   config,
-  hostname,
   pkgs,
   lib,
   ...
 }:
 {
-  networking.hostName = hostname;
-
   networking.networkmanager.enable = lib.mkForce false;
 
   services.openssh.enable = true;
