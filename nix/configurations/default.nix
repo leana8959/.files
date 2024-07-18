@@ -18,8 +18,12 @@ let
   mkNixOSes = many (
     mkNixOS
       (
-        { hostname, ... }:
+        { hostname, system, ... }:
         [
+          {
+            nixpkgs.hostPlatform = system;
+            system.stateVersion = "24.05";
+          }
           self.nixosModules._
           self.nixosModules.layouts
           ./host/${hostname}
@@ -30,6 +34,7 @@ let
       (
         { hostname, ... }:
         [
+          { home.stateVersion = "24.05"; }
           self.homeModules._
           ./home/${hostname}
           nixpkgsRegistry
@@ -42,7 +47,10 @@ let
       (
         { hostname, system, ... }:
         [
-          { nixpkgs.hostPlatform = system; }
+          {
+            nixpkgs.hostPlatform = system;
+            system.stateVersion = 4;
+          }
           self.nixosModules._
           self.darwinModules._
           ./host/${hostname}
@@ -52,6 +60,7 @@ let
       (
         { hostname, ... }:
         [
+          { home.stateVersion = "24.05"; }
           self.homeModules._
           ./home/${hostname}
           nixpkgsRegistry
@@ -63,6 +72,7 @@ let
     mkHomeManager (
       { hostname, ... }:
       [
+        { home.stateVersion = "24.05"; }
         self.homeModules._
         ./home/${hostname}
         nixpkgsRegistry
@@ -98,8 +108,6 @@ in
     };
 
     homeConfigurations = mkHomeManagers {
-      # Raspberry Pi 4
-      hydrogen.system = "aarch64-linux";
       # Oracle cloud
       oracle.system = "aarch64-linux";
       # Linode
@@ -125,6 +133,14 @@ in
           extra.university.enable = true;
           programs.cmus.enable = true;
         };
+      };
+      # Raspberry Pi 4
+      hydrogen = {
+        system = "aarch64-linux";
+        extraNixOSConfig.imports = [
+          # Uncomment to generate a sdImage
+          (inputs.nixpkgs + "/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
+        ];
       };
     };
   };

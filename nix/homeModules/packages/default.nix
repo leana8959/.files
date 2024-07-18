@@ -24,7 +24,6 @@ in
         (lib.mkIf pkgs.stdenv.isLinux (lib.mkDefault "/home/leana"))
         (lib.mkIf pkgs.stdenv.isDarwin (lib.mkDefault "/Users/leana"))
       ];
-      stateVersion = "24.05";
     };
 
     programs.ripgrep.enable = true;
