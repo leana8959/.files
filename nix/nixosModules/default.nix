@@ -10,6 +10,7 @@ let
   moduleNames = [
     "layouts"
     "locale"
+    "network"
   ];
 
   sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
