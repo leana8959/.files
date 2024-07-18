@@ -16,7 +16,7 @@ let
   ];
   extraModuleNames = [ "i_am_builder" ];
 
-  sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
+  sharedModules.imports = map toModule sharedModuleNames;
 
   eachModule = lib.attrsets.genAttrs (sharedModuleNames ++ moduleNames ++ extraModuleNames) toModule;
 
