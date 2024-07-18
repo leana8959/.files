@@ -4,7 +4,7 @@ function ,
         set -a ps "nixpkgs#$p"
     end
 
-    set cmd "nix shell $ps"
+    set cmd "IN_NIX_SHELL=\"impure\" nix shell $ps"
     echo "Executing `$cmd`..."
     eval $cmd
 end
