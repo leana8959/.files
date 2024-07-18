@@ -1,6 +1,8 @@
 { lib, ... }:
 
 let
+  toModule = name: ./${name};
+
   moduleNames = [
     "user-nixconf"
     "packages"
@@ -23,14 +25,11 @@ let
 
     "cmus"
   ];
-
   extraModuleNames = [ "auto-gc" ];
 
-  eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) (name: ./${name});
+  eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;
 
-  allModules = {
-    imports = map (name: ./${name}) moduleNames;
-  };
+  allModules.imports = map toModule moduleNames;
 in
 
 {
