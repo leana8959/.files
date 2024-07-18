@@ -5,12 +5,18 @@
     _system: deployLib: deployLib.deployChecks self.deploy
   ) inputs.deploy-rs.lib;
 
-  flake.deploy.nodes.hydrogen = {
-    hostname = "hydrogen";
-    sshUser = "root";
-    profiles.system = {
-      user = "root";
-      path = self.nixosConfigurations.hydrogen.deploy;
-    };
-  };
+  flake.deploy.nodes =
+    inputs.nixpkgs.lib.genAttrs
+      [
+        "carbon"
+        "hydrogen"
+      ]
+      (name: {
+        hostname = name;
+        sshUser = "root";
+        profiles.system = {
+          user = "root";
+          path = self.nixosConfigurations.${name}.deploy;
+        };
+      });
 }
