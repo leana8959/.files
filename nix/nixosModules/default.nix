@@ -11,10 +11,12 @@ let
     "layouts"
     "locale"
     "network"
-    "leana"
     "auto-gc"
   ];
-  extraModuleNames = [ "i_am_builder" ];
+  extraModuleNames = [
+    "leana"
+    "i_am_builder"
+  ];
 
   sharedModules.imports = map toModule sharedModuleNames;
 
