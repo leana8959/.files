@@ -7,7 +7,10 @@ let
     "sudo-conf"
     "system-nixconf"
   ];
-  moduleNames = [ "layouts" ];
+  moduleNames = [
+    "layouts"
+    "locale"
+  ];
 
   sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
 
