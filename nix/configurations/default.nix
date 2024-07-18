@@ -27,6 +27,7 @@ let
                 system.stateVersion = "24.05";
               }
               self.nixosModules._
+              self.nixosModules.leana
               self.nixosModules.layouts
               ./host/${hostname}
               inputs.agenix.nixosModules.default
