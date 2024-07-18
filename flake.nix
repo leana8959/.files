@@ -12,6 +12,7 @@
 
       imports = [
         ./nix/configurations
+        ./nix/deploy
 
         ./nix/homeModules
         ./nix/nixosModules
@@ -62,6 +63,10 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # packages
     audio-lint = {
