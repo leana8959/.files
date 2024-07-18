@@ -2,7 +2,6 @@
   flake.darwinModules._ =
     { pkgs, hostname, ... }:
     {
-      system.stateVersion = 4;
       services.nix-daemon.enable = true;
 
       networking.hostName = hostname;
