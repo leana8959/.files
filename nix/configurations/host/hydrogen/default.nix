@@ -1,6 +1,11 @@
-{ config, ... }:
+{ config, modulesPath, ... }:
 
 {
+  imports = [
+    # The generator and hardware configuration
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
+  ];
+
   users.groups.leana = { };
   users.users.leana = {
     isNormalUser = true;
