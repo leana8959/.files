@@ -60,7 +60,7 @@ let
             nixpkgs.hostPlatform = system;
             system.stateVersion = 4;
           }
-          self.nixosModules._
+          self.nixosModules.shared
           self.darwinModules._
           ./host/${hostname}
           inputs.home-manager.darwinModules.home-manager
