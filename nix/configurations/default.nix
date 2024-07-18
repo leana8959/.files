@@ -15,32 +15,41 @@ let
     nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
-  mkNixOSes = many (
-    mkNixOS
-      (
-        { hostname, system, ... }:
-        [
-          {
-            nixpkgs.hostPlatform = system;
-            system.stateVersion = "24.05";
-          }
-          self.nixosModules._
-          self.nixosModules.layouts
-          ./host/${hostname}
-          inputs.agenix.nixosModules.default
-          inputs.home-manager.nixosModules.home-manager
-        ]
-      )
-      (
-        { hostname, ... }:
-        [
-          { home.stateVersion = "24.05"; }
-          self.homeModules._
-          ./home/${hostname}
-          nixpkgsRegistry
-        ]
-      )
-  );
+  mkNixOSes =
+    let
+      go =
+        mkNixOS
+          (
+            { hostname, system, ... }:
+            [
+              {
+                nixpkgs.hostPlatform = system;
+                system.stateVersion = "24.05";
+              }
+              self.nixosModules._
+              self.nixosModules.layouts
+              ./host/${hostname}
+              inputs.agenix.nixosModules.default
+              inputs.home-manager.nixosModules.home-manager
+            ]
+          )
+          (
+            { hostname, ... }:
+            [
+              { home.stateVersion = "24.05"; }
+              self.homeModules._
+              ./home/${hostname}
+              nixpkgsRegistry
+            ]
+          );
+    in
+    many (
+      args@{ system, ... }:
+      let
+        config = go args;
+      in
+      config // { deploy = inputs.deploy-rs.lib.${system}.activate.nixos config; }
+    );
 
   mkDarwins = many (
     mkDarwin
