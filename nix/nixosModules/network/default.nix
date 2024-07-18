@@ -10,6 +10,12 @@
       PasswordAuthentication = false;
     };
     ports = lib.mkDefault [ 22 ];
+
+    # Make this vuln impossible
+    # https://unix.stackexchange.com/questions/15138/how-to-force-ssh-client-to-use-only-password-auth
+    extraConfig = ''
+      LoginGraceTime 0
+    '';
   };
 
   users.users.root.openssh.authorizedKeys.keys = [
