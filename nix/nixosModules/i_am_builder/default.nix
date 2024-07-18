@@ -16,7 +16,7 @@
 
     # credit:
     # https://github.com/nix-community/srvos/blob/main/nixos/roles/nix-remote-builder.nix
-    openssh.authorizedKeys.keys = map (key: ''restrict,command="nix-daemon --stdio" ${key}'') [
+    openssh.authorizedKeys.keys = map (key: ''restrict ${key}'') [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBt+MINzxBF8uyFIuz/UvMZe9Ml+qxU0hxxi7UAmUzpc leana@bismuth"
     ];
   };
