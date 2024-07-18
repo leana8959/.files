@@ -14,10 +14,11 @@ let
     "leana"
     "auto-gc"
   ];
+  extraModuleNames = [ "i_am_builder" ];
 
   sharedModules = lib.attrsets.genAttrs sharedModuleNames toModule;
 
-  eachModule = lib.attrsets.genAttrs (sharedModuleNames ++ moduleNames) toModule;
+  eachModule = lib.attrsets.genAttrs (sharedModuleNames ++ moduleNames ++ extraModuleNames) toModule;
 
   allModules.imports = map toModule (sharedModuleNames ++ moduleNames);
 in

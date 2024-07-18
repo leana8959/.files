@@ -136,6 +136,7 @@ in
       # Thinkpad
       carbon = {
         system = "x86_64-linux";
+        extraNixOSConfig.imports = [ self.nixosModules.i_am_builder ];
         extraHomeConfig = {
           programs.neovim.extraLangServers.enable = true;
           extra.utilities.enable = true;
@@ -144,7 +145,10 @@ in
         };
       };
       # Raspberry Pi 4
-      hydrogen.system = "aarch64-linux";
+      hydrogen = {
+        system = "aarch64-linux";
+        extraNixOSConfig.imports = [ self.nixosModules.i_am_builder ];
+      };
     };
   };
 }
