@@ -1,21 +1,16 @@
-function tmux_last
-    # create session if doesn't exist
-    set session_name (cat /tmp/TMUX_LAST)
-    if ! tmux has-session -t=$session_name 2>/dev/null
-        tmux \
-            new-session -ds $session_name \; \
-            new-window -t $session_name \; \
-            select-window -t $session_name:1
+function tmux_last \
+    --description "Toggle the last tmux session"
+
+    set tmux_last /tmp/TMUX_LAST
+    if [ ! -f $tmux_last ]
+        echo "Last session is not yet set"
+        exit 1
     end
 
-    # echo "---last---" >> /tmp/TMUX_DEBUG
-    # echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
-    echo (tmux display-message -p '#S') >/tmp/TMUX_LAST
-    # echo (cat /tmp/TMUX_LAST) >> /tmp/TMUX_DEBUG
+    set session_name (cat $tmux_last)
 
-    if [ -z $TMUX ]
-        tmux attach-session -t $session_name
-    else
-        tmux switch-client -t $session_name
-    end
+    __tmux_register_session
+    __tmux_maybe_create $session_name $session_name
+    __tmux_attach_or_switch $session_name
+
 end
