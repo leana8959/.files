@@ -18,7 +18,7 @@ This repo is managed with Nix + GNU stow (for neovim)
 This repository exports (some of) my custom packages.
 For example, use
 ```bash
-nix build -L "git+https://git.earth2077.fr/leana/.files?dir=nix#hiosevka-nerd-font-mono"
+nix build -L "git+https://git.earth2077.fr/leana/.files#hiosevka-nerd-font-mono"
 ```
 To build hIosevka Nerd Font, Iosevka with Haskell ligatures. [^1]
 
