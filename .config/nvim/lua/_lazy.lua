@@ -81,6 +81,7 @@ local plugins = {
     },
     { "andy-morris/happy.vim", ft = "happy" },
     { "vim-scripts/alex.vim", ft = "alex" },
+    { "vim-crystal/vim-crystal" },
     {
         "mrcjkb/haskell-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
