@@ -3,7 +3,7 @@ function tmux_home \
 
     set session_name home
 
-    if [ -n "$TMUX" ]
+    if not pgrep tmux 2>&1 >/dev/null
         __tmux_register_session
     end
 
