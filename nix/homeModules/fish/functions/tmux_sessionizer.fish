@@ -31,7 +31,7 @@ function tmux_sessionizer \
     set session_name (echo $selected | tr . _)
 
     __tmux_register_session $session_name
-    __tmux_maybe_create $session_name $session_name
+    __tmux_maybe_create $session_name $selected
     __tmux_attach_or_switch $session_name
 
 end
