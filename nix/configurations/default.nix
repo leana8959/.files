@@ -78,18 +78,26 @@ let
       )
   );
 
-  mkHomeManagers = many (
-    mkHomeManager (
-      { hostname, ... }:
-      [
-        { home.stateVersion = "24.05"; }
-        self.homeModules._
-        ./home/${hostname}
-        nixpkgsRegistry
-        self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
-      ]
-    )
-  );
+  mkHomeManagers =
+    let
+      go = mkHomeManager (
+        { hostname, ... }:
+        [
+          { home.stateVersion = "24.05"; }
+          self.homeModules._
+          ./home/${hostname}
+          nixpkgsRegistry
+          self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
+        ]
+      );
+    in
+    many (
+      args@{ system, ... }:
+      let
+        config = go args;
+      in
+      config // { deploy = inputs.deploy-rs.lib.${system}.activate.home-manager config; }
+    );
 in
 
 {
