@@ -20,7 +20,7 @@ let
       go =
         mkNixOS
           (
-            { hostname, system, ... }:
+            { hostname, system }:
             [
               {
                 nixpkgs.hostPlatform = system;
@@ -55,7 +55,7 @@ let
   mkDarwins = many (
     mkDarwin
       (
-        { hostname, system, ... }:
+        { hostname, system }:
         [
           {
             nixpkgs.hostPlatform = system;

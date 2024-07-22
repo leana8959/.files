@@ -8,10 +8,13 @@ let
       extraNixOSConfig ? { },
       extraHomeConfig ? { },
       ...
-    }@args:
+    }:
     withSystem system (
       { pkgs, ... }:
       let
+        infoArgs = {
+          inherit hostname system;
+        };
         specialArgs = {
           inherit pkgs;
           inherit hostname;
@@ -19,14 +22,14 @@ let
       in
       inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        modules = nixosModulesOf args ++ [
+        modules = nixosModulesOf infoArgs ++ [
           extraNixOSConfig
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
-              users.leana.imports = homeModulesOf args ++ [ extraHomeConfig ];
+              users.leana.imports = homeModulesOf infoArgs ++ [ extraHomeConfig ];
             };
           }
         ];
@@ -35,7 +38,7 @@ let
 
   mkDarwin =
     darwinModulesOf: homeModulesOf:
-    args@{
+    {
       hostname,
       system,
       extraDarwinConfig ? { },
@@ -45,6 +48,9 @@ let
     withSystem system (
       { pkgs, ... }:
       let
+        infoArgs = {
+          inherit hostname system;
+        };
         specialArgs = {
           inherit pkgs;
           inherit hostname;
@@ -52,14 +58,14 @@ let
       in
       inputs.nix-darwin.lib.darwinSystem {
         inherit specialArgs;
-        modules = darwinModulesOf args ++ [
+        modules = darwinModulesOf infoArgs ++ [
           extraDarwinConfig
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
-              users.leana.imports = homeModulesOf args ++ [ extraHomeConfig ];
+              users.leana.imports = homeModulesOf infoArgs ++ [ extraHomeConfig ];
             };
           }
         ];
@@ -68,7 +74,7 @@ let
 
   mkHomeManager =
     homeModulesOf:
-    args@{
+    {
       hostname,
       system,
       extraHomeConfig ? { },
@@ -77,6 +83,9 @@ let
     withSystem system (
       { pkgs, ... }:
       let
+        infoArgs = {
+          inherit hostname system;
+        };
         specialArgs = {
           inherit pkgs;
           inherit hostname;
@@ -85,7 +94,7 @@ let
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit (specialArgs) pkgs;
         extraSpecialArgs = specialArgs;
-        modules = homeModulesOf args ++ [ extraHomeConfig ];
+        modules = homeModulesOf infoArgs ++ [ extraHomeConfig ];
       }
     );
 
