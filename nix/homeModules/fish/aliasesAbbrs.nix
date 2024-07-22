@@ -36,6 +36,12 @@
         nd = "nix develop -L -c fish";
         vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.lua && prevd";
         xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
+
+        nhist = "sudo nix profile history --profile /nix/var/nix/profiles/system";
+        hhist = "nix profile history --profile ~/.local/state/nix/profiles/home-manager";
+
+        nwipe = "sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d";
+        hwipe = "nix profile wipe-history --profile ~/.local/state/nix/profiles/home-manager --older-than 7d";
       }
 
       # TODO: move this out
