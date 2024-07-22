@@ -10,8 +10,21 @@
       system = "x86_64-linux";
       protocol = "ssh";
       sshUser = "nix-remote-builder";
-      sshKey = "/Users/leana/.ssh/id_ed25519";
       speedFactor = 4;
+      supportedFeatures = [
+        "nixos-test"
+        "benchmark"
+        "big-parallel"
+        "kvm"
+      ];
+      mandatoryFeatures = [ ];
+    }
+    {
+      hostName = "hydrogen";
+      system = "aarch64-linux";
+      protocol = "ssh";
+      sshUser = "nix-remote-builder";
+      speedFactor = 2;
       supportedFeatures = [
         "nixos-test"
         "benchmark"
@@ -27,37 +40,6 @@
       sshUser = "ubuntu";
       sshKey = "/Users/leana/.ssh/id_ed25519";
       speedFactor = 8;
-      supportedFeatures = [
-        "nixos-test"
-        "benchmark"
-        "big-parallel"
-        "kvm"
-      ];
-      mandatoryFeatures = [ ];
-    }
-    # # FIXME: Timing out too often
-    # {
-    #   hostName = "paradize";
-    #   system = "aarch64-linux";
-    #   protocol = "ssh-ng";
-    #   sshUser = "leana";
-    #   sshKey = "/Users/leana/.ssh/id_ed25519";
-    #   speedFactor = 1;
-    #   supportedFeatures = [
-    #     "nixos-test"
-    #     "benchmark"
-    #     "big-parallel"
-    #     "kvm"
-    #   ];
-    #   mandatoryFeatures = [ ];
-    # }
-    {
-      hostName = "hydrogen";
-      system = "aarch64-linux";
-      protocol = "ssh";
-      sshUser = "nix-remote-builder";
-      sshKey = "/Users/leana/.ssh/id_ed25519";
-      speedFactor = 2;
       supportedFeatures = [
         "nixos-test"
         "benchmark"
