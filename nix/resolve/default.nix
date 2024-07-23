@@ -1,4 +1,5 @@
 { inputs, ... }:
+
 {
   perSystem =
     {
@@ -22,6 +23,13 @@
               repo = "wired-notify";
               rev = "0.10.6";
               hash = "sha256-AWIV/+vVwDZECZ4lFMSFyuyUKJc/gb72PiBJv6lbhnc=";
+            };
+          })
+
+          (final: _: {
+            nur = import inputs.nur {
+              nurpkgs = final;
+              pkgs = final;
             };
           })
 

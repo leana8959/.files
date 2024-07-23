@@ -23,17 +23,4 @@ in
         inherit system;
         config.allowUnfree = true;
       };
-
-  nur =
-    import
-      (final.fetchFromGitHub {
-        owner = "nix-community";
-        repo = "nur";
-        rev = "9bf273a054250a990e3751cc7ae280c6ff5b4220";
-        hash = "sha256-2Cr9RYM276lo1a9g3QaflZy7/TxtDXpAhxWF3WsEPhQ=";
-      })
-      {
-        nurpkgs = final;
-        pkgs = final;
-      };
 }
