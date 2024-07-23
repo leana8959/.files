@@ -1,7 +1,7 @@
 -- vim:et:sw=2:ts=2:ft=haskell
 
 Config { overrideRedirect = False
-       , font             = "xft:JetBrainsMono NF"
+       , font             = "xft:JetBrainsMono"
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
        , position = TopW L 100

@@ -40,6 +40,19 @@ in
     pkgs.xscreensaver # TODO: why the service option won't work ?
     wired
     pkgs.playerctl
+    pkgs.jetbrains-mono # for xmobar
+    (
+      let
+        inherit (pkgs.haskellPackages) ghcWithPackages;
+        haskellPackages = self: [
+          self.xmonad-contrib
+          self.xmonad-extras
+          self.neat-interpolation
+        ];
+      in
+      ghcWithPackages haskellPackages
+    )
+    pkgs.haskell-language-server
 
     # GUI apps
     # social
