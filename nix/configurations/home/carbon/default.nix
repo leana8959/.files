@@ -10,9 +10,9 @@ in
   home.pointerCursor = {
     x11.enable = true;
     gtk.enable = true;
-    name = "Adwaita";
-    package = pkgs.gnome.adwaita-icon-theme;
-    size = 32;
+    name = "Posy_Cursor_Black";
+    package = myPkgs.posy-cursor;
+    size = 48;
   };
 
   home.packages = [
