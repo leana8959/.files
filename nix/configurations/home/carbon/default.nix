@@ -72,7 +72,10 @@ in
     pkgs.p7zip
   ];
 
-  programs.kitty.enable = true;
+  programs = {
+    kitty.enable = true;
+    password-store.enable = true;
+  };
 
   home.file.xscreensaver = {
     source = ./xscreensaver/.xscreensaver;
