@@ -5,7 +5,6 @@ let
 in
 
 {
-
   home.packages = [
     # Used in tab bar
     pkgs.cascadia-code
