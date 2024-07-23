@@ -1,10 +1,10 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-settings 6.08 for leana on Mon Dec 25 21:48:30 2023.
+# Written by xscreensaver-settings 6.08 for leana on Tue Jul 23 23:44:33 2024.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
 cycle:		0:10:00
-lock:		False
+lock:		True
 lockTimeout:	0:00:00
 passwdTimeout:	0:00:30
 visualID:	default
@@ -37,7 +37,7 @@ textFile:
 textProgram:	fortune
 textURL:	https://en.wikipedia.org/w/index.php?title=Special:NewPages&feed=rss
 dialogTheme:	default
-settingsGeom:	12,30 1152,30
+settingsGeom:	15,32 216,222
 
 programs:								      \
 				maze --root				    \n\
@@ -244,7 +244,7 @@ programs:								      \
 				hexadrop --root				    \n\
   GL: 				kaleidocycle --root			    \n\
   GL: 				quasicrystal --root			    \n\
-  GL: 				unknownpleasures --root			    \n\
+  GL: 				unknownpleasures --root --no-ortho	    \n\
 				binaryring --root			    \n\
   GL: 				cityflow --root				    \n\
   GL: 				geodesicgears --root			    \n\
