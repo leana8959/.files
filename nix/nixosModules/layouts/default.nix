@@ -1,7 +1,8 @@
 {
   services.xserver.xkb = {
     layout = "myDvorak";
-    options = "caps:swapescape";
+    # TODO: figure out how to implement this conditionally
+    # options = "caps:swapescape";
     extraLayouts = {
       "myDvorak" = {
         languages = [ "us" ];
