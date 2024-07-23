@@ -16,9 +16,11 @@ in
   };
 
   home.packages = [
+    # utilities
     pkgs.zip
     pkgs.unzip
     pkgs.gnutar
+    pkgs.p7zip
 
     # Fonts
     pkgs.noto-fonts
@@ -58,7 +60,7 @@ in
     # social
     pkgs.discord
     pkgs.element-desktop
-    pkgs.mattermost-desktop
+    # pkgs.mattermost-desktop
 
     # productivity
     pkgs.bitwarden
@@ -69,7 +71,6 @@ in
     pkgs.gnome.sushi
     pkgs.evolution
     pkgs.gnome.gnome-calendar
-    pkgs.p7zip
   ];
 
   programs = {
