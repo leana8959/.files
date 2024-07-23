@@ -63,21 +63,6 @@ in
   programs.kitty.enable = true;
 
   home.file = {
-    xmonad = {
-      recursive = true;
-      source = ./xmonad;
-      target = ".config/xmonad";
-    };
-    xmobar = {
-      recursive = true;
-      source = ./xmobar;
-      target = ".config/xmobar";
-    };
-    wired = {
-      recursive = true;
-      source = ./wired;
-      target = ".config/wired";
-    };
     xscreensaver = {
       source = ./xscreensaver/.xscreensaver;
       target = ".xscreensaver";
