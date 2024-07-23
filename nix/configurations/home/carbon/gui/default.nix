@@ -62,10 +62,8 @@ in
 
   programs.kitty.enable = true;
 
-  home.file = {
-    xscreensaver = {
-      source = ./xscreensaver/.xscreensaver;
-      target = ".xscreensaver";
-    };
+  home.file.xscreensaver = {
+    source = ./xscreensaver/.xscreensaver;
+    target = ".xscreensaver";
   };
 }
