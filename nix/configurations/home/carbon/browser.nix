@@ -1,7 +1,9 @@
 { pkgs, ... }:
+
 let
   inherit (pkgs) nur;
 in
+
 {
   programs.firefox = {
     enable = true;
@@ -136,8 +138,7 @@ in
           addons.bitwarden
           addons.tridactyl
           addons.languagetool
-          # # failed to fetch
-          # addons.bypass-paywalls-clean
+          addons.bypass-paywalls-clean
           addons.news-feed-eradicator
         ];
     };

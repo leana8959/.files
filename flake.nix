@@ -52,6 +52,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/nur";
     flake-parts.url = "github:hercules-ci/flake-parts";
     agenix = {
       url = "github:ryantm/agenix/0.15.0";
