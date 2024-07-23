@@ -36,6 +36,8 @@
         fish-lsp = pkgs.callPackage ./fish-lsp { };
         maeel = pkgs.callPackage ./maeel.nix { };
         tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
+
+        posy-cursor = pkgs.callPackage ./posy-cursor.nix { };
       };
     };
 }

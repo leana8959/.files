@@ -1,4 +1,9 @@
 { pkgs, ... }:
+
+let
+  inherit (pkgs) myPkgs;
+in
+
 {
   services = {
     xserver.enable = true;
@@ -13,9 +18,9 @@
       enable = true;
       background = "#000000";
       greeters.gtk.cursorTheme = {
-        name = "Adwaita";
-        package = pkgs.gnome.adwaita-icon-theme;
-        size = 32;
+        name = "Posy_Cursor_Black";
+        package = myPkgs.posy-cursor;
+        size = 48;
       };
     };
     xserver.windowManager.xmonad = {
