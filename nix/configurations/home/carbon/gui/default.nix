@@ -28,7 +28,6 @@ in
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-emoji-blob-bin
     pkgs.hanazono
-    pkgs.cascadia-code
     myPkgs.hiosevka-nerd-font-mono
     myPkgs.hiosevka
 
