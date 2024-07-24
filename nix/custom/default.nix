@@ -37,6 +37,8 @@
         maeel = pkgs.callPackage ./maeel.nix { };
         tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
 
+        posy-cursor = pkgs.callPackage ./posy-cursor.nix { };
+
         carbon-installer = inputs.nixos-generators.nixosGenerate {
           inherit system;
           specialArgs = {
