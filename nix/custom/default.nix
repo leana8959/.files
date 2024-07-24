@@ -3,7 +3,12 @@
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
 
   perSystem =
-    { pkgs, system, ... }:
+    {
+      pkgs,
+      system,
+      lib,
+      ...
+    }:
     let
       inherit (pkgs) alt-ergo-pin;
       mkNerdFont = pkgs.callPackage self.lib.mkNerdFont { };
@@ -50,8 +55,8 @@
             self.nixosModules.layouts
             self.nixosModules.system-nixconf
             {
-              environment.etc.flake-source.source = self;
               environment.systemPackages = [ pkgs.disko ];
+              nix.package = lib.mkForce pkgs.nixVersions.latest;
             }
           ];
         };
