@@ -55,8 +55,12 @@
             self.nixosModules.layouts
             self.nixosModules.system-nixconf
             {
-              environment.systemPackages = [ pkgs.disko ];
+              environment.systemPackages = [
+                pkgs.disko
+                pkgs.fish
+              ];
               nix.package = lib.mkForce pkgs.nixVersions.latest;
+              users.users.nixos.shell = pkgs.fish;
             }
           ];
         };
