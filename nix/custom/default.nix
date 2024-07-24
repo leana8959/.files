@@ -1,9 +1,9 @@
-{ self, ... }:
+{ self, inputs, ... }:
 {
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
 
   perSystem =
-    { pkgs, ... }:
+    { pkgs, system, ... }:
     let
       inherit (pkgs) alt-ergo-pin;
       mkNerdFont = pkgs.callPackage self.lib.mkNerdFont { };
@@ -36,6 +36,22 @@
         fish-lsp = pkgs.callPackage ./fish-lsp { };
         maeel = pkgs.callPackage ./maeel.nix { };
         tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
+
+        carbon-installer = inputs.nixos-generators.nixosGenerate {
+          inherit system;
+          specialArgs = {
+            inherit pkgs;
+            hostname = "carbon";
+          };
+          format = "install-iso";
+          modules = [
+            self.nixosModules.layouts
+            {
+              environment.etc.flake-source.source = self;
+              environment.systemPackages = [ pkgs.disko ];
+            }
+          ];
+        };
       };
     };
 }
