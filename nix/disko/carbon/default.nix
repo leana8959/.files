@@ -47,12 +47,37 @@
         type = "lvm_vg";
         lvs = {
           root = {
-            size = "20G";
+            size = "100G";
             content = {
               type = "filesystem";
               format = "ext4";
               mountpoint = "/";
               mountOptions = [ "defaults" ];
+            };
+          };
+          nix = {
+            size = "500G";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/nix";
+              mointOptions = [ "noatime" ];
+            };
+          };
+          encrytedSwap = {
+            size = "16M";
+            content = {
+              type = "swap";
+              randomEncryption = true;
+              priority = 100;
+            };
+          };
+          swap = {
+            size = "48G"; # > 32G for hibernation
+            content = {
+              type = "swap";
+              discardPolicy = "both";
+              resumeDevice = true;
             };
           };
           home = {
