@@ -1,13 +1,6 @@
 { pkgs, ... }:
-{
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-      allow-import-from-derivation = true
-      sandbox = true
-    '';
-  };
 
+{
   security.sudo.extraConfig = ''
     Defaults        lecture = always
     Defaults        lecture_file = ${pkgs.writeText "sudo_lecture_file" ''

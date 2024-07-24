@@ -12,15 +12,15 @@
       -> keys for everything
     */
 
-    substituters = [
+    extra-substituters = [
       "https://nix-community.cachix.org"
       "https://leana8959.cachix.org"
     ];
-    trusted-substituters = [
+    extra-trusted-substituters = [
       "https://nix-community.cachix.org"
       "https://leana8959.cachix.org"
     ];
-    trusted-public-keys = [
+    extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "leana8959.cachix.org-1:CxQSAp8lcgMv8Me459of0jdXRW2tcyeYRKTiiUq8z0M="
     ];
@@ -30,5 +30,6 @@
       "flakes"
     ];
     allow-import-from-derivation = "true";
+    sandbox = true;
   };
 }
