@@ -10,15 +10,17 @@ in
   home.pointerCursor = {
     x11.enable = true;
     gtk.enable = true;
-    name = "Adwaita";
-    package = pkgs.gnome.adwaita-icon-theme;
-    size = 32;
+    name = "Posy_Cursor_Black";
+    package = myPkgs.posy-cursor;
+    size = 48;
   };
 
   home.packages = [
+    # utilities
     pkgs.zip
     pkgs.unzip
     pkgs.gnutar
+    pkgs.p7zip
 
     # Fonts
     pkgs.noto-fonts
@@ -58,7 +60,7 @@ in
     # social
     pkgs.discord
     pkgs.element-desktop
-    pkgs.mattermost-desktop
+    # pkgs.mattermost-desktop
 
     # productivity
     pkgs.bitwarden
@@ -69,10 +71,12 @@ in
     pkgs.gnome.sushi
     pkgs.evolution
     pkgs.gnome.gnome-calendar
-    pkgs.p7zip
   ];
 
-  programs.kitty.enable = true;
+  programs = {
+    kitty.enable = true;
+    password-store.enable = true;
+  };
 
   home.file.xscreensaver = {
     source = ./xscreensaver/.xscreensaver;
