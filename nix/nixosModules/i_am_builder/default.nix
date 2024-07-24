@@ -9,7 +9,7 @@
     # Randomize GC to avoid thundering herd effects.
     randomizedDelaySec = "1800";
 
-    options = "--delete-older-than 15d";
+    options = "--delete-older-than 8d";
   };
 
   users.users.nix-remote-builder = {
