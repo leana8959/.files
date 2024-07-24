@@ -18,6 +18,7 @@
         ./nix/nixosModules
         ./nix/darwinModules
         ./nix/flakeModules
+        ./nix/disko
 
         ./nix/resolve
         ./nix/custom
@@ -54,6 +55,10 @@
     };
     nur.url = "github:nix-community/nur";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix = {
       url = "github:ryantm/agenix/0.15.0";
       inputs.nixpkgs.follows = "nixpkgs";
