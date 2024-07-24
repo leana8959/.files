@@ -48,6 +48,7 @@
           format = "install-iso";
           modules = [
             self.nixosModules.layouts
+            self.nixosModules.system-nixconf
             {
               environment.etc.flake-source.source = self;
               environment.systemPackages = [ pkgs.disko ];
