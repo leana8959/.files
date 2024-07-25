@@ -21,14 +21,14 @@
         mandatoryFeatures = [ ];
       };
 
-      carbon = def // {
-        hostName = "carbon";
-        system = "x86_64-linux";
-        speedFactor = 4;
-      };
+      # carbon = def // {
+      #   hostName = "carbon";
+      #   system = "x86_64-linux";
+      #   speedFactor = 4;
+      # };
 
-      forgejo = def // {
-        hostName = "forgejo";
+      builder = def // {
+        hostName = "builder";
         system = "x86_64-linux";
         speedFactor = 1;
       };
@@ -48,10 +48,9 @@
       };
     in
     [
-      # TODO: rebuilding...
       # carbon
 
-      forgejo
+      builder
       hydrogen
       oracle
     ];
