@@ -57,11 +57,11 @@
             {
               environment.systemPackages = [
                 pkgs.disko
-                pkgs.fish
                 pkgs.git
               ];
               nix.package = lib.mkForce pkgs.nixVersions.latest;
               users.users.nixos.shell = pkgs.fish;
+              programs.fish.enable = true;
             }
           ];
         };
