@@ -10,7 +10,7 @@ let
       ...
     }:
     withSystem system (
-      { pkgs, ... }:
+      { pkgs, lib, ... }:
       let
         infoArgs = {
           inherit hostname system;
@@ -24,14 +24,14 @@ let
         inherit specialArgs;
         modules = nixosModulesOf infoArgs ++ [
           extraNixOSConfig
-          {
+          (lib.attrsets.optionalAttrs (extraHomeConfig != null) {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
               users.leana.imports = homeModulesOf infoArgs ++ [ extraHomeConfig ];
             };
-          }
+          })
         ];
       }
     );
@@ -46,7 +46,7 @@ let
       ...
     }:
     withSystem system (
-      { pkgs, ... }:
+      { pkgs, lib, ... }:
       let
         infoArgs = {
           inherit hostname system;
@@ -60,14 +60,14 @@ let
         inherit specialArgs;
         modules = darwinModulesOf infoArgs ++ [
           extraDarwinConfig
-          {
+          (lib.attrsets.optionalAttrs (extraHomeConfig != null) {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = specialArgs;
               users.leana.imports = homeModulesOf infoArgs ++ [ extraHomeConfig ];
             };
-          }
+          })
         ];
       }
     );
