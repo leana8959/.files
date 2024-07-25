@@ -61,7 +61,7 @@
               type = "filesystem";
               format = "ext4";
               mountpoint = "/nix";
-              mointOptions = [ "noatime" ];
+              mountOptions = [ "noatime" ];
             };
           };
           encrytedSwap = {
