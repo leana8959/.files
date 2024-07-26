@@ -140,7 +140,6 @@ in
           addons.ublock-origin
           addons.privacy-badger
           addons.sponsorblock
-          addons.bitwarden
           addons.tridactyl
           addons.languagetool
           addons.bypass-paywalls-clean
