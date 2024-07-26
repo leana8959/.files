@@ -61,14 +61,6 @@
               mountOptions = [ "noatime" ];
             };
           };
-          encrytedSwap = {
-            size = "16M";
-            content = {
-              type = "swap";
-              randomEncryption = true;
-              priority = 100;
-            };
-          };
           swap = {
             size = "48G"; # > 32G for hibernation
             content = {
