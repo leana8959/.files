@@ -70,6 +70,10 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # packages
     audio-lint = {
       url = "git+https://git.earth2077.fr/leana/audio-lint";
