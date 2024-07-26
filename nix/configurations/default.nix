@@ -207,12 +207,13 @@ in
                 nixpkgs.hostPlatform = system;
                 system.stateVersion = "24.05";
 
-                imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
-                isoImage.squashfsCompression = lib.mkDefault "zstd"; # Much faster than xz
+                imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-minimal.nix" ];
+                isoImage.squashfsCompression = "zstd -Xcompression-level 3";
                 environment.systemPackages = [
                   pkgs.disko
                   pkgs.fish
                   pkgs.git
+                  pkgs.pastebinit # for sharing cli output & debugging
                 ];
                 nix.package = lib.mkForce pkgs.nixVersions.latest;
                 users.users.nixos.shell = pkgs.fish;
