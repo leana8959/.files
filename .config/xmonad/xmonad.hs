@@ -146,10 +146,6 @@ myScratchpads =
       (myTerm ++ " -T 'btop' btop")
       (title =? "btop")
       centeredFloat
-  , NS "bitwarden"
-      "bitwarden"
-      (className =? "Bitwarden")
-      (customFloating $ W.RationalRect (1/2) (1/6) (2/5) (2/3))
   ]
 
 -- Only remove mappings that needs pass through.
@@ -172,7 +168,6 @@ myKeymaps =
   in  [ -- programs
         ((controlMask .|. myMod, xK_f), spawn "firefox")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
-      , ((controlMask .|. myMod, xK_p), namedScratchpadAction myScratchpads "bitwarden")
       , ((controlMask .|. myMod, xK_h), namedScratchpadAction myScratchpads "btop")
 
       -- screenshot
