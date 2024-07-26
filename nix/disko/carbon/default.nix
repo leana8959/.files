@@ -26,7 +26,6 @@
                 name = "crypted";
                 extraOpenArgs = [ ];
                 settings = {
-                  askPassword = true;
                   allowDiscards = true;
                 };
                 content = {
