@@ -174,6 +174,8 @@ in
             system = "x86_64-linux";
             modules = [
               self.nixosModules.i_am_builder
+              inputs.disko.nixosModules.default
+              self.diskoConfigurations.carbon
               {
                 home-manager.users.leana = {
                   programs.neovim.extraLangServers.enable = true;
@@ -210,7 +212,7 @@ in
                 imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
                 isoImage.squashfsCompression = lib.mkDefault "zstd"; # Much faster than xz
                 environment.systemPackages = [
-                  pkgs.disko
+                  inputs.disko.packages.${system}.disko
                   pkgs.fish
                   pkgs.git
                 ];
