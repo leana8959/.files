@@ -17,32 +17,39 @@ let
 
   mkNixOSes =
     let
-      go =
-        mkNixOS
-          (
-            { hostname, system }:
-            [
-              {
-                nixpkgs.hostPlatform = system;
-                system.stateVersion = "24.05";
-              }
-              self.nixosModules._
-              self.nixosModules.leana
-              self.nixosModules.layouts
-              ./host/${hostname}
-              inputs.agenix.nixosModules.default
-              inputs.home-manager.nixosModules.home-manager
-            ]
-          )
-          (
-            { hostname, ... }:
-            [
-              { home.stateVersion = "24.05"; }
-              self.homeModules._
-              ./home/${hostname}
-              nixpkgsRegistry
-            ]
-          );
+      go = mkNixOS (
+        { hostname, system }:
+        [
+          {
+            nixpkgs.hostPlatform = system;
+            system.stateVersion = "24.05";
+          }
+
+          self.nixosModules._
+          self.nixosModules.layouts
+          ./host/${hostname}
+          inputs.agenix.nixosModules.default
+
+          self.nixosModules.leana
+          inputs.home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit hostname;
+              };
+
+              sharedModules = [ { home.stateVersion = "24.05"; } ];
+              users.leana.imports = [
+                self.homeModules._
+                ./home/${hostname}
+                nixpkgsRegistry
+              ];
+            };
+          }
+        ]
+      );
     in
     many (
       args@{ system, ... }:
@@ -53,29 +60,35 @@ let
     );
 
   mkDarwins = many (
-    mkDarwin
-      (
-        { hostname, system }:
-        [
-          {
-            nixpkgs.hostPlatform = system;
-            system.stateVersion = 4;
-          }
-          self.nixosModules.shared
-          self.darwinModules._
-          ./host/${hostname}
-          inputs.home-manager.darwinModules.home-manager
-        ]
-      )
-      (
-        { hostname, ... }:
-        [
-          { home.stateVersion = "24.05"; }
-          self.homeModules._
-          ./home/${hostname}
-          nixpkgsRegistry
-        ]
-      )
+    mkDarwin (
+      { hostname, system }:
+      [
+        {
+          nixpkgs.hostPlatform = system;
+          system.stateVersion = 4;
+        }
+        self.nixosModules.shared
+        self.darwinModules._
+        ./host/${hostname}
+
+        inputs.home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {
+              inherit hostname;
+            };
+            sharedModules = [ { home.stateVersion = "24.05"; } ];
+            users.leana.imports = [
+              self.homeModules._
+              ./home/${hostname}
+              nixpkgsRegistry
+            ];
+          };
+        }
+      ]
+    )
   );
 
   mkHomeManagers =
@@ -106,22 +119,30 @@ in
       # MacBook Pro 2021
       bismuth = {
         system = "aarch64-darwin";
-        extraHomeConfig = {
-          programs.neovim.extraLangServers.enable = true;
-          extra.utilities.enable = true;
-          extra.university.enable = true;
-          extra.workflow.enable = true;
-          programs.git.signing.signByDefault = true;
-          programs.cmus.enable = true;
-          programs.password-store.enable = true;
-        };
+        modules = [
+          {
+            home-manager.users.leana = {
+              programs.neovim.extraLangServers.enable = true;
+              extra.utilities.enable = true;
+              extra.university.enable = true;
+              extra.workflow.enable = true;
+              programs.git.signing.signByDefault = true;
+              programs.cmus.enable = true;
+              programs.password-store.enable = true;
+            };
+          }
+        ];
       };
       # MacBook Air 2014
       tungsten = {
         system = "x86_64-darwin";
-        extraHomeConfig = {
-          programs.cmus.enable = true;
-        };
+        modules = [
+          {
+            home-manager.users.leana = {
+              programs.cmus.enable = true;
+            };
+          }
+        ];
       };
     };
 
@@ -133,11 +154,15 @@ in
       # Inria (2024)
       mertensia = {
         system = "x86_64-linux";
-        extraHomeConfig = {
-          programs.neovim.extraLangServers.enable = true;
-          extra.utilities.enable = true;
-          programs.password-store.enable = true;
-        };
+        modules = [
+          {
+            home-manager.users.leana = {
+              programs.neovim.extraLangServers.enable = true;
+              extra.utilities.enable = true;
+              programs.password-store.enable = true;
+            };
+          }
+        ];
       };
     };
 
@@ -145,18 +170,22 @@ in
       # Thinkpad
       carbon = {
         system = "x86_64-linux";
-        extraNixOSConfig.imports = [ self.nixosModules.i_am_builder ];
-        extraHomeConfig = {
-          programs.neovim.extraLangServers.enable = true;
-          extra.utilities.enable = true;
-          extra.university.enable = true;
-          programs.cmus.enable = true;
-        };
+        modules = [
+          self.nixosModules.i_am_builder
+          {
+            home-manager.users.leana = {
+              programs.neovim.extraLangServers.enable = true;
+              extra.utilities.enable = true;
+              extra.university.enable = true;
+              programs.cmus.enable = true;
+            };
+          }
+        ];
       };
       # Raspberry Pi 4
       hydrogen = {
         system = "aarch64-linux";
-        extraNixOSConfig.imports = [ self.nixosModules.i_am_builder ];
+        modules = [ self.nixosModules.i_am_builder ];
       };
     };
   };

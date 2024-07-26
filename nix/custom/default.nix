@@ -1,14 +1,10 @@
-{ self, inputs, ... }:
+{ self, ... }:
+
 {
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
 
   perSystem =
-    {
-      pkgs,
-      system,
-      lib,
-      ...
-    }:
+    { pkgs, lib, ... }:
     let
       inherit (pkgs) alt-ergo-pin;
       mkNerdFont = pkgs.callPackage self.lib.mkNerdFont { };
@@ -43,28 +39,6 @@
         tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
 
         posy-cursor = pkgs.callPackage ./posy-cursor.nix { };
-
-        carbon-installer = inputs.nixos-generators.nixosGenerate {
-          inherit system;
-          specialArgs = {
-            inherit pkgs;
-            hostname = "carbon";
-          };
-          format = "install-iso";
-          modules = [
-            self.nixosModules.layouts
-            self.nixosModules.system-nixconf
-            {
-              environment.systemPackages = [
-                pkgs.disko
-                pkgs.git
-              ];
-              nix.package = lib.mkForce pkgs.nixVersions.latest;
-              users.users.nixos.shell = pkgs.fish;
-              programs.fish.enable = true;
-            }
-          ];
-        };
       };
     };
 }
