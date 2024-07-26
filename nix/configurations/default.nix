@@ -166,27 +166,62 @@ in
       };
     };
 
-    nixosConfigurations = mkNixOSes {
-      # Thinkpad
-      carbon = {
-        system = "x86_64-linux";
-        modules = [
-          self.nixosModules.i_am_builder
-          {
-            home-manager.users.leana = {
-              programs.neovim.extraLangServers.enable = true;
-              extra.utilities.enable = true;
-              extra.university.enable = true;
-              programs.cmus.enable = true;
-            };
-          }
-        ];
-      };
-      # Raspberry Pi 4
-      hydrogen = {
-        system = "aarch64-linux";
-        modules = [ self.nixosModules.i_am_builder ];
-      };
-    };
+    nixosConfigurations =
+      let
+        hosts = mkNixOSes {
+          # Thinkpad
+          carbon = {
+            system = "x86_64-linux";
+            modules = [
+              self.nixosModules.i_am_builder
+              {
+                home-manager.users.leana = {
+                  programs.neovim.extraLangServers.enable = true;
+                  extra.utilities.enable = true;
+                  extra.university.enable = true;
+                  programs.cmus.enable = true;
+                };
+              }
+            ];
+          };
+          # Raspberry Pi 4
+          hydrogen = {
+            system = "aarch64-linux";
+            modules = [ self.nixosModules.i_am_builder ];
+          };
+        };
+
+        carbon-installer = inputs.nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          modules = [
+            self.nixosModules.layouts
+            self.nixosModules.system-nixconf
+            (
+              {
+                pkgs,
+                lib,
+                modulesPath,
+                ...
+              }:
+              {
+                nixpkgs.hostPlatform = system;
+                system.stateVersion = "24.05";
+
+                imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-base.nix" ];
+                isoImage.squashfsCompression = lib.mkDefault "zstd"; # Much faster than xz
+                environment.systemPackages = [
+                  pkgs.disko
+                  pkgs.fish
+                  pkgs.git
+                ];
+                nix.package = lib.mkForce pkgs.nixVersions.latest;
+                users.users.nixos.shell = pkgs.fish;
+                programs.fish.enable = true;
+              }
+            )
+          ];
+        };
+      in
+      hosts // { inherit carbon-installer; };
   };
 }
