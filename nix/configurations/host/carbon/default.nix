@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware-configuration.nix # generated
 
     ./age.nix
     ./battery.nix
@@ -21,7 +21,7 @@
     efi.canTouchEfiVariables = true;
   };
 
-  users.users.leana.extraGroups = [
+  users.users."leana".extraGroups = [
     "wheel" # sudoers
     "video" # light
     "audio" # pipewire
@@ -33,10 +33,4 @@
     "root"
     "@wheel"
   ];
-
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
-  };
 }
