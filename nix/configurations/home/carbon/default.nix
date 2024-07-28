@@ -56,6 +56,8 @@ in
     )
     pkgs.haskell-language-server
 
+    pkgs.ranger
+
     # GUI apps
     # social
     pkgs.discord
