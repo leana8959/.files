@@ -26,14 +26,12 @@
         HDMI-1.enable = false;
         HDMI-2.enable = false;
       };
-    in
-    {
-      enable = true;
-      profiles."home" = {
-        fingerprint.HDMI-2 = lg-monitor;
+
+      mkHomeProfile = externalScreenDevice: {
+        fingerprint.${externalScreenDevice} = lg-monitor;
         fingerprint.eDP-1 = built-in;
         config = allOff // {
-          HDMI-2 = {
+          ${externalScreenDevice} = {
             enable = true;
             crtc = 1;
             mode = "2560x1440";
@@ -42,6 +40,13 @@
           };
         };
       };
+    in
+    {
+      enable = true;
+      # builtin HDMI port
+      profiles."home-HDMI-2" = mkHomeProfile "HDMI-2";
+      # usb-c dongle (Apple)
+      profiles."home-DP-1" = mkHomeProfile "DP-1";
       profiles."laptop" = {
         fingerprint.eDP-1 = built-in;
         config = allOff // {
