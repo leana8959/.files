@@ -40,10 +40,4 @@ in
       };
     };
   };
-
-  hardware.i2c.enable = true;
-  users.users."leana".extraGroups = [ "i2c" ];
-  environment.systemPackages = [ pkgs.ddcutil ];
-
-  programs.light.enable = true;
 }
