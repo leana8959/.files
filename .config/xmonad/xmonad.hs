@@ -46,7 +46,6 @@ import           Control.Monad                (msum)
 import           Data.Ratio                   (Ratio, (%))
 
 import qualified Data.Text                    as T
-import           NeatInterpolation            (text)
 
 xmonadConfig = def
   { modMask            = myMod
@@ -182,8 +181,8 @@ myKeymaps =
         , spawn "scrot -s"
         )
 
-      -- reset all displays
-      , ((0, xF86XK_Display), spawn "xrandr --auto")
+      -- reset builtin display
+      , ((0, xF86XK_Display), spawn "xrandr --output eDP-1 --auto")
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
