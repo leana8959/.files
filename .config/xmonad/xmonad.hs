@@ -24,7 +24,9 @@ import           XMonad.Hooks.DynamicLog      (PP (ppCurrent, ppHiddenNoWindows,
                                                filterOutWsPP, wrap, xmobarColor)
 import           XMonad.Hooks.EwmhDesktops    (ewmh, ewmhFullscreen)
 import           XMonad.Hooks.StatusBar       (defToggleStrutsKey,
-                                               statusBarProp, withEasySB)
+                                               statusBarProp, withEasySB, dynamicSBs,
+                                               StatusBarConfig, statusBarPropTo,
+                                               dynamicEasySBs)
 import           XMonad.Hooks.StatusBar.PP    (PP (ppCurrent, ppHiddenNoWindows, ppSep),
                                                filterOutWsPP, wrap, xmobarColor)
 
@@ -260,12 +262,6 @@ setupMonitors = T.unpack
   fi
   |]
 
-setupXmobar = T.unpack
-  [text|
-  xmobar -x 0 ~/.config/xmobar/xmobarrc
-  xmobar -x 1 ~/.config/xmobar/xmobarrc
-  |]
-
 myStartupHook = do
   spawnOnce setupMonitors                                      -- External display hack
   spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
@@ -273,11 +269,13 @@ myStartupHook = do
   spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
   spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
+xmobarOf :: ScreenId -> IO StatusBarConfig
+xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
+xmobarOf 1 = pure $ statusBarProp "xmobar -x 1 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
+
 main = xmonad
       . ewmhFullscreen . ewmh
-      . withEasySB
-        (statusBarProp setupXmobar (pure myPrettyPrinter))
-        defToggleStrutsKey
+      . dynamicEasySBs xmobarOf
       $ xmonadConfig
 
 -- vim:et:sw=2:ts=2
