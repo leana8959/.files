@@ -18,4 +18,6 @@
     pkgs.pavucontrol
     pkgs.easyeffects
   ];
+
+  users.users."leana".extraGroups = [ "audio" ];
 }
