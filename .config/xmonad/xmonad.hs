@@ -168,7 +168,7 @@ myKeymaps =
   in  [ -- programs
         ((controlMask .|. myMod, xK_f), spawn "firefox-esr")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
-      , ((controlMask .|. myMod, xK_h), namedScratchpadAction myScratchpads "btop")
+      , ((controlMask .|. myMod, xK_t), namedScratchpadAction myScratchpads "btop")
 
       -- screenshot
       , ( (mod4Mask .|. shiftMask, xK_3)
