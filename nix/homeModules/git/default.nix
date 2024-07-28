@@ -2,10 +2,7 @@
 {
   # git plugins
   programs.git = {
-    lfs = {
-      enable = true;
-      skipSmudge = true;
-    };
+    lfs.enable = true;
     delta = {
       enable = true;
       options = {
