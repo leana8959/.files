@@ -179,6 +179,7 @@ in
               {
                 home-manager.users.leana = {
                   programs.neovim.extraLangServers.enable = true;
+                  programs.git.signing.signByDefault = true;
                   extra.utilities.enable = true;
                   extra.university.enable = true;
                   programs.cmus.enable = true;
