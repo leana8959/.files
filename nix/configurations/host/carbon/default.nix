@@ -1,39 +1,42 @@
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware-configuration.nix # generated
 
-    ./age.nix
     ./battery.nix
-    ./gui.nix
-    ./locale.nix
     ./audio.nix
     ./networking.nix
     ./bluetooth.nix
+    ./display.nix
+
+    ./inputMethod.nix
     ./packages.nix
-    ./virt.nix
+
+    ./gui.nix
   ];
 
   boot.loader = {
-    systemd-boot.enable = true;
+    systemd-boot = {
+      enable = true;
+      editor = false;
+    };
     efi.canTouchEfiVariables = true;
   };
 
-  users.users.leana.extraGroups = [
-    "wheel" # sudoers
-    "video" # light
-    "audio" # pipewire
-    "docker"
-    "vboxusers"
-  ];
-
   nix.settings.trusted-users = [
     "root"
-    "@wheel"
+    "leana"
   ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 15d";
+  age.secrets = {
+    sshconfig = {
+      file = ../../secrets/sshconfig.age;
+      path = "/home/leana/.ssh/config";
+      mode = "644";
+      owner = "leana";
+    };
+
+    wpa_password.file = ../../secrets/wpa_password.age;
+    wireguard_priv.file = ../../secrets/wireguard_priv.age;
+    wireguard_psk.file = ../../secrets/wireguard_psk.age;
   };
 }

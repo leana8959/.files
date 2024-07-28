@@ -174,9 +174,12 @@ in
             system = "x86_64-linux";
             modules = [
               self.nixosModules.i_am_builder
+              inputs.disko.nixosModules.default
+              self.diskoConfigurations.carbon
               {
                 home-manager.users.leana = {
                   programs.neovim.extraLangServers.enable = true;
+                  programs.git.signing.signByDefault = true;
                   extra.utilities.enable = true;
                   extra.university.enable = true;
                   programs.cmus.enable = true;
@@ -210,7 +213,7 @@ in
                 imports = [ "${toString modulesPath}/installer/cd-dvd/installation-cd-minimal.nix" ];
                 isoImage.squashfsCompression = "zstd -Xcompression-level 3";
                 environment.systemPackages = [
-                  pkgs.disko
+                  inputs.disko.packages.${system}.disko
                   pkgs.fish
                   pkgs.git
                   pkgs.pastebinit # for sharing cli output & debugging

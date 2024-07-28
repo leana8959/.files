@@ -5,7 +5,7 @@
     disk = {
       main = {
         type = "disk";
-        device = throw "Override me or change me";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -26,10 +26,6 @@
                 name = "crypted";
                 extraOpenArgs = [ ];
                 settings = {
-                  # # if you want to use the key for interactive login be sure there is no trailing newline
-                  # # for example use `echo -n "password" > /tmp/secret.key`
-                  # keyFile = "/tmp/secret.key";
-                  askPassword = true;
                   allowDiscards = true;
                 };
                 content = {
@@ -62,14 +58,6 @@
               format = "ext4";
               mountpoint = "/nix";
               mountOptions = [ "noatime" ];
-            };
-          };
-          encrytedSwap = {
-            size = "16M";
-            content = {
-              type = "swap";
-              randomEncryption = true;
-              priority = 100;
             };
           };
           swap = {

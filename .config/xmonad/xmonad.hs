@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE QuasiQuotes       #-}
 
 import           XMonad                       hiding (tile)
 
@@ -24,7 +23,9 @@ import           XMonad.Hooks.DynamicLog      (PP (ppCurrent, ppHiddenNoWindows,
                                                filterOutWsPP, wrap, xmobarColor)
 import           XMonad.Hooks.EwmhDesktops    (ewmh, ewmhFullscreen)
 import           XMonad.Hooks.StatusBar       (defToggleStrutsKey,
-                                               statusBarProp, withEasySB)
+                                               statusBarProp, withEasySB, dynamicSBs,
+                                               StatusBarConfig, statusBarPropTo,
+                                               dynamicEasySBs)
 import           XMonad.Hooks.StatusBar.PP    (PP (ppCurrent, ppHiddenNoWindows, ppSep),
                                                filterOutWsPP, wrap, xmobarColor)
 
@@ -45,7 +46,6 @@ import           Control.Monad                (msum)
 import           Data.Ratio                   (Ratio, (%))
 
 import qualified Data.Text                    as T
-import           NeatInterpolation            (text)
 
 xmonadConfig = def
   { modMask            = myMod
@@ -146,10 +146,6 @@ myScratchpads =
       (myTerm ++ " -T 'btop' btop")
       (title =? "btop")
       centeredFloat
-  , NS "bitwarden"
-      "bitwarden"
-      (className =? "Bitwarden")
-      (customFloating $ W.RationalRect (1/2) (1/6) (2/5) (2/3))
   ]
 
 -- Only remove mappings that needs pass through.
@@ -172,7 +168,6 @@ myKeymaps =
   in  [ -- programs
         ((controlMask .|. myMod, xK_f), spawn "firefox")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
-      , ((controlMask .|. myMod, xK_p), namedScratchpadAction myScratchpads "bitwarden")
       , ((controlMask .|. myMod, xK_h), namedScratchpadAction myScratchpads "btop")
 
       -- screenshot
@@ -186,8 +181,8 @@ myKeymaps =
         , spawn "scrot -s"
         )
 
-      -- toggle external display
-      , ((0, xF86XK_Display), spawn setupMonitors)
+      -- reset builtin display
+      , ((0, xF86XK_Display), spawn "xrandr --output eDP-1 --auto")
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
@@ -256,33 +251,19 @@ myPrettyPrinter =
   , ppSep             = " | "
   }
 
-setupMonitors = T.unpack
-  [text|
-  if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
-      xrandr --output eDP-1 --off
-  else
-      xrandr --auto
-  fi
-  |]
-
-setupXmobar = T.unpack
-  [text|
-  xmobar -x 0 ~/.config/xmobar/xmobarrc
-  xmobar -x 1 ~/.config/xmobar/xmobarrc
-  |]
-
 myStartupHook = do
-  spawnOnce setupMonitors                                      -- External display hack
   spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
   spawnOnce "pgrep xscreensaver || xscreensaver --no-splash &" -- Screensaver
   spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
   spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
 
+xmobarOf :: ScreenId -> IO StatusBarConfig
+xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
+xmobarOf 1 = pure $ statusBarProp "xmobar -x 1 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
+
 main = xmonad
       . ewmhFullscreen . ewmh
-      . withEasySB
-        (statusBarProp setupXmobar (pure myPrettyPrinter))
-        defToggleStrutsKey
+      . dynamicEasySBs xmobarOf
       $ xmonadConfig
 
 -- vim:et:sw=2:ts=2
