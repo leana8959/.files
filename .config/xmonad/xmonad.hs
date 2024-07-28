@@ -166,7 +166,7 @@ myKeymaps =
         , xK_m, xK_w, xK_v, xK_z
         ]
   in  [ -- programs
-        ((controlMask .|. myMod, xK_f), spawn "firefox")
+        ((controlMask .|. myMod, xK_f), spawn "firefox-esr")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
       , ((controlMask .|. myMod, xK_h), namedScratchpadAction myScratchpads "btop")
 
