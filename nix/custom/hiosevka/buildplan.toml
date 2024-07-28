@@ -2,6 +2,7 @@
 family = "hIosekva"
 spacing = "term"
 serifs = "sans"
+exportGlyphNames = true
 
 [buildPlans.hiosevka.ligations]
 inherits = "haskell"
