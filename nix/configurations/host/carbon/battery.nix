@@ -10,4 +10,9 @@
     serviceConfig.Restart = "on-failure";
     wantedBy = [ "multi-user.target" ];
   };
+
+  services.logind = {
+    lidSwitch = "hibernate";
+    lidSwitchExternalPower = "ignore";
+  };
 }
