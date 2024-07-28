@@ -1,5 +1,4 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE QuasiQuotes       #-}
 
 import           XMonad                       hiding (tile)
 
@@ -183,8 +182,8 @@ myKeymaps =
         , spawn "scrot -s"
         )
 
-      -- toggle external display
-      , ((0, xF86XK_Display), spawn setupMonitors)
+      -- reset all displays
+      , ((0, xF86XK_Display), spawn "xrandr --auto")
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
@@ -253,17 +252,7 @@ myPrettyPrinter =
   , ppSep             = " | "
   }
 
-setupMonitors = T.unpack
-  [text|
-  if xrandr --output DP-1 --left-of eDP-1 --mode 2560x1440 --rate 59.94; then
-      xrandr --output eDP-1 --off
-  else
-      xrandr --auto
-  fi
-  |]
-
 myStartupHook = do
-  spawnOnce setupMonitors                                      -- External display hack
   spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
   spawnOnce "pgrep xscreensaver || xscreensaver --no-splash &" -- Screensaver
   spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
