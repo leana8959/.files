@@ -63,7 +63,6 @@ in
     # pkgs.mattermost-desktop
 
     # productivity
-    pkgs.bitwarden
     pkgs.sioyek
     pkgs.evince
     pkgs.gnome.eog

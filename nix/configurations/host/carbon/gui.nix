@@ -26,7 +26,6 @@ in
     xserver.windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp: [ hp.neat-interpolation ];
     };
 
     libinput = {
@@ -40,6 +39,4 @@ in
       };
     };
   };
-
-  programs.light.enable = true;
 }
