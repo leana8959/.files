@@ -61,6 +61,7 @@ in
     pkgs.discord
     pkgs.element-desktop
     # pkgs.mattermost-desktop
+    pkgs.vlc
 
     # productivity
     pkgs.sioyek
