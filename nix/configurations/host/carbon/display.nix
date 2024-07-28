@@ -2,8 +2,8 @@
 
 {
   users.users."leana".extraGroups = [
-    "video"
-    "i2c"
+    "video" # light
+    "i2c" # i2c (for ddcutil)
   ];
 
   # Control builtin screen brightness
