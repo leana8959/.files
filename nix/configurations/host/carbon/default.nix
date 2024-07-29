@@ -39,4 +39,6 @@
     wireguard_priv.file = ../../secrets/wireguard_priv.age;
     wireguard_psk.file = ../../secrets/wireguard_psk.age;
   };
+
+  hardware.keyboard.zsa.enable = true;
 }
