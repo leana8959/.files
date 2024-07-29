@@ -80,9 +80,9 @@ in
     password-store.enable = true;
   };
 
-  home.file.xscreensaver = {
-    source = ./xscreensaver/.xscreensaver;
-    target = ".xscreensaver";
+  home.file = {
+    ".xscreensaver".source = ./xscreensaver/.xscreensaver;
+    ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
   };
 
   programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
