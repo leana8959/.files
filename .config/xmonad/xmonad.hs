@@ -252,10 +252,11 @@ myPrettyPrinter =
   }
 
 myStartupHook = do
-  spawnOnce "pgrep fcitx5       || fcitx5 &"                   -- Input method
+  spawnOnce "pgrep feh || feh --bg-fill ~/.wallpaper &"        -- wallpaper
+  spawnOnce "pgrep fcitx5 || fcitx5 &"                         -- Input method
   spawnOnce "pgrep xscreensaver || xscreensaver --no-splash &" -- Screensaver
-  spawnOnce "pgrep playerctld   || playerctld daemon"          -- Player controller
-  spawnOnce "pgrep wired        || wired &"                    -- Notification daemon
+  spawnOnce "pgrep playerctld || playerctld daemon"            -- Player controller
+  spawnOnce "pgrep wired || wired &"                           -- Notification daemon
 
 xmobarOf :: ScreenId -> IO StatusBarConfig
 xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
