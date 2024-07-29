@@ -252,7 +252,7 @@ myPrettyPrinter =
   }
 
 myStartupHook = do
-  spawnOnce "feh --bg-fill ~/.wallpaper &" -- wallpaper
+  spawnOnce "feh --no-fehbg --bg-fill ~/.wallpaper &" -- wallpaper
   spawnOnce "fcitx5 &" -- Input method
   spawnOnce "xscreensaver --no-splash &" -- Screensaver
   spawnOnce "playerctld daemon" -- Player controller
