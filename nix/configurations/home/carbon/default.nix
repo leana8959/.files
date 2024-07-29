@@ -84,4 +84,6 @@ in
     source = ./xscreensaver/.xscreensaver;
     target = ".xscreensaver";
   };
+
+  programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
 }
