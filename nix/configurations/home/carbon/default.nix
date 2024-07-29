@@ -74,6 +74,10 @@ in
     pkgs.gnome.sushi
     pkgs.evolution
     pkgs.gnome.gnome-calendar
+
+    # Moonlander
+    pkgs.qmk
+    pkgs.wally-cli
   ];
 
   programs = {
