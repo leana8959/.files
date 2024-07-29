@@ -173,7 +173,6 @@ in
           carbon = {
             system = "x86_64-linux";
             modules = [
-              self.nixosModules.i_am_builder
               inputs.disko.nixosModules.default
               self.diskoConfigurations.carbon
               {
