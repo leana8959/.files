@@ -260,6 +260,7 @@ myStartupHook = do
 xmobarOf :: ScreenId -> IO StatusBarConfig
 xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
 xmobarOf 1 = pure $ statusBarProp "xmobar -x 1 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
+xmobarOf _ = mempty
 
 main = xmonad
       . ewmhFullscreen . ewmh
