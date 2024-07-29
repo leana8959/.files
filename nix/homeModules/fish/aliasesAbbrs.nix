@@ -32,10 +32,7 @@
         ":q" = "exit";
 
         ## Preferences
-        np = "cd ~/.dotfiles && $EDITOR flake.nix && prevd";
         nd = "nix develop -L -c fish";
-        vp = "cd ~/.dotfiles/.config/nvim && $EDITOR init.lua && prevd";
-        xp = "cd ~/.dotfiles/.config/xmonad && $EDITOR xmonad.hs && prevd";
 
         nhist = "sudo nix profile history --profile /nix/var/nix/profiles/system";
         hhist = "nix profile history --profile ~/.local/state/nix/profiles/home-manager";
