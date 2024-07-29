@@ -1,16 +1,12 @@
 { pkgs, ... }:
 
 {
-  services = {
-    xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    autoRepeatDelay = 300;
+    autoRepeatInterval = 40;
 
-    xserver = {
-      autoRepeatDelay = 300;
-      autoRepeatInterval = 40;
-    };
-
-    picom.enable = true;
-    xserver.displayManager.lightdm = {
+    displayManager.lightdm = {
       enable = true;
       background = "#000000";
       greeters.gtk.cursorTheme = {
@@ -19,20 +15,23 @@
         size = 48;
       };
     };
-    xserver.windowManager.xmonad = {
+
+    windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
     };
+  };
 
-    libinput = {
-      mouse = {
-        naturalScrolling = true;
-        accelSpeed = "-0.5";
-      };
-      touchpad = {
-        naturalScrolling = true;
-        tapping = false;
-      };
+  services.picom.enable = true;
+
+  services.libinput = {
+    mouse = {
+      naturalScrolling = true;
+      accelSpeed = "-0.5";
+    };
+    touchpad = {
+      naturalScrolling = true;
+      tapping = false;
     };
   };
 }
