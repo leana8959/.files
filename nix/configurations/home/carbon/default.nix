@@ -57,6 +57,7 @@ in
     pkgs.haskell-language-server
 
     pkgs.ranger
+    pkgs.deploy-rs
 
     # GUI apps
     # social
