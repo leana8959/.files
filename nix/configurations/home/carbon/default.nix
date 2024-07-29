@@ -10,8 +10,8 @@ in
   home.pointerCursor = {
     x11.enable = true;
     gtk.enable = true;
-    name = "Posy_Cursor_Black";
-    package = myPkgs.posy-cursor;
+    name = "volantes_cursors";
+    package = pkgs.volantes-cursors;
     size = 48;
   };
 

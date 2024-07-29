@@ -1,9 +1,5 @@
 { pkgs, ... }:
 
-let
-  inherit (pkgs) myPkgs;
-in
-
 {
   services = {
     xserver.enable = true;
@@ -18,8 +14,8 @@ in
       enable = true;
       background = "#000000";
       greeters.gtk.cursorTheme = {
-        name = "Posy_Cursor_Black";
-        package = myPkgs.posy-cursor;
+        name = "volantes_cursors";
+        package = pkgs.volantes-cursors;
         size = 48;
       };
     };
