@@ -27,6 +27,11 @@
     vSync = true;
     fade = true;
     fadeDelta = 3;
+    settings.fade-exclude = [
+      "name = 'Fcitx5 Input Window'"
+      "class_g = 'fcitx'"
+      "class_i = 'fcitx'"
+    ];
   };
 
   services.libinput = {
