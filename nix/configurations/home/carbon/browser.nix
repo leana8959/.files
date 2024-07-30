@@ -130,7 +130,7 @@ in
         }
       '';
       userContent = ''
-        # a css
+        /* a css */
       '';
       extensions =
         let
