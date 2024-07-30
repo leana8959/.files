@@ -1,0 +1,33 @@
+# vim:ft=ini
+
+[GroupOrder]
+0=gDvorak
+1=gDvorakFrench
+2=gCangjie
+
+[Groups/0]
+Default Layout=us
+DefaultIM=cangjie5
+Name=gCangjie
+
+[Groups/0/Items/0]
+Layout=null
+Name=cangjie5
+
+[Groups/1]
+Default Layout=myDvorak
+DefaultIM=keyboard-myDvorak
+Name=gDvorak
+
+[Groups/1/Items/0]
+Layout=null
+Name=keyboard-myDvorak
+
+[Groups/2]
+Default Layout=myDvorakFrench
+DefaultIM=keyboard-myDvorakFrench
+Name=gDvorakFrench
+
+[Groups/2/Items/0]
+Layout=null
+Name=keyboard-myDvorakFrench
