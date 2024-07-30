@@ -62,8 +62,10 @@ in
     # GUI apps
     # social
     pkgs.discord
-    pkgs.element-desktop
+    pkgs.cinny-desktop
+    # pkgs.element-desktop
     # pkgs.mattermost-desktop
+
     pkgs.vlc
 
     # productivity
