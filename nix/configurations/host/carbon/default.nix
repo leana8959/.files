@@ -8,7 +8,7 @@
     ./bluetooth.nix
     ./display.nix
 
-    ./inputMethod.nix
+    ./inputMethod
     ./packages.nix
 
     ./gui.nix
