@@ -265,6 +265,8 @@ xmobarOf _ = mempty
 
 main = xmonad
       . ewmhFullscreen . ewmh
+      -- This does the docks and avoidStruts behind the scene
+      -- FIXME: is it normal that `xmonad --restart` makes xmobar above a fullscreen window
       . dynamicEasySBs xmobarOf
       $ xmonadConfig
 
