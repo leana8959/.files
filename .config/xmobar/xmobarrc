@@ -1,10 +1,12 @@
 -- vim:et:sw=2:ts=2:ft=haskell
 
 Config { overrideRedirect = False
-       , font             = "xft:JetBrainsMono"
+       , font             = "JetBrains Mono 13"
+       , additionalFonts  = [ "Noto Color Emoji 10"
+                            ]
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
-       , position = TopW L 100
+       , position = TopH 30
        , commands = [ Run Kbd
                         [ ("myDvorakFrench", "🇫🇷")
                         , ("myDvorak", "🇺🇸")
