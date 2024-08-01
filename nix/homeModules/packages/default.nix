@@ -35,7 +35,6 @@ in
         pkgs.stow
         pkgs.fd
         pkgs.vivid
-        pkgs.rsync
 
         # nix
         pkgs.nixfmt-rfc-style
@@ -49,11 +48,12 @@ in
       ]
 
       (lib.mkIf pkgs.stdenv.isDarwin [
-        # coreutils
+        # coreutils for darwin
         pkgs.uutils-coreutils-noprefix
       ])
 
       (lib.mkIf config.extra.utilities.enable [
+        pkgs.rsync
         pkgs.jq
         pkgs.hyperfine
         pkgs.watchexec
@@ -65,6 +65,7 @@ in
         pkgs.nurl
         pkgs.tea
         pkgs.agenix
+        pkgs.nvd
       ])
 
       (lib.mkIf config.extra.workflow.enable [
