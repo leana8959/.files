@@ -48,11 +48,6 @@ in
         Default = "searxng";
         Add = [
           {
-            Name = "invidious";
-            URLTemplate = "https://invidious.earth2077.fr/q={searchTerms}";
-            Alias = "@yt";
-          }
-          {
             Name = "searxng";
             URLTemplate = "https://searxng.earth2077.fr/search?q={searchTerms}";
           }
@@ -95,12 +90,12 @@ in
             definedAliases = [ "@yt" ];
             iconUpdateURL = "https://invidious.earth2077.fr/favicon-32x32.png";
           };
-          "Hoogle" = {
+          Hoogle = {
             urls = [ { template = "https://hoogle.haskell.org/?hoogle={searchTerms}"; } ];
             iconUpdateURL = "https://hoogle.haskell.org/favicon.png";
             definedAliases = [ "@hg" ];
           };
-          "Genius" = {
+          Genius = {
             urls = [ { template = "https://genius.com/search?q={searchTerms}"; } ];
             iconUpdateURL = "https://genius.com/favicon.ico";
             definedAliases = [ "@ge" ];
