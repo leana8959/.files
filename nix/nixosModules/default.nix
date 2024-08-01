@@ -15,6 +15,7 @@ let
   extraModuleNames = [
     "layouts"
     "leana"
+    "zram"
     "i_am_builder"
   ];
 

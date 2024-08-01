@@ -174,6 +174,7 @@ in
             modules = [
               inputs.disko.nixosModules.default
               self.diskoConfigurations.carbon
+              self.nixosModules.zram
               {
                 home-manager.users.leana = {
                   programs.neovim.extraLangServers.enable = true;
