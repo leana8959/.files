@@ -26,7 +26,10 @@
   # https://unix.stackexchange.com/questions/20483/how-to-find-which-process-is-causing-high-cpu-usage
   # https://unix.stackexchange.com/questions/588018/kworker-thread-kacpid-notify-kacpid-hogging-60-70-of-cpu
   # https://askubuntu.com/questions/1275749/acpi-event-69-made-my-system-unusable
-  boot.kernelParams = [ "acpi_mask_gpe=0x69" ];
+  boot.kernelParams = [
+    "acpi_mask_gpe=0x69" # very high count
+    "acpi_mask_gpe=0x16" # somewhat high
+  ];
 
   nix.settings.trusted-users = [
     "root"
