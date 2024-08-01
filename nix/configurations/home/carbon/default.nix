@@ -70,12 +70,12 @@ in
 
     # productivity
     pkgs.sioyek
-    pkgs.evince
-    pkgs.gnome.eog
-    pkgs.gnome.nautilus
-    pkgs.gnome.sushi
-    pkgs.evolution
-    pkgs.gnome.gnome-calendar
+    # pkgs.evince
+    # pkgs.gnome.eog
+    # pkgs.gnome.nautilus
+    # pkgs.gnome.sushi
+    # pkgs.evolution
+    # pkgs.gnome.gnome-calendar
 
     # Moonlander
     pkgs.qmk
