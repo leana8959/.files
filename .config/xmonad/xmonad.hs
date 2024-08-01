@@ -171,11 +171,11 @@ myKeymaps =
       , ((controlMask .|. myMod, xK_t), namedScratchpadAction myScratchpads "btop")
 
       -- screenshot
-      , ( (mod4Mask .|. shiftMask, xK_3)
-        , spawn "scrot -F - | xclip -in -selection clipboard -t image/png"
+      , ( (mod4Mask .|. shiftMask, xK_3) -- fullscreen
+        , spawn "shotgun -s | xclip -in -selection clipboard -t image/png"
         )
-      , ( (mod4Mask .|. shiftMask, xK_4)
-        , spawn "scrot -s -F - | xclip -in -selection clipboard -t image/png"
+      , ( (mod4Mask .|. shiftMask, xK_4) -- use hacksaw to select
+        , spawn "shotgun -g $(hacksaw) - | xclip -in -selection clipboard -t image/png"
         )
       , ( (controlMask .|. mod4Mask .|. shiftMask, xK_4)
         , spawn "scrot -s"

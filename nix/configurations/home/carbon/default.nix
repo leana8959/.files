@@ -36,7 +36,6 @@ in
     # Window Manager related
     pkgs.dmenu
     pkgs.xmobar
-    pkgs.scrot
     pkgs.xclip
     pkgs.feh
     pkgs.xscreensaver # TODO: why the service option won't work ?
@@ -70,6 +69,8 @@ in
 
     # productivity
     pkgs.sioyek
+    pkgs.hacksaw
+    pkgs.shotgun
     # pkgs.evince
     # pkgs.gnome.eog
     # pkgs.gnome.nautilus
