@@ -76,6 +76,11 @@ autocmd("FileType", {
 })
 
 autocmd("FileType", {
+    pattern = "go",
+    callback = function() vim.cmd("set noet") end,
+})
+
+autocmd("FileType", {
     pattern = { "nix", "haskell", "ocaml", "skel" },
     callback = function() vim.cmd([[let b:match_words = '\<let\>:\<in\>']]) end,
 })
