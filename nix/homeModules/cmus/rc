@@ -93,13 +93,4 @@ bind -f common y win-add-p
 bind -f common { vol -1% -0
 bind -f common } vol -0 -1%
 
-fset 90s=date>=1990&date<2000
-fset classical=genre="Classical"
-fset missing-tag=!stream&(artist=""|album=""|title=""|tracknumber=-1|date=-1)
-fset mp3=filename="*.mp3"
-fset ogg=filename="*.ogg"
-fset ogg-or-mp3=ogg|mp3
-fset unheard=play_count=0
-factivate
-
 set status_display_program=cmusfm
