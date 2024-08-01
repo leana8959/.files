@@ -17,7 +17,7 @@ let
 
   mkNixOSes =
     let
-      go = mkNixOS (
+      sharedModules =
         { hostname, system }:
         [
           {
@@ -48,52 +48,52 @@ let
               ];
             };
           }
-        ]
-      );
+        ];
     in
     many (
       args@{ system, ... }:
       let
-        config = go args;
+        config = mkNixOS sharedModules args;
       in
       config // { deploy = inputs.deploy-rs.lib.${system}.activate.nixos config; }
     );
 
-  mkDarwins = many (
-    mkDarwin (
-      { hostname, system }:
-      [
-        {
-          nixpkgs.hostPlatform = system;
-          system.stateVersion = 4;
-        }
-        self.nixosModules.shared
-        self.darwinModules._
-        ./host/${hostname}
+  mkDarwins =
+    let
+      sharedModules =
+        { hostname, system }:
+        [
+          {
+            nixpkgs.hostPlatform = system;
+            system.stateVersion = 4;
+          }
+          self.nixosModules.shared
+          self.darwinModules._
+          ./host/${hostname}
 
-        inputs.home-manager.darwinModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            extraSpecialArgs = {
-              inherit hostname;
+          inputs.home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit hostname;
+              };
+              sharedModules = [ { home.stateVersion = "24.05"; } ];
+              users.leana.imports = [
+                self.homeModules._
+                ./home/${hostname}
+                nixpkgsRegistry
+              ];
             };
-            sharedModules = [ { home.stateVersion = "24.05"; } ];
-            users.leana.imports = [
-              self.homeModules._
-              ./home/${hostname}
-              nixpkgsRegistry
-            ];
-          };
-        }
-      ]
-    )
-  );
+          }
+        ];
+    in
+    many (mkDarwin sharedModules);
 
   mkHomeManagers =
     let
-      go = mkHomeManager (
+      sharedModules =
         { hostname, ... }:
         [
           { home.stateVersion = "24.05"; }
@@ -101,13 +101,12 @@ let
           ./home/${hostname}
           nixpkgsRegistry
           self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
-        ]
-      );
+        ];
     in
     many (
       args@{ system, ... }:
       let
-        config = go args;
+        config = mkHomeManager sharedModules args;
       in
       config // { deploy = inputs.deploy-rs.lib.${system}.activate.home-manager config; }
     );
