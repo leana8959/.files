@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  nix.gc = lib.mkForce {
+  nix.gc = lib.mkOverride 900 {
     # Garbage-collect often
     automatic = true;
     dates = "*:45";

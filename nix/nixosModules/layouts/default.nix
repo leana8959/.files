@@ -1,6 +1,8 @@
+{ lib, ... }:
+
 {
   services.xserver.xkb = {
-    layout = "myDvorak";
+    layout = lib.mkDefault "myDvorak";
     # TODO: figure out how to implement this conditionally
     # options = "caps:swapescape";
     extraLayouts = {
