@@ -27,6 +27,15 @@
     "leana"
   ];
 
+  nix.gc.automatic = false;
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      dates = "weekly";
+    };
+  };
+
   age.secrets = {
     sshconfig = {
       file = ../../secrets/sshconfig.age;

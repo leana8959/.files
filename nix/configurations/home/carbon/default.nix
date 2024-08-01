@@ -94,13 +94,4 @@ in
   };
 
   programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
-
-  nix.gc.automatic = false;
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      dates = "weekly";
-    };
-  };
 }
