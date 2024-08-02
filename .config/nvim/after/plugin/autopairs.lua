@@ -36,7 +36,7 @@ end
 
 pair_with_insertion("(", "*", ")", { "ocaml", "why3", "skel" })
 pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel" })
-pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix" })
+pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix", "sh" })
 pair_with_insertion("{", " ", "}", nil)
 
 for _, symb in ipairs { "$", "```", "_", "*" } do
