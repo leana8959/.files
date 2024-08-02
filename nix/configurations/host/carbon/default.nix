@@ -45,14 +45,10 @@
     "leana"
   ];
 
-  nix.gc.automatic = false;
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      dates = "weekly";
-      extraArgs = "--keep 5 --keep-since 3d";
-    };
+  nix.gc = {
+    automatic = true;
+    dates = "2 weeks";
+    options = "--delete-older-than 90d";
   };
 
   age.secrets = {
