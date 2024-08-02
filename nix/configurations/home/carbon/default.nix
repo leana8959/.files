@@ -64,7 +64,7 @@ in
 
     pkgs.ranger
     pkgs.deploy-rs
-    pkgs.nix-diff
+    myPkgs.nd
 
     # GUI apps
     # social

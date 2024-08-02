@@ -39,13 +39,13 @@
 
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
 
-        nix-diff = pkgs-stable.writeShellApplication {
-          name = "nix-diff";
+        nd = pkgs-stable.writeShellApplication {
+          name = "nd";
           runtimeInputs = [
             pkgs-stable.nix-output-monitor
             pkgs-stable.nvd
           ];
-          text = builtins.readFile ./nix-diff.sh;
+          text = builtins.readFile ./nd.sh;
         };
       };
     };
