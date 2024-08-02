@@ -31,8 +31,7 @@
 
         ":q" = "exit";
 
-        ## Preferences
-        nd = "nix develop -L -c fish";
+        # nd = "nix develop -L -c fish";
 
         nhist = "sudo nix profile history --profile /nix/var/nix/profiles/system";
         hhist = "nix profile history --profile ~/.local/state/nix/profiles/home-manager";
