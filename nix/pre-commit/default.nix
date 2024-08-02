@@ -25,20 +25,6 @@
         };
       };
 
-      devShells.default = pkgs.mkShellNoCC {
-        shellHook = config.pre-commit.installationScript;
-        packages =
-          let
-            nix-diff = pkgs.writeShellApplication {
-              name = "nix-diff";
-              runtimeInputs = [
-                pkgs.nix-output-monitor
-                pkgs.nvd
-              ];
-              text = builtins.readFile ./nix-diff.sh;
-            };
-          in
-          [ nix-diff ];
-      };
+      devShells.default = pkgs.mkShellNoCC { shellHook = config.pre-commit.installationScript; };
     };
 }

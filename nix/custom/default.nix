@@ -38,6 +38,15 @@
         tokei = pkgs-stable.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
 
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
+
+        nix-diff = pkgs-stable.writeShellApplication {
+          name = "nix-diff";
+          runtimeInputs = [
+            pkgs-stable.nix-output-monitor
+            pkgs-stable.nvd
+          ];
+          text = builtins.readFile ./nix-diff.sh;
+        };
       };
     };
 }
