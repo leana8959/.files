@@ -4,6 +4,7 @@ normal=$(tput sgr0)
 while [ $# -gt 0 ]; do
 	case "$1" in
 	--clean*)
+		shopt -s nullglob
 		for link in nix-diff*; do
 			set -x
 			unlink "$link"
