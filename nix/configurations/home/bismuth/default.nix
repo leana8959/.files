@@ -1,13 +1,13 @@
 { pkgs, ... }:
+
 let
-  inherit (pkgs) myPkgs ghc-pin;
+  inherit (pkgs) myPkgs;
 in
+
 {
   imports = [ ./fonts.nix ];
 
   home.packages = [
-    ghc-pin.ghc
-    ghc-pin.haskell-language-server
     pkgs.qmk
     pkgs.wally-cli
 

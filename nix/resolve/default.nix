@@ -9,41 +9,36 @@
       ...
     }:
     {
-      _module.args.pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = [
-          (_: _: {
-            agenix = inputs'.agenix.packages.default;
-            audio-lint = inputs'.audio-lint.packages.default;
-          })
+      _module.args =
+        let
+          overlays = [
+            (_: _: {
+              agenix = inputs'.agenix.packages.default;
+              audio-lint = inputs'.audio-lint.packages.default;
+            })
 
-          (final: _: {
-            wired = final.fetchFromGitHub {
-              owner = "Toqozz";
-              repo = "wired-notify";
-              rev = "0.10.6";
-              hash = "sha256-AWIV/+vVwDZECZ4lFMSFyuyUKJc/gb72PiBJv6lbhnc=";
-            };
-          })
+            inputs.nur.overlay
 
-          (final: _: {
-            nur = import inputs.nur {
-              nurpkgs = final;
-              pkgs = final;
-            };
-          })
-
-          (_: _: { myPkgs = self'.packages; }) # extend pkgs with my custom set
-          (import ./pins.nix)
-          (import ./patches.nix)
-        ];
-
-        config.allowUnfreePredicate =
-          pkg:
-          builtins.elem (inputs.nixpkgs.lib.getName pkg) [
-            "discord"
-            "languagetool"
+            (_: _: { myPkgs = self'.packages; }) # extend pkgs with my custom set
           ];
-      };
+        in
+        {
+          pkgs-stable = import inputs.nixpkgs-stable {
+            inherit system;
+            inherit overlays;
+          };
+
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            inherit overlays;
+
+            config.allowUnfreePredicate =
+              pkg:
+              builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+                "discord"
+                "languagetool"
+              ];
+          };
+        };
     };
 }

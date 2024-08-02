@@ -137,7 +137,8 @@ in
           addons.sponsorblock
           addons.tridactyl
           addons.languagetool
-          addons.bypass-paywalls-clean
+          # flaky, find a better source to be fetched
+          # addons.bypass-paywalls-clean
           addons.news-feed-eradicator
         ];
     };

@@ -4,21 +4,18 @@
   lib,
   ...
 }:
+
 let
-  inherit (pkgs) ghc-pin myPkgs;
+  inherit (pkgs) myPkgs;
 in
+
 {
   home = {
     username = "ychiang";
     homeDirectory = "/udd/ychiang";
   };
 
-  home.packages = [
-    ghc-pin.ghc
-    ghc-pin.cabal-install
-    ghc-pin.haskell-language-server
-    myPkgs.necrolib
-  ];
+  home.packages = [ myPkgs.necrolib ];
 
   home.file."hiosevka-font" = {
     source = "${myPkgs.hiosevka-nerd-font-mono}/share/fonts/truetype";

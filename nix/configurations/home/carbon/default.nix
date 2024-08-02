@@ -1,7 +1,14 @@
 { pkgs, ... }:
 
 let
-  inherit (pkgs) myPkgs wired;
+  inherit (pkgs) myPkgs;
+
+  wired = pkgs.fetchFromGitHub {
+    owner = "Toqozz";
+    repo = "wired-notify";
+    rev = "0.10.6";
+    hash = "sha256-AWIV/+vVwDZECZ4lFMSFyuyUKJc/gb72PiBJv6lbhnc=";
+  };
 in
 
 {

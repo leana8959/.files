@@ -4,15 +4,14 @@
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
 
   perSystem =
-    { pkgs, lib, ... }:
+    { pkgs-stable, lib, ... }:
     let
-      inherit (pkgs) alt-ergo-pin;
-      mkNerdFont = pkgs.callPackage self.lib.mkNerdFont { };
+      mkNerdFont = pkgs-stable.callPackage self.lib.mkNerdFont { };
     in
     {
       # Export my package set
       packages = rec {
-        hiosevka = pkgs.callPackage ./hiosevka { };
+        hiosevka = pkgs-stable.callPackage ./hiosevka { };
         hiosevka-nerd-font-mono = mkNerdFont {
           font = hiosevka;
           extraArgs = [
@@ -27,18 +26,18 @@
             "--variable-width-glyphs"
           ];
         };
-        altiosevka = pkgs.callPackage ./altiosevka { };
+        altiosevka = pkgs-stable.callPackage ./altiosevka { };
 
-        logisim-evolution = pkgs.callPackage ./logisim-evolution.nix { };
-        necrolib = pkgs.callPackage ./necrolib.nix { };
-        why3 = pkgs.callPackage ./why3.nix { inherit (alt-ergo-pin) alt-ergo; };
+        logisim-evolution = pkgs-stable.callPackage ./logisim-evolution.nix { };
+        necrolib = pkgs-stable.callPackage ./necrolib.nix { };
+        why3 = pkgs-stable.callPackage ./why3.nix { };
 
-        dl-librescore = pkgs.callPackage ./dl-librescore.nix { };
-        fish-lsp = pkgs.callPackage ./fish-lsp { };
-        maeel = pkgs.callPackage ./maeel.nix { };
-        tokei = pkgs.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
+        dl-librescore = pkgs-stable.callPackage ./dl-librescore.nix { };
+        fish-lsp = pkgs-stable.callPackage ./fish-lsp { };
+        maeel = pkgs-stable.callPackage ./maeel.nix { };
+        tokei = pkgs-stable.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
 
-        posy-cursor = pkgs.callPackage ./posy-cursor.nix { };
+        posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
       };
     };
 }

@@ -43,49 +43,50 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
-      # url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.05";
       # plz merge my PR
-      url = "github:leana8959/home-manager/fish_source_vendor_completion";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # url = "github:leana8959/home-manager/fish_source_vendor_completion";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nur.url = "github:nix-community/nur";
     flake-parts.url = "github:hercules-ci/flake-parts";
     agenix = {
       url = "github:ryantm/agenix/0.15.0";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
       inputs.darwin.follows = "nix-darwin";
       inputs.home-manager.follows = "home-manager";
     };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # packages
     audio-lint = {
       url = "git+https://git.earth2077.fr/leana/audio-lint";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     hbrainfuck = {
       url = "git+https://git.earth2077.fr/leana/hbrainfuck";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     prop-solveur = {
       url = "git+https://git.earth2077.fr/leana/prop_solveur";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 }
