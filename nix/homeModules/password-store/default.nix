@@ -17,7 +17,10 @@ let
       PASSWORD_STORE_DIR = "${config.home.homeDirectory}/repos/leana/vault";
     };
   };
-  extra_programs = [ pkgs.diceware ];
+  extra_programs = [
+    pkgs.pwgen
+    pkgs.diceware
+  ];
 in
 
 {
