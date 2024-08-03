@@ -1,8 +1,20 @@
+{ pkgs, ... }:
+
 {
   services.xserver = {
     enable = true;
     autoRepeatDelay = 300;
     autoRepeatInterval = 40;
+
+    displayManager.lightdm = {
+      enable = true;
+      background = "#000000";
+      greeters.gtk.cursorTheme = {
+        name = "volantes_cursors";
+        package = pkgs.volantes-cursors;
+        size = 48;
+      };
+    };
 
     windowManager.xmonad = {
       enable = true;
