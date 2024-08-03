@@ -2,7 +2,7 @@
 
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       devShells = {
         forgejo = pkgs.mkShell {
@@ -48,6 +48,17 @@
               pkgs.swiftPackages.Foundation
               pkgs.darwin.apple_sdk.frameworks.Cocoa
             ]);
+        };
+
+        xev = pkgs.mkShell {
+          name = "xev";
+          packages = [
+            pkgs.clang-tools
+
+            pkgs.xorg.libX11
+            pkgs.xorg.libXrandr
+            pkgs.xorg.xrandr
+          ];
         };
       };
     };
