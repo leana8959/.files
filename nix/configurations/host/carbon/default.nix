@@ -7,6 +7,7 @@
     ./networking.nix
     ./bluetooth.nix
     ./display.nix
+    ./fs.nix
 
     ./inputMethod
     ./packages.nix
