@@ -8,6 +8,7 @@
         "^echo"
         "^-----BEGIN"
         "^mods"
+        "^.*PASSWORD=.*"
 
         # idiot protection
         "^rm -rf"
