@@ -7,6 +7,7 @@
     ./networking.nix
     ./bluetooth.nix
     ./display.nix
+    ./scanner.nix
 
     ./restic.nix
     ./fs.nix

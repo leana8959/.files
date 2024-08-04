@@ -37,6 +37,9 @@
               builtins.elem (inputs.nixpkgs.lib.getName pkg) [
                 "discord"
                 "languagetool"
+
+                "brscan5"
+                "brscan5-etc-files"
               ];
           };
         };
