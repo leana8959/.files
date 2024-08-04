@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  services.restic.backups."to-backblaze" = {
+  services.restic.backups."Documents-backblaze" = {
     paths = [ "/home/leana/Documents" ];
 
     passwordFile = config.age.secrets.restic_backblaze_pwd.path;
