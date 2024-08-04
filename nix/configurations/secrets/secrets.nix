@@ -14,4 +14,8 @@ in
 
   "wireguard_priv.age".publicKeys = all;
   "wireguard_psk.age".publicKeys = all;
+
+  "restic_backblaze_pwd.age".publicKeys = all;
+  "restic_backblaze_repo.age".publicKeys = all;
+  "restic_backblaze_env.age".publicKeys = all;
 }

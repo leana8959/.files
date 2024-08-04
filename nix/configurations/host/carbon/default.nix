@@ -7,6 +7,8 @@
     ./networking.nix
     ./bluetooth.nix
     ./display.nix
+
+    ./restic.nix
     ./fs.nix
 
     ./inputMethod
@@ -65,6 +67,10 @@
     wpa_password.file = ../../secrets/wpa_password.age;
     wireguard_priv.file = ../../secrets/wireguard_priv.age;
     wireguard_psk.file = ../../secrets/wireguard_psk.age;
+
+    restic_backblaze_pwd.file = ../../secrets/restic_backblaze_pwd.age;
+    restic_backblaze_repo.file = ../../secrets/restic_backblaze_repo.age;
+    restic_backblaze_env.file = ../../secrets/restic_backblaze_env.age;
   };
 
   hardware.keyboard.zsa.enable = true;
