@@ -2,6 +2,8 @@
 
 {
   security.sudo.extraConfig = ''
+    Defaults        timestamp_timeout=0
+
     Defaults        lecture = always
     Defaults        lecture_file = ${pkgs.writeText "sudo_lecture_file" ''
       λλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλλ
