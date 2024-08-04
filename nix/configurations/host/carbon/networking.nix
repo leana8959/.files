@@ -12,7 +12,7 @@
       "ro"
       "noauto"
       "x-systemd.automount"
-      "x-systemd.idle-timeout=60"
+      "x-systemd.idle-timeout=30min"
       "x-systemd.device-timeout=5s"
       "x-systemd.mount-timeout=5s"
     ];
