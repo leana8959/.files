@@ -76,6 +76,10 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # packages
+    wired-notify = {
+      url = "github:Toqozz/wired-notify/0.10.6";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     audio-lint = {
       url = "git+https://git.earth2077.fr/leana/audio-lint";
       inputs.nixpkgs.follows = "nixpkgs-stable";

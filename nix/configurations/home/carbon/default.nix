@@ -2,13 +2,6 @@
 
 let
   inherit (pkgs) myPkgs;
-
-  wired = pkgs.fetchFromGitHub {
-    owner = "Toqozz";
-    repo = "wired-notify";
-    rev = "0.10.6";
-    hash = "sha256-AWIV/+vVwDZECZ4lFMSFyuyUKJc/gb72PiBJv6lbhnc=";
-  };
 in
 
 {
@@ -46,7 +39,7 @@ in
     pkgs.xclip
     pkgs.feh
     pkgs.xscreensaver # TODO: why the service option won't work ?
-    wired
+    pkgs.wired
     pkgs.playerctl
     pkgs.jetbrains-mono # for xmobar
     (
