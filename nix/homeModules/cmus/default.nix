@@ -8,14 +8,39 @@
   options.programs.cmus.enable = lib.mkEnableOption "cmus";
 
   config = lib.mkIf config.programs.cmus.enable {
-    home.packages = [
-      pkgs.cmus
-      pkgs.cmusfm
-    ];
+    home.packages = [ pkgs.cmus ];
     xdg.configFile."cmus/rc" = {
       recursive = true;
       text = lib.mkMerge [
         (builtins.readFile ./rc)
+
+        (
+          let
+            # dispatch to multiple callbacks
+            callback = pkgs.writeShellApplication {
+              name = "cmus-callback-script";
+              runtimeInputs = [
+                pkgs.cmusfm
+                pkgs.libnotify
+              ];
+              text = ''
+                argv=("$@")
+                declare -A map
+                while [ $# -gt 0 ]; do
+                        map["$1"]="$2"
+                        shift
+                        shift
+                done
+
+                notify-send "''${map[title]}" "''${map[artist]} / ''${map[album]}"
+                cmusfm "''${argv[@]}"
+              '';
+            };
+          in
+          ''
+            set status_display_program=${lib.getExe callback}
+          ''
+        )
 
         (lib.mkIf pkgs.stdenv.isLinux ''
           set output_plugin=alsa

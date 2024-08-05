@@ -92,5 +92,3 @@ bind -f common x player-play
 bind -f common y win-add-p
 bind -f common { vol -1% -0
 bind -f common } vol -0 -1%
-
-set status_display_program=cmusfm
