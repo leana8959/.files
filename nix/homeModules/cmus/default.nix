@@ -37,10 +37,14 @@
               '';
             };
           in
-          ''
+          lib.mkIf pkgs.stdenv.isLinux ''
             set status_display_program=${lib.getExe callback}
           ''
         )
+
+        (lib.mkIf pkgs.stdenv.isDarwin ''
+          set status_display_program=${lib.getExe pkgs.cmusfm}
+        '')
 
         (lib.mkIf pkgs.stdenv.isLinux ''
           set output_plugin=alsa
