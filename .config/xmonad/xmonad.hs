@@ -121,6 +121,7 @@ myLayoutHook =
 
 centeredFloat = customFloating $ W.RationalRect (1/6) (1/6) (2/3) (2/3)
 longFloat     = customFloating $ W.RationalRect (2/7) 0 (3/7) 1
+smallFloat    = customFloating $ W.RationalRect (3/5) (3/5) (2/7) (2/7)
 
 myManageHook =
   composeAll
@@ -149,7 +150,7 @@ myScratchpads =
   , NS "pass"
       (myTerm ++ " -T 'pass' -- fish -i -c 'while : \n fzf_pass \n end'")
       (title =? "pass")
-      longFloat
+      smallFloat
   ]
 
 -- Only remove mappings that needs pass through.
