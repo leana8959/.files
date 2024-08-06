@@ -54,6 +54,7 @@ in
       ghcWithPackages haskellPackages
     )
     pkgs.haskell-language-server
+    myPkgs.xbrightness
 
     pkgs.ranger
     pkgs.deploy-rs

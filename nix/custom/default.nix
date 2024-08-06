@@ -39,14 +39,8 @@
 
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
 
-        nd = pkgs-stable.writeShellApplication {
-          name = "nd";
-          runtimeInputs = [
-            pkgs-stable.nix-output-monitor
-            pkgs-stable.nvd
-          ];
-          text = builtins.readFile ./nd.sh;
-        };
+        nd = pkgs-stable.callPackage ./nd { };
+        xbrightness = pkgs-stable.callPackage ./xbrightness.nix { };
       };
     };
 }
