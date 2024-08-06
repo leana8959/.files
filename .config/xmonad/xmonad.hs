@@ -146,6 +146,10 @@ myScratchpads =
       (myTerm ++ " -T 'btop' btop")
       (title =? "btop")
       centeredFloat
+  , NS "pass"
+      (myTerm ++ " -T 'pass' -- fish -i -c 'while : \n fzf_pass \n end'")
+      (title =? "pass")
+      longFloat
   ]
 
 -- Only remove mappings that needs pass through.
@@ -169,6 +173,7 @@ myKeymaps =
         ((controlMask .|. myMod, xK_f), spawn "firefox-esr")
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
       , ((controlMask .|. myMod, xK_t), namedScratchpadAction myScratchpads "btop")
+      , ((controlMask .|. myMod, xK_p), namedScratchpadAction myScratchpads "pass")
 
       -- screenshot
       , ( (mod4Mask .|. shiftMask, xK_3) -- fullscreen
