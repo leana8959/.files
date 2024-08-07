@@ -60,6 +60,29 @@
             pkgs.xorg.xrandr
           ];
         };
+
+        coreutils = pkgs.mkShell {
+          name = "coreutils";
+          packages = [
+            pkgs.clang-tools
+
+            pkgs.autoconf
+            pkgs.automake
+            pkgs.bison
+            pkgs.gettext
+            pkgs.git
+            pkgs.gperf
+            pkgs.gzip
+            pkgs.help2man
+            pkgs.m4
+            pkgs.gnumake
+            pkgs.perl
+            pkgs.gnutar
+            pkgs.texinfo
+            pkgs.wget
+            pkgs.xz
+          ];
+        };
       };
     };
 }
