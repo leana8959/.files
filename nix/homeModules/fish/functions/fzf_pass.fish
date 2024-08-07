@@ -19,7 +19,7 @@ function fzf_pass
 
     switch "$mode"
         case all
-            pass Discord/leana | nvim +"setlocal buftype=nofile bufhidden=hide noswapfile"
+            pass "$selected" | nvim +"setlocal buftype=nofile bufhidden=hide noswapfile"
         case password
             pass "$selected" -c
         case otp
