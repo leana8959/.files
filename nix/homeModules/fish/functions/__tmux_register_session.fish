@@ -4,8 +4,8 @@ function __tmux_register_session \
     set last /tmp/TMUX_LAST
 
     set this (tmux display-message -p '#S')
-    if [ ! -f "$last" ]; or [ (cat "$last") != "$tmux_current" ]
-        echo $this >$last
+    if [ ! -f "$last" ]; or [ (cat "$last") != "$this" ]
+        echo "$this" >"$last"
     end
 
 end
