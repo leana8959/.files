@@ -61,10 +61,12 @@
           ];
         };
 
-        coreutils = pkgs.mkShell {
+        coreutils = pkgs.mkShellNoCC {
           name = "coreutils";
           packages = [
             pkgs.clang-tools
+
+            pkgs.gcc12Stdenv
 
             pkgs.autoconf
             pkgs.automake
