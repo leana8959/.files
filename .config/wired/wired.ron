@@ -120,13 +120,16 @@
             parent: "image",
             hook: Hook(parent_anchor: MR, self_anchor: BL),
             offset: Vec2(x: 0.0, y: 0.0),
-            params: TextBlock((
+            params: ScrollingTextBlock((
                 text: "%s",
                 font: "JetBrains Mono 24",
-                ellipsize: Middle,
                 color: Color(hex: "#fafafa"),
                 padding: Padding(left: 7.0, right: 7.0, top: 1.0, bottom: 0.0),
-                dimensions: (width: (min: 400, max: 400), height: (min: 0, max: 0)),
+                width: (min: 400, max: 400),
+                scroll_speed: 0.1,
+                lhs_dist: 35.0,
+                rhs_dist: 35.0,
+                scroll_t: 1.0,
             )),
         ),
 
