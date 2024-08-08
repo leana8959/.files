@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
-# TODO: move this to a homeModule ?
-
 {
 
   home.packages = [
@@ -24,4 +22,5 @@
     "joshuto/mimetype.toml".source = ./mimetype.toml;
     "joshuto/theme.toml".source = ./theme.toml;
   };
+
 }

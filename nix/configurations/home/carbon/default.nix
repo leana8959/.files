@@ -5,10 +5,7 @@ let
 in
 
 {
-  imports = [
-    ./browser.nix
-    ./joshuto
-  ];
+  imports = [ ./browser.nix ];
 
   home.pointerCursor = {
     x11.enable = true;

@@ -14,6 +14,7 @@ let
     "starship"
     "fzf"
     "btop"
+    "joshuto"
 
     "tmux"
     "git"
