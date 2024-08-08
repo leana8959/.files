@@ -151,9 +151,9 @@ myScratchpads =
       (myTerm ++ " -T 'pass' -- fish -i -c 'while : \n fzf_pass \n end'")
       (title =? "pass")
       smallFloat
-  , NS "ranger"
-      (myTerm ++ " -T 'ranger' -- ranger")
-      (title =? "ranger")
+  , NS "joshuto"
+      (myTerm ++ " -T 'joshuto' -- joshuto")
+      (title =? "joshuto")
       centeredFloat
   ]
 
@@ -179,7 +179,7 @@ myKeymaps =
       , ((controlMask .|. myMod, xK_m), namedScratchpadAction myScratchpads "cmus")
       , ((controlMask .|. myMod, xK_t), namedScratchpadAction myScratchpads "btop")
       , ((controlMask .|. myMod, xK_p), namedScratchpadAction myScratchpads "pass")
-      , ((controlMask .|. myMod, xK_r), namedScratchpadAction myScratchpads "ranger")
+      , ((controlMask .|. myMod, xK_r), namedScratchpadAction myScratchpads "joshuto")
 
       -- screenshot
       , ( (mod4Mask .|. shiftMask, xK_3) -- fullscreen
