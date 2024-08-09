@@ -1,5 +1,7 @@
 # vim:ft=ini
 
+# TODO: remove "null"
+
 [GroupOrder]
 0=gDvorak
 1=gDvorakFrench
@@ -7,12 +9,12 @@
 
 [Groups/0]
 Default Layout=us
-DefaultIM=cangjie5
+DefaultIM=cangjie3
 Name=gCangjie
 
 [Groups/0/Items/0]
 Layout=null
-Name=cangjie5
+Name=cangjie3
 
 [Groups/1]
 Default Layout=myDvorak
