@@ -4,7 +4,7 @@
   perSystem =
     { pkgs, lib, ... }:
     {
-      devShells = {
+      devShells = rec {
         forgejo = pkgs.mkShell {
           name = "forgejo";
           packages = [
@@ -52,14 +52,23 @@
 
         xev = pkgs.mkShell {
           name = "xev";
+          XORG_MACROS_VERSION = pkgs.xorg-autoconf.version;
           packages = [
             pkgs.clang-tools
 
             pkgs.xorg.libX11
             pkgs.xorg.libXrandr
             pkgs.xorg.xrandr
+
+            pkgs.autoconf
+            pkgs.xorg-autoconf
+            pkgs.pkg-config
+            pkgs.automake115x
           ];
         };
+        xrandr = xev.overrideAttrs (_: {
+          name = "xrandr";
+        });
 
         coreutils = pkgs.mkShellNoCC {
           name = "coreutils";
