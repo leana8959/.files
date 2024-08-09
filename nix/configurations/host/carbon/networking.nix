@@ -29,32 +29,4 @@
       };
     };
   };
-
-  # systemd.targets.wireguard-wg0.wantedBy = lib.mkForce [ ];
-  # networking.wireguard = {
-  #   interfaces = {
-  #     wg0 = {
-  #       ips = [ "10.66.66.50/32" ];
-  #       privateKeyFile = config.age.secrets.wireguard_priv.path;
-  #       postSetup = ''
-  #         ${pkgs.iproute}/bin/ip route replace 10.66.66.1 dev wg0
-  #         ${pkgs.iproute}/bin/ip route replace 10.0.0.20 via 10.66.66.1 dev wg0
-  #         ${pkgs.iproute}/bin/ip route replace 10.0.0.31 via 10.66.66.1 dev wg0
-  #       '';
-  #       peers = [
-  #         {
-  #           publicKey = "amb6icauPN4P/suyNZoPsVVkB5+MiAnhFF6hIeUiNFE=";
-  #           presharedKeyFile = config.age.secrets.wireguard_psk.path;
-  #           allowedIPs = [
-  #             "10.66.66.1/32"
-  #             "10.0.0.20/32"
-  #             "10.0.0.31/32"
-  #           ];
-  #           endpoint = "moon.earth2077.fr:660";
-  #           persistentKeepalive = 25;
-  #         }
-  #       ];
-  #     };
-  #   };
-  # };
 }
