@@ -1,7 +1,5 @@
 # vim:ft=ini
 
-# TODO: remove "null"
-
 [GroupOrder]
 0=gDvorak
 1=gDvorakFrench
@@ -13,7 +11,7 @@ DefaultIM=cangjie3
 Name=gCangjie
 
 [Groups/0/Items/0]
-Layout=null
+Layout=
 Name=cangjie3
 
 [Groups/1]
@@ -22,7 +20,7 @@ DefaultIM=keyboard-myDvorak
 Name=gDvorak
 
 [Groups/1/Items/0]
-Layout=null
+Layout=
 Name=keyboard-myDvorak
 
 [Groups/2]
@@ -31,5 +29,5 @@ DefaultIM=keyboard-myDvorakFrench
 Name=gDvorakFrench
 
 [Groups/2/Items/0]
-Layout=null
+Layout=
 Name=keyboard-myDvorakFrench

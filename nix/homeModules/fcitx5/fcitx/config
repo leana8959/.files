@@ -5,10 +5,10 @@ ActiveByDefault=false
 AllowInputMethodForPassword=false
 AutoSavePeriod=30
 CompactInputmethodInformation=true
-CustomXkbOption=null
+CustomXkbOption=
 DefaultPageSize=5
-DisabledAddons=null
-EnabledAddons=null
+DisabledAddons=
+EnabledAddons=
 OverriedXkbOption=false
 PreeditEnabledByDefault=true
 PreloadInputMethod=true
@@ -19,9 +19,9 @@ ShowInputMethodInformationWhenFocusIn=false
 ShowPreeditForPassword=false
 
 [Hotkey]
-EnumerateBackwardKeys=null
-EnumerateForwardKeys=null
-EnumerateSkipFirst=null
+EnumerateBackwardKeys=
+EnumerateForwardKeys=
+EnumerateSkipFirst=
 EnumerateWithTriggerKeys=true
 
 [Hotkey/AltTriggerKeys]
