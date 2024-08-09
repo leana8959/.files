@@ -3,8 +3,6 @@
 {
   networking.networkmanager.enable = lib.mkForce false;
 
-  services.openssh.enable = true;
-
   networking.wireless = {
     enable = true;
     userControlled.enable = true;
