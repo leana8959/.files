@@ -14,10 +14,7 @@
     '';
   };
 
-  config.xdg.configFile."fish/functions" = lib.mkIf config.programs.fish.enable {
-    source = ./functions;
-    recursive = true;
-  };
+  config.xdg.configFile."fish/functions".source = lib.mkIf config.programs.fish.enable ./functions;
   config.programs.fish =
     let
       readConfig = n: builtins.readFile ./conf.d/${n}.fish;
