@@ -29,6 +29,7 @@ let
   extraModuleNames = [
     "auto-gc"
     "fcitx5"
+    "xmonad"
   ];
 
   eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;

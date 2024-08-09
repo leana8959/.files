@@ -15,11 +15,6 @@
         size = 48;
       };
     };
-
-    windowManager.xmonad = {
-      enable = true;
-      enableContribAndExtras = true;
-    };
   };
 
   services.picom = {
