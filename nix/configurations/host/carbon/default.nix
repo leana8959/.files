@@ -12,7 +12,6 @@
     ./restic.nix
     ./fs.nix
 
-    ./inputMethod
     ./packages.nix
 
     ./gui.nix

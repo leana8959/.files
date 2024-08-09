@@ -177,6 +177,7 @@ in
               self.nixosModules.zram
               {
                 home-manager.users.leana = {
+                  imports = [ self.homeModules.fcitx5 ];
                   programs.neovim.extraLangServers.enable = true;
                   programs.git.signing.signByDefault = true;
                   extra.utilities.enable = true;

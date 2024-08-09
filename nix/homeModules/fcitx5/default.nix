@@ -9,5 +9,5 @@
     ];
   };
 
-  environment.etc."xdg/fcitx5".source = ./fcitx;
+  xdg.configFile."fcitx5".source = ./fcitx;
 }

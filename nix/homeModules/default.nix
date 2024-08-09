@@ -26,7 +26,10 @@ let
 
     "cmus"
   ];
-  extraModuleNames = [ "auto-gc" ];
+  extraModuleNames = [
+    "auto-gc"
+    "fcitx5"
+  ];
 
   eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;
 
