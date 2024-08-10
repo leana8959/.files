@@ -31,6 +31,11 @@
           ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.Security ]);
         };
 
+        qmk = pkgs.mkShell {
+          name = "qmk";
+          packages = [ pkgs.clang-tools ];
+        };
+
         starship = pkgs.mkShell {
           name = "starship";
           packages =
