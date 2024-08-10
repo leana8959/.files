@@ -6,16 +6,14 @@ in
 
 {
   home.packages = [
-    # Used in tab bar
-    pkgs.cascadia-code
+    pkgs.cascadia-code # Used in tab bar
   ];
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr;
+    package = pkgs.firefox-esr; # some options only works with firefox-esr
+    # https://mozilla.github.io/policy-templates
     policies = {
-      # https://mozilla.github.io/policy-templates/#hardwareacceleration
-      # some options only works with firefox-esr
       DisableFirefoxScreenshots = true;
       DisablePocket = true;
       DisplayMenuBar = "never";

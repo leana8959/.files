@@ -9,8 +9,8 @@
       mkNerdFont = pkgs-stable.callPackage self.lib.mkNerdFont { };
     in
     {
-      # Export my package set
       packages = rec {
+        # fonts
         hiosevka = pkgs-stable.callPackage ./hiosevka { };
         hiosevka-nerd-font-mono = mkNerdFont {
           font = hiosevka;
@@ -32,15 +32,17 @@
         necrolib = pkgs-stable.callPackage ./necrolib.nix { };
         why3 = pkgs-stable.callPackage ./why3.nix { };
 
-        dl-librescore = pkgs-stable.callPackage ./dl-librescore.nix { };
-        fish-lsp = pkgs-stable.callPackage ./fish-lsp { };
         maeel = pkgs-stable.callPackage ./maeel.nix { };
         tokei = pkgs-stable.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
 
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
-
         nd = pkgs-stable.callPackage ./nd { };
         xbrightness = pkgs-stable.callPackage ./xbrightness.nix { };
+
+        # Unmerged packages from nixpkgs
+        # TODO: use upstream when merged
+        dl-librescore = pkgs-stable.callPackage ./dl-librescore.nix { };
+        fish-lsp = pkgs-stable.callPackage ./fish-lsp { };
       };
     };
 }

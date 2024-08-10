@@ -5,81 +5,32 @@ let
 in
 
 {
-  imports = [ ./browser.nix ];
+  imports = [
+    ./browser.nix
+    ./wm.nix
+  ];
 
-  home.pointerCursor = {
-    x11.enable = true;
-    gtk.enable = true;
-    name = "volantes_cursors";
-    package = pkgs.volantes-cursors;
-    size = 48;
+  home.file = {
+    ".xscreensaver".source = ./xscreensaver/.xscreensaver;
+    ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
   };
 
   home.packages = [
-    # utilities
     pkgs.zip
     pkgs.unzip
     pkgs.gnutar
     pkgs.p7zip
-
-    # Fonts
-    pkgs.noto-fonts
-    pkgs.noto-fonts-lgc-plus
-    pkgs.noto-fonts-cjk-sans
-    pkgs.noto-fonts-cjk-serif
-    pkgs.noto-fonts-color-emoji
-    pkgs.noto-fonts-emoji-blob-bin
-    pkgs.hanazono
-    myPkgs.hiosevka-nerd-font-mono
-    myPkgs.hiosevka
-
-    # Window Manager related
-    pkgs.dmenu
-    pkgs.xmobar
-    pkgs.xclip
-    pkgs.feh
-    pkgs.xscreensaver # TODO: why the service option won't work ?
-    pkgs.wired
-    pkgs.playerctl
-    pkgs.jetbrains-mono # for xmobar
-    (
-      let
-        inherit (pkgs.haskellPackages) ghcWithPackages;
-        haskellPackages = self: [
-          self.xmonad-contrib
-          self.xmonad-extras
-          self.neat-interpolation
-        ];
-      in
-      ghcWithPackages haskellPackages
-    )
-    pkgs.haskell-language-server
-    myPkgs.xbrightness
-
     pkgs.deploy-rs
     myPkgs.nd
 
-    # GUI apps
-    # social
     pkgs.discord
     pkgs.cinny-desktop
-    # pkgs.element-desktop
-    # pkgs.mattermost-desktop
 
-    pkgs.vlc
-
-    # productivity
     pkgs.sioyek
     pkgs.hacksaw
     pkgs.shotgun
-    # pkgs.evince
-    # pkgs.gnome.eog
-    # pkgs.gnome.nautilus
-    # pkgs.gnome.sushi
-    # pkgs.evolution
-    # pkgs.gnome.gnome-calendar
+    pkgs.vlc
 
-    # Moonlander
     pkgs.qmk
     pkgs.wally-cli
   ];
@@ -87,11 +38,6 @@ in
   programs = {
     kitty.enable = true;
     password-store.enable = true;
-  };
-
-  home.file = {
-    ".xscreensaver".source = ./xscreensaver/.xscreensaver;
-    ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
   };
 
   programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
