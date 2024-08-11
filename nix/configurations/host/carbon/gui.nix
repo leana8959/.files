@@ -6,6 +6,11 @@
     autoRepeatDelay = 300;
     autoRepeatInterval = 40;
 
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
+
     displayManager.lightdm = {
       enable = true;
       background = "#000000";
