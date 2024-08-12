@@ -8,7 +8,6 @@ in
   imports = [
     ./browser.nix
     ./wm.nix
-    ./joshuto
   ];
 
   home.file = {
