@@ -28,6 +28,7 @@ let
   extraModuleNames = [
     "auto-gc"
     "fcitx5"
+    "golang"
   ];
 
   eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;
