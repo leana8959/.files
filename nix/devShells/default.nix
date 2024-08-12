@@ -21,6 +21,14 @@
           ];
         };
 
+        go-xrr-gamma = pkgs.mkShell {
+          name = "forgejo";
+          packages = [
+            pkgs.xorg.libX11
+            pkgs.xorg.libXrandr
+          ];
+        };
+
         tokei = pkgs.mkShell {
           name = "tokei";
           packages = [
