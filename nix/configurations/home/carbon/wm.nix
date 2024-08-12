@@ -45,5 +45,6 @@ in
     )
     pkgs.haskell-language-server
     myPkgs.xbrightness
+    pkgs.ranger
   ];
 }
