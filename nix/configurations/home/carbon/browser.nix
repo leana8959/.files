@@ -11,7 +11,6 @@ in
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr; # some options only works with firefox-esr
     # https://mozilla.github.io/policy-templates
     policies = {
       DisableFirefoxScreenshots = true;
