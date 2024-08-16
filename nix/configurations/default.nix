@@ -119,6 +119,7 @@ in
       bismuth = {
         system = "aarch64-darwin";
         modules = [
+          self.nixosModules.builders
           {
             home-manager.users.leana = {
               programs.neovim.extraLangServers.enable = true;
@@ -175,6 +176,7 @@ in
               inputs.disko.nixosModules.default
               self.diskoConfigurations.carbon
               self.nixosModules.zram
+              self.nixosModules.builders
               {
                 home-manager.users.leana = {
                   imports = [

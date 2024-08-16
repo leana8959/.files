@@ -21,12 +21,6 @@
         mandatoryFeatures = [ ];
       };
 
-      # carbon = def // {
-      #   hostName = "carbon";
-      #   system = "x86_64-linux";
-      #   speedFactor = 4;
-      # };
-
       builder = def // {
         hostName = "builder";
         system = "x86_64-linux";
@@ -48,8 +42,6 @@
       };
     in
     [
-      # carbon
-
       builder
       hydrogen
       oracle

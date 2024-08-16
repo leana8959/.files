@@ -1,7 +1,6 @@
 { pkgs, ... }:
-{
-  imports = [ ./builders.nix ];
 
+{
   environment.systemPackages = [
     pkgs.vim
     pkgs.gnumake
