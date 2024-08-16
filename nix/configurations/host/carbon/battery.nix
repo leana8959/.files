@@ -14,6 +14,11 @@
       STOP_CHARGE_THRESH_BAT0 = 80;
       START_CHARGE_THRESH_BAT1 = 70;
       STOP_CHARGE_THRESH_BAT1 = 80;
+
+      # audio popping fix
+      SOUND_POWER_SAVE_ON_AC = 0;
+      SOUND_POWER_SAVE_ON_BAT = 0;
+      SOUND_POWER_SAVE_CONTROLLER = "N";
     };
   };
 
