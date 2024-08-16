@@ -17,7 +17,6 @@ let
     "leana"
     "zram"
     "i_am_builder"
-    "builders"
   ];
 
   sharedModules.imports = map toModule sharedModuleNames;
