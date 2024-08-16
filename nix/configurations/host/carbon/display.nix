@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   users.users."leana".extraGroups = [
@@ -40,6 +40,22 @@
           };
         };
       };
+
+      mkHomeProfile4k =
+        externalScreenDevice:
+        let
+          cfg = mkHomeProfile externalScreenDevice;
+        in
+        lib.attrsets.recursiveUpdate cfg {
+          config.${externalScreenDevice} = {
+            mode = "3840x2160";
+            rate = "60";
+            scale = {
+              x = 0.75;
+              y = 0.75;
+            };
+          };
+        };
     in
     {
       enable = true;
@@ -50,6 +66,7 @@
       profiles."home-HDMI-2" = mkHomeProfile "HDMI-2";
       # usb-c
       profiles."home-DP-1" = mkHomeProfile "DP-1";
+      profiles."home-DP-4k" = mkHomeProfile4k "DP-1";
       profiles."laptop" = {
         fingerprint.eDP-1 = built-in;
         config = def // {

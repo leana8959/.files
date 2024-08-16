@@ -197,8 +197,8 @@ myKeymaps =
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
-      , ((controlMask, xF86XK_MonBrightnessDown), spawn "xbrightness HDMI-2 -0.1")
-      , ((controlMask, xF86XK_MonBrightnessUp), spawn "xbrightness HDMI-2 +0.1")
+      , ((controlMask, xF86XK_MonBrightnessDown), spawn "xbrightness DP-1 -0.1")
+      , ((controlMask, xF86XK_MonBrightnessUp), spawn "xbrightness DP-1 +0.1")
 
       -- volume adjustments
       , ((0, xF86XK_AudioMute), spawn "amixer set Master toggle")
