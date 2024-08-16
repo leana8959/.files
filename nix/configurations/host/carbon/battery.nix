@@ -14,7 +14,7 @@
   };
 
   services.logind = {
-    lidSwitch = "hibernate";
+    lidSwitch = "suspend";
     lidSwitchExternalPower = "ignore";
   };
 
