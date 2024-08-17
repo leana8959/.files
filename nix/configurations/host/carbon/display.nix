@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   users.users."leana".extraGroups = [
@@ -20,26 +20,30 @@
       lg-monitor = "00ffffffffffff001e6d0777dd6a0100041f0104b53c22789e3e31ae5047ac270c50542108007140818081c0a9c0d1c08100010101014dd000a0f0703e803020650c58542100001a286800a0f0703e800890650c58542100001a000000fd00383d1e8738000a202020202020000000fc004c472048445220344b0a202020012102031c7144900403012309070783010000e305c000e6060501605550023a801871382d40582c450058542100001e565e00a0a0a029503020350058542100001a0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001e";
       built-in = "00ffffffffffff0030e4210500000000001a0104951f1178ea9d35945c558f291e5054000000010101010101010101010101010101012e3680a070381f403020350035ae1000001a542b80a070381f403020350035ae1000001a000000fe004c4720446973706c61790a2020000000fe004c503134305746362d535042370074";
 
-      def = {
-        eDP-1.enable = false;
-        DP-1.enable = false;
-        DP-2.enable = false;
-        HDMI-1.enable = false;
-        HDMI-2.enable = false;
-      };
+      offBut =
+        cfg:
+        {
+          eDP-1.enable = false;
+          DP-1.enable = false;
+          DP-2.enable = false;
+          HDMI-1.enable = false;
+          HDMI-2.enable = false;
+        }
+        // cfg;
 
       mkHomeProfile =
         {
           externalScreenDevice,
           is4k ? false,
+          withBuiltin ? true,
         }:
         {
-          fingerprint.${externalScreenDevice} = lg-monitor;
-          fingerprint.eDP-1 = built-in;
+          fingerprint = {
+            ${externalScreenDevice} = lg-monitor;
+          } // lib.attrsets.optionalAttrs withBuiltin { eDP-1 = built-in; };
           config =
             if is4k then
-              def
-              // {
+              offBut {
                 ${externalScreenDevice} = {
                   enable = true;
                   crtc = 1;
@@ -50,8 +54,7 @@
                 };
               }
             else
-              def
-              // {
+              offBut {
                 ${externalScreenDevice} = {
                   enable = true;
                   crtc = 1;
@@ -80,10 +83,15 @@
           externalScreenDevice = "DP-1";
           is4k = true;
         };
+        "home-DP-1-4k-clam" = mkHomeProfile {
+          externalScreenDevice = "DP-1";
+          is4k = true;
+          withBuiltin = false;
+        };
 
         "laptop" = {
           fingerprint.eDP-1 = built-in;
-          config = def // {
+          config = offBut {
             eDP-1 = {
               enable = true;
               crtc = 0;
