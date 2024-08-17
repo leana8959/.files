@@ -8,13 +8,13 @@
   programs.kitty = lib.mkIf config.programs.kitty.enable {
     font = {
       name = "HiosevkaNFM";
-      size = 17;
+      size = 22;
     };
     settings = {
       foreground = "#000000";
       background = "#ffffff";
       confirm_os_window_close = 0;
-      text_composition_strategy = "1.55 0";
+      text_composition_strategy = "1.7 0";
       shell = ''${pkgs.fish}/bin/fish --command="tmux_home" --login'';
     };
     extraConfig = ''
