@@ -10,7 +10,7 @@ in
     gtk.enable = true;
     name = "volantes_cursors";
     package = pkgs.volantes-cursors;
-    size = 48;
+    size = 64;
   };
 
   home.packages = [
