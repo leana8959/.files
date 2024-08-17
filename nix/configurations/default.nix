@@ -31,6 +31,7 @@ let
           inputs.agenix.nixosModules.default
 
           self.nixosModules.leana
+          self.nixosModules.fish-vendor-completions
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -71,6 +72,7 @@ let
           self.darwinModules._
           ./host/${hostname}
 
+          self.nixosModules.fish-vendor-completions
           inputs.home-manager.darwinModules.home-manager
           {
             home-manager = {

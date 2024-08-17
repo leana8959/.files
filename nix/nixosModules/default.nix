@@ -17,6 +17,7 @@ let
     "leana"
     "zram"
     "i_am_builder"
+    "fish-vendor-completions"
   ];
 
   sharedModules.imports = map toModule sharedModuleNames;
