@@ -99,6 +99,19 @@ ls.add_snippets("all", {
 local haskell_snippets = require("haskell-snippets").all
 ls.add_snippets("haskell", haskell_snippets, { key = "haskell" })
 
+------------
+-- Golang --
+------------
+-- stylua: ignore start
+ls.add_snippets("go", {
+    s("ie", {
+        t("if err != nil {"), cr(),
+        t("\t"), i(0), cr(),
+        t("}"),
+    }),
+})
+-- stylua: ignore end
+
 ---------------
 -- Setup CMP --
 ---------------
