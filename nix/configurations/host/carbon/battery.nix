@@ -1,8 +1,11 @@
 { pkgs, lib, ... }:
 
 {
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=20min
+  '';
   services.logind = {
-    lidSwitch = "suspend";
+    lidSwitch = "suspend-then-hibernate";
     lidSwitchExternalPower = "ignore";
   };
 
