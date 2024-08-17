@@ -43,12 +43,9 @@
                 ${externalScreenDevice} = {
                   enable = true;
                   crtc = 1;
+                  dpi = 163;
                   mode = "3840x2160";
                   rate = "60";
-                  scale = {
-                    x = 0.7;
-                    y = 0.7;
-                  };
                   primary = true;
                 };
               }
@@ -58,6 +55,7 @@
                 ${externalScreenDevice} = {
                   enable = true;
                   crtc = 1;
+                  dpi = 109;
                   mode = "2560x1440";
                   rate = "59.95";
                   primary = true;
