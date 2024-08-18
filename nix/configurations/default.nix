@@ -195,7 +195,10 @@ in
           # Raspberry Pi 4
           hydrogen = {
             system = "aarch64-linux";
-            modules = [ self.nixosModules.i_am_builder ];
+            modules = [
+              self.nixosModules.i_am_builder
+              inputs.hoot.nixosModules.default
+            ];
           };
         };
 

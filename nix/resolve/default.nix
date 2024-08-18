@@ -21,6 +21,8 @@
 
             inputs.wired-notify.overlays.default
 
+            inputs.hoot.overlays.default
+
             (_: _: { myPkgs = self'.packages; }) # extend pkgs with my custom set
           ];
         in

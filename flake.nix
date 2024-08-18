@@ -92,5 +92,9 @@
       url = "git+https://git.earth2077.fr/leana/prop_solveur";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    hoot = {
+      url = "git+https://git.earth2077.fr/leana/hoot";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 }
