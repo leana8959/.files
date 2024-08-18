@@ -380,11 +380,11 @@
         "pre-commit-hooks": "pre-commit-hooks_2"
       },
       "locked": {
-        "lastModified": 1724022383,
-        "narHash": "sha256-ov8dDZLwwkayO8Y0a2cQd2goMXUxqyB13DWnaTvGDKA=",
+        "lastModified": 1724025416,
+        "narHash": "sha256-7RnYcxVUg+r+3YuHC6rec6jdr7OxsDUFXMH6eKi7Ueo=",
         "ref": "refs/heads/mistress",
-        "rev": "0a8f74c9b748c9f08b9470ce0812391576743caf",
-        "revCount": 5,
+        "rev": "97863fa2ada48a68f65d7b729037d6b4dbd65792",
+        "revCount": 10,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/hoot"
       },
