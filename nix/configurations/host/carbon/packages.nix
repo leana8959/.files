@@ -10,8 +10,10 @@
 
   programs.vim.defaultEditor = true;
   programs.git.enable = true;
+
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
+  programs.seahorse.enable = true;
 
   programs.steam.enable = true;
 
