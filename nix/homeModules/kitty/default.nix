@@ -8,7 +8,7 @@
   programs.kitty = lib.mkIf config.programs.kitty.enable {
     font = {
       name = "HiosevkaNFM";
-      size = 22;
+      size = 14;
     };
     settings = {
       foreground = "#000000";
