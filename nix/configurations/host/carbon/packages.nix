@@ -13,6 +13,8 @@
   programs.dconf.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
+  programs.steam.enable = true;
+
   virtualisation = {
     docker.enable = true;
     virtualbox.host.enable = true;

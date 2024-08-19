@@ -44,6 +44,10 @@
 
                 "brscan5"
                 "brscan5-etc-files"
+
+                "steam"
+                "steam-original"
+                "steam-run"
               ];
           };
         };
