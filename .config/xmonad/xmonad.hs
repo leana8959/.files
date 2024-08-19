@@ -269,7 +269,6 @@ myPrettyPrinter =
 
 myStartupHook = do
   spawnOnce "fcitx5 &" -- Input method
-  spawnOnce "xscreensaver --no-splash &" -- Screensaver
   spawnOnce "playerctld daemon" -- Player controller
   spawnOnce "wired &" -- Notification daemon
   spawn "feh --no-fehbg --bg-fill ~/.wallpaper &" -- wallpaper
