@@ -31,6 +31,8 @@ in
     pkgs.shotgun
     pkgs.vlc
 
+    pkgs.evolution
+
     pkgs.qmk
     pkgs.wally-cli
   ];
