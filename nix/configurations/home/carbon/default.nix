@@ -10,11 +10,6 @@ in
     ./wm.nix
   ];
 
-  home.file = {
-    ".xscreensaver".source = ./xscreensaver/.xscreensaver;
-    ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
-  };
-
   home.packages = [
     pkgs.zip
     pkgs.unzip

@@ -13,6 +13,13 @@ in
     size = 64;
   };
 
+  home.file = {
+    ".xscreensaver".source = ./xscreensaver/.xscreensaver;
+    ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
+  };
+
+  services.xscreensaver.enable = true;
+
   home.packages = [
     # Fonts
     pkgs.noto-fonts
@@ -25,12 +32,12 @@ in
     myPkgs.hiosevka
 
     pkgs.xmobar
-    pkgs.jetbrains-mono # for xmobar
+    pkgs.wired
+    pkgs.jetbrains-mono
+
     pkgs.dmenu
     pkgs.xclip
     pkgs.feh
-    pkgs.xscreensaver # TODO: why the service option won't work ?
-    pkgs.wired
     pkgs.playerctl
     (
       let
