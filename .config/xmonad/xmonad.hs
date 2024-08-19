@@ -62,7 +62,7 @@ xmonadConfig = def
   `removeKeys`     myUnmaps
   `additionalKeys` myKeymaps
 
-myTerm = "kitty"
+myTerm = "GLFW_IM_MODULE=ibus kitty"
 
 myMod = mod4Mask
 
