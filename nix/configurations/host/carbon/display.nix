@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   users.users."leana".extraGroups = [
@@ -54,6 +59,7 @@
 
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
+              ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
               Xft.dpi:   163
             ''}";
           };
@@ -77,6 +83,7 @@
 
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
+              ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
               Xft.dpi:   120
             ''}";
           };
