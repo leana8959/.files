@@ -37,10 +37,11 @@
   # https://unix.stackexchange.com/questions/588018/kworker-thread-kacpid-notify-kacpid-hogging-60-70-of-cpu
   # https://askubuntu.com/questions/1275749/acpi-event-69-made-my-system-unusable
   boot.kernelParams = [
-    # "acpi_mask_gpe=0x69" # very high count
+    # Happens after waking up
+    "acpi_mask_gpe=0x69" # very high count
 
     # This bricks bluetooth ?
-    # "acpi_mask_gpe=0x16"
+    "acpi_mask_gpe=0x16"
   ];
 
   nix.settings.trusted-users = [
