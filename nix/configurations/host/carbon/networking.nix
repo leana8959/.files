@@ -3,6 +3,8 @@
 {
   networking.networkmanager.enable = lib.mkForce false;
 
+  networking.firewall.allowedTCPPorts = [ 8080 ];
+
   networking.wireless = {
     enable = true;
     userControlled.enable = true;
