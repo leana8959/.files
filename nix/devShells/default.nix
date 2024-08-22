@@ -29,6 +29,14 @@
           ];
         };
 
+        gomu = pkgs.mkShell {
+          name = "gomu";
+          packages = [
+            pkgs.pkg-config
+            pkgs.alsa-lib
+          ];
+        };
+
         tokei = pkgs.mkShell {
           name = "tokei";
           packages = [
