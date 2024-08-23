@@ -22,7 +22,10 @@
       ordered [
         # first in list is tried first
         { "HiddenParadize@Earth2077".psk = "@HOME@"; }
-        { "_SNCF_WIFI_INOUI" = { }; }
+        {
+          "_SNCF_WIFI_INOUI" = { };
+          "EurostarTrainsWiFi" = { };
+        }
         {
           eduroam = {
             authProtocols = [ "WPA-EAP" ];
