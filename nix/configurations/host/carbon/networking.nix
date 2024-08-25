@@ -21,7 +21,10 @@
       in
       ordered [
         # first in list is tried first
-        { "HiddenParadize@Earth2077".psk = "@HOME@"; }
+        {
+          "HiddenParadize@Earth2077".psk = "@HOME@";
+          "Pei’s Wifi".psk = "@PEI_PASSWORD@";
+        }
         {
           "_SNCF_WIFI_INOUI" = { };
           "EurostarTrainsWiFi" = { };
