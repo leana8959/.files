@@ -39,7 +39,6 @@
 
   nix.gc = {
     automatic = true;
-    dates = "2 weeks";
     options = "--delete-older-than 90d";
   };
 
