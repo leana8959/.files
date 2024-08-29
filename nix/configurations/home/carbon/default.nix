@@ -15,6 +15,8 @@ in
     pkgs.unzip
     pkgs.gnutar
     pkgs.p7zip
+    pkgs.bc
+
     pkgs.deploy-rs
     myPkgs.nd
 
