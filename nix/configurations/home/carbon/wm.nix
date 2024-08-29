@@ -18,8 +18,6 @@ in
     ".wallpaper".source = ./wallpapers/wp3023938-nebula-wallpapers-hd.jpg;
   };
 
-  services.xscreensaver.enable = true;
-
   home.packages = [
     # Fonts
     pkgs.noto-fonts

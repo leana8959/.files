@@ -22,6 +22,8 @@
     };
   };
 
+  services.xscreensaver.enable = true;
+
   services.picom = {
     enable = true;
     vSync = true;
