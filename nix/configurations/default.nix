@@ -29,6 +29,7 @@ let
           self.nixosModules.layouts
           ./host/${hostname}
           inputs.agenix.nixosModules.default
+          { programs.command-not-found.enable = false; }
 
           self.nixosModules.leana
           self.nixosModules.fish-vendor-completions
