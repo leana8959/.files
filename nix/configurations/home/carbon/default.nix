@@ -23,7 +23,6 @@ in
     pkgs.discord
     pkgs.cinny-desktop
 
-    pkgs.sioyek
     pkgs.hacksaw
     pkgs.shotgun
     pkgs.vlc

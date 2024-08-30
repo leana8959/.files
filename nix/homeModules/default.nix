@@ -29,6 +29,7 @@ let
     "auto-gc"
     "fcitx5"
     "golang"
+    "sioyek"
   ];
 
   eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;

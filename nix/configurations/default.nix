@@ -182,6 +182,7 @@ in
                   imports = [
                     self.homeModules.fcitx5
                     self.homeModules.golang
+                    self.homeModules.sioyek
                   ];
                   programs.neovim.extraLangServers.enable = true;
                   programs.git.signing.signByDefault = true;
