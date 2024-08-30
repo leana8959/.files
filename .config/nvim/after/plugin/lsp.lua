@@ -65,13 +65,7 @@ local servers = {
     },
 
     nil_ls = { -- Nix
-        on_attach = function(_, bufno)
-            map("n", "<leader>f", function()
-                vim.cmd.norm("mJ")
-                vim.cmd(":%!nixfmt")
-                vim.cmd.norm("`J")
-            end, { buffer = bufno })
-        end,
+        settings = { ["nil"] = { formatting = { command = { "nixfmt" } } } },
     },
 }
 
