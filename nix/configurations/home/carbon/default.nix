@@ -28,11 +28,12 @@ in
     pkgs.vlc
 
     pkgs.evolution
-
     pkgs.teams-for-linux
 
     pkgs.qmk
     pkgs.wally-cli
+
+    myPkgs.typst-mutilate
   ];
 
   programs = {
