@@ -34,6 +34,7 @@
 
         maeel = pkgs-stable.callPackage ./maeel.nix { };
         tokei = pkgs-stable.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
+        typst-mutilate = pkgs-stable.callPackage ./typst-mutilate.nix { };
 
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
         nd = pkgs-stable.callPackage ./nd { };
