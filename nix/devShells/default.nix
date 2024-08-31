@@ -47,6 +47,15 @@
           ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.Security ]);
         };
 
+        typst-mutilate = pkgs.mkShell {
+          name = "typst-mutilate";
+          packages = [
+            pkgs.cargo
+            pkgs.rustc
+            pkgs.rust-analyzer
+          ];
+        };
+
         qmk = pkgs.mkShell {
           name = "qmk";
           packages = [ pkgs.clang-tools ];
