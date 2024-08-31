@@ -14,6 +14,7 @@ in
     package = pkgs.firefox-esr; # some options only works with firefox-esr
     # https://mozilla.github.io/policy-templates
     policies = {
+      HardwareAcceleration = true;
       DisableFirefoxScreenshots = true;
       DisablePocket = true;
       DisplayMenuBar = "never";
