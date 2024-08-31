@@ -26,7 +26,6 @@
 
         ## Editor
         ts = "tmux_sessionizer";
-        ta = "tmux_attach";
         v = "nvim";
 
         ":q" = "exit";
