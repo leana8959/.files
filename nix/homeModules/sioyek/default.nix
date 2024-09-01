@@ -6,8 +6,8 @@
     bindings = {
       "move_up" = "k";
       "move_down" = "j";
-      "move_left" = "h";
-      "move_right" = "l";
+      "move_left" = "l";
+      "move_right" = "h";
       "screen_down" = [
         "d"
         "<C-d>"
