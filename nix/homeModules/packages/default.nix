@@ -78,6 +78,9 @@ in
         myPkgs.logisim-evolution
         myPkgs.necrolib
         myPkgs.why3
+
+        pkgs.isabelle
+        pkgs.hol
       ])
     ];
   };
