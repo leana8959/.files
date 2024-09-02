@@ -56,6 +56,15 @@
           ];
         };
 
+        typstyle = pkgs.mkShell {
+          name = "typstyle";
+          packages = [
+            pkgs.cargo
+            pkgs.rustc
+            pkgs.rust-analyzer
+          ];
+        };
+
         qmk = pkgs.mkShell {
           name = "qmk";
           packages = [ pkgs.clang-tools ];
