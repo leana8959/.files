@@ -48,6 +48,8 @@
                 "steam"
                 "steam-original"
                 "steam-run"
+
+                "vscode"
               ];
           };
         };

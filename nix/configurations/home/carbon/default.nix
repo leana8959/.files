@@ -34,6 +34,8 @@ in
     pkgs.wally-cli
 
     myPkgs.typst-mutilate
+
+    pkgs.vscode
   ];
 
   programs = {
