@@ -50,6 +50,7 @@
                 "steam-run"
 
                 "vscode"
+                "code"
               ];
           };
         };

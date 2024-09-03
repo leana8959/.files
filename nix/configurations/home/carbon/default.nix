@@ -35,7 +35,7 @@ in
 
     myPkgs.typst-mutilate
 
-    pkgs.vscode
+    pkgs.vscode-fhs
   ];
 
   programs.java = {
