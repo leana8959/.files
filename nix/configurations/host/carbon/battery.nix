@@ -13,10 +13,10 @@
     enable = true;
     settings = {
       # battery limiter
-      START_CHARGE_THRESH_BAT0 = 70;
-      STOP_CHARGE_THRESH_BAT0 = 80;
-      START_CHARGE_THRESH_BAT1 = 70;
-      STOP_CHARGE_THRESH_BAT1 = 80;
+      START_CHARGE_THRESH_BAT0 = 80;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+      START_CHARGE_THRESH_BAT1 = 80;
+      STOP_CHARGE_THRESH_BAT1 = 90;
 
       # audio popping fix
       SOUND_POWER_SAVE_ON_AC = 0;
