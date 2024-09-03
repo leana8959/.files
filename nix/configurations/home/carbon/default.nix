@@ -38,6 +38,11 @@ in
     pkgs.vscode
   ];
 
+  programs.java = {
+    enable = true;
+    package = pkgs.jdk17;
+  };
+
   programs = {
     kitty.enable = true;
     password-store.enable = true;
