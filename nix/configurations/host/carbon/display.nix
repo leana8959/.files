@@ -41,12 +41,12 @@
       };
 
       profiles = rec {
-        "home-DP-1-clam" = {
 
+        "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam { fingerprint.eDP-1 = built-in; };
+        "home-DP-1-clam" = {
           fingerprint = {
             DP-1 = lg-monitor;
           };
-
           config = def // {
             DP-1 = {
               enable = true;
@@ -56,21 +56,21 @@
               primary = true;
             };
           };
-
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
               ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
               Xft.dpi:   163
             ''}";
+
+            "20_alsa" = ''
+              amixer set Master 50%
+              amixer set Master unmute
+            '';
           };
-
         };
-
-        "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam { fingerprint.eDP-1 = built-in; };
 
         "laptop" = {
           fingerprint.eDP-1 = built-in;
-
           config = def // {
             eDP-1 = {
               enable = true;
@@ -80,12 +80,16 @@
               primary = true;
             };
           };
-
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
               ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
               Xft.dpi:   120
             ''}";
+
+            "20_alsa" = ''
+              amixer set Master 10%
+              amixer set Master mute
+            '';
           };
         };
 
