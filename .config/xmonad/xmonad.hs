@@ -274,26 +274,6 @@ myStartupHook = do
   spawnOnce "wired &" -- Notification daemon
   spawn "feh --no-fehbg --bg-fill ~/.wallpaper &" -- wallpaper
 
-  -- Smart restart
-  spawn
-    (unlines
-      [ "firefox=\"$(pgrep .firefox-wrappe)\""
-      , "if [ -n \"$firefox\" ]; then echo \"$firefox\" | xargs kill; firefox-esr; fi"
-      ]
-    )
-  spawnOn "CHAT"
-    (unlines
-      [ "discord=\"$(pgrep .Discord-wrappe)\""
-      , "if [ -n \"$discord\" ]; then echo \"$discord\" | xargs kill; discord; fi"
-      ]
-    )
-  spawnOn "UNIV"
-    (unlines
-      [ "evolution=\"$(pgrep .evolution-wrap)\""
-      , "if [ -n \"$evolution\" ]; then echo \"$evolution\" | xargs kill; evolution; fi"
-      ]
-    )
-
 xmobarOf :: ScreenId -> IO StatusBarConfig
 xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
 xmobarOf 1 = pure $ statusBarProp "xmobar -x 1 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
