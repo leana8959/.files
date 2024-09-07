@@ -279,10 +279,11 @@ xmobarOf 0 = pure $ statusBarProp "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure 
 xmobarOf 1 = pure $ statusBarProp "xmobar -x 1 ~/.config/xmobar/xmobarrc" (pure myPrettyPrinter)
 xmobarOf _ = mempty
 
+-- Note: `xmonad --restart` will make Firefox's fullscreen work duck the xmobar stop working
+-- You need restart Firefox
 main = xmonad
       . ewmhFullscreen . ewmh
       -- This does the docks and avoidStruts behind the scene
-      -- FIXME: is it normal that `xmonad --restart` makes xmobar above a fullscreen window
       . dynamicEasySBs xmobarOf
       $ xmonadConfig
 
