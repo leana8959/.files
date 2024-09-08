@@ -23,6 +23,9 @@
       safe.directory = "/etc/docker/compose";
     };
     ignores = [
+      # sanity
+      ".env"
+
       # vim
       "*~"
       "*.swp"
