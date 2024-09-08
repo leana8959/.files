@@ -36,6 +36,7 @@ in
     myPkgs.typst-mutilate
 
     pkgs.vscode-fhs
+    pkgs.jetbrains.idea-community
   ];
 
   programs.java = {
