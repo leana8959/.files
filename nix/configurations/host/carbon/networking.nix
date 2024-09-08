@@ -40,7 +40,7 @@
               identity="@EDUROAM_ID@"
               altsubject_match="DNS:radius.univ-rennes1.fr;DNS:radius1.univ-rennes1.fr;DNS:radius2.univ-rennes1.fr;DNS:vmradius-psf1.univ-rennes1.fr;DNS:vmradius-psf2.univ-rennes1.fr"
               phase2="auth=MSCHAPV2"
-              password="@EDUROAM_PSK_L@&@EDUROAM_PSK_R@"
+              password="@EDUROAM_PSK@"
               anonymous_identity="anonymous@univ-rennes.fr"
             '';
           };
