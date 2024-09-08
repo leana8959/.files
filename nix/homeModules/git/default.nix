@@ -68,7 +68,7 @@
         user = {
           name = "Léana CHIANG";
           email = "leana.chiang@etudiant.univ-rennes1.fr";
-          signingKey = "0x4E887A4CA9714ADA";
+          signingKey = "0x32035DB97E777EEB";
         };
       };
     }
