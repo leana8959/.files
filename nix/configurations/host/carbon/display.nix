@@ -58,7 +58,7 @@
           };
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
-              ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
+              Xcursor.size: 84
               Xft.dpi:   163
             ''}";
 
@@ -82,7 +82,7 @@
           };
           hooks.postswitch = {
             "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
-              ${config.home-manager.users.leana.home.file."/home/leana/.Xresources".text}
+              Xcursor.size: 64
               Xft.dpi:   120
             ''}";
 
