@@ -6,7 +6,7 @@ Config { overrideRedirect = False
                             ]
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
-       , position = TopH 30
+       , position = BottomH 30
        , commands = [ Run Kbd
                         [ ("myDvorakFrench", "🇫🇷")
                         , ("myDvorak", "🇺🇸")
