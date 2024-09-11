@@ -15,6 +15,7 @@
             (_: _: {
               agenix = inputs'.agenix.packages.default;
               audio-lint = inputs'.audio-lint.packages.default;
+              prop-solveur = inputs'.prop-solveur.packages.default;
             })
 
             inputs.nur.overlay

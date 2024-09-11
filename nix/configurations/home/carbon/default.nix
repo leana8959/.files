@@ -37,6 +37,8 @@ in
 
     pkgs.vscode-fhs
     pkgs.jetbrains.idea-community
+
+    pkgs.prop-solveur
   ];
 
   programs.java = {
