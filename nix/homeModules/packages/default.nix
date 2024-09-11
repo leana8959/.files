@@ -79,7 +79,7 @@ in
         myPkgs.necrolib
         myPkgs.why3
 
-        pkgs.isabelle
+        myPkgs.isabelle-wrapped
         pkgs.hol
       ])
     ];

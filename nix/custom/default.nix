@@ -31,6 +31,7 @@
         logisim-evolution = pkgs-stable.callPackage ./logisim-evolution.nix { };
         necrolib = pkgs-stable.callPackage ./necrolib.nix { };
         why3 = pkgs-stable.callPackage ./why3.nix { };
+        isabelle-wrapped = pkgs-stable.callPackage ./isabelle-wrapped.nix { };
 
         maeel = pkgs-stable.callPackage ./maeel.nix { };
         tokei = pkgs-stable.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
