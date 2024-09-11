@@ -2,7 +2,7 @@
 
 {
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=20min
+    HibernateDelaySec=2hour
   '';
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
