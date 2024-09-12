@@ -65,6 +65,7 @@ jobs:
         package:
           - tokei
           - necrolib
+          - isabelle-wrapped
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
