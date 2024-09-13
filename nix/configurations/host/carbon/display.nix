@@ -63,7 +63,7 @@
             ''}";
 
             "20_alsa" = ''
-              amixer set Master 50%
+              amixer set Master 10%
               amixer set Master unmute
             '';
           };
