@@ -40,6 +40,7 @@
         posy-cursor = pkgs-stable.callPackage ./posy-cursor.nix { };
         nd = pkgs-stable.callPackage ./nd { };
         xbrightness = pkgs-stable.callPackage ./xbrightness.nix { };
+        ffgun = pkgs-stable.callPackage ./ffgun.nix { };
 
         # Unmerged packages from nixpkgs
         # TODO: use upstream when merged
