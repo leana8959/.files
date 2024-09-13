@@ -11,14 +11,14 @@ npairs.setup {
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 for _, punct in pairs { ",", ";" } do
-    require("nvim-autopairs").add_rules {
-        require("nvim-autopairs.rule")("", punct)
+    npairs.add_rule(
+        Rule("", punct)
             :with_move(function(opts) return opts.char == punct end)
             :with_pair(function() return false end)
             :with_del(function() return false end)
             :with_cr(function() return false end)
-            :use_key(punct),
-    }
+            :use_key(punct)
+    )
 end
 
 local function pair_with_insertion(a1, ins, a2, lang)
