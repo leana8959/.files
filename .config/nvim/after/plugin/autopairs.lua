@@ -21,6 +21,20 @@ for _, punct in pairs { ",", ";" } do
     )
 end
 
+local function double_trouble(opts, pattern) return select(2, opts.line:gsub(pattern, "")) % 2 == 0 end
+npairs.add_rules {
+    Rule("$", "$", "typst")
+        :with_pair(function(opts) return double_trouble(opts, "%$") end)
+        :with_del(function(opts) return double_trouble(opts, "%$") end)
+        :with_move(cond.done),
+}
+
+npairs.add_rule(
+    Rule("*", "*/")
+        :with_pair(function(opts) return "/" == opts.line:sub(opts.col - 1, opts.col) end)
+        :with_move(cond.done)
+)
+
 local function pair_with_insertion(a1, ins, a2, lang)
     npairs.add_rule(
         Rule(ins, ins, lang)
@@ -36,13 +50,8 @@ end
 
 pair_with_insertion("(", "*", ")", { "ocaml", "why3", "skel" })
 pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel" })
+
 pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix", "sh" })
 pair_with_insertion("{", " ", "}", nil)
 
-local function double_trouble(opts, pattern) return select(2, opts.line:gsub(pattern, "")) % 2 == 0 end
-npairs.add_rules {
-    Rule("$", "$", "typst")
-        :with_pair(function(opts) return double_trouble(opts, "%$") end)
-        :with_del(function(opts) return double_trouble(opts, "%$") end)
-        :with_move(cond.done),
-}
+pair_with_insertion("/*", " ", "*/", { "typst", "go", "java", "rust" })
