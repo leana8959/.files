@@ -39,12 +39,10 @@ pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel" })
 pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix", "sh" })
 pair_with_insertion("{", " ", "}", nil)
 
-for _, symb in ipairs { "$", "```", "_", "*" } do
-    npairs.add_rule(
-        Rule(symb, symb, "typst")
-            :with_pair(cond.not_before_text(symb))
-            :with_pair(cond.not_after_regex("%a"))
-            :with_pair(cond.not_before_regex("%a"))
-            :with_move(cond.done)
-    )
-end
+local function double_trouble(opts, pattern) return select(2, opts.line:gsub(pattern, "")) % 2 == 0 end
+npairs.add_rules {
+    Rule("$", "$", "typst")
+        :with_pair(function(opts) return double_trouble(opts, "%$") end)
+        :with_del(function(opts) return double_trouble(opts, "%$") end)
+        :with_move(cond.done),
+}
