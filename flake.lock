@@ -592,22 +592,6 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1704631721,
-        "narHash": "sha256-UGNXoKszQq5Xf1SWQp4U9YpAqzUyBsi46D05de7sd2M=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "edebca765c17d551b9634c02f6a02f1b122e0ba0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "edebca765c17d551b9634c02f6a02f1b122e0ba0",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
         "lastModified": 1706487304,
         "narHash": "sha256-LE8lVX28MV2jWJsidW13D2qrHU/RUUONendL2Q/WlJg=",
         "owner": "NixOS",
@@ -707,14 +691,16 @@
     "prop-solveur": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ]
       },
       "locked": {
-        "lastModified": 1717355003,
-        "narHash": "sha256-gswFMuOpIhAhqfyTscuEbGI6NnfnKUBg66WzhZNN2p4=",
+        "lastModified": 1726281923,
+        "narHash": "sha256-Vpjpdg5KG+HM8zsQw8RYttqu4+/BHufG+3oZdv/WY1A=",
         "ref": "refs/heads/mistress",
-        "rev": "9262a3c57c5389e695fd43f4b044b6ccb79eb9e4",
-        "revCount": 74,
+        "rev": "f4612abf8a34ae81ec5e0f0654c6ff3aa9a551c7",
+        "revCount": 87,
         "type": "git",
         "url": "https://git.earth2077.fr/leana/prop_solveur"
       },
@@ -745,7 +731,7 @@
     "rust-overlay": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs_6"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1715393623,
