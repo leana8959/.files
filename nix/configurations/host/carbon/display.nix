@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, lib, ... }:
 
 {
   users.users."leana".extraGroups = [
@@ -29,6 +24,8 @@
         eDP-1.enable = false;
         DP-1.enable = false;
         DP-2.enable = false;
+        DP-2-1.enable = false;
+        DP-2-2.enable = false;
         HDMI-1.enable = false;
         HDMI-2.enable = false;
       };
@@ -40,60 +37,68 @@
         "20_xmonad" = "xmonad --restart"; # make sure feh keeps up
       };
 
-      profiles = rec {
+      profiles =
+        let
+          mkHomeDp = dev: {
+            fingerprint.${dev} = lg-monitor;
+            config = def // {
+              ${dev} = {
+                enable = true;
+                crtc = 1;
+                mode = "3840x2160";
+                rate = "60";
+                primary = true;
+              };
+            };
+            hooks.postswitch = {
+              "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
+                Xcursor.size: 84
+                Xft.dpi:   163
+              ''}";
 
-        "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam { fingerprint.eDP-1 = built-in; };
-        "home-DP-1-clam" = {
-          fingerprint = {
-            DP-1 = lg-monitor;
-          };
-          config = def // {
-            DP-1 = {
-              enable = true;
-              crtc = 1;
-              mode = "3840x2160";
-              rate = "60";
-              primary = true;
+              "20_alsa" = ''
+                amixer set Master 10%
+                amixer set Master unmute
+              '';
             };
           };
-          hooks.postswitch = {
-            "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
-              Xcursor.size: 84
-              Xft.dpi:   163
-            ''}";
+        in
+        rec {
 
-            "20_alsa" = ''
-              amixer set Master 10%
-              amixer set Master unmute
-            '';
-          };
-        };
+          "home-DP-1-clam" = mkHomeDp "DP-1";
+          "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam;
 
-        "laptop" = {
-          fingerprint.eDP-1 = built-in;
-          config = def // {
-            eDP-1 = {
-              enable = true;
-              crtc = 0;
-              mode = "1920x1080";
-              rate = "60.02";
-              primary = true;
+          "home-DP-2-1-clam" = mkHomeDp "DP-2-1";
+          "home-DP-2-1" = lib.attrsets.recursiveUpdate home-DP-2-1-clam { fingerprint.eDP-1 = built-in; };
+
+          "home-DP-2-2-clam" = mkHomeDp "DP-2-2";
+          "home-DP-2-2" = lib.attrsets.recursiveUpdate home-DP-2-2-clam { fingerprint.eDP-1 = built-in; };
+
+          "laptop" = {
+            fingerprint.eDP-1 = built-in;
+            config = def // {
+              eDP-1 = {
+                enable = true;
+                crtc = 0;
+                mode = "1920x1080";
+                rate = "60.02";
+                primary = true;
+              };
+            };
+            hooks.postswitch = {
+              "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
+                Xcursor.size: 64
+                Xft.dpi:   120
+              ''}";
+
+              "20_alsa" = ''
+                amixer set Master 10%
+                amixer set Master mute
+              '';
             };
           };
-          hooks.postswitch = {
-            "10_xrdb-dpi" = "xrdb -merge ${pkgs.writeText "xrdb-dpi-config" ''
-              Xcursor.size: 64
-              Xft.dpi:   120
-            ''}";
 
-            "20_alsa" = ''
-              amixer set Master 10%
-              amixer set Master mute
-            '';
-          };
         };
-
-      };
 
     };
 }
