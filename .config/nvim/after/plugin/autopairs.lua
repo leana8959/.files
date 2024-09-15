@@ -54,7 +54,7 @@ pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel" })
 pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix", "sh" })
 pair_with_insertion("{", " ", "}", nil)
 
-pair_with_insertion("/*", " ", "*/", { "typst", "go", "java", "rust" })
+pair_with_insertion("/*", " ", "*/", { "typst", "go", "java", "rust", "scss" })
 
 pair_with_insertion("{", "#", "}", { "html", "htmldjango" })
 pair_with_insertion("{#", " ", "#}", { "html", "htmldjango" })
