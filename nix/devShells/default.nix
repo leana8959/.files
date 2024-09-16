@@ -5,6 +5,16 @@
     { pkgs, lib, ... }:
     {
       devShells = rec {
+        alo = pkgs.mkShell {
+          name = "ALO";
+          packages = [
+            # https://github.com/NixOS/nixpkgs/issues/338165
+            # https://discord.com/channels/568306982717751326/1269736687387414642
+            (pkgs.jdk17.override { enableJavaFX = true; })
+            pkgs.maven
+          ];
+        };
+
         forgejo = pkgs.mkShell {
           name = "forgejo";
           packages = [
