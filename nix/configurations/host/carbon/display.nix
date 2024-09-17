@@ -66,7 +66,7 @@
         rec {
 
           "home-DP-1-clam" = mkHomeDp "DP-1";
-          "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam;
+          "home-DP-1" = lib.attrsets.recursiveUpdate home-DP-1-clam { fingerprint.eDP-1 = built-in; };
 
           "home-DP-2-1-clam" = mkHomeDp "DP-2-1";
           "home-DP-2-1" = lib.attrsets.recursiveUpdate home-DP-2-1-clam { fingerprint.eDP-1 = built-in; };
