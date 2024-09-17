@@ -12,6 +12,7 @@ vim.filetype.add {
         sk = "skel",
         skel = "skel",
         typ = "typst",
+        thy = "isabelle",
     },
 }
 

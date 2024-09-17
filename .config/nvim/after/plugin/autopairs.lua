@@ -48,8 +48,8 @@ local function pair_with_insertion(a1, ins, a2, lang)
     )
 end
 
-pair_with_insertion("(", "*", ")", { "ocaml", "why3", "skel" })
-pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel" })
+pair_with_insertion("(", "*", ")", { "ocaml", "why3", "skel", "isabelle" })
+pair_with_insertion("(*", " ", "*)", { "ocaml", "why3", "skel", "isabelle" })
 
 pair_with_insertion("[", " ", "]", { "typst", "python", "haskell", "nix", "sh" })
 pair_with_insertion("{", " ", "}", nil)

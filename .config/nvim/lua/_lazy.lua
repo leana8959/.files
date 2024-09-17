@@ -89,6 +89,7 @@ local plugins = {
         version = "^3",
         lazy = false,
     },
+    "Treeniks/isabelle-syn.nvim",
     {
         "turbio/bracey.vim",
         build = "npm install --prefix server",
