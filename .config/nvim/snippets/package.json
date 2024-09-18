@@ -23,10 +23,6 @@
 				"path": "./tex.json"
 			},
 			{
-				"language": "typst",
-				"path": "./typst.json"
-			},
-			{
 				"language": "xml",
 				"path": "./xml.json"
 			}
