@@ -183,6 +183,9 @@ myKeymaps =
       , ((controlMask .|. myMod, xK_r), namedScratchpadAction myScratchpads "ranger")
 
       -- screenshot
+      , ( (0, xK_Print) -- fullscreen
+        , spawn "shotgun -s - | xclip -in -selection clipboard -t image/png"
+        )
       , ( (mod4Mask .|. shiftMask, xK_3) -- fullscreen
         , spawn "shotgun -s - | xclip -in -selection clipboard -t image/png"
         )
