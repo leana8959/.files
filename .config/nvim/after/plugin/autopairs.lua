@@ -63,3 +63,5 @@ pair_with_insertion("{", "%", "}", { "html", "htmldjango" })
 pair_with_insertion("{%", " ", "%}", { "html", "htmldjango" })
 
 pair_with_insertion("{{", " ", "}}", { "html", "htmldjango" })
+
+pair_with_insertion("$", " ", "$", { "typst" })
