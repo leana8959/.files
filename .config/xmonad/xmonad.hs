@@ -190,7 +190,7 @@ myKeymaps =
         , spawn "shotgun -s - | xclip -in -selection clipboard -t image/png"
         )
       , ( (mod4Mask .|. shiftMask, xK_4) -- use hacksaw to select
-        , spawn "shotgun -g $(hacksaw) - | xclip -in -selection clipboard -t image/png"
+        , spawn "shotgun -g $(hacksaw -c \"#875fff\" -g 3) - | xclip -in -selection clipboard -t image/png"
         )
       , ( (controlMask .|. mod4Mask .|. shiftMask, xK_4)
         , spawn "scrot -s"
