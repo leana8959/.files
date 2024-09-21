@@ -16,7 +16,7 @@ in
 
 {
   options.programs.neovim.extraLangServers = {
-    enable = lib.mkEnableOption "extra language servers";
+    enable = lib.mkEnableOption "miscellaneous language servers";
   };
 
   config = {
@@ -28,26 +28,26 @@ in
 
         # might be useful for servers
         [
-          # lua
-          pkgs.lua-language-server
-          pkgs.stylua
           # shell
           pkgs.nodePackages.bash-language-server
           pkgs.shellcheck
           pkgs.shfmt
-          # nix
-          pkgs.nil
-          # yaml
-          pkgs.yaml-language-server
         ]
 
         (lib.mkIf config.programs.neovim.extraLangServers.enable [
-          pkgs.nodePackages.pyright
-          pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-          pkgs.marksman
-          pkgs.taplo
-          pkgs.lemminx
-          # pkgs.texlab
+          # lua
+          pkgs.lua-language-server
+          pkgs.stylua
+
+          pkgs.nil # nix
+          pkgs.yaml-language-server # yaml
+
+          pkgs.nodePackages.pyright # python
+
+          pkgs.marksman # markdown
+          pkgs.taplo # toml
+          pkgs.lemminx # xml
+          # pkgs.texlab # latex
         ])
 
       ];
