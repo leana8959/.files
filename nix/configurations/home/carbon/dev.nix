@@ -23,6 +23,7 @@ in
     # typescript
     pkgs.typescript
     pkgs.nodejs_20
+    pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
 
     # rust
     pkgs.cargo
