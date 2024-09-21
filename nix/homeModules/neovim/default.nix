@@ -17,7 +17,6 @@ in
 {
   options.programs.neovim.extraLangServers = {
     enable = lib.mkEnableOption "extra language servers";
-    packages = lib.mkOption { type = with lib.types; listOf package; };
   };
 
   config = {
@@ -26,26 +25,31 @@ in
       package = neovim-pin.neovim-unwrapped;
       defaultEditor = true;
       extraPackages = lib.mkMerge [
+
+        # might be useful for servers
         [
+          # lua
           pkgs.lua-language-server
           pkgs.stylua
+          # shell
           pkgs.nodePackages.bash-language-server
           pkgs.shellcheck
           pkgs.shfmt
+          # nix
           pkgs.nil
+          # yaml
           pkgs.yaml-language-server
         ]
-        (lib.mkIf config.programs.neovim.extraLangServers.enable config.programs.neovim.extraLangServers.packages)
-      ];
 
-      extraLangServers.packages = [
-        pkgs.nodePackages.vim-language-server
-        pkgs.nodePackages.pyright
-        pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
-        pkgs.marksman
-        pkgs.taplo
-        pkgs.lemminx
-        pkgs.texlab
+        (lib.mkIf config.programs.neovim.extraLangServers.enable [
+          pkgs.nodePackages.pyright
+          pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+          pkgs.marksman
+          pkgs.taplo
+          pkgs.lemminx
+          # pkgs.texlab
+        ])
+
       ];
     };
 

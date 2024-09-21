@@ -51,5 +51,10 @@ in
     password-store.enable = true;
   };
 
-  programs.neovim.extraPackages = [ myPkgs.fish-lsp ];
+  programs.neovim.extraPackages = [
+    myPkgs.fish-lsp
+
+    pkgs.typescript
+    pkgs.nodePackages.typescript-language-server
+  ];
 }
