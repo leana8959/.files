@@ -5,10 +5,7 @@
     lfs.enable = true;
     delta = {
       enable = true;
-      options = {
-        syntax-theme = "OneHalfLight";
-        features = "side-by-side";
-      };
+      options.syntax-theme = "OneHalfLight";
     };
   };
 
