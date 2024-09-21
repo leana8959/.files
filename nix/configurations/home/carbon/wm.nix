@@ -60,17 +60,13 @@ in
     pkgs.xclip
     pkgs.feh
     pkgs.playerctl
-    (
-      let
-        inherit (pkgs.haskellPackages) ghcWithPackages;
-        haskellPackages = self: [
-          self.xmonad-contrib
-          self.xmonad-extras
-          self.neat-interpolation
-        ];
-      in
-      ghcWithPackages haskellPackages
-    )
+
+    (pkgs.haskellPackages.ghcWithPackages (self: [
+      self.xmonad-contrib
+      self.xmonad-extras
+      self.neat-interpolation
+    ]))
+
     pkgs.haskell-language-server
     myPkgs.xbrightness
     pkgs.ranger
