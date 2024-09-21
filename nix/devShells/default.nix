@@ -57,6 +57,11 @@
           ] ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.Security ]);
         };
 
+        planning-sup = pkgs.mkShell {
+          name = "planning-sup";
+          packages = [ pkgs.nodejs ];
+        };
+
         typst-mutilate = pkgs.mkShell {
           name = "typst-mutilate";
           packages = [
