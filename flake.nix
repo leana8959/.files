@@ -56,12 +56,7 @@
     };
     nur.url = "github:nix-community/nur";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    agenix = {
-      url = "github:ryantm/agenix/0.15.0";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-      inputs.darwin.follows = "nix-darwin";
-      inputs.home-manager.follows = "home-manager";
-    };
+    agenix.url = "github:ryantm/agenix/0.15.0";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
