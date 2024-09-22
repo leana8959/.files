@@ -3,15 +3,11 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-    config =
-      let
-        home = config.home.homeDirectory;
-      in
-      builtins.fromTOML ''
-        [whitelist]
-        prefix = [ "${home}/.dotfiles" ]
-        [global]
-        strict_env = true
-      '';
+    config = builtins.fromTOML ''
+      [whitelist]
+      prefix = [ "${config.home.homeDirectory}/.dotfiles" ]
+      [global]
+      strict_env = true
+    '';
   };
 }
