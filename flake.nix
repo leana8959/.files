@@ -76,6 +76,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # packages
+    neovim-pin.url = "github:nixos/nixpkgs/6132b0f6e344ce2fe34fc051b72fb46e34f668e0";
     wired-notify = {
       url = "github:Toqozz/wired-notify/0.10.6";
       inputs.nixpkgs.follows = "nixpkgs-stable";
