@@ -1,8 +1,7 @@
-{ pkgs, lib, ... }:
-
 {
+
   nix = {
-    package = lib.mkDefault pkgs.nixVersions.nix_2_21;
+
     settings = {
       allow-import-from-derivation = "true";
       extra-substituters = [
@@ -29,5 +28,7 @@
       to.type = "git";
       to.url = "https://git.earth2077.fr/leana/flakies";
     };
+
   };
+
 }

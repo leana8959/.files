@@ -1,7 +1,5 @@
-{ pkgs, ... }:
-
 {
-  nix.package = pkgs.nixVersions.nix_2_21;
+
   nix.settings = {
 
     extra-substituters = [
@@ -21,7 +19,11 @@
       "nix-command"
       "flakes"
     ];
+
     allow-import-from-derivation = true;
+
     sandbox = true;
+
   };
+
 }
