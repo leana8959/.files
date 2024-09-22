@@ -14,14 +14,8 @@
         ## Git
         gaa = "git add (git rev-parse --show-toplevel)";
         "ga." = "git add .";
-        grg = "git remote get-url";
-        gra = "git remote add";
-        gc = "git commit";
-        gca = "git commit --amend";
-        gs = "git stash --all";
         gp = "git pull";
         gP = "git push";
-        gb = "git blame -C -C -C";
         clone = "clone_to_repos";
 
         ## Editor
@@ -29,8 +23,6 @@
         v = "nvim";
 
         ":q" = "exit";
-
-        # nd = "nix develop -L -c fish";
 
         nhist = "sudo nix profile history --profile /nix/var/nix/profiles/system";
         hhist = "nix profile history --profile ~/.local/state/nix/profiles/home-manager";
@@ -63,24 +55,26 @@
       }
 
       (lib.mkIf pkgs.stdenv.isLinux {
+        # idiot protection
         chmod = "chmod --preserve-root";
         chown = "chown --preserve-root";
       })
 
-      (lib.mkIf pkgs.stdenv.isDarwin {
-        hide_desktop = ''
-          defaults write com.apple.finder CreateDesktop false; killall Finder
-        '';
-        show_desktop = ''
-          defaults write com.apple.finder CreateDesktop true; killall Finder
-        '';
-        reset_launchpad = ''
-          defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock
-        '';
-        add_spacer_tile = ''
-          defaults write com.apple.dock persistent-apps -array-add '{tile-type="small-spacer-tile";}'; killall Dock
-        '';
-      })
+      (lib.mkIf pkgs.stdenv.isDarwin (
+        let
+          cmds = builtins.concatStringsSep ";";
+        in
+        {
+          reset_launchpad = cmds [
+            "defaults write com.apple.dock ResetLaunchPad -bool true"
+            "killall Dock"
+          ];
+          add_spacer_tile = cmds [
+            "defaults write com.apple.dock persistent-apps -array-add '{tile-type=\"small-spacer-tile\";}"
+            "killall Dock"
+          ];
+        }
+      ))
     ];
   };
 }
