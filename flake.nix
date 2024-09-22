@@ -21,7 +21,7 @@
         ./nix/disko
 
         ./nix/overlays
-        ./nix/custom
+        ./nix/packages
 
         ./nix/pre-commit
         ./nix/devShells
