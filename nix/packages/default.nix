@@ -29,7 +29,15 @@
 
       logisim-evolution = final.callPackage ./logisim-evolution.nix { };
       necrolib = final.callPackage ./necrolib.nix { };
-      why3 = final.callPackage ./why3.nix { };
+      why3 = final.callPackage ./why3.nix {
+        inherit
+          (import inputs.alt-ergo-pin {
+            inherit (final) system;
+            config.allowUnfree = true;
+          })
+          alt-ergo
+          ;
+      };
       isabelle-wrapped = final.callPackage ./isabelle-wrapped.nix { };
 
       maeel = final.callPackage ./maeel.nix { };

@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "alt-ergo-pin": {
+      "locked": {
+        "lastModified": 1654436668,
+        "narHash": "sha256-vwEtkxIEQjymeTk89Ty1MGfRVSWL1/3j1wt5xB5ua88=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1b95daa381fa4a0963217a5d386433c20008208a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1b95daa381fa4a0963217a5d386433c20008208a",
+        "type": "github"
+      }
+    },
     "audio-lint": {
       "inputs": {
         "naersk": "naersk",
@@ -781,6 +797,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "alt-ergo-pin": "alt-ergo-pin",
         "audio-lint": "audio-lint",
         "deploy-rs": "deploy-rs",
         "disko": "disko",
