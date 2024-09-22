@@ -125,9 +125,9 @@ in
           {
             home-manager.users.leana = {
               programs.neovim.extraLangServers.enable = true;
-              extra.utilities.enable = true;
-              extra.university.enable = true;
-              extra.workflow.enable = true;
+              extraPackages.utilities.enable = true;
+              extraPackages.university.enable = true;
+              extraPackages.workflow.enable = true;
               programs.git.signing.signByDefault = true;
               programs.cmus.enable = true;
               programs.password-store.enable = true;
@@ -160,7 +160,7 @@ in
           {
             home-manager.users.leana = {
               programs.neovim.extraLangServers.enable = true;
-              extra.utilities.enable = true;
+              extraPackages.utilities.enable = true;
               programs.password-store.enable = true;
             };
           }
@@ -187,8 +187,8 @@ in
                   ];
                   programs.neovim.extraLangServers.enable = true;
                   programs.git.signing.signByDefault = true;
-                  extra.utilities.enable = true;
-                  extra.university.enable = true;
+                  extraPackages.utilities.enable = true;
+                  extraPackages.university.enable = true;
                   programs.cmus.enable = true;
                 };
               }

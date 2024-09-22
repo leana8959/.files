@@ -10,7 +10,7 @@ let
 in
 
 {
-  options.extra = {
+  options.extraPackages = {
     utilities.enable = lib.mkEnableOption "utility packages";
     workflow.enable = lib.mkEnableOption "worflow packages";
     university.enable = lib.mkEnableOption "university related packages";
@@ -52,7 +52,7 @@ in
         pkgs.uutils-coreutils-noprefix
       ])
 
-      (lib.mkIf config.extra.utilities.enable [
+      (lib.mkIf config.extraPackages.utilities.enable [
         pkgs.rsync
         pkgs.jq
         pkgs.hyperfine
@@ -68,12 +68,12 @@ in
         pkgs.nvd
       ])
 
-      (lib.mkIf config.extra.workflow.enable [
+      (lib.mkIf config.extraPackages.workflow.enable [
         pkgs.act
         pkgs.forgejo-actions-runner
       ])
 
-      (lib.mkIf config.extra.university.enable [
+      (lib.mkIf config.extraPackages.university.enable [
         pkgs.rars
         myPkgs.logisim-evolution
         myPkgs.necrolib
