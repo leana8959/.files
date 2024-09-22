@@ -46,8 +46,6 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      # plz merge my PR
-      # url = "github:leana8959/home-manager/fish_source_vendor_completion";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     nix-darwin = {
