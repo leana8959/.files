@@ -1,13 +1,8 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   perSystem =
-    {
-      system,
-      self',
-      inputs',
-      ...
-    }:
+    { system, inputs', ... }:
     {
       _module.args =
         let
@@ -25,7 +20,7 @@
 
             inputs.hoot.overlays.default
 
-            (_: _: { myPkgs = self'.packages; }) # extend pkgs with my custom set
+            (_: _: { myPkgs = self.overlays.packages; })
           ];
         in
         {
