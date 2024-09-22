@@ -6,12 +6,11 @@
       history_filter = [
         # privacy
         "^echo"
-        "^-----BEGIN"
-        "^mods"
-        "^.*PASSWORD=.*"
+        ".*PASSWORD=.*"
+        ".*TOKEN=.*"
 
         # idiot protection
-        "^rm -rf"
+        ".*rm -rf.*"
       ];
       style = "full";
       show_preview = true;
