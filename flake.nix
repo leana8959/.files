@@ -20,7 +20,7 @@
         ./nix/flakeModules
         ./nix/disko
 
-        ./nix/resolve
+        ./nix/overlays
         ./nix/custom
 
         ./nix/pre-commit
