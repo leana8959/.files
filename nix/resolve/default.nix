@@ -1,55 +1,43 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  lib,
+  ...
+}:
+
+let
+  neovim-pin = final: _: { neovim-pin = inputs.neovim-pin.legacyPackages.${final.system}; };
+  myPkgs = final: _: { myPkgs = self.packages.${final.system}; };
+
+  # package sets that modules exported by this repo depends on
+  minimal = lib.composeManyExtensions [
+    neovim-pin
+    myPkgs
+  ];
+
+  # all overlays
+  overlays = lib.composeManyExtensions [
+    (final: _: {
+      agenix = inputs.agenix.packages.${final.system}.default;
+      audio-lint = inputs.audio-lint.packages.${final.system}.default;
+      prop-solveur = inputs.prop-solveur.packages.${final.system}.default;
+    })
+
+    inputs.nur.overlay
+
+    inputs.wired-notify.overlays.default
+
+    inputs.hoot.overlays.default
+
+    minimal
+  ];
+in
 
 {
-  perSystem =
-    { system, inputs', ... }:
-    {
-      _module.args =
-        let
-          overlays = [
-            (_: _: {
-              agenix = inputs'.agenix.packages.default;
-              audio-lint = inputs'.audio-lint.packages.default;
-              prop-solveur = inputs'.prop-solveur.packages.default;
-              neovim-pin = inputs.neovim-pin.legacyPackages.${system};
-            })
 
-            inputs.nur.overlay
+  flake.overlays = {
+    inherit minimal;
+    full = overlays;
+  };
 
-            inputs.wired-notify.overlays.default
-
-            inputs.hoot.overlays.default
-
-            (_: _: { myPkgs = self.overlays.packages; })
-          ];
-        in
-        {
-          pkgs-stable = import inputs.nixpkgs-stable {
-            inherit system;
-            inherit overlays;
-          };
-
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-            inherit overlays;
-
-            config.allowUnfreePredicate =
-              pkg:
-              builtins.elem (inputs.nixpkgs.lib.getName pkg) [
-                "discord"
-                "languagetool"
-
-                "brscan5"
-                "brscan5-etc-files"
-
-                "steam"
-                "steam-original"
-                "steam-run"
-
-                "vscode"
-                "code"
-              ];
-          };
-        };
-    };
 }

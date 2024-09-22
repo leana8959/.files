@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, inputs, ... }:
 
 {
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
@@ -48,7 +48,10 @@
     };
 
   perSystem =
-    { pkgs-stable, ... }:
+    { system, ... }:
+    let
+      pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
+    in
     {
       packages = self.overlays.packages pkgs-stable pkgs-stable;
     };

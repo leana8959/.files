@@ -15,6 +15,28 @@ let
     nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
+  nixpkgsConfig = {
+    nixpkgs = {
+      overlays = [ self.overlays.full ];
+      config.allowUnfreePredicate =
+        pkg:
+        builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+          "discord"
+          "languagetool"
+
+          "brscan5"
+          "brscan5-etc-files"
+
+          "steam"
+          "steam-original"
+          "steam-run"
+
+          "vscode"
+          "code"
+        ];
+    };
+  };
+
   mkNixOSes =
     let
       sharedModules =
@@ -24,6 +46,7 @@ let
             nixpkgs.hostPlatform = system;
             system.stateVersion = "24.05";
           }
+          nixpkgsConfig
 
           self.nixosModules._
           self.nixosModules.layouts
@@ -69,6 +92,8 @@ let
             nixpkgs.hostPlatform = system;
             system.stateVersion = 4;
           }
+          nixpkgsConfig
+
           self.nixosModules.shared
           self.darwinModules._
           ./host/${hostname}
@@ -103,6 +128,7 @@ let
           self.homeModules._
           ./home/${hostname}
           nixpkgsRegistry
+          nixpkgsConfig
           self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
         ];
     in
@@ -158,11 +184,9 @@ in
         system = "x86_64-linux";
         modules = [
           {
-            home-manager.users.leana = {
-              programs.neovim.extraLangServers.enable = true;
-              extraPackages.utilities.enable = true;
-              programs.password-store.enable = true;
-            };
+            programs.neovim.extraLangServers.enable = true;
+            extraPackages.utilities.enable = true;
+            programs.password-store.enable = true;
           }
         ];
       };

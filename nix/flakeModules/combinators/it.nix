@@ -1,15 +1,6 @@
 { inputs, withSystem, ... }:
 
 let
-  mkSpecialArgs =
-    { hostname, system, ... }:
-    withSystem system (
-      { pkgs, ... }:
-      {
-        inherit pkgs hostname;
-      }
-    );
-
   mkNixOS =
     sharedModules:
     {
@@ -17,15 +8,11 @@ let
       system,
       modules ? [ ],
     }:
-    let
-      info = {
-        inherit hostname system;
-      };
-      specialArgs = mkSpecialArgs info;
-    in
     inputs.nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
-      modules = sharedModules info ++ modules;
+      specialArgs = {
+        inherit hostname;
+      };
+      modules = sharedModules { inherit hostname system; } ++ modules;
     };
 
   mkDarwin =
@@ -35,15 +22,11 @@ let
       system,
       modules ? [ ],
     }:
-    let
-      info = {
-        inherit hostname system;
-      };
-      specialArgs = mkSpecialArgs info;
-    in
     inputs.nix-darwin.lib.darwinSystem {
-      inherit specialArgs;
-      modules = sharedModules info ++ modules;
+      specialArgs = {
+        inherit hostname;
+      };
+      modules = sharedModules { inherit hostname system; } ++ modules;
     };
 
   mkHomeManager =
@@ -53,17 +36,16 @@ let
       system,
       modules ? [ ],
     }:
-    let
-      info = {
-        inherit hostname system;
-      };
-      specialArgs = mkSpecialArgs info;
-    in
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit (specialArgs) pkgs;
-      extraSpecialArgs = specialArgs;
-      modules = sharedModules info ++ modules;
-    };
+    withSystem system (
+      { pkgs, ... }:
+      inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit hostname;
+        };
+        modules = sharedModules { inherit hostname system; } ++ modules;
+      }
+    );
 
   many = func: builtins.mapAttrs (hostname: cfgs: func (cfgs // { inherit hostname; }));
 in
