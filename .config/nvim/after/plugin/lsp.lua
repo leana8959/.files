@@ -29,9 +29,9 @@ local servers = {
     bashls = { -- Bash
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
-                vim.cmd.normal("mJ")
+                local saved = vim.fn.winsaveview()
                 vim.cmd([[silent exec "%!shfmt"]])
-                vim.cmd.normal("`J")
+                vim.fn.winrestview(saved)
             end, { buffer = bufno })
         end,
     },
@@ -39,9 +39,9 @@ local servers = {
     tinymist = {
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
-                vim.cmd.normal("mJ")
+                local saved = vim.fn.winsaveview()
                 vim.cmd([[silent exec "%!typstyle"]])
-                vim.cmd.normal("`J")
+                vim.fn.winrestview(saved)
             end, { buffer = bufno })
         end,
     },
@@ -49,9 +49,9 @@ local servers = {
     lua_ls = { -- Lua
         on_attach = function(_, bufno)
             map("n", "<leader>f", function()
-                vim.cmd(":w")
+                local saved = vim.fn.winsaveview()
                 vim.cmd([[silent exec "!stylua %"]])
-                vim.cmd(":e")
+                vim.fn.winrestview(saved)
             end, { buffer = bufno })
         end,
         settings = {
