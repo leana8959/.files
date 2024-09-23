@@ -3,7 +3,7 @@
 {
 
   nix = {
-    package = lib.mkDefault pkgs.nix;
+    package = lib.mkForce pkgs.nixVersions.nix_2_22;
 
     settings = {
       allow-import-from-derivation = "true";
