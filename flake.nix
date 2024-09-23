@@ -65,7 +65,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     disko = {
-      url = "github:nix-community/disko";
+      url = "github:nix-community/disko?ref=v1.8.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # pins
