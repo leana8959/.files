@@ -234,12 +234,7 @@ in
             self.nixosModules.layouts
             self.nixosModules.system-nixconf
             (
-              {
-                pkgs,
-                lib,
-                modulesPath,
-                ...
-              }:
+              { pkgs, modulesPath, ... }:
               {
                 nixpkgs.hostPlatform = system;
                 system.stateVersion = "24.05";
@@ -252,7 +247,6 @@ in
                   pkgs.git
                   pkgs.pastebinit # for sharing cli output & debugging
                 ];
-                nix.package = lib.mkForce pkgs.nixVersions.latest;
                 users.users.nixos.shell = pkgs.fish;
                 programs.fish.enable = true;
               }

@@ -24,7 +24,13 @@ in
     myPkgs.nd
 
     pkgs.discord
-    pkgs.cinny-desktop
+
+    # CVE-2024-45191
+    # CVE-2024-45192
+    # CVE-2024-45193
+    # disabled for security
+    #
+    # pkgs.cinny-desktop
 
     pkgs.hacksaw
     pkgs.shotgun
