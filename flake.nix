@@ -70,7 +70,7 @@
     };
     # pins
     alt-ergo-pin.url = "github:nixos/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
-    neovim-pin.url = "github:nixos/nixpkgs/6132b0f6e344ce2fe34fc051b72fb46e34f668e0";
+    neovim-pin.url = "github:nixos/nixpkgs/nixos-unstable";
     # packages
     wired-notify = {
       url = "github:Toqozz/wired-notify/0.10.6";
