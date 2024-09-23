@@ -90,11 +90,11 @@ local plugins = {
         lazy = false,
     },
     "Treeniks/isabelle-syn.nvim",
-    {
-        "turbio/bracey.vim",
-        build = "npm install --prefix server",
-        cond = vim.fn.executable("npm") == 1,
-    },
+    -- {
+    --     "turbio/bracey.vim",
+    --     build = "npm install --prefix server",
+    --     cond = vim.fn.executable("npm") == 1,
+    -- },
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
