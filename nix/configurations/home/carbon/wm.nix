@@ -23,6 +23,11 @@ let
       url = "https://basicappleguy.com/s/NebulaiPad.png";
       hash = "sha256-rpWxhCH7eIT7ktRAROvL56eRK0T6AsgGE+iI/CLUF3k=";
     };
+
+    "luz&amity_20_windz" = pkgs.fetchurl {
+      url = "https://64.media.tumblr.com/a28bd2446401e30cc879a641a3038ac7/fcdeee73cdb01c35-18/s2048x3072/c6c89f6de58d26eeb9848d5f41b20ebbcec94b6d.pnj";
+      hash = "sha256-isdyegUoGXZyFDCyBMCNadIv/jry82slXkjcdXpNKrY=";
+    };
   };
 
 in
@@ -38,7 +43,7 @@ in
 
   home.file = {
     ".xscreensaver".source = ./xscreensaver/.xscreensaver;
-    ".wallpaper".source = wallpapers.sequoia;
+    ".wallpaper".source = wallpapers."luz&amity_20_windz";
   };
 
   home.packages = [
