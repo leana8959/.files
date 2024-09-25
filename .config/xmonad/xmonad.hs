@@ -132,6 +132,7 @@ myManageHook =
   , className =? "Evince"                      --> longFloat
   , title     =? "easyeffects"                 --> centeredFloat
   , title     =? "Picture-in-Picture"          --> doFloat
+  , className =? "feh"                         --> smallFloat
   , className =? "Element"                     --> doShift "CHAT"
   , className =? "discord"                     --> doShift "CHAT"
   , className =? "thunderbird"                 --> doShift "CHAT"
@@ -191,6 +192,9 @@ myKeymaps =
         )
       , ( (mod4Mask .|. shiftMask, xK_4) -- use hacksaw to select
         , spawn "shotgun -g $(hacksaw -c \"#875fff\" -g 3) - | xclip -in -selection clipboard -t image/png"
+        )
+      , ( (mod4Mask .|. shiftMask, xK_5) -- float the result as a in-memory preview for quick referencing
+        , spawn "shotgun -g $(hacksaw -c \"#875fff\" -g 3) - | feh --auto-zoom -"
         )
 
       -- reset builtin display
