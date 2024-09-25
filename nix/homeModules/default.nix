@@ -30,6 +30,7 @@ let
     "fcitx5"
     "golang"
     "sioyek"
+    "feh"
   ];
 
   eachModule = lib.attrsets.genAttrs (moduleNames ++ extraModuleNames) toModule;

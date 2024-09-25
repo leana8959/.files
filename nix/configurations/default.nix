@@ -208,6 +208,7 @@ in
                     self.homeModules.fcitx5
                     self.homeModules.golang
                     self.homeModules.sioyek
+                    self.homeModules.feh
                   ];
                   programs.neovim.extraLangServers.enable = true;
                   programs.git.signing.signByDefault = true;

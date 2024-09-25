@@ -63,7 +63,6 @@ in
 
     pkgs.dmenu
     pkgs.xclip
-    pkgs.feh
     pkgs.playerctl
 
     (pkgs.haskellPackages.ghcWithPackages (self: [
