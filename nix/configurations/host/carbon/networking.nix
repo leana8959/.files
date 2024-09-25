@@ -5,6 +5,11 @@
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
+  services.hoogle = {
+    enable = true;
+    port = 1992;
+  };
+
   networking.wireless = {
     enable = true;
     userControlled.enable = true;
