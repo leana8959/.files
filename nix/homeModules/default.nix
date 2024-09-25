@@ -28,7 +28,6 @@ let
   extraModuleNames = [
     "auto-gc"
     "fcitx5"
-    "golang"
     "sioyek"
     "feh"
   ];

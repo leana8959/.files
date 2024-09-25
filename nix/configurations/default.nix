@@ -206,7 +206,6 @@ in
                 home-manager.users.leana = {
                   imports = [
                     self.homeModules.fcitx5
-                    self.homeModules.golang
                     self.homeModules.sioyek
                     self.homeModules.feh
                   ];
