@@ -25,7 +25,22 @@
           "--variable-width-glyphs"
         ];
       };
+
       altiosevka = final.callPackage ./altiosevka { };
+      altiosevka-nerd-font-mono = mkNerdFont {
+        font = altiosevka;
+        extraArgs = [
+          "--name {/.}-NFM"
+          "--use-single-width-glyphs"
+        ];
+      };
+      altiosevka-nerd-font-propo = mkNerdFont {
+        font = altiosevka;
+        extraArgs = [
+          "--name {/.}-NFP"
+          "--variable-width-glyphs"
+        ];
+      };
 
       logisim-evolution = final.callPackage ./logisim-evolution.nix { };
       necrolib = final.callPackage ./necrolib.nix { };
