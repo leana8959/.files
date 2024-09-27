@@ -7,7 +7,7 @@
 {
   programs.kitty = lib.mkIf config.programs.kitty.enable {
     font = {
-      name = "HiosevkaNFM";
+      name = "AltiosevkaNFM";
       size = 14;
     };
     settings = {

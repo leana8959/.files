@@ -54,8 +54,8 @@ in
     pkgs.noto-fonts-cjk-serif
     pkgs.noto-fonts-color-emoji
     pkgs.noto-fonts-emoji-blob-bin
-    myPkgs.hiosevka-nerd-font-mono
-    myPkgs.hiosevka
+    myPkgs.altiosevka-nerd-font-mono
+    myPkgs.altiosevka
 
     pkgs.xmobar
     pkgs.wired
