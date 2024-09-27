@@ -18,7 +18,7 @@
       let
         ordered =
           nss:
-          lib.trivial.pipe nss [
+          lib.pipe nss [
             lib.lists.reverseList
             (lib.lists.imap0 (i: lib.mapAttrs (_: n: n // { priority = i; })))
             lib.mergeAttrsList
