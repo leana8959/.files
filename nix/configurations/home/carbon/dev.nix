@@ -24,6 +24,7 @@ in
     pkgs.typescript
     pkgs.nodejs_20
     pkgs.vscode-langservers-extracted # HTML/CSS/JSON/ESLint
+    pkgs.nodePackages."@angular/cli" # module WE
 
     # rust
     pkgs.cargo
