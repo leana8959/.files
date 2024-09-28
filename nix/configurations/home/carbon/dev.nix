@@ -38,6 +38,10 @@ in
 
     pkgs.iconv
     pkgs.sqlite
+
+    # isabelle
+    myPkgs.isabelle-wrapped
+    pkgs.hol
   ];
 
   programs.neovim.extraPackages = [

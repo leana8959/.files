@@ -13,7 +13,6 @@ in
   options.extraPackages = {
     utilities.enable = lib.mkEnableOption "utility packages";
     workflow.enable = lib.mkEnableOption "worflow packages";
-    university.enable = lib.mkEnableOption "university related packages";
   };
 
   config = {
@@ -71,16 +70,6 @@ in
       (lib.mkIf config.extraPackages.workflow.enable [
         pkgs.act
         pkgs.forgejo-actions-runner
-      ])
-
-      (lib.mkIf config.extraPackages.university.enable [
-        pkgs.rars
-        myPkgs.logisim-evolution
-        myPkgs.necrolib
-        myPkgs.why3
-
-        myPkgs.isabelle-wrapped
-        pkgs.hol
       ])
     ];
   };

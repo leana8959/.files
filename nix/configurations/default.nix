@@ -152,7 +152,6 @@ in
             home-manager.users.leana = {
               programs.neovim.extraLangServers.enable = true;
               extraPackages.utilities.enable = true;
-              extraPackages.university.enable = true;
               extraPackages.workflow.enable = true;
               programs.git.signing.signByDefault = true;
               programs.cmus.enable = true;
@@ -212,7 +211,6 @@ in
                   programs.neovim.extraLangServers.enable = true;
                   programs.git.signing.signByDefault = true;
                   extraPackages.utilities.enable = true;
-                  extraPackages.university.enable = true;
                   programs.cmus.enable = true;
                 };
               }
