@@ -34,11 +34,11 @@ npairs.add_rules {
         :with_move(cond.done),
 }
 
-npairs.add_rule(
-    Rule("*", "*/")
+npairs.add_rules {
+    Rule("*", "*/", { "typst", "go", "java", "rust", "scss" })
         :with_pair(function(opts) return "/" == opts.line:sub(opts.col - 1, opts.col) end)
-        :with_move(cond.done)
-)
+        :with_move(cond.done),
+}
 
 local function pair_with_insertion(a1, ins, a2, lang)
     npairs.add_rule(
