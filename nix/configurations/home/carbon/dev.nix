@@ -6,8 +6,6 @@ in
 
 {
   home.packages = [
-    # IDEs
-    pkgs.vscode-fhs
     pkgs.jetbrains.idea-community
 
     # keyboard
@@ -62,6 +60,14 @@ in
     # java
     pkgs.jdt-language-server
   ];
+
+  programs.vscode = {
+    enable = true;
+    extensions = [
+      pkgs.vscode-extensions.redhat.java
+      pkgs.vscode-extensions.vscjava.vscode-java-pack
+    ];
+  };
 
   programs.go = {
     enable = true;
