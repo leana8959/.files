@@ -27,6 +27,11 @@ npairs.add_rules {
         :with_pair(function(opts) return double_trouble(opts, "%$") end)
         :with_del(function(opts) return double_trouble(opts, "%$") end)
         :with_move(cond.done),
+
+    Rule("<", ">", { "html" })
+        :with_pair(function(opts) return double_trouble(opts, "[<>]") end)
+        :with_del(function(opts) return double_trouble(opts, "[<>]") end)
+        :with_move(cond.done),
 }
 
 npairs.add_rule(
