@@ -23,6 +23,10 @@ rustPlatform.buildRustPackage rec {
   preBuild = ''
     # Don't use the upstream way of embedding the git rev
     echo 'fn main() { println!("cargo:rustc-env=BUILD_SHA=${rev}"); }' > crates/bot/build.rs
+
+    # Patch the fonts with src
+    # FIXME: is this the right way to patch
+    substituteInPlace crates/worker/src/sandbox.rs --replace-fail 'read_dir("fonts")' 'read_dir("${src}/fonts")'
   '';
 
   cargoBuildFlags = [ "--workspace" ];
