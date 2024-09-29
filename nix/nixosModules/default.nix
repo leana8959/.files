@@ -18,6 +18,8 @@ let
     "zram"
     "i_am_builder"
     "fish-vendor-completions"
+
+    "typst-bot"
   ];
 
   sharedModules.imports = map toModule sharedModuleNames;
