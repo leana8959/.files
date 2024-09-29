@@ -21,13 +21,25 @@
   };
 
   # hoot, the discord bot
-  services.hoot.enable = true;
-  services.hoot.environmentFile = config.age.secrets.hoot_token.path;
-  services.hoot.configDir = "/var/hoot";
-
+  services.hoot = {
+    enable = true;
+    environmentFile = config.age.secrets.hoot_token.path;
+    configDir = "/var/hoot";
+  };
   age.secrets.hoot_token = {
     owner = "hoot";
     mode = "600";
     file = ../../secrets/hoot_token.age;
+  };
+
+  services.typst-bot = {
+    enable = true;
+    environmentFile = config.age.secrets.typst-bot_token.path;
+    dataDir = "/var/typst-bot";
+  };
+  age.secrets.typst-bot_token = {
+    owner = "typst-bot";
+    mode = "600";
+    file = ../../secrets/typst-bot_token.age;
   };
 }

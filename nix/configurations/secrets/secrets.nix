@@ -22,4 +22,5 @@ in
   "restic_backblaze_env.age".publicKeys = all;
 
   "hoot_token.age".publicKeys = all;
+  "typst-bot_token.age".publicKeys = all;
 }
