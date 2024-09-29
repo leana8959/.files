@@ -63,6 +63,7 @@ in
 
   programs.vscode = {
     enable = true;
+    package = pkgs.vscodium;
     extensions = [
       pkgs.vscode-extensions.redhat.java
       pkgs.vscode-extensions.vscjava.vscode-java-pack
