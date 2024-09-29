@@ -198,7 +198,7 @@ myKeymaps =
         )
 
       -- reset builtin display
-      , ((0, xF86XK_Display), spawn "xrandr --output eDP-1 --auto")
+      , ((0, xF86XK_Display), spawn "autorandr --change")
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
