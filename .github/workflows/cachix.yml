@@ -68,6 +68,7 @@ jobs:
       matrix:
         package:
           - isabelle-wrapped # takes a while to build
+          - typst-bot
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
