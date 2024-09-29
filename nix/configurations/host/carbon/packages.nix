@@ -15,7 +15,7 @@
   services.gnome.gnome-keyring.enable = true;
   programs.seahorse.enable = true;
 
-  programs.steam.enable = true;
+  # programs.steam.enable = true;
 
   virtualisation = {
     docker.enable = true;
