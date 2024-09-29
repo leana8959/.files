@@ -27,6 +27,9 @@ rustPlatform.buildRustPackage rec {
     # Patch the fonts with src
     # FIXME: is this the right way to patch
     substituteInPlace crates/worker/src/sandbox.rs --replace-fail 'read_dir("fonts")' 'read_dir("${src}/fonts")'
+
+    # Patch the command calling the worker by name.
+    substituteInPlace crates/bot/src/worker.rs --replace-fail 'Command::new("./worker")' 'Command::new("worker")'
   '';
 
   cargoBuildFlags = [ "--workspace" ];
