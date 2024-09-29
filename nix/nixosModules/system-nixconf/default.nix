@@ -3,7 +3,7 @@
 {
 
   nix = {
-    package = lib.mkForce pkgs.nixVersions.nix_2_22;
+    package = lib.mkDefault pkgs.nixVersions.nix_2_22;
 
     settings = {
       extra-substituters = [
