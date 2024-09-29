@@ -58,6 +58,7 @@
       maeel = final.callPackage ./maeel.nix { };
       tokei = final.callPackage ./tokei { }; # alpha tokei with typst, skel, hledger
       typst-mutilate = final.callPackage ./typst-mutilate.nix { };
+      typst-bot = final.callPackage ./typst-bot.nix { };
 
       posy-cursor = final.callPackage ./posy-cursor.nix { };
       nd = final.callPackage ./nd { };
