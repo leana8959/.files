@@ -1,3 +1,4 @@
+local map = vim.keymap.set
 local autocmd = vim.api.nvim_create_autocmd
 local usercmd = vim.api.nvim_create_user_command
 
@@ -84,6 +85,17 @@ autocmd("FileType", {
 autocmd("FileType", {
     pattern = { "nix", "haskell", "ocaml", "skel" },
     callback = function() vim.cmd([[let b:match_words = '\<let\>:\<in\>']]) end,
+})
+
+autocmd("FileType", {
+    pattern = "ledger",
+    callback = function()
+        map("n", "<leader>f", function()
+            local saved = vim.fn.winsaveview()
+            vim.cmd([[%!hledger print -f -]])
+            vim.fn.winrestview(saved)
+        end)
+    end,
 })
 
 autocmd("OptionSet", {
