@@ -20,6 +20,7 @@ let
     "fish-vendor-completions"
 
     "typst-bot"
+    "parrot"
   ];
 
   sharedModules.imports = map toModule sharedModuleNames;
