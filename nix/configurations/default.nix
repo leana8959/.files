@@ -223,6 +223,7 @@ in
               self.nixosModules.i_am_builder
               inputs.hoot.nixosModules.default
               self.nixosModules.typst-bot
+              self.nixosModules.parrot
             ];
           };
         };

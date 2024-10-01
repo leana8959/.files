@@ -42,4 +42,14 @@
     mode = "600";
     file = ../../secrets/typst-bot_token.age;
   };
+
+  services.parrot = {
+    enable = true;
+    environmentFile = config.age.secrets.parrot_token.path;
+  };
+  age.secrets.parrot_token = {
+    owner = "parrot";
+    mode = "600";
+    file = ../../secrets/parrot_token.age;
+  };
 }

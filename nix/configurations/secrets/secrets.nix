@@ -23,4 +23,5 @@ in
 
   "hoot_token.age".publicKeys = all;
   "typst-bot_token.age".publicKeys = all;
+  "parrot_token.age".publicKeys = all;
 }
