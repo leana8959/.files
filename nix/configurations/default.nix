@@ -30,6 +30,9 @@ let
           "steam"
           "steam-original"
           "steam-run"
+
+          "vscode"
+          "code"
         ];
     };
   };
