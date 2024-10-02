@@ -20,13 +20,13 @@ let
     (final: _: {
       agenix = inputs.agenix.packages.${final.system}.default;
       audio-lint = inputs.audio-lint.packages.${final.system}.default;
-      prop-solveur = inputs.prop-solveur.packages.${final.system}.default;
     })
 
     inputs.nur.overlay
-
     inputs.wired-notify.overlays.default
 
+    inputs.prop-solveur.overlays.default
+    inputs.hbrainfuck.overlays.default
     inputs.hoot.overlays.default
 
     minimal
