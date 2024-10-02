@@ -28,6 +28,11 @@ let
       url = "https://64.media.tumblr.com/a28bd2446401e30cc879a641a3038ac7/fcdeee73cdb01c35-18/s2048x3072/c6c89f6de58d26eeb9848d5f41b20ebbcec94b6d.pnj";
       hash = "sha256-isdyegUoGXZyFDCyBMCNadIv/jry82slXkjcdXpNKrY=";
     };
+
+    nixos-artwork-binary-black_8k = pkgs.fetchurl {
+      url = "https://github.com/NixOS/nixos-artwork/blob/53ea652ec7d8af5d21fd2b79b6c49cb39078ddfb/wallpapers/nix-wallpaper-binary-black_8k.png?raw=true";
+      hash = "sha256-MxEgvzWmdqMeI5GeI6Hzci6yd5iL44NDXyKQOuw+fLY=";
+    };
   };
 
 in
@@ -43,7 +48,7 @@ in
 
   home.file = {
     ".xscreensaver".source = ./xscreensaver/.xscreensaver;
-    ".wallpaper".source = wallpapers."luz&amity_20_windz";
+    ".wallpaper".source = wallpapers.nixos-artwork-binary-black_8k;
   };
 
   home.packages = [
