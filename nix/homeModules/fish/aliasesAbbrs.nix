@@ -47,7 +47,7 @@
 
     shellAliases = lib.mkMerge [
       {
-        rm = "rm -i"; # idiot protection
+        rm = "rm -I"; # idiot protection
         tree = "tree -Cph";
         restow = "cd ~/.dotfiles/ && stow -D . && stow -S . && prevd";
         nix-shell = "nix-shell --run fish";
