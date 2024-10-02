@@ -1,12 +1,12 @@
 -- vim:et:sw=2:ts=2:ft=haskell
 
 Config { overrideRedirect = False
-       , font             = "Iosevka Extended 15"
-       , additionalFonts  = [ "Noto Color Emoji 10"
+       , font             = "Iosevka 11"
+       , additionalFonts  = [ "Noto Color Emoji 9"
                             ]
        , bgColor          = "#000000"
        , fgColor          = "#FFFFFF"
-       , position = BottomH 24
+       , position = Bottom
        , commands = [ Run Kbd
                         [ ("myDvorakFrench", "🇫🇷")
                         , ("myDvorak", "🇺🇸")
