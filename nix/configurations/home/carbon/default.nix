@@ -42,6 +42,7 @@ in
     myPkgs.typst-mutilate
 
     pkgs.prop-solveur
+    pkgs.hbf
   ];
 
   programs = {
