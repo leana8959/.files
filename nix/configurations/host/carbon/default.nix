@@ -15,6 +15,8 @@
     ./packages.nix
 
     ./gui.nix
+
+    ./db.nix # M1 BDD course
   ];
 
   boot.loader = {
