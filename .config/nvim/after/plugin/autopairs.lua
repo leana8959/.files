@@ -63,10 +63,16 @@ pair_with_insertion("/*", " ", "*/", { "typst", "go", "java", "rust", "scss" })
 
 pair_with_insertion("{", "#", "}", { "html", "htmldjango" })
 pair_with_insertion("{#", " ", "#}", { "html", "htmldjango" })
+pair_with_insertion("{#", "-", "#}", { "html", "htmldjango" })
+pair_with_insertion("{#-", " ", "-#}", { "html", "htmldjango" })
 
 pair_with_insertion("{", "%", "}", { "html", "htmldjango" })
 pair_with_insertion("{%", " ", "%}", { "html", "htmldjango" })
+pair_with_insertion("{%", "-", "%}", { "html", "htmldjango" })
+pair_with_insertion("{%-", " ", "-%}", { "html", "htmldjango" })
 
 pair_with_insertion("{{", " ", "}}", { "html", "htmldjango" })
+pair_with_insertion("{{", "-", "}}", { "html", "htmldjango" })
+pair_with_insertion("{{-", " ", "-}}", { "html", "htmldjango" })
 
 pair_with_insertion("$", " ", "$", { "typst" })
