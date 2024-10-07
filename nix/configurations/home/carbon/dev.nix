@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   inherit (pkgs) myPkgs;
@@ -31,6 +31,11 @@ in
 
     # java
     pkgs.maven
+
+    # scala
+    (pkgs.sbt.override { jre = config.programs.java.package; })
+    (pkgs.scala.override { jre = config.programs.java.package; })
+    (pkgs.metals.override { jre = config.programs.java.package; })
 
     pkgs.gnumake
     pkgs.cmake
