@@ -197,8 +197,10 @@ myKeymaps =
         , spawn "shotgun -g $(hacksaw -c \"#875fff\" -g 3) - | feh --auto-zoom -"
         )
 
-      -- reset builtin display
+      -- Force autorandr to change profile
       , ((0, xF86XK_Display), spawn "autorandr --change")
+      , ((mod1Mask, xF86XK_MonBrightnessUp), spawn "autorandr --change")
+      , ((mod1Mask, xF86XK_MonBrightnessDown), spawn "autorandr --change")
 
       , ((0, xF86XK_MonBrightnessDown), spawn "light -U 5")
       , ((0, xF86XK_MonBrightnessUp), spawn "light -A 5")
