@@ -1,40 +1,32 @@
 { lib, ... }:
 
 let
-  toModule = name: ./${name};
+  modulesFromDir =
+    path:
+    lib.pipe (builtins.readDir path) [
+      (lib.filterAttrs (moduleName: _: moduleName != "default.nix"))
+      (lib.mapAttrs (moduleName: _: lib.path.append path moduleName)) # { name: path; ... }
+    ];
 
-  sharedModuleNames = [
-    "sudo-conf"
-    "system-nixconf"
-  ];
-  moduleNames = [
-    "locale"
-    "network"
-    "auto-gc"
-  ];
-  extraModuleNames = [
-    "layouts"
-    "leana"
-    "zram"
-    "i_am_builder"
-    "fish-vendor-completions"
+  # shared between nixos and nix-darwin
+  shared = modulesFromDir ./shared;
 
-    "typst-bot"
-    "parrot"
-  ];
+  # generic modules that can be enabled on all devices
+  common = modulesFromDir ./common;
 
-  sharedModules.imports = map toModule sharedModuleNames;
-
-  eachModule = lib.attrsets.genAttrs (sharedModuleNames ++ moduleNames ++ extraModuleNames) toModule;
-
-  allModules.imports = map toModule (sharedModuleNames ++ moduleNames);
+  # extra opt-in configurations
+  extra = modulesFromDir ./extra;
 in
 
 {
-  flake.nixosModules = eachModule // {
-    # Shared between darwin and nix
-    shared = sharedModules;
-
-    _ = allModules;
-  };
+  flake.nixosModules = lib.mergeAttrsList [
+    {
+      # Fuse some module sets together
+      sharedModules.imports = lib.attrValues shared;
+      commonModules.imports = lib.attrValues common;
+    }
+    shared
+    common
+    extra
+  ];
 }

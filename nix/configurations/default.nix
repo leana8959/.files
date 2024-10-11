@@ -48,7 +48,8 @@ let
           }
           nixpkgsConfig
 
-          self.nixosModules._
+          self.nixosModules.sharedModules
+          self.nixosModules.commonModules
           self.nixosModules.layouts
           ./host/${hostname}
           inputs.agenix.nixosModules.default
@@ -94,7 +95,7 @@ let
           }
           nixpkgsConfig
 
-          self.nixosModules.shared
+          self.nixosModules.sharedModules
           self.darwinModules._
           ./host/${hostname}
 
