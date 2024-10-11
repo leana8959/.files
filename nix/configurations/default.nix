@@ -68,7 +68,7 @@ let
 
               sharedModules = [ { home.stateVersion = "24.05"; } ];
               users.leana.imports = [
-                self.homeModules._
+                self.homeModules.commonModules
                 ./home/${hostname}
                 nixpkgsRegistry
               ];
@@ -110,7 +110,7 @@ let
               };
               sharedModules = [ { home.stateVersion = "24.05"; } ];
               users.leana.imports = [
-                self.homeModules._
+                self.homeModules.commonModules
                 ./home/${hostname}
                 nixpkgsRegistry
               ];
@@ -126,7 +126,7 @@ let
         { hostname, ... }:
         [
           { home.stateVersion = "24.05"; }
-          self.homeModules._
+          self.homeModules.commonModules
           ./home/${hostname}
           nixpkgsRegistry
           nixpkgsConfig
