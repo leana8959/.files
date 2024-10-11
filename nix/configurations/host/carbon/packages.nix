@@ -19,10 +19,10 @@
 
   virtualisation = {
     docker.enable = true;
-    # virtualbox.host.enable = true;
+    virtualbox.host.enable = true;
   };
   users.users."leana".extraGroups = [
     "docker"
-    # "vboxusers"
+    "vboxusers"
   ];
 }
