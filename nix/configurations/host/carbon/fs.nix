@@ -4,6 +4,11 @@
     "d /mnt/seagate 0700 leana leana - -"
 
     "d /home/leana/mnt/tdk32    0700 leana leana - -"
+
+    # tmux_sessionizer directories
+    "d /home/leana/repos/      0700 leana leana - -"
+    "d /home/leana/univ-repos/ 0700 leana leana - -"
+    "d /home/leana/playground/ 0700 leana leana 4w -"
   ];
 
   fileSystems."/mnt/data" = {
