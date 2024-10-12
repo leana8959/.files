@@ -36,6 +36,7 @@ in
     (pkgs.sbt.override { jre = config.programs.java.package; })
     (pkgs.scala.override { jre = config.programs.java.package; })
     (pkgs.metals.override { jre = config.programs.java.package; })
+    (pkgs.ammonite.override { jre = config.programs.java.package; })
 
     pkgs.gnumake
     pkgs.cmake
