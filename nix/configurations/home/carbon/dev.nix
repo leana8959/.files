@@ -69,7 +69,7 @@ in
   programs.vscode = {
     enable = true;
     extensions = [
-      pkgs.vscode-extensions.redhat.java
+      (pkgs.vscode-extensions.redhat.java.overrideAttrs { jdk = config.programs.java.package; })
       pkgs.vscode-extensions.vscjava.vscode-java-pack
     ];
   };
