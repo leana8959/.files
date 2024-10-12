@@ -35,8 +35,8 @@
       (lib.mkIf pkgs.stdenv.isLinux {
         ss = "sudo systemctl";
         se = "SUDO_EDITOR=(which nvim) sudoedit";
-        ns = "sudo nixos-rebuild switch -L --flake ~/.dotfiles#${hostname}";
-        hs = "home-manager switch -L --flake ~/.dotfiles#${hostname}";
+        ns = "sudo nixos-rebuild switch --flake ~/.dotfiles#${hostname}";
+        hs = "home-manager switch --flake ~/.dotfiles#${hostname}";
       })
 
       (lib.mkIf pkgs.stdenv.isDarwin {
