@@ -46,7 +46,6 @@ in
 
     # isabelle
     myPkgs.isabelle-wrapped
-    pkgs.hol
   ];
 
   programs.neovim.extraPackages = [
