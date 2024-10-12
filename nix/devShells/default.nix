@@ -79,6 +79,13 @@
             pkgs.xz
           ];
         };
+
+        text_to_speech = pkgs.mkShell {
+          name = "text_to_speech";
+          packages = [
+            pkgs.python39Full # using a more recent python3 would not work
+          ];
+        };
       };
     };
 }
