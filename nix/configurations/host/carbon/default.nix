@@ -27,13 +27,6 @@
     efi.canTouchEfiVariables = true;
   };
 
-  fileSystems."/boot".options = [
-    "uid=0"
-    "gid=0"
-    "fmask=0077"
-    "dmask=0077"
-  ];
-
   # related issues
   # https://unix.stackexchange.com/questions/20483/how-to-find-which-process-is-causing-high-cpu-usage
   # https://unix.stackexchange.com/questions/588018/kworker-thread-kacpid-notify-kacpid-hogging-60-70-of-cpu
