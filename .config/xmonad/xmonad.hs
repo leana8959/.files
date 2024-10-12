@@ -250,7 +250,7 @@ myKeymaps =
       , ((myMod .|. shiftMask, xK_s), withFocused $ windows . W.sink)
 
       -- dmenu
-      , ((myMod, xK_p), spawn "dmenu_run -fn \"Iosevka Extended-17\" -nb \"#36363a\" -nf \"#e2e2e4\" -sb \"#f7f7f8\" -sf \"#36363a\" -l 10")
+      , ((myMod, xK_p), spawn "dmenu_run -i -fn \"Iosevka Extended-17\" -nb \"#36363a\" -nf \"#e2e2e4\" -sb \"#f7f7f8\" -sf \"#36363a\" -l 10")
      ]
 
      -- organic window jumping
