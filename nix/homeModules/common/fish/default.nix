@@ -14,6 +14,12 @@
     '';
   };
 
+  config.home.sessionVariables = lib.mapAttrs (_: path: "${config.home.homeDirectory}/${path}") {
+    REPOS_PATH = "repos";
+    UNIV_REPOS_PATH = "univ-repos";
+    PLAYGROUND_PATH = "playground";
+  };
+
   config.xdg.configFile."fish/functions".source = lib.mkIf config.programs.fish.enable ./functions;
   config.programs.fish =
     let
@@ -62,8 +68,6 @@
         ]
         # Add brew, but as fallback
         ++ (lib.lists.optional pkgs.stdenv.isDarwin "/opt/homebrew/bin");
-
-      shellInit = readConfig "shellInit";
 
       interactiveShellInit = readConfigs [
         "interactiveShellInit"
