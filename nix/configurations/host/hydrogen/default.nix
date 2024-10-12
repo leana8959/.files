@@ -20,6 +20,13 @@
     '';
   };
 
+  age.secrets.sshconfig = {
+    file = ../../secrets/sshconfig.age;
+    path = "/home/leana/.ssh/config";
+    mode = "644";
+    owner = "leana";
+  };
+
   # hoot, the discord bot
   services.hoot = {
     enable = true;
