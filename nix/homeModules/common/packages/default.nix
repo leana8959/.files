@@ -44,6 +44,7 @@ in
         pkgs.parallel
         pkgs.findutils # xargs and more
         pkgs.du-dust
+        pkgs.file
       ]
 
       (lib.mkIf pkgs.stdenv.isDarwin [
