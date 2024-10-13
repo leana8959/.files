@@ -46,6 +46,9 @@ in
 
     # isabelle
     myPkgs.isabelle-wrapped
+
+    # preview markdown
+    pkgs.python3Packages.grip
   ];
 
   programs.neovim.extraPackages = [
