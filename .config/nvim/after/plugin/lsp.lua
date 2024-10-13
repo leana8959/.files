@@ -23,7 +23,10 @@ local servers = {
     gleam = {}, -- Gleam
     yamlls = {}, -- yaml
     gopls = {}, -- Golang
-    golangci_lint_ls = {},
+
+    -- -- fix this, it shows spamming message on top
+    -- golangci_lint_ls = {},
+
     fish_lsp = {},
 
     bashls = { -- Bash
