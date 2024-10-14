@@ -64,6 +64,7 @@
       nd = final.callPackage ./nd { };
       xbrightness = final.callPackage ./xbrightness.nix { };
       ffgun = final.callPackage ./ffgun.nix { };
+      easyscan = final.callPackage ./easyscan.nix { };
 
       # Unmerged packages from nixfinal
       # TODO: use upstream when merged
