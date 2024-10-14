@@ -134,3 +134,6 @@ usercmd("Retab", function(opts)
     vim.bo.expandtab = true
     vim.cmd("%retab!")
 end, { nargs = "+" })
+
+-- Dissambiguate the :W shortcut
+usercmd("W", function(opts) vim.cmd(":w") end, { nargs = 0 })
