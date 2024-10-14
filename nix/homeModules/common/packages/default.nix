@@ -66,6 +66,7 @@ in
         pkgs.tea
         pkgs.agenix
         pkgs.nvd
+        pkgs.nix-tree
       ])
 
       (lib.mkIf config.extraPackages.workflow.enable [
