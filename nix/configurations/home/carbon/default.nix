@@ -20,6 +20,10 @@ in
     pkgs.p7zip
     pkgs.bc
 
+    # pdf utilities
+    pkgs.poppler_utils # pdfseparate, pdfunite
+    myPkgs.easyscan
+
     pkgs.deploy-rs
     myPkgs.nd
 
