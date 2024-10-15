@@ -1,11 +1,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '''
-$status$hostname$directory$python$username$nix_shell
+format = """
+$status$hostname$directory$username\
+$nix_shell\
+$golang$haskell$rust$typst$python
 $character
-'''
+"""
 right_format = '$cmd_duration$git_state$git_branch$git_commit$git_status'
 
+
+#################### Theme ####################
 palette = 'curry'
 
 [palettes.curry]
@@ -22,6 +26,8 @@ red = '#ca1243'
 brown = '#986801'
 gold = '#c18401'
 tinted_bg = '#eeeeee'
+#################### Theme ####################
+
 
 [hostname]
 ssh_only = true
@@ -54,10 +60,48 @@ truncation_symbol = '…/'
 format = '([\[$status\]](bold red) )'
 disabled = false
 
-[python]
-style = 'grey'
-format = '( [\($virtualenv\)]($style))'
 
+#################### Language modules ####################
+# Note that the padding goes on the *left* side
+[nix_shell]
+# https://github.com/starship/starship/blob/073e16b4926009565c06897aabda7f807c63c5a0/src/modules/nix_shell.rs#L66-L70
+# apparently `$name` and `$unknown_msg` are mutually exclusive
+format = '[ λ]($style)'
+style = 'bold #7e7eff'
+
+[python]
+style = 'bold #3572A5'
+format = '[ $virtualenv]($style)'
+
+[golang]
+format = "[ $version]($style)"
+style = "bold #00ADD8"
+
+[rust]
+format = '[ $version]($style)'
+style = "bold #dea584"
+
+[typst]
+format = '[ $version]($style)'
+style = "bold #239dad"
+
+# kinda slow tbh
+# [scala]
+# format = '[ $version]($style)'
+# style = '#c22d40'
+
+# too useless
+# [java]
+# format = '[ $version]($style)'
+# style = 'bold #b07219'
+
+[haskell]
+format = '[ $version]($style)'
+style = "bold #5e5086"
+#################### Language modules ####################
+
+
+#################### Right hand side ####################
 [cmd_duration]
 min_time = 5_000
 show_milliseconds = true
@@ -83,8 +127,4 @@ behind = '⇣$count'
 diverged = '⇕⇡$ahead_count⇣$behind_count'
 style = 'bold accent'
 format = '([\[](grey)[$all_status$ahead_behind]($style)[\]](grey))'
-
-[nix_shell]
-# https://github.com/starship/starship/blob/073e16b4926009565c06897aabda7f807c63c5a0/src/modules/nix_shell.rs#L66-L70
-# apparently `$name` and `$unknown_msg` are mutually exclusive
-format = '[ \($state( $name)\)]($style) '
+#################### Right hand side ####################
