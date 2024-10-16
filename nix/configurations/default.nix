@@ -1,11 +1,13 @@
 {
   self,
-  lib,
   inputs,
+
   many,
   mkDarwin,
   mkHomeManager,
   mkNixOS,
+
+  maybePathOrDefault,
   ...
 }:
 
@@ -37,16 +39,6 @@ let
         ];
     };
   };
-
-  maybePathOrDefault =
-    path: default:
-    if
-      lib.pathExists # Test directory/default.nix or just the file
-        (if lib.pathIsDirectory path then (lib.path.append path "default.nix") else path)
-    then
-      path
-    else
-      default;
 
   mkNixOSes =
     let

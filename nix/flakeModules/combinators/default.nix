@@ -1,4 +1,9 @@
-{ inputs, withSystem, ... }:
+{
+  lib,
+  inputs,
+  withSystem,
+  ...
+}:
 
 let
   mkNixOS =
@@ -47,6 +52,16 @@ let
       }
     );
 
+  maybePathOrDefault =
+    path: default:
+    if
+      lib.pathExists # Test directory/default.nix or just the file
+        (if lib.pathIsDirectory path then (lib.path.append path "default.nix") else path)
+    then
+      path
+    else
+      default;
+
   many = func: builtins.mapAttrs (hostname: cfgs: func (cfgs // { inherit hostname; }));
 in
 {
@@ -56,6 +71,8 @@ in
       mkNixOS
       mkDarwin
       mkHomeManager
+
+      maybePathOrDefault
       ;
   };
 }
