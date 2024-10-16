@@ -1,16 +1,11 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
+_do_clean=0
 while [ $# -gt 0 ]; do
 	case "$1" in
 	--clean*)
-		shopt -s nullglob
-		for link in nix-diff*; do
-			set -x
-			unlink "$link"
-			set +x
-		done
-		exit 0
+		_do_clean=1
 		;;
 	--last*)
 		if [[ "$1" != *=* ]]; then shift; fi
@@ -36,7 +31,7 @@ if [ -L "$last_link" ]; then
 	echo "Found link ${bold}$last_link${normal}"
 else
 	echo "Starting configuration build at ${bold}$_last_hash${normal}"
-	nix build "$last_ref" --out-link "$last_link" >/dev/null 2>&1 &
+	nix build "$last_ref" --out-link "$last_link" --log-format internal-json --verbose |& nom --json
 fi
 
 echo "Starting configuration build at ${bold}HEAD${normal}"
@@ -44,9 +39,14 @@ this_ref=".#nixosConfigurations.${_hostname}.config.system.build.toplevel"
 this_link="nix-diff-HEAD"
 nix build "$this_ref" --out-link "$this_link" --log-format internal-json --verbose |& nom --json
 
-echo "Waiting for all builds to complete..."
-wait
-echo "Completed."
-
 echo "Diffing..."
 nvd diff "$last_link" "$this_link"
+
+if [ $_do_clean ]; then
+	shopt -s nullglob
+	for link in nix-diff*; do
+		set -x
+		unlink "$link"
+		set +x
+	done
+fi
