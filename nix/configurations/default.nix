@@ -1,5 +1,6 @@
 {
   self,
+  lib,
   inputs,
   many,
   mkDarwin,
@@ -37,6 +38,16 @@ let
     };
   };
 
+  maybePathOrDefault =
+    path: default:
+    if
+      lib.pathExists # Test directory/default.nix or just the file
+        (if lib.pathIsDirectory path then (lib.path.append path "default.nix") else path)
+    then
+      path
+    else
+      default;
+
   mkNixOSes =
     let
       sharedModules =
@@ -51,7 +62,7 @@ let
           self.nixosModules.sharedModules
           self.nixosModules.commonModules
           self.nixosModules.layouts
-          ./host/${hostname}
+          (maybePathOrDefault ./host/${hostname} { })
           inputs.agenix.nixosModules.default
           { programs.command-not-found.enable = false; }
 
@@ -69,7 +80,7 @@ let
               sharedModules = [ { home.stateVersion = "24.05"; } ];
               users.leana.imports = [
                 self.homeModules.commonModules
-                ./home/${hostname}
+                (maybePathOrDefault ./home/${hostname} { })
                 nixpkgsRegistry
               ];
             };
@@ -97,7 +108,7 @@ let
 
           self.nixosModules.sharedModules
           self.darwinModules._
-          ./host/${hostname}
+          (maybePathOrDefault ./host/${hostname} { })
 
           self.nixosModules.fish-vendor-completions
           inputs.home-manager.darwinModules.home-manager
@@ -111,7 +122,7 @@ let
               sharedModules = [ { home.stateVersion = "24.05"; } ];
               users.leana.imports = [
                 self.homeModules.commonModules
-                ./home/${hostname}
+                (maybePathOrDefault ./home/${hostname} { })
                 nixpkgsRegistry
               ];
             };
@@ -127,7 +138,7 @@ let
         [
           { home.stateVersion = "24.05"; }
           self.homeModules.commonModules
-          ./home/${hostname}
+          (maybePathOrDefault ./home/${hostname} { })
           nixpkgsRegistry
           nixpkgsConfig
           self.homeModules.auto-gc # Enable user gc only when home-manager is used standalone
