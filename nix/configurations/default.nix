@@ -188,8 +188,6 @@ in
     homeConfigurations = mkHomeManagers {
       # Oracle cloud
       oracle.system = "aarch64-linux";
-      # Linode
-      linode.system = "x86_64-linux";
       # Inria (2024)
       mertensia = {
         system = "x86_64-linux";
