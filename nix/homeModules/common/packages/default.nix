@@ -29,7 +29,6 @@ in
     };
 
     programs = {
-      home-manager.enable = true;
       atuin.enable = true;
       btop.enable = true;
       direnv.enable = true;
