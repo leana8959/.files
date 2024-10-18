@@ -11,7 +11,6 @@
 
   # git itself
   programs.git = {
-    enable = true;
     extraConfig = {
       init.defaultBranch = "mistress"; # haha gay haha
       push.autoSetupRemote = true;

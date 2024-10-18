@@ -1,6 +1,5 @@
 {
   programs.atuin = {
-    enable = true;
     flags = [ "--disable-up-arrow" ];
     settings = {
       history_filter = [

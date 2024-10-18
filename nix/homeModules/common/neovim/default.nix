@@ -12,7 +12,6 @@
 
   config = {
     programs.neovim = {
-      enable = true;
       package = pkgs.neovim-pin.neovim-unwrapped;
       defaultEditor = true;
       extraPackages = lib.mkMerge [

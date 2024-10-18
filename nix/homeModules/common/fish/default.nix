@@ -35,8 +35,6 @@
         readConfigs = ns: builtins.concatStringsSep "\n" (map readConfig ns);
       in
       {
-        enable = true;
-
         # We need to handle path idempotently, because fish in home-manager is
         # unable to depend on nixos/nix-darwin configurations to figure out the profile.d/nix.sh
         # to source.
