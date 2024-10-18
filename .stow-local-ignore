@@ -20,3 +20,6 @@ nix
 # repo related
 ^/README.*
 ^/LICENSE.*
+
+# Justfile
+Justfile
