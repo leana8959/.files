@@ -67,6 +67,10 @@
                 amixer set Master 10%
                 amixer set Master unmute
               '';
+
+              "30_xkbcapswap" = ''
+                setxkbmap myDvorak -option
+              '';
             };
           };
 
@@ -90,6 +94,10 @@
             "20_alsa" = ''
               amixer set Master 10%
               amixer set Master mute
+            '';
+
+            "30_xkbcapswap" = ''
+              setxkbmap myDvorak -option caps:swapescape
             '';
           };
         };
