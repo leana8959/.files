@@ -32,8 +32,6 @@ in
         pkgs.figlet
         pkgs.gnused
         pkgs.stow
-        pkgs.fd
-        pkgs.vivid
 
         # nix
         pkgs.nixfmt-rfc-style
