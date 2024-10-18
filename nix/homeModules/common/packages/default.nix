@@ -28,15 +28,14 @@ in
     programs.ripgrep.enable = true;
     home.packages = lib.mkMerge [
       [
-        # shell and script dependencies
-        pkgs.figlet
-        pkgs.gnused
-        pkgs.stow
-
         # nix
         pkgs.nixfmt-rfc-style
+        pkgs.nix-output-monitor
+        pkgs.nh
 
         # utils
+        pkgs.gnused
+        pkgs.stow
         pkgs.tree
         pkgs.tldr
         pkgs.parallel
