@@ -1,4 +1,9 @@
-{ self, inputs, ... }:
+{
+  self,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
@@ -8,18 +13,18 @@
     let
       mkNerdFont = final.callPackage self.lib.mkNerdFont { };
     in
-    rec {
+    lib.fix (ps: {
       # fonts
       hiosevka = final.callPackage ./hiosevka { };
       hiosevka-nerd-font-mono = mkNerdFont {
-        font = hiosevka;
+        font = ps.hiosevka;
         extraArgs = [
           "--name {/.}-NFM"
           "--use-single-width-glyphs"
         ];
       };
       hiosevka-nerd-font-propo = mkNerdFont {
-        font = hiosevka;
+        font = ps.hiosevka;
         extraArgs = [
           "--name {/.}-NFP"
           "--variable-width-glyphs"
@@ -28,14 +33,14 @@
 
       altiosevka = final.callPackage ./altiosevka { };
       altiosevka-nerd-font-mono = mkNerdFont {
-        font = altiosevka;
+        font = ps.altiosevka;
         extraArgs = [
           "--name {/.}-NFM"
           "--use-single-width-glyphs"
         ];
       };
       altiosevka-nerd-font-propo = mkNerdFont {
-        font = altiosevka;
+        font = ps.altiosevka;
         extraArgs = [
           "--name {/.}-NFP"
           "--variable-width-glyphs"
@@ -70,7 +75,7 @@
       # TODO: use upstream when merged
       dl-librescore = final.callPackage ./dl-librescore.nix { };
       fish-lsp = final.callPackage ./fish-lsp { };
-    };
+    });
 
   perSystem =
     { system, ... }:
