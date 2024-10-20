@@ -3,11 +3,11 @@
 #set align(horizon + center)
 
 #import "@preview/stonewall:0.1.0": lesbian
-#let y_combinator = $lambda f. space (
-    (lambda x. space f (x space x) space (lambda x. space f (x space x))
-  )$
+#let y_combinator = $lambda f. space
+    (lambda x. space f space (x space x)) space
+    (lambda x. space f space (x space x))$
 
 #text(
-  fill: gradient.linear(..(lesbian)),
+  fill: gradient.linear(..lesbian),
   y_combinator,
 )
