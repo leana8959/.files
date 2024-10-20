@@ -2,10 +2,14 @@
   self,
   lib,
   inputs,
+
+  withSystem,
   ...
 }:
 
 {
+  imports = [ inputs.flakies.flakeModules.typstLib ];
+
   flake.lib.mkNerdFont = ./mkNerdFont.nix;
 
   flake.overlays.packages =
@@ -70,6 +74,18 @@
       xbrightness = final.callPackage ./xbrightness.nix { };
       ffgun = final.callPackage ./ffgun.nix { };
       easyscan = final.callPackage ./easyscan.nix { };
+
+      y-combinator-wallpaper = withSystem final.system (
+        { typstLib, ... }:
+        typstLib.typstDerivation.overrideAttrs {
+          src = ./y-combinator-wallpaper;
+          buildPhase = ''
+            runHook preBuild
+            typst compile main.typ "$out"/main.svg
+          '';
+          dontFixup = true;
+        }
+      );
 
       # Unmerged packages from nixfinal
       # TODO: use upstream when merged

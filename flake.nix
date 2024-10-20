@@ -68,6 +68,11 @@
       url = "github:nix-community/disko?ref=v1.8.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+    flakies.url = "git+https://git.earth2077.fr/leana/flakies";
+    typst-packages = {
+      url = "github:typst/packages";
+      flake = false;
+    };
     # pins
     alt-ergo-pin.url = "github:nixos/nixpkgs/1b95daa381fa4a0963217a5d386433c20008208a";
     neovim-pin.url = "github:nixos/nixpkgs/6132b0f6e344ce2fe34fc051b72fb46e34f668e0";
