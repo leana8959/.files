@@ -33,6 +33,8 @@ let
       url = "https://github.com/NixOS/nixos-artwork/blob/53ea652ec7d8af5d21fd2b79b6c49cb39078ddfb/wallpapers/nix-wallpaper-binary-black_8k.png?raw=true";
       hash = "sha256-MxEgvzWmdqMeI5GeI6Hzci6yd5iL44NDXyKQOuw+fLY=";
     };
+
+    y-combinator = "${pkgs.myPkgs.y-combinator-wallpaper}/main.svg";
   };
 
 in
@@ -48,7 +50,7 @@ in
 
   home.file = {
     ".xscreensaver".source = ./xscreensaver/.xscreensaver;
-    ".wallpaper".source = wallpapers.nixos-artwork-binary-black_8k;
+    ".wallpaper".source = wallpapers.y-combinator;
   };
 
   home.packages = [
